@@ -151,7 +151,7 @@ const PortfolioIntoSection = () => {
                 <ul className="list-share">
                   <li>
                     <Link
-                      to="javascript:void(0)"
+                      to="/"
                       data-cursor-style="off"
                       onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=portfolio-post','compartilhar', 'toolbar=0, status=0, width=650, height=450');"
                     >
@@ -161,7 +161,7 @@ const PortfolioIntoSection = () => {
                   </li>
                   <li>
                     <Link
-                      to="javascript:void(0)"
+                      to="/"
                       data-cursor-style="off"
                       onclick="window.open('https://twitter.com/intent/tweet?text=Portfolio Post portfolio-post','compartilhar', 'toolbar=0, status=0, width=650, height=450');"
                     >
@@ -179,7 +179,7 @@ const PortfolioIntoSection = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link to="javascript:void(0)" className="copy-link">
+                    <Link to="/" className="copy-link">
                       <span>Copy e-mail</span>
                       <i className="icon-link"></i>
                     </Link>

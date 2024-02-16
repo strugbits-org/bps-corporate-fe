@@ -47,7 +47,7 @@ const StudioSection = () => {
                             />
                           </div>
                           <p className="accordion-text">
-                            We’re not afraid to get technical. After all, the
+                            We're not afraid to get technical. After all, the
                             more technical we get the better the final result.
                             This is why our pre-production design services
                             include a thorough strategy and understanding of the
