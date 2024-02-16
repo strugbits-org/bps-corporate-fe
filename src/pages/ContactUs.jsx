@@ -205,7 +205,7 @@ const ContactUs = () => {
             </div>
             <div className="col-lg-6 flex-end">
               <p className="fs--14 font-2 white-1">
-                If it’s not remarkable, it’s invisible is a trademark of
+                If it's not remarkable, it's invisible is a trademark of
                 blueprint studios.
               </p>
             </div>

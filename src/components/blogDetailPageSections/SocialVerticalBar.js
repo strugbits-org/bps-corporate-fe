@@ -14,7 +14,7 @@ const SocialVerticalBar = () => {
       <ul className="list-share">
         <li>
           <Link
-            to="javascript:void(0)"
+            to="/"
             data-cursor-style="off"
             onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=blog-post','compartilhar', 'toolbar=0, status=0, width=650, height=450');"
           >
@@ -24,7 +24,7 @@ const SocialVerticalBar = () => {
         </li>
         <li>
           <Link
-            to="javascript:void(0)"
+            to="/"
             data-cursor-style="off"
             onclick="window.open('https://twitter.com/intent/tweet?text=Blog Post blog-post','compartilhar', 'toolbar=0, status=0, width=650, height=450');"
           >
@@ -42,7 +42,7 @@ const SocialVerticalBar = () => {
           </Link>
         </li>
         <li>
-          <Link to="javascript:void(0)" className="copy-link">
+          <Link to="/" className="copy-link">
             <span>Copy e-mail</span>
             <i className="icon-link"></i>
           </Link>
