@@ -93,7 +93,7 @@ const PostDetails = () => {
                     sounds of a medieval tournament. Knights in shining armor
                     jousting, sword-fighting demonstrations, and falconry
                     displays entertained guests as they mingled and sipped on
-                    the finest wines from the Castello’s collection.
+                    the finest wines from the Castello's collection.
                   </p>
 
                   <img src="images/lib/06_desktop.jpg" alt="" />
