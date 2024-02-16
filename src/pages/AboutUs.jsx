@@ -9,6 +9,7 @@ import SocialSection from '../components/commonComponents/SocialSection';
 const AboutUs = () => {
   return (
     <>
+    
     <IntroSection/>
     <OurDream/>
     <OurFamily/>
