@@ -10,10 +10,10 @@ import ContactUs from "./pages/ContactUs";
 import Blog from "./pages/Blog";
 import Portfolio from "./pages/Portfolio";
 import PageNotFound from "./pages/PageNotFound";
-import PortfolioPost from "./pages/dynamicPages/portfolio-post";
-import MarketPost from "./pages/dynamicPages/market-post";
-import BlogPost from "./pages/dynamicPages/blog-post";
-import ServicesPost from "./pages/dynamicPages/Service-post";
+import PortfolioPost from "./pages/dynamicPages/PortfolioPost";
+import MarketPost from "./pages/dynamicPages/MarketPost";
+import BlogPost from "./pages/dynamicPages/BlogPost";
+import ServicePostPage from "./pages/dynamicPages/ServicePostPage";
 // import MemberPage from './pages/MemberPage';
 // import PrivateRoute from './utilis/PrivateRoute';
 
@@ -45,8 +45,8 @@ const router = createBrowserRouter([
         element: <Portfolio />,
       },
       {
-        path: "service-post",
-        element: <ServicesPost />,
+        path: "services-post",
+        element: <ServicePostPage />,
       },
       {
         path: "market-post",
