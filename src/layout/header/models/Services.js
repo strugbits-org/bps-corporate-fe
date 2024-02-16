@@ -14,7 +14,7 @@ const Services = () => {
                 <ul className="list-submenu-services list-submenu">
                   <li>
                     <Link
-                      href="services-post.html"
+                      to="/services-post"
                       className="service-link"
                       data-menu-close
                     >

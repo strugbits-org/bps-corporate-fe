@@ -5,7 +5,7 @@ import PeopleReviewSlider from "../../components/commonComponents/PeopleReviewSl
 import MarketSection from "../../components/commonComponents/MarketSection";
 import StudioSection from "../../components/commonComponents/StudioSection";
 import SocialSection from "../../components/commonComponents/SocialSection";
-import DreamBigSection from "../../components/homePageSections/DreamBigSection";
+import DreamBigSection from "../../components/commonComponents/DreamBigSection";
 const MarketPost = () => {
   return (
     <>
