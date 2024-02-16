@@ -2,7 +2,7 @@ import React from 'react'
 
 const SocialSection = () => {
   return (
-    <section className="section-lets-get-social pt-lg-195 pt-tablet-105 pt-phone-155 pb-lg-130 pb-tablet-105 pb-phone-140 mt-lg-240">
+    <section className="section-lets-get-social z-5 pt-lg-195 pt-tablet-105 pt-phone-155 pb-lg-130 pb-tablet-105 pb-phone-140 mt-lg-240">
     <div
       className="bg"
       data-parallax
