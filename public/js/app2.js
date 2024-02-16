@@ -12541,7 +12541,6 @@ var require_app2 = __commonJS({
     gsapWithCSS$1.registerPlugin(ScrollTrigger$1, Power3, Power0, ScrollToPlugin, Back);
     function Parallax() {
       let parallaxes = document.querySelectorAll('[data-parallax]:not(.js-running), [data-parallax-top]:not(.js-running)');
-      console.log(parallaxes,"KL");
       let mm = gsapWithCSS$1.matchMedia();
       window.addEventListener("orientationchange", function() {
         ScrollTrigger$1.refresh();
@@ -15859,7 +15858,6 @@ var require_app2 = __commonJS({
     viewportHeight();
     menuControls();
     function closeSearch() {
-      console.log(document.body.dataset.searchState,"DDDD")
       if (document.body.dataset.searchState == "success") {
         document.body.dataset.searchState = "leave";
         setTimeout(() => {
@@ -15870,7 +15868,6 @@ var require_app2 = __commonJS({
     document.querySelectorAll("[data-search-remove]:not(.js-running)").forEach((element) => {
       element.classList.add("js-running");
       element.addEventListener("click", closeSearch);
-      console.log("IIII")
     });
 
     const submenu = new DataSetGet({
@@ -16001,10 +15998,6 @@ var require_app2 = __commonJS({
       }
     }
     whenContainerReady();
-    function handleRouteChange() {
-      console.log('Route changed to', window.location.pathname);
-    }
-    window.onpopstate = handleRouteChange;
     document.addEventListener("pjax:complete", whenContainerReady);
     document.addEventListener("pjax:send", whenContainerLeave);
     function whenContainerLeave() {

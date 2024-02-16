@@ -10,7 +10,7 @@ const PeopleReviewSLider = () => {
             className="fs--80 white-1 title text-center split-words"
             data-aos="d:loop"
           >
-            Here’s what people are saying.
+            Here's what people are saying.
           </h2>
         </div>
         <div className="col-lg-10 offset-lg-1 mt-lg-120 mt-tablet-100 mt-phone-45">

@@ -9,7 +9,7 @@ import Cookies from "./common/Cookies";
 function App() {
   const location = useLocation();
   const pathname =
-    location.pathname.trim() == "/" ? "home" : location.pathname.substring(1); // Remove leading slash
+    location.pathname.trim() === "/" ? "home" : location.pathname.substring(1); // Remove leading slash
 
   return (
     <div>
