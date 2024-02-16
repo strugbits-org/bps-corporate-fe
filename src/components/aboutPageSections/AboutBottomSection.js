@@ -1,5 +1,5 @@
 import React from "react";
-import DreamBigSection from "../homePageSections/DreamBigSection";
+import DreamBigSection from "../commonComponents/DreamBigSection";
 
 const AboutBottomSection = () => {
   return (
