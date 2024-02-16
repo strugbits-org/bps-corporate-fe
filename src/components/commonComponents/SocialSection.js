@@ -393,7 +393,7 @@ const SocialSection = () => {
                       <Link to="/blog-post" className="link-blog">
                         <div className="container-text">
                           <h4
-                            className=""
+                            className="p-card"
                             style={{
                               fontStyle: "bold",
                               fontSize: "16px",

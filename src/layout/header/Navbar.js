@@ -30,7 +30,6 @@ const Navbar = () => {
                   <i className="icon-logo"></i>
                 </Link>
 
-                <Link to={"javascript:void(0)"}>
                   <button id="bt-menu" aria-label="Menu" data-search-remove>
                     <svg
                       version="1.1"
@@ -68,7 +67,6 @@ const Navbar = () => {
                       </g>
                     </svg>
                   </button>
-                </Link>
               </div>
 
               {/*  navbar start */}
