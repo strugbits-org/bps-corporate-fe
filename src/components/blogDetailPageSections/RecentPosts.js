@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
+import img1 from "../../utilis/images/lib/08_desktop.jpg"
 const RecentPosts = () => {
   return (
     <section className="blog-post-recent-posts pt-lg-245 pt-tablet-105 pt-phone-150 pb-lg-150 pb-mobile-100">
@@ -28,7 +28,7 @@ const RecentPosts = () => {
                     >
                       <div className="wrapper-img">
                         <img
-                          src="images/lib/08_desktop.jpg"
+                          src={img1}
                           data-preload
                           className="media"
                           alt=""
@@ -83,7 +83,7 @@ const RecentPosts = () => {
                     >
                       <div className="wrapper-img">
                         <img
-                          src="images/lib/08_desktop.jpg"
+                          src={img1}
                           data-preload
                           className="media"
                           alt=""
@@ -138,7 +138,7 @@ const RecentPosts = () => {
                     >
                       <div className="wrapper-img">
                         <img
-                          src="images/lib/08_desktop.jpg"
+                          src={img1}
                           data-preload
                           className="media"
                           alt=""
@@ -193,7 +193,7 @@ const RecentPosts = () => {
                     >
                       <div className="wrapper-img">
                         <img
-                          src="images/lib/08_desktop.jpg"
+                          src={img1}
                           data-preload
                           className="media"
                           alt=""

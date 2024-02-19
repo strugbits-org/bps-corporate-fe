@@ -1,5 +1,11 @@
 import React from "react";
-
+import img1 from "../../utilis/images/about/illumeet.png"
+import img2 from "../../utilis/images/about/family01.jpg"
+import img3 from "../../utilis/images/about/hensley.png"
+import img4 from "../../utilis/images/about/family02.jpg"
+import img5 from "../../utilis/images/about/vident.png"
+import img6 from "../../utilis/images/about/family03.jpg"
+import { Link } from "react-router-dom";
 const OurFamily = () => {
   return (
     <section className="about-meet-the-rest-of-the-family pt-lg-245 pt-mobile-205">
@@ -19,7 +25,7 @@ const OurFamily = () => {
                 <div className="content">
                   <div className="container-img logo-img">
                     <img
-                      src="images/about/illumeet.png"
+                      src={img1}
                       data-preload
                       className="media"
                       data-aos="scaleOut
@@ -32,7 +38,7 @@ const OurFamily = () => {
                     data-aos="scaleOut .8s ease-out-cubic 0s, d:loop"
                   >
                     <img
-                      src="images/about/family01.jpg"
+                      src={img2}
                       data-preload
                       className="media"
                       data-parallax
@@ -49,7 +55,7 @@ const OurFamily = () => {
                     </p>
                     <p>
                       We understand the importance of the user experience from
-                      the event’s perspective and create a custom road-map
+                      the event's perspective and create a custom road-map
                       ideating wire-frames that are as compelling as they are
                       functional, immersive, and engage key audiences.
                     </p>
@@ -61,13 +67,13 @@ const OurFamily = () => {
                     </p>
                   </div>
                   <div className="container-btn">
-                    <a
-                      href="index.html"
+                    <Link
+                      to="/"
                       className="btn-border-white"
                       data-cursor-style="off"
                     >
                       <span>Learn More</span>
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </li>
@@ -75,7 +81,7 @@ const OurFamily = () => {
                 <div className="content">
                   <div className="container-img logo-img">
                     <img
-                      src="images/about/hensley.png"
+                      src={img3}
                       data-preload
                       className="media"
                       data-aos="scaleOut
@@ -88,7 +94,7 @@ const OurFamily = () => {
                     data-aos="scaleOut .8s ease-out-cubic .1s, d:loop"
                   >
                     <img
-                      src="images/about/family02.jpg"
+                      src={img4}
                       data-preload
                       className="media"
                       data-parallax
@@ -105,7 +111,7 @@ const OurFamily = () => {
                     </p>
                     <p>
                       We understand the importance of the user experience from
-                      the event’s perspective and create a custom road-map
+                      the event's perspective and create a custom road-map
                       ideating wire-frames that are as compelling as they are
                       functional, immersive, and engage key audiences.
                     </p>
@@ -117,13 +123,13 @@ const OurFamily = () => {
                     </p>
                   </div>
                   <div className="container-btn">
-                    <a
-                      href="index.html"
+                    <Link
+                      to="/"
                       className="btn-border-white"
                       data-cursor-style="off"
                     >
                       <span>Learn More</span>
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </li>
@@ -131,7 +137,7 @@ const OurFamily = () => {
                 <div className="content">
                   <div className="container-img logo-img">
                     <img
-                      src="images/about/vident.png"
+                      src={img5}
                       data-preload
                       className="media"
                       data-aos="scaleOut
@@ -145,7 +151,7 @@ const OurFamily = () => {
                     alt=""
                   >
                     <img
-                      src="images/about/family03.jpg"
+                      src={img6}
                       data-preload
                       className="media"
                       data-parallax
@@ -168,13 +174,13 @@ const OurFamily = () => {
                     </p>
                   </div>
                   <div className="container-btn">
-                    <a
-                      href="index.html"
+                    <Link
+                      to="/"
                       className="btn-border-white"
                       data-cursor-style="off"
                     >
                       <span>Learn More</span>
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </li>

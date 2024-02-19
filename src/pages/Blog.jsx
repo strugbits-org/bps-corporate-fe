@@ -1,7 +1,7 @@
 import React from "react";
 import SocialSection from "../components/commonComponents/SocialSection";
 import { Link } from "react-router-dom";
-
+import img from "../utilis/images/lib/08_desktop.jpg"
 
 const Blog = () => {
   return (
@@ -80,7 +80,7 @@ const Blog = () => {
                   >
                     <div className="wrapper-img">
                       <img
-                        src="images/lib/08_desktop.jpg"
+                        src={img}
                         data-preload
                         className="media"
                         alt=""
@@ -135,7 +135,7 @@ const Blog = () => {
                   >
                     <div className="wrapper-img">
                       <img
-                        src="images/lib/08_desktop.jpg"
+                        src={img}
                         data-preload
                         className="media"
                         alt=""
@@ -190,7 +190,7 @@ const Blog = () => {
                   >
                     <div className="wrapper-img">
                       <img
-                        src="images/lib/08_desktop.jpg"
+                        src={img}
                         data-preload
                         className="media"
                         alt=""
@@ -245,7 +245,7 @@ const Blog = () => {
                   >
                     <div className="wrapper-img">
                       <img
-                        src="images/lib/08_desktop.jpg"
+                        src={img}
                         data-preload
                         className="media"
                         alt=""
@@ -300,7 +300,7 @@ const Blog = () => {
                   >
                     <div className="wrapper-img">
                       <img
-                        src="images/lib/08_desktop.jpg"
+                        src={img}
                         data-preload
                         className="media"
                         alt=""
@@ -355,7 +355,7 @@ const Blog = () => {
                   >
                     <div className="wrapper-img">
                       <img
-                        src="images/lib/08_desktop.jpg"
+                        src={img}
                         data-preload
                         className="media"
                         alt=""
@@ -410,7 +410,7 @@ const Blog = () => {
                   >
                     <div className="wrapper-img">
                       <img
-                        src="images/lib/08_desktop.jpg"
+                        src={img}
                         data-preload
                         className="media"
                         alt=""
@@ -465,7 +465,7 @@ const Blog = () => {
                   >
                     <div className="wrapper-img">
                       <img
-                        src="images/lib/08_desktop.jpg"
+                        src={img}
                         data-preload
                         className="media"
                         alt=""
@@ -520,7 +520,7 @@ const Blog = () => {
                   >
                     <div className="wrapper-img">
                       <img
-                        src="images/lib/08_desktop.jpg"
+                        src={img}
                         data-preload
                         className="media"
                         alt=""
@@ -575,7 +575,7 @@ const Blog = () => {
                   >
                     <div className="wrapper-img">
                       <img
-                        src="images/lib/08_desktop.jpg"
+                        src={img}
                         data-preload
                         className="media"
                         alt=""
@@ -621,9 +621,9 @@ const Blog = () => {
             </ul>
           </div>
           <div className="col-lg-2 offset-lg-5 flex-center mt-lg-70 mt-tablet-60 mt-phone-85">
-            <a href="/" className="btn-border-blue" data-cursor-style="off">
+            <Link to="/blog-post" className="btn-border-blue" data-cursor-style="off">
               <span>See all</span>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

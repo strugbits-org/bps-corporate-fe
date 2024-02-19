@@ -1,6 +1,6 @@
 import React from "react";
 import DreamBigSection from "../commonComponents/DreamBigSection";
-
+import image from "../../utilis/images/about/magazine.jpg"
 const AboutBottomSection = () => {
   return (
     <>
@@ -15,7 +15,7 @@ const AboutBottomSection = () => {
                 </h2>
                 <div className="container-img">
                   <img
-                    src="images/about/magazine.jpg"
+                    src={image}
                     data-preload
                     className="media"
                     alt=""

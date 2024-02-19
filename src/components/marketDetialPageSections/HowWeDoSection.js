@@ -1,5 +1,5 @@
 import React from 'react'
-
+import img6 from "../../utilis/images/lib/06_desktop.jpg"
 const HowWeDoSection = () => {
   return (
     <section className="market-post-how-we-do-it pt-lg-270 pt-tablet-100 pt-phone-150">
@@ -14,7 +14,7 @@ const HowWeDoSection = () => {
                   <div className="list-column-img">
                     <div className="container-img" data-aos="d:loop">
                       <img
-                        src="images/lib/06_desktop.jpg"
+                        src={img6}
                         data-preload
                         className="media"
                         alt=""
@@ -45,7 +45,7 @@ const HowWeDoSection = () => {
                   <div className="list-column-img">
                     <div className="container-img" data-aos="d:loop">
                       <img
-                        src="images/lib/06_desktop.jpg"
+                        src={img6}
                         data-preload
                         className="media"
                         alt=""
@@ -79,7 +79,7 @@ const HowWeDoSection = () => {
                   <div className="list-column-img">
                     <div className="container-img" data-aos="d:loop">
                       <img
-                        src="images/lib/06_desktop.jpg"
+                        src={img6}
                         data-preload
                         className="media"
                         alt=""
@@ -111,7 +111,7 @@ const HowWeDoSection = () => {
                   <div className="list-column-img">
                     <div className="container-img" data-aos="d:loop">
                       <img
-                        src="images/lib/06_desktop.jpg"
+                        src={img6}
                         data-preload
                         className="media"
                         alt=""

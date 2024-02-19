@@ -2,6 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import ProductCartSlider from "../commonComponents/ProductCartSlider";
 import SocialVerticalBar from "./SocialVerticalBar";
+import img1 from "../../utilis/images/lib/06_desktop.jpg"
+import img2 from "../../utilis/images/lib/02_desktop.jpg"
+import img8 from "../../utilis/images/lib/08_desktop.jpg"
+import img4 from "../../utilis/images/lib/04_desktop.jpg"
 
 const PostDetails = () => {
   return (
@@ -17,7 +21,7 @@ const PostDetails = () => {
                 <div className="author">
                   <div className="container-img">
                     <img
-                      src="images/lib/06_desktop.jpg"
+                      src={img1}
                       data-preload
                       className="media"
                       alt=""
@@ -33,7 +37,7 @@ const PostDetails = () => {
                 className="fs--40 fs-mobile-35 lh-140 blog-post-title split-words"
                 data-aos="d:loop"
               >
-                A Medieval Fairytale Come to Life: Blueprint Studios’ Event at
+                A Medieval Fairytale Come to Life: Blueprint Studios' Event at
                 Castello di Amorosa
               </h1>
             </div>
@@ -45,7 +49,7 @@ const PostDetails = () => {
               <div className="blog-post-thumb" data-aos="d:loop">
                 <div className="container-img">
                   <img
-                    src="images/lib/06_desktop.jpg"
+                    src={img1}
                     data-preload
                     className="media"
                     alt=""
@@ -96,7 +100,7 @@ const PostDetails = () => {
                     the finest wines from the Castello's collection.
                   </p>
 
-                  <img src="images/lib/06_desktop.jpg" alt="" />
+                  <img src={img1} alt="" />
 
                   <div className="slider-blog-post">
                     <div className="swiper-container">
@@ -104,7 +108,7 @@ const PostDetails = () => {
                         <div className="swiper-slide">
                           <div className="container-img">
                             <img
-                              src="images/lib/06_desktop.jpg"
+                              src={img1}
                               data-preload
                               className="media"
                               alt=""
@@ -114,7 +118,7 @@ const PostDetails = () => {
                         <div className="swiper-slide">
                           <div className="container-img">
                             <img
-                              src="images/lib/02_desktop.jpg"
+                              src={img2}
                               data-preload
                               className="media"
                               alt=""
@@ -124,7 +128,7 @@ const PostDetails = () => {
                         <div className="swiper-slide">
                           <div className="container-img">
                             <img
-                              src="images/lib/08_desktop.jpg"
+                              src={img8}
                               data-preload
                               className="media"
                               alt=""
@@ -134,7 +138,7 @@ const PostDetails = () => {
                         <div className="swiper-slide">
                           <div className="container-img">
                             <img
-                              src="images/lib/04_desktop.jpg"
+                              src={img4}
                               data-preload
                               className="media"
                               alt=""

@@ -1,5 +1,6 @@
 import React from 'react'
-
+import video from "../../utilis/images/lib/video.mp4#t=0.01"
+import img8 from "../../utilis/images/lib/08_desktop.jpg"
 const MarketTopSection = () => {
   return (
     <>
@@ -31,7 +32,7 @@ const MarketTopSection = () => {
                   data-aos="fadeInUp .8s ease-out-cubic .6s, d:loop"
                   data-cursor-style="off"
                 >
-                  <span>Let’s Craft Magic Together</span>
+                  <span>Let's Craft Magic Together</span>
                   <i className="icon-arrow-right-2"></i>
                 </btn-modal-open>
               </div>
@@ -45,7 +46,7 @@ const MarketTopSection = () => {
           data-scale="1.2"
         >
           <img
-            src="images/lib/08_desktop.jpg"
+            src={img8}
             data-preload
             className="media"
             alt=""
@@ -60,8 +61,8 @@ const MarketTopSection = () => {
             <div className="col-lg-4 offset-lg-4 column-1">
               <div className="container-img" data-aos="d:loop">
                 <video
-                  data-src="images/lib/video.mp4#t=0.01"
-                  src="images/lib/video.mp4#t=0.01"
+                  data-src={video}
+                  src={video}
                   data-preload
                   className="player-video media"
                   muted
@@ -75,7 +76,7 @@ const MarketTopSection = () => {
                 className="fs--40 fs-tablet-40 fs-phone-30 blue-3 text-center"
                 data-aos="fadeInUp .8s ease-out-cubic .1s, d:loop, trigger:.column-2"
               >
-                It’s always an honor to be a trusted partner for these cherished
+                It's always an honor to be a trusted partner for these cherished
                 moments, and that is why we put love into every detail to
                 deliver the most beautiful expression of your dream celebration.
               </h2>
