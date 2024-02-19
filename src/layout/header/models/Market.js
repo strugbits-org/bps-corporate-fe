@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import img6 from "../../../utilis/images/lib/06_desktop.jpg"
 const Market = () => {
   return (
     <div className="wrapper-submenu-market wrapper-submenu">
@@ -24,7 +24,7 @@ const Market = () => {
                           data-cursor-style="view"
                         >
                           <img
-                            src="images/lib/06_desktop.jpg"
+                            src={img6}
                             data-preload
                             className="media"
                             alt=""
@@ -60,7 +60,7 @@ const Market = () => {
                           data-cursor-style="view"
                         >
                           <img
-                            src="images/lib/06_desktop.jpg"
+                            src={img6}
                             data-preload
                             className="media"
                             alt=""
@@ -96,7 +96,7 @@ const Market = () => {
                           data-cursor-style="view"
                         >
                           <img
-                            src="images/lib/06_desktop.jpg"
+                            src={img6}
                             data-preload
                             className="media"
                             alt=""
@@ -132,7 +132,7 @@ const Market = () => {
                           data-cursor-style="view"
                         >
                           <img
-                            src="images/lib/06_desktop.jpg"
+                            src={img6}
                             data-preload
                             className="media"
                             alt=""

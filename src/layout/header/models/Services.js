@@ -1,5 +1,9 @@
 import { Link } from "react-router-dom";
-
+import imgS1 from "../../../utilis/images/services/service1.jpg";
+import imgS2 from "../../../utilis/images/services/service2.jpg";
+import imgS3 from "../../../utilis/images/services/service3.jpg";
+import imgS4 from "../../../utilis/images/services/service4.jpg";
+import imgS5 from "../../../utilis/images/services/service5.jpg";
 
 const Services = () => {
   return (
@@ -20,7 +24,7 @@ const Services = () => {
                     >
                       <div className="container-img bg-blue">
                         <img
-                          src="images/services/service1.jpg"
+                          src={imgS1}
                           data-preload
                           className="media"
                           alt=""
@@ -40,7 +44,7 @@ const Services = () => {
                     >
                       <div className="container-img bg-blue">
                         <img
-                          src="images/services/service2.jpg"
+                          src={imgS2}
                           data-preload
                           className="media"
                           alt=""
@@ -60,7 +64,7 @@ const Services = () => {
                     >
                       <div className="container-img bg-blue">
                         <img
-                          src="images/services/service3.jpg"
+                          src={imgS3}
                           data-preload
                           className="media"
                           alt=""
@@ -78,7 +82,7 @@ const Services = () => {
                     >
                       <div className="container-img bg-blue">
                         <img
-                          src="images/services/service4.jpg"
+                          src={imgS4}
                           data-preload
                           className="media"
                           alt=""
@@ -92,13 +96,13 @@ const Services = () => {
                   </li>
                   <li>
                     <Link
-                      tp="/services-post"
+                      to="/services-post"
                       className="service-link"
                       data-menu-close
                     >
                       <div className="container-img bg-blue">
                         <img
-                          src="images/services/service5.jpg"
+                          src={imgS5}
                           data-preload
                           className="media"
                           alt=""

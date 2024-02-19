@@ -1,5 +1,10 @@
 import React from 'react'
-
+import img6 from "../../utilis/images/lib/06_desktop.jpg"
+import img1 from "../../utilis/images/lib/01_desktop.jpg"
+import img2 from "../../utilis/images/lib/02_desktop.jpg"
+import img7 from "../../utilis/images/lib/07_desktop.jpg"
+import img8 from "../../utilis/images/lib/08_desktop.jpg"
+import img9 from "../../utilis/images/lib/09_desktop.jpg"
 const StudioSection = () => {
   return (
     <section className="section-studios">
@@ -40,7 +45,7 @@ const StudioSection = () => {
                         <div className="accordion-content">
                           <div className="container-img bg-blue">
                             <img
-                              src="images/lib/06_desktop.jpg"
+                              src={img6}
                               data-preload
                               className="media"
                               alt=""
@@ -68,7 +73,7 @@ const StudioSection = () => {
                         <div className="accordion-content">
                           <div className="container-img bg-blue">
                             <img
-                              src="images/lib/02_desktop.jpg"
+                              src={img2}
                               data-preload
                               className="media"
                               alt=""
@@ -98,7 +103,7 @@ const StudioSection = () => {
                         <div className="accordion-content">
                           <div className="container-img bg-blue">
                             <img
-                              src="images/lib/01_desktop.jpg"
+                              src={img1}
                               data-preload
                               className="media"
                               alt=""
@@ -126,7 +131,7 @@ const StudioSection = () => {
                         <div className="accordion-content">
                           <div className="container-img bg-blue">
                             <img
-                              src="images/lib/09_desktop.jpg"
+                              src={img9}
                               data-preload
                               className="media"
                               alt=""
@@ -154,7 +159,7 @@ const StudioSection = () => {
                         <div className="accordion-content">
                           <div className="container-img bg-blue">
                             <img
-                              src="images/lib/08_desktop.jpg"
+                              src={img8}
                               data-preload
                               className="media"
                               alt=""
@@ -183,7 +188,7 @@ const StudioSection = () => {
                         <div className="accordion-content">
                           <div className="container-img bg-blue">
                             <img
-                              src="images/lib/07_desktop.jpg"
+                              src={img7}
                               data-preload
                               className="media"
                               alt=""

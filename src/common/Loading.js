@@ -1,5 +1,7 @@
 import React from "react";
-
+import image1 from "../utilis/images/logo/logo-bps-b.svg"
+import image2 from "../utilis/images/logo/logo-bps-p.svg"
+import image3 from "../utilis/images/logo/logo-bps-s.svg"
 const Loading = () => {
   return (
     <div id="loader">
@@ -9,7 +11,7 @@ const Loading = () => {
       <div className="container-logo">
         <div className="z-5">
           <img
-            src="images/logo/logo-bps-b.svg"
+            src={image1}
             data-preload
             className="img-b z-3 media"
             alt=""
@@ -17,7 +19,7 @@ const Loading = () => {
         </div>
         <div className="z-4">
           <img
-            src="images/logo/logo-bps-p.svg"
+            src={image2}
             data-preload
             className="img-p z-2 media"
             alt=""
@@ -25,7 +27,7 @@ const Loading = () => {
         </div>
         <div className="z-3">
           <img
-            src="images/logo/logo-bps-s.svg"
+            src={image3}
             data-preload
             className="img-s z-1 media"
             alt=""

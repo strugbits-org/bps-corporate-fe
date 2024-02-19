@@ -118,13 +118,13 @@ const ContactForm = () => {
                   </Link>
                 </li>
                 <li>
-                  <a
-                    href="/"
+                  <Link
+                    to="/"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <i className="icon-x"></i>
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <Link

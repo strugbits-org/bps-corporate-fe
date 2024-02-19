@@ -1,5 +1,13 @@
 import React from 'react'
-
+import img1 from "../../utilis/images/home/section-rental-store-chair-1.png"
+import img2 from "../../utilis/images/home/section-rental-store-chair-2.png"
+import img3 from "../../utilis/images/home/section-rental-store-chair-3.png"
+import img4 from "../../utilis/images/home/section-rental-store-table-1.png"
+import img6 from "../../utilis/images/lib/06_desktop.jpg"
+import img22 from "../../utilis/images/lib/02_desktop.jpg"
+import img88 from "../../utilis/images/lib/08_desktop.jpg"
+import img99 from "../../utilis/images/lib/09_desktop.jpg"
+import { Link } from 'react-router-dom'
 const RentalStoreSection = () => {
   return (
     <section className="home-rental-store pt-lg-145 pt-tablet-105 pt-phone-145 pb-lg-120 pb-tablet-100 pb-phone-145">
@@ -31,7 +39,7 @@ const RentalStoreSection = () => {
             Over 300,000 rental
             <span>
               <img
-                src="images/home/section-rental-store-chair-1.png"
+                src={img1}
                 data-preload
                 alt=""
                 className="img-1 media"
@@ -40,7 +48,7 @@ const RentalStoreSection = () => {
             products with diverse
             <span>
               <img
-                src="images/home/section-rental-store-table-1.png"
+                src={img4}
                 data-preload
                 alt=""
                 className="img-2 media"
@@ -49,7 +57,7 @@ const RentalStoreSection = () => {
             collections of specialty furnishings, props
             <span>
               <img
-                src="images/home/section-rental-store-chair-2.png"
+                src={img2}
                 data-preload
                 alt=""
                 className="img-3 media"
@@ -59,7 +67,7 @@ const RentalStoreSection = () => {
             large-scale events
             <span>
               <img
-                src="images/home/section-rental-store-chair-3.png"
+                src={img3}
                 data-preload
                 alt=""
                 className="img-4 media"
@@ -80,14 +88,14 @@ const RentalStoreSection = () => {
               data-end="20% 40%"
               data-trigger=".home-rental-store"
             >
-              <a
-                href="index.html"
+              <Link
+                to="/"
                 className="link"
                 data-cursor-style="view"
               >
                 <div className="container-img">
                   <img
-                    src="images/lib/06_desktop.jpg"
+                    src={img6}
                     data-preload
                     className="media"
                     alt=""
@@ -96,7 +104,7 @@ const RentalStoreSection = () => {
                 <div className="tag-new no-mobile">
                   <span>New</span>
                 </div>
-              </a>
+              </Link>
             </li>
             <li
               data-parallax
@@ -107,20 +115,20 @@ const RentalStoreSection = () => {
               data-end="20% 40%"
               data-trigger=".home-rental-store"
             >
-              <a
-                href="index.html"
+              <Link
+                to="/"
                 className="link"
                 data-cursor-style="view"
               >
                 <div className="container-img">
                   <img
-                    src="images/lib/02_desktop.jpg"
+                    src={img22}
                     data-preload
                     className="media"
                     alt=""
                   />
                 </div>
-              </a>
+              </Link>
             </li>
             <li
               data-parallax
@@ -131,36 +139,36 @@ const RentalStoreSection = () => {
               data-end="20% 40%"
               data-trigger=".home-rental-store"
             >
-              <a
-                href="index.html"
+              <Link
+                to="/"
                 className="link"
                 data-cursor-style="view"
               >
                 <div className="container-img">
                   <img
-                    src="images/lib/08_desktop.jpg"
+                    src={img88}
                     data-preload
                     className="media"
                     alt=""
                   />
                 </div>
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="index.html"
+              <Link
+                to="/"
                 className="link"
                 data-cursor-style="view"
               >
                 <div className="container-img">
                   <img
-                    src="images/lib/09_desktop.jpg"
+                    src={img99}
                     data-preload
                     className="media"
                     alt=""
                   />
                 </div>
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

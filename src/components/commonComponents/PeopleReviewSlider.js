@@ -1,5 +1,5 @@
 import React from 'react'
-
+import img1 from "../../utilis/images/lib/06_desktop.jpg"
 const PeopleReviewSLider = () => {
   return (
     <section className="section-heres-what-people-are-saying pt-lg-300 pt-tablet-105 pt-phone-145 pb-lg-130 pb-tablet-100 pb-phone-145 pos-relative">
@@ -23,7 +23,7 @@ const PeopleReviewSLider = () => {
                   <div className="wrapper-content">
                     <div className="container-img">
                       <img
-                        src="images/lib/06_desktop.jpg"
+                        src={img1}
                         data-preload
                         className="media"
                         alt=""
@@ -54,7 +54,7 @@ const PeopleReviewSLider = () => {
                   <div className="wrapper-content">
                     <div className="container-img">
                       <img
-                        src="images/lib/06_desktop.jpg"
+                        src={img1}
                         data-preload
                         className="media"
                         alt=""
@@ -99,7 +99,7 @@ const PeopleReviewSLider = () => {
             data-aos="fadeInUp .8s ease-out-cubic 0s, d:loop, trigger:.column-btn"
             data-cursor-style="off"
           >
-            <span>Let’s Craft Magic Together</span>
+            <span>Let's Craft Magic Together</span>
             <i className="icon-arrow-right-2"></i>
           </btn-modal-open>
         </div>

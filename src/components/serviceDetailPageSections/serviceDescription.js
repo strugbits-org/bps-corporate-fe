@@ -1,5 +1,5 @@
 import React from "react";
-
+import img6 from "../../utilis/images/lib/06_desktop.jpg"
 const serviceDescription = () => {
   return (
     <section className="services-post-description pt-lg-210 pt-tablet-105 pt-phone-200">
@@ -19,7 +19,7 @@ const serviceDescription = () => {
                 <div className="content">
                   <div className="container-img">
                     <img
-                      src="images/lib/06_desktop.jpg"
+                      src={img6}
                       data-preload
                       className="media"
                       alt=""
@@ -50,7 +50,7 @@ const serviceDescription = () => {
                 <div className="content">
                   <div className="container-img">
                     <img
-                      src="images/lib/06_desktop.jpg"
+                      src={img6}
                       data-preload
                       className="media"
                       alt=""
@@ -75,7 +75,7 @@ const serviceDescription = () => {
                 <div className="content">
                   <div className="container-img">
                     <img
-                      src="images/lib/06_desktop.jpg"
+                      src={img6}
                       data-preload
                       className="media"
                       alt=""
@@ -103,7 +103,7 @@ const serviceDescription = () => {
                 <div className="content">
                   <div className="container-img">
                     <img
-                      src="images/lib/06_desktop.jpg"
+                      src={img6}
                       data-preload
                       className="media"
                       alt=""

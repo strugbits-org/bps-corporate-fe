@@ -1,11 +1,11 @@
 import React from 'react'
-
+import img6 from "../../utilis/images/lib/06_desktop.jpg"
 const HeroSection = () => {
   return (
     <section className="home-intro" data-aos="d:loop">
     <div className="container-img">
       <img
-        src="images/lib/06_desktop.jpg"
+        src={img6}
         data-preload
         className="media"
         alt=""

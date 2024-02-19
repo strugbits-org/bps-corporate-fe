@@ -1,5 +1,5 @@
 import React from 'react'
-
+import img1 from "../../utilis/images/lib/01_desktop.jpg"
 const OurProjectSection = () => {
   return (
     <section className="home-some-of-our-projects pt-lg-250 pt-mobile-130 pb-135">
@@ -28,7 +28,7 @@ const OurProjectSection = () => {
                     <div className="container-img bg-blue">
                       <div className="wrapper-img">
                         <img
-                          src="images/lib/01_desktop.jpg"
+                          src={img1}
                           data-preload
                           className="media"
                           alt=""
@@ -58,7 +58,7 @@ const OurProjectSection = () => {
                     <div className="container-img bg-blue">
                       <div className="wrapper-img">
                         <img
-                          src="images/lib/01_desktop.jpg"
+                          src={img1}
                           data-preload
                           className="media"
                           alt=""
@@ -91,7 +91,7 @@ const OurProjectSection = () => {
                     <div className="container-img bg-blue">
                       <div className="wrapper-img">
                         <img
-                          src="images/lib/01_desktop.jpg"
+                          src={img1}
                           data-preload
                           className="media"
                           alt=""
@@ -124,7 +124,7 @@ const OurProjectSection = () => {
                     <div className="container-img bg-blue">
                       <div className="wrapper-img">
                         <img
-                          src="images/lib/01_desktop.jpg"
+                          src={img1}
                           data-preload
                           className="media"
                           alt=""
@@ -154,7 +154,7 @@ const OurProjectSection = () => {
             class="btn-blue"
             data-cursor-style="off"
           >
-            <span>Let’s Craft Magic Together</span>
+            <span>Let's Craft Magic Together</span>
             <i className="icon-arrow-right-2"></i>
           </btn-modal-open>
         </div>

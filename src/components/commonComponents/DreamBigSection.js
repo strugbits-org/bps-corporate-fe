@@ -1,4 +1,6 @@
 import React from 'react'
+import img1 from "../../utilis/images/dream-big.jpg"
+import img2 from "../../utilis/images/dream-big-mobile.jpg"
 
 const DreamBigSection = () => {
   return (
@@ -8,7 +10,7 @@ const DreamBigSection = () => {
         <div className="col-lg-4 offset-lg-4 column-1">
           <div className="container-img no-phone">
             <img
-              src="images/dream-big.jpg"
+              src={img1}
               data-preload
               className="media"
               alt=""
@@ -16,7 +18,7 @@ const DreamBigSection = () => {
           </div>
           <div className="container-img no-desktop no-tablet">
             <img
-              src="images/dream-big-mobile.jpg"
+              src={img2}
               data-preload
               className="media"
               alt=""
@@ -34,7 +36,7 @@ const DreamBigSection = () => {
               class="btn-blue"
               data-cursor-style="off"
             >
-              <span>Let’s Craft Magic Together</span>
+              <span>Let's Craft Magic Together</span>
               <i className="icon-arrow-right-2"></i>
             </btn-modal-open>
             <p

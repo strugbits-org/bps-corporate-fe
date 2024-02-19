@@ -2,6 +2,15 @@ import Services from "./models/Services";
 import Market from "./models/Market";
 import { Link } from "react-router-dom";
 import ContactForm from "./models/ContactForm";
+import img from "../../utilis/images/chairs/bristol-chair.png"
+import img1 from "../../utilis/images/chairs/bristol-chair-color-1.png"
+import img2 from "../../utilis/images/chairs/bristol-chair-color-2.png"
+import img3 from "../../utilis/images/chairs/bristol-chair-color-3.png"
+import img4 from "../../utilis/images/chairs/bristol-chair-color-4.png"
+import img6 from "../../utilis/images/lib/06_desktop.jpg"
+import img8 from "../../utilis/images/lib/08_desktop.jpg"
+import img22 from "../../utilis/images/lib/02_desktop.jpg"
+import img77 from "../../utilis/images/lib/07_desktop.jpg"
 
 const Navbar = () => {
   return (
@@ -333,7 +342,7 @@ const Navbar = () => {
                                             <div className="wrapper-img">
                                               <div className="container-img">
                                                 <img
-                                                  src="images/chairs/bristol-chair.png"
+                                                  src={img}
                                                   data-preload
                                                   className="media"
                                                   alt=""
@@ -351,7 +360,7 @@ const Navbar = () => {
                                                 <li>
                                                   <div className="container-img">
                                                     <img
-                                                      src="images/chairs/bristol-chair-color-1.png"
+                                                      src={img1}
                                                       data-preload
                                                       className="media"
                                                       alt=""
@@ -361,7 +370,7 @@ const Navbar = () => {
                                                 <li>
                                                   <div className="container-img">
                                                     <img
-                                                      src="images/chairs/bristol-chair-color-2.png"
+                                                      src={img2}
                                                       data-preload
                                                       className="media"
                                                       alt=""
@@ -371,7 +380,7 @@ const Navbar = () => {
                                                 <li>
                                                   <div className="container-img">
                                                     <img
-                                                      src="images/chairs/bristol-chair-color-3.png"
+                                                      src={img3}
                                                       data-preload
                                                       className="media"
                                                       alt=""
@@ -381,7 +390,7 @@ const Navbar = () => {
                                                 <li>
                                                   <div className="container-img">
                                                     <img
-                                                      src="images/chairs/bristol-chair-color-4.png"
+                                                      src={img4}
                                                       data-preload
                                                       className="media"
                                                       alt=""
@@ -406,7 +415,7 @@ const Navbar = () => {
                                             <div className="wrapper-img">
                                               <div className="container-img">
                                                 <img
-                                                  src="images/chairs/bristol-chair.png"
+                                                  src={img}
                                                   data-preload
                                                   className="media"
                                                   alt=""
@@ -424,7 +433,7 @@ const Navbar = () => {
                                                 <li>
                                                   <div className="container-img">
                                                     <img
-                                                      src="images/chairs/bristol-chair-color-1.png"
+                                                      src={img1}
                                                       data-preload
                                                       className="media"
                                                       alt=""
@@ -434,7 +443,7 @@ const Navbar = () => {
                                                 <li>
                                                   <div className="container-img">
                                                     <img
-                                                      src="images/chairs/bristol-chair-color-2.png"
+                                                      src={img2}
                                                       data-preload
                                                       className="media"
                                                       alt=""
@@ -444,7 +453,7 @@ const Navbar = () => {
                                                 <li>
                                                   <div className="container-img">
                                                     <img
-                                                      src="images/chairs/bristol-chair-color-3.png"
+                                                      src={img3}
                                                       data-preload
                                                       className="media"
                                                       alt=""
@@ -454,7 +463,7 @@ const Navbar = () => {
                                                 <li>
                                                   <div className="container-img">
                                                     <img
-                                                      src="images/chairs/bristol-chair-color-4.png"
+                                                      src={img4}
                                                       data-preload
                                                       className="media"
                                                       alt=""
@@ -479,7 +488,7 @@ const Navbar = () => {
                                             <div className="wrapper-img">
                                               <div className="container-img">
                                                 <img
-                                                  src="images/chairs/bristol-chair.png"
+                                                  src={img}
                                                   data-preload
                                                   className="media"
                                                   alt=""
@@ -497,7 +506,7 @@ const Navbar = () => {
                                                 <li>
                                                   <div className="container-img">
                                                     <img
-                                                      src="images/chairs/bristol-chair-color-1.png"
+                                                      src={img1}
                                                       data-preload
                                                       className="media"
                                                       alt=""
@@ -507,7 +516,7 @@ const Navbar = () => {
                                                 <li>
                                                   <div className="container-img">
                                                     <img
-                                                      src="images/chairs/bristol-chair-color-2.png"
+                                                      src={img2}
                                                       data-preload
                                                       className="media"
                                                       alt=""
@@ -517,7 +526,7 @@ const Navbar = () => {
                                                 <li>
                                                   <div className="container-img">
                                                     <img
-                                                      src="images/chairs/bristol-chair-color-3.png"
+                                                      src={img3}
                                                       data-preload
                                                       className="media"
                                                       alt=""
@@ -527,7 +536,7 @@ const Navbar = () => {
                                                 <li>
                                                   <div className="container-img">
                                                     <img
-                                                      src="images/chairs/bristol-chair-color-4.png"
+                                                      src={img4}
                                                       data-preload
                                                       className="media"
                                                       alt=""
@@ -580,7 +589,7 @@ const Navbar = () => {
                                           >
                                             <div className="wrapper-img">
                                               <img
-                                                src="images/lib/06_desktop.jpg"
+                                                src={img6}
                                                 data-preload
                                                 className="media"
                                                 alt=""
@@ -599,7 +608,7 @@ const Navbar = () => {
                                         <Link to="/" className="link-portfolio">
                                           <div className="container-img">
                                             <img
-                                              src="images/lib/08_desktop.jpg"
+                                              src={img8}
                                               data-preload
                                               className="media"
                                               alt=""
@@ -614,7 +623,7 @@ const Navbar = () => {
                                         <Link to="/" className="link-portfolio">
                                           <div className="container-img">
                                             <img
-                                              src="images/lib/08_desktop.jpg"
+                                              src={img8}
                                               data-preload
                                               className="media"
                                               alt=""
@@ -644,7 +653,7 @@ const Navbar = () => {
                                         <Link to="/" className="link-portfolio">
                                           <div className="container-img">
                                             <img
-                                              src="images/lib/02_desktop.jpg"
+                                              src={img22}
                                               data-preload
                                               className="media"
                                               alt=""
@@ -675,8 +684,8 @@ const Navbar = () => {
                                 data-aos
                               >
                                 <li className="grid-item">
-                                  <a
-                                    href="market-post.html"
+                                  <Link
+                                    to="/market-post"
                                     className="market-link project-link"
                                     data-cursor-style="view"
                                     data-menu-close
@@ -686,7 +695,7 @@ const Navbar = () => {
                                       data-cursor-style="view"
                                     >
                                       <img
-                                        src="images/lib/06_desktop.jpg"
+                                        src={img6}
                                         data-preload
                                         className="media"
                                         alt=""
@@ -697,7 +706,7 @@ const Navbar = () => {
                                         Corporate
                                       </h3>
                                     </div>
-                                  </a>
+                                  </Link>
                                 </li>
                                 <li className="grid-item">
                                   <Link
@@ -707,7 +716,7 @@ const Navbar = () => {
                                     <div className="container-img bg-blue">
                                       <div className="wrapper-img">
                                         <img
-                                          src="images/lib/06_desktop.jpg"
+                                          src={img6}
                                           data-preload
                                           className="media"
                                           alt=""
@@ -729,7 +738,7 @@ const Navbar = () => {
                                     <div className="container-img bg-blue">
                                       <div className="wrapper-img">
                                         <img
-                                          src="images/lib/07_desktop.jpg"
+                                          src={img77}
                                           data-preload
                                           className="media"
                                           alt=""
@@ -801,7 +810,7 @@ const Navbar = () => {
                                         >
                                           <div className="wrapper-img">
                                             <img
-                                              src="images/lib/08_desktop.jpg"
+                                              src={img8}
                                               data-preload
                                               className="media"
                                               alt=""
@@ -845,7 +854,7 @@ const Navbar = () => {
                                         >
                                           <div className="wrapper-img">
                                             <img
-                                              src="images/lib/08_desktop.jpg"
+                                              src={img8}
                                               data-preload
                                               className="media"
                                               alt=""
@@ -889,7 +898,7 @@ const Navbar = () => {
                                         >
                                           <div className="wrapper-img">
                                             <img
-                                              src="images/lib/08_desktop.jpg"
+                                              src={img8}
                                               data-preload
                                               className="media"
                                               alt=""
@@ -933,7 +942,7 @@ const Navbar = () => {
                                         >
                                           <div className="wrapper-img">
                                             <img
-                                              src="images/lib/08_desktop.jpg"
+                                              src={img8}
                                               data-preload
                                               className="media"
                                               alt=""
@@ -977,7 +986,7 @@ const Navbar = () => {
                                         >
                                           <div className="wrapper-img">
                                             <img
-                                              src="images/lib/08_desktop.jpg"
+                                              src={img8}
                                               data-preload
                                               className="media"
                                               alt=""

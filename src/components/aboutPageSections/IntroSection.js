@@ -1,5 +1,6 @@
 import React from "react";
-
+import img6 from "../../utilis/images/lib/06_desktop.jpg"
+import { Link } from "react-router-dom";
 const IntroSection = () => {
   return (
     <>
@@ -15,7 +16,7 @@ const IntroSection = () => {
             data-translate-y="5vh"
           >
             <img
-              src="images/lib/06_desktop.jpg"
+              src={img6}
               data-preload
               className="media"
               data-parallax-top
@@ -51,8 +52,8 @@ const IntroSection = () => {
         </div>
 
         <div className="wrapper-content z-4 content-3">
-          <a
-            href="index.html"
+          <Link
+            to="/"
             className="btn-border-blue"
             data-cursor-style="off"
             data-parallax
@@ -64,7 +65,7 @@ const IntroSection = () => {
           >
             <span>Watch the video</span>
             <i className="icon-arrow-right-2"></i>
-          </a>
+          </Link>
         </div>
       </section>
       <section className="about-events pt-30">
@@ -125,9 +126,9 @@ const IntroSection = () => {
                       <div className="content">
                         <h2 className="title">Our Commitment</h2>
                         <p className="text">
-                          We are a trusted partner to the world’s biggest brands
+                          We are a trusted partner to the world's biggest brands
                           because we never stop trying to out-do ourselves. For
-                          nearly 20 years we’ve been perfecting the art of event
+                          nearly 20 years we've been perfecting the art of event
                           design with our industry-leading event strategies,
                           cutting-edge technology, and trend-forward designs. We
                           reject the “business as usual” approach and work
@@ -144,7 +145,7 @@ const IntroSection = () => {
                           With our company roots established in San Francisco,
                           the multi-cultural spirit of this city is deeply
                           engrained in our DNA. We believe in a diversity of
-                          thought and a rich variety of voices. It’s what makes
+                          thought and a rich variety of voices. It's what makes
                           us stronger, more creative, and ultimately more
                           successful; inspiring exciting, innovative solutions.
                           We realize, with our team and our work, we have the

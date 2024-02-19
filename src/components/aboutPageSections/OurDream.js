@@ -1,5 +1,13 @@
 import React from 'react'
-
+import destop1 from "../../utilis/images/lib/06_desktop.jpg"
+import destop2 from "../../utilis/images/lib/04_desktop.jpg"
+import destop3 from "../../utilis/images/lib/03_desktop.jpg"
+import destop0 from "../../utilis/images/lib/01_desktop.jpg"
+import destop9 from "../../utilis/images/lib/09_desktop.jpg"
+import destop7 from "../../utilis/images/lib/07_desktop.jpg"
+import destop8 from "../../utilis/images/lib/02_desktop.jpg"
+import destop55 from "../../utilis/images/lib/05_desktop.jpg"
+import { Link } from 'react-router-dom'
 const OurDream = () => {
   return (
     <section className="about-dream-team pt-lg-195">
@@ -17,7 +25,7 @@ const OurDream = () => {
                 <div className="wrapper-profile">
                   <div className="container-img">
                     <img
-                      src="images/lib/06_desktop.jpg"
+                      src={destop1}
                       data-preload
                       className="media"
                       alt=''
@@ -35,7 +43,7 @@ const OurDream = () => {
                 <div className="wrapper-profile">
                   <div className="container-img">
                     <img
-                      src="images/lib/04_desktop.jpg"
+                      src={destop2}
                       data-preload
                       className="media"
                       alt=''
@@ -53,7 +61,7 @@ const OurDream = () => {
                 <div className="wrapper-profile">
                   <div className="container-img">
                     <img
-                      src="images/lib/03_desktop.jpg"
+                      src={destop3}
                       data-preload
                       className="media"
                       alt=''
@@ -71,7 +79,7 @@ const OurDream = () => {
                 <div className="wrapper-profile">
                   <div className="container-img">
                     <img
-                      src="images/lib/01_desktop.jpg"
+                      src={destop0}
                       data-preload
                       className="media"
                       alt=''
@@ -92,7 +100,7 @@ const OurDream = () => {
                 <div className="wrapper-profile">
                   <div className="container-img">
                     <img
-                      src="images/lib/09_desktop.jpg"
+                      src={destop9}
                       data-preload
                       className="media"
                       alt=''
@@ -110,7 +118,7 @@ const OurDream = () => {
                 <div className="wrapper-profile">
                   <div className="container-img">
                     <img
-                      src="images/lib/07_desktop.jpg"
+                      src={destop7}
                       data-preload
                       className="media"
                       alt=''
@@ -128,7 +136,7 @@ const OurDream = () => {
                 <div className="wrapper-profile">
                   <div className="container-img">
                     <img
-                      src="images/lib/02_desktop.jpg"
+                      src={destop8}
                       data-preload
                       className="media"
                       alt=''
@@ -146,7 +154,7 @@ const OurDream = () => {
                 <div className="wrapper-profile">
                   <div className="container-img">
                     <img
-                      src="images/lib/05_desktop.jpg"
+                      src={destop55}
                       data-preload
                       className="media"
                       alt=''
@@ -166,14 +174,14 @@ const OurDream = () => {
         <div
           className="col-lg-4 offset-lg-4 flex-center mt-lg-60 mt-mobile-40 btn-trigger"
         >
-          <a
-            href="index.html"
+          <Link
+            to="/"
             className="btn-blue btn-border-blue"
             data-aos="fadeInUp .8s ease-out-cubic 0s, d:loop, trigger:.btn-trigger"
             data-cursor-style="off"
           >
             <span>Get in touch with us</span>
-          </a>
+          </Link>
         </div>
       </div>
     </div>
