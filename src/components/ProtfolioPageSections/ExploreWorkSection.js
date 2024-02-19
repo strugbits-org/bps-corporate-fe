@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import img1 from "../../utilis/images/lib/01_desktop.jpg"
+import img2 from "../../utilis/images/lib/02_desktop.jpg"
+import img6 from "../../utilis/images/lib/06_desktop.jpg"
+import img8 from "../../utilis/images/lib/08_desktop.jpg"
 const ExploreWorkSection = () => {
   return (
     <section className="portfolio-intro pt-lg-145 pt-mobile-105">
@@ -122,7 +125,7 @@ const ExploreWorkSection = () => {
                   >
                     <div className="wrapper-img">
                       <img
-                        src="images/lib/06_desktop.jpg"
+                        src={img6}
                         data-preload
                         className="media"
                         alt=""
@@ -157,7 +160,7 @@ const ExploreWorkSection = () => {
                   <div className="container-img bg-blue">
                     <div className="wrapper-img" data-cursor-style="view">
                       <img
-                        src="images/lib/02_desktop.jpg"
+                        src={img2}
                         data-preload
                         className="media"
                         alt=""
@@ -189,7 +192,7 @@ const ExploreWorkSection = () => {
                   <div className="container-img bg-blue">
                     <div className="wrapper-img" data-cursor-style="view">
                       <img
-                        src="images/lib/01_desktop.jpg"
+                        src={img1}
                         data-preload
                         className="media"
                         alt=""
@@ -224,144 +227,7 @@ const ExploreWorkSection = () => {
                   <div className="container-img bg-blue">
                     <div className="wrapper-img" data-cursor-style="view">
                       <img
-                        src="images/lib/08_desktop.jpg"
-                        data-preload
-                        className="media"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                  <div className="container-text">
-                    <ul className="list-tags-small">
-                      <li className="tag-small active">
-                        <span>Tradeshow</span>
-                      </li>
-                      <li className="tag-small">
-                        <span>Creative Services Agency</span>
-                      </li>
-                      <li className="tag-small">
-                        <span>Floral design</span>
-                      </li>
-                    </ul>
-                    <h2 className="title-portfolio">F1 Las Vegas Grand Prix</h2>
-                  </div>
-                </Link>
-              </li>
-              <li className="grid-item">
-                <Link
-                  to="/portfolio-post"
-                  className="link-portfolio link-portfolio-animation"
-                  data-aos="d:loop"
-                >
-                  <div
-                    className="container-img bg-blue"
-                    data-cursor-style="view"
-                  >
-                    <div className="wrapper-img">
-                      <img
-                        src="images/lib/06_desktop.jpg"
-                        data-preload
-                        className="media"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                  <div className="container-text">
-                    <ul className="list-tags-small">
-                      <li className="tag-small active">
-                        <span>Corporate</span>
-                      </li>
-                      <li className="tag-small">
-                        <span>Event Design and Production</span>
-                      </li>
-                      <li className="tag-small">
-                        <span>Creative Services Agency</span>
-                      </li>
-                      <li className="tag-small">
-                        <span>+ 3 studios</span>
-                      </li>
-                    </ul>
-                    <h2 className="title-portfolio">F1 Las Vegas Grand Prix</h2>
-                  </div>
-                </Link>
-              </li>
-              <li className="grid-item">
-                <Link
-                  to="/portfolio-post"
-                  className="link-portfolio link-portfolio-animation"
-                  data-aos="d:loop"
-                >
-                  <div className="container-img bg-blue">
-                    <div className="wrapper-img" data-cursor-style="view">
-                      <img
-                        src="images/lib/02_desktop.jpg"
-                        data-preload
-                        className="media"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                  <div className="container-text">
-                    <ul className="list-tags-small">
-                      <li className="tag-small active">
-                        <span>Tradeshow</span>
-                      </li>
-                      <li className="tag-small">
-                        <span>Creative Services Agency</span>
-                      </li>
-                      <li className="tag-small">
-                        <span>Floral design</span>
-                      </li>
-                    </ul>
-                    <h2 className="title-portfolio">F1 Las Vegas Grand Prix</h2>
-                  </div>
-                </Link>
-              </li>
-              <li className="grid-item">
-                <Link
-                  to="/portfolio-post"
-                  className="link-portfolio link-portfolio-animation"
-                  data-aos="d:loop"
-                >
-                  <div className="container-img bg-blue">
-                    <div className="wrapper-img" data-cursor-style="view">
-                      <img
-                        src="images/lib/01_desktop.jpg"
-                        data-preload
-                        className="media"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                  <div className="container-text">
-                    <ul className="list-tags-small">
-                      <li className="tag-small active">
-                        <span>Corporate</span>
-                      </li>
-                      <li className="tag-small">
-                        <span>Event Design and Production</span>
-                      </li>
-                      <li className="tag-small">
-                        <span>Creative Services Agency</span>
-                      </li>
-                      <li className="tag-small">
-                        <span>+ 3 studios</span>
-                      </li>
-                    </ul>
-                    <h2 className="title-portfolio">F1 Las Vegas Grand Prix</h2>
-                  </div>
-                </Link>
-              </li>
-              <li className="grid-item">
-                <Link
-                  to="/portfolio-post"
-                  className="link-portfolio link-portfolio-animation"
-                  data-aos="d:loop"
-                >
-                  <div className="container-img bg-blue">
-                    <div className="wrapper-img" data-cursor-style="view">
-                      <img
-                        src="images/lib/08_desktop.jpg"
+                        src={img8}
                         data-preload
                         className="media"
                         alt=""
@@ -396,7 +262,7 @@ const ExploreWorkSection = () => {
                   >
                     <div className="wrapper-img">
                       <img
-                        src="images/lib/06_desktop.jpg"
+                        src={img6}
                         data-preload
                         className="media"
                         alt=""
@@ -431,7 +297,7 @@ const ExploreWorkSection = () => {
                   <div className="container-img bg-blue">
                     <div className="wrapper-img" data-cursor-style="view">
                       <img
-                        src="images/lib/02_desktop.jpg"
+                        src={img2}
                         data-preload
                         className="media"
                         alt=""
@@ -463,7 +329,7 @@ const ExploreWorkSection = () => {
                   <div className="container-img bg-blue">
                     <div className="wrapper-img" data-cursor-style="view">
                       <img
-                        src="images/lib/01_desktop.jpg"
+                        src={img1}
                         data-preload
                         className="media"
                         alt=""
@@ -498,7 +364,144 @@ const ExploreWorkSection = () => {
                   <div className="container-img bg-blue">
                     <div className="wrapper-img" data-cursor-style="view">
                       <img
-                        src="images/lib/08_desktop.jpg"
+                        src={img8}
+                        data-preload
+                        className="media"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                  <div className="container-text">
+                    <ul className="list-tags-small">
+                      <li className="tag-small active">
+                        <span>Tradeshow</span>
+                      </li>
+                      <li className="tag-small">
+                        <span>Creative Services Agency</span>
+                      </li>
+                      <li className="tag-small">
+                        <span>Floral design</span>
+                      </li>
+                    </ul>
+                    <h2 className="title-portfolio">F1 Las Vegas Grand Prix</h2>
+                  </div>
+                </Link>
+              </li>
+              <li className="grid-item">
+                <Link
+                  to="/portfolio-post"
+                  className="link-portfolio link-portfolio-animation"
+                  data-aos="d:loop"
+                >
+                  <div
+                    className="container-img bg-blue"
+                    data-cursor-style="view"
+                  >
+                    <div className="wrapper-img">
+                      <img
+                        src={img6}
+                        data-preload
+                        className="media"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                  <div className="container-text">
+                    <ul className="list-tags-small">
+                      <li className="tag-small active">
+                        <span>Corporate</span>
+                      </li>
+                      <li className="tag-small">
+                        <span>Event Design and Production</span>
+                      </li>
+                      <li className="tag-small">
+                        <span>Creative Services Agency</span>
+                      </li>
+                      <li className="tag-small">
+                        <span>+ 3 studios</span>
+                      </li>
+                    </ul>
+                    <h2 className="title-portfolio">F1 Las Vegas Grand Prix</h2>
+                  </div>
+                </Link>
+              </li>
+              <li className="grid-item">
+                <Link
+                  to="/portfolio-post"
+                  className="link-portfolio link-portfolio-animation"
+                  data-aos="d:loop"
+                >
+                  <div className="container-img bg-blue">
+                    <div className="wrapper-img" data-cursor-style="view">
+                      <img
+                        src={img2}
+                        data-preload
+                        className="media"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                  <div className="container-text">
+                    <ul className="list-tags-small">
+                      <li className="tag-small active">
+                        <span>Tradeshow</span>
+                      </li>
+                      <li className="tag-small">
+                        <span>Creative Services Agency</span>
+                      </li>
+                      <li className="tag-small">
+                        <span>Floral design</span>
+                      </li>
+                    </ul>
+                    <h2 className="title-portfolio">F1 Las Vegas Grand Prix</h2>
+                  </div>
+                </Link>
+              </li>
+              <li className="grid-item">
+                <Link
+                  to="/portfolio-post"
+                  className="link-portfolio link-portfolio-animation"
+                  data-aos="d:loop"
+                >
+                  <div className="container-img bg-blue">
+                    <div className="wrapper-img" data-cursor-style="view">
+                      <img
+                        src={img1}
+                        data-preload
+                        className="media"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                  <div className="container-text">
+                    <ul className="list-tags-small">
+                      <li className="tag-small active">
+                        <span>Corporate</span>
+                      </li>
+                      <li className="tag-small">
+                        <span>Event Design and Production</span>
+                      </li>
+                      <li className="tag-small">
+                        <span>Creative Services Agency</span>
+                      </li>
+                      <li className="tag-small">
+                        <span>+ 3 studios</span>
+                      </li>
+                    </ul>
+                    <h2 className="title-portfolio">F1 Las Vegas Grand Prix</h2>
+                  </div>
+                </Link>
+              </li>
+              <li className="grid-item">
+                <Link
+                  to="/portfolio-post"
+                  className="link-portfolio link-portfolio-animation"
+                  data-aos="d:loop"
+                >
+                  <div className="container-img bg-blue">
+                    <div className="wrapper-img" data-cursor-style="view">
+                      <img
+                        src={img8}
                         data-preload
                         className="media"
                         alt=""

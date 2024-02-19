@@ -14,9 +14,9 @@ const cursor = createSlice({
     },
     setCardIn: (state) => {
       state.variant = "cardIn";
-    }
+    },
   },
 });
 
-export const { setTextEnter, setTextLeave, setCardIn} = cursor.actions;
+export const { setTextEnter, setTextLeave, setCardIn } = cursor.actions;
 export default cursor.reducer;

@@ -1,4 +1,8 @@
 import React from 'react'
+import logob from "../../utilis/images/logo/logo-bps-b.svg"
+import logop from "../../utilis/images/logo/logo-bps-p.svg"
+import logos from "../../utilis/images/logo/logo-bps-s.svg"
+import { Link } from 'react-router-dom'
 
 const Footer = () => {
   return (
@@ -9,7 +13,7 @@ const Footer = () => {
                   <div className="container-logo">
                     <div data-parallax data-end="bottom bottom" className="z-3">
                       <img
-                        src="images/logo/logo-bps-b.svg"
+                        src={logob}
                         data-preload
                         className="img-b z-3 media"
                         alt=""
@@ -24,7 +28,7 @@ const Footer = () => {
                       className="z-2"
                     >
                       <img
-                        src="images/logo/logo-bps-p.svg"
+                        src={logop}
                         data-preload
                         className="img-p z-2 media"
                         alt=""
@@ -39,7 +43,7 @@ const Footer = () => {
                       className="z-1"
                     >
                       <img
-                        src="images/logo/logo-bps-s.svg"
+                        src={logos}
                         data-preload
                         className="img-s z-1 media"
                         alt=""
@@ -113,9 +117,9 @@ const Footer = () => {
                           </button>
                         </li>
                         <li className="list-item">
-                          <a href="index.html" className="link-footer-menu">
+                          <Link to="/" className="link-footer-menu">
                             <span>Rental Store</span>
-                          </a>
+                          </Link>
                         </li>
                         <li className="list-item">
                           <button
@@ -126,77 +130,77 @@ const Footer = () => {
                           </button>
                         </li>
                         <li className="list-item">
-                          <a href="portfolio.html" className="link-footer-menu">
+                          <Link to="/portfolio" className="link-footer-menu">
                             <span>Portfolio</span>
-                          </a>
+                          </Link>
                         </li>
                         <li className="list-item">
-                          <a href="about.html" className="link-footer-menu">
+                          <Link to="/about" className="link-footer-menu">
                             <span>About</span>
-                          </a>
+                          </Link>
                         </li>
                         <li className="list-item">
-                          <a href="blog.html" className="link-footer-menu">
+                          <Link to="/blog" className="link-footer-menu">
                             <span>Blog</span>
-                          </a>
+                          </Link>
                         </li>
                         <li className="list-item">
-                          <a href="contact.html" className="link-footer-menu">
+                          <Link to="/contact" className="link-footer-menu">
                             <span>Contact</span>
-                          </a>
+                          </Link>
                         </li>
                         <li className="list-item">
-                          <a href="index.html" className="link-footer-menu">
+                          <Link to="/" className="link-footer-menu">
                             <span>FAQ</span>
-                          </a>
+                          </Link>
                         </li>
                         <li className="list-item">
-                          <a href="index.html" className="link-footer-menu">
+                          <Link to="/" className="link-footer-menu">
                             <span>Terms of use</span>
-                          </a>
+                          </Link>
                         </li>
                         <li className="list-item">
-                          <a href="index.html" className="link-footer-menu">
+                          <Link to="/" className="link-footer-menu">
                             <span>Privacy policy</span>
-                          </a>
+                          </Link>
                         </li>
                         <li className="list-item item-social-media">
                           <ul className="list-social-media">
                             <li>
-                              <a
+                              <Link
                                 href="/"
                                 target="_blank"
                                 rel="noopener noreferrer"
                               >
                                 <i className="icon-facebook"></i>
-                              </a>
+                              </Link>
                             </li>
                             <li>
-                              <a
+                              <Link
                                 href="/"
                                 target="_blank"
                                 rel="noopener noreferrer"
                               >
                                 <i className="icon-instagram"></i>
-                              </a>
+                              </Link>
                             </li>
                             <li>
-                              <a
+                              <Link
                                 href="/"
                                 target="_blank"
                                 rel="noopener noreferrer"
                               >
                                 <i className="icon-x"></i>
-                              </a>
+                              </Link>
                             </li>
                             <li>
-                              <a
+                              <Link
                                 href="/"
                                 target="_blank"
                                 rel="noopener noreferrer"
                               >
                                 <i className="icon-linkedin"></i>
-                              </a>
+                              </Link>
                             </li>
                           </ul>
                         </li>
@@ -213,12 +217,12 @@ const Footer = () => {
                           St. Helena, CA 94574
                         </address>
                         <div className="phones">
-                          <a href="tel:">
+                          <Link to="tel:">
                             <span>P / 707742.7777</span>
-                          </a>
-                          <a href="tel:">
+                          </Link>
+                          <Link to="tel:">
                             <span>F / 415.822.8844</span>
-                          </a>
+                          </Link>
                         </div>
                       </li>
                       <li>
@@ -229,9 +233,9 @@ const Footer = () => {
                           Las Vegas, NV 89113
                         </address>
                         <div className="phones">
-                          <a href="tel:">
+                          <Link to="tel:">
                             <span>P / 702.757.7987</span>
-                          </a>
+                          </Link>
                         </div>
                       </li>
                       <li>
@@ -241,12 +245,12 @@ const Footer = () => {
                           S. San Francisco, CA 94080
                         </address>
                         <div className="phones">
-                          <a href="tel:">
+                          <Link to="tel:">
                             <span>P / 415.922.9004</span>
-                          </a>
-                          <a href="tel:">
+                          </Link>
+                          <Link to="tel:">
                             <span>F / 415.822.8844</span>
-                          </a>
+                          </Link>
                         </div>
                       </li>
                     </ul>
@@ -256,8 +260,8 @@ const Footer = () => {
               <div className="row row-2 mt-lg-80 mt-mobile-45">
                 <div className="col-lg-12 column-1">
                   <p className="fs--14 font-2 white-1">
-                    © BLUEPRINT STUDIOS. ALL RIGHTS RESERVED. - If it’s not
-                    remarkable, it’s invisible is a trademark of blueprint
+                    © BLUEPRINT STUDIOS. ALL RIGHTS RESERVED. - If it's not
+                    remarkable, it's invisible is a trademark of blueprint
                     studios.
                   </p>
                 </div>

@@ -1,5 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import img1 from "../../utilis/images/chairs/bristol-chair.png"
+import img2 from "../../utilis/images/chairs/bristol-chair-color-1.png"
+import img3 from "../../utilis/images/chairs/bristol-chair-color-2.png"
+import img33 from "../../utilis/images/chairs/bristol-chair-color-3.png"
+import img4 from "../../utilis/images/chairs/bristol-chair-color-4.png"
+import img5 from "../../utilis/images/chairs/manette-pillow.png"
+import imgm from "../../utilis/images/chairs/marais-chair.png"
+import imgm1 from "../../utilis/images/chairs/marais-chair-color-1.png"
+import imgm2 from "../../utilis/images/chairs/marais-chair-color-2.png"
+import imgm3 from "../../utilis/images/chairs/marais-chair-color-3.png"
+import imgm4 from "../../utilis/images/chairs/marais-chair-color-4.png" 
 
 const ProductCartSlider = () => {
   return (
@@ -19,7 +30,7 @@ const ProductCartSlider = () => {
                 <div className="wrapper-img">
                   <div className="container-img">
                     <img
-                      src="images/chairs/bristol-chair.png"
+                      src={img1}
                       data-preload
                       className="media"
                       alt=""
@@ -37,7 +48,7 @@ const ProductCartSlider = () => {
                     <li>
                       <div className="container-img">
                         <img
-                          src="images/chairs/bristol-chair-color-1.png"
+                          src={img2}
                           data-preload
                           className="media"
                           alt=""
@@ -47,7 +58,7 @@ const ProductCartSlider = () => {
                     <li>
                       <div className="container-img">
                         <img
-                          src="images/chairs/bristol-chair-color-2.png"
+                          src={img3}
                           data-preload
                           className="media"
                           alt=""
@@ -57,7 +68,7 @@ const ProductCartSlider = () => {
                     <li>
                       <div className="container-img">
                         <img
-                          src="images/chairs/bristol-chair-color-3.png"
+                          src={img33}
                           data-preload
                           className="media"
                           alt=""
@@ -67,7 +78,7 @@ const ProductCartSlider = () => {
                     <li>
                       <div className="container-img">
                         <img
-                          src="images/chairs/bristol-chair-color-4.png"
+                          src={img4}
                           data-preload
                           className="media"
                           alt=""
@@ -96,7 +107,7 @@ const ProductCartSlider = () => {
                 <div className="wrapper-img">
                   <div className="container-img">
                     <img
-                      src="images/chairs/manette-pillow.png"
+                      src={img5}
                       data-preload
                       className="media"
                       alt=""
@@ -114,7 +125,7 @@ const ProductCartSlider = () => {
                     <li>
                       <div className="container-img">
                         <img
-                          src="images/chairs/manette-pillow-color-1.png"
+                          src={img2}
                           data-preload
                           className="media"
                           alt=""
@@ -124,7 +135,7 @@ const ProductCartSlider = () => {
                     <li>
                       <div className="container-img">
                         <img
-                          src="images/chairs/manette-pillow-color-2.png"
+                          src={img3}
                           data-preload
                           className="media"
                           alt=""
@@ -134,7 +145,7 @@ const ProductCartSlider = () => {
                     <li>
                       <div className="container-img">
                         <img
-                          src="images/chairs/manette-pillow-color-3.png"
+                          src={img33}
                           data-preload
                           className="media"
                           alt=""
@@ -144,7 +155,7 @@ const ProductCartSlider = () => {
                     <li>
                       <div className="container-img">
                         <img
-                          src="images/chairs/manette-pillow-color-4.png"
+                          src={img4}
                           data-preload
                           className="media"
                           alt=""
@@ -173,7 +184,7 @@ const ProductCartSlider = () => {
                 <div className="wrapper-img">
                   <div className="container-img">
                     <img
-                      src="images/chairs/marais-chair.png"
+                      src={imgm}
                       data-preload
                       className="media"
                       alt=""
@@ -191,7 +202,7 @@ const ProductCartSlider = () => {
                     <li>
                       <div className="container-img">
                         <img
-                          src="images/chairs/marais-chair-color-1.png"
+                          src={imgm1}
                           data-preload
                           className="media"
                           alt=""
@@ -201,7 +212,7 @@ const ProductCartSlider = () => {
                     <li>
                       <div className="container-img">
                         <img
-                          src="images/chairs/marais-chair-color-2.png"
+                          src={imgm2}
                           data-preload
                           className="media"
                           alt=""
@@ -211,7 +222,7 @@ const ProductCartSlider = () => {
                     <li>
                       <div className="container-img">
                         <img
-                          src="images/chairs/marais-chair-color-3.png"
+                          src={imgm3}
                           data-preload
                           className="media"
                           alt=""
@@ -221,7 +232,7 @@ const ProductCartSlider = () => {
                     <li>
                       <div className="container-img">
                         <img
-                          src="images/chairs/marais-chair-color-4.png"
+                          src={imgm4}
                           data-preload
                           className="media"
                           alt=""
@@ -249,7 +260,7 @@ const ProductCartSlider = () => {
                 <div className="wrapper-img">
                   <div className="container-img">
                     <img
-                      src="images/chairs/bristol-chair.png"
+                      src={img1}
                       data-preload
                       className="media"
                       alt=""
@@ -267,7 +278,7 @@ const ProductCartSlider = () => {
                     <li>
                       <div className="container-img">
                         <img
-                          src="images/chairs/bristol-chair-color-1.png"
+                          src={img2}
                           data-preload
                           className="media"
                           alt=""
@@ -277,7 +288,7 @@ const ProductCartSlider = () => {
                     <li>
                       <div className="container-img">
                         <img
-                          src="images/chairs/bristol-chair-color-2.png"
+                          src={img3}
                           data-preload
                           className="media"
                           alt=""
@@ -287,7 +298,7 @@ const ProductCartSlider = () => {
                     <li>
                       <div className="container-img">
                         <img
-                          src="images/chairs/bristol-chair-color-3.png"
+                          src={img33}
                           data-preload
                           className="media"
                           alt=""
@@ -297,7 +308,7 @@ const ProductCartSlider = () => {
                     <li>
                       <div className="container-img">
                         <img
-                          src="images/chairs/bristol-chair-color-4.png"
+                          src={img4}
                           data-preload
                           className="media"
                           alt=""
@@ -326,7 +337,7 @@ const ProductCartSlider = () => {
                 <div className="wrapper-img">
                   <div className="container-img">
                     <img
-                      src="images/chairs/manette-pillow.png"
+                      src={img5}
                       data-preload
                       className="media"
                       alt=""
@@ -344,7 +355,7 @@ const ProductCartSlider = () => {
                     <li>
                       <div className="container-img">
                         <img
-                          src="images/chairs/manette-pillow-color-1.png"
+                          src={img2}
                           data-preload
                           className="media"
                           alt=""
@@ -354,7 +365,7 @@ const ProductCartSlider = () => {
                     <li>
                       <div className="container-img">
                         <img
-                          src="images/chairs/manette-pillow-color-2.png"
+                          src={img3}
                           data-preload
                           className="media"
                           alt=""
@@ -364,7 +375,7 @@ const ProductCartSlider = () => {
                     <li>
                       <div className="container-img">
                         <img
-                          src="images/chairs/manette-pillow-color-3.png"
+                          src={img33}
                           data-preload
                           className="media"
                           alt=""
@@ -374,7 +385,7 @@ const ProductCartSlider = () => {
                     <li>
                       <div className="container-img">
                         <img
-                          src="images/chairs/manette-pillow-color-4.png"
+                          src={img4}
                           data-preload
                           className="media"
                           alt=""
@@ -403,7 +414,7 @@ const ProductCartSlider = () => {
                 <div className="wrapper-img">
                   <div className="container-img">
                     <img
-                      src="images/chairs/marais-chair.png"
+                      src={imgm}
                       data-preload
                       className="media"
                       alt=""
@@ -421,7 +432,7 @@ const ProductCartSlider = () => {
                     <li>
                       <div className="container-img">
                         <img
-                          src="images/chairs/marais-chair-color-1.png"
+                          src={imgm1}
                           data-preload
                           className="media"
                           alt=""
@@ -431,7 +442,7 @@ const ProductCartSlider = () => {
                     <li>
                       <div className="container-img">
                         <img
-                          src="images/chairs/marais-chair-color-2.png"
+                          src={imgm2}
                           data-preload
                           className="media"
                           alt=""
@@ -441,7 +452,7 @@ const ProductCartSlider = () => {
                     <li>
                       <div className="container-img">
                         <img
-                          src="images/chairs/marais-chair-color-3.png"
+                          src={imgm3}
                           data-preload
                           className="media"
                           alt=""
@@ -451,7 +462,7 @@ const ProductCartSlider = () => {
                     <li>
                       <div className="container-img">
                         <img
-                          src="images/chairs/marais-chair-color-4.png"
+                          src={imgm4}
                           data-preload
                           className="media"
                           alt=""
@@ -479,7 +490,7 @@ const ProductCartSlider = () => {
                 <div className="wrapper-img">
                   <div className="container-img">
                     <img
-                      src="images/chairs/bristol-chair.png"
+                      src={img1}
                       data-preload
                       className="media"
                       alt=""
@@ -497,7 +508,7 @@ const ProductCartSlider = () => {
                     <li>
                       <div className="container-img">
                         <img
-                          src="images/chairs/bristol-chair-color-1.png"
+                          src={img2}
                           data-preload
                           className="media"
                           alt=""
@@ -507,7 +518,7 @@ const ProductCartSlider = () => {
                     <li>
                       <div className="container-img">
                         <img
-                          src="images/chairs/bristol-chair-color-2.png"
+                          src={img3}
                           data-preload
                           className="media"
                           alt=""
@@ -517,7 +528,7 @@ const ProductCartSlider = () => {
                     <li>
                       <div className="container-img">
                         <img
-                          src="images/chairs/bristol-chair-color-3.png"
+                          src={img33}
                           data-preload
                           className="media"
                           alt=""
@@ -527,7 +538,7 @@ const ProductCartSlider = () => {
                     <li>
                       <div className="container-img">
                         <img
-                          src="images/chairs/bristol-chair-color-4.png"
+                          src={img4}
                           data-preload
                           className="media"
                           alt=""
@@ -556,7 +567,7 @@ const ProductCartSlider = () => {
                 <div className="wrapper-img">
                   <div className="container-img">
                     <img
-                      src="images/chairs/manette-pillow.png"
+                      src={img5}
                       data-preload
                       className="media"
                       alt=""
@@ -574,7 +585,7 @@ const ProductCartSlider = () => {
                     <li>
                       <div className="container-img">
                         <img
-                          src="images/chairs/manette-pillow-color-1.png"
+                          src={img2}
                           data-preload
                           className="media"
                           alt=""
@@ -584,7 +595,7 @@ const ProductCartSlider = () => {
                     <li>
                       <div className="container-img">
                         <img
-                          src="images/chairs/manette-pillow-color-2.png"
+                          src={img3}
                           data-preload
                           className="media"
                           alt=""
@@ -594,7 +605,7 @@ const ProductCartSlider = () => {
                     <li>
                       <div className="container-img">
                         <img
-                          src="images/chairs/manette-pillow-color-3.png"
+                          src={img33}
                           data-preload
                           className="media"
                           alt=""
@@ -604,7 +615,7 @@ const ProductCartSlider = () => {
                     <li>
                       <div className="container-img">
                         <img
-                          src="images/chairs/manette-pillow-color-4.png"
+                          src={img4}
                           data-preload
                           className="media"
                           alt=""
@@ -633,7 +644,7 @@ const ProductCartSlider = () => {
                 <div className="wrapper-img">
                   <div className="container-img">
                     <img
-                      src="images/chairs/marais-chair.png"
+                      src={imgm}
                       data-preload
                       className="media"
                       alt=""
@@ -651,7 +662,7 @@ const ProductCartSlider = () => {
                     <li>
                       <div className="container-img">
                         <img
-                          src="images/chairs/marais-chair-color-1.png"
+                          src={imgm1}
                           data-preload
                           className="media"
                           alt=""
@@ -661,7 +672,7 @@ const ProductCartSlider = () => {
                     <li>
                       <div className="container-img">
                         <img
-                          src="images/chairs/marais-chair-color-2.png"
+                          src={imgm2}
                           data-preload
                           className="media"
                           alt=""
@@ -671,7 +682,7 @@ const ProductCartSlider = () => {
                     <li>
                       <div className="container-img">
                         <img
-                          src="images/chairs/marais-chair-color-3.png"
+                          src={imgm3}
                           data-preload
                           className="media"
                           alt=""
@@ -681,7 +692,7 @@ const ProductCartSlider = () => {
                     <li>
                       <div className="container-img">
                         <img
-                          src="images/chairs/marais-chair-color-4.png"
+                          src={imgm4}
                           data-preload
                           className="media"
                           alt=""

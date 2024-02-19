@@ -30,28 +30,26 @@ export const BluePrintUser = createSlice({
       //payload here
     },
     extraReducers: (builder) => {
-        
       builder
-      .addCase(GetUserById.fulfilled, (state, { payload }) => {
-        console.log("GetUserById", payload);
-        state.user = payload;
-        state.loader = false;
-        state.success = true;
-      })
-      .addCase(GetUserById.pending, (state) => {
-        console.log("ispending");
-        state.loader = true;
-        state.success = false;
-      })
-      .addCase(GetUserById.rejected, (state) => {
-        console.log("is rejected");
-        state.loader = false;
-        state.success = false;
-      })
-      
+        .addCase(GetUserById.fulfilled, (state, { payload }) => {
+          console.log("GetUserById", payload);
+          state.user = payload;
+          state.loader = false;
+          state.success = true;
+        })
+        .addCase(GetUserById.pending, (state) => {
+          console.log("ispending");
+          state.loader = true;
+          state.success = false;
+        })
+        .addCase(GetUserById.rejected, (state) => {
+          console.log("is rejected");
+          state.loader = false;
+          state.success = false;
+        });
     },
   },
 });
 
-export const {login,logout} = BluePrintUser.actions;
+export const { login, logout } = BluePrintUser.actions;
 export default BluePrintUser.reducer;
