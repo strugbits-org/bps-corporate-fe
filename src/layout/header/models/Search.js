@@ -1,6 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import img1 from "../../../utilis/images/chairs/bristol-chair.png";
+import imgC1 from "../../../utilis/images/chairs/bristol-chair-color-1.png"
+import imgC2 from "../../../utilis/images/chairs/bristol-chair-color-2.png"
+import imgC3 from "../../../utilis/images/chairs/bristol-chair-color-3.png"
+import imgC4 from "../../../utilis/images/chairs/bristol-chair-color-4.png" 
+import imgd6 from "../../../utilis/images/lib/06_desktop.jpg"
+import imgd8 from "../../../utilis/images/lib/08_desktop.jpg"
+import imgd7 from "../../../utilis/images/lib/07_desktop.jpg"
+import imgd1 from "../../../utilis/images/lib/01_desktop.jpg"
+import imgd2 from "../../../utilis/images/lib/02_desktop.jpg"
 const Search = () => {
   return (
     <div className="container-fluid">
@@ -119,7 +128,7 @@ const Search = () => {
                                 <div className="wrapper-img">
                                   <div className="container-img">
                                     <img
-                                      src="images/chairs/bristol-chair.png"
+                                      src={img1}
                                       data-preload
                                       className="media"
                                       alt=""
@@ -137,7 +146,7 @@ const Search = () => {
                                     <li>
                                       <div className="container-img">
                                         <img
-                                          src="images/chairs/bristol-chair-color-1.png"
+                                          src={imgC1}
                                           data-preload
                                           className="media"
                                           alt=""
@@ -147,7 +156,7 @@ const Search = () => {
                                     <li>
                                       <div className="container-img">
                                         <img
-                                          src="images/chairs/bristol-chair-color-2.png"
+                                          src={imgC2}
                                           data-preload
                                           className="media"
                                           alt=""
@@ -157,7 +166,7 @@ const Search = () => {
                                     <li>
                                       <div className="container-img">
                                         <img
-                                          src="images/chairs/bristol-chair-color-3.png"
+                                          src={imgC3}
                                           data-preload
                                           className="media"
                                           alt=""
@@ -167,7 +176,7 @@ const Search = () => {
                                     <li>
                                       <div className="container-img">
                                         <img
-                                          src="images/chairs/bristol-chair-color-4.png"
+                                          src={imgC4}
                                           data-preload
                                           className="media"
                                           alt=""
@@ -190,7 +199,7 @@ const Search = () => {
                                 <div className="wrapper-img">
                                   <div className="container-img">
                                     <img
-                                      src="images/chairs/bristol-chair.png"
+                                      src={img1}
                                       data-preload
                                       className="media"
                                       alt=""
@@ -208,7 +217,7 @@ const Search = () => {
                                     <li>
                                       <div className="container-img">
                                         <img
-                                          src="images/chairs/bristol-chair-color-1.png"
+                                          src={imgC1}
                                           data-preload
                                           className="media"
                                           alt=""
@@ -218,7 +227,7 @@ const Search = () => {
                                     <li>
                                       <div className="container-img">
                                         <img
-                                          src="images/chairs/bristol-chair-color-2.png"
+                                          src={imgC2}
                                           data-preload
                                           className="media"
                                           alt=""
@@ -228,7 +237,7 @@ const Search = () => {
                                     <li>
                                       <div className="container-img">
                                         <img
-                                          src="images/chairs/bristol-chair-color-3.png"
+                                          src={imgC3}
                                           data-preload
                                           className="media"
                                           alt=""
@@ -238,7 +247,7 @@ const Search = () => {
                                     <li>
                                       <div className="container-img">
                                         <img
-                                          src="images/chairs/bristol-chair-color-4.png"
+                                          src={imgC4}
                                           data-preload
                                           className="media"
                                           alt=""
@@ -261,7 +270,7 @@ const Search = () => {
                                 <div className="wrapper-img">
                                   <div className="container-img">
                                     <img
-                                      src="images/chairs/bristol-chair.png"
+                                      src={img1}
                                       data-preload
                                       className="media"
                                       alt=""
@@ -279,7 +288,7 @@ const Search = () => {
                                     <li>
                                       <div className="container-img">
                                         <img
-                                          src="images/chairs/bristol-chair-color-1.png"
+                                          src={imgC1}
                                           data-preload
                                           className="media"
                                           alt=""
@@ -289,7 +298,7 @@ const Search = () => {
                                     <li>
                                       <div className="container-img">
                                         <img
-                                          src="images/chairs/bristol-chair-color-2.png"
+                                          src={imgC2}
                                           data-preload
                                           className="media"
                                           alt=""
@@ -299,7 +308,7 @@ const Search = () => {
                                     <li>
                                       <div className="container-img">
                                         <img
-                                          src="images/chairs/bristol-chair-color-3.png"
+                                          src={imgC3}
                                           data-preload
                                           className="media"
                                           alt=""
@@ -309,7 +318,7 @@ const Search = () => {
                                     <li>
                                       <div className="container-img">
                                         <img
-                                          src="images/chairs/bristol-chair-color-4.png"
+                                          src={imgC4}
                                           data-preload
                                           className="media"
                                           alt=""
@@ -345,8 +354,8 @@ const Search = () => {
                           data-aos
                         >
                           <div className="swiper-slide grid-item">
-                            <a
-                              href="portfolio-post.html"
+                            <Link
+                              to="/portfolio-post"
                               className="link-portfolio"
                             >
                               <div
@@ -355,7 +364,7 @@ const Search = () => {
                               >
                                 <div className="wrapper-img">
                                   <img
-                                    src="images/lib/06_desktop.jpg"
+                                    src={imgd6}
                                     data-preload
                                     className="media"
                                     alt=""
@@ -367,14 +376,14 @@ const Search = () => {
                                   F1 Las Vegas Grand Prix
                                 </h2>
                               </div>
-                            </a>
+                            </Link>
                           </div>
 
                           <div className="swiper-slide grid-item">
                             <Link to="/" className="link-portfolio">
                               <div className="container-img">
                                 <img
-                                  src="images/lib/08_desktop.jpg"
+                                  src={imgd8}
                                   data-preload
                                   className="media"
                                   alt=""
@@ -389,7 +398,7 @@ const Search = () => {
                             <Link to="/" className="link-portfolio">
                               <div className="container-img">
                                 <img
-                                  src="images/lib/08_desktop.jpg"
+                                  src={imgd8}
                                   data-preload
                                   className="media"
                                   alt=""
@@ -404,7 +413,7 @@ const Search = () => {
                             <Link to="/" className="link-portfolio">
                               <div className="container-img">
                                 <img
-                                  src="images/lib/01_desktop.jpg"
+                                  src={imgd1}
                                   data-preload
                                   className="media"
                                   alt=""
@@ -419,7 +428,7 @@ const Search = () => {
                             <Link to="/" className="link-portfolio">
                               <div className="container-img">
                                 <img
-                                  src="images/lib/02_desktop.jpg"
+                                  src={imgd2}
                                   data-preload
                                   className="media"
                                   alt=""
@@ -445,8 +454,8 @@ const Search = () => {
                     data-aos
                   >
                     <li className="grid-item">
-                      <a
-                        href="market-post.html"
+                      <Link
+                        to="/market-post"
                         className="market-link project-link"
                         data-cursor-style="view"
                         data-menu-close
@@ -456,7 +465,7 @@ const Search = () => {
                           data-cursor-style="view"
                         >
                           <img
-                            src="images/lib/06_desktop.jpg"
+                            src={imgd6}
                             data-preload
                             className="media"
                             alt=""
@@ -467,7 +476,7 @@ const Search = () => {
                             Corporate
                           </h3>
                         </div>
-                      </a>
+                      </Link>
                     </li>
                     <li className="grid-item">
                       <Link
@@ -477,7 +486,7 @@ const Search = () => {
                         <div className="container-img bg-blue">
                           <div className="wrapper-img">
                             <img
-                              src="images/lib/06_desktop.jpg"
+                              src={imgd6}
                               data-preload
                               className="media"
                               alt=""
@@ -497,7 +506,7 @@ const Search = () => {
                         <div className="container-img bg-blue">
                           <div className="wrapper-img">
                             <img
-                              src="images/lib/07_desktop.jpg"
+                              src={imgd7}
                               data-preload
                               className="media"
                               alt=""
@@ -517,7 +526,7 @@ const Search = () => {
                         <div className="container-img bg-blue">
                           <div className="wrapper-img">
                             <img
-                              src="images/lib/01_desktop.jpg"
+                              src={imgd1}
                               data-preload
                               className="media"
                               alt=""
@@ -550,6 +559,126 @@ const Search = () => {
                         data-aos
                       >
                         <div className="swiper-slide grid-item">
+                          <Link to="/blog-post" className="link-blog">
+                            <div
+                              className="container-img bg-blue"
+                              data-cursor-style="view"
+                            >
+                              <div className="wrapper-img">
+                                <img
+                                  src={imgd8}
+                                  data-preload
+                                  className="media"
+                                  alt=""
+                                />
+                              </div>
+                            </div>
+                            <div className="container-text">
+                              <div className="container-author-post-info">
+                                <div className="author">
+                                  <span className="author-name">
+                                    Lily Yeung
+                                  </span>
+                                </div>
+                                <div className="date">
+                                  <span>Sep 30</span>
+                                </div>
+                              </div>
+                              <h2 className="title-blog">
+                                A Taste Explosion: Event Design Extravaganza at
+                                Boa Restaurant
+                              </h2>
+                              <p className="text-blog">
+                                Beverly Hills, renowned for its luxury and
+                                panache, witnessed an unforgettable evening that
+                                melded culinary wonders with unmatched event
+                                Lorem ipsum dolor sit amet, consectetur
+                                adipiscing elit.
+                              </p>
+                            </div>
+                          </Link>
+                        </div>
+                        <div className="swiper-slide grid-item">
+                          <Link to="/blog-post" className="link-blog">
+                            <div
+                              className="container-img bg-blue"
+                              data-cursor-style="view"
+                            >
+                              <div className="wrapper-img">
+                                <img
+                                  src={imgd8}
+                                  data-preload
+                                  className="media"
+                                  alt=""
+                                />
+                              </div>
+                            </div>
+                            <div className="container-text">
+                              <div className="container-author-post-info">
+                                <div className="author">
+                                  <span className="author-name">
+                                    Lily Yeung
+                                  </span>
+                                </div>
+                                <div className="date">
+                                  <span>Sep 30</span>
+                                </div>
+                              </div>
+                              <h2 className="title-blog">
+                                A Taste Explosion: Event Design Extravaganza at
+                                Boa Restaurant
+                              </h2>
+                              <p className="text-blog">
+                                Beverly Hills, renowned for its luxury and
+                                panache, witnessed an unforgettable evening that
+                                melded culinary wonders with unmatched event
+                                Lorem ipsum dolor sit amet, consectetur
+                                adipiscing elit.
+                              </p>
+                            </div>
+                          </Link>
+                        </div>
+                        <div className="swiper-slide grid-item">
+                          <Link to="/blog-post" className="link-blog">
+                            <div
+                              className="container-img bg-blue"
+                              data-cursor-style="view"
+                            >
+                              <div className="wrapper-img">
+                                <img
+                                  src={imgd8}
+                                  data-preload
+                                  className="media"
+                                  alt=""
+                                />
+                              </div>
+                            </div>
+                            <div className="container-text">
+                              <div className="container-author-post-info">
+                                <div className="author">
+                                  <span className="author-name">
+                                    Lily Yeung
+                                  </span>
+                                </div>
+                                <div className="date">
+                                  <span>Sep 30</span>
+                                </div>
+                              </div>
+                              <h2 className="title-blog">
+                                A Taste Explosion: Event Design Extravaganza at
+                                Boa Restaurant
+                              </h2>
+                              <p className="text-blog">
+                                Beverly Hills, renowned for its luxury and
+                                panache, witnessed an unforgettable evening that
+                                melded culinary wonders with unmatched event
+                                Lorem ipsum dolor sit amet, consectetur
+                                adipiscing elit.
+                              </p>
+                            </div>
+                          </Link>
+                        </div>
+                        <div className="swiper-slide grid-item">
                           <a href="blog-post.html" className="link-blog">
                             <div
                               className="container-img bg-blue"
@@ -557,7 +686,7 @@ const Search = () => {
                             >
                               <div className="wrapper-img">
                                 <img
-                                  src="images/lib/08_desktop.jpg"
+                                  src={imgd8}
                                   data-preload
                                   className="media"
                                   alt=""
@@ -590,14 +719,14 @@ const Search = () => {
                           </a>
                         </div>
                         <div className="swiper-slide grid-item">
-                          <a href="blog-post.html" className="link-blog">
+                          <Link to="/blog-post" className="link-blog">
                             <div
                               className="container-img bg-blue"
                               data-cursor-style="view"
                             >
                               <div className="wrapper-img">
                                 <img
-                                  src="images/lib/08_desktop.jpg"
+                                  src={imgd8}
                                   data-preload
                                   className="media"
                                   alt=""
@@ -627,127 +756,7 @@ const Search = () => {
                                 adipiscing elit.
                               </p>
                             </div>
-                          </a>
-                        </div>
-                        <div className="swiper-slide grid-item">
-                          <a href="blog-post.html" className="link-blog">
-                            <div
-                              className="container-img bg-blue"
-                              data-cursor-style="view"
-                            >
-                              <div className="wrapper-img">
-                                <img
-                                  src="images/lib/08_desktop.jpg"
-                                  data-preload
-                                  className="media"
-                                  alt=""
-                                />
-                              </div>
-                            </div>
-                            <div className="container-text">
-                              <div className="container-author-post-info">
-                                <div className="author">
-                                  <span className="author-name">
-                                    Lily Yeung
-                                  </span>
-                                </div>
-                                <div className="date">
-                                  <span>Sep 30</span>
-                                </div>
-                              </div>
-                              <h2 className="title-blog">
-                                A Taste Explosion: Event Design Extravaganza at
-                                Boa Restaurant
-                              </h2>
-                              <p className="text-blog">
-                                Beverly Hills, renowned for its luxury and
-                                panache, witnessed an unforgettable evening that
-                                melded culinary wonders with unmatched event
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit.
-                              </p>
-                            </div>
-                          </a>
-                        </div>
-                        <div className="swiper-slide grid-item">
-                          <a href="blog-post.html" className="link-blog">
-                            <div
-                              className="container-img bg-blue"
-                              data-cursor-style="view"
-                            >
-                              <div className="wrapper-img">
-                                <img
-                                  src="images/lib/08_desktop.jpg"
-                                  data-preload
-                                  className="media"
-                                  alt=""
-                                />
-                              </div>
-                            </div>
-                            <div className="container-text">
-                              <div className="container-author-post-info">
-                                <div className="author">
-                                  <span className="author-name">
-                                    Lily Yeung
-                                  </span>
-                                </div>
-                                <div className="date">
-                                  <span>Sep 30</span>
-                                </div>
-                              </div>
-                              <h2 className="title-blog">
-                                A Taste Explosion: Event Design Extravaganza at
-                                Boa Restaurant
-                              </h2>
-                              <p className="text-blog">
-                                Beverly Hills, renowned for its luxury and
-                                panache, witnessed an unforgettable evening that
-                                melded culinary wonders with unmatched event
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit.
-                              </p>
-                            </div>
-                          </a>
-                        </div>
-                        <div className="swiper-slide grid-item">
-                          <a href="blog-post.html" className="link-blog">
-                            <div
-                              className="container-img bg-blue"
-                              data-cursor-style="view"
-                            >
-                              <div className="wrapper-img">
-                                <img
-                                  src="images/lib/08_desktop.jpg"
-                                  data-preload
-                                  className="media"
-                                  alt=""
-                                />
-                              </div>
-                            </div>
-                            <div className="container-text">
-                              <div className="container-author-post-info">
-                                <div className="author">
-                                  <span className="author-name">
-                                    Lily Yeung
-                                  </span>
-                                </div>
-                                <div className="date">
-                                  <span>Sep 30</span>
-                                </div>
-                              </div>
-                              <h2 className="title-blog">
-                                A Taste Explosion: Event Design Extravaganza at
-                                Boa Restaurant
-                              </h2>
-                              <p className="text-blog">
-                                Beverly Hills, renowned for its luxury and
-                                panache, witnessed an unforgettable evening that
-                                melded culinary wonders with unmatched event
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit.
-                              </p>
-                            </div>
-                          </a>
+                          </Link>
                         </div>
                       </div>
                     </div>

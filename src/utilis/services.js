@@ -3,7 +3,7 @@ import axios from 'axios';
 export const BASE_DOMAIN = (() => {
   if (window.location.hostname === 'localhost') return 'http://localhost:5001';
   else {
-    //todo main url will be returned
+    
     return ""
   }
 })();

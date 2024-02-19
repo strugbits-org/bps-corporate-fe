@@ -1,5 +1,9 @@
 import React from 'react'
-
+import img1 from "../../utilis/images/lib/01_desktop.jpg"
+import img6 from "../../utilis/images/lib/06_desktop.jpg"
+import img7 from "../../utilis/images/lib/07_desktop.jpg"
+import img5 from "../../utilis/images/lib/05_desktop.jpg"
+import { Link } from 'react-router-dom'
 const MarketSection = () => {
   return (
     <section className="section-markets">
@@ -16,8 +20,8 @@ const MarketSection = () => {
         <div className="col-12 mt-lg-50 mt-tablet-40 mt-phone-35">
           <ul className="list-markets list-projects font-60 grid-lg-25 grid-tablet-50">
             <li className="grid-item list-item" data-aos="d:loop">
-              <a
-                href="market-post.html"
+              <Link
+                to="/market-post"
                 className="market-link project-link"
                 data-cursor-style="view"
                 data-menu-close
@@ -27,7 +31,7 @@ const MarketSection = () => {
                   data-cursor-style="view"
                 >
                   <img
-                    src="images/lib/06_desktop.jpg"
+                    src={img6}
                     data-preload
                     className="media"
                     alt=""
@@ -47,21 +51,21 @@ const MarketSection = () => {
                     </li>
                   </ul>
                 </div>
-              </a>
+              </Link>
             </li>
             <li
               className="grid-item list-item"
               data-aos="d:loop"
               data-delay-desktop="50"
             >
-              <a
-                href="market-post.html"
+              <Link
+                to="/market-post"
                 className="project-link"
                 data-cursor-style="view"
               >
                 <div className="container-img">
                   <img
-                    src="images/lib/01_desktop.jpg"
+                    src={img1}
                     data-preload
                     className="media"
                     alt=""
@@ -81,21 +85,21 @@ const MarketSection = () => {
                     </li>
                   </ul>
                 </div>
-              </a>
+              </Link>
             </li>
             <li
               className="grid-item list-item"
               data-aos="d:loop"
               data-delay-desktop="100"
             >
-              <a
-                href="market-post.html"
+              <Link
+                to="/market-post"
                 className="project-link"
                 data-cursor-style="view"
               >
                 <div className="container-img">
                   <img
-                    src="images/lib/07_desktop.jpg"
+                    src={img7}
                     data-preload
                     className="media"
                     alt=""
@@ -117,21 +121,21 @@ const MarketSection = () => {
                     </li>
                   </ul>
                 </div>
-              </a>
+              </Link>
             </li>
             <li
               className="grid-item list-item"
               data-aos="d:loop"
               data-delay-desktop="150"
             >
-              <a
-                href="market-post.html"
+              <Link
+                to="/market-post"
                 className="project-link"
                 data-cursor-style="view"
               >
                 <div className="container-img">
                   <img
-                    src="images/lib/05_desktop.jpg"
+                    src={img5}
                     data-preload
                     className="media"
                     alt=""
@@ -151,7 +155,7 @@ const MarketSection = () => {
                     </li>
                   </ul>
                 </div>
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

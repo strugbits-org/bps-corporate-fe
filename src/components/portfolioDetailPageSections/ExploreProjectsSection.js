@@ -1,6 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+import img8 from "../../utilis/images/lib/08_desktop.jpg"
+import img6 from "../../utilis/images/lib/06_desktop.jpg"
+import img2 from "../../utilis/images/lib/02_desktop.jpg"
+import img1 from "../../utilis/images/lib/01_desktop.jpg"
+
 const ExploreProjectsSection = () => {
   return (
     <section className="portfolio-post-explore-projects pt-lg-310 pt-tablet-100 pt-phone-160 pb-lg-190 pb-mobile-100">
@@ -20,8 +25,8 @@ const ExploreProjectsSection = () => {
               <div className="swiper-wrapper list-portfolio list-slider-mobile grid-lg-25">
                 {/* <!-- Slides --> */}
                 <div className="swiper-slide grid-item">
-                  <a
-                    href="portfolio-post.html"
+                  <Link
+                    to="/portfolio-post"
                     className="link-portfolio link-portfolio-animation"
                     data-aos="d:loop"
                   >
@@ -31,7 +36,7 @@ const ExploreProjectsSection = () => {
                     >
                       <div className="wrapper-img">
                         <img
-                          src="images/lib/06_desktop.jpg"
+                          src={img6}
                           data-preload
                           className="media"
                           alt=""
@@ -57,11 +62,11 @@ const ExploreProjectsSection = () => {
                         F1 Las Vegas Grand Prix
                       </h2>
                     </div>
-                  </a>
+                  </Link>
                 </div>
                 <div className="swiper-slide grid-item">
-                  <a
-                    href="portfolio-post.html"
+                  <Link
+                    to="/portfolio-post"
                     className="link-portfolio link-portfolio-animation"
                     data-aos="d:loop"
                   >
@@ -71,7 +76,7 @@ const ExploreProjectsSection = () => {
                     >
                       <div className="wrapper-img">
                         <img
-                          src="images/lib/02_desktop.jpg"
+                          src={img2}
                           data-preload
                           className="media"
                           alt=""
@@ -92,11 +97,11 @@ const ExploreProjectsSection = () => {
                     <h2 className="title-portfolio">
                       F1 Las Vegas Grand Prix
                     </h2>
-                  </a>
+                  </Link>
                 </div>
                 <div className="swiper-slide grid-item">
-                  <a
-                    href="portfolio-post.html"
+                  <Link
+                    to="/portfolio-post"
                     className="link-portfolio link-portfolio-animation"
                     data-aos="d:loop"
                   >
@@ -106,7 +111,7 @@ const ExploreProjectsSection = () => {
                     >
                       <div className="wrapper-img">
                         <img
-                          src="images/lib/01_desktop.jpg"
+                          src={img1}
                           data-preload
                           className="media"
                           alt=""
@@ -130,11 +135,11 @@ const ExploreProjectsSection = () => {
                     <h2 className="title-portfolio">
                       F1 Las Vegas Grand Prix
                     </h2>
-                  </a>
+                  </Link>
                 </div>
                 <div className="swiper-slide grid-item">
-                  <a
-                    href="portfolio-post.html"
+                  <Link
+                    to="/portfolio-post"
                     className="link-portfolio link-portfolio-animation"
                     data-aos="d:loop"
                   >
@@ -144,7 +149,7 @@ const ExploreProjectsSection = () => {
                     >
                       <div className="wrapper-img">
                         <img
-                          src="images/lib/08_desktop.jpg"
+                          src={img8}
                           data-preload
                           className="media"
                           alt=""
@@ -165,7 +170,7 @@ const ExploreProjectsSection = () => {
                     <h2 className="title-portfolio">
                       F1 Las Vegas Grand Prix
                     </h2>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import img6 from "../../utilis/images/lib/06_desktop.jpg" 
 
 const PortfolioIntoSection = () => {
   return (
@@ -7,7 +8,7 @@ const PortfolioIntoSection = () => {
     <div className="wrapper-banner-img" data-aos>
       <div className="container-img banner-img">
         <img
-          src="images/lib/06_desktop.jpg"
+          src={img6}
           data-preload
           className="media"
           alt=""

@@ -1,5 +1,6 @@
 import React from "react";
-
+import img2 from "../../utilis/images/lib/02_desktop.jpg"
+import img6 from "../../utilis/images/lib/06_desktop.jpg"
 const ServiceIntro = () => {
   return (
     <>
@@ -33,7 +34,7 @@ const ServiceIntro = () => {
                   data-aos="fadeInUp .8s ease-out-cubic .6s, d:loop"
                   data-cursor-style="off"
                 >
-                  <span>Let’s Craft Magic Together</span>
+                  <span>Let's Craft Magic Together</span>
                   <i className="icon-arrow-right-2"></i>
                 </btn-modal-open>
               </div>
@@ -47,7 +48,7 @@ const ServiceIntro = () => {
           data-scale="1.2"
         >
           <img
-            src="images/lib/02_desktop.jpg"
+            src={img2}
             data-preload
             className="media"
             alt=""
@@ -72,7 +73,7 @@ const ServiceIntro = () => {
                   <div className="content">
                     <div className="container-img">
                       <img
-                        src="images/lib/06_desktop.jpg"
+                        src={img6}
                         data-preload
                         className="media"
                         alt=""
@@ -105,7 +106,7 @@ const ServiceIntro = () => {
                   <div className="content">
                     <div className="container-img">
                       <img
-                        src="images/lib/06_desktop.jpg"
+                        src={img6}
                         data-preload
                         className="media"
                         alt=""
@@ -130,7 +131,7 @@ const ServiceIntro = () => {
                   <div className="content">
                     <div className="container-img">
                       <img
-                        src="images/lib/06_desktop.jpg"
+                        src={img6}
                         data-preload
                         className="media"
                         alt=""
@@ -158,7 +159,7 @@ const ServiceIntro = () => {
                   <div className="content">
                     <div className="container-img">
                       <img
-                        src="images/lib/06_desktop.jpg"
+                        src={img6}
                         data-preload
                         className="media"
                         alt=""

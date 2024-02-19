@@ -1,5 +1,7 @@
 import React from 'react'
-
+import image1 from "../utilis/images/svg/btn-chat-1.svg"
+import image2 from "../utilis/images/svg/btn-chat-2.svg"
+import image3 from "../utilis/images/svg/btn-chat-3.svg"
 const Chat = () => {
   return (
     <div className="chat" data-cursor-style="off">
@@ -8,7 +10,7 @@ const Chat = () => {
         <span>Hello?</span>
         <div className="container-img btn-top">
           <img
-            src="images/svg/btn-chat-1.svg"
+            src={image1}
             data-preload
             className="media"
             alt=""
@@ -17,7 +19,7 @@ const Chat = () => {
         <div className="bg-1"></div>
         <div className="container-img btn-middle">
           <img
-            src="images/svg/btn-chat-2.svg"
+            src={image2}
             data-preload
             className="media"
             alt=""
@@ -26,7 +28,7 @@ const Chat = () => {
         <div className="bg-2"></div>
         <div className="container-img btn-bottom">
           <img
-            src="images/svg/btn-chat-3.svg"
+            src={image3}
             data-preload
             className="media"
             alt=""

@@ -1,5 +1,6 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom'
+import googleimg from "../../utilis/images/about/google-workspace.jpg"
 const SliderBanner = () => {
   return (
     <section className="section-slider-banner">
@@ -9,10 +10,10 @@ const SliderBanner = () => {
         <div className="swiper-wrapper">
           {/* <!-- Slides --> */}
           <div className="swiper-slide">
-            <a href="index.html">
+            <Link to="/">
               <div className="container-img">
                 <img
-                  src="images/about/google-workspace.jpg"
+                  src={googleimg}
                   data-preload
                   className="media"
                   data-parallax
@@ -45,11 +46,11 @@ const SliderBanner = () => {
                   </div>
                 </div>
               </div>
-            </a>
+            </Link>
           </div>
 
           <div className="swiper-slide">
-            <a href="index.html">
+            <Link to="/">
               <div className="container-img">
                 <img
                   src="images/lib/06_desktop.jpg"
@@ -83,14 +84,14 @@ const SliderBanner = () => {
                   </div>
                 </div>
               </div>
-            </a>
+            </Link>
           </div>
 
           <div className="swiper-slide">
-            <a href="index.html">
+            <Link to="/">
               <div className="container-img">
                 <img
-                  src="images/about/google-workspace.jpg"
+                  src={googleimg}
                   data-preload
                   className="media"
                   data-parallax
@@ -123,8 +124,9 @@ const SliderBanner = () => {
                   </div>
                 </div>
               </div>
-            </a>
+            </Link>
           </div>
+          
         </div>
       </div>
       <div className="swiper-pagination"></div>

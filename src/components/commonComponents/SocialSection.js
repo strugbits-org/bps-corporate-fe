@@ -1,6 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import img6 from "../../utilis/images/lib/06_desktop.jpg"
+import img7 from "../../utilis/images/lib/07_desktop.jpg"
+import img8 from "../../utilis/images/lib/08_desktop.jpg"
+import img4 from "../../utilis/images/lib/04_desktop.jpg"
+import img3 from "../../utilis/images/lib/03_desktop.jpg"
+import img2 from "../../utilis/images/lib/02_desktop.jpg"
+import img1 from "../../utilis/images/lib/01_desktop.jpg"
 const SocialSection = () => {
   return (
     <section className="section-lets-get-social z-5 pt-lg-195 pt-tablet-105 pt-phone-155 pb-lg-130 pb-tablet-105 pb-phone-140 mt-lg-240">
@@ -21,7 +27,7 @@ const SocialSection = () => {
               className="fs--60 blue-1 text-center split-words"
               data-aos="d:loop"
             >
-              Let’s get social
+              Let's get social
             </h2>
             <h3
               className="fs--16 fs-tablet-20 fs-phone-18 blue-1 text-center mt-10"
@@ -53,7 +59,7 @@ const SocialSection = () => {
                       <Link to="/blog-post" className="link-blog">
                         <div className="container-img" data-cursor-style="view">
                           <img
-                            src="images/lib/06_desktop.jpg"
+                            src={img1}
                             data-preload
                             className="media"
                             alt=""
@@ -76,7 +82,7 @@ const SocialSection = () => {
                       <Link to="/blog-post" className="link-blog">
                         <div className="container-img" data-cursor-style="view">
                           <img
-                            src="images/lib/06_desktop.jpg"
+                            src={img6}
                             data-preload
                             className="media"
                             alt=""
@@ -89,8 +95,8 @@ const SocialSection = () => {
                           </h4>
                           <p className="blog-text">
                             As the golden hues of early fall descend upon the
-                            picturesque landscapes of Napa, there’s no venue
-                            that encapsulates the region’s beauty
+                            picturesque landscapes of Napa, there's no venue
+                            that encapsulates the region's beauty
                           </p>
                         </div>
                       </Link>
@@ -99,7 +105,7 @@ const SocialSection = () => {
                       <Link to="blog-post" className="link-blog">
                         <div className="container-img" data-cursor-style="view">
                           <img
-                            src="images/lib/06_desktop.jpg"
+                            src={img1}
                             data-preload
                             className="media"
                             alt=""
@@ -143,7 +149,7 @@ const SocialSection = () => {
                       <Link to="/" target="_blank" rel="noopener noreferrer">
                         <div className="container-img">
                           <img
-                            src="images/lib/06_desktop.jpg"
+                            src={img1}
                             data-preload
                             className="media"
                             alt=""
@@ -155,7 +161,7 @@ const SocialSection = () => {
                       <Link to="/" target="_blank" rel="noopener noreferrer">
                         <div className="container-img">
                           <img
-                            src="images/lib/04_desktop.jpg"
+                            src={img4}
                             data-preload
                             className="media"
                             alt=""
@@ -167,7 +173,7 @@ const SocialSection = () => {
                       <Link href="/" target="_blank" rel="noopener noreferrer">
                         <div className="container-img">
                           <img
-                            src="images/lib/02_desktop.jpg"
+                            src={img2}
                             data-preload
                             className="media"
                             alt=""
@@ -179,7 +185,7 @@ const SocialSection = () => {
                       <Link to="/" target="_blank" rel="noopener noreferrer">
                         <div className="container-img">
                           <img
-                            src="images/lib/01_desktop.jpg"
+                            src={img1}
                             data-preload
                             className="media"
                             alt=""
@@ -191,7 +197,7 @@ const SocialSection = () => {
                       <Link to="/" target="_blank" rel="noopener noreferrer">
                         <div className="container-img">
                           <img
-                            src="images/lib/08_desktop.jpg"
+                            src={img8}
                             data-preload
                             className="media"
                             alt=""
@@ -203,7 +209,7 @@ const SocialSection = () => {
                       <Link to="/" target="_blank" rel="noopener noreferrer">
                         <div className="container-img">
                           <img
-                            src="images/lib/06_desktop.jpg"
+                            src={img1}
                             data-preload
                             className="media"
                             alt=""
@@ -215,7 +221,7 @@ const SocialSection = () => {
                       <Link to="/" target="_blank" rel="noopener noreferrer">
                         <div className="container-img">
                           <img
-                            src="images/lib/07_desktop.jpg"
+                            src={img7}
                             data-preload
                             className="media"
                             alt=""
@@ -227,7 +233,7 @@ const SocialSection = () => {
                       <Link to="/" target="_blank" rel="noopener noreferrer">
                         <div className="container-img">
                           <img
-                            src="images/lib/03_desktop.jpg"
+                            src={img3}
                             data-preload
                             className="media"
                             alt=""
@@ -239,7 +245,7 @@ const SocialSection = () => {
                       <Link to="/" target="_blank" rel="noopener noreferrer">
                         <div className="container-img">
                           <img
-                            src="images/lib/04_desktop.jpg"
+                            src={img4}
                             data-preload
                             className="media"
                             alt=""
@@ -298,7 +304,7 @@ const SocialSection = () => {
                           >
                             <div className="container-img">
                               <img
-                                src="images/lib/06_desktop.jpg"
+                                src={img1}
                                 data-preload
                                 className="media"
                                 alt=""
@@ -315,7 +321,7 @@ const SocialSection = () => {
                           >
                             <div className="container-img">
                               <img
-                                src="images/lib/08_desktop.jpg"
+                                src={img8}
                                 data-preload
                                 className="media"
                                 alt=""
@@ -331,7 +337,7 @@ const SocialSection = () => {
                           >
                             <div className="container-img">
                               <img
-                                src="images/lib/06_desktop.jpg"
+                                src={img1}
                                 data-preload
                                 className="media"
                                 alt=""
@@ -347,7 +353,7 @@ const SocialSection = () => {
                           >
                             <div className="container-img">
                               <img
-                                src="images/lib/07_desktop.jpg"
+                                src={img7}
                                 data-preload
                                 className="media"
                                 alt=""
@@ -363,7 +369,7 @@ const SocialSection = () => {
                           >
                             <div className="container-img">
                               <img
-                                src="images/lib/03_desktop.jpg"
+                                src={img3}
                                 data-preload
                                 className="media"
                                 alt=""
@@ -379,7 +385,7 @@ const SocialSection = () => {
                           >
                             <div className="container-img">
                               <img
-                                src="images/lib/04_desktop.jpg"
+                                src={img4}
                                 data-preload
                                 className="media"
                                 alt=""
@@ -392,23 +398,12 @@ const SocialSection = () => {
                     <li>
                       <Link to="/blog-post" className="link-blog">
                         <div className="container-text">
-                          <h4
-                            className="p-card"
-                            style={{
-                              fontStyle: "bold",
-                              fontSize: "16px",
-                              color: "darkgray",
-                              backgroundColor: "lightgray",
-                              borderRadius: "20px",
-                              padding: "10px",
-                              alignItems: "center",
-                              position: "flex",
-                              textAlign: "center",
-                              
-                            }}
-                          >
+                          <h4 className="p-card">
                             <span>Sign up</span>
-                            <i className="icon-instagram" style={{color:"red"}}></i>
+                            <i
+                              className="icon-instagram"
+                              style={{ color: "red" }}
+                            ></i>
                           </h4>
                         </div>
                       </Link>
