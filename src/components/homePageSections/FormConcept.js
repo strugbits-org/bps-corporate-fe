@@ -1,4 +1,5 @@
 import React from 'react'
+import {dataConcept} from "../../common/constats"
 
 const FormConcept = () => {
   return (
@@ -19,7 +20,7 @@ const FormConcept = () => {
             data-end="60% 100%"
           >
             <div data-parallax data-translate-y="-35vh">
-              From concept
+              {dataConcept.text1}
             </div>
           </h2>
           <h2
@@ -30,7 +31,7 @@ const FormConcept = () => {
             data-end="bottom bottom"
           >
             <div data-translate-y="-20vh" data-parallax>
-              To Reality
+              {dataConcept.text2}
             </div>
           </h2>
         </div>
