@@ -1,6 +1,4 @@
-import React from 'react'
-import img1 from "../../utilis/images/dream-big.jpg"
-import img2 from "../../utilis/images/dream-big-mobile.jpg"
+import {dreambig} from "../../common/constats";
 
 const DreamBigSection = () => {
   return (
@@ -10,7 +8,7 @@ const DreamBigSection = () => {
         <div className="col-lg-4 offset-lg-4 column-1">
           <div className="container-img no-phone">
             <img
-              src={img1}
+              src={dreambig.img1}
               data-preload
               className="media"
               alt=""
@@ -18,7 +16,7 @@ const DreamBigSection = () => {
           </div>
           <div className="container-img no-desktop no-tablet">
             <img
-              src={img2}
+              src={dreambig.img2}
               data-preload
               className="media"
               alt=""
@@ -36,7 +34,7 @@ const DreamBigSection = () => {
               class="btn-blue"
               data-cursor-style="off"
             >
-              <span>Let's Craft Magic Together</span>
+              <span>{dreambig.btntext}</span>
               <i className="icon-arrow-right-2"></i>
             </btn-modal-open>
             <p
@@ -47,9 +45,8 @@ const DreamBigSection = () => {
               data-end="center center"
            
             >
-              Click the button to start the journey. <br />
-              Contact us and let's turn your ideas into extraordinary
-              experiences.
+              {dreambig.p1} <br />
+              {dreambig.p2}
             </p>
           </div>
         </div>
