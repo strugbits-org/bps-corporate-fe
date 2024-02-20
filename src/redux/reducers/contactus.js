@@ -9,7 +9,7 @@ const initialState = {
 
 export const postFormData = createAsyncThunk(
   "contact/postFormData",
-  async (formData, thunkAPI) => {
+  async (formData) => {
     try {
       const response = await API.post(
         "https://dummyendpoint.com/submit",
@@ -31,23 +31,21 @@ const contactSlice = createSlice({
       .addCase(postFormData.fulfilled, (state, { payload }) => {
         console.log("postFormData", payload);
         state.formData = payload;
-        state.loader = false;
+        state.loading = false;
         state.success = true;
       })
       .addCase(postFormData.pending, (state) => {
         console.log("ispending");
-        state.loader = true;
+        state.loading = true;
         state.success = false;
       })
       .addCase(postFormData.rejected, (state) => {
         console.log("is rejected");
-        state.loader = false;
+        state.loading = false;
         state.success = false;
       });
   },
 
 });
-
-export const { submitFormSuccess, submitFormFailure } = contactSlice.actions;
 
 export default contactSlice.reducer;
