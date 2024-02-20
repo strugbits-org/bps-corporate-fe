@@ -10,6 +10,7 @@ import imgd8 from "../../../utilis/images/lib/08_desktop.jpg"
 import imgd7 from "../../../utilis/images/lib/07_desktop.jpg"
 import imgd1 from "../../../utilis/images/lib/01_desktop.jpg"
 import imgd2 from "../../../utilis/images/lib/02_desktop.jpg"
+
 const Search = () => {
   return (
     <div className="container-fluid">

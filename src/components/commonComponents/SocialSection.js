@@ -1,12 +1,6 @@
-import React from "react";
 import { Link } from "react-router-dom";
-import img6 from "../../utilis/images/lib/06_desktop.jpg"
-import img7 from "../../utilis/images/lib/07_desktop.jpg"
-import img8 from "../../utilis/images/lib/08_desktop.jpg"
-import img4 from "../../utilis/images/lib/04_desktop.jpg"
-import img3 from "../../utilis/images/lib/03_desktop.jpg"
-import img2 from "../../utilis/images/lib/02_desktop.jpg"
-import img1 from "../../utilis/images/lib/01_desktop.jpg"
+
+import { blogData, socialData, instafeeds, pinfeeds} from "../../common/constats";
 const SocialSection = () => {
   return (
     <section className="section-lets-get-social z-5 pt-lg-195 pt-tablet-105 pt-phone-155 pb-lg-130 pb-tablet-105 pb-phone-140 mt-lg-240">
@@ -27,13 +21,13 @@ const SocialSection = () => {
               className="fs--60 blue-1 text-center split-words"
               data-aos="d:loop"
             >
-              Let's get social
+              {socialData.title}
             </h2>
             <h3
               className="fs--16 fs-tablet-20 fs-phone-18 blue-1 text-center mt-10"
               data-aos="fadeIn .8s ease-in-out .2s, d:loop"
             >
-              Connect, create, celebrate: /BlueprintVibes
+              {socialData.subtitle}
             </h3>
           </div>
           <div className="col-lg-12 column-2">
@@ -51,79 +45,33 @@ const SocialSection = () => {
                 <div className="content blog-content">
                   <div className="social-media-title">
                     <i className="icon-blog"></i>
-                    <h3>From our blog</h3>
+                    <h3>{socialData.blogtitle}</h3>
                   </div>
 
                   <ul className="list-blog-lets-get-social">
-                    <li>
-                      <Link to="/blog-post" className="link-blog">
-                        <div className="container-img" data-cursor-style="view">
-                          <img
-                            src={img1}
-                            data-preload
-                            className="media"
-                            alt=""
-                          />
-                        </div>
-                        <div className="container-text">
-                          <h4 className="blog-title">
-                            A Picturesque Day with Blueprint Studios: Showcasing
-                            Our New Wooden Furniture Collection
-                          </h4>
-                          <p className="blog-text">
-                            In the heart of the great outdoors, with nature as
-                            our backdrop, Blueprint Studios embarked on a
-                            creative journey
-                          </p>
-                        </div>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/blog-post" className="link-blog">
-                        <div className="container-img" data-cursor-style="view">
-                          <img
-                            src={img6}
-                            data-preload
-                            className="media"
-                            alt=""
-                          />
-                        </div>
-                        <div className="container-text">
-                          <h4 className="blog-title">
-                            A Toast to Tradition: An Autumn Affair at Darioush
-                            Winery
-                          </h4>
-                          <p className="blog-text">
-                            As the golden hues of early fall descend upon the
-                            picturesque landscapes of Napa, there's no venue
-                            that encapsulates the region's beauty
-                          </p>
-                        </div>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="blog-post" className="link-blog">
-                        <div className="container-img" data-cursor-style="view">
-                          <img
-                            src={img1}
-                            data-preload
-                            className="media"
-                            alt=""
-                          />
-                        </div>
-                        <div className="container-text">
-                          <h4 className="blog-title">
-                            A Taste Explosion: Event Design Extravaganza at Boa
-                            Restaurant Beverly Hills
-                          </h4>
-                          <p className="blog-text">
-                            Beverly Hills, renowned for its luxury and panache,
-                            witnessed an unforgettable evening that melded
-                            culinary wonders with unmatched event
-                          </p>
-                        </div>
-                      </Link>
-                    </li>
+                    {blogData.map((data, index) => {
+                      return (
+                        <li key={index}>
+                          <Link to="/blog-post" className="link-blog">
+                            <div
+                              className="container-img"
+                              data-cursor-style="view"
+                            >
+                              <img
+                                src={data.img}
+                                data-preload
+                                className="media"
+                                alt=""
+                              />
+                            </div>
+                            <div className="container-text">
+                              <h4 className="blog-title">{data.title}</h4>
+                              <p className="blog-text">{data.desc}</p>
+                            </div>
+                          </Link>
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
               </li>
@@ -142,117 +90,29 @@ const SocialSection = () => {
                 <div className="content">
                   <div className="social-media-title">
                     <i className="icon-instagram"></i>
-                    <h3>Stay connected Feed</h3>
+                    <h3>{socialData.instatitle}</h3>
                   </div>
                   <ul className="list-instagram">
-                    <li>
-                      <Link to="/" target="_blank" rel="noopener noreferrer">
-                        <div className="container-img">
-                          <img
-                            src={img1}
-                            data-preload
-                            className="media"
-                            alt=""
-                          />
-                        </div>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/" target="_blank" rel="noopener noreferrer">
-                        <div className="container-img">
-                          <img
-                            src={img4}
-                            data-preload
-                            className="media"
-                            alt=""
-                          />
-                        </div>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/" target="_blank" rel="noopener noreferrer">
-                        <div className="container-img">
-                          <img
-                            src={img2}
-                            data-preload
-                            className="media"
-                            alt=""
-                          />
-                        </div>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/" target="_blank" rel="noopener noreferrer">
-                        <div className="container-img">
-                          <img
-                            src={img1}
-                            data-preload
-                            className="media"
-                            alt=""
-                          />
-                        </div>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/" target="_blank" rel="noopener noreferrer">
-                        <div className="container-img">
-                          <img
-                            src={img8}
-                            data-preload
-                            className="media"
-                            alt=""
-                          />
-                        </div>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/" target="_blank" rel="noopener noreferrer">
-                        <div className="container-img">
-                          <img
-                            src={img1}
-                            data-preload
-                            className="media"
-                            alt=""
-                          />
-                        </div>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/" target="_blank" rel="noopener noreferrer">
-                        <div className="container-img">
-                          <img
-                            src={img7}
-                            data-preload
-                            className="media"
-                            alt=""
-                          />
-                        </div>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/" target="_blank" rel="noopener noreferrer">
-                        <div className="container-img">
-                          <img
-                            src={img3}
-                            data-preload
-                            className="media"
-                            alt=""
-                          />
-                        </div>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/" target="_blank" rel="noopener noreferrer">
-                        <div className="container-img">
-                          <img
-                            src={img4}
-                            data-preload
-                            className="media"
-                            alt=""
-                          />
-                        </div>
-                      </Link>
-                    </li>
+                    {instafeeds.map((data, index) => {
+                      return (
+                        <li key={index}>
+                          <Link
+                            to="/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <div className="container-img">
+                              <img
+                                src={data.image}
+                                data-preload
+                                className="media"
+                                alt=""
+                              />
+                            </div>
+                          </Link>
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
               </li>
@@ -271,7 +131,7 @@ const SocialSection = () => {
                 <div className="content blog-content">
                   <div className="social-media-title">
                     <i className="icon-pinterest"></i>
-                    <h3>Stay connected Feed</h3>
+                    <h3>{socialData.title}</h3>
                   </div>
 
                   <ul className="list-blog-lets-get-social">
@@ -296,7 +156,9 @@ const SocialSection = () => {
                     </li>
                     <li>
                       <ul className="list-instagram">
-                        <li>
+                      {pinfeeds.map((data, index) => {
+                      return (
+                        <li key={index}>
                           <Link
                             to="/"
                             target="_blank"
@@ -304,7 +166,7 @@ const SocialSection = () => {
                           >
                             <div className="container-img">
                               <img
-                                src={img1}
+                                src={data.image}
                                 data-preload
                                 className="media"
                                 alt=""
@@ -312,87 +174,8 @@ const SocialSection = () => {
                             </div>
                           </Link>
                         </li>
-
-                        <li>
-                          <Link
-                            to="/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <div className="container-img">
-                              <img
-                                src={img8}
-                                data-preload
-                                className="media"
-                                alt=""
-                              />
-                            </div>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            to="/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <div className="container-img">
-                              <img
-                                src={img1}
-                                data-preload
-                                className="media"
-                                alt=""
-                              />
-                            </div>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            to="/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <div className="container-img">
-                              <img
-                                src={img7}
-                                data-preload
-                                className="media"
-                                alt=""
-                              />
-                            </div>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            to="/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <div className="container-img">
-                              <img
-                                src={img3}
-                                data-preload
-                                className="media"
-                                alt=""
-                              />
-                            </div>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            to="/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <div className="container-img">
-                              <img
-                                src={img4}
-                                data-preload
-                                className="media"
-                                alt=""
-                              />
-                            </div>
-                          </Link>
-                        </li>
+                      );
+                    })}
                       </ul>
                     </li>
                     <li>
