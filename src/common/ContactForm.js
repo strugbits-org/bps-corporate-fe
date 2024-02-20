@@ -9,13 +9,13 @@ import { postFormData } from "../redux/reducers/contactus";
 
 const ContactForm = () => {
   const dispatch = useDispatch();
-//   const loading = useSelector((state) => state.contact.loading);
-//   const error = useSelector((state) => state.contact.error);
+  const loading = useSelector((state) => state.contact.loading);
+  const error = useSelector((state) => state.contact.error);
 
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors: formErrors },
   } = useForm({
     resolver: yupResolver(contactusSchema),
   });
@@ -45,8 +45,12 @@ const ContactForm = () => {
                 name="firstName"
                 type="text"
                 required
+                disabled={loading}
                 {...register("firstName")}
               />
+              {formErrors.firstName && (
+                <span className="error">{formErrors.firstName.message}</span>
+              )}
             </div>
             <div className="container-input col-md-6">
               <label htmlFor="contact-last-name">Last name</label>
@@ -56,7 +60,11 @@ const ContactForm = () => {
                 type="text"
                 required
                 {...register("lastName")}
+                disabled={loading}
               />
+              {formErrors.lastName && (
+                <span className="error">{formErrors.lastName.message}</span>
+              )}
             </div>
             <div className="container-input col-12">
               <label htmlFor="contact-email">E-mail</label>
@@ -66,7 +74,11 @@ const ContactForm = () => {
                 type="email"
                 required
                 {...register("email")}
+                disabled={loading}
               />
+              {formErrors.email && (
+                <span className="error">{formErrors.email.message}</span>
+              )}
             </div>
             <div className="container-textarea col-12">
               <label htmlFor="contact-message">Message</label>
@@ -74,24 +86,22 @@ const ContactForm = () => {
                 id="contact-message"
                 name="message"
                 {...register("message")}
+                disabled={loading}
               ></textarea>
-              
+              {formErrors.message && (
+                <span className="error">{formErrors.message.message}</span>
+              )}
             </div>
             <div className="container-submit col-12">
               <button type="submit" className="bt-submit btn-medium">
-                <span className="submit-text">Send</span>
+                <span className="submit-text">
+                  {loading ? "Submitting..." : "Send"}
+                </span>
               </button>
             </div>
-            {/* Loading indicator */}
-          {/* {loading && <span className="loading">Submitting form...</span>} */}
-            {/* Error message for overall form */}
-            {/* {error && (
-              <span className="error">
-                Form submission failed. Please check the fields.
-              </span>
-            )} */}
           </form>
-
+          {/* Error message */}
+          {error && <span className="error">{error}</span>}
           <h3 data-aos="fadeIn" data-form-error>
             Error, Try again!
           </h3>
