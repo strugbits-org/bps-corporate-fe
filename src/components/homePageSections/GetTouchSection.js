@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import {datagettouch} from "../../common/constats";
 const GetTouchSection = () => {
   return (
     <section className="home-solution pt-220 pb-110">
@@ -12,12 +12,11 @@ const GetTouchSection = () => {
               data-aos="d:loop"
             >
               <p>
-                From the beautiful simplicity of a single flower arrangement to
-                the grandeur of a gala.
+                {datagettouch.p1}
               </p>
-              <p>From intimate milestone events to corporate conventions.</p>
+              <p>{datagettouch.p2}</p>
               <p>
-                Blueprint Studios is an all around solution to any occasion.
+                {datagettouch.p3}
               </p>
             </div>
           </div>
@@ -28,7 +27,7 @@ const GetTouchSection = () => {
               data-aos="fadeIn - .3s, d:loop"
               data-cursor-style="off"
             >
-              <span>Get In Touch </span>
+              <span>{datagettouch.btntext} </span>
               <i className="icon-arrow-right-2"></i>
             </Link>
           </div>
