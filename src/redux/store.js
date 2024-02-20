@@ -6,7 +6,7 @@ export default configureStore({
   reducer: {
     user: userReducer,
     cursor: curserReducer,
-    constact: contactReducer
+    contact: contactReducer
   },
  
 });
