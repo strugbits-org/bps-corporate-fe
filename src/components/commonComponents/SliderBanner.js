@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import googleimg from "../../utilis/images/about/google-workspace.jpg"
+import slide_2_image from "../../utilis/images/lib/06_desktop.jpg"
 const SliderBanner = () => {
   return (
     <section className="section-slider-banner">
@@ -10,7 +11,7 @@ const SliderBanner = () => {
         <div className="swiper-wrapper">
           {/* <!-- Slides --> */}
           <div className="swiper-slide">
-            <Link to="/">
+            <Link to="">
               <div className="container-img">
                 <img
                   src={googleimg}
@@ -50,10 +51,10 @@ const SliderBanner = () => {
           </div>
 
           <div className="swiper-slide">
-            <Link to="/">
+            <Link to="">
               <div className="container-img">
                 <img
-                  src="images/lib/06_desktop.jpg"
+                  src={slide_2_image}
                   data-preload
                   className="media"
                   data-parallax
@@ -88,7 +89,7 @@ const SliderBanner = () => {
           </div>
 
           <div className="swiper-slide">
-            <Link to="/">
+            <Link to="">
               <div className="container-img">
                 <img
                   src={googleimg}
