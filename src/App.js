@@ -5,14 +5,24 @@ import Navbar from "./layout/header/Navbar";
 import Loading from "./common/Loading";
 import Chat from "./common/Chat";
 import Cookies from "./common/Cookies";
+import React, { useEffect } from "react";
 
 function App() {
   const location = useLocation();
-  const pathname =
-    location.pathname.trim() === "/" ? "home" : location.pathname.substring(1); // Remove leading slash
+  const pathname = location.pathname.trim() === "/" ? "home" : location.pathname.substring(1); // Remove leading slash
+    
+    // track router change and simulate click
+    const reloadButton = React.useRef();
+    useEffect(() => {
+      reloadButton.current.click();
+    },[location.pathname]);
 
   return (
     <div>
+
+      {/* reload animations trigger */}
+      <button ref={reloadButton} className="reloadScript"></button>
+
       <Loading />
       <Cookies />
       <Navbar />
