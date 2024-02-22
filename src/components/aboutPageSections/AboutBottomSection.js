@@ -1,6 +1,6 @@
-import React from "react";
 import DreamBigSection from "../commonComponents/DreamBigSection";
-import image from "../../utilis/images/about/magazine.jpg"
+import { bottomSection } from "../../common/constats/aboutData";
+
 const AboutBottomSection = () => {
   return (
     <>
@@ -10,18 +10,17 @@ const AboutBottomSection = () => {
             <div className="col-lg-8 offset-lg-2">
               <div className="container-box">
                 <h2 className="fs--60 lh-100 white-1 title">
-                  <span className="line-1 d-block">Check out our latest</span>
-                  <span className="line-2 d-block">Trends magazine</span>
+                  <span className="line-1 d-block">{bottomSection.title1}</span>
+                  <span className="line-2 d-block">{bottomSection.title2}</span>
                 </h2>
                 <div className="container-img">
                   <img
-                    src={image}
+                    src={bottomSection.img}
                     data-preload
                     className="media"
                     alt=""
                   />
                 </div>
-
                 <div className="bg-box"></div>
               </div>
             </div>
