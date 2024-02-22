@@ -1,14 +1,15 @@
 import { Link } from "react-router-dom";
-import { OurCardData } from "../../common/constats/portfolioData";
+import { portfolioData } from "../../common/constats/portfolioData";
 import React from "react";
+
 const OurWorkCard = () => {
   return (
     <div className="row row-2">
       <div className="col-lg-12 column-1">
         <ul className="list-portfolio grid-lg-25 grid-tablet-50">
-          {OurCardData.map((data, index) => {
+          {portfolioData.items.map((data) => {
             return (
-              <li key={index} className="grid-item">
+              <li key={data.id} className="grid-item">
                 <Link
                   to="/portfolio-post"
                   className="link-portfolio link-portfolio-animation"
@@ -29,7 +30,7 @@ const OurWorkCard = () => {
                   </div>
                   <div className="container-text">
                     <ul className="list-tags-small">
-                      {Object.values(data.tags).map((tag, index) => (
+                    {Object.values(data.tags).map((tag, index) => (
                         <React.Fragment key={index}>
                           {index < 3 ? (
                             <li

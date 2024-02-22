@@ -1,10 +1,47 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import SocialSection from "../components/commonComponents/SocialSection";
 import { Link } from "react-router-dom";
-
-import { filter, postes } from "../common/constats/blogData";
+import { head, postes } from "../common/constats/blogData";
 
 const Blog = () => {
+  const [selectedFilters, setSelectedFilters] = useState([]);
+  const [filteredItems, setFilteredItems] = useState(postes);
+
+  const menuitems = [...new Set(postes.map((data) => data.category))];
+
+  const handleFilterButtonClick = (selectedCategory) => {
+    if (selectedFilters.includes(selectedCategory)) {
+      setSelectedFilters(
+        selectedFilters.filter((el) => el !== selectedCategory)
+      );
+    } else {
+      setSelectedFilters([...selectedFilters, selectedCategory]);
+    }
+  };
+
+  useEffect(() => {
+    const filterItems = () => {
+      if (selectedFilters.length > 0) {
+        let tempItems = postes.filter((item) =>
+          selectedFilters.includes(item.category)
+        );
+        setFilteredItems(tempItems);
+      } else {
+        setFilteredItems(postes);
+      }
+    };
+    filterItems();
+    console.log(selectedFilters, "rerender here");
+  }, [selectedFilters]); // Ensure useEffect runs when selectedFilters changes
+
+  // Add console.log to check rendering
+  console.log("Rendering Blog component");
+
+  // Add console.log to check if filteredItems changes
+  useEffect(() => {
+    console.log("filteredItems changed:", filteredItems);
+  }, [filteredItems]);
+
   return (
     <>
       <section className="blog-intro pt-lg-145 pt-tablet-115 pt-phone-120 pb-lg-150 pb-tablet-100 pb-phone-155">
@@ -15,7 +52,7 @@ const Blog = () => {
                 className="fs--60 text-center mb-lg-45 mb-mobile-40 split-words"
                 data-aos="d:loop"
               >
-                {filter.title}
+                {head.title}
               </h1>
               <div
                 className="blog-tags dropdown-tags"
@@ -25,22 +62,26 @@ const Blog = () => {
                   className="btn-tag-mobile no-desktop"
                   data-set-tag="blog"
                 >
-                  <span>{filter.name}</span>
+                  <span>{head.name}</span>
                   <i className="icon-arrow-down"></i>
                 </button>
                 <div className="list-dropdown" data-set-tag="blog">
                   <div className="container-wrapper-list">
                     <div className="wrapper-list">
                       <ul className="list-blog-tags list-dropdown-tags">
-                        {filter.Categories.map((data, index) => {
-                          return (
-                            <li key={index}>
-                              <Link to="/blog" className="blog-btn-tag active">
-                                <span>{data.tag}</span>
-                              </Link>
-                            </li>
-                          );
-                        })}
+                        {menuitems.map((category, idx) => (
+                          <li
+                            onClick={() => handleFilterButtonClick(category)}
+                            className={`blog-btn-tag ${
+                              selectedFilters?.includes(category)
+                                ? "active"
+                                : ""
+                            }`}
+                            key={`filters-${idx}`}
+                          >
+                            {category}
+                          </li>
+                        ))}
                       </ul>
                     </div>
                   </div>
@@ -51,67 +92,67 @@ const Blog = () => {
           <div className="row row-2 mt-lg-60 mt-tablet-40 mt-phone-35">
             <div className="col-lg-12 column-1">
               <ul className="list-blog grid-lg-25 grid-tablet-50">
-                {postes.map((data, index) => {
-                  return (
-                    <li key={index} className="grid-item" data-aos="d:loop">
-                      <Link
-                        to="/blog-post"
-                        className="link-blog link-blog-animation"
-                        data-aos="d:loop"
+                {filteredItems.map((data, index) => (
+                  <li
+                    key={`postes-${index}`}
+                    className="grid-item"
+                    data-aos="d:loop"
+                  >
+                    <Link
+                      to="/blog-post"
+                      className="link-blog link-blog-animation"
+                      data-aos="d:loop"
+                    >
+                      <div
+                        className="container-img bg-blue"
+                        data-cursor-style="view"
                       >
-                        <div
-                          className="container-img bg-blue"
-                          data-cursor-style="view"
-                        >
-                          <div className="wrapper-img">
-                            <img
-                              src={data.img}
-                              data-preload
-                              className="media"
-                              alt=""
-                            />
+                        <div className="wrapper-img">
+                          <img
+                            src={data.img}
+                            data-preload
+                            className="media"
+                            alt=""
+                          />
+                        </div>
+                      </div>
+                      <div className="container-text">
+                        <div className="container-author-post-info">
+                          <div className="author">
+                            <span className="author-name">{data.userName}</span>
+                          </div>
+                          <div className="date">
+                            <span>{data.date}</span>
                           </div>
                         </div>
-                        <div className="container-text">
-                          <div className="container-author-post-info">
-                            <div className="author">
-                              <span className="author-name">
-                                {data.userName}
+                        <h2 className="title-blog">{data.heading}</h2>
+                        <p className="text-blog">{data.p}</p>
+                        <ul className="list-tags-small">
+                          {Object.values(data.tags).map((tag, index) => (
+                            <React.Fragment key={index}>
+                              {index < 3 ? (
+                                <li
+                                  className={`tag-small ${
+                                    data.category?.includes(tag) ? "active" : ""
+                                  }`}
+                                >
+                                  <span>{tag}</span>
+                                </li>
+                              ) : null}
+                            </React.Fragment>
+                          ))}
+                          {Object.values(data.tags).length > 3 ? (
+                            <li className="tag-small">
+                              <span>
+                                +{Object.values(data.tags).length - 3} studios
                               </span>
-                            </div>
-                            <div className="date">
-                              <span>{data.date}</span>
-                            </div>
-                          </div>
-                          <h2 className="title-blog">{data.heading}</h2>
-                          <p className="text-blog">{data.p}</p>
-                          <ul className="list-tags-small">
-                            {Object.values(data.tags).map((tag, index) => (
-                              <React.Fragment key={index}>
-                                {index < 3 ? (
-                                  <li
-                                    className={`tag-small ${
-                                      index === 0 ? "active" : ""
-                                    }`}
-                                  >
-                                    <span>{tag}</span>
-                                  </li>
-                                ) : null}
-                              </React.Fragment>
-                            ))}
-                            {Object.values(data.tags).length > 3 ? (
-                              <li className="tag-small">
-                                <span>
-                                  +{Object.values(data.tags).length - 3} studios
-                                </span>
-                              </li>
-                            ) : null}
-                          </ul>
-                        </div>
-                      </Link>
-                    </li>
-                  );
-                })}
+                            </li>
+                          ) : null}
+                        </ul>
+                      </div>
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
             <div className="col-lg-2 offset-lg-5 flex-center mt-lg-70 mt-tablet-60 mt-phone-85">
