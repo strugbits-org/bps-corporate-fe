@@ -1,7 +1,7 @@
 import React from "react";
 // import img1 from "../../utilis/images/lib/01_desktop.jpg";
 import { Link } from "react-router-dom";
-import { ourprojectSlider } from "../../common/constats";
+import { ourprojectSlider } from "../../common/constats/constats";
 const OurProjectSection = () => {
   return (
     <section className="home-some-of-our-projects pt-lg-250 pt-mobile-130 pb-135">

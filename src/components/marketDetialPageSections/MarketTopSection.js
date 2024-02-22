@@ -1,6 +1,5 @@
-import React from 'react'
-import video from "../../utilis/images/lib/video.mp4#t=0.01"
-import img8 from "../../utilis/images/lib/08_desktop.jpg"
+import {heroSection} from "../../common/constats/marketData";
+
 const MarketTopSection = () => {
   return (
     <>
@@ -17,14 +16,13 @@ const MarketTopSection = () => {
                   className="fs--90 fs-phone-60 split-chars"
                   data-aos="d:loop"
                 >
-                  Wedding
+                  {heroSection.Hero1.title}
                 </h1>
                 <p
                   className="fs--40 fs-tablet-40 text text-center mt-20"
                   data-aos="fadeInUp .8s ease-out-cubic .5s, d:loop"
                 >
-                  We have a big soft spot for milestone events because they are
-                  so personal.
+                  {heroSection.Hero1.desc}
                 </p>
                 <btn-modal-open
                   group="modal-contact"
@@ -32,7 +30,7 @@ const MarketTopSection = () => {
                   data-aos="fadeInUp .8s ease-out-cubic .6s, d:loop"
                   data-cursor-style="off"
                 >
-                  <span>Let's Craft Magic Together</span>
+                  <span>{heroSection.Hero1.btntext}</span>
                   <i className="icon-arrow-right-2"></i>
                 </btn-modal-open>
               </div>
@@ -46,7 +44,7 @@ const MarketTopSection = () => {
           data-scale="1.2"
         >
           <img
-            src={img8}
+            src={heroSection.Hero1.img}
             data-preload
             className="media"
             alt=""
@@ -61,8 +59,8 @@ const MarketTopSection = () => {
             <div className="col-lg-4 offset-lg-4 column-1">
               <div className="container-img" data-aos="d:loop">
                 <video
-                  data-src={video}
-                  src={video}
+                  data-src={heroSection.Hero2.video}
+                  src={heroSection.Hero2.video}
                   data-preload
                   className="player-video media"
                   muted
@@ -76,26 +74,19 @@ const MarketTopSection = () => {
                 className="fs--40 fs-tablet-40 fs-phone-30 blue-3 text-center"
                 data-aos="fadeInUp .8s ease-out-cubic .1s, d:loop, trigger:.column-2"
               >
-                It's always an honor to be a trusted partner for these cherished
-                moments, and that is why we put love into every detail to
-                deliver the most beautiful expression of your dream celebration.
+                {heroSection.Hero2.desc1}
               </h2>
 
               <div
                 className="container-text fs-16 font-2 text-center white-1 mt-lg-20 mt-mobile-40"
                 data-aos="fadeInUp .8s ease-out-cubic .3s, d:loop, trigger:.column-2"
               >
-                <p>We put love into every wedding design detail.</p>
+                <p>{heroSection.Hero2.p1}</p>
                 <p>
-                  Weddings are a personal and memorable occasion. We make it our
-                  duty to bring special touches and provide you with seamless
-                  execution for a worry-free day.
+                  {heroSection.Hero2.p2}
                 </p>
                 <p>
-                  With 23 years of wedding setup and installation in over 500
-                  unique venues, including hotels, wineries, and backyards, no
-                  venue is too big or too small. Let us take care of putting
-                  your rental furnishings in place; you pop the champagne!
+                  {heroSection.Hero2.p3}
                 </p>
               </div>
             </div>
