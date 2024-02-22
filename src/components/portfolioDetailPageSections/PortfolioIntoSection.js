@@ -1,8 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+// import {portfolioData,OurCardData} from "../../common/constats/portfolioData";
 import img6 from "../../utilis/images/lib/06_desktop.jpg" 
+import { useParams } from "react-router-dom";
 
 const PortfolioIntoSection = () => {
+  const {id} = useParams();
+  console.log(id, "here is id");
   return (
     <section className="portfolio-post-intro pb-lg-250">
     <div className="wrapper-banner-img" data-aos>
@@ -154,7 +158,7 @@ const PortfolioIntoSection = () => {
                     <Link
                       to="/"
                       data-cursor-style="off"
-                      onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=portfolio-post','compartilhar', 'toolbar=0, status=0, width=650, height=450');"
+                      onClick="window.open('https://www.facebook.com/sharer/sharer.php?u=portfolio-post','compartilhar', 'toolbar=0, status=0, width=650, height=450');"
                     >
                       <span>Facebook</span>
                       <i className="icon-facebook"></i>
@@ -164,7 +168,7 @@ const PortfolioIntoSection = () => {
                     <Link
                       to="/"
                       data-cursor-style="off"
-                      onclick="window.open('https://twitter.com/intent/tweet?text=Portfolio Post portfolio-post','compartilhar', 'toolbar=0, status=0, width=650, height=450');"
+                      onClick="window.open('https://twitter.com/intent/tweet?text=Portfolio Post portfolio-post','compartilhar', 'toolbar=0, status=0, width=650, height=450');"
                     >
                       <span>X (Twitter)</span>
                       <i className="icon-x"></i>

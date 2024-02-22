@@ -1,16 +1,21 @@
 import { categoriesData } from "../../common/constats/portfolioData";
 import { Link } from "react-router-dom";
-import { OurCardData } from "../../common/constats/portfolioData";
+import { OurCardData , portfolioData } from "../../common/constats/portfolioData";
 import React from "react";
 
 const ExploreWorkSection = () => {
+  const dataTag = [
+    { name: "portfolio", cssClass: "list-portfolio-tags" },
+    { name: "market", cssClass: "list-market-tags" },
+  ];
+
   return (
     <section className="portfolio-intro pt-lg-145 pt-mobile-105">
       <div className="container-fluid">
         <div className="row">
           <div className="col-12 mb-lg-60 mb-tablet-40 mb-phone-35">
             <h1 className="fs--60 text-center split-words" data-aos="d:loop">
-              {categoriesData.title}
+              {portfolioData.title}
             </h1>
 
             <div
@@ -18,20 +23,25 @@ const ExploreWorkSection = () => {
               data-aos="fadeIn .8s ease-in-out .2s, d:loop"
             >
               {categoriesData.categories.map((data, index) => {
+                const { name, cssClass } = dataTag[index] || {};
                 return (
-                  // market-tags
-                  <div key={index} className="portfolio-tags">
+                  <div
+                    key={index}
+                    className={
+                      index % 2 !== 0 ? "market-tags" : "portfolio-tags"
+                    }
+                  >
                     <button
                       className="btn-tag-mobile no-desktop"
-                      data-set-tag="portfolio"
+                      data-set-tag={name || ""}
                     >
                       <span>{data.name}</span>
                       <i className="icon-arrow-down"></i>
                     </button>
-                    <div className="list-dropdown" data-get-tag="portfolio">
+                    <div className="list-dropdown" data-get-tag={name || ""}>
                       <div className="container-wrapper-list">
                         <div className="wrapper-list">
-                          <ul className="list-portfolio-tags list-dropdown-tags">
+                          <ul className={`${cssClass} list-dropdown-tags`}>
                             {data.tags.map((data, index) => {
                               return (
                                 <li key={index}>
@@ -66,7 +76,7 @@ const ExploreWorkSection = () => {
                 return (
                   <li key={index} className="grid-item">
                     <Link
-                      to="/portfolio-post"
+                      to={`/portfolio-post/${data.id}`}
                       className="link-portfolio link-portfolio-animation"
                       data-aos="d:loop"
                     >

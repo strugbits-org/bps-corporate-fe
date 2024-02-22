@@ -11,17 +11,9 @@ import imgm2 from "../../utilis/images/chairs/marais-chair-color-2.png";
 import imgm3 from "../../utilis/images/chairs/marais-chair-color-3.png";
 import imgm4 from "../../utilis/images/chairs/marais-chair-color-4.png";
 
-export const filter = {
+export const head = {
   title: "Read our blog posts",
   name: "All Categories",
-  Categories: [
-    { tag: "All Studios" },
-    { tag: "Event Design and Production" },
-    { tag: "Creative Services Agency" },
-    { tag: "Floral Design" },
-    { tag: "Custom Fabrication" },
-    { tag: "Printing Services" },
-  ],
 };
 
 export const postes = [
@@ -29,6 +21,7 @@ export const postes = [
     img: img,
     userName: "Lily Yeung",
     date: "Sep 30",
+    category: "Event Design and Production",
     heading: "A Taste Explosion: Event Design Extravaganza at Boa Restaurant",
     p: " Beverly Hills, renowned for its luxury and panache, witnessed an unforgettable evening that melded culinary wonders with unmatched event Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     tags: {
@@ -46,6 +39,7 @@ export const postes = [
     img: img,
     userName: "Lily Yeung",
     date: "Sep 30",
+    category: "Creative Services Agency",
     heading: "A Taste Explosion: Event Design Extravaganza at Boa Restaurant",
     p: " Beverly Hills, renowned for its luxury and panache, witnessed an unforgettable evening that melded culinary wonders with unmatched event Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     tags: {
@@ -63,6 +57,7 @@ export const postes = [
     img: img,
     userName: "Lily Yeung",
     date: "Sep 30",
+    category: "Creative Services Agency",
     heading: "A Taste Explosion: Event Design Extravaganza at Boa Restaurant",
     p: " Beverly Hills, renowned for its luxury and panache, witnessed an unforgettable evening that melded culinary wonders with unmatched event Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     tags: {
@@ -80,6 +75,7 @@ export const postes = [
     img: img,
     userName: "Lily Yeung",
     date: "Sep 30",
+    category: "Creative Services Agency",
     heading: "A Taste Explosion: Event Design Extravaganza at Boa Restaurant",
     p: " Beverly Hills, renowned for its luxury and panache, witnessed an unforgettable evening that melded culinary wonders with unmatched event Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     tags: {
@@ -97,6 +93,7 @@ export const postes = [
     img: img,
     userName: "Lily Yeung",
     date: "Sep 30",
+    category: "Floral Design",
     heading: "A Taste Explosion: Event Design Extravaganza at Boa Restaurant",
     p: " Beverly Hills, renowned for its luxury and panache, witnessed an unforgettable evening that melded culinary wonders with unmatched event Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     tags: {
@@ -114,6 +111,7 @@ export const postes = [
     img: img,
     userName: "Lily Yeung",
     date: "Sep 30",
+    category: "Creative Services Agency",
     heading: "A Taste Explosion: Event Design Extravaganza at Boa Restaurant",
     p: " Beverly Hills, renowned for its luxury and panache, witnessed an unforgettable evening that melded culinary wonders with unmatched event Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     tags: {
@@ -131,6 +129,7 @@ export const postes = [
     img: img,
     userName: "Lily Yeung",
     date: "Sep 30",
+    category: "Floral Design",
     heading: "A Taste Explosion: Event Design Extravaganza at Boa Restaurant",
     p: " Beverly Hills, renowned for its luxury and panache, witnessed an unforgettable evening that melded culinary wonders with unmatched event Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     tags: {
@@ -147,6 +146,7 @@ export const postes = [
     img: img,
     userName: "Lily Yeung",
     date: "Sep 30",
+    category: "Creative Services Agency",
     heading: "A Taste Explosion: Event Design Extravaganza at Boa Restaurant",
     p: " Beverly Hills, renowned for its luxury and panache, witnessed an unforgettable evening that melded culinary wonders with unmatched event Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     tags: {
@@ -161,6 +161,7 @@ export const postes = [
     img: img,
     userName: "Lily Yeung",
     date: "Sep 30",
+    category: "Creative Services Agency",
     heading: "A Taste Explosion: Event Design Extravaganza at Boa Restaurant",
     p: " Beverly Hills, renowned for its luxury and panache, witnessed an unforgettable evening that melded culinary wonders with unmatched event Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     tags: {
@@ -176,6 +177,7 @@ export const postes = [
     img: img,
     userName: "Lily Yeung",
     date: "Sep 30",
+    category: "Floral Design",
     heading: "A Taste Explosion: Event Design Extravaganza at Boa Restaurant",
     p: " Beverly Hills, renowned for its luxury and panache, witnessed an unforgettable evening that melded culinary wonders with unmatched event Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     tags: {
