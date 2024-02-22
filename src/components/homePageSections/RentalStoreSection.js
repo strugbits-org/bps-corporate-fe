@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { rentalData, rentalCards } from "../../common/constats";
+import { rentalData, rentalCards } from "../../common/constats/constats";
 
 const RentalStoreSection = () => {
   let transition = -35;

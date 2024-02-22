@@ -1,16 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import img1 from "../../../utilis/images/chairs/bristol-chair.png";
-import imgC1 from "../../../utilis/images/chairs/bristol-chair-color-1.png"
-import imgC2 from "../../../utilis/images/chairs/bristol-chair-color-2.png"
-import imgC3 from "../../../utilis/images/chairs/bristol-chair-color-3.png"
-import imgC4 from "../../../utilis/images/chairs/bristol-chair-color-4.png" 
-import imgd6 from "../../../utilis/images/lib/06_desktop.jpg"
-import imgd8 from "../../../utilis/images/lib/08_desktop.jpg"
-import imgd7 from "../../../utilis/images/lib/07_desktop.jpg"
-import imgd1 from "../../../utilis/images/lib/01_desktop.jpg"
-import imgd2 from "../../../utilis/images/lib/02_desktop.jpg"
+import imgC1 from "../../../utilis/images/chairs/bristol-chair-color-1.png";
+import imgC2 from "../../../utilis/images/chairs/bristol-chair-color-2.png";
+import imgC3 from "../../../utilis/images/chairs/bristol-chair-color-3.png";
+import imgC4 from "../../../utilis/images/chairs/bristol-chair-color-4.png";
+import imgd6 from "../../../utilis/images/lib/06_desktop.jpg";
+import imgd8 from "../../../utilis/images/lib/08_desktop.jpg";
+import imgd1 from "../../../utilis/images/lib/01_desktop.jpg";
+import imgd2 from "../../../utilis/images/lib/02_desktop.jpg";
 
+import { studioCard } from "../../../common/constats/constats";
+import { modelData } from "../../../common/constats/marketData";
 const Search = () => {
   return (
     <div className="container-fluid">
@@ -59,48 +60,17 @@ const Search = () => {
                     className="list-result-all-studios grid-lg-16 grid-tablet-33 grid-phone-50"
                     data-aos
                   >
-                    <li className="grid-item">
-                      <Link to="/" className="link-studios">
-                        <h3 className="title-all-studios">
-                          <span>Event Design And Prodution</span>
-                        </h3>
-                      </Link>
-                    </li>
-                    <li className="grid-item">
-                      <Link to="/" className="link-studios">
-                        <h3 className="title-all-studios">
-                          <span>Creative Services Agency</span>
-                        </h3>
-                      </Link>
-                    </li>
-                    <li className="grid-item">
-                      <Link to="/" className="link-studios">
-                        <h3 className="title-all-studios">
-                          <span>Floral Design</span>
-                        </h3>
-                      </Link>
-                    </li>
-                    <li className="grid-item">
-                      <Link to="/" className="link-studios">
-                        <h3 className="title-all-studios">
-                          <span>Custom Fabrication</span>
-                        </h3>
-                      </Link>
-                    </li>
-                    <li className="grid-item">
-                      <Link to="/" className="link-studios">
-                        <h3 className="title-all-studios">
-                          <span>Printing Services</span>
-                        </h3>
-                      </Link>
-                    </li>
-                    <li className="grid-item">
-                      <Link to="/" className="link-studios">
-                        <h3 className="title-all-studios">
-                          <span>Rentals Studios</span>
-                        </h3>
-                      </Link>
-                    </li>
+                    {studioCard.map((data, index) => {
+                      return (
+                        <li key={index} className="grid-item">
+                          <Link to="/" className="link-studios">
+                            <h3 className="title-all-studios">
+                              <span>{data.name}</span>
+                            </h3>
+                          </Link>
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
 
@@ -379,7 +349,6 @@ const Search = () => {
                               </div>
                             </Link>
                           </div>
-
                           <div className="swiper-slide grid-item">
                             <Link to="/" className="link-portfolio">
                               <div className="container-img">
@@ -454,91 +423,35 @@ const Search = () => {
                     className="list-result-our-markets list-projects font-35 grid-md-50"
                     data-aos
                   >
-                    <li className="grid-item">
-                      <Link
-                        to="/market-post"
-                        className="market-link project-link"
-                        data-cursor-style="view"
-                        data-menu-close
-                      >
-                        <div
-                          className="container-img bg-blue"
-                          data-cursor-style="view"
-                        >
-                          <img
-                            src={imgd6}
-                            data-preload
-                            className="media"
-                            alt=""
-                          />
-                        </div>
-                        <div className="container-text">
-                          <h3 className="title-project split-words">
-                            Corporate
-                          </h3>
-                        </div>
-                      </Link>
-                    </li>
-                    <li className="grid-item">
-                      <Link
-                        to="/"
-                        className="market-link project-link link-result-our-markets"
-                      >
-                        <div className="container-img bg-blue">
-                          <div className="wrapper-img">
-                            <img
-                              src={imgd6}
-                              data-preload
-                              className="media"
-                              alt=""
-                            />
-                          </div>
-                        </div>
-                        <div className="container-text">
-                          <h3 className="title-project">Corporate</h3>
-                        </div>
-                      </Link>
-                    </li>
-                    <li className="grid-item">
-                      <Link
-                        to="/"
-                        className="market-link project-link link-result-our-markets"
-                      >
-                        <div className="container-img bg-blue">
-                          <div className="wrapper-img">
-                            <img
-                              src={imgd7}
-                              data-preload
-                              className="media"
-                              alt=""
-                            />
-                          </div>
-                        </div>
-                        <div className="container-text">
-                          <h3 className="title-project">Tradeshows</h3>
-                        </div>
-                      </Link>
-                    </li>
-                    <li className="grid-item">
-                      <Link
-                        to="/"
-                        className="market-link project-link link-result-our-markets"
-                      >
-                        <div className="container-img bg-blue">
-                          <div className="wrapper-img">
-                            <img
-                              src={imgd1}
-                              data-preload
-                              className="media"
-                              alt=""
-                            />
-                          </div>
-                        </div>
-                        <div className="container-text">
-                          <h3 className="title-project">Social</h3>
-                        </div>
-                      </Link>
-                    </li>
+                    {modelData.map((data, index) => {
+                      return (
+                        <li key={index} className="grid-item">
+                          <Link
+                            to="/market-post"
+                            className="market-link project-link"
+                            data-cursor-style="view"
+                            data-menu-close
+                          >
+                            <div
+                              className="container-img bg-blue"
+                              data-cursor-style="view"
+                            >
+                              <img
+                                src={data.img}
+                                data-preload
+                                className="media"
+                                alt=""
+                              />
+                            </div>
+                            <div className="container-text">
+                              <h3 className="title-project split-words">
+                                {data.title}
+                              </h3>
+                            </div>
+                          </Link>
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
 
