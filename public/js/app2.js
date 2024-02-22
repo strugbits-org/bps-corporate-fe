@@ -15848,6 +15848,7 @@ var require_app2 = __commonJS({
     function main() {
       dropdownTags();
     }
+    
     const pgBlog = new Page({
       pageName,
       main

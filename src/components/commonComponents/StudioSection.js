@@ -1,5 +1,5 @@
 import React from 'react'
-import {dataStudio, studioCard} from "../../common/constats";
+import {dataStudio, studioCard} from "../../common/constats/constats";
 
 const StudioSection = () => {
   return (
