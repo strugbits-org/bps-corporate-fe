@@ -154,7 +154,7 @@ const PortfolioIntoSection = () => {
                     <Link
                       to="/"
                       data-cursor-style="off"
-                      onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=portfolio-post','compartilhar', 'toolbar=0, status=0, width=650, height=450');"
+                      onClick="window.open('https://www.facebook.com/sharer/sharer.php?u=portfolio-post','compartilhar', 'toolbar=0, status=0, width=650, height=450');"
                     >
                       <span>Facebook</span>
                       <i className="icon-facebook"></i>
@@ -164,7 +164,7 @@ const PortfolioIntoSection = () => {
                     <Link
                       to="/"
                       data-cursor-style="off"
-                      onclick="window.open('https://twitter.com/intent/tweet?text=Portfolio Post portfolio-post','compartilhar', 'toolbar=0, status=0, width=650, height=450');"
+                      onClick="window.open('https://twitter.com/intent/tweet?text=Portfolio Post portfolio-post','compartilhar', 'toolbar=0, status=0, width=650, height=450');"
                     >
                       <span>X (Twitter)</span>
                       <i className="icon-x"></i>

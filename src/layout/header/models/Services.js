@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
 import imgS1 from "../../../utilis/images/services/service1.jpg";
 import imgS2 from "../../../utilis/images/services/service2.jpg";
 import imgS3 from "../../../utilis/images/services/service3.jpg";
 import imgS4 from "../../../utilis/images/services/service4.jpg";
 import imgS5 from "../../../utilis/images/services/service5.jpg";
+import DelayedLink from "../../../common/DelayedLink";
 
 const Services = () => {
   return (
@@ -17,10 +17,10 @@ const Services = () => {
                 </div>
                 <ul className="list-submenu-services list-submenu">
                   <li>
-                    <Link
+                    <DelayedLink
                       to="/services-post"
                       className="service-link"
-                      data-menu-close
+                      attributes={{"data-menu-close":""}}
                     >
                       <div className="container-img bg-blue">
                         <img
@@ -34,13 +34,13 @@ const Services = () => {
                         Event Design and Production
                       </h2>
                       <span className="number">01</span>
-                    </Link>
+                    </DelayedLink>
                   </li>
                   <li>
-                    <Link
+                    <DelayedLink
                       to="/services-post"
                       className="service-link"
-                      data-menu-close
+                      attributes={{"data-menu-close":""}}
                     >
                       <div className="container-img bg-blue">
                         <img
@@ -54,13 +54,13 @@ const Services = () => {
                         Creative Services Agency
                       </h2>
                       <span className="number">02</span>
-                    </Link>
+                    </DelayedLink>
                   </li>
                   <li>
-                    <Link
+                    <DelayedLink
                       to="/services-post"
                       className="service-link"
-                      data-menu-close
+                      attributes={{"data-menu-close":""}}
                     >
                       <div className="container-img bg-blue">
                         <img
@@ -72,13 +72,13 @@ const Services = () => {
                       </div>
                       <h2 className="service-title split-words">Floral Design</h2>
                       <span className="number">03</span>
-                    </Link>
+                    </DelayedLink>
                   </li>
                   <li>
-                    <Link
+                    <DelayedLink
                       to="/services-post"
                       className="service-link"
-                      data-menu-close
+                      attributes={{"data-menu-close":""}}
                     >
                       <div className="container-img bg-blue">
                         <img
@@ -92,13 +92,13 @@ const Services = () => {
                         Custom Fabrication
                       </h2>
                       <span className="number">04</span>
-                    </Link>
+                    </DelayedLink>
                   </li>
                   <li>
-                    <Link
+                    <DelayedLink
                       to="/services-post"
                       className="service-link"
-                      data-menu-close
+                      attributes={{"data-menu-close":""}}
                     >
                       <div className="container-img bg-blue">
                         <img
@@ -112,7 +112,7 @@ const Services = () => {
                         Printing Services
                       </h2>
                       <span className="number">05</span>
-                    </Link>
+                    </DelayedLink>
                   </li>
                 </ul>
               </div>

@@ -1,6 +1,7 @@
 import React from "react";
 import img6 from "../../utilis/images/lib/06_desktop.jpg"
-import { Link } from "react-router-dom";
+import DelayedLink from "../../common/DelayedLink";
+
 const IntroSection = () => {
   return (
     <>
@@ -52,20 +53,22 @@ const IntroSection = () => {
         </div>
 
         <div className="wrapper-content z-4 content-3">
-          <Link
+          <DelayedLink
             to="/"
             className="btn-border-blue"
-            data-cursor-style="off"
-            data-parallax
-            data-trigger=".about-intro"
-            data-translate-y-from="20vh"
-            data-translate-y="5vh"
-            data-end="95% center"
-            data-start="60% center"
+            attributes={{
+              "data-cursor-style": "off",
+              "data-parallax": "",
+              "data-trigger": ".about-intro",
+              "data-translate-y-from": "20vh",
+              "data-translate-y": "5vh",
+              "data-end": "95% center",
+              "data-start": "60% center",
+            }}
           >
             <span>Watch the video</span>
             <i className="icon-arrow-right-2"></i>
-          </Link>
+          </DelayedLink>
         </div>
       </section>
       <section className="about-events pt-30">

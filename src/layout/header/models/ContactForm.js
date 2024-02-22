@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import DelayedLink from '../../../common/DelayedLink'
 
 const ContactForm = () => {
   return (
@@ -87,53 +87,61 @@ const ContactForm = () => {
             <div className="column-2">
               <div className="container-info">
                 <div className="container-tel">
-                  <Link to="tel:">
+                  <DelayedLink to="tel:">
                     <span>SF (415) 922-9004</span>
-                  </Link>
-                  <Link to="tel:">
+                  </DelayedLink>
+                  <DelayedLink to="tel:">
                     <span>LV (702) 757-7987</span>
-                  </Link>
+                  </DelayedLink>
                 </div>
-                <Link to="mailto:info@blueprintstudios.com">
+                <DelayedLink to="mailto:info@blueprintstudios.com">
                   <span>info@blueprintstudios.com</span>
-                </Link>
+                </DelayedLink>
               </div>
               <ul className="list-social-media">
                 <li>
-                  <Link
+                  <DelayedLink
                     to="/"
                     target="_blank"
-                    rel="noopener noreferrer"
+                    attributes={{
+                      "rel":"noopener noreferrer"
+                    }}
                   >
                     <i className="icon-facebook"></i>
-                  </Link>
+                  </DelayedLink>
                 </li>
                 <li>
-                  <Link
+                  <DelayedLink
                     to="/"
                     target="_blank"
-                    rel="noopener noreferrer"
+                    attributes={{
+                      "rel":"noopener noreferrer"
+                    }}
                   >
                     <i className="icon-instagram"></i>
-                  </Link>
+                  </DelayedLink>
                 </li>
                 <li>
-                  <Link
+                  <DelayedLink
                     to="/"
                     target="_blank"
-                    rel="noopener noreferrer"
+                    attributes={{
+                      "rel":"noopener noreferrer"
+                    }}
                   >
                     <i className="icon-x"></i>
-                  </Link>
+                  </DelayedLink>
                 </li>
                 <li>
-                  <Link
+                  <DelayedLink
                     to="/"
                     target="_blank"
-                    rel="noopener noreferrer"
+                    attributes={{
+                      "rel":"noopener noreferrer"
+                    }}
                   >
                     <i className="icon-linkedin"></i>
-                  </Link>
+                  </DelayedLink>
                 </li>
               </ul>
               <ul className="list-address">
@@ -144,12 +152,12 @@ const ContactForm = () => {
                     St. Helena, CA 94574
                   </address>
                   <div className="phones">
-                    <Link to="tel:">
+                    <DelayedLink to="tel:">
                       <span>P / 707742.7777</span>
-                    </Link>
-                    <Link to="tel:">
+                    </DelayedLink>
+                    <DelayedLink to="tel:">
                       <span>F / 415.822.8844</span>
-                    </Link>
+                    </DelayedLink>
                   </div>
                 </li>
                 <li>
@@ -160,9 +168,9 @@ const ContactForm = () => {
                     Las Vegas, NV 89113
                   </address>
                   <div className="phones">
-                    <Link to="tel:">
+                    <DelayedLink to="tel:">
                       <span>P / 702.757.7987</span>
-                    </Link>
+                    </DelayedLink>
                   </div>
                 </li>
                 <li>
@@ -172,12 +180,12 @@ const ContactForm = () => {
                     S. San Francisco, CA 94080
                   </address>
                   <div className="phones">
-                    <Link to="tel:">
+                    <DelayedLink to="tel:">
                       <span>P / 415.922.9004</span>
-                    </Link>
-                    <Link to="tel:">
+                    </DelayedLink>
+                    <DelayedLink to="tel:">
                       <span>F / 415.822.8844</span>
-                    </Link>
+                    </DelayedLink>
                   </div>
                 </li>
               </ul>

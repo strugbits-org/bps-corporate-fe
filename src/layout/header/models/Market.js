@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import img6 from "../../../utilis/images/lib/06_desktop.jpg"
+import DelayedLink from "../../../common/DelayedLink";
 const Market = () => {
   return (
     <div className="wrapper-submenu-market wrapper-submenu">
@@ -13,11 +13,10 @@ const Market = () => {
                   </div>
                   <ul className="list-submenu-market list-submenu list-projects font-submenu">
                     <li className="list-item">
-                      <Link
+                      <DelayedLink
                         to="/market-post"
                         className="market-link project-link"
-                        data-cursor-style="view"
-                        data-menu-close
+                        attributes={{"data-menu-close":"","data-cursor-style":"view"}}
                       >
                         <div
                           className="container-img bg-blue"
@@ -46,14 +45,13 @@ const Market = () => {
                             </li>
                           </ul>
                         </div>
-                      </Link>
+                      </DelayedLink>
                     </li>
                     <li className="list-item">
-                      <Link
+                      <DelayedLink
                         to="/market-post"
                         className="market-link project-link"
-                        data-cursor-style="view"
-                        data-menu-close
+                        attributes={{"data-menu-close":"","data-cursor-style":"view"}}
                       >
                         <div
                           className="container-img bg-blue"
@@ -82,14 +80,13 @@ const Market = () => {
                             </li>
                           </ul>
                         </div>
-                      </Link>
+                      </DelayedLink>
                     </li>
                     <li className="list-item">
-                      <Link
+                      <DelayedLink
                         to="/market-post"
                         className="market-link project-link"
-                        data-cursor-style="view"
-                        data-menu-close
+                        attributes={{"data-menu-close":"","data-cursor-style":"view"}}
                       >
                         <div
                           className="container-img bg-blue"
@@ -118,14 +115,13 @@ const Market = () => {
                             </li>
                           </ul>
                         </div>
-                      </Link>
+                      </DelayedLink>
                     </li>
                     <li className="list-item">
-                      <Link
+                      <DelayedLink
                         to="/market-post"
                         className="market-link project-link"
-                        data-cursor-style="view"
-                        data-menu-close
+                        attributes={{"data-menu-close":"","data-cursor-style":"view"}}
                       >
                         <div
                           className="container-img bg-blue"
@@ -154,7 +150,7 @@ const Market = () => {
                             </li>
                           </ul>
                         </div>
-                      </Link>
+                      </DelayedLink>
                     </li>
                   </ul>
                 </div>

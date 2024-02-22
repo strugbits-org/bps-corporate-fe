@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import img1 from "../../../utilis/images/chairs/bristol-chair.png";
 import imgC1 from "../../../utilis/images/chairs/bristol-chair-color-1.png"
 import imgC2 from "../../../utilis/images/chairs/bristol-chair-color-2.png"
@@ -10,6 +9,7 @@ import imgd8 from "../../../utilis/images/lib/08_desktop.jpg"
 import imgd7 from "../../../utilis/images/lib/07_desktop.jpg"
 import imgd1 from "../../../utilis/images/lib/01_desktop.jpg"
 import imgd2 from "../../../utilis/images/lib/02_desktop.jpg"
+import DelayedLink from "../../../common/DelayedLink";
 
 const Search = () => {
   return (
@@ -60,46 +60,46 @@ const Search = () => {
                     data-aos
                   >
                     <li className="grid-item">
-                      <Link to="/" className="link-studios">
+                      <DelayedLink to="/" className="link-studios">
                         <h3 className="title-all-studios">
                           <span>Event Design And Prodution</span>
                         </h3>
-                      </Link>
+                      </DelayedLink>
                     </li>
                     <li className="grid-item">
-                      <Link to="/" className="link-studios">
+                      <DelayedLink to="/" className="link-studios">
                         <h3 className="title-all-studios">
                           <span>Creative Services Agency</span>
                         </h3>
-                      </Link>
+                      </DelayedLink>
                     </li>
                     <li className="grid-item">
-                      <Link to="/" className="link-studios">
+                      <DelayedLink to="/" className="link-studios">
                         <h3 className="title-all-studios">
                           <span>Floral Design</span>
                         </h3>
-                      </Link>
+                      </DelayedLink>
                     </li>
                     <li className="grid-item">
-                      <Link to="/" className="link-studios">
+                      <DelayedLink to="/" className="link-studios">
                         <h3 className="title-all-studios">
                           <span>Custom Fabrication</span>
                         </h3>
-                      </Link>
+                      </DelayedLink>
                     </li>
                     <li className="grid-item">
-                      <Link to="/" className="link-studios">
+                      <DelayedLink to="/" className="link-studios">
                         <h3 className="title-all-studios">
                           <span>Printing Services</span>
                         </h3>
-                      </Link>
+                      </DelayedLink>
                     </li>
                     <li className="grid-item">
-                      <Link to="/" className="link-studios">
+                      <DelayedLink to="/" className="link-studios">
                         <h3 className="title-all-studios">
                           <span>Rentals Studios</span>
                         </h3>
-                      </Link>
+                      </DelayedLink>
                     </li>
                   </ul>
                 </div>
@@ -110,10 +110,14 @@ const Search = () => {
                       <h2 className="title-results split-chars" data-aos>
                         Rental <span>“Wedding”</span>
                       </h2>
-                      <Link to="/" className="btn-border-blue" data-aos>
+                      <DelayedLink to="/" className="btn-border-blue"
+                        attributes={{
+                          "data-aos": "",
+                        }}
+                        >
                         <span>See more</span>
                         <i className="icon-arrow-right"></i>
-                      </Link>
+                      </DelayedLink>
                     </div>
                     <div className="slider-content-phone">
                       <div className="swiper-container">
@@ -123,7 +127,7 @@ const Search = () => {
                         >
                           <div className="swiper-slide grid-item">
                             <div className="rental-product-link">
-                              <Link to="/" className="product-link">
+                              <DelayedLink to="/" className="product-link">
                                 <h3 className="product-name">Bristol Chair</h3>
 
                                 <div className="wrapper-img">
@@ -189,12 +193,12 @@ const Search = () => {
                                     <span>+3</span>
                                   </div>
                                 </div>
-                              </Link>
+                              </DelayedLink>
                             </div>
                           </div>
                           <div className="swiper-slide grid-item">
                             <div className="rental-product-link">
-                              <Link to="/" className="product-link">
+                              <DelayedLink to="/" className="product-link">
                                 <h3 className="product-name">Bristol Chair</h3>
 
                                 <div className="wrapper-img">
@@ -260,12 +264,12 @@ const Search = () => {
                                     <span>+3</span>
                                   </div>
                                 </div>
-                              </Link>
+                              </DelayedLink>
                             </div>
                           </div>
                           <div className="swiper-slide grid-item">
                             <div className="rental-product-link">
-                              <Link to="/" className="product-link">
+                              <DelayedLink to="/" className="product-link">
                                 <h3 className="product-name">Bristol Chair</h3>
 
                                 <div className="wrapper-img">
@@ -331,7 +335,7 @@ const Search = () => {
                                     <span>+3</span>
                                   </div>
                                 </div>
-                              </Link>
+                              </DelayedLink>
                             </div>
                           </div>
                         </div>
@@ -343,10 +347,12 @@ const Search = () => {
                       <h2 className="title-results split-chars" data-aos>
                         Portfolio <span>“Wedding”</span>
                       </h2>
-                      <Link to="/" className="btn-border-blue" data-aos>
+                      <DelayedLink to="/" className="btn-border-blue" attributes={{
+                          "data-aos": "",
+                        }}>
                         <span>See more</span>
                         <i className="icon-arrow-right"></i>
-                      </Link>
+                      </DelayedLink>
                     </div>
                     <div className="slider-content-phone">
                       <div className="swiper-container">
@@ -355,7 +361,7 @@ const Search = () => {
                           data-aos
                         >
                           <div className="swiper-slide grid-item">
-                            <Link
+                            <DelayedLink
                               to="/portfolio-post"
                               className="link-portfolio"
                             >
@@ -377,11 +383,11 @@ const Search = () => {
                                   F1 Las Vegas Grand Prix
                                 </h2>
                               </div>
-                            </Link>
+                            </DelayedLink>
                           </div>
 
                           <div className="swiper-slide grid-item">
-                            <Link to="/" className="link-portfolio">
+                            <DelayedLink to="/" className="link-portfolio">
                               <div className="container-img">
                                 <img
                                   src={imgd8}
@@ -393,10 +399,10 @@ const Search = () => {
                               <h3 className="title-portfolio">
                                 Brasil Design Awards 2023
                               </h3>
-                            </Link>
+                            </DelayedLink>
                           </div>
                           <div className="swiper-slide grid-item">
-                            <Link to="/" className="link-portfolio">
+                            <DelayedLink to="/" className="link-portfolio">
                               <div className="container-img">
                                 <img
                                   src={imgd8}
@@ -408,10 +414,10 @@ const Search = () => {
                               <h3 className="title-portfolio">
                                 Brasil Design Awards 2023
                               </h3>
-                            </Link>
+                            </DelayedLink>
                           </div>
                           <div className="swiper-slide grid-item">
-                            <Link to="/" className="link-portfolio">
+                            <DelayedLink to="/" className="link-portfolio">
                               <div className="container-img">
                                 <img
                                   src={imgd1}
@@ -423,10 +429,10 @@ const Search = () => {
                               <h3 className="title-portfolio">
                                 Latin American Design Awards 2023
                               </h3>
-                            </Link>
+                            </DelayedLink>
                           </div>
                           <div className="swiper-slide grid-item">
-                            <Link to="/" className="link-portfolio">
+                            <DelayedLink to="/" className="link-portfolio">
                               <div className="container-img">
                                 <img
                                   src={imgd2}
@@ -436,7 +442,7 @@ const Search = () => {
                                 />
                               </div>
                               <h3 className="title-portfolio">Wedding</h3>
-                            </Link>
+                            </DelayedLink>
                           </div>
                         </div>
                       </div>
@@ -455,11 +461,13 @@ const Search = () => {
                     data-aos
                   >
                     <li className="grid-item">
-                      <Link
+                      <DelayedLink
                         to="/market-post"
                         className="market-link project-link"
-                        data-cursor-style="view"
-                        data-menu-close
+                        attributes={{
+                          "data-cursor-style": "view",
+                          "data-menu-close": "",
+                        }}
                       >
                         <div
                           className="container-img bg-blue"
@@ -477,10 +485,10 @@ const Search = () => {
                             Corporate
                           </h3>
                         </div>
-                      </Link>
+                      </DelayedLink>
                     </li>
                     <li className="grid-item">
-                      <Link
+                      <DelayedLink
                         to="/"
                         className="market-link project-link link-result-our-markets"
                       >
@@ -497,10 +505,10 @@ const Search = () => {
                         <div className="container-text">
                           <h3 className="title-project">Corporate</h3>
                         </div>
-                      </Link>
+                      </DelayedLink>
                     </li>
                     <li className="grid-item">
-                      <Link
+                      <DelayedLink
                         to="/"
                         className="market-link project-link link-result-our-markets"
                       >
@@ -517,10 +525,10 @@ const Search = () => {
                         <div className="container-text">
                           <h3 className="title-project">Tradeshows</h3>
                         </div>
-                      </Link>
+                      </DelayedLink>
                     </li>
                     <li className="grid-item">
-                      <Link
+                      <DelayedLink
                         to="/"
                         className="market-link project-link link-result-our-markets"
                       >
@@ -537,7 +545,7 @@ const Search = () => {
                         <div className="container-text">
                           <h3 className="title-project">Social</h3>
                         </div>
-                      </Link>
+                      </DelayedLink>
                     </li>
                   </ul>
                 </div>
@@ -547,10 +555,13 @@ const Search = () => {
                     <h2 className="title-results split-chars" data-aos>
                       Blog <span>“Wedding”</span>
                     </h2>
-                    <Link to="/" className="btn-border-blue" data-aos>
+                    <DelayedLink to="/" className="btn-border-blue" 
+                    attributes={{
+                      "data-aos": "",
+                    }}>
                       <span>See more</span>
                       <i className="icon-arrow-right"></i>
-                    </Link>
+                    </DelayedLink>
                   </div>
 
                   <div className="slider-content-search-blog">
@@ -560,7 +571,7 @@ const Search = () => {
                         data-aos
                       >
                         <div className="swiper-slide grid-item">
-                          <Link to="/blog-post" className="link-blog">
+                          <DelayedLink to="/blog-post" className="link-blog">
                             <div
                               className="container-img bg-blue"
                               data-cursor-style="view"
@@ -597,10 +608,10 @@ const Search = () => {
                                 adipiscing elit.
                               </p>
                             </div>
-                          </Link>
+                          </DelayedLink>
                         </div>
                         <div className="swiper-slide grid-item">
-                          <Link to="/blog-post" className="link-blog">
+                          <DelayedLink to="/blog-post" className="link-blog">
                             <div
                               className="container-img bg-blue"
                               data-cursor-style="view"
@@ -637,10 +648,10 @@ const Search = () => {
                                 adipiscing elit.
                               </p>
                             </div>
-                          </Link>
+                          </DelayedLink>
                         </div>
                         <div className="swiper-slide grid-item">
-                          <Link to="/blog-post" className="link-blog">
+                          <DelayedLink to="/blog-post" className="link-blog">
                             <div
                               className="container-img bg-blue"
                               data-cursor-style="view"
@@ -677,7 +688,7 @@ const Search = () => {
                                 adipiscing elit.
                               </p>
                             </div>
-                          </Link>
+                          </DelayedLink>
                         </div>
                         <div className="swiper-slide grid-item">
                           <a href="blog-post.html" className="link-blog">
@@ -720,7 +731,7 @@ const Search = () => {
                           </a>
                         </div>
                         <div className="swiper-slide grid-item">
-                          <Link to="/blog-post" className="link-blog">
+                          <DelayedLink to="/blog-post" className="link-blog">
                             <div
                               className="container-img bg-blue"
                               data-cursor-style="view"
@@ -757,7 +768,7 @@ const Search = () => {
                                 adipiscing elit.
                               </p>
                             </div>
-                          </Link>
+                          </DelayedLink>
                         </div>
                       </div>
                     </div>
@@ -775,17 +786,17 @@ const Search = () => {
                     data-aos
                   >
                     <li className="grid-item">
-                      <Link to="/" className="link-order-pages">
+                      <DelayedLink to="/" className="link-order-pages">
                         <h3 className="title-order-pages">About</h3>
                         <p className="text-order-pages">
                           In the heart of the great outdoors, with nature as our
                           backdrop, Blueprint Studios embarked on a creative
                           journey - a photoshoot
                         </p>
-                      </Link>
+                      </DelayedLink>
                     </li>
                     <li className="grid-item">
-                      <Link to="/" className="link-order-pages">
+                      <DelayedLink to="/" className="link-order-pages">
                         <h3 className="title-order-pages">Lorem ipsum dolor</h3>
                         <p className="text-order-pages">
                           Etiam mi felis, commodo eu augue in, sagittis faucibus
@@ -797,10 +808,10 @@ const Search = () => {
                           faucibus orci luctus et ultrices posuere cubilia
                           curae; Nullam efficitur ac urna at vehicula.
                         </p>
-                      </Link>
+                      </DelayedLink>
                     </li>
                     <li className="grid-item">
-                      <Link to="/" className="link-order-pages">
+                      <DelayedLink to="/" className="link-order-pages">
                         <h3 className="title-order-pages">
                           Donec vel sem at enim
                         </h3>
@@ -811,10 +822,10 @@ const Search = () => {
                           Nam sit amet odio justo. Pellentesque vitae dolor at
                           ipsum mollis malesuada. Aliquam non dolor augue.
                         </p>
-                      </Link>
+                      </DelayedLink>
                     </li>
                     <li className="grid-item">
-                      <Link to="/" className="link-order-pages">
+                      <DelayedLink to="/" className="link-order-pages">
                         <h3 className="title-order-pages">
                           Etiam ultricies nulla
                         </h3>
@@ -826,10 +837,10 @@ const Search = () => {
                           Etiam ultricies nulla volutpat lorem lobortis, sed
                           sollicitudin arcu pretium.
                         </p>
-                      </Link>
+                      </DelayedLink>
                     </li>
                     <li className="grid-item">
-                      <Link to="/" className="link-order-pages">
+                      <DelayedLink to="/" className="link-order-pages">
                         <h3 className="title-order-pages">
                           Quisque lacinia nisi
                         </h3>
@@ -838,7 +849,7 @@ const Search = () => {
                           quis nunc. Morbi posuere nibh purus, eget molestie
                           erat scelerisque a. Phasellus ut mauris mi.
                         </p>
-                      </Link>
+                      </DelayedLink>
                     </li>
                   </ul>
                 </div>

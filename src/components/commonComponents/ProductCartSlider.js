@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import img1 from "../../utilis/images/chairs/bristol-chair.png"
 import img2 from "../../utilis/images/chairs/bristol-chair-color-1.png"
 import img3 from "../../utilis/images/chairs/bristol-chair-color-2.png"
@@ -11,6 +10,7 @@ import imgm1 from "../../utilis/images/chairs/marais-chair-color-1.png"
 import imgm2 from "../../utilis/images/chairs/marais-chair-color-2.png"
 import imgm3 from "../../utilis/images/chairs/marais-chair-color-3.png"
 import imgm4 from "../../utilis/images/chairs/marais-chair-color-4.png" 
+import DelayedLink from "../../common/DelayedLink";
 
 const ProductCartSlider = () => {
   return (
@@ -24,7 +24,7 @@ const ProductCartSlider = () => {
                 <i className="icon-bookmark-full"></i>
               </button>
 
-              <Link to="/" className="product-link">
+              <DelayedLink to="/" className="product-link">
                 <h3 className="product-name">Bristol Chair</h3>
 
                 <div className="wrapper-img">
@@ -90,7 +90,7 @@ const ProductCartSlider = () => {
                     <span>+3</span>
                   </div>
                 </div>
-              </Link>
+              </DelayedLink>
             </div>
           </div>
 
@@ -101,7 +101,7 @@ const ProductCartSlider = () => {
                 <i className="icon-bookmark-full"></i>
               </button>
 
-              <Link to="/" className="product-link">
+              <DelayedLink to="/" className="product-link">
                 <h3 className="product-name">Manette Pillow</h3>
 
                 <div className="wrapper-img">
@@ -167,7 +167,7 @@ const ProductCartSlider = () => {
                     <span>+3</span>
                   </div>
                 </div>
-              </Link>
+              </DelayedLink>
             </div>
           </div>
 
@@ -178,7 +178,7 @@ const ProductCartSlider = () => {
                 <i className="icon-bookmark-full"></i>
               </button>
 
-              <Link to="/" className="product-link">
+              <DelayedLink to="/" className="product-link">
                 <h3 className="product-name">Marais Chair</h3>
 
                 <div className="wrapper-img">
@@ -244,7 +244,7 @@ const ProductCartSlider = () => {
                     <span>+3</span>
                   </div>
                 </div>
-              </Link>
+              </DelayedLink>
             </div>
           </div>
           <div className="swiper-slide">
@@ -254,7 +254,7 @@ const ProductCartSlider = () => {
                 <i className="icon-bookmark-full"></i>
               </button>
 
-              <Link to="/" className="product-link">
+              <DelayedLink to="/" className="product-link">
                 <h3 className="product-name">Bristol Chair</h3>
 
                 <div className="wrapper-img">
@@ -320,7 +320,7 @@ const ProductCartSlider = () => {
                     <span>+3</span>
                   </div>
                 </div>
-              </Link>
+              </DelayedLink>
             </div>
           </div>
 
@@ -331,7 +331,7 @@ const ProductCartSlider = () => {
                 <i className="icon-bookmark-full"></i>
               </button>
 
-              <Link to="/" className="product-link">
+              <DelayedLink to="/" className="product-link">
                 <h3 className="product-name">Manette Pillow</h3>
 
                 <div className="wrapper-img">
@@ -397,7 +397,7 @@ const ProductCartSlider = () => {
                     <span>+3</span>
                   </div>
                 </div>
-              </Link>
+              </DelayedLink>
             </div>
           </div>
 
@@ -408,7 +408,7 @@ const ProductCartSlider = () => {
                 <i className="icon-bookmark-full"></i>
               </button>
 
-              <Link to="/" className="product-link">
+              <DelayedLink to="/" className="product-link">
                 <h3 className="product-name">Marais Chair</h3>
 
                 <div className="wrapper-img">
@@ -474,7 +474,7 @@ const ProductCartSlider = () => {
                     <span>+3</span>
                   </div>
                 </div>
-              </Link>
+              </DelayedLink>
             </div>
           </div>
           <div className="swiper-slide">
@@ -484,7 +484,7 @@ const ProductCartSlider = () => {
                 <i className="icon-bookmark-full"></i>
               </button>
 
-              <Link to="/" className="product-link">
+              <DelayedLink to="/" className="product-link">
                 <h3 className="product-name">Bristol Chair</h3>
 
                 <div className="wrapper-img">
@@ -550,7 +550,7 @@ const ProductCartSlider = () => {
                     <span>+3</span>
                   </div>
                 </div>
-              </Link>
+              </DelayedLink>
             </div>
           </div>
 
@@ -561,7 +561,7 @@ const ProductCartSlider = () => {
                 <i className="icon-bookmark-full"></i>
               </button>
 
-              <Link to="/" className="product-link">
+              <DelayedLink to="/" className="product-link">
                 <h3 className="product-name">Manette Pillow</h3>
 
                 <div className="wrapper-img">
@@ -627,7 +627,7 @@ const ProductCartSlider = () => {
                     <span>+3</span>
                   </div>
                 </div>
-              </Link>
+              </DelayedLink>
             </div>
           </div>
 
@@ -638,7 +638,7 @@ const ProductCartSlider = () => {
                 <i className="icon-bookmark-full"></i>
               </button>
 
-              <Link to="/" className="product-link">
+              <DelayedLink to="/" className="product-link">
                 <h3 className="product-name">Marais Chair</h3>
 
                 <div className="wrapper-img">
@@ -704,7 +704,7 @@ const ProductCartSlider = () => {
                     <span>+3</span>
                   </div>
                 </div>
-              </Link>
+              </DelayedLink>
             </div>
           </div>
         </div>

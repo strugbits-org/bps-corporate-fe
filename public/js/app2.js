@@ -1208,10 +1208,11 @@ var require_app2 = __commonJS({
         return isSupported;
       hasRequiredIsSupported = 1;
       isSupported = function() {
-        return window.history && window.history.pushState && window.history.replaceState && // pushState isn’t reliable on iOS until 5.
-        !navigator.userAgent.match(
-          /((iPod|iPhone|iPad).+\bOS\s+[1-4]\D|WebApps\/.+CFNetwork)/
-        );
+        return false
+        // return window.history && window.history.pushState && window.history.replaceState && // pushState isn’t reliable on iOS until 5.
+        // !navigator.userAgent.match(
+        //   /((iPod|iPhone|iPad).+\bOS\s+[1-4]\D|WebApps\/.+CFNetwork)/
+        // );
       };
       return isSupported;
     }
@@ -16021,16 +16022,14 @@ var require_app2 = __commonJS({
       if (firstLoad) {
         firstLoad = false;
       } else {
+        document.body.classList.add("page-enter-active");
+        document.body.classList.remove("page-leave-active");
         setTimeout(() => {
-          document.body.classList.add("page-enter-active");
-          document.body.classList.remove("page-leave-active");
-          setTimeout(() => {
-            updateWatched();
-          }, 300);
-          setTimeout(() => {
-            document.body.classList.remove("page-enter-active");
-          }, 900);
-        }, 1500);
+          updateWatched();
+        }, 300);
+        setTimeout(() => {
+          document.body.classList.remove("page-enter-active");
+        }, 900);
       }
       setTimeout(() => {
         ScrollTrigger$1.refresh();
@@ -16121,9 +16120,9 @@ var require_app2 = __commonJS({
       }
     }
     const reloadButton = document.querySelector(".reloadScript");
+    
     reloadButton.addEventListener("click", ()=>{
       if(!firstLoad){
-        document.body.classList.add("page-leave-active");
         window.scrollTo({top:0,behavior:'instant'})
         closeSearch();
         reloadContainer();
