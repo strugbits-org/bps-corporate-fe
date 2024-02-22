@@ -2,6 +2,34 @@ import { Link } from "react-router-dom";
 import { IntroData, ourCommitment } from "../../common/constats/aboutData";
 
 const IntroSection = () => {
+  const properties = [
+    {
+      translateY: "-2.5rem",
+      rotateTo: "-10deg",
+      translateYfrom: "30vh",
+      dataEnd: "center center",
+      dataTrigger: "parent",
+    },
+    {
+      translateY: "5rem",
+    },
+
+    {
+      translateY: "-15rem",
+      rotateFrom: "30deg",
+      translateYfrom: "20vh",
+      dataEnd: "center center",
+      dataTrigger: "parent",
+    },
+    {
+      translateY: "10rem",
+      translateX: "-5rem",
+      rotateTo: "10deg",
+      rotateFrom: "30deg",
+      dataEnd: "center center",
+    },
+  ];
+ 
   return (
     <>
       <section className="about-intro">
@@ -104,15 +132,27 @@ const IntroSection = () => {
             <div className="col-lg-8 offset-lg-2">
               <ul className="list-boards">
                 {ourCommitment.map((data, index) => {
+                  const {
+                    translateY,
+                    rotateTo,
+                    translateYfrom,
+                    dataEnd,
+                    dataTrigger,
+                    translateX,
+                    rotateFrom,
+                  } = properties[index] || {};
+
                   return (
                     <li
                       key={index}
                       data-parallax
-                      data-translate-y="-2.5rem"
-                      data-rotate-to="-10deg"
-                      data-translate-y-from="30vh"
-                      data-end="center center"
-                      data-trigger="parent"
+                      data-translate-y={translateY || ""}
+                      data-rotate-to={rotateTo || ""}
+                      data-translate-y-from={translateYfrom || ""}
+                      data-end={dataEnd || ""}
+                      data-trigger={dataTrigger || ""}
+                      data-translate-x={translateX || ""}
+                      data-rotate-from={rotateFrom || ""}
                     >
                       <div className="content">
                         <h2 className="title">{data.title}</h2>
