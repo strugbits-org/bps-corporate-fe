@@ -1,9 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import img1 from "../../utilis/images/lib/01_desktop.jpg"
 import img2 from "../../utilis/images/lib/02_desktop.jpg"
 import img6 from "../../utilis/images/lib/06_desktop.jpg"
 import img8 from "../../utilis/images/lib/08_desktop.jpg"
+import DelayedLink from "../../common/DelayedLink";
 const ExploreWorkSection = () => {
   return (
     <section className="portfolio-intro pt-lg-145 pt-mobile-105">
@@ -114,10 +114,12 @@ const ExploreWorkSection = () => {
           <div className="col-lg-12 column-1">
             <ul className="list-portfolio grid-lg-25 grid-tablet-50">
               <li className="grid-item">
-                <Link
+                <DelayedLink
                   to="/portfolio-post"
                   className="link-portfolio link-portfolio-animation"
-                  data-aos="d:loop"
+                  attributes={{
+                    "data-aos": "d:loop",
+                  }}
                 >
                   <div
                     className="container-img bg-blue"
@@ -149,13 +151,15 @@ const ExploreWorkSection = () => {
                     </ul>
                     <h2 className="title-portfolio">F1 Las Vegas Grand Prix</h2>
                   </div>
-                </Link>
+                </DelayedLink>
               </li>
               <li className="grid-item">
-                <Link
+                <DelayedLink
                   to="/portfolio-post"
                   className="link-portfolio link-portfolio-animation"
-                  data-aos="d:loop"
+                  attributes={{
+                    "data-aos": "d:loop",
+                  }}
                 >
                   <div className="container-img bg-blue">
                     <div className="wrapper-img" data-cursor-style="view">
@@ -181,13 +185,15 @@ const ExploreWorkSection = () => {
                     </ul>
                     <h2 className="title-portfolio">F1 Las Vegas Grand Prix</h2>
                   </div>
-                </Link>
+                </DelayedLink>
               </li>
               <li className="grid-item">
-                <Link
+                <DelayedLink
                   to="/portfolio-post"
                   className="link-portfolio link-portfolio-animation"
-                  data-aos="d:loop"
+                  attributes={{
+                    "data-aos": "d:loop",
+                  }}
                 >
                   <div className="container-img bg-blue">
                     <div className="wrapper-img" data-cursor-style="view">
@@ -216,13 +222,15 @@ const ExploreWorkSection = () => {
                     </ul>
                     <h2 className="title-portfolio">F1 Las Vegas Grand Prix</h2>
                   </div>
-                </Link>
+                </DelayedLink>
               </li>
               <li className="grid-item">
-                <Link
+                <DelayedLink
                   to="/portfolio-post"
                   className="link-portfolio link-portfolio-animation"
-                  data-aos="d:loop"
+                  attributes={{
+                    "data-aos": "d:loop",
+                  }}
                 >
                   <div className="container-img bg-blue">
                     <div className="wrapper-img" data-cursor-style="view">
@@ -248,13 +256,15 @@ const ExploreWorkSection = () => {
                     </ul>
                     <h2 className="title-portfolio">F1 Las Vegas Grand Prix</h2>
                   </div>
-                </Link>
+                </DelayedLink>
               </li>
               <li className="grid-item">
-                <Link
+                <DelayedLink
                   to="/portfolio-post"
                   className="link-portfolio link-portfolio-animation"
-                  data-aos="d:loop"
+                  attributes={{
+                    "data-aos": "d:loop",
+                  }}
                 >
                   <div
                     className="container-img bg-blue"
@@ -286,13 +296,15 @@ const ExploreWorkSection = () => {
                     </ul>
                     <h2 className="title-portfolio">F1 Las Vegas Grand Prix</h2>
                   </div>
-                </Link>
+                </DelayedLink>
               </li>
               <li className="grid-item">
-                <Link
+                <DelayedLink
                   to="/portfolio-post"
                   className="link-portfolio link-portfolio-animation"
-                  data-aos="d:loop"
+                  attributes={{
+                    "data-aos": "d:loop",
+                  }}
                 >
                   <div className="container-img bg-blue">
                     <div className="wrapper-img" data-cursor-style="view">
@@ -318,13 +330,15 @@ const ExploreWorkSection = () => {
                     </ul>
                     <h2 className="title-portfolio">F1 Las Vegas Grand Prix</h2>
                   </div>
-                </Link>
+                </DelayedLink>
               </li>
               <li className="grid-item">
-                <Link
+                <DelayedLink
                   to="/portfolio-post"
                   className="link-portfolio link-portfolio-animation"
-                  data-aos="d:loop"
+                  attributes={{
+                    "data-aos": "d:loop",
+                  }}
                 >
                   <div className="container-img bg-blue">
                     <div className="wrapper-img" data-cursor-style="view">
@@ -353,13 +367,15 @@ const ExploreWorkSection = () => {
                     </ul>
                     <h2 className="title-portfolio">F1 Las Vegas Grand Prix</h2>
                   </div>
-                </Link>
+                </DelayedLink>
               </li>
               <li className="grid-item">
-                <Link
+                <DelayedLink
                   to="/portfolio-post"
                   className="link-portfolio link-portfolio-animation"
-                  data-aos="d:loop"
+                  attributes={{
+                    "data-aos": "d:loop",
+                  }}
                 >
                   <div className="container-img bg-blue">
                     <div className="wrapper-img" data-cursor-style="view">
@@ -385,13 +401,15 @@ const ExploreWorkSection = () => {
                     </ul>
                     <h2 className="title-portfolio">F1 Las Vegas Grand Prix</h2>
                   </div>
-                </Link>
+                </DelayedLink>
               </li>
               <li className="grid-item">
-                <Link
+                <DelayedLink
                   to="/portfolio-post"
                   className="link-portfolio link-portfolio-animation"
-                  data-aos="d:loop"
+                  attributes={{
+                    "data-aos": "d:loop",
+                  }}
                 >
                   <div
                     className="container-img bg-blue"
@@ -423,13 +441,15 @@ const ExploreWorkSection = () => {
                     </ul>
                     <h2 className="title-portfolio">F1 Las Vegas Grand Prix</h2>
                   </div>
-                </Link>
+                </DelayedLink>
               </li>
               <li className="grid-item">
-                <Link
+                <DelayedLink
                   to="/portfolio-post"
                   className="link-portfolio link-portfolio-animation"
-                  data-aos="d:loop"
+                  attributes={{
+                    "data-aos": "d:loop",
+                  }}
                 >
                   <div className="container-img bg-blue">
                     <div className="wrapper-img" data-cursor-style="view">
@@ -455,13 +475,15 @@ const ExploreWorkSection = () => {
                     </ul>
                     <h2 className="title-portfolio">F1 Las Vegas Grand Prix</h2>
                   </div>
-                </Link>
+                </DelayedLink>
               </li>
               <li className="grid-item">
-                <Link
+                <DelayedLink
                   to="/portfolio-post"
                   className="link-portfolio link-portfolio-animation"
-                  data-aos="d:loop"
+                  attributes={{
+                    "data-aos": "d:loop",
+                  }}
                 >
                   <div className="container-img bg-blue">
                     <div className="wrapper-img" data-cursor-style="view">
@@ -490,13 +512,15 @@ const ExploreWorkSection = () => {
                     </ul>
                     <h2 className="title-portfolio">F1 Las Vegas Grand Prix</h2>
                   </div>
-                </Link>
+                </DelayedLink>
               </li>
               <li className="grid-item">
-                <Link
+                <DelayedLink
                   to="/portfolio-post"
                   className="link-portfolio link-portfolio-animation"
-                  data-aos="d:loop"
+                  attributes={{
+                    "data-aos": "d:loop",
+                  }}
                 >
                   <div className="container-img bg-blue">
                     <div className="wrapper-img" data-cursor-style="view">
@@ -522,7 +546,7 @@ const ExploreWorkSection = () => {
                     </ul>
                     <h2 className="title-portfolio">F1 Las Vegas Grand Prix</h2>
                   </div>
-                </Link>
+                </DelayedLink>
               </li>
             </ul>
           </div>

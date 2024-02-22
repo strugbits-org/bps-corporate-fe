@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import DelayedLink from "../../common/DelayedLink";
 import { marketCards } from "../../common/constats";
 
 const MarketSection = () => {
@@ -27,11 +27,13 @@ const MarketSection = () => {
                     data-aos="d:loop"
                     data-delay-desktop={data_delay.toString()}
                   >
-                    <Link
+                    <DelayedLink
                       to="/market-post"
                       className="market-link project-link"
-                      data-cursor-style="view"
-                      data-menu-close
+                      attributes={{
+                      "data-cursor-style":"view",
+                      "data-menu-close":""
+                      }}
                     >
                       <div
                         className="container-img bg-blue"
@@ -56,7 +58,7 @@ const MarketSection = () => {
                           ))}
                         </ul>
                       </div>
-                    </Link>
+                    </DelayedLink>
                   </li>
                 );
               })}

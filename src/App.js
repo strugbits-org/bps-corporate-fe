@@ -10,18 +10,15 @@ import React, { useEffect } from "react";
 function App() {
   const location = useLocation();
   const pathname = location.pathname.trim() === "/" ? "home" : location.pathname.substring(1); // Remove leading slash
-    
-    // track router change and simulate click
-    const reloadButton = React.useRef();
+    const reloadTrigger = React.useRef();
     useEffect(() => {
-      reloadButton.current.click();
+      reloadTrigger.current.click();
     },[location.pathname]);
-
   return (
     <div>
-
-      {/* reload animations trigger */}
-      <button ref={reloadButton} className="reloadScript"></button>
+      
+      {/* helpers */}
+      <span ref={reloadTrigger} className="reloadScript d-none"></span>
 
       <Loading />
       <Cookies />
@@ -50,7 +47,7 @@ function App() {
         <meta property="og:site_name" content="Blueprint" />
         <meta property="og:locale" content="en" />
         <link rel="canonical" href="" />
-        <link rel="icon" type="image/png" href="images/favicon.png" />
+        <link rel="icon" type="image/png" href="favicon.png" />
 
         <script type="module" src="./js/app2.js"></script>
         <script type="module" src="./js/search.js"></script>

@@ -1,7 +1,7 @@
 import React from "react";
 import SocialSection from "../components/commonComponents/SocialSection";
-import { Link } from "react-router-dom";
 import img from "../utilis/images/lib/08_desktop.jpg"
+import DelayedLink from "../common/DelayedLink";
 
 const Blog = () => {
   return (
@@ -29,34 +29,34 @@ const Blog = () => {
                   <div className="wrapper-list">
                     <ul className="list-blog-tags list-dropdown-tags">
                       <li>
-                        <Link to="/blog" className="blog-btn-tag active">
+                        <DelayedLink to="/blog" className="blog-btn-tag active">
                           <span>All Studios</span>
-                        </Link>
+                        </DelayedLink>
                       </li>
                       <li>
-                        <Link to="/blog" className="blog-btn-tag">
+                        <DelayedLink to="/blog" className="blog-btn-tag">
                           <span>Event Design and Production</span>
-                        </Link>
+                        </DelayedLink>
                       </li>
                       <li>
-                        <Link to="/blog" className="blog-btn-tag">
+                        <DelayedLink to="/blog" className="blog-btn-tag">
                           <span>Creative Services Agency</span>
-                        </Link>
+                        </DelayedLink>
                       </li>
                       <li>
-                        <Link to="/blog" className="blog-btn-tag">
+                        <DelayedLink to="/blog" className="blog-btn-tag">
                           <span>Floral Design</span>
-                        </Link>
+                        </DelayedLink>
                       </li>
                       <li>
-                        <Link to="/blog" className="blog-btn-tag">
+                        <DelayedLink to="/blog" className="blog-btn-tag">
                           <span>Custom Fabrication</span>
-                        </Link>
+                        </DelayedLink>
                       </li>
                       <li>
-                        <Link to="/blog" className="blog-btn-tag">
+                        <DelayedLink to="/blog" className="blog-btn-tag">
                           <span>Printing Services</span>
-                        </Link>
+                        </DelayedLink>
                       </li>
                     </ul>
                   </div>
@@ -69,11 +69,13 @@ const Blog = () => {
           <div className="col-lg-12 column-1">
             <ul className="list-blog grid-lg-25 grid-tablet-50">
               <li className="grid-item" data-aos="d:loop">
-                <Link
+                <DelayedLink
                   to="/blog-post"
                   className="link-blog link-blog-animation"
-                  data-aos="d:loop"
-                >
+                    attributes={{
+                      "data-aos": "d:loop",
+                    }}
+                  >
                   <div
                     className="container-img bg-blue"
                     data-cursor-style="view"
@@ -121,14 +123,16 @@ const Blog = () => {
                       </li>
                     </ul>
                   </div>
-                </Link>
+                </DelayedLink>
               </li>
               <li className="grid-item" data-aos="d:loop">
-                <Link
+                <DelayedLink
                   to="/blog-post"
                   className="link-blog link-blog-animation"
-                  data-aos="d:loop"
-                >
+                    attributes={{
+                      "data-aos": "d:loop",
+                    }}
+                  >
                   <div
                     className="container-img bg-blue"
                     data-cursor-style="view"
@@ -176,14 +180,16 @@ const Blog = () => {
                       </li>
                     </ul>
                   </div>
-                </Link>
+                </DelayedLink>
               </li>
               <li className="grid-item" data-aos="d:loop">
-                <Link
+                <DelayedLink
                   to="/blog-post"
                   className="link-blog link-blog-animation"
-                  data-aos="d:loop"
-                >
+                    attributes={{
+                      "data-aos": "d:loop",
+                    }}
+                  >
                   <div
                     className="container-img bg-blue"
                     data-cursor-style="view"
@@ -231,14 +237,16 @@ const Blog = () => {
                       </li>
                     </ul>
                   </div>
-                </Link>
+                </DelayedLink>
               </li>
               <li className="grid-item" data-aos="d:loop">
-                <Link
+                <DelayedLink
                   to="/blog-post"
                   className="link-blog link-blog-animation"
-                  data-aos="d:loop"
-                >
+                    attributes={{
+                      "data-aos": "d:loop",
+                    }}
+                  >
                   <div
                     className="container-img bg-blue"
                     data-cursor-style="view"
@@ -286,14 +294,16 @@ const Blog = () => {
                       </li>
                     </ul>
                   </div>
-                </Link>
+                </DelayedLink>
               </li>
               <li className="grid-item" data-aos="d:loop">
-                <Link
+                <DelayedLink
                   to="/blog-post"
                   className="link-blog link-blog-animation"
-                  data-aos="d:loop"
-                >
+                    attributes={{
+                      "data-aos": "d:loop",
+                    }}
+                  >
                   <div
                     className="container-img bg-blue"
                     data-cursor-style="view"
@@ -341,14 +351,16 @@ const Blog = () => {
                       </li>
                     </ul>
                   </div>
-                </Link>
+                </DelayedLink>
               </li>
               <li className="grid-item" data-aos="d:loop">
-                <Link
+                <DelayedLink
                   to="/blog-post"
                   className="link-blog link-blog-animation"
-                  data-aos="d:loop"
-                >
+                    attributes={{
+                      "data-aos": "d:loop",
+                    }}
+                  >
                   <div
                     className="container-img bg-blue"
                     data-cursor-style="view"
@@ -396,14 +408,16 @@ const Blog = () => {
                       </li>
                     </ul>
                   </div>
-                </Link>
+                </DelayedLink>
               </li>
               <li className="grid-item" data-aos="d:loop">
-                <Link
+                <DelayedLink
                   to="/blog-post"
                   className="link-blog link-blog-animation"
-                  data-aos="d:loop"
-                >
+                    attributes={{
+                      "data-aos": "d:loop",
+                    }}
+                  >
                   <div
                     className="container-img bg-blue"
                     data-cursor-style="view"
@@ -451,14 +465,16 @@ const Blog = () => {
                       </li>
                     </ul>
                   </div>
-                </Link>
+                </DelayedLink>
               </li>
               <li className="grid-item" data-aos="d:loop">
-                <Link
+                <DelayedLink
                   to="/blog-post"
                   className="link-blog link-blog-animation"
-                  data-aos="d:loop"
-                >
+                    attributes={{
+                      "data-aos": "d:loop",
+                    }}
+                  >
                   <div
                     className="container-img bg-blue"
                     data-cursor-style="view"
@@ -506,14 +522,16 @@ const Blog = () => {
                       </li>
                     </ul>
                   </div>
-                </Link>
+                </DelayedLink>
               </li>
               <li className="grid-item" data-aos="d:loop">
-                <Link
+                <DelayedLink
                   to="/blog-post"
                   className="link-blog link-blog-animation"
-                  data-aos="d:loop"
-                >
+                    attributes={{
+                      "data-aos": "d:loop",
+                    }}
+                  >
                   <div
                     className="container-img bg-blue"
                     data-cursor-style="view"
@@ -561,14 +579,16 @@ const Blog = () => {
                       </li>
                     </ul>
                   </div>
-                </Link>
+                </DelayedLink>
               </li>
               <li className="grid-item" data-aos="d:loop">
-                <Link
+                <DelayedLink
                   to="/blog-post"
                   className="link-blog link-blog-animation"
-                  data-aos="d:loop"
-                >
+                    attributes={{
+                      "data-aos": "d:loop",
+                    }}
+                  >
                   <div
                     className="container-img bg-blue"
                     data-cursor-style="view"
@@ -616,14 +636,18 @@ const Blog = () => {
                       </li>
                     </ul>
                   </div>
-                </Link>
+                </DelayedLink>
               </li>
             </ul>
           </div>
           <div className="col-lg-2 offset-lg-5 flex-center mt-lg-70 mt-tablet-60 mt-phone-85">
-            <Link to="/blog-post" className="btn-border-blue" data-cursor-style="off">
+            <DelayedLink to="/blog-post" className="btn-border-blue" 
+            attributes={{
+              "data-cursor-style": "off",
+            }}
+            >
               <span>See all</span>
-            </Link>
+            </DelayedLink>
           </div>
         </div>
       </div>

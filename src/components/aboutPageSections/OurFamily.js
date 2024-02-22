@@ -5,7 +5,7 @@ import img3 from "../../utilis/images/about/hensley.png"
 import img4 from "../../utilis/images/about/family02.jpg"
 import img5 from "../../utilis/images/about/vident.png"
 import img6 from "../../utilis/images/about/family03.jpg"
-import { Link } from "react-router-dom";
+import DelayedLink from "../../common/DelayedLink";
 const OurFamily = () => {
   return (
     <section className="about-meet-the-rest-of-the-family pt-lg-245 pt-mobile-205">
@@ -67,13 +67,15 @@ const OurFamily = () => {
                     </p>
                   </div>
                   <div className="container-btn">
-                    <Link
+                    <DelayedLink
                       to="/"
                       className="btn-border-white"
-                      data-cursor-style="off"
+                      attributes={{
+                        "data-cursor-style": "off",
+                      }}
                     >
                       <span>Learn More</span>
-                    </Link>
+                    </DelayedLink>
                   </div>
                 </div>
               </li>
@@ -123,13 +125,15 @@ const OurFamily = () => {
                     </p>
                   </div>
                   <div className="container-btn">
-                    <Link
+                    <DelayedLink
                       to="/"
                       className="btn-border-white"
-                      data-cursor-style="off"
+                      attributes={{
+                        "data-cursor-style": "off",
+                      }}
                     >
                       <span>Learn More</span>
-                    </Link>
+                    </DelayedLink>
                   </div>
                 </div>
               </li>
@@ -174,13 +178,15 @@ const OurFamily = () => {
                     </p>
                   </div>
                   <div className="container-btn">
-                    <Link
+                    <DelayedLink
                       to="/"
                       className="btn-border-white"
-                      data-cursor-style="off"
+                      attributes={{
+                        "data-cursor-style": "off",
+                      }}
                     >
                       <span>Learn More</span>
-                    </Link>
+                    </DelayedLink>
                   </div>
                 </div>
               </li>

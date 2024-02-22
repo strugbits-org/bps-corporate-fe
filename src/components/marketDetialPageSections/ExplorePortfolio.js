@@ -1,6 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import img6 from "../../utilis/images/lib/06_desktop.jpg"
+import DelayedLink from '../../common/DelayedLink'
 
 const ExplorePortfolio = () => {
   return (
@@ -22,7 +22,7 @@ const ExplorePortfolio = () => {
                   >
                     {/* <!-- Slides --> */}
                     <div className="swiper-slide grid-item">
-                      <Link to="/portfolio-post" className="link">
+                      <DelayedLink to="/portfolio-post" className="link">
                         <div className="img-wrapper">
                           <div
                             className="container-img"
@@ -39,10 +39,10 @@ const ExplorePortfolio = () => {
                         <h3 className="title-portfolio split-words">
                           Wedding A + B
                         </h3>
-                      </Link>
+                      </DelayedLink>
                     </div>
                     <div className="swiper-slide grid-item">
-                      <Link to="/portfolio-post" className="link">
+                      <DelayedLink to="/portfolio-post" className="link">
                         <div className="img-wrapper">
                           <div
                             className="container-img"
@@ -59,10 +59,10 @@ const ExplorePortfolio = () => {
                         <h3 className="title-portfolio split-words">
                           Wedding A + B
                         </h3>
-                      </Link>
+                      </DelayedLink>
                     </div>
                     <div className="swiper-slide grid-item">
-                      <Link to="/portfolio-post" className="link">
+                      <DelayedLink to="/portfolio-post" className="link">
                         <div className="img-wrapper">
                           <div
                             className="container-img"
@@ -79,10 +79,10 @@ const ExplorePortfolio = () => {
                         <h3 className="title-portfolio split-words">
                           Wedding A + B
                         </h3>
-                      </Link>
+                      </DelayedLink>
                     </div>
                     <div className="swiper-slide grid-item">
-                      <Link to="/portfolio-post" className="link">
+                      <DelayedLink to="/portfolio-post" className="link">
                         <div className="img-wrapper">
                           <div
                             className="container-img"
@@ -99,21 +99,23 @@ const ExplorePortfolio = () => {
                         <h3 className="title-portfolio split-words">
                           Wedding A + B
                         </h3>
-                      </Link>
+                      </DelayedLink>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
             <div className="col-lg-2 offset-lg-5 flex-center mt-50 column-btn">
-              <Link
+              <DelayedLink
                 to="/portfolio"
                 className="btn-border-blue"
-                data-aos="fadeInUp .8s ease-out-cubic 0s, d:loop, trigger:.column-btn"
-                data-cursor-style="off"
+                attributes={{
+                  "data-aos":"fadeInUp .8s ease-out-cubic 0s, d:loop, trigger:.column-btn",
+                  "data-cursor-style":"off",
+                  }}
               >
                 <span>See more</span>
-              </Link>
+              </DelayedLink>
             </div>
           </div>
         </div>

@@ -1,11 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import contactusSchema from "../common/schema/contactusSchema";
 import { useDispatch, useSelector } from "react-redux";
 // import { submitFormSuccess, submitFormFailure} from "../redux/reducers/contactus";
 import { postFormData } from "../redux/reducers/contactus";
+import DelayedLink from "../common/DelayedLink";
 
 const ContactForm = () => {
   const dispatch = useDispatch();
@@ -113,37 +113,49 @@ const ContactForm = () => {
       <div className="column-2">
         <div className="container-info">
           <div className="container-tel">
-            <Link to="tel:">
+            <DelayedLink to="tel:" target="_blank" >
               <span>SF (415) 922-9004</span>
-            </Link>
-            <Link href="tel:">
+            </DelayedLink>
+            <DelayedLink href="tel:" target="_blank" >
               <span>LV (702) 757-7987</span>
-            </Link>
+            </DelayedLink>
           </div>
-          <Link to="mailto:info@blueprintstudios.com">
+          <DelayedLink to="mailto:info@blueprintstudios.com" target="_blank" >
             <span>info@blueprintstudios.com</span>
-          </Link>
+          </DelayedLink>
         </div>
         <ul className="list-social-media">
           <li>
-            <Link to="/" target="_blank" rel="noopener noreferrer">
+            <DelayedLink to="/" target="_blank" 
+            attributes={{
+              "rel":"noopener noreferrer"
+              }}>
               <i className="icon-facebook"></i>
-            </Link>
+            </DelayedLink>
           </li>
           <li>
-            <Link to="/" target="_blank" rel="noopener noreferrer">
+            <DelayedLink to="/" target="_blank" 
+            attributes={{
+              "rel":"noopener noreferrer"
+              }}>
               <i className="icon-instagram"></i>
-            </Link>
+            </DelayedLink>
           </li>
           <li>
-            <Link to="/" target="_blank" rel="noopener noreferrer">
+            <DelayedLink to="/" target="_blank" 
+            attributes={{
+              "rel":"noopener noreferrer"
+              }}>
               <i className="icon-x"></i>
-            </Link>
+            </DelayedLink>
           </li>
           <li>
-            <Link to="/" target="_blank" rel="noopener noreferrer">
+            <DelayedLink to="/as" target="_blank" 
+            attributes={{
+              "rel":"noopener noreferrer"
+              }}>
               <i className="icon-linkedin"></i>
-            </Link>
+            </DelayedLink>
           </li>
         </ul>
         <ul className="list-address">
@@ -154,12 +166,12 @@ const ContactForm = () => {
               St. Helena, CA 94574
             </address>
             <div className="phones">
-              <Link to="tel:">
+              <DelayedLink to="tel:" target="_blank" >
                 <span>P / 707742.7777</span>
-              </Link>
-              <Link to="tel:">
+              </DelayedLink>
+              <DelayedLink to="tel:" target="_blank" >
                 <span>F / 415.822.8844</span>
-              </Link>
+              </DelayedLink>
             </div>
           </li>
           <li>
@@ -170,9 +182,9 @@ const ContactForm = () => {
               Las Vegas, NV 89113
             </address>
             <div className="phones">
-              <Link to="tel:">
+              <DelayedLink to="tel:" target="_blank" >
                 <span>P / 702.757.7987</span>
-              </Link>
+              </DelayedLink>
             </div>
           </li>
           <li>
@@ -182,12 +194,12 @@ const ContactForm = () => {
               S. San Francisco, CA 94080
             </address>
             <div className="phones">
-              <Link to="tel:">
+              <DelayedLink to="tel:" target="_blank" >
                 <span>P / 415.922.9004</span>
-              </Link>
-              <Link to="tel:">
+              </DelayedLink>
+              <DelayedLink to="tel:" target="_blank" >
                 <span>F / 415.822.8844</span>
-              </Link>
+              </DelayedLink>
             </div>
           </li>
         </ul>

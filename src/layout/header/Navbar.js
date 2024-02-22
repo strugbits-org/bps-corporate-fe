@@ -1,8 +1,8 @@
 import Services from "./models/Services";
 import Market from "./models/Market";
-import { Link } from "react-router-dom";
 import ContactForm from "./models/ContactForm";
 import Search from "./models/Search";
+import DelayedLink from "../../common/DelayedLink";
 
 const Navbar = () => {
   return (
@@ -21,16 +21,14 @@ const Navbar = () => {
           <div className="row">
             <div className="col-lg-12 column-header">
               <div className="wrapper-header-mobile no-desktop">
-                <Link
+                <DelayedLink
                   to="/"
                   className="logo"
-                  data-pjax
-                  aria-label="Blueprint"
-                  data-menu-close
+                  attributes={{"data-pjax":"","aria-label":"Blueprint","data-menu-close":""}}
                 >
                   <span>Blueprint</span>
                   <i className="icon-logo"></i>
-                </Link>
+                </DelayedLink>
 
                   <button id="bt-menu" aria-label="Menu" data-search-remove>
                     <svg
@@ -76,9 +74,10 @@ const Navbar = () => {
                 <div className="menu--wrapper">
                   <ul className="menu--list fs--header">
                     <li className="no-desktop">
-                      <Link to="/" className="header-link" data-menu-close>
+                      <DelayedLink to="/" className="header-link"
+                        attributes={{"data-menu-close":""}}>
                         <span data-letter="Home">Home</span>
-                      </Link>
+                      </DelayedLink>
                     </li>
                     <li>
                       <button
@@ -90,14 +89,13 @@ const Navbar = () => {
                       </button>
                     </li>
                     <li>
-                      <Link
+                      <DelayedLink
                         to="/"
                         className="header-link"
-                        data-menu-close
-                        data-pg-active="pg-rental-store"
+                        attributes={{"data-menu-close":"","data-pg-active":"pg-rental-store"}}
                       >
                         <span data-letter="Rental Store">Rental Store</span>
-                      </Link>
+                      </DelayedLink>
                     </li>
                     <li>
                       <button
@@ -109,58 +107,52 @@ const Navbar = () => {
                       </button>
                     </li>
                     <li>
-                      <Link
+                      <DelayedLink
                         to="/portfolio"
                         className="header-link"
-                        data-menu-close
-                        data-pg-active="pg-portfolio"
+                        attributes={{"data-menu-close":"","data-pg-active":"pg-portfolio"}}                        
                       >
                         <span data-letter="Portfolio">Portfolio</span>
-                      </Link>
+                      </DelayedLink>
                     </li>
 
                     <li className="no-mobile">
-                      <Link
+                      <DelayedLink
                         to="/"
                         className="logo"
-                        data-pjax
-                        aria-label="Blueprint"
-                        data-menu-close
+                        attributes={{"data-pjax":"","aria-label":"Blueprint","data-menu-close":""}}
                       >
                         <span>Blueprint</span>
                         <i className="icon-logo"></i>
-                      </Link>
+                      </DelayedLink>
                     </li>
 
                     <li>
-                      <Link
+                      <DelayedLink
                         to="/about"
                         className="header-link"
-                        data-menu-close
-                        data-pg-active="pg-about"
+                        attributes={{"data-menu-close":"","data-pg-active":"pg-about"}}
                       >
                         <span data-letter="About">About</span>
-                      </Link>
+                      </DelayedLink>
                     </li>
                     <li>
-                      <Link
+                      <DelayedLink
                         to="/blog"
                         className="header-link"
-                        data-menu-close
-                        data-pg-active="pg-blog"
+                        attributes={{"data-menu-close":"","data-pg-active":"pg-blog"}}
                       >
                         <span data-letter="Blog">Blog</span>
-                      </Link>
+                      </DelayedLink>
                     </li>
                     <li>
-                      <Link
+                      <DelayedLink
                         to="/contact"
                         className="header-link"
-                        data-menu-close
-                        data-pg-active="pg-contact"
+                        attributes={{"data-menu-close":"","data-pg-active":"pg-contact"}}
                       >
                         <span data-letter="Contact">Contact</span>
-                      </Link>
+                      </DelayedLink>
                     </li>
                     <li>
                       <button

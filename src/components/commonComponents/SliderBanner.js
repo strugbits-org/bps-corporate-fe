@@ -11,7 +11,7 @@ const SliderBanner = () => {
         <div className="swiper-wrapper">
           {/* <!-- Slides --> */}
           <div className="swiper-slide">
-            <Link to="">
+            <Link to="#">
               <div className="container-img">
                 <img
                   src={googleimg}
@@ -51,7 +51,7 @@ const SliderBanner = () => {
           </div>
 
           <div className="swiper-slide">
-            <Link to="">
+            <Link to="#">
               <div className="container-img">
                 <img
                   src={slide_2_image}
@@ -89,7 +89,7 @@ const SliderBanner = () => {
           </div>
 
           <div className="swiper-slide">
-            <Link to="">
+            <Link to="#">
               <div className="container-img">
                 <img
                   src={googleimg}

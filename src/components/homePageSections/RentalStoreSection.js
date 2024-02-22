@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import DelayedLink from "../../common/DelayedLink";
 import { rentalData, rentalCards } from "../../common/constats";
 
 const RentalStoreSection = () => {
@@ -85,7 +85,11 @@ const RentalStoreSection = () => {
                     data-end='20% 40%'
                     data-trigger=".home-rental-store"
                   >
-                    <Link to="/" className="link" data-cursor-style="view">
+                    <DelayedLink to="/" className="link" 
+                    attributes={{
+                      "data-cursor-style":"view"
+                    }}
+                    >
                       <div className="container-img">
                         <img
                           src={data.img}
@@ -99,7 +103,7 @@ const RentalStoreSection = () => {
                           <span>{data.tag}</span>
                         </div>
                       )}
-                    </Link>
+                    </DelayedLink>
                   </li>
                 );
               })}

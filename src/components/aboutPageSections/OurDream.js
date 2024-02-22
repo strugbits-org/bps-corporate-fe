@@ -7,7 +7,7 @@ import destop9 from "../../utilis/images/lib/09_desktop.jpg"
 import destop7 from "../../utilis/images/lib/07_desktop.jpg"
 import destop8 from "../../utilis/images/lib/02_desktop.jpg"
 import destop55 from "../../utilis/images/lib/05_desktop.jpg"
-import { Link } from 'react-router-dom'
+import DelayedLink from '../../common/DelayedLink'
 const OurDream = () => {
   return (
     <section className="about-dream-team pt-lg-195">
@@ -174,14 +174,16 @@ const OurDream = () => {
         <div
           className="col-lg-4 offset-lg-4 flex-center mt-lg-60 mt-mobile-40 btn-trigger"
         >
-          <Link
+          <DelayedLink
             to="/"
             className="btn-blue btn-border-blue"
-            data-aos="fadeInUp .8s ease-out-cubic 0s, d:loop, trigger:.btn-trigger"
-            data-cursor-style="off"
+            attributes={{
+              "data-aos": "fadeInUp .8s ease-out-cubic 0s, d:loop, trigger:.btn-trigger",
+              "data-cursor-style": "off",
+            }}
           >
             <span>Get in touch with us</span>
-          </Link>
+          </DelayedLink>
         </div>
       </div>
     </div>
