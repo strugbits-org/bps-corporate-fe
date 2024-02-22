@@ -10,6 +10,7 @@ import React, { useEffect } from "react";
 function App() {
   const location = useLocation();
   const pathname = location.pathname.trim() === "/" ? "home" : location.pathname.substring(1); // Remove leading slash
+  const cleanPath = pathname.split("/")[0].trim();
     const reloadTrigger = React.useRef();
     useEffect(() => {
       reloadTrigger.current.click();
@@ -60,7 +61,7 @@ function App() {
       </Helmet>
 
       <div id="main-transition">
-        <div id={`pg-${pathname}`} className="wrapper" data-scroll-container>
+        <div id={`pg-${cleanPath}`} className="wrapper" data-scroll-container>
           <main>
             <Outlet />
             <Footer />

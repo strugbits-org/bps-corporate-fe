@@ -49,6 +49,10 @@ const router = createBrowserRouter([
         element: <ServicePostPage />,
       },
       {
+        path: "services-post/:service",
+        element: <ServicePostPage />,
+      },
+      {
         path: "market-post",
         element: <MarketPost />,
       },

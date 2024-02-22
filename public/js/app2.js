@@ -1275,7 +1275,7 @@ var require_app2 = __commonJS({
         this.parseDOM(el || document);
       },
       reload: function() {
-        window.location.reload();
+        // window.location.reload();
       },
       attachLink: requireAttachLink(),
       attachForm: requireAttachForm(),
@@ -16039,7 +16039,8 @@ var require_app2 = __commonJS({
 
       // About functions
       const page = window.location.pathname.trim() === "/" ? "home" : location.pathname.substring(1);
-      switch (page) {
+      const cleanPage = page.split("/")[0].trim();
+      switch (cleanPage) {
         case 'home':
           main$8();
           break;
