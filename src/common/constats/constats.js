@@ -19,6 +19,12 @@ import logop from "../../utilis/images/logo/logo-bps-p.svg";
 import logos from "../../utilis/images/logo/logo-bps-s.svg";
 import googleimg from "../../utilis/images/about/google-workspace.jpg"
 
+export const HeroData = {
+  image: img,
+desc: " © Blueprint studios. All rights reserved."
+}
+
+
 export const dataConcept = {
   text1: "From concept",
   text2: "To Reality",

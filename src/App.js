@@ -8,8 +8,12 @@ import Cookies from "./common/Cookies";
 
 function App() {
   const location = useLocation();
-  const pathname =
-    location.pathname.trim() === "/" ? "home" : location.pathname.substring(1); // Remove leading slash
+  const pathname = location.pathname.trim() === "/" ? "home" : location.pathname.substring(1);
+  console.log(pathname,pathname.length, "path here..");
+  
+  const newpath = pathname.split("/")[0].trim(); // Trim leading and trailing spaces
+  console.log(newpath,newpath.length,"new path here");
+  
 
   return (
     <div>
@@ -23,7 +27,6 @@ function App() {
           content="Events are crucial for enhancing brand awareness, offering exclusive
            chances to showcase ideas, products, and services intimately."
         />
-
         <meta name="format-detection" content="telephone=no" />
         <meta property="og:title" content="Blueprint" />
         <meta name="description" content="" />
@@ -53,7 +56,7 @@ function App() {
       </Helmet>
 
       <div id="main-transition">
-        <div id={`pg-${pathname}`} className="wrapper" data-scroll-container>
+        <div id={`pg-${newpath}`} className="wrapper" data-scroll-container>
           <main>
             <Outlet />
             <Footer />
