@@ -1,13 +1,17 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import ProductCartSlider from "../commonComponents/ProductCartSlider";
 import SocialVerticalBar from "./SocialVerticalBar";
 import img1 from "../../utilis/images/lib/06_desktop.jpg"
 import img2 from "../../utilis/images/lib/02_desktop.jpg"
 import img8 from "../../utilis/images/lib/08_desktop.jpg"
 import img4 from "../../utilis/images/lib/04_desktop.jpg"
+// import {postes} from "../../common/constats/blogData";
 
 const PostDetails = () => {
+
+  const params = useParams();
+  console.log(params.id,"product id");
+
   return (
     <section className="blog-post-intro pt-lg-150 pt-mobile-125">
       <div className="container-fluid">

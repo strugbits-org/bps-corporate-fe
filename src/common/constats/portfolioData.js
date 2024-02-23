@@ -12,7 +12,6 @@ export const categoriesData = {
     {
       name: "All Studios",
       tags: [
-        { tag: "All Studios" },
         { tag: "Event Design and Production" },
         { tag: "Creative Services Agency" },
         { tag: "Floral Design" },
@@ -23,7 +22,6 @@ export const categoriesData = {
     {
       name: "All Markets",
       tags: [
-        { tag: "All Markets" },
         { tag: "Corporate" },
         { tag: "Tradeshows" },
         { tag: "Weddings" },
