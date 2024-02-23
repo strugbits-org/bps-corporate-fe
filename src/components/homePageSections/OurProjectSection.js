@@ -1,7 +1,7 @@
 import React from "react";
 // import img1 from "../../utilis/images/lib/01_desktop.jpg";
-import { Link } from "react-router-dom";
-import { ourprojectSlider } from "../../common/constats/constats";
+import { ourprojectSlider } from "../../common/constats";
+import DelayedLink from "../../common/DelayedLink";
 const OurProjectSection = () => {
   return (
     <section className="home-some-of-our-projects pt-lg-250 pt-mobile-130 pb-135">
@@ -23,11 +23,13 @@ const OurProjectSection = () => {
                   {ourprojectSlider.map((data, index) => {
                     return (
                       <div key={index} className="swiper-slide list-item">
-                        <Link
+                        <DelayedLink
                           to="/"
                           className="project-link animation-project-link"
-                          data-cursor-style="view"
-                          data-aos="d:loop"
+                          attributes={{
+                            "data-cursor-style":"view",
+                            "data-aos":"d:loop"
+                            }}
                         >
                           <div className="container-img bg-blue">
                             <div className="wrapper-img">
@@ -49,7 +51,7 @@ const OurProjectSection = () => {
                               ))}
                             </ul>
                           </div>
-                        </Link>
+                        </DelayedLink>
                       </div>
                     );
                   })}

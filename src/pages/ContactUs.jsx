@@ -1,7 +1,6 @@
 import React from "react";
 import ContactForm from "../common/ContactForm";
-import { pageData } from "../common/constats/contactusData";
-
+import video1 from "../utilis/images/lib/video.mp4#t=0.01"
 const ContactUs = () => {
   return (
     <>
@@ -13,17 +12,23 @@ const ContactUs = () => {
                 className="fs--165 title-contact white-1 split-chars"
                 data-aos="d:loop"
               >
-                {pageData.title}
+                Tried + True
               </h1>
               <div className="container-text fs--25 lh-140 fs-tablet-18 white-1 mt-15">
                 <p data-aos="fadeInUp .8s ease-out-cubic .8s, d:loop">
-                  {pageData.desc1}
+                  We are a customer-focused, industry leader with a streamlined
+                  approach to event design and production. We handle every step
+                  of the process in-house from concept logistics,
+                  space-planning, and rendering to graphics, printing, custom
+                  fabrication, furnishings, and on-site installation.
                 </p>
                 <p
                   className="mt-lg-35 mt-mobile-15"
                   data-aos="fadeInUp .8s ease-out-cubic .9s, d:loop"
                 >
-                  {pageData.desc2}
+                  With fully operational offices, showrooms and warehouses in
+                  San Francisco (our headquarters) and Las Vegas, our reach
+                  extends throughout the United States and internationally.
                 </p>
               </div>
             </div>
@@ -31,8 +36,8 @@ const ContactUs = () => {
         </div>
         <div className="container-img bg-img">
           <video
-            data-src={pageData.video}
-            src={pageData.video}
+            data-src={video1}
+            src={video1}
             data-preload
             autoPlay
             loop
@@ -55,10 +60,15 @@ const ContactUs = () => {
           {/* contact form here.. */}
           <div className="row mt-135 no-mobile">
             <div className="col-lg-6">
-              <p className="fs--14 font-2 white-1">{pageData.copyright}</p>
+              <p className="fs--14 font-2 white-1">
+                © Blueprint studios. All rights reserved.
+              </p>
             </div>
             <div className="col-lg-6 flex-end">
-              <p className="fs--14 font-2 white-1">{pageData.enddesc}</p>
+              <p className="fs--14 font-2 white-1">
+                If it's not remarkable, it's invisible is a trademark of
+                blueprint studios.
+              </p>
             </div>
           </div>
         </div>

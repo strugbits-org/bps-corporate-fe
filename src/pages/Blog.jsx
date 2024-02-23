@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import SocialSection from "../components/commonComponents/SocialSection";
-import { Link } from "react-router-dom";
 import { head, postes } from "../common/constats/blogData";
-
+import DelayedLink from "../common/DelayedLink";
 const Blog = () => {
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [filteredItems, setFilteredItems] = useState(postes);
@@ -102,10 +101,12 @@ const Blog = () => {
                     className="grid-item"
                     data-aos="d:loop"
                   >
-                    <Link
+                    <DelayedLink
                       to={`/blog-post/${data.id}`}
                       className="link-blog link-blog-animation"
-                      data-aos="d:loop"
+                      attributes={{
+                        "data-aos": "d:loop",
+                      }}
                     >
                       <div
                         className="container-img bg-blue"
@@ -154,19 +155,21 @@ const Blog = () => {
                           ) : null}
                         </ul>
                       </div>
-                    </Link>
+                    </DelayedLink>
                   </li>
                 ))}
               </ul>
             </div>
             <div className="col-lg-2 offset-lg-5 flex-center mt-lg-70 mt-tablet-60 mt-phone-85">
-              <Link
+              <DelayedLink
                 to="/blog-post"
                 className="btn-border-blue"
-                data-cursor-style="off"
+                attributes={{
+                  "data-cursor-style": "off",
+                }}
               >
                 <span>See all</span>
-              </Link>
+              </DelayedLink>
             </div>
           </div>
         </div>

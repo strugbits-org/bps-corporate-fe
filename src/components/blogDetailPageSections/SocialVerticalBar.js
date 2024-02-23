@@ -2,6 +2,16 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const SocialVerticalBar = () => {
+
+  // function copyLink() {
+  //   var copyTextareaBtn = document.querySelector(".copy-link");
+  //   copyTextareaBtn.addEventListener("click", function(event) {
+  //     this.querySelector("span").innerText = "Copied!";
+  //     this.classList.add("copied");
+  //     document.querySelector(".copy-link-url").select();
+  //     document.execCommand("copy");
+  //   });
+  // }
   return (
     <div
     className="col-lg-1 column-2 no-mobile"
@@ -16,7 +26,7 @@ const SocialVerticalBar = () => {
           <Link
             to="/"
             data-cursor-style="off"
-            onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=blog-post','compartilhar', 'toolbar=0, status=0, width=650, height=450');"
+            onClick={(e)=>{window.open('https://www.facebook.com/sharer/sharer.php?u=blog-post','compartilhar', 'toolbar=0, status=0, width=650, height=450');e.preventDefault();}}
           >
             <span>Facebook</span>
             <i className="icon-facebook"></i>
@@ -26,7 +36,7 @@ const SocialVerticalBar = () => {
           <Link
             to="/"
             data-cursor-style="off"
-            onclick="window.open('https://twitter.com/intent/tweet?text=Blog Post blog-post','compartilhar', 'toolbar=0, status=0, width=650, height=450');"
+            onClick={(e)=>{window.open('https://twitter.com/intent/tweet?text=Blog','compartilhar', 'toolbar=0, status=0, width=650, height=450');e.preventDefault();}}
           >
             <span>X (Twitter)</span>
             <i className="icon-x"></i>
