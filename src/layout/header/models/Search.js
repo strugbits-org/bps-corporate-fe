@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import img1 from "../../../utilis/images/chairs/bristol-chair.png";
 import imgC1 from "../../../utilis/images/chairs/bristol-chair-color-1.png";
@@ -9,26 +9,63 @@ import imgd6 from "../../../utilis/images/lib/06_desktop.jpg";
 import imgd8 from "../../../utilis/images/lib/08_desktop.jpg";
 import imgd1 from "../../../utilis/images/lib/01_desktop.jpg";
 import imgd2 from "../../../utilis/images/lib/02_desktop.jpg";
-
-import { studioCard } from "../../../common/constats/constats";
+import { OurCardData } from "../../../common/constats/portfolioData";
+import { postes } from "../../../common/constats/blogData";
 import { modelData } from "../../../common/constats/marketData";
+import { studioCard } from "../../../common/constats/constats";
+
 const Search = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [portfolioData, setPortfolioData] = useState([]);
+  const [blogData, setBlogData] = useState([]);
+
+  const handleInputChange = (event) => {
+    setSearchTerm(event.target.value.trim().toLowerCase());
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const portfolioData = OurCardData.filter(item =>
+        item.categories && item.categories.toLowerCase() === searchTerm
+    );
+    const blogData = postes.filter(item => item.category && item.category.toLowerCase() === searchTerm
+
+      )
+    setPortfolioData(portfolioData);
+    setBlogData(blogData);
+    
+    
+};
+console.log(portfolioData);
+console.log(blogData);
+
   return (
     <div className="container-fluid">
       <div className="row">
         <div className="col-12">
           <div className="wrapper-search">
             <div className="container-form">
-              <form className="form-search header-search" data-search-form>
+              <form
+                className="form-search header-search"
+                data-search-form
+                onSubmit={handleSubmit}
+              >
                 <div className="container-input input-header">
                   <label
                     htmlFor="search"
                     className="split-chars"
                     data-aos="d:loop"
                   >
-                    type here
+                    Type here
                   </label>
-                  <input type="search" className="search" name="por" required />
+                  <input
+                    type="search"
+                    className="search"
+                    name="por"
+                    value={searchTerm}
+                    onChange={handleInputChange}
+                    required
+                  />
                   <div className="container-submit">
                     <button
                       type="submit"
