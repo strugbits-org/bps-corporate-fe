@@ -1,12 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-// import {portfolioData,OurCardData} from "../../common/constats/portfolioData";
 import img6 from "../../utilis/images/lib/06_desktop.jpg" 
-import { useParams } from "react-router-dom";
 
 const PortfolioIntoSection = () => {
-  const {id} = useParams();
-  console.log(id, "here is id");
   return (
     <section className="portfolio-post-intro pb-lg-250">
     <div className="wrapper-banner-img" data-aos>

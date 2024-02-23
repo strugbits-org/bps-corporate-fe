@@ -1,128 +1,553 @@
-import { Link } from "react-router-dom";
-import { OurCardData , portfolioData, categoriesData} from "../../common/constats/portfolioData";
 import React from "react";
-
+import img1 from "../../utilis/images/lib/01_desktop.jpg"
+import img2 from "../../utilis/images/lib/02_desktop.jpg"
+import img6 from "../../utilis/images/lib/06_desktop.jpg"
+import img8 from "../../utilis/images/lib/08_desktop.jpg"
+import DelayedLink from "../../common/DelayedLink";
 const ExploreWorkSection = () => {
-  const dataTag = [
-    { name: "portfolio", cssClass: "list-portfolio-tags" },
-    { name: "market", cssClass: "list-market-tags" },
-  ];
-
   return (
     <section className="portfolio-intro pt-lg-145 pt-mobile-105">
       <div className="container-fluid">
         <div className="row">
           <div className="col-12 mb-lg-60 mb-tablet-40 mb-phone-35">
             <h1 className="fs--60 text-center split-words" data-aos="d:loop">
-              {portfolioData.title}
+              Explore our work
             </h1>
 
             <div
               className="container-list-tags mt-lg-55 mt-tablet-40 mt-phone-30"
               data-aos="fadeIn .8s ease-in-out .2s, d:loop"
             >
-              {categoriesData.categories.map((data, index) => {
-                const { name, cssClass } = dataTag[index] || {};
-                return (
-                  <div
-                    key={index}
-                    className={
-                      index % 2 !== 0 ? "market-tags" : "portfolio-tags"
-                    }
-                  >
-                    <button
-                      className="btn-tag-mobile no-desktop"
-                      data-set-tag={name || ""}
-                    >
-                      <span>{data.name}</span>
-                      <i className="icon-arrow-down"></i>
-                    </button>
-                    <div className="list-dropdown" data-get-tag={name || ""}>
-                      <div className="container-wrapper-list">
-                        <div className="wrapper-list">
-                          <ul className={`${cssClass} list-dropdown-tags`}>
-                            {data.tags.map((data, index) => {
-                              return (
-                                <li key={index}>
-                                  <button
-                                    className={` ${
-                                      index === 0
-                                        ? "portfolio-btn-tag active"
-                                        : "portfolio-btn-tag"
-                                    }`}
-                                  >
-                                    <span>{data.tag}</span>
-                                  </button>
-                                </li>
-                              );
-                            })}
-                          </ul>
-                        </div>
-                      </div>
+              <div className="portfolio-tags">
+                <button
+                  className="btn-tag-mobile no-desktop"
+                  data-set-tag="portfolio"
+                >
+                  <span>All Studios</span>
+                  <i className="icon-arrow-down"></i>
+                </button>
+                <div className="list-dropdown" data-get-tag="portfolio">
+                  <div className="container-wrapper-list">
+                    <div className="wrapper-list">
+                      <ul className="list-portfolio-tags list-dropdown-tags">
+                        <li>
+                          <button className="portfolio-btn-tag active">
+                            <span>All Studios</span>
+                          </button>
+                        </li>
+                        <li>
+                          <button className="portfolio-btn-tag">
+                            <span>Event Design and Production</span>
+                          </button>
+                        </li>
+                        <li>
+                          <button className="portfolio-btn-tag">
+                            <span>Creative Services Agency</span>
+                          </button>
+                        </li>
+                        <li>
+                          <button className="portfolio-btn-tag">
+                            <span>Floral Design</span>
+                          </button>
+                        </li>
+                        <li>
+                          <button className="portfolio-btn-tag">
+                            <span>Custom Fabrication</span>
+                          </button>
+                        </li>
+                        <li>
+                          <button className="portfolio-btn-tag">
+                            <span>Printing Services</span>
+                          </button>
+                        </li>
+                      </ul>
                     </div>
                   </div>
-                );
-              })}
+                </div>
+              </div>
+              <div className="market-tags">
+                <button
+                  className="btn-tag-mobile no-desktop"
+                  data-set-tag="market"
+                >
+                  <span>All Markets</span>
+                  <i className="icon-arrow-down"></i>
+                </button>
+                <div className="list-dropdown" data-get-tag="market">
+                  <div className="container-wrapper-list">
+                    <div className="wrapper-list">
+                      <ul className="list-market-tags list-dropdown-tags">
+                        <li>
+                          <button className="portfolio-btn-tag active">
+                            <span>All Markets</span>
+                          </button>
+                        </li>
+                        <li>
+                          <button className="portfolio-btn-tag">
+                            <span>Corporate</span>
+                          </button>
+                        </li>
+                        <li>
+                          <button className="portfolio-btn-tag">
+                            <span>Tradeshows</span>
+                          </button>
+                        </li>
+                        <li>
+                          <button className="portfolio-btn-tag">
+                            <span>Weddings</span>
+                          </button>
+                        </li>
+                        <li>
+                          <button className="portfolio-btn-tag">
+                            <span>Social</span>
+                          </button>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        {/* map cards here */}
-
         <div className="row row-2">
           <div className="col-lg-12 column-1">
             <ul className="list-portfolio grid-lg-25 grid-tablet-50">
-              
-              {OurCardData.map((data, index) => {
-                return (
-                  <li key={index} className="grid-item">
-                    <Link
-                      to={`/portfolio-post/${data.id}`}
-                      className="link-portfolio link-portfolio-animation"
-                      data-aos="d:loop"
-                    >
-                      <div
-                        className="container-img bg-blue"
-                        data-cursor-style="view"
-                      >
-                        <div className="wrapper-img">
-                          <img
-                            src={data.img}
-                            data-preload
-                            className="media"
-                            alt=""
-                          />
-                        </div>
-                      </div>
-                      <div className="container-text">
-                        <ul className="list-tags-small">
-                          {Object.values(data.tags).map((tag, index) => (
-                            <React.Fragment key={index}>
-                              {index < 3 ? (
-                                <li
-                                  className={`tag-small ${
-                                    index === 0 ? "active" : ""
-                                  }`}
-                                >
-                                  <span>{tag}</span>
-                                </li>
-                              ) : null}
-                            </React.Fragment>
-                          ))}
-                          {Object.values(data.tags).length > 3 ? (
-                            <li className="tag-small">
-                              <span>
-                                +{Object.values(data.tags).length - 3} studios
-                              </span>
-                            </li>
-                          ) : null}
-                        </ul>
-
-                        <h2 className="title-portfolio">{data.title}</h2>
-                      </div>
-                    </Link>
-                  </li>
-                );
-              })}
+              <li className="grid-item">
+                <DelayedLink
+                  to="/portfolio-post"
+                  className="link-portfolio link-portfolio-animation"
+                  attributes={{
+                    "data-aos": "d:loop",
+                  }}
+                >
+                  <div
+                    className="container-img bg-blue"
+                    data-cursor-style="view"
+                  >
+                    <div className="wrapper-img">
+                      <img
+                        src={img6}
+                        data-preload
+                        className="media"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                  <div className="container-text">
+                    <ul className="list-tags-small">
+                      <li className="tag-small active">
+                        <span>Corporate</span>
+                      </li>
+                      <li className="tag-small">
+                        <span>Event Design and Production</span>
+                      </li>
+                      <li className="tag-small">
+                        <span>Creative Services Agency</span>
+                      </li>
+                      <li className="tag-small">
+                        <span>+ 3 studios</span>
+                      </li>
+                    </ul>
+                    <h2 className="title-portfolio">F1 Las Vegas Grand Prix</h2>
+                  </div>
+                </DelayedLink>
+              </li>
+              <li className="grid-item">
+                <DelayedLink
+                  to="/portfolio-post"
+                  className="link-portfolio link-portfolio-animation"
+                  attributes={{
+                    "data-aos": "d:loop",
+                  }}
+                >
+                  <div className="container-img bg-blue">
+                    <div className="wrapper-img" data-cursor-style="view">
+                      <img
+                        src={img2}
+                        data-preload
+                        className="media"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                  <div className="container-text">
+                    <ul className="list-tags-small">
+                      <li className="tag-small active">
+                        <span>Tradeshow</span>
+                      </li>
+                      <li className="tag-small">
+                        <span>Creative Services Agency</span>
+                      </li>
+                      <li className="tag-small">
+                        <span>Floral design</span>
+                      </li>
+                    </ul>
+                    <h2 className="title-portfolio">F1 Las Vegas Grand Prix</h2>
+                  </div>
+                </DelayedLink>
+              </li>
+              <li className="grid-item">
+                <DelayedLink
+                  to="/portfolio-post"
+                  className="link-portfolio link-portfolio-animation"
+                  attributes={{
+                    "data-aos": "d:loop",
+                  }}
+                >
+                  <div className="container-img bg-blue">
+                    <div className="wrapper-img" data-cursor-style="view">
+                      <img
+                        src={img1}
+                        data-preload
+                        className="media"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                  <div className="container-text">
+                    <ul className="list-tags-small">
+                      <li className="tag-small active">
+                        <span>Corporate</span>
+                      </li>
+                      <li className="tag-small">
+                        <span>Event Design and Production</span>
+                      </li>
+                      <li className="tag-small">
+                        <span>Creative Services Agency</span>
+                      </li>
+                      <li className="tag-small">
+                        <span>+ 3 studios</span>
+                      </li>
+                    </ul>
+                    <h2 className="title-portfolio">F1 Las Vegas Grand Prix</h2>
+                  </div>
+                </DelayedLink>
+              </li>
+              <li className="grid-item">
+                <DelayedLink
+                  to="/portfolio-post"
+                  className="link-portfolio link-portfolio-animation"
+                  attributes={{
+                    "data-aos": "d:loop",
+                  }}
+                >
+                  <div className="container-img bg-blue">
+                    <div className="wrapper-img" data-cursor-style="view">
+                      <img
+                        src={img8}
+                        data-preload
+                        className="media"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                  <div className="container-text">
+                    <ul className="list-tags-small">
+                      <li className="tag-small active">
+                        <span>Tradeshow</span>
+                      </li>
+                      <li className="tag-small">
+                        <span>Creative Services Agency</span>
+                      </li>
+                      <li className="tag-small">
+                        <span>Floral design</span>
+                      </li>
+                    </ul>
+                    <h2 className="title-portfolio">F1 Las Vegas Grand Prix</h2>
+                  </div>
+                </DelayedLink>
+              </li>
+              <li className="grid-item">
+                <DelayedLink
+                  to="/portfolio-post"
+                  className="link-portfolio link-portfolio-animation"
+                  attributes={{
+                    "data-aos": "d:loop",
+                  }}
+                >
+                  <div
+                    className="container-img bg-blue"
+                    data-cursor-style="view"
+                  >
+                    <div className="wrapper-img">
+                      <img
+                        src={img6}
+                        data-preload
+                        className="media"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                  <div className="container-text">
+                    <ul className="list-tags-small">
+                      <li className="tag-small active">
+                        <span>Corporate</span>
+                      </li>
+                      <li className="tag-small">
+                        <span>Event Design and Production</span>
+                      </li>
+                      <li className="tag-small">
+                        <span>Creative Services Agency</span>
+                      </li>
+                      <li className="tag-small">
+                        <span>+ 3 studios</span>
+                      </li>
+                    </ul>
+                    <h2 className="title-portfolio">F1 Las Vegas Grand Prix</h2>
+                  </div>
+                </DelayedLink>
+              </li>
+              <li className="grid-item">
+                <DelayedLink
+                  to="/portfolio-post"
+                  className="link-portfolio link-portfolio-animation"
+                  attributes={{
+                    "data-aos": "d:loop",
+                  }}
+                >
+                  <div className="container-img bg-blue">
+                    <div className="wrapper-img" data-cursor-style="view">
+                      <img
+                        src={img2}
+                        data-preload
+                        className="media"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                  <div className="container-text">
+                    <ul className="list-tags-small">
+                      <li className="tag-small active">
+                        <span>Tradeshow</span>
+                      </li>
+                      <li className="tag-small">
+                        <span>Creative Services Agency</span>
+                      </li>
+                      <li className="tag-small">
+                        <span>Floral design</span>
+                      </li>
+                    </ul>
+                    <h2 className="title-portfolio">F1 Las Vegas Grand Prix</h2>
+                  </div>
+                </DelayedLink>
+              </li>
+              <li className="grid-item">
+                <DelayedLink
+                  to="/portfolio-post"
+                  className="link-portfolio link-portfolio-animation"
+                  attributes={{
+                    "data-aos": "d:loop",
+                  }}
+                >
+                  <div className="container-img bg-blue">
+                    <div className="wrapper-img" data-cursor-style="view">
+                      <img
+                        src={img1}
+                        data-preload
+                        className="media"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                  <div className="container-text">
+                    <ul className="list-tags-small">
+                      <li className="tag-small active">
+                        <span>Corporate</span>
+                      </li>
+                      <li className="tag-small">
+                        <span>Event Design and Production</span>
+                      </li>
+                      <li className="tag-small">
+                        <span>Creative Services Agency</span>
+                      </li>
+                      <li className="tag-small">
+                        <span>+ 3 studios</span>
+                      </li>
+                    </ul>
+                    <h2 className="title-portfolio">F1 Las Vegas Grand Prix</h2>
+                  </div>
+                </DelayedLink>
+              </li>
+              <li className="grid-item">
+                <DelayedLink
+                  to="/portfolio-post"
+                  className="link-portfolio link-portfolio-animation"
+                  attributes={{
+                    "data-aos": "d:loop",
+                  }}
+                >
+                  <div className="container-img bg-blue">
+                    <div className="wrapper-img" data-cursor-style="view">
+                      <img
+                        src={img8}
+                        data-preload
+                        className="media"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                  <div className="container-text">
+                    <ul className="list-tags-small">
+                      <li className="tag-small active">
+                        <span>Tradeshow</span>
+                      </li>
+                      <li className="tag-small">
+                        <span>Creative Services Agency</span>
+                      </li>
+                      <li className="tag-small">
+                        <span>Floral design</span>
+                      </li>
+                    </ul>
+                    <h2 className="title-portfolio">F1 Las Vegas Grand Prix</h2>
+                  </div>
+                </DelayedLink>
+              </li>
+              <li className="grid-item">
+                <DelayedLink
+                  to="/portfolio-post"
+                  className="link-portfolio link-portfolio-animation"
+                  attributes={{
+                    "data-aos": "d:loop",
+                  }}
+                >
+                  <div
+                    className="container-img bg-blue"
+                    data-cursor-style="view"
+                  >
+                    <div className="wrapper-img">
+                      <img
+                        src={img6}
+                        data-preload
+                        className="media"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                  <div className="container-text">
+                    <ul className="list-tags-small">
+                      <li className="tag-small active">
+                        <span>Corporate</span>
+                      </li>
+                      <li className="tag-small">
+                        <span>Event Design and Production</span>
+                      </li>
+                      <li className="tag-small">
+                        <span>Creative Services Agency</span>
+                      </li>
+                      <li className="tag-small">
+                        <span>+ 3 studios</span>
+                      </li>
+                    </ul>
+                    <h2 className="title-portfolio">F1 Las Vegas Grand Prix</h2>
+                  </div>
+                </DelayedLink>
+              </li>
+              <li className="grid-item">
+                <DelayedLink
+                  to="/portfolio-post"
+                  className="link-portfolio link-portfolio-animation"
+                  attributes={{
+                    "data-aos": "d:loop",
+                  }}
+                >
+                  <div className="container-img bg-blue">
+                    <div className="wrapper-img" data-cursor-style="view">
+                      <img
+                        src={img2}
+                        data-preload
+                        className="media"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                  <div className="container-text">
+                    <ul className="list-tags-small">
+                      <li className="tag-small active">
+                        <span>Tradeshow</span>
+                      </li>
+                      <li className="tag-small">
+                        <span>Creative Services Agency</span>
+                      </li>
+                      <li className="tag-small">
+                        <span>Floral design</span>
+                      </li>
+                    </ul>
+                    <h2 className="title-portfolio">F1 Las Vegas Grand Prix</h2>
+                  </div>
+                </DelayedLink>
+              </li>
+              <li className="grid-item">
+                <DelayedLink
+                  to="/portfolio-post"
+                  className="link-portfolio link-portfolio-animation"
+                  attributes={{
+                    "data-aos": "d:loop",
+                  }}
+                >
+                  <div className="container-img bg-blue">
+                    <div className="wrapper-img" data-cursor-style="view">
+                      <img
+                        src={img1}
+                        data-preload
+                        className="media"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                  <div className="container-text">
+                    <ul className="list-tags-small">
+                      <li className="tag-small active">
+                        <span>Corporate</span>
+                      </li>
+                      <li className="tag-small">
+                        <span>Event Design and Production</span>
+                      </li>
+                      <li className="tag-small">
+                        <span>Creative Services Agency</span>
+                      </li>
+                      <li className="tag-small">
+                        <span>+ 3 studios</span>
+                      </li>
+                    </ul>
+                    <h2 className="title-portfolio">F1 Las Vegas Grand Prix</h2>
+                  </div>
+                </DelayedLink>
+              </li>
+              <li className="grid-item">
+                <DelayedLink
+                  to="/portfolio-post"
+                  className="link-portfolio link-portfolio-animation"
+                  attributes={{
+                    "data-aos": "d:loop",
+                  }}
+                >
+                  <div className="container-img bg-blue">
+                    <div className="wrapper-img" data-cursor-style="view">
+                      <img
+                        src={img8}
+                        data-preload
+                        className="media"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                  <div className="container-text">
+                    <ul className="list-tags-small">
+                      <li className="tag-small active">
+                        <span>Tradeshow</span>
+                      </li>
+                      <li className="tag-small">
+                        <span>Creative Services Agency</span>
+                      </li>
+                      <li className="tag-small">
+                        <span>Floral design</span>
+                      </li>
+                    </ul>
+                    <h2 className="title-portfolio">F1 Las Vegas Grand Prix</h2>
+                  </div>
+                </DelayedLink>
+              </li>
             </ul>
           </div>
           <div
