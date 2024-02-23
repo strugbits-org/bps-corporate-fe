@@ -20,7 +20,7 @@ function App() {
       
       {/* helpers */}
       <span ref={reloadTrigger} className="reloadScript d-none"></span>
-
+      <span className="updateWatchedTrigger d-none"></span>
       <Loading />
       <Cookies />
       <Navbar />

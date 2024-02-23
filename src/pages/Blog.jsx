@@ -15,7 +15,7 @@ const Blog = () => {
       );
     } else {
       setSelectedFilters([...selectedFilters, selectedCategory]);
-    }
+    } 
   };
 
   useEffect(() => {
@@ -30,12 +30,10 @@ const Blog = () => {
       }
     };
     filterItems();
-    console.log(selectedFilters, "rerender here");
   }, [selectedFilters]); 
 
-
   useEffect(() => {
-    console.log("filteredItems changed:", filteredItems);
+    document.querySelector(".updateWatchedTrigger").click();
   }, [filteredItems]);
 
   return (

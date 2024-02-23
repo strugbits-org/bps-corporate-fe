@@ -16121,6 +16121,8 @@ var require_app2 = __commonJS({
       }
     }
     const reloadButton = document.querySelector(".reloadScript");
+    const updateWatchedTrigger = document.querySelector(".updateWatchedTrigger");
+    updateWatchedTrigger.addEventListener("click", updateWatched);
     
     reloadButton.addEventListener("click", ()=>{
       if(!firstLoad){
