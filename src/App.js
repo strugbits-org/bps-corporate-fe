@@ -48,16 +48,16 @@ function App() {
         <meta property="og:site_name" content="Blueprint" />
         <meta property="og:locale" content="en" />
         <link rel="canonical" href="" />
-        <link rel="icon" type="image/png" href="favicon.png" />
+        <link rel="icon" type="image/png" href={process.env.PUBLIC_URL + "favicon.png"} />
 
-        <script type="module" src="./js/app2.js"></script>
-        <script type="module" src="./js/search.js"></script>
-        <script type="module" src="./js/forms.js"></script>
-        <script type="module" src="./js/chat.js"></script>
-        <script type="module" src="./js/loader.js"></script>
+        <script type="module" src={ process.env.PUBLIC_URL + "/js/app2.js"}></script>
+        <script type="module" src={ process.env.PUBLIC_URL + "/js/search.js"}></script>
+        <script type="module" src={ process.env.PUBLIC_URL + "/js/forms.js"}></script>
+        <script type="module" src={ process.env.PUBLIC_URL + "/js/chat.js"}></script>
+        <script type="module" src={ process.env.PUBLIC_URL + "/js/loader.js"}></script>
 
-        <link rel="stylesheet" href="./js/utils.css" />
-        <link rel="stylesheet" href="./js/app.css" />
+        <link rel="stylesheet" href={ process.env.PUBLIC_URL + "/js/utils.css"} />
+        <link rel="stylesheet" href={ process.env.PUBLIC_URL + "/js/app.css"} />
       </Helmet>
 
       <div id="main-transition">
