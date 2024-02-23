@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import img6 from "../../utilis/images/lib/06_desktop.jpg" 
 
 const PortfolioIntoSection = () => {
+  
   return (
     <section className="portfolio-post-intro pb-lg-250">
     <div className="wrapper-banner-img" data-aos>
