@@ -1,11 +1,10 @@
-import { Link } from "react-router-dom";
 import {
   OurCardData,
-  portfolioData,
+  // portfolioData,
   categoriesData,
 } from "../../common/constats/portfolioData";
 import React, { useEffect, useState } from "react";
-
+import DelayedLink from "../../common/DelayedLink";
 const ExploreWorkSection = () => {
   const dataTag = [
     { name: "portfolio", cssClass: "list-portfolio-tags" },
@@ -50,7 +49,7 @@ const ExploreWorkSection = () => {
         <div className="row">
           <div className="col-12 mb-lg-60 mb-tablet-40 mb-phone-35">
             <h1 className="fs--60 text-center split-words" data-aos="d:loop">
-              {portfolioData.title}
+              Explore our work
             </h1>
 
             <div
@@ -104,18 +103,18 @@ const ExploreWorkSection = () => {
             </div>
           </div>
         </div>
-        {/* map cards here */}
-
         <div className="row row-2">
           <div className="col-lg-12 column-1">
             <ul className="list-portfolio grid-lg-25 grid-tablet-50">
               {filteredItems.map((data, index) => {
                 return (
                   <li key={index} className="grid-item">
-                    <Link
+                    <DelayedLink
                       to={`/portfolio-post/${data.id}`}
                       className="link-portfolio link-portfolio-animation"
-                      data-aos="d:loop"
+                      attributes={{
+                        "data-aos": "d:loop",
+                      }}
                     >
                       <div
                         className="container-img bg-blue"
@@ -156,7 +155,7 @@ const ExploreWorkSection = () => {
 
                         <h2 className="title-portfolio">{data.title}</h2>
                       </div>
-                    </Link>
+                    </DelayedLink>
                   </li>
                 );
               })}

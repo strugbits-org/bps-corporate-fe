@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import SocialSection from "../components/commonComponents/SocialSection";
-import { Link } from "react-router-dom";
+import DelayedLink from "../common/DelayedLink";
 import { head, postes } from "../common/constats/blogData";
 
 const Blog = () => {
@@ -32,13 +32,11 @@ const Blog = () => {
     };
     filterItems();
     console.log(selectedFilters, "rerender here");
-  }, [selectedFilters]); 
-
+  }, [selectedFilters]);
 
   useEffect(() => {
     console.log("filteredItems changed:", filteredItems);
   }, [filteredItems]);
-
   return (
     <>
       <section className="blog-intro pt-lg-145 pt-tablet-115 pt-phone-120 pb-lg-150 pb-tablet-100 pb-phone-155">
@@ -66,9 +64,11 @@ const Blog = () => {
                   <div className="container-wrapper-list">
                     <div className="wrapper-list">
                       <ul className="list-blog-tags list-dropdown-tags">
-                      <li
+                        <li
                           onClick={() => setFilteredItems(postes)}
-                          className={`blog-btn-tag ${selectedFilters.length === 0 ? "active" : ""}`}
+                          className={`blog-btn-tag ${
+                            selectedFilters.length === 0 ? "active" : ""
+                          }`}
                         >
                           All Studios
                         </li>
@@ -85,7 +85,6 @@ const Blog = () => {
                             {category}
                           </li>
                         ))}
-                      
                       </ul>
                     </div>
                   </div>
@@ -102,10 +101,12 @@ const Blog = () => {
                     className="grid-item"
                     data-aos="d:loop"
                   >
-                    <Link
+                    <DelayedLink
                       to={`/blog-post/${data.id}`}
                       className="link-blog link-blog-animation"
-                      data-aos="d:loop"
+                      attributes={{
+                        "data-aos": "d:loop",
+                      }}
                     >
                       <div
                         className="container-img bg-blue"
@@ -154,20 +155,46 @@ const Blog = () => {
                           ) : null}
                         </ul>
                       </div>
-                    </Link>
+                    </DelayedLink>
+                    <h2 className="title-blog">
+                      A Taste Explosion: Event Design Extravaganza at Boa
+                      Restaurant
+                    </h2>
+                    <p className="text-blog">
+                      Beverly Hills, renowned for its luxury and panache,
+                      witnessed an unforgettable evening that melded culinary
+                      wonders with unmatched event Lorem ipsum dolor sit amet,
+                      consectetur adipiscing elit.
+                    </p>
+                    <ul className="list-tags-small">
+                      <li className="tag-small active">
+                        <span>Corporate</span>
+                      </li>
+                      <li className="tag-small">
+                        <span>Event Design and Production</span>
+                      </li>
+                      <li className="tag-small">
+                        <span>Creative Services Agency</span>
+                      </li>
+                      <li className="tag-small">
+                        <span>+ 3 studios</span>
+                      </li>
+                    </ul>
                   </li>
                 ))}
               </ul>
             </div>
-            <div className="col-lg-2 offset-lg-5 flex-center mt-lg-70 mt-tablet-60 mt-phone-85">
-              <Link
-                to="/blog-post"
-                className="btn-border-blue"
-                data-cursor-style="off"
-              >
-                <span>See all</span>
-              </Link>
-            </div>
+          </div>
+          <div className="col-lg-2 offset-lg-5 flex-center mt-lg-70 mt-tablet-60 mt-phone-85">
+            <DelayedLink
+              to="/blog-post"
+              className="btn-border-blue"
+              attributes={{
+                "data-cursor-style": "off",
+              }}
+            >
+              <span>See all</span>
+            </DelayedLink>
           </div>
         </div>
       </section>

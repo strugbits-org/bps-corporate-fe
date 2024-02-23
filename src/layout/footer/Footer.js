@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
-import { footerData, address } from "../../common/constats/constats";
+import { footerData, address } from "../../common/constats";
 import Newsletter from "../../common/Newsletter";
+import DelayedLink from "../../common/DelayedLink";
 const Footer = () => {
   return (
     <footer id="footer" data-cursor-style="off">
@@ -53,6 +53,7 @@ const Footer = () => {
           </div>
           <div className="col-lg-5 column-2 pt-lg-65 pt-mobile-50">
             <div className="wrapper-newsletter-menu">
+              
               <Newsletter />
 
               <div className="container-footer-menu mt-lg-165 mt-tablet-55 mt-phone-125">
@@ -66,9 +67,9 @@ const Footer = () => {
                     </button>
                   </li>
                   <li className="list-item">
-                    <Link to="/" className="link-footer-menu">
+                    <DelayedLink to="/" className="link-footer-menu">
                       <span>Rental Store</span>
-                    </Link>
+                    </DelayedLink>
                   </li>
                   <li className="list-item">
                     <button
@@ -79,61 +80,73 @@ const Footer = () => {
                     </button>
                   </li>
                   <li className="list-item">
-                    <Link to="/portfolio" className="link-footer-menu">
+                    <DelayedLink to="/portfolio" className="link-footer-menu">
                       <span>Portfolio</span>
-                    </Link>
+                    </DelayedLink>
                   </li>
                   <li className="list-item">
-                    <Link to="/about" className="link-footer-menu">
+                    <DelayedLink to="/about" className="link-footer-menu">
                       <span>About</span>
-                    </Link>
+                    </DelayedLink>
                   </li>
                   <li className="list-item">
-                    <Link to="/blog" className="link-footer-menu">
+                    <DelayedLink to="/blog" className="link-footer-menu">
                       <span>Blog</span>
-                    </Link>
+                    </DelayedLink>
                   </li>
                   <li className="list-item">
-                    <Link to="/contact" className="link-footer-menu">
+                    <DelayedLink to="/contact" className="link-footer-menu">
                       <span>Contact</span>
-                    </Link>
+                    </DelayedLink>
                   </li>
                   <li className="list-item">
-                    <Link to="/" className="link-footer-menu">
+                    <DelayedLink to="/" className="link-footer-menu">
                       <span>FAQ</span>
-                    </Link>
+                    </DelayedLink>
                   </li>
                   <li className="list-item">
-                    <Link to="/" className="link-footer-menu">
+                    <DelayedLink to="/" className="link-footer-menu">
                       <span>Terms of use</span>
-                    </Link>
+                    </DelayedLink>
                   </li>
                   <li className="list-item">
-                    <Link to="/" className="link-footer-menu">
+                    <DelayedLink to="/" className="link-footer-menu">
                       <span>Privacy policy</span>
-                    </Link>
+                    </DelayedLink>
                   </li>
                   <li className="list-item item-social-media">
                     <ul className="list-social-media">
                       <li>
-                        <Link to="/" target="_blank" rel="noopener noreferrer">
+                        <DelayedLink to="/" target="_blank"
+                        attributes={{
+                          "rel":"noopener noreferrer"
+                          }}>
                           <i className="icon-facebook"></i>
-                        </Link>
+                        </DelayedLink>
                       </li>
                       <li>
-                        <Link to="/" target="_blank" rel="noopener noreferrer">
+                        <DelayedLink to="/" target="_blank"
+                        attributes={{
+                          "rel":"noopener noreferrer"
+                          }}>
                           <i className="icon-instagram"></i>
-                        </Link>
+                        </DelayedLink>
                       </li>
                       <li>
-                        <Link to="/" target="_blank" rel="noopener noreferrer">
+                        <DelayedLink to="/" target="_blank"
+                        attributes={{
+                          "rel":"noopener noreferrer"
+                          }}>
                           <i className="icon-x"></i>
-                        </Link>
+                        </DelayedLink>
                       </li>
                       <li>
-                        <Link to="/" target="_blank" rel="noopener noreferrer">
+                        <DelayedLink to="/" target="_blank"
+                        attributes={{
+                          "rel":"noopener noreferrer"
+                          }}>
                           <i className="icon-linkedin"></i>
-                        </Link>
+                        </DelayedLink>
                       </li>
                     </ul>
                   </li>
@@ -154,9 +167,9 @@ const Footer = () => {
                       </address>
                       <div className="phones">
                         {Object.values(data.contact).map((phone, index) => (
-                          <Link key={index} to="tel:">
+                          <DelayedLink key={index} to="tel:">
                             <span>{phone}</span>
-                          </Link>
+                          </DelayedLink>
                         ))}
                       </div>
                     </li>

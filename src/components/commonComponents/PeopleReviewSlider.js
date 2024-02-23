@@ -1,5 +1,5 @@
 import React from "react";
-import { peoplereviewdata, reviewslider } from "../../common/constats/constats";
+import { peoplereviewdata, reviewslider } from "../../common/constats";
 
 const PeopleReviewSLider = () => {
   return (
