@@ -5,18 +5,22 @@ import Navbar from "./layout/header/Navbar";
 import Loading from "./common/Loading";
 import Chat from "./common/Chat";
 import Cookies from "./common/Cookies";
+import React, { useEffect } from "react";
 
 function App() {
   const location = useLocation();
-  const pathname = location.pathname.trim() === "/" ? "home" : location.pathname.substring(1);
-  console.log(pathname,pathname.length, "path here..");
-  
-  const newpath = pathname.split("/")[0].trim(); // Trim leading and trailing spaces
-  console.log(newpath,newpath.length,"new path here");
-  
-
+  const pathname = location.pathname.trim() === "/" ? "home" : location.pathname.substring(1); // Remove leading slash
+  const cleanPath = pathname.split("/")[0].trim();
+    const reloadTrigger = React.useRef();
+    useEffect(() => {
+      reloadTrigger.current.click();
+    },[location.pathname]);
   return (
     <div>
+      
+      {/* helpers */}
+      <span ref={reloadTrigger} className="reloadScript d-none"></span>
+
       <Loading />
       <Cookies />
       <Navbar />
@@ -27,6 +31,7 @@ function App() {
           content="Events are crucial for enhancing brand awareness, offering exclusive
            chances to showcase ideas, products, and services intimately."
         />
+
         <meta name="format-detection" content="telephone=no" />
         <meta property="og:title" content="Blueprint" />
         <meta name="description" content="" />
@@ -43,7 +48,7 @@ function App() {
         <meta property="og:site_name" content="Blueprint" />
         <meta property="og:locale" content="en" />
         <link rel="canonical" href="" />
-        <link rel="icon" type="image/png" href="images/favicon.png" />
+        <link rel="icon" type="image/png" href={process.env.PUBLIC_URL + "favicon.png"} />
 
         <script type="module" src={ process.env.PUBLIC_URL + "/js/app2.js"}></script>
         <script type="module" src={ process.env.PUBLIC_URL + "/js/search.js"}></script>
@@ -56,7 +61,7 @@ function App() {
       </Helmet>
 
       <div id="main-transition">
-        <div id={`pg-${newpath}`} className="wrapper" data-scroll-container>
+        <div id={`pg-${cleanPath}`} className="wrapper" data-scroll-container>
           <main>
             <Outlet />
             <Footer />

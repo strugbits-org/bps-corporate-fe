@@ -1,6 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import img1 from "../../utilis/images/lib/08_desktop.jpg"
+import DelayedLink from '../../common/DelayedLink'
 const RecentPosts = () => {
   return (
     <section className="blog-post-recent-posts pt-lg-245 pt-tablet-105 pt-phone-150 pb-lg-150 pb-mobile-100">
@@ -9,7 +9,9 @@ const RecentPosts = () => {
         <div className="col-12 column-1">
           <h2
             className="fs--60 text-center mb-lg-35 mb-tablet-40 mb-phone-100 split-words"
-            data-aos="d:loop"
+            attributes={{
+                      "data-aos": "d:loop",
+                    }}
           >
             Recent posts
           </h2>
@@ -17,10 +19,12 @@ const RecentPosts = () => {
             <div className="swiper-container">
               <div className="swiper-wrapper list-blog list-slider-mobile grid-lg-25">
                 <div className="swiper-slide grid-item">
-                  <Link
+                  <DelayedLink
                     to="/blog-post"
                     className="link-blog link-blog-animation"
-                    data-aos="d:loop"
+                    attributes={{
+                      "data-aos": "d:loop",
+                    }}
                   >
                     <div
                       className="container-img bg-blue"
@@ -69,13 +73,15 @@ const RecentPosts = () => {
                         </li>
                       </ul>
                     </div>
-                  </Link>
+                  </DelayedLink>
                 </div>
                 <div className="swiper-slide grid-item">
-                  <Link
+                  <DelayedLink
                     to="/blog-post"
                     className="link-blog link-blog-animation"
-                    data-aos="d:loop"
+                    attributes={{
+                      "data-aos": "d:loop",
+                    }}
                   >
                     <div
                       className="container-img bg-blue"
@@ -124,13 +130,15 @@ const RecentPosts = () => {
                         </li>
                       </ul>
                     </div>
-                  </Link>
+                  </DelayedLink>
                 </div>
                 <div className="swiper-slide grid-item">
-                  <Link
+                  <DelayedLink
                     to="/blog-post"
                     className="link-blog link-blog-animation"
-                    data-aos="d:loop"
+                    attributes={{
+                      "data-aos": "d:loop",
+                    }}
                   >
                     <div
                       className="container-img bg-blue"
@@ -179,13 +187,15 @@ const RecentPosts = () => {
                         </li>
                       </ul>
                     </div>
-                  </Link>
+                  </DelayedLink>
                 </div>
                 <div className="swiper-slide grid-item">
-                  <Link
+                  <DelayedLink
                     to="/blog-post"
                     className="link-blog link-blog-animation"
-                    data-aos="d:loop"
+                    attributes={{
+                      "data-aos": "d:loop",
+                    }}
                   >
                     <div
                       className="container-img bg-blue"
@@ -234,16 +244,16 @@ const RecentPosts = () => {
                         </li>
                       </ul>
                     </div>
-                  </Link>
+                  </DelayedLink>
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div className="col-lg-2 offset-lg-5 flex-center mt-70">
-          <Link to="/" className="btn-border-blue" data-cursor-style="off">
+          <DelayedLink to="/" className="btn-border-blue" data-cursor-style="off">
             <span>See all</span>
-          </Link>
+          </DelayedLink>
         </div>
       </div>
     </div>

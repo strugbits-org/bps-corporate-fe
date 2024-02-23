@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
 
-import { blogData, socialData, instafeeds, pinfeeds} from "../../common/constats/constats";
+import DelayedLink from "../../common/DelayedLink";
+import { blogData, socialData, instafeeds, pinfeeds} from "../../common/constats";
 const SocialSection = () => {
   return (
     <section className="section-lets-get-social z-5 pt-lg-195 pt-tablet-105 pt-phone-155 pb-lg-130 pb-tablet-105 pb-phone-140 mt-lg-240">
@@ -52,7 +52,7 @@ const SocialSection = () => {
                     {blogData.map((data, index) => {
                       return (
                         <li key={index}>
-                          <Link to="/blog-post" className="link-blog">
+                          <DelayedLink to="/blog-post" className="link-blog">
                             <div
                               className="container-img"
                               data-cursor-style="view"
@@ -68,7 +68,7 @@ const SocialSection = () => {
                               <h4 className="blog-title">{data.title}</h4>
                               <p className="blog-text">{data.desc}</p>
                             </div>
-                          </Link>
+                          </DelayedLink>
                         </li>
                       );
                     })}
@@ -96,10 +96,12 @@ const SocialSection = () => {
                     {instafeeds.map((data, index) => {
                       return (
                         <li key={index}>
-                          <Link
+                          <DelayedLink
                             to="/"
                             target="_blank"
-                            rel="noopener noreferrer"
+                            attributes={{
+                              "rel":"noopener noreferrer"
+                              }}
                           >
                             <div className="container-img">
                               <img
@@ -109,7 +111,7 @@ const SocialSection = () => {
                                 alt=""
                               />
                             </div>
-                          </Link>
+                          </DelayedLink>
                         </li>
                       );
                     })}
@@ -136,7 +138,7 @@ const SocialSection = () => {
 
                   <ul className="list-blog-lets-get-social">
                     <li>
-                      <Link to="/blog-post" className="link-blog">
+                      <DelayedLink to="/blog-post" className="link-blog">
                         <div className="container-text">
                           <h4
                             className=""
@@ -152,18 +154,19 @@ const SocialSection = () => {
                             </span>
                           </h4>
                         </div>
-                      </Link>
+                      </DelayedLink>
                     </li>
                     <li>
                       <ul className="list-instagram">
                       {pinfeeds.map((data, index) => {
                       return (
                         <li key={index}>
-                          <Link
+                          <DelayedLink
                             to="/"
                             target="_blank"
-                            rel="noopener noreferrer"
-                          >
+                            attributes={{
+                              "rel":"noopener noreferrer"
+                              }}                          >
                             <div className="container-img">
                               <img
                                 src={data.image}
@@ -172,14 +175,14 @@ const SocialSection = () => {
                                 alt=""
                               />
                             </div>
-                          </Link>
+                          </DelayedLink>
                         </li>
                       );
                     })}
                       </ul>
                     </li>
                     <li>
-                      <Link to="/blog-post" className="link-blog">
+                      <DelayedLink to="/blog-post" className="link-blog">
                         <div className="container-text">
                           <h4 className="p-card">
                             <span>Sign up</span>
@@ -189,7 +192,7 @@ const SocialSection = () => {
                             ></i>
                           </h4>
                         </div>
-                      </Link>
+                      </DelayedLink>
                     </li>
                   </ul>
                 </div>

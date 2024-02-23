@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import {datagettouch} from "../../common/constats/constats";
+import {datagettouch} from "../../common/constats";
+import DelayedLink from "../../common/DelayedLink";
 const GetTouchSection = () => {
   return (
     <section className="home-solution pt-220 pb-110">
@@ -21,15 +21,17 @@ const GetTouchSection = () => {
             </div>
           </div>
           <div className="col-lg-4 offset-lg-4 flex-center mt-lg-60 mt-mobile-50">
-            <Link
+            <DelayedLink
               to={"/portfolio"}
               className="btn-blue btn-medium"
-              data-aos="fadeIn - .3s, d:loop"
-              data-cursor-style="off"
+              attributes={{
+                "data-aos":"fadeIn - .3s, d:loop",
+                "data-cursor-style":"off"
+                }}
             >
               <span>{datagettouch.btntext} </span>
               <i className="icon-arrow-right-2"></i>
-            </Link>
+            </DelayedLink>
           </div>
         </div>
       </div>
