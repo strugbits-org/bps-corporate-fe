@@ -21,7 +21,7 @@ export const postes = [
     img: img,
     userName: "Lily Yeung",
     date: "Sep 30",
-    category: "Event Design and Production",
+    category: "Wedding",
     heading: "A Taste Explosion: Event Design Extravaganza at Boa Restaurant",
     p: " Beverly Hills, renowned for its luxury and panache, witnessed an unforgettable evening that melded culinary wonders with unmatched event Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     tags: {

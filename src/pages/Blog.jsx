@@ -32,12 +32,9 @@ const Blog = () => {
     };
     filterItems();
     console.log(selectedFilters, "rerender here");
-  }, [selectedFilters]); // Ensure useEffect runs when selectedFilters changes
+  }, [selectedFilters]); 
 
-  // Add console.log to check rendering
-  console.log("Rendering Blog component");
 
-  // Add console.log to check if filteredItems changes
   useEffect(() => {
     console.log("filteredItems changed:", filteredItems);
   }, [filteredItems]);
@@ -69,6 +66,12 @@ const Blog = () => {
                   <div className="container-wrapper-list">
                     <div className="wrapper-list">
                       <ul className="list-blog-tags list-dropdown-tags">
+                      <li
+                          onClick={() => setFilteredItems(postes)}
+                          className={`blog-btn-tag ${selectedFilters.length === 0 ? "active" : ""}`}
+                        >
+                          All Studios
+                        </li>
                         {menuitems.map((category, idx) => (
                           <li
                             onClick={() => handleFilterButtonClick(category)}
@@ -82,6 +85,7 @@ const Blog = () => {
                             {category}
                           </li>
                         ))}
+                      
                       </ul>
                     </div>
                   </div>
