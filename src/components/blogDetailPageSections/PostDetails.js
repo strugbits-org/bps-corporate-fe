@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import ProductCartSlider from "../commonComponents/ProductCartSlider";
 import SocialVerticalBar from "./SocialVerticalBar";
 import img1 from "../../utilis/images/lib/06_desktop.jpg"
@@ -6,6 +6,7 @@ import img2 from "../../utilis/images/lib/02_desktop.jpg"
 import img8 from "../../utilis/images/lib/08_desktop.jpg"
 import img4 from "../../utilis/images/lib/04_desktop.jpg"
 // import {postes} from "../../common/constats/blogData";
+import DelayedLink from "../../common/DelayedLink";
 
 const PostDetails = () => {
 
@@ -169,24 +170,24 @@ const PostDetails = () => {
                 </h3>
                 <ul className="list-post-tags" data-aos="d:loop">
                   <li>
-                    <Link to="/" className="btn-tag">
+                    <DelayedLink to="/" className="btn-tag">
                       <span>Custom fabrication</span>
-                    </Link>
+                    </DelayedLink>
                   </li>
                   <li>
-                    <Link to="/" className="btn-tag">
+                    <DelayedLink to="/" className="btn-tag">
                       <span>Event design & Production</span>
-                    </Link>
+                    </DelayedLink>
                   </li>
                   <li>
-                    <Link to="/" className="btn-tag">
+                    <DelayedLink to="/" className="btn-tag">
                       <span>Printing</span>
-                    </Link>
+                    </DelayedLink>
                   </li>
                   <li>
-                    <Link to="/" className="btn-tag">
+                    <DelayedLink to="/" className="btn-tag">
                       <span>Venues</span>
-                    </Link>
+                    </DelayedLink>
                   </li>
                 </ul>
               </div>

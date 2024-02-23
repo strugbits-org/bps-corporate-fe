@@ -44,7 +44,10 @@ const router = createBrowserRouter([
         path: "portfolio", 
         element: <Portfolio />,
       },
-      //// dynamic pages ////////
+      {
+        path: "services-post",
+        element: <ServicePostPage />,
+      },
       {
         path: "services-post/:id",
         element: <ServicePostPage />,
@@ -63,7 +66,6 @@ const router = createBrowserRouter([
         path: "blog-post/:id", 
         element: <BlogPost/>,
       },
-      
       //////////// private route start ///////////////////////
       // {
       //   element: <PrivateRoute/>,

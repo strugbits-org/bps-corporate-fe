@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import { marketCards } from "../../common/constats/constats";
+import DelayedLink from "../../common/DelayedLink";
+import { marketCards } from "../../common/constats";
 
 const MarketSection = () => {
   let data_delay = 0;
@@ -19,7 +19,7 @@ const MarketSection = () => {
             <ul className="list-markets list-projects font-60 grid-lg-25 grid-tablet-50">
               {marketCards.map((data, index) => {
                 data_delay += 50;
-
+                
                 return (
                   <li
                     key={index}
@@ -27,11 +27,13 @@ const MarketSection = () => {
                     data-aos="d:loop"
                     data-delay-desktop={data_delay.toString()}
                   >
-                    <Link
+                    <DelayedLink
                       to="/market-post"
                       className="market-link project-link"
-                      data-cursor-style="view"
-                      data-menu-close
+                      attributes={{
+                      "data-cursor-style":"view",
+                      "data-menu-close":""
+                      }}
                     >
                       <div
                         className="container-img bg-blue"
@@ -53,11 +55,10 @@ const MarketSection = () => {
                             <li key={index}>
                               <span>{tag}</span>
                             </li>
-                            
                           ))}
                         </ul>
                       </div>
-                    </Link>
+                    </DelayedLink>
                   </li>
                 );
               })}

@@ -1,71 +1,33 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 import img1 from "../../../utilis/images/chairs/bristol-chair.png";
-import imgC1 from "../../../utilis/images/chairs/bristol-chair-color-1.png";
-import imgC2 from "../../../utilis/images/chairs/bristol-chair-color-2.png";
-import imgC3 from "../../../utilis/images/chairs/bristol-chair-color-3.png";
-import imgC4 from "../../../utilis/images/chairs/bristol-chair-color-4.png";
-import imgd6 from "../../../utilis/images/lib/06_desktop.jpg";
-import imgd8 from "../../../utilis/images/lib/08_desktop.jpg";
-import imgd1 from "../../../utilis/images/lib/01_desktop.jpg";
-import imgd2 from "../../../utilis/images/lib/02_desktop.jpg";
-import { OurCardData } from "../../../common/constats/portfolioData";
-import { postes } from "../../../common/constats/blogData";
-import { modelData } from "../../../common/constats/marketData";
-import { studioCard } from "../../../common/constats/constats";
+import imgC1 from "../../../utilis/images/chairs/bristol-chair-color-1.png"
+import imgC2 from "../../../utilis/images/chairs/bristol-chair-color-2.png"
+import imgC3 from "../../../utilis/images/chairs/bristol-chair-color-3.png"
+import imgC4 from "../../../utilis/images/chairs/bristol-chair-color-4.png" 
+import imgd6 from "../../../utilis/images/lib/06_desktop.jpg"
+import imgd8 from "../../../utilis/images/lib/08_desktop.jpg"
+import imgd7 from "../../../utilis/images/lib/07_desktop.jpg"
+import imgd1 from "../../../utilis/images/lib/01_desktop.jpg"
+import imgd2 from "../../../utilis/images/lib/02_desktop.jpg"
+import DelayedLink from "../../../common/DelayedLink";
 
 const Search = () => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [portfolioData, setPortfolioData] = useState([]);
-  const [blogData, setBlogData] = useState([]);
-
-  const handleInputChange = (event) => {
-    setSearchTerm(event.target.value.trim().toLowerCase());
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const portfolioData = OurCardData.filter(item =>
-        item.categories && item.categories.toLowerCase() === searchTerm
-    );
-    const blogData = postes.filter(item => item.category && item.category.toLowerCase() === searchTerm
-
-      )
-    setPortfolioData(portfolioData);
-    setBlogData(blogData);
-    
-    
-};
-console.log(portfolioData);
-console.log(blogData);
-
   return (
     <div className="container-fluid">
       <div className="row">
         <div className="col-12">
           <div className="wrapper-search">
             <div className="container-form">
-              <form
-                className="form-search header-search"
-                data-search-form
-                onSubmit={handleSubmit}
-              >
+              <form className="form-search header-search" data-search-form>
                 <div className="container-input input-header">
                   <label
                     htmlFor="search"
                     className="split-chars"
                     data-aos="d:loop"
                   >
-                    Type here
+                    type here
                   </label>
-                  <input
-                    type="search"
-                    className="search"
-                    name="por"
-                    value={searchTerm}
-                    onChange={handleInputChange}
-                    required
-                  />
+                  <input type="search" className="search" name="por" required />
                   <div className="container-submit">
                     <button
                       type="submit"
@@ -97,17 +59,48 @@ console.log(blogData);
                     className="list-result-all-studios grid-lg-16 grid-tablet-33 grid-phone-50"
                     data-aos
                   >
-                    {studioCard.map((data, index) => {
-                      return (
-                        <li key={index} className="grid-item">
-                          <Link to="/" className="link-studios">
-                            <h3 className="title-all-studios">
-                              <span>{data.name}</span>
-                            </h3>
-                          </Link>
-                        </li>
-                      );
-                    })}
+                    <li className="grid-item">
+                      <DelayedLink to="/" className="link-studios">
+                        <h3 className="title-all-studios">
+                          <span>Event Design And Prodution</span>
+                        </h3>
+                      </DelayedLink>
+                    </li>
+                    <li className="grid-item">
+                      <DelayedLink to="/" className="link-studios">
+                        <h3 className="title-all-studios">
+                          <span>Creative Services Agency</span>
+                        </h3>
+                      </DelayedLink>
+                    </li>
+                    <li className="grid-item">
+                      <DelayedLink to="/" className="link-studios">
+                        <h3 className="title-all-studios">
+                          <span>Floral Design</span>
+                        </h3>
+                      </DelayedLink>
+                    </li>
+                    <li className="grid-item">
+                      <DelayedLink to="/" className="link-studios">
+                        <h3 className="title-all-studios">
+                          <span>Custom Fabrication</span>
+                        </h3>
+                      </DelayedLink>
+                    </li>
+                    <li className="grid-item">
+                      <DelayedLink to="/" className="link-studios">
+                        <h3 className="title-all-studios">
+                          <span>Printing Services</span>
+                        </h3>
+                      </DelayedLink>
+                    </li>
+                    <li className="grid-item">
+                      <DelayedLink to="/" className="link-studios">
+                        <h3 className="title-all-studios">
+                          <span>Rentals Studios</span>
+                        </h3>
+                      </DelayedLink>
+                    </li>
                   </ul>
                 </div>
 
@@ -117,10 +110,14 @@ console.log(blogData);
                       <h2 className="title-results split-chars" data-aos>
                         Rental <span>“Wedding”</span>
                       </h2>
-                      <Link to="/" className="btn-border-blue" data-aos>
+                      <DelayedLink to="/" className="btn-border-blue"
+                        attributes={{
+                          "data-aos": "",
+                        }}
+                        >
                         <span>See more</span>
                         <i className="icon-arrow-right"></i>
-                      </Link>
+                      </DelayedLink>
                     </div>
                     <div className="slider-content-phone">
                       <div className="swiper-container">
@@ -130,7 +127,7 @@ console.log(blogData);
                         >
                           <div className="swiper-slide grid-item">
                             <div className="rental-product-link">
-                              <Link to="/" className="product-link">
+                              <DelayedLink to="/" className="product-link">
                                 <h3 className="product-name">Bristol Chair</h3>
 
                                 <div className="wrapper-img">
@@ -196,12 +193,12 @@ console.log(blogData);
                                     <span>+3</span>
                                   </div>
                                 </div>
-                              </Link>
+                              </DelayedLink>
                             </div>
                           </div>
                           <div className="swiper-slide grid-item">
                             <div className="rental-product-link">
-                              <Link to="/" className="product-link">
+                              <DelayedLink to="/" className="product-link">
                                 <h3 className="product-name">Bristol Chair</h3>
 
                                 <div className="wrapper-img">
@@ -267,12 +264,12 @@ console.log(blogData);
                                     <span>+3</span>
                                   </div>
                                 </div>
-                              </Link>
+                              </DelayedLink>
                             </div>
                           </div>
                           <div className="swiper-slide grid-item">
                             <div className="rental-product-link">
-                              <Link to="/" className="product-link">
+                              <DelayedLink to="/" className="product-link">
                                 <h3 className="product-name">Bristol Chair</h3>
 
                                 <div className="wrapper-img">
@@ -338,7 +335,7 @@ console.log(blogData);
                                     <span>+3</span>
                                   </div>
                                 </div>
-                              </Link>
+                              </DelayedLink>
                             </div>
                           </div>
                         </div>
@@ -350,10 +347,12 @@ console.log(blogData);
                       <h2 className="title-results split-chars" data-aos>
                         Portfolio <span>“Wedding”</span>
                       </h2>
-                      <Link to="/" className="btn-border-blue" data-aos>
+                      <DelayedLink to="/" className="btn-border-blue" attributes={{
+                          "data-aos": "",
+                        }}>
                         <span>See more</span>
                         <i className="icon-arrow-right"></i>
-                      </Link>
+                      </DelayedLink>
                     </div>
                     <div className="slider-content-phone">
                       <div className="swiper-container">
@@ -362,7 +361,7 @@ console.log(blogData);
                           data-aos
                         >
                           <div className="swiper-slide grid-item">
-                            <Link
+                            <DelayedLink
                               to="/portfolio-post"
                               className="link-portfolio"
                             >
@@ -384,10 +383,11 @@ console.log(blogData);
                                   F1 Las Vegas Grand Prix
                                 </h2>
                               </div>
-                            </Link>
+                            </DelayedLink>
                           </div>
+
                           <div className="swiper-slide grid-item">
-                            <Link to="/" className="link-portfolio">
+                            <DelayedLink to="/" className="link-portfolio">
                               <div className="container-img">
                                 <img
                                   src={imgd8}
@@ -399,10 +399,10 @@ console.log(blogData);
                               <h3 className="title-portfolio">
                                 Brasil Design Awards 2023
                               </h3>
-                            </Link>
+                            </DelayedLink>
                           </div>
                           <div className="swiper-slide grid-item">
-                            <Link to="/" className="link-portfolio">
+                            <DelayedLink to="/" className="link-portfolio">
                               <div className="container-img">
                                 <img
                                   src={imgd8}
@@ -414,10 +414,10 @@ console.log(blogData);
                               <h3 className="title-portfolio">
                                 Brasil Design Awards 2023
                               </h3>
-                            </Link>
+                            </DelayedLink>
                           </div>
                           <div className="swiper-slide grid-item">
-                            <Link to="/" className="link-portfolio">
+                            <DelayedLink to="/" className="link-portfolio">
                               <div className="container-img">
                                 <img
                                   src={imgd1}
@@ -429,10 +429,10 @@ console.log(blogData);
                               <h3 className="title-portfolio">
                                 Latin American Design Awards 2023
                               </h3>
-                            </Link>
+                            </DelayedLink>
                           </div>
                           <div className="swiper-slide grid-item">
-                            <Link to="/" className="link-portfolio">
+                            <DelayedLink to="/" className="link-portfolio">
                               <div className="container-img">
                                 <img
                                   src={imgd2}
@@ -442,7 +442,7 @@ console.log(blogData);
                                 />
                               </div>
                               <h3 className="title-portfolio">Wedding</h3>
-                            </Link>
+                            </DelayedLink>
                           </div>
                         </div>
                       </div>
@@ -460,35 +460,93 @@ console.log(blogData);
                     className="list-result-our-markets list-projects font-35 grid-md-50"
                     data-aos
                   >
-                    {modelData.map((data, index) => {
-                      return (
-                        <li key={index} className="grid-item">
-                          <Link
-                            to="/market-post"
-                            className="market-link project-link"
-                            data-cursor-style="view"
-                            data-menu-close
-                          >
-                            <div
-                              className="container-img bg-blue"
-                              data-cursor-style="view"
-                            >
-                              <img
-                                src={data.img}
-                                data-preload
-                                className="media"
-                                alt=""
-                              />
-                            </div>
-                            <div className="container-text">
-                              <h3 className="title-project split-words">
-                                {data.title}
-                              </h3>
-                            </div>
-                          </Link>
-                        </li>
-                      );
-                    })}
+                    <li className="grid-item">
+                      <DelayedLink
+                        to="/market-post"
+                        className="market-link project-link"
+                        attributes={{
+                          "data-cursor-style": "view",
+                          "data-menu-close": "",
+                        }}
+                      >
+                        <div
+                          className="container-img bg-blue"
+                          data-cursor-style="view"
+                        >
+                          <img
+                            src={imgd6}
+                            data-preload
+                            className="media"
+                            alt=""
+                          />
+                        </div>
+                        <div className="container-text">
+                          <h3 className="title-project split-words">
+                            Corporate
+                          </h3>
+                        </div>
+                      </DelayedLink>
+                    </li>
+                    <li className="grid-item">
+                      <DelayedLink
+                        to="/"
+                        className="market-link project-link link-result-our-markets"
+                      >
+                        <div className="container-img bg-blue">
+                          <div className="wrapper-img">
+                            <img
+                              src={imgd6}
+                              data-preload
+                              className="media"
+                              alt=""
+                            />
+                          </div>
+                        </div>
+                        <div className="container-text">
+                          <h3 className="title-project">Corporate</h3>
+                        </div>
+                      </DelayedLink>
+                    </li>
+                    <li className="grid-item">
+                      <DelayedLink
+                        to="/"
+                        className="market-link project-link link-result-our-markets"
+                      >
+                        <div className="container-img bg-blue">
+                          <div className="wrapper-img">
+                            <img
+                              src={imgd7}
+                              data-preload
+                              className="media"
+                              alt=""
+                            />
+                          </div>
+                        </div>
+                        <div className="container-text">
+                          <h3 className="title-project">Tradeshows</h3>
+                        </div>
+                      </DelayedLink>
+                    </li>
+                    <li className="grid-item">
+                      <DelayedLink
+                        to="/"
+                        className="market-link project-link link-result-our-markets"
+                      >
+                        <div className="container-img bg-blue">
+                          <div className="wrapper-img">
+                            <img
+                              src={imgd1}
+                              data-preload
+                              className="media"
+                              alt=""
+                            />
+                          </div>
+                        </div>
+                        <div className="container-text">
+                          <h3 className="title-project">Social</h3>
+                        </div>
+                      </DelayedLink>
+                    </li>
                   </ul>
                 </div>
 
@@ -497,10 +555,13 @@ console.log(blogData);
                     <h2 className="title-results split-chars" data-aos>
                       Blog <span>“Wedding”</span>
                     </h2>
-                    <Link to="/" className="btn-border-blue" data-aos>
+                    <DelayedLink to="/" className="btn-border-blue" 
+                    attributes={{
+                      "data-aos": "",
+                    }}>
                       <span>See more</span>
                       <i className="icon-arrow-right"></i>
-                    </Link>
+                    </DelayedLink>
                   </div>
 
                   <div className="slider-content-search-blog">
@@ -510,7 +571,7 @@ console.log(blogData);
                         data-aos
                       >
                         <div className="swiper-slide grid-item">
-                          <Link to="/blog-post" className="link-blog">
+                          <DelayedLink to="/blog-post" className="link-blog">
                             <div
                               className="container-img bg-blue"
                               data-cursor-style="view"
@@ -547,10 +608,10 @@ console.log(blogData);
                                 adipiscing elit.
                               </p>
                             </div>
-                          </Link>
+                          </DelayedLink>
                         </div>
                         <div className="swiper-slide grid-item">
-                          <Link to="/blog-post" className="link-blog">
+                          <DelayedLink to="/blog-post" className="link-blog">
                             <div
                               className="container-img bg-blue"
                               data-cursor-style="view"
@@ -587,10 +648,10 @@ console.log(blogData);
                                 adipiscing elit.
                               </p>
                             </div>
-                          </Link>
+                          </DelayedLink>
                         </div>
                         <div className="swiper-slide grid-item">
-                          <Link to="/blog-post" className="link-blog">
+                          <DelayedLink to="/blog-post" className="link-blog">
                             <div
                               className="container-img bg-blue"
                               data-cursor-style="view"
@@ -627,7 +688,7 @@ console.log(blogData);
                                 adipiscing elit.
                               </p>
                             </div>
-                          </Link>
+                          </DelayedLink>
                         </div>
                         <div className="swiper-slide grid-item">
                           <a href="blog-post.html" className="link-blog">
@@ -670,7 +731,7 @@ console.log(blogData);
                           </a>
                         </div>
                         <div className="swiper-slide grid-item">
-                          <Link to="/blog-post" className="link-blog">
+                          <DelayedLink to="/blog-post" className="link-blog">
                             <div
                               className="container-img bg-blue"
                               data-cursor-style="view"
@@ -707,7 +768,7 @@ console.log(blogData);
                                 adipiscing elit.
                               </p>
                             </div>
-                          </Link>
+                          </DelayedLink>
                         </div>
                       </div>
                     </div>
@@ -725,17 +786,17 @@ console.log(blogData);
                     data-aos
                   >
                     <li className="grid-item">
-                      <Link to="/" className="link-order-pages">
+                      <DelayedLink to="/" className="link-order-pages">
                         <h3 className="title-order-pages">About</h3>
                         <p className="text-order-pages">
                           In the heart of the great outdoors, with nature as our
                           backdrop, Blueprint Studios embarked on a creative
                           journey - a photoshoot
                         </p>
-                      </Link>
+                      </DelayedLink>
                     </li>
                     <li className="grid-item">
-                      <Link to="/" className="link-order-pages">
+                      <DelayedLink to="/" className="link-order-pages">
                         <h3 className="title-order-pages">Lorem ipsum dolor</h3>
                         <p className="text-order-pages">
                           Etiam mi felis, commodo eu augue in, sagittis faucibus
@@ -747,10 +808,10 @@ console.log(blogData);
                           faucibus orci luctus et ultrices posuere cubilia
                           curae; Nullam efficitur ac urna at vehicula.
                         </p>
-                      </Link>
+                      </DelayedLink>
                     </li>
                     <li className="grid-item">
-                      <Link to="/" className="link-order-pages">
+                      <DelayedLink to="/" className="link-order-pages">
                         <h3 className="title-order-pages">
                           Donec vel sem at enim
                         </h3>
@@ -761,10 +822,10 @@ console.log(blogData);
                           Nam sit amet odio justo. Pellentesque vitae dolor at
                           ipsum mollis malesuada. Aliquam non dolor augue.
                         </p>
-                      </Link>
+                      </DelayedLink>
                     </li>
                     <li className="grid-item">
-                      <Link to="/" className="link-order-pages">
+                      <DelayedLink to="/" className="link-order-pages">
                         <h3 className="title-order-pages">
                           Etiam ultricies nulla
                         </h3>
@@ -776,10 +837,10 @@ console.log(blogData);
                           Etiam ultricies nulla volutpat lorem lobortis, sed
                           sollicitudin arcu pretium.
                         </p>
-                      </Link>
+                      </DelayedLink>
                     </li>
                     <li className="grid-item">
-                      <Link to="/" className="link-order-pages">
+                      <DelayedLink to="/" className="link-order-pages">
                         <h3 className="title-order-pages">
                           Quisque lacinia nisi
                         </h3>
@@ -788,7 +849,7 @@ console.log(blogData);
                           quis nunc. Morbi posuere nibh purus, eget molestie
                           erat scelerisque a. Phasellus ut mauris mi.
                         </p>
-                      </Link>
+                      </DelayedLink>
                     </li>
                   </ul>
                 </div>
