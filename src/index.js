@@ -49,7 +49,7 @@ const router = createBrowserRouter([
         element: <ServicePostPage />,
       },
       {
-        path: "services-post/:service",
+        path: "services-post/:id",
         element: <ServicePostPage />,
       },
       {
