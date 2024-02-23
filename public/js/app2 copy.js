@@ -479,11 +479,11 @@ var require_app2 = __commonJS({
         entries.forEach(function(entry) {
           setTimeout(() => {
             var slide2 = entry.target.swiper;
-              if (entry.intersectionRatio > 0) {
-                slide2.autoplay.start();
-              } else {
-                slide2.autoplay.stop();
-              }
+            if (entry.intersectionRatio > 0) {
+              slide2.autoplay.start();
+            } else {
+              slide2.autoplay.stop();
+            }
           }, 1500);
         });
       }, {
@@ -801,7 +801,7 @@ var require_app2 = __commonJS({
         switch (el.tagName.toLowerCase()) {
           case "a":
             if (!el.hasAttribute(attrState)) {
-              // this.attachLink(el);
+              this.attachLink(el);
             }
             break;
           case "form":
@@ -1208,11 +1208,10 @@ var require_app2 = __commonJS({
         return isSupported;
       hasRequiredIsSupported = 1;
       isSupported = function() {
-        return false
-        // return window.history && window.history.pushState && window.history.replaceState && // pushState isn’t reliable on iOS until 5.
-        // !navigator.userAgent.match(
-        //   /((iPod|iPhone|iPad).+\bOS\s+[1-4]\D|WebApps\/.+CFNetwork)/
-        // );
+        return window.history && window.history.pushState && window.history.replaceState && // pushState isn’t reliable on iOS until 5.
+        !navigator.userAgent.match(
+          /((iPod|iPhone|iPad).+\bOS\s+[1-4]\D|WebApps\/.+CFNetwork)/
+        );
       };
       return isSupported;
     }
@@ -1270,12 +1269,13 @@ var require_app2 = __commonJS({
       parseDOM: function(el) {
         var parseElement2 = requireParseElement();
         forEachEls(this.getElements(el), parseElement2, this);
+       
       },
       refresh: function(el) {
         this.parseDOM(el || document);
       },
       reload: function() {
-        // window.location.reload();
+        window.location.reload();
       },
       attachLink: requireAttachLink(),
       attachForm: requireAttachForm(),
@@ -15998,143 +15998,13 @@ var require_app2 = __commonJS({
         }
       }
     }
-    if (firstLoad) {
-      whenContainerReady();
-    }
-
-    function reloadContainer() {
-      if (!screen.isMobile) {
-        let smooth = 2;
-        if (screen.isSafariDesktop)
-          smooth = 1.5;
-        ScrollSmoother.create({
-          wrapper: "#main-transition",
-          content: "[data-scroll-container]",
-          smooth,
-          normalizeScroll: true,
-          // prevents address bar from showing/hiding on most devices, solves various other browser inconsistencies
-          ignoreMobileResize: true,
-          // skips ScrollTrigger.refresh() on mobile resizes from address bar showing/hiding
-          effects: true,
-          preventDefault: true
-        });
-       }
-      if (firstLoad) {
-        firstLoad = false;
-      } else {
-        document.body.classList.add("page-enter-active");
-        document.body.classList.remove("page-leave-active");
-        setTimeout(() => {
-          updateWatched();
-        }, 300);
-        setTimeout(() => {
-          document.body.classList.remove("page-enter-active");
-        }, 900);
-      }
-      setTimeout(() => {
-        ScrollTrigger$1.refresh();
-      }, 1e3);
-
-
-
-      // About functions
-      const page = window.location.pathname.trim() === "/" ? "home" : location.pathname.substring(1);
-      const cleanPage = page.split("/")[0].trim();
-      switch (cleanPage) {
-        case 'home':
-          main$8();
-          break;
-          case 'about':
-          main$7();
-          break;
-        case 'portfolio-post':
-          main$6();
-          break;
-        case 'market-post':
-          main$5();
-          break;
-        case 'blog-post':
-          main$4();
-          break;
-        case 'services-post':
-          main$3();
-          break;
-        case 'contact':
-          main$2();
-        case 'portfolio':
-          main$1();
-          break;
-        default:
-          break;
-      }
-
-      sticky();
-      observers();
-      marcarFormPreenchido();
-      initVideo();
-      scrollTo("", "");
-      Parallax();
-      splitWords();
-      splitChars();
-      sliderContentMobile();
-      footer();
-      let sectionHeresWhatPeopleAreSaying = document.querySelector(".section-heres-what-people-are-saying");
-      if (sectionHeresWhatPeopleAreSaying) {
-        let bg = gsapWithCSS$1.timeline({
-          scrollTrigger: {
-            trigger: ".section-heres-what-people-are-saying",
-            start: "top center",
-            end: "bottom 30%",
-            // pin: containerScroll,
-            pinSpacing: false,
-            markers: false,
-            scrub: false,
-            anticipatePin: true,
-            invalidateOnRefresh: true,
-            toggleActions: "play reverse play reverse",
-            onUpdate: function(ev) {
-            }
-          }
-        });
-        bg.fromTo("body", {
-          backgroundColor: "#f2f2f2",
-          duration: 0.3
-        }, {
-          backgroundColor: "#87C3E7",
-          duration: 0.3
-        });
-        document.addEventListener("pjax:switch", function() {
-          document.body.style.backgroundColor = "";
-        }, { once: true });
-      }
-      if (document.querySelector(".accordion-list-studios")) {
-        if (screen.isDesktop) {
-          accordion(".accordion-list-studios .accordion-item", {
-            clickToggle: true,
-            allowMultipleActive: false
-          });
-        } else {
-          document.querySelectorAll(".accordion-list-studios").forEach((element) => {
-            accordionGsap(element);
-          });
-        }
-      }
-    }
-    const reloadButton = document.querySelector(".reloadScript");
-    
-    reloadButton.addEventListener("click", ()=>{
-      if(!firstLoad){
-        window.scrollTo({top:0,behavior:'instant'})
-        closeSearch();
-        reloadContainer();
-      }
-    });
-    
+    whenContainerReady();
     document.addEventListener("pjax:complete", whenContainerReady);
     document.addEventListener("pjax:send", whenContainerLeave);
     function whenContainerLeave() {
       document.body.classList.add("page-leave-active");
       closeSearch();
+
     }
     const pages = new PageController();
     pages.add(pgHome);

@@ -1,4 +1,4 @@
-import {dreambig} from "../../common/constats/constats";
+import {dreambig} from "../../common/constats";
 
 const DreamBigSection = () => {
   return (
