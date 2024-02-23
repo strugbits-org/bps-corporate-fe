@@ -96,14 +96,14 @@ const Blog = () => {
           <div className="row row-2 mt-lg-60 mt-tablet-40 mt-phone-35">
             <div className="col-lg-12 column-1">
               <ul className="list-blog grid-lg-25 grid-tablet-50">
-                {filteredItems.map((data, index) => (
+                {filteredItems.map((data) => (
                   <li
-                    key={`postes-${index}`}
+                    key={`postes-${data.id}`}
                     className="grid-item"
                     data-aos="d:loop"
                   >
                     <Link
-                      to="/blog-post"
+                      to={`/blog-post/${data.id}`}
                       className="link-blog link-blog-animation"
                       data-aos="d:loop"
                     >
