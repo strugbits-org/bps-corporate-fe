@@ -1,12 +1,48 @@
 import { Link } from "react-router-dom";
-import { OurCardData , portfolioData, categoriesData} from "../../common/constats/portfolioData";
-import React from "react";
+import {
+  OurCardData,
+  portfolioData,
+  categoriesData,
+} from "../../common/constats/portfolioData";
+import React, { useEffect, useState } from "react";
 
 const ExploreWorkSection = () => {
   const dataTag = [
     { name: "portfolio", cssClass: "list-portfolio-tags" },
     { name: "market", cssClass: "list-market-tags" },
   ];
+
+  const [selectedFilters, setSelectedFilters] = useState([]);
+  const [filteredItems, setFilteredItems] = useState(OurCardData);
+
+  const handleFilterButtonClick = (selectedCategory) => {
+    if (selectedFilters.includes(selectedCategory)) {
+      setSelectedFilters(
+        selectedFilters.filter((el) => el !== selectedCategory)
+      );
+    } else {
+      setSelectedFilters([...selectedFilters, selectedCategory]);
+    }
+  };
+
+  useEffect(() => {
+    const filterItems = () => {
+      if (selectedFilters.length > 0) {
+        let tempItems = OurCardData.filter((item) =>
+          selectedFilters.includes(item.category)
+        );
+        setFilteredItems(tempItems);
+      } else {
+        setFilteredItems(OurCardData);
+      }
+    };
+    filterItems();
+    console.log(selectedFilters, "");
+  }, [selectedFilters]);
+
+  useEffect(() => {
+    console.log("filteredItems changed:", filteredItems);
+  }, [filteredItems]);
 
   return (
     <section className="portfolio-intro pt-lg-145 pt-mobile-105">
@@ -41,21 +77,22 @@ const ExploreWorkSection = () => {
                       <div className="container-wrapper-list">
                         <div className="wrapper-list">
                           <ul className={`${cssClass} list-dropdown-tags`}>
-                            {data.tags.map((data, index) => {
-                              return (
-                                <li key={index}>
-                                  <button
-                                    className={` ${
-                                      index === 0
-                                        ? "portfolio-btn-tag active"
-                                        : "portfolio-btn-tag"
-                                    }`}
-                                  >
-                                    <span>{data.tag}</span>
-                                  </button>
-                                </li>
-                              );
-                            })}
+                            
+                            {data.tags.map((category, idx) => (
+                              <li
+                                onClick={() =>
+                                  handleFilterButtonClick(category)
+                                }
+                                className={`portfolio-btn-tag  ${
+                                  selectedFilters?.includes(category)
+                                    ? "active"
+                                    : ""
+                                }`}
+                                key={`filters-${idx}`}
+                              >
+                                {category.tag}
+                              </li>
+                            ))}
                           </ul>
                         </div>
                       </div>
@@ -63,6 +100,7 @@ const ExploreWorkSection = () => {
                   </div>
                 );
               })}
+              
             </div>
           </div>
         </div>
@@ -71,8 +109,7 @@ const ExploreWorkSection = () => {
         <div className="row row-2">
           <div className="col-lg-12 column-1">
             <ul className="list-portfolio grid-lg-25 grid-tablet-50">
-              
-              {OurCardData.map((data, index) => {
+              {filteredItems.map((data, index) => {
                 return (
                   <li key={index} className="grid-item">
                     <Link
