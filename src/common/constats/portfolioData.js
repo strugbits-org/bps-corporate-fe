@@ -436,19 +436,40 @@ export const portfolioData = {
 };
 
 export const OurCardData = [
+  
   {
     id:"01",
     img: img1,
+    categories: "Corporate",
     title: "F1 Las Vegas Grand Prix",
     tags: {
       tag1: "Corporate",
       tag2: "Event Design and Production",
       tag3: "Creative Services Agency",
     },
+    componentTitle: "COMPONENTS",
+      componentDesc:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices ipsum purus, at aliquam mauris interdum nec.",
+      challangesTitle: "THE CHALLENGE",
+      challangesDesc1:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices ipsum purus, at aliquam mauris interdum nec. Maecenas in pellentesque sapien, ut sodales augue. Sed magna lacus, scelerisque quis dui eu, tempus auctor nunc.",
+      challangesDesc2:
+        "In pulvinar sapien id mi mattis pulvinar. Vivamus lobortis nibh in blandit pulvinar. Morbi sagittis justo vitae risus tristique condimentum.",
+      subheading:
+        "Events are crucial for enhancing brand awareness, offering exclusive chances to showcase ideas, products, and services intimately.",
+      highlightTitle: "HIGHLIGHT",
+      highlightDesc:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices ipsum purus, at aliquam mauris interdum nec. Maecenas in pellentesque sapien, ut sodales augue.",
+      solutionTitle: "THE SOLUTION ",
+      solutionDesc1:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices ipsum purus, at aliquam mauris interdum nec. Maecenas in pellentesque sapien, ut sodales augue. Sed magna lacus, scelerisque quis dui eu, tempus auctor nunc. In pulvinar sapien id mi mattis pulvinar. Vivamus lobortis nibh in blandit pulvinar. Morbi sagittis justo vitae risus tristique condimentum. Pellentesque elementum convallis dui, sed aliquet odio rhoncus sed. Cras bibendum orci a turpis vulputate dictum. Suspendisse egestas enim lacus, eget volutpat tellus vestibulum at.",
+      solutionDesc2:
+        "Maecenas in pellentesque sapien, ut sodales augue. Sed magna lacus, scelerisque quis dui eu, tempus auctor nunc. In pulvinar sapien id mi mattis pulvinar. Vivamus lobortis nibh in blandit pulvinar. Morbi sagittis justo vitae risus tristique condimentum. Pellentesque elementum convallis dui, sed aliquet odio rhoncus sed. Cras bibendum orci a turpis vulputate dictum. Suspendisse egestas enim lacus, eget volutpat tellus vestibulum at.",
   },
   {
     id:"02",
     img: img2,
+    categories: "Wedding",
     title: "F1 Las Vegas Grand Prix",
     tags: {
       tag1: "Tradeshow",
@@ -458,45 +479,139 @@ export const OurCardData = [
       tag5: "Creative Services Agency",
       tag6: "Creative Services Agency",
     },
+    componentTitle: "COMPONENTS",
+      componentDesc:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices ipsum purus, at aliquam mauris interdum nec.",
+      challangesTitle: "THE CHALLENGE",
+      challangesDesc1:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices ipsum purus, at aliquam mauris interdum nec. Maecenas in pellentesque sapien, ut sodales augue. Sed magna lacus, scelerisque quis dui eu, tempus auctor nunc.",
+      challangesDesc2:
+        "In pulvinar sapien id mi mattis pulvinar. Vivamus lobortis nibh in blandit pulvinar. Morbi sagittis justo vitae risus tristique condimentum.",
+      subheading:
+        "Events are crucial for enhancing brand awareness, offering exclusive chances to showcase ideas, products, and services intimately.",
+      highlightTitle: "HIGHLIGHT",
+      highlightDesc:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices ipsum purus, at aliquam mauris interdum nec. Maecenas in pellentesque sapien, ut sodales augue.",
+      solutionTitle: "THE SOLUTION ",
+      solutionDesc1:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices ipsum purus, at aliquam mauris interdum nec. Maecenas in pellentesque sapien, ut sodales augue. Sed magna lacus, scelerisque quis dui eu, tempus auctor nunc. In pulvinar sapien id mi mattis pulvinar. Vivamus lobortis nibh in blandit pulvinar. Morbi sagittis justo vitae risus tristique condimentum. Pellentesque elementum convallis dui, sed aliquet odio rhoncus sed. Cras bibendum orci a turpis vulputate dictum. Suspendisse egestas enim lacus, eget volutpat tellus vestibulum at.",
+      solutionDesc2:
+        "Maecenas in pellentesque sapien, ut sodales augue. Sed magna lacus, scelerisque quis dui eu, tempus auctor nunc. In pulvinar sapien id mi mattis pulvinar. Vivamus lobortis nibh in blandit pulvinar. Morbi sagittis justo vitae risus tristique condimentum. Pellentesque elementum convallis dui, sed aliquet odio rhoncus sed. Cras bibendum orci a turpis vulputate dictum. Suspendisse egestas enim lacus, eget volutpat tellus vestibulum at.",
   },
   {
     id:"03",
     img: img6,
+    categories: "Corporate",
     title: "F1 Las Vegas Grand Prix",
     tags: {
       tag1: "Corporate",
       tag2: "Event Design and Production",
       tag3: "Creative Services Agency",
     },
+    componentTitle: "COMPONENTS",
+      componentDesc:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices ipsum purus, at aliquam mauris interdum nec.",
+      challangesTitle: "THE CHALLENGE",
+      challangesDesc1:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices ipsum purus, at aliquam mauris interdum nec. Maecenas in pellentesque sapien, ut sodales augue. Sed magna lacus, scelerisque quis dui eu, tempus auctor nunc.",
+      challangesDesc2:
+        "In pulvinar sapien id mi mattis pulvinar. Vivamus lobortis nibh in blandit pulvinar. Morbi sagittis justo vitae risus tristique condimentum.",
+      subheading:
+        "Events are crucial for enhancing brand awareness, offering exclusive chances to showcase ideas, products, and services intimately.",
+      highlightTitle: "HIGHLIGHT",
+      highlightDesc:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices ipsum purus, at aliquam mauris interdum nec. Maecenas in pellentesque sapien, ut sodales augue.",
+      solutionTitle: "THE SOLUTION ",
+      solutionDesc1:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices ipsum purus, at aliquam mauris interdum nec. Maecenas in pellentesque sapien, ut sodales augue. Sed magna lacus, scelerisque quis dui eu, tempus auctor nunc. In pulvinar sapien id mi mattis pulvinar. Vivamus lobortis nibh in blandit pulvinar. Morbi sagittis justo vitae risus tristique condimentum. Pellentesque elementum convallis dui, sed aliquet odio rhoncus sed. Cras bibendum orci a turpis vulputate dictum. Suspendisse egestas enim lacus, eget volutpat tellus vestibulum at.",
+      solutionDesc2:
+        "Maecenas in pellentesque sapien, ut sodales augue. Sed magna lacus, scelerisque quis dui eu, tempus auctor nunc. In pulvinar sapien id mi mattis pulvinar. Vivamus lobortis nibh in blandit pulvinar. Morbi sagittis justo vitae risus tristique condimentum. Pellentesque elementum convallis dui, sed aliquet odio rhoncus sed. Cras bibendum orci a turpis vulputate dictum. Suspendisse egestas enim lacus, eget volutpat tellus vestibulum at.",
   },
   {
     id:"04",
     img: img8,
+    categories: "Corporate",
     title: "F1 Las Vegas Grand Prix",
     tags: {
       tag1: "Tradeshow",
       tag2: "Event Design and Production",
       tag3: "Creative Services Agency",
     },
+    componentTitle: "COMPONENTS",
+      componentDesc:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices ipsum purus, at aliquam mauris interdum nec.",
+      challangesTitle: "THE CHALLENGE",
+      challangesDesc1:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices ipsum purus, at aliquam mauris interdum nec. Maecenas in pellentesque sapien, ut sodales augue. Sed magna lacus, scelerisque quis dui eu, tempus auctor nunc.",
+      challangesDesc2:
+        "In pulvinar sapien id mi mattis pulvinar. Vivamus lobortis nibh in blandit pulvinar. Morbi sagittis justo vitae risus tristique condimentum.",
+      subheading:
+        "Events are crucial for enhancing brand awareness, offering exclusive chances to showcase ideas, products, and services intimately.",
+      highlightTitle: "HIGHLIGHT",
+      highlightDesc:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices ipsum purus, at aliquam mauris interdum nec. Maecenas in pellentesque sapien, ut sodales augue.",
+      solutionTitle: "THE SOLUTION ",
+      solutionDesc1:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices ipsum purus, at aliquam mauris interdum nec. Maecenas in pellentesque sapien, ut sodales augue. Sed magna lacus, scelerisque quis dui eu, tempus auctor nunc. In pulvinar sapien id mi mattis pulvinar. Vivamus lobortis nibh in blandit pulvinar. Morbi sagittis justo vitae risus tristique condimentum. Pellentesque elementum convallis dui, sed aliquet odio rhoncus sed. Cras bibendum orci a turpis vulputate dictum. Suspendisse egestas enim lacus, eget volutpat tellus vestibulum at.",
+      solutionDesc2:
+        "Maecenas in pellentesque sapien, ut sodales augue. Sed magna lacus, scelerisque quis dui eu, tempus auctor nunc. In pulvinar sapien id mi mattis pulvinar. Vivamus lobortis nibh in blandit pulvinar. Morbi sagittis justo vitae risus tristique condimentum. Pellentesque elementum convallis dui, sed aliquet odio rhoncus sed. Cras bibendum orci a turpis vulputate dictum. Suspendisse egestas enim lacus, eget volutpat tellus vestibulum at.",
   },
   {
     id:"05",
     img: img1,
+    categories: "Corporate",
     title: "F1 Las Vegas Grand Prix",
     tags: {
       tag1: "Corporate",
       tag2: "Event Design and Production",
       tag3: "Creative Services Agency",
     },
+    componentTitle: "COMPONENTS",
+      componentDesc:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices ipsum purus, at aliquam mauris interdum nec.",
+      challangesTitle: "THE CHALLENGE",
+      challangesDesc1:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices ipsum purus, at aliquam mauris interdum nec. Maecenas in pellentesque sapien, ut sodales augue. Sed magna lacus, scelerisque quis dui eu, tempus auctor nunc.",
+      challangesDesc2:
+        "In pulvinar sapien id mi mattis pulvinar. Vivamus lobortis nibh in blandit pulvinar. Morbi sagittis justo vitae risus tristique condimentum.",
+      subheading:
+        "Events are crucial for enhancing brand awareness, offering exclusive chances to showcase ideas, products, and services intimately.",
+      highlightTitle: "HIGHLIGHT",
+      highlightDesc:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices ipsum purus, at aliquam mauris interdum nec. Maecenas in pellentesque sapien, ut sodales augue.",
+      solutionTitle: "THE SOLUTION ",
+      solutionDesc1:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices ipsum purus, at aliquam mauris interdum nec. Maecenas in pellentesque sapien, ut sodales augue. Sed magna lacus, scelerisque quis dui eu, tempus auctor nunc. In pulvinar sapien id mi mattis pulvinar. Vivamus lobortis nibh in blandit pulvinar. Morbi sagittis justo vitae risus tristique condimentum. Pellentesque elementum convallis dui, sed aliquet odio rhoncus sed. Cras bibendum orci a turpis vulputate dictum. Suspendisse egestas enim lacus, eget volutpat tellus vestibulum at.",
+      solutionDesc2:
+        "Maecenas in pellentesque sapien, ut sodales augue. Sed magna lacus, scelerisque quis dui eu, tempus auctor nunc. In pulvinar sapien id mi mattis pulvinar. Vivamus lobortis nibh in blandit pulvinar. Morbi sagittis justo vitae risus tristique condimentum. Pellentesque elementum convallis dui, sed aliquet odio rhoncus sed. Cras bibendum orci a turpis vulputate dictum. Suspendisse egestas enim lacus, eget volutpat tellus vestibulum at.",
   },
   {
     id:"06",
     img: img6,
+    categories: "Corporate",
     title: "F1 Las Vegas Grand Prix",
     tags: {
       tag1: "Tradeshow",
       tag2: "Event Design and Production",
     },
+    componentTitle: "COMPONENTS",
+      componentDesc:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices ipsum purus, at aliquam mauris interdum nec.",
+      challangesTitle: "THE CHALLENGE",
+      challangesDesc1:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices ipsum purus, at aliquam mauris interdum nec. Maecenas in pellentesque sapien, ut sodales augue. Sed magna lacus, scelerisque quis dui eu, tempus auctor nunc.",
+      challangesDesc2:
+        "In pulvinar sapien id mi mattis pulvinar. Vivamus lobortis nibh in blandit pulvinar. Morbi sagittis justo vitae risus tristique condimentum.",
+      subheading:
+        "Events are crucial for enhancing brand awareness, offering exclusive chances to showcase ideas, products, and services intimately.",
+      highlightTitle: "HIGHLIGHT",
+      highlightDesc:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices ipsum purus, at aliquam mauris interdum nec. Maecenas in pellentesque sapien, ut sodales augue.",
+      solutionTitle: "THE SOLUTION ",
+      solutionDesc1:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices ipsum purus, at aliquam mauris interdum nec. Maecenas in pellentesque sapien, ut sodales augue. Sed magna lacus, scelerisque quis dui eu, tempus auctor nunc. In pulvinar sapien id mi mattis pulvinar. Vivamus lobortis nibh in blandit pulvinar. Morbi sagittis justo vitae risus tristique condimentum. Pellentesque elementum convallis dui, sed aliquet odio rhoncus sed. Cras bibendum orci a turpis vulputate dictum. Suspendisse egestas enim lacus, eget volutpat tellus vestibulum at.",
+      solutionDesc2:
+        "Maecenas in pellentesque sapien, ut sodales augue. Sed magna lacus, scelerisque quis dui eu, tempus auctor nunc. In pulvinar sapien id mi mattis pulvinar. Vivamus lobortis nibh in blandit pulvinar. Morbi sagittis justo vitae risus tristique condimentum. Pellentesque elementum convallis dui, sed aliquet odio rhoncus sed. Cras bibendum orci a turpis vulputate dictum. Suspendisse egestas enim lacus, eget volutpat tellus vestibulum at.",
   },
   {
     id:"07",
@@ -516,6 +631,24 @@ export const OurCardData = [
       tag1: "Corporate",
       tag2: "Event Design and Production",
     },
+    componentTitle: "COMPONENTS",
+      componentDesc:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices ipsum purus, at aliquam mauris interdum nec.",
+      challangesTitle: "THE CHALLENGE",
+      challangesDesc1:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices ipsum purus, at aliquam mauris interdum nec. Maecenas in pellentesque sapien, ut sodales augue. Sed magna lacus, scelerisque quis dui eu, tempus auctor nunc.",
+      challangesDesc2:
+        "In pulvinar sapien id mi mattis pulvinar. Vivamus lobortis nibh in blandit pulvinar. Morbi sagittis justo vitae risus tristique condimentum.",
+      subheading:
+        "Events are crucial for enhancing brand awareness, offering exclusive chances to showcase ideas, products, and services intimately.",
+      highlightTitle: "HIGHLIGHT",
+      highlightDesc:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices ipsum purus, at aliquam mauris interdum nec. Maecenas in pellentesque sapien, ut sodales augue.",
+      solutionTitle: "THE SOLUTION ",
+      solutionDesc1:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices ipsum purus, at aliquam mauris interdum nec. Maecenas in pellentesque sapien, ut sodales augue. Sed magna lacus, scelerisque quis dui eu, tempus auctor nunc. In pulvinar sapien id mi mattis pulvinar. Vivamus lobortis nibh in blandit pulvinar. Morbi sagittis justo vitae risus tristique condimentum. Pellentesque elementum convallis dui, sed aliquet odio rhoncus sed. Cras bibendum orci a turpis vulputate dictum. Suspendisse egestas enim lacus, eget volutpat tellus vestibulum at.",
+      solutionDesc2:
+        "Maecenas in pellentesque sapien, ut sodales augue. Sed magna lacus, scelerisque quis dui eu, tempus auctor nunc. In pulvinar sapien id mi mattis pulvinar. Vivamus lobortis nibh in blandit pulvinar. Morbi sagittis justo vitae risus tristique condimentum. Pellentesque elementum convallis dui, sed aliquet odio rhoncus sed. Cras bibendum orci a turpis vulputate dictum. Suspendisse egestas enim lacus, eget volutpat tellus vestibulum at.",
   },
   {
     id:"09",
@@ -525,6 +658,24 @@ export const OurCardData = [
       tag2: "Event Design and Production",
       tag3: "Creative Services Agency",
     },
+    componentTitle: "COMPONENTS",
+      componentDesc:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices ipsum purus, at aliquam mauris interdum nec.",
+      challangesTitle: "THE CHALLENGE",
+      challangesDesc1:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices ipsum purus, at aliquam mauris interdum nec. Maecenas in pellentesque sapien, ut sodales augue. Sed magna lacus, scelerisque quis dui eu, tempus auctor nunc.",
+      challangesDesc2:
+        "In pulvinar sapien id mi mattis pulvinar. Vivamus lobortis nibh in blandit pulvinar. Morbi sagittis justo vitae risus tristique condimentum.",
+      subheading:
+        "Events are crucial for enhancing brand awareness, offering exclusive chances to showcase ideas, products, and services intimately.",
+      highlightTitle: "HIGHLIGHT",
+      highlightDesc:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices ipsum purus, at aliquam mauris interdum nec. Maecenas in pellentesque sapien, ut sodales augue.",
+      solutionTitle: "THE SOLUTION ",
+      solutionDesc1:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices ipsum purus, at aliquam mauris interdum nec. Maecenas in pellentesque sapien, ut sodales augue. Sed magna lacus, scelerisque quis dui eu, tempus auctor nunc. In pulvinar sapien id mi mattis pulvinar. Vivamus lobortis nibh in blandit pulvinar. Morbi sagittis justo vitae risus tristique condimentum. Pellentesque elementum convallis dui, sed aliquet odio rhoncus sed. Cras bibendum orci a turpis vulputate dictum. Suspendisse egestas enim lacus, eget volutpat tellus vestibulum at.",
+      solutionDesc2:
+        "Maecenas in pellentesque sapien, ut sodales augue. Sed magna lacus, scelerisque quis dui eu, tempus auctor nunc. In pulvinar sapien id mi mattis pulvinar. Vivamus lobortis nibh in blandit pulvinar. Morbi sagittis justo vitae risus tristique condimentum. Pellentesque elementum convallis dui, sed aliquet odio rhoncus sed. Cras bibendum orci a turpis vulputate dictum. Suspendisse egestas enim lacus, eget volutpat tellus vestibulum at.",
   },
   {
     id:"10",
@@ -535,6 +686,24 @@ export const OurCardData = [
       tag2: "Corporate",
       tag3: "Creative Services Agency",
     },
+    componentTitle: "COMPONENTS",
+      componentDesc:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices ipsum purus, at aliquam mauris interdum nec.",
+      challangesTitle: "THE CHALLENGE",
+      challangesDesc1:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices ipsum purus, at aliquam mauris interdum nec. Maecenas in pellentesque sapien, ut sodales augue. Sed magna lacus, scelerisque quis dui eu, tempus auctor nunc.",
+      challangesDesc2:
+        "In pulvinar sapien id mi mattis pulvinar. Vivamus lobortis nibh in blandit pulvinar. Morbi sagittis justo vitae risus tristique condimentum.",
+      subheading:
+        "Events are crucial for enhancing brand awareness, offering exclusive chances to showcase ideas, products, and services intimately.",
+      highlightTitle: "HIGHLIGHT",
+      highlightDesc:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices ipsum purus, at aliquam mauris interdum nec. Maecenas in pellentesque sapien, ut sodales augue.",
+      solutionTitle: "THE SOLUTION ",
+      solutionDesc1:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices ipsum purus, at aliquam mauris interdum nec. Maecenas in pellentesque sapien, ut sodales augue. Sed magna lacus, scelerisque quis dui eu, tempus auctor nunc. In pulvinar sapien id mi mattis pulvinar. Vivamus lobortis nibh in blandit pulvinar. Morbi sagittis justo vitae risus tristique condimentum. Pellentesque elementum convallis dui, sed aliquet odio rhoncus sed. Cras bibendum orci a turpis vulputate dictum. Suspendisse egestas enim lacus, eget volutpat tellus vestibulum at.",
+      solutionDesc2:
+        "Maecenas in pellentesque sapien, ut sodales augue. Sed magna lacus, scelerisque quis dui eu, tempus auctor nunc. In pulvinar sapien id mi mattis pulvinar. Vivamus lobortis nibh in blandit pulvinar. Morbi sagittis justo vitae risus tristique condimentum. Pellentesque elementum convallis dui, sed aliquet odio rhoncus sed. Cras bibendum orci a turpis vulputate dictum. Suspendisse egestas enim lacus, eget volutpat tellus vestibulum at.",
   },
   {
     id:"11",
@@ -555,6 +724,24 @@ export const OurCardData = [
       tag2: "Event Design and Production",
       tag3: "Trademarks",
     },
+    componentTitle: "COMPONENTS",
+      componentDesc:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices ipsum purus, at aliquam mauris interdum nec.",
+      challangesTitle: "THE CHALLENGE",
+      challangesDesc1:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices ipsum purus, at aliquam mauris interdum nec. Maecenas in pellentesque sapien, ut sodales augue. Sed magna lacus, scelerisque quis dui eu, tempus auctor nunc.",
+      challangesDesc2:
+        "In pulvinar sapien id mi mattis pulvinar. Vivamus lobortis nibh in blandit pulvinar. Morbi sagittis justo vitae risus tristique condimentum.",
+      subheading:
+        "Events are crucial for enhancing brand awareness, offering exclusive chances to showcase ideas, products, and services intimately.",
+      highlightTitle: "HIGHLIGHT",
+      highlightDesc:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices ipsum purus, at aliquam mauris interdum nec. Maecenas in pellentesque sapien, ut sodales augue.",
+      solutionTitle: "THE SOLUTION ",
+      solutionDesc1:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices ipsum purus, at aliquam mauris interdum nec. Maecenas in pellentesque sapien, ut sodales augue. Sed magna lacus, scelerisque quis dui eu, tempus auctor nunc. In pulvinar sapien id mi mattis pulvinar. Vivamus lobortis nibh in blandit pulvinar. Morbi sagittis justo vitae risus tristique condimentum. Pellentesque elementum convallis dui, sed aliquet odio rhoncus sed. Cras bibendum orci a turpis vulputate dictum. Suspendisse egestas enim lacus, eget volutpat tellus vestibulum at.",
+      solutionDesc2:
+        "Maecenas in pellentesque sapien, ut sodales augue. Sed magna lacus, scelerisque quis dui eu, tempus auctor nunc. In pulvinar sapien id mi mattis pulvinar. Vivamus lobortis nibh in blandit pulvinar. Morbi sagittis justo vitae risus tristique condimentum. Pellentesque elementum convallis dui, sed aliquet odio rhoncus sed. Cras bibendum orci a turpis vulputate dictum. Suspendisse egestas enim lacus, eget volutpat tellus vestibulum at.",
   },
 ];
 

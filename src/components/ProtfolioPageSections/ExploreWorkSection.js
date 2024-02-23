@@ -1,6 +1,5 @@
-import { categoriesData } from "../../common/constats/portfolioData";
 import { Link } from "react-router-dom";
-import { OurCardData , portfolioData } from "../../common/constats/portfolioData";
+import { OurCardData , portfolioData, categoriesData} from "../../common/constats/portfolioData";
 import React from "react";
 
 const ExploreWorkSection = () => {
@@ -72,6 +71,7 @@ const ExploreWorkSection = () => {
         <div className="row row-2">
           <div className="col-lg-12 column-1">
             <ul className="list-portfolio grid-lg-25 grid-tablet-50">
+              
               {OurCardData.map((data, index) => {
                 return (
                   <li key={index} className="grid-item">
