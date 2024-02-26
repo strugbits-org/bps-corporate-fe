@@ -1,4 +1,3 @@
-import React from "react";
 import img1 from "../../../utilis/images/chairs/bristol-chair.png";
 import imgC1 from "../../../utilis/images/chairs/bristol-chair-color-1.png"
 import imgC2 from "../../../utilis/images/chairs/bristol-chair-color-2.png"
@@ -9,6 +8,10 @@ import imgd8 from "../../../utilis/images/lib/08_desktop.jpg"
 import imgd7 from "../../../utilis/images/lib/07_desktop.jpg"
 import imgd1 from "../../../utilis/images/lib/01_desktop.jpg"
 import imgd2 from "../../../utilis/images/lib/02_desktop.jpg"
+
+// import { studioCard } from "../../../common/constats/constats";
+// import { modelData } from "../../../common/constats/marketData";
+
 import DelayedLink from "../../../common/DelayedLink";
 
 const Search = () => {

@@ -1,10 +1,6 @@
-import imgS1 from "../../../utilis/images/services/service1.jpg";
-import imgS2 from "../../../utilis/images/services/service2.jpg";
-import imgS3 from "../../../utilis/images/services/service3.jpg";
-import imgS4 from "../../../utilis/images/services/service4.jpg";
-import imgS5 from "../../../utilis/images/services/service5.jpg";
-import DelayedLink from "../../../common/DelayedLink";
 
+import DelayedLink from "../../../common/DelayedLink";
+import {serviceModel} from "../../../common/constats/serviceData";
 const Services = () => {
   return (
     <div className="wrapper-submenu-services wrapper-submenu">
@@ -16,104 +12,29 @@ const Services = () => {
                   </button>
                 </div>
                 <ul className="list-submenu-services list-submenu">
-                  <li>
+                  {serviceModel.map((data) => {
+                    return   <li key={data.id}>
                     <DelayedLink
-                      to="/services-post"
+                       to={`/services-post/${data.id}`}
                       className="service-link"
                       attributes={{"data-menu-close":""}}
                     >
                       <div className="container-img bg-blue">
                         <img
-                          src={imgS1}
+                          src={data.image}
                           data-preload
                           className="media"
                           alt=""
                         />
                       </div>
                       <h2 className="service-title split-words">
-                        Event Design and Production
+                        {data.title}
                       </h2>
-                      <span className="number">01</span>
+                      <span className="number">{data.id}</span>
                     </DelayedLink>
                   </li>
-                  <li>
-                    <DelayedLink
-                      to="/services-post"
-                      className="service-link"
-                      attributes={{"data-menu-close":""}}
-                    >
-                      <div className="container-img bg-blue">
-                        <img
-                          src={imgS2}
-                          data-preload
-                          className="media"
-                          alt=""
-                        />
-                      </div>
-                      <h2 className="service-title split-words">
-                        Creative Services Agency
-                      </h2>
-                      <span className="number">02</span>
-                    </DelayedLink>
-                  </li>
-                  <li>
-                    <DelayedLink
-                      to="/services-post"
-                      className="service-link"
-                      attributes={{"data-menu-close":""}}
-                    >
-                      <div className="container-img bg-blue">
-                        <img
-                          src={imgS3}
-                          data-preload
-                          className="media"
-                          alt=""
-                        />
-                      </div>
-                      <h2 className="service-title split-words">Floral Design</h2>
-                      <span className="number">03</span>
-                    </DelayedLink>
-                  </li>
-                  <li>
-                    <DelayedLink
-                      to="/services-post"
-                      className="service-link"
-                      attributes={{"data-menu-close":""}}
-                    >
-                      <div className="container-img bg-blue">
-                        <img
-                          src={imgS4}
-                          data-preload
-                          className="media"
-                          alt=""
-                        />
-                      </div>
-                      <h2 className="service-title split-words">
-                        Custom Fabrication
-                      </h2>
-                      <span className="number">04</span>
-                    </DelayedLink>
-                  </li>
-                  <li>
-                    <DelayedLink
-                      to="/services-post"
-                      className="service-link"
-                      attributes={{"data-menu-close":""}}
-                    >
-                      <div className="container-img bg-blue">
-                        <img
-                          src={imgS5}
-                          data-preload
-                          className="media"
-                          alt=""
-                        />
-                      </div>
-                      <h2 className="service-title split-words">
-                        Printing Services
-                      </h2>
-                      <span className="number">05</span>
-                    </DelayedLink>
-                  </li>
+                  })}
+                 
                 </ul>
               </div>
   );

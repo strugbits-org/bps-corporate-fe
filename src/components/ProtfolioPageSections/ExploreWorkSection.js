@@ -1,6 +1,7 @@
 import { portfolioData } from "../../common/constats/portfolioData";
 import React, { useEffect, useState } from "react";
 import DelayedLink from "../../common/DelayedLink";
+import { Link } from "react-router-dom";
 
 const ExploreWorkSection = () => {
   const [selectedFilters, setSelectedFilters] = useState([]);
@@ -106,16 +107,18 @@ const ExploreWorkSection = () => {
                           </button>
                         </li>
                         {allstudiomenuitems.map((categories, idx) => (
-                          <li
-                            onClick={() => handleAllStudioFilter(categories)}
-                            className={`portfolio-btn-tag ${
-                              selectedFilters?.includes(categories)
-                                ? "active"
-                                : ""
-                            }`}
-                            key={`filters-${idx}`}
-                          >
-                            {categories}
+                          <li>
+                            <Link
+                              onClick={() => handleAllStudioFilter(categories)}
+                              className={`portfolio-btn-tag ${
+                                selectedFilters?.includes(categories)
+                                  ? "active"
+                                  : ""
+                              }`}
+                              key={`filters-${idx}`}
+                            >
+                              {categories}
+                            </Link>
                           </li>
                         ))}
                       </ul>
@@ -148,16 +151,18 @@ const ExploreWorkSection = () => {
                           </button>
                         </li>
                         {allmarketmenuitems.map((categories, idx) => (
-                          <li
-                            onClick={() => handleAllMarketFilter(categories)}
-                            className={`portfolio-btn-tag ${
-                              selectedFilters?.includes(categories)
-                                ? "active"
-                                : ""
-                            }`}
-                            key={`filters-${idx}`}
-                          >
-                            {categories}
+                          <li>
+                            <Link
+                              onClick={() => handleAllMarketFilter(categories)}
+                              className={`portfolio-btn-tag ${
+                                selectedFilters?.includes(categories)
+                                  ? "active"
+                                  : ""
+                              }`}
+                              key={`filters-${idx}`}
+                            >
+                              {categories}
+                            </Link>
                           </li>
                         ))}
                       </ul>
