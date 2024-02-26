@@ -13,7 +13,7 @@ const PostDetails = () => {
 
   const post = postes.find((post) => post.id === params.id);
 
-  console.log("Post here", post);
+  // console.log("Post here", post);
 
 
   return (

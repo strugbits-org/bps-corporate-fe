@@ -24,7 +24,6 @@ const Newsletter = () => {
     try {
       await validationSchema.validate(formData, { abortEarly: false });
       // If validation passes, handle form submission here
-      console.log("Form submitted with values:", formData);
     } catch (error) {
       const newErrors = {};
       error.inner.forEach((err) => {

@@ -5,7 +5,7 @@ export const GetUserById = createAsyncThunk("users/profiles", async () => {
   try {
     // fetch data here
   } catch (err) {
-    console.log(err);
+    // console.log(err);
   }
 });
 
@@ -32,18 +32,18 @@ export const BluePrintUser = createSlice({
     extraReducers: (builder) => {
       builder
         .addCase(GetUserById.fulfilled, (state, { payload }) => {
-          console.log("GetUserById", payload);
+          // console.log("GetUserById", payload);
           state.user = payload;
           state.loader = false;
           state.success = true;
         })
         .addCase(GetUserById.pending, (state) => {
-          console.log("ispending");
+          // console.log("ispending");
           state.loader = true;
           state.success = false;
         })
         .addCase(GetUserById.rejected, (state) => {
-          console.log("is rejected");
+          // console.log("is rejected");
           state.loader = false;
           state.success = false;
         });
