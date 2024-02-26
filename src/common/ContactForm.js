@@ -21,7 +21,7 @@ const ContactForm = () => {
   });
 
   const onSubmit = (data) => {
-    console.log("Form submitted:", data);
+    // console.log("Form submitted:", data);
     dispatch(postFormData(data));
   };
 

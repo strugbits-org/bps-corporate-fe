@@ -5,7 +5,6 @@ const PortfolioIntoSection = () => {
 
   const post = OurCardData.find((post) => post.id === params.id);
 
-  console.log("Post here", post);
   return (
     <section className="portfolio-post-intro pb-lg-250">
       <div className="wrapper-banner-img" data-aos>

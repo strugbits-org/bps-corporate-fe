@@ -31,7 +31,7 @@ const Market = () => {
                   <ul className="list-tags">
                     {Object.values(data.tags).map((data, id) => {
                       return (
-                        <li>
+                        <li key={id}>
                           <span>{data}</span>
                         </li>
                       );
