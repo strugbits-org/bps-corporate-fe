@@ -11,7 +11,6 @@ const Blog = () => {
   const menuitems = [...new Set(postes.map((data) => data.category))];
 
   const handleFilterButtonClick = (selectedCategory) => {
-    console.log("click the mobile version");
     if (selectedFilters.includes(selectedCategory)) {
       setSelectedFilters(
         selectedFilters.filter((el) => el !== selectedCategory)
@@ -22,7 +21,6 @@ const Blog = () => {
   };
 
   useEffect(() => {
-    document.querySelector(".updateWatchedTrigger").click();
     const filterItems = () => {
       if (selectedFilters.length > 0) {
         let tempItems = postes.filter((item) =>
@@ -34,11 +32,12 @@ const Blog = () => {
       }
     };
     filterItems();
-  }, [selectedFilters]);
+  }, [selectedFilters,]);
 
   useEffect(() => {
     document.querySelector(".updateWatchedTrigger").click();
   }, [filteredItems]);
+
 
   return (
     <>
