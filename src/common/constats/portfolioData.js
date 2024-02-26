@@ -31,27 +31,6 @@ export const categoriesData = {
   ],
 };
 
-// [
-//   {
-//     categoryname: "All Markets",
-//     subcategores: [
-//       { subcategory: "Corporate" },
-//       { subcategory: "Tradeshows" },
-//       { subcategory: "Weddings" },
-//       { subcategory: "Social" },
-//     ],
-//   },
-//   {
-//     categoryname: "All Studios",
-//     subcategores: [
-//       { subcategory: "Event Design and Production" },
-//       { subcategory: "Creative Services Agency" },
-//       { subcategory: "Floral Design" },
-//       { subcategory: "Custom Fabrication" },
-//       { subcategory: "Printing Services" },
-//     ],
-//   },
-// ],
 
 export const portfolioData = {
   title: "Explore our work",
