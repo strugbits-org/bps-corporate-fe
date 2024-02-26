@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import SocialSection from "../components/commonComponents/SocialSection";
 import { head, postes } from "../common/constats/blogData";
 import DelayedLink from "../common/DelayedLink";
+
 const Blog = () => {
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [filteredItems, setFilteredItems] = useState(postes);
@@ -19,6 +20,7 @@ const Blog = () => {
   };
 
   useEffect(() => {
+    document.querySelector(".updateWatchedTrigger").click();
     const filterItems = () => {
       if (selectedFilters.length > 0) {
         let tempItems = postes.filter((item) =>
@@ -59,11 +61,12 @@ const Blog = () => {
                   <span>{head.name}</span>
                   <i className="icon-arrow-down"></i>
                 </button>
+                
                 <div className="list-dropdown" data-set-tag="blog">
                   <div className="container-wrapper-list">
                     <div className="wrapper-list">
                       <ul className="list-blog-tags list-dropdown-tags">
-                      <li
+                        <li
                           onClick={() => setFilteredItems(postes)}
                           className={`blog-btn-tag ${selectedFilters.length === 0 ? "active" : ""}`}
                         >
@@ -82,7 +85,6 @@ const Blog = () => {
                             {category}
                           </li>
                         ))}
-                      
                       </ul>
                     </div>
                   </div>
