@@ -1,6 +1,7 @@
 import React from 'react'
 import video from "../../utilis/images/lib/video.mp4#t=0.01"
 import img8 from "../../utilis/images/lib/08_desktop.jpg"
+
 const MarketTopSection = () => {
   return (
     <>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import SocialSection from "../components/commonComponents/SocialSection";
 import { head, postes } from "../common/constats/blogData";
 import DelayedLink from "../common/DelayedLink";
+import { Link } from "react-router-dom";
 
 const Blog = () => {
   const [selectedFilters, setSelectedFilters] = useState([]);
@@ -10,13 +11,14 @@ const Blog = () => {
   const menuitems = [...new Set(postes.map((data) => data.category))];
 
   const handleFilterButtonClick = (selectedCategory) => {
+    console.log("click the mobile version");
     if (selectedFilters.includes(selectedCategory)) {
       setSelectedFilters(
         selectedFilters.filter((el) => el !== selectedCategory)
       );
     } else {
       setSelectedFilters([...selectedFilters, selectedCategory]);
-    } 
+    }
   };
 
   useEffect(() => {
@@ -32,7 +34,7 @@ const Blog = () => {
       }
     };
     filterItems();
-  }, [selectedFilters]); 
+  }, [selectedFilters]);
 
   useEffect(() => {
     document.querySelector(".updateWatchedTrigger").click();
@@ -61,28 +63,36 @@ const Blog = () => {
                   <span>{head.name}</span>
                   <i className="icon-arrow-down"></i>
                 </button>
-                
+
                 <div className="list-dropdown" data-set-tag="blog">
                   <div className="container-wrapper-list">
                     <div className="wrapper-list">
                       <ul className="list-blog-tags list-dropdown-tags">
-                        <li
-                          onClick={() => setFilteredItems(postes)}
-                          className={`blog-btn-tag ${selectedFilters.length === 0 ? "active" : ""}`}
-                        >
-                          All Studios
-                        </li>
-                        {menuitems.map((category, idx) => (
-                          <li
-                            onClick={() => handleFilterButtonClick(category)}
+                        <li>
+                          <Link
                             className={`blog-btn-tag ${
-                              selectedFilters?.includes(category)
-                                ? "active"
-                                : ""
+                              selectedFilters.length === 0 ? "active" : ""
                             }`}
-                            key={`filters-${idx}`}
                           >
-                            {category}
+                            <span onClick={() => setFilteredItems(postes)}>
+                              All Studios
+                            </span>
+                          </Link>
+                        </li>
+
+                        {menuitems.map((category, idx) => (
+                          <li>
+                            <Link
+                              onClick={() => handleFilterButtonClick(category)}
+                              className={`blog-btn-tag ${
+                                selectedFilters?.includes(category)
+                                  ? "active"
+                                  : ""
+                              }`}
+                              key={`filters-${idx}`}
+                            >
+                              <span>{category}</span>
+                            </Link>
                           </li>
                         ))}
                       </ul>
