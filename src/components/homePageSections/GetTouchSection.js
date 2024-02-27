@@ -1,5 +1,5 @@
 import React from "react";
-import {datagettouch} from "../../common/constats";
+import {datagettouch} from "../../common/constats/constats";
 import DelayedLink from "../../common/DelayedLink";
 const GetTouchSection = () => {
   return (
