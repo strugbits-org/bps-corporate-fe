@@ -19,23 +19,21 @@ const Search = () => {
   const [portfolioData, setPortfolioData] = useState([]);
   const [blogData, setBlogData] = useState([]);
 
-  const handleInputChange = (event) => {
-    setSearchTerm(event.target.value.trim().toLowerCase());
+  const handleInputChange = (e) => {
+    setSearchTerm(e.target.value.trim().toLowerCase());
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const portfolioData = OurCardData.filter(item =>
-        item.categories && item.categories.toLowerCase() === searchTerm
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const portfolioResult = OurCardData.filter(item =>
+      item.categories && item.categories.toLowerCase() === searchTerm
     );
-    const blogData = postes.filter(item => item.category && item.category.toLowerCase() === searchTerm
-
-      )
-    setPortfolioData(portfolioData);
-    setBlogData(blogData);
-    
-    
-};
+    const blogResult = postes.filter(item =>
+      item.category && item.category.toLowerCase() === searchTerm
+    );
+    setPortfolioData(portfolioResult);
+    setBlogData(blogResult);
+  };
 console.log(portfolioData);
 console.log(blogData);
 
@@ -52,7 +50,7 @@ console.log(blogData);
               >
                 <div className="container-input input-header">
                   <label
-                    htmlFor="search"
+
                     className="split-chars"
                     data-aos="d:loop"
                   >

@@ -68,7 +68,7 @@ const MarketTopSection = () => {
                   className="player-video media"
                   muted
                   loop
-                  playsinline
+                  playsInline
                 ></video>
               </div>
             </div>
