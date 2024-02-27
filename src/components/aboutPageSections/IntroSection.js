@@ -1,34 +1,6 @@
 import DelayedLink from "../../common/DelayedLink";
 import { IntroData, ourCommitment } from "../../common/constats/aboutData";
 const IntroSection = () => {
-  const properties = [
-    {
-      translateY: "-2.5rem",
-      rotateTo: "-10deg",
-      translateYfrom: "30vh",
-      dataEnd: "center center",
-      dataTrigger: "parent",
-    },
-    {
-      translateY: "5rem",
-    },
-
-    {
-      translateY: "-15rem",
-      rotateFrom: "30deg",
-      translateYfrom: "20vh",
-      dataEnd: "center center",
-      dataTrigger: "parent",
-    },
-    {
-      translateY: "10rem",
-      translateX: "-5rem",
-      rotateTo: "10deg",
-      rotateFrom: "30deg",
-      dataEnd: "center center",
-    },
-  ];
- 
   return (
     <>
       <section className="about-intro">
@@ -43,7 +15,7 @@ const IntroSection = () => {
             data-translate-y="5vh"
           >
             <img
-              src={IntroData.upSecton.img}
+              src={img6}
               data-preload
               className="media"
               data-parallax-top
@@ -63,7 +35,7 @@ const IntroSection = () => {
             data-start="60% center"
             data-translate-y="20vh"
           >
-            {IntroData.upSecton.title1}
+            We are
           </h2>
         </div>
         <div className="wrapper-content z-4 content-2">
@@ -74,7 +46,7 @@ const IntroSection = () => {
             data-start="60% center"
             data-translate-y="20vh"
           >
-            {IntroData.upSecton.title2}
+            Blueprint Studios
           </h2>
         </div>
 
@@ -92,7 +64,7 @@ const IntroSection = () => {
               "data-start": "60% center",
             }}
           >
-            <span>{IntroData.upSecton.videotitle}</span>
+            <span>Watch the video</span>
             <i className="icon-arrow-right-2"></i>
           </DelayedLink>
         </div>
@@ -109,7 +81,9 @@ const IntroSection = () => {
                   data-end="center center"
                   data-trigger="parent"
                 >
-                  {IntroData.upSecton.subtitle}
+                  Events are crucial for enhancing brand awareness, offering
+                  exclusive chances to showcase ideas, products, and services
+                  intimately.
                 </h3>
                 <div
                   className="container-text font-2 fs--16 lh-1375 mt-15"
@@ -118,8 +92,18 @@ const IntroSection = () => {
                   data-end="center center"
                   data-trigger="parent"
                 >
-                  <p>{IntroData.upSecton.p1}</p>
-                  <p className="mt-20">{IntroData.upSecton.p2}</p>
+                  <p>
+                    We specialize in optimizing these engagements by
+                    collaborating with you to craft an experience that elevates
+                    your brand, conveys messages effectively, and captivates
+                    attendees.
+                  </p>
+                  <p className="mt-20">
+                    Our skilled team of strategists, designers, and engineers
+                    collaborates seamlessly to orchestrate end-to-end events.
+                    From planning and design to execution, we’re dedicated to
+                    ensuring your event is a resounding success.
+                  </p>
                 </div>
               </div>
             </div>
@@ -128,45 +112,94 @@ const IntroSection = () => {
       </section>
 
       <section className="about-our-boards">
-        <div className="container-fluid">
-          <div className="row">
-            <div className="col-lg-8 offset-lg-2">
-              <ul className="list-boards">
-                {ourCommitment.map((data, index) => {
-                  const {
-                    translateY,
-                    rotateTo,
-                    translateYfrom,
-                    dataEnd,
-                    dataTrigger,
-                    translateX,
-                    rotateFrom,
-                  } = properties[index] || {};
-
-                  return (
+            <div className="container-fluid">
+              <div className="row">
+                <div className="col-lg-8 offset-lg-2">
+                  <ul className="list-boards">
                     <li
-                      key={index}
                       data-parallax
-                      data-translate-y={translateY || ""}
-                      data-rotate-to={rotateTo || ""}
-                      data-translate-y-from={translateYfrom || ""}
-                      data-end={dataEnd || ""}
-                      data-trigger={dataTrigger || ""}
-                      data-translate-x={translateX || ""}
-                      data-rotate-from={rotateFrom || ""}
+                      data-translate-y="-2.5rem"
+                      data-rotate-to="-10deg"
+                      data-translate-y-from="30vh"
+                      data-end="center center"
+                      data-trigger="parent"
                     >
                       <div className="content">
-                        <h2 className="title">{data.title}</h2>
-                        <p className="text">{data.desc}</p>
+                        <h2 className="title">Our Commitment</h2>
+                        <p className="text">
+                          We are a trusted partner to the world's biggest brands
+                          because we never stop trying to out-do ourselves. For
+                          nearly 20 years we've been perfecting the art of event
+                          design with our industry-leading event strategies,
+                          cutting-edge technology, and trend-forward designs. We
+                          reject the “business as usual” approach and work
+                          tirelessly to ensure your event is executed to the
+                          highest possible standards. From start to finish, this
+                          is our commitment to you.
+                        </p>
                       </div>
                     </li>
-                  );
-                })}
-              </ul>
+                    <li data-parallax data-translate-y="5rem">
+                      <div className="content">
+                        <h2 className="title">Our Culture</h2>
+                        <p className="text">
+                          With our company roots established in San Francisco,
+                          the multi-cultural spirit of this city is deeply
+                          engrained in our DNA. We believe in a diversity of
+                          thought and a rich variety of voices. It's what makes
+                          us stronger, more creative, and ultimately more
+                          successful; inspiring exciting, innovative solutions.
+                          We realize, with our team and our work, we have the
+                          ability to deliver an experience for a globalist
+                          world; one that resonates with a wider audience of
+                          people.
+                        </p>
+                      </div>
+                    </li>
+                    <li
+                      data-parallax
+                      data-translate-y="-15rem"
+                      data-rotate-from="30deg"
+                      data-translate-y-from="20vh"
+                      data-end="center center"
+                      data-trigger="parent"
+                    >
+                      <div className="content">
+                        <h2 className="title">Our Vision</h2>
+                        <p className="text">
+                          We believe in the un-status quo when it comes to event
+                          design. Connecting people in a meaningful way, through
+                          innovative and strategic event design that engages
+                          guests in a multidimensional experience, is at the
+                          very core of what we do and why we do it.
+                        </p>
+                      </div>
+                    </li>
+                    <li
+                      data-parallax
+                      data-translate-y="10rem"
+                      data-translate-x="-5rem"
+                      data-rotate-to="10deg"
+                      data-rotate-from="30deg"
+                      data-end="center center"
+                    >
+                      <div className="content">
+                        <h2 className="title">Our People</h2>
+                        <p className="text">
+                          We are comprised of dedicated creatives, strategic
+                          thinkers, visionaries, producers, fabricators, and
+                          engineers — all here to deliver a one-of-a-kind event
+                          experience. As your strategic partner, we work with
+                          you every step of the way to ensure your vision and
+                          brand is on point.
+                        </p>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </section>
+          </section>
     </>
   );
 };

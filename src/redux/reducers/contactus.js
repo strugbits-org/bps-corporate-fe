@@ -29,18 +29,18 @@ const contactSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(postFormData.fulfilled, (state, { payload }) => {
-        console.log("postFormData", payload);
+        // console.log("postFormData", payload);
         state.formData = payload;
         state.loading = false;
         state.success = true;
       })
       .addCase(postFormData.pending, (state) => {
-        console.log("ispending");
+        // console.log("ispending");
         state.loading = true;
         state.success = false;
       })
       .addCase(postFormData.rejected, (state) => {
-        console.log("is rejected");
+        // console.log("is rejected");
         state.loading = false;
         state.success = false;
       });

@@ -7,14 +7,12 @@ const ProductCartSlider = () => {
     <div className="slider-featured-products" data-aos="d:loop">
       <div className="swiper-container">
         <div className="swiper-wrapper">
-          {productSlider.map((data, index) => {
-            return (
-              <div key={index} className="swiper-slide">
-                <div className="rental-product-link">
-                  <button className="btn-bookmark">
-                    <i className="icon-bookmark"></i>
-                    <i className="icon-bookmark-full"></i>
-                  </button>
+          <div className="swiper-slide">
+            <div className="rental-product-link">
+              <button className="btn-bookmark">
+                <i className="icon-bookmark"></i>
+                <i className="icon-bookmark-full"></i>
+              </button>
 
                   <DelayedLink to="/" className="product-link">
                     <h3 className="product-name">{data.name}</h3>

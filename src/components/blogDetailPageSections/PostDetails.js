@@ -1,13 +1,22 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 import ProductCartSlider from "../commonComponents/ProductCartSlider";
 import SocialVerticalBar from "./SocialVerticalBar";
-import img1 from "../../utilis/images/lib/06_desktop.jpg"
-import img2 from "../../utilis/images/lib/02_desktop.jpg"
-import img8 from "../../utilis/images/lib/08_desktop.jpg"
-import img4 from "../../utilis/images/lib/04_desktop.jpg"
+import img1 from "../../utilis/images/lib/06_desktop.jpg";
+import img2 from "../../utilis/images/lib/02_desktop.jpg";
+import img8 from "../../utilis/images/lib/08_desktop.jpg";
+import img4 from "../../utilis/images/lib/04_desktop.jpg";
+import { postes } from "../../common/constats/blogData";
 import DelayedLink from "../../common/DelayedLink";
 
 const PostDetails = () => {
+  const params = useParams();
+
+  const post = postes.find((post) => post.id === params.id);
+
+  // console.log("Post here", post);
+
+
   return (
     <section className="blog-post-intro pt-lg-150 pt-mobile-125">
       <div className="container-fluid">
@@ -20,25 +29,19 @@ const PostDetails = () => {
               >
                 <div className="author">
                   <div className="container-img">
-                    <img
-                      src={img1}
-                      data-preload
-                      className="media"
-                      alt=""
-                    />
+                    <img src={post.img} data-preload className="media" alt="" />
                   </div>
-                  <h2 className="author-name">Lily Yeung</h2>
+                  <h2 className="author-name">{post.userName}</h2>
                 </div>
                 <div className="date">
-                  <span>Sep 30</span>
+                  <span>{post.date}</span>
                 </div>
               </div>
               <h1
                 className="fs--40 fs-mobile-35 lh-140 blog-post-title split-words"
                 data-aos="d:loop"
               >
-                A Medieval Fairytale Come to Life: Blueprint Studios' Event at
-                Castello di Amorosa
+                {post.heading}
               </h1>
             </div>
           </div>
@@ -49,7 +52,7 @@ const PostDetails = () => {
               <div className="blog-post-thumb" data-aos="d:loop">
                 <div className="container-img">
                   <img
-                    src={img1}
+                    src={post.img}
                     data-preload
                     className="media"
                     alt=""
@@ -63,41 +66,21 @@ const PostDetails = () => {
                   className="editor"
                   data-aos="fadeIn .8s ease-in-out .2s, d:loop"
                 >
-                  <h2>Introduction</h2>
+                  <h2>{post.heading}</h2>
                   <p>
-                    A historical backdrop, medieval tournament, wine cellar
-                    feast, and a starlit dessert soirée; it might sound like a
-                    scene from a fairytale, but it was the reality crafted by
-                    Blueprint Studios at Castello di Amorosa in Napa Valley.
+                   {post.p}
                   </p>
                   <p>
-                    When it comes to creating one-of-a-kind experiences,
-                    Blueprint Studios knows how to conjure magic. This event was
-                    no exception. From jousting knights to a candlelit dinner in
-                    a wine cellar, followed by a dessert reception under the
-                    stars, this event was a transportive experience right out of
-                    the pages of a storybook.
+                    {post.pp}
                   </p>
-                  <h2>The Setting</h2>
+                  <h2>{post.heading1}</h2>
                   <p>
-                    Castello di Amorosa, a Tuscan-style castle and winery
-                    located in Napa Valley, was the perfect setting for this
-                    enchanting event. The castle, a 121,000-square-foot fortress
-                    set upon a sprawling 171 acres, complete with a drawbridge,
-                    moat, chapel, and even a torture chamber, served as the
-                    idyllic backdrop for a medieval-themed celebration.
+                    {post.p1}
                   </p>
 
-                  <h2>The Reception</h2>
+                  <h2>{post.heading2}</h2>
                   <p>
-                    The event kicked off with a reception like no other. Guests
-                    were greeted at the castle gates with goblets of wine before
-                    entering a medieval world of wonder. As the sun set over the
-                    Napa Valley, the courtyard was alive with the sights and
-                    sounds of a medieval tournament. Knights in shining armor
-                    jousting, sword-fighting demonstrations, and falconry
-                    displays entertained guests as they mingled and sipped on
-                    the finest wines from the Castello's collection.
+                    {post.p2}
                   </p>
 
                   <img src={img1} alt="" />

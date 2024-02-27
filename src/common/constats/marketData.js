@@ -5,6 +5,7 @@ import img8 from "../../utilis/images/lib/08_desktop.jpg";
 
 export const modelData = [
   {
+    id: "1",
     img: img6,
     title: "Corporate",
     tags: {
@@ -14,6 +15,7 @@ export const modelData = [
     },
   },
   {
+    id:"2",
     img: img6,
     title: "Corporate",
     tags: {
@@ -23,6 +25,7 @@ export const modelData = [
     },
   },
   {
+    id:"3",
     img: img6,
     title: "TradeShows",
     tags: {
@@ -32,6 +35,7 @@ export const modelData = [
     },
   },
   {
+    id:"4",
     img: img6,
     title: "Social",
     tags: {

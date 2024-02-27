@@ -12,13 +12,16 @@ const Market = () => {
         </button>
       </div>
       <ul className="list-submenu-market list-submenu list-projects font-submenu">
-        {modelData.map((data, index) => {
+        {modelData.map((data) => {
           return (
-            <li key={index} className="list-item">
+            <li key={data.id} className="list-item">
               <DelayedLink
-                to="/market-post"
+                to={`/market-post/${data.id}`}
                 className="market-link project-link"
-                attributes={{"data-menu-close":"","data-cursor-style":"view"}}
+                attributes={{
+                  "data-menu-close": "",
+                  "data-cursor-style": "view",
+                }}
               >
                 <div className="container-img bg-blue" data-cursor-style="view">
                   <img src={data.img} data-preload className="media" alt="" />
@@ -26,11 +29,13 @@ const Market = () => {
                 <div className="container-text">
                   <h3 className="title-project split-words">{data.title}</h3>
                   <ul className="list-tags">
-                    {Object.values(data.tags).map((tag, index) => (
-                      <li key={index}>
-                        <span>{tag}</span>
-                      </li>
-                    ))}
+                    {Object.values(data.tags).map((data, id) => {
+                      return (
+                        <li key={id}>
+                          <span>{data}</span>
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
               </DelayedLink>
