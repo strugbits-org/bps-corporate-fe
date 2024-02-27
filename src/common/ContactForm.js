@@ -5,6 +5,7 @@ import contactusSchema from "../common/schema/contactusSchema";
 import { useDispatch, useSelector } from "react-redux";
 // import { submitFormSuccess, submitFormFailure} from "../redux/reducers/contactus";
 import { postFormData } from "../redux/reducers/contactus";
+import { Contact } from "./constats/contactusData";
 import DelayedLink from "../common/DelayedLink";
 
 const ContactForm = () => {
@@ -114,14 +115,14 @@ const ContactForm = () => {
         <div className="container-info">
           <div className="container-tel">
             <DelayedLink to="tel:" target="_blank" >
-              <span>SF (415) 922-9004</span>
+              <span>{Contact.phone1}</span>
             </DelayedLink>
             <DelayedLink href="tel:" target="_blank" >
-              <span>LV (702) 757-7987</span>
+              <span>{Contact.phone2}</span>
             </DelayedLink>
           </div>
           <DelayedLink to="mailto:info@blueprintstudios.com" target="_blank" >
-            <span>info@blueprintstudios.com</span>
+            <span>{Contact.email}</span>
           </DelayedLink>
         </div>
         <ul className="list-social-media">
@@ -130,23 +131,38 @@ const ContactForm = () => {
             attributes={{
               "rel":"noopener noreferrer"
               }}>
+            <DelayedLink to="/" target="_blank" 
+            attributes={{
+              "rel":"noopener noreferrer"
+              }}>
               <i className="icon-facebook"></i>
+            </DelayedLink>
             </DelayedLink>
           </li>
           <li>
+            <DelayedLink to="/" target="_blank" 
+            attributes={{
+              "rel":"noopener noreferrer"
+              }}>
             <DelayedLink to="/" target="_blank" 
             attributes={{
               "rel":"noopener noreferrer"
               }}>
               <i className="icon-instagram"></i>
             </DelayedLink>
+            </DelayedLink>
           </li>
           <li>
             <DelayedLink to="/" target="_blank" 
             attributes={{
               "rel":"noopener noreferrer"
               }}>
+            <DelayedLink to="/" target="_blank" 
+            attributes={{
+              "rel":"noopener noreferrer"
+              }}>
               <i className="icon-x"></i>
+            </DelayedLink>
             </DelayedLink>
           </li>
           <li>
@@ -154,7 +170,12 @@ const ContactForm = () => {
             attributes={{
               "rel":"noopener noreferrer"
               }}>
+            <DelayedLink to="/as" target="_blank" 
+            attributes={{
+              "rel":"noopener noreferrer"
+              }}>
               <i className="icon-linkedin"></i>
+            </DelayedLink>
             </DelayedLink>
           </li>
         </ul>

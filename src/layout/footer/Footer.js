@@ -1,6 +1,7 @@
+import DelayedLink from "../../common/DelayedLink";
 import { footerData, address } from "../../common/constats/constats";
 import Newsletter from "../../common/Newsletter";
-import DelayedLink from "../../common/DelayedLink";
+
 const Footer = () => {
   return (
     <footer id="footer" data-cursor-style="off">

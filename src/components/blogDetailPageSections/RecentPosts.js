@@ -93,7 +93,9 @@ const RecentPosts = () => {
             <DelayedLink
               to="/"
               className="btn-border-blue"
-              data-cursor-style="off"
+              attributes={{
+                "data-cursor-style": "off",
+              }}
             >
               <span>See all</span>
             </DelayedLink>

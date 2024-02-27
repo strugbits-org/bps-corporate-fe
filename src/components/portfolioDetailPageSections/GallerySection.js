@@ -1,8 +1,6 @@
 import React from "react";
 import ProductCartSlider from "../commonComponents/ProductCartSlider";
-import img1 from "../../utilis/images/portfolio/photo-gallery-1.jpg";
-import img2 from "../../utilis/images/portfolio/photo-gallery-2.jpg";
-import img3 from "../../utilis/images/portfolio/photo-gallery-3.jpg"
+import {gallery} from "../../common/constats/portfolioData";
 const GallerySection = () => {
   return (
     <section className="portfolio-post-photo-gallery pt-lg-165 pt-tablet-105 pt-phone-145">
@@ -13,7 +11,7 @@ const GallerySection = () => {
               className="fs--60 text-center mb-md-40 mb-phone-30 split-words"
               data-aos="d:loop"
             >
-              Photo gallery
+              {gallery.title}
             </h2>
 
             <div className="wrapper-gallery">
@@ -22,7 +20,7 @@ const GallerySection = () => {
                   <div className="container-img bg-blue">
                     <div className="wrapper-img">
                       <img
-                        src={img1}
+                        src={gallery.img1}
                         data-preload
                         className="media"
                         alt=""
@@ -34,7 +32,7 @@ const GallerySection = () => {
                   <div className="container-img bg-blue">
                     <div className="wrapper-img">
                       <img
-                        src={img2}
+                        src={gallery.img2}
                         data-preload
                         className="media"
                         alt=""
@@ -48,7 +46,7 @@ const GallerySection = () => {
                   <div className="container-img bg-blue">
                     <div className="wrapper-img">
                       <img
-                        src={img3}
+                        src={gallery.img3}
                         data-preload
                         className="media"
                         alt=""

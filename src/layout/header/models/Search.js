@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import img1 from "../../../utilis/images/chairs/bristol-chair.png";
 import imgC1 from "../../../utilis/images/chairs/bristol-chair-color-1.png";
 import imgC2 from "../../../utilis/images/chairs/bristol-chair-color-2.png";
@@ -13,6 +12,7 @@ import { OurCardData } from "../../../common/constats/portfolioData";
 import { postes } from "../../../common/constats/blogData";
 import { modelData } from "../../../common/constats/marketData";
 import { studioCard } from "../../../common/constats/constats";
+import DelayedLink from "../../../common/DelayedLink";
 
 const Search = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -98,11 +98,11 @@ console.log(blogData);
                     {studioCard.map((data, index) => {
                       return (
                         <li key={index} className="grid-item">
-                          <Link to="/" className="link-studios">
+                          <DelayedLink to="/" className="link-studios">
                             <h3 className="title-all-studios">
                               <span>{data.name}</span>
                             </h3>
-                          </Link>
+                          </DelayedLink>
                         </li>
                       );
                     })}
@@ -115,10 +115,14 @@ console.log(blogData);
                       <h2 className="title-results split-chars" data-aos>
                         Rental <span>“Wedding”</span>
                       </h2>
-                      <Link to="/" className="btn-border-blue" data-aos>
+                      <DelayedLink to="/" className="btn-border-blue"
+                        attributes={{
+                          "data-aos": "",
+                        }}
+                        >
                         <span>See more</span>
                         <i className="icon-arrow-right"></i>
-                      </Link>
+                      </DelayedLink>
                     </div>
                     <div className="slider-content-phone">
                       <div className="swiper-container">
@@ -128,7 +132,7 @@ console.log(blogData);
                         >
                           <div className="swiper-slide grid-item">
                             <div className="rental-product-link">
-                              <Link to="/" className="product-link">
+                              <DelayedLink to="/" className="product-link">
                                 <h3 className="product-name">Bristol Chair</h3>
 
                                 <div className="wrapper-img">
@@ -194,12 +198,12 @@ console.log(blogData);
                                     <span>+3</span>
                                   </div>
                                 </div>
-                              </Link>
+                              </DelayedLink>
                             </div>
                           </div>
                           <div className="swiper-slide grid-item">
                             <div className="rental-product-link">
-                              <Link to="/" className="product-link">
+                              <DelayedLink to="/" className="product-link">
                                 <h3 className="product-name">Bristol Chair</h3>
 
                                 <div className="wrapper-img">
@@ -265,12 +269,12 @@ console.log(blogData);
                                     <span>+3</span>
                                   </div>
                                 </div>
-                              </Link>
+                              </DelayedLink>
                             </div>
                           </div>
                           <div className="swiper-slide grid-item">
                             <div className="rental-product-link">
-                              <Link to="/" className="product-link">
+                              <DelayedLink to="/" className="product-link">
                                 <h3 className="product-name">Bristol Chair</h3>
 
                                 <div className="wrapper-img">
@@ -336,7 +340,7 @@ console.log(blogData);
                                     <span>+3</span>
                                   </div>
                                 </div>
-                              </Link>
+                              </DelayedLink>
                             </div>
                           </div>
                         </div>
@@ -348,10 +352,12 @@ console.log(blogData);
                       <h2 className="title-results split-chars" data-aos>
                         Portfolio <span>“Wedding”</span>
                       </h2>
-                      <Link to="/" className="btn-border-blue" data-aos>
+                      <DelayedLink to="/" className="btn-border-blue" attributes={{
+                          "data-aos": "",
+                        }}>
                         <span>See more</span>
                         <i className="icon-arrow-right"></i>
-                      </Link>
+                      </DelayedLink>
                     </div>
                     <div className="slider-content-phone">
                       <div className="swiper-container">
@@ -360,7 +366,7 @@ console.log(blogData);
                           data-aos
                         >
                           <div className="swiper-slide grid-item">
-                            <Link
+                            <DelayedLink
                               to="/portfolio-post"
                               className="link-portfolio"
                             >
@@ -382,10 +388,10 @@ console.log(blogData);
                                   F1 Las Vegas Grand Prix
                                 </h2>
                               </div>
-                            </Link>
+                            </DelayedLink>
                           </div>
                           <div className="swiper-slide grid-item">
-                            <Link to="/" className="link-portfolio">
+                            <DelayedLink to="/" className="link-portfolio">
                               <div className="container-img">
                                 <img
                                   src={imgd8}
@@ -397,10 +403,10 @@ console.log(blogData);
                               <h3 className="title-portfolio">
                                 Brasil Design Awards 2023
                               </h3>
-                            </Link>
+                            </DelayedLink>
                           </div>
                           <div className="swiper-slide grid-item">
-                            <Link to="/" className="link-portfolio">
+                            <DelayedLink to="/" className="link-portfolio">
                               <div className="container-img">
                                 <img
                                   src={imgd8}
@@ -412,10 +418,10 @@ console.log(blogData);
                               <h3 className="title-portfolio">
                                 Brasil Design Awards 2023
                               </h3>
-                            </Link>
+                            </DelayedLink>
                           </div>
                           <div className="swiper-slide grid-item">
-                            <Link to="/" className="link-portfolio">
+                            <DelayedLink to="/" className="link-portfolio">
                               <div className="container-img">
                                 <img
                                   src={imgd1}
@@ -427,10 +433,10 @@ console.log(blogData);
                               <h3 className="title-portfolio">
                                 Latin American Design Awards 2023
                               </h3>
-                            </Link>
+                            </DelayedLink>
                           </div>
                           <div className="swiper-slide grid-item">
-                            <Link to="/" className="link-portfolio">
+                            <DelayedLink to="/" className="link-portfolio">
                               <div className="container-img">
                                 <img
                                   src={imgd2}
@@ -440,7 +446,7 @@ console.log(blogData);
                                 />
                               </div>
                               <h3 className="title-portfolio">Wedding</h3>
-                            </Link>
+                            </DelayedLink>
                           </div>
                         </div>
                       </div>
@@ -461,11 +467,13 @@ console.log(blogData);
                     {modelData.map((data, index) => {
                       return (
                         <li key={index} className="grid-item">
-                          <Link
+                          <DelayedLink
                             to="/market-post"
                             className="market-link project-link"
-                            data-cursor-style="view"
-                            data-menu-close
+                            attributes={{
+                              "data-cursor-style": "view",
+                              "data-menu-close": "",
+                            }}
                           >
                             <div
                               className="container-img bg-blue"
@@ -483,7 +491,7 @@ console.log(blogData);
                                 {data.title}
                               </h3>
                             </div>
-                          </Link>
+                          </DelayedLink>
                         </li>
                       );
                     })}
@@ -495,10 +503,13 @@ console.log(blogData);
                     <h2 className="title-results split-chars" data-aos>
                       Blog <span>“Wedding”</span>
                     </h2>
-                    <Link to="/" className="btn-border-blue" data-aos>
+                    <DelayedLink to="/" className="btn-border-blue" 
+                    attributes={{
+                      "data-aos": "",
+                    }}>
                       <span>See more</span>
                       <i className="icon-arrow-right"></i>
-                    </Link>
+                    </DelayedLink>
                   </div>
 
                   <div className="slider-content-search-blog">
@@ -508,7 +519,7 @@ console.log(blogData);
                         data-aos
                       >
                         <div className="swiper-slide grid-item">
-                          <Link to="/blog-post" className="link-blog">
+                          <DelayedLink to="/blog-post" className="link-blog">
                             <div
                               className="container-img bg-blue"
                               data-cursor-style="view"
@@ -545,10 +556,10 @@ console.log(blogData);
                                 adipiscing elit.
                               </p>
                             </div>
-                          </Link>
+                          </DelayedLink>
                         </div>
                         <div className="swiper-slide grid-item">
-                          <Link to="/blog-post" className="link-blog">
+                          <DelayedLink to="/blog-post" className="link-blog">
                             <div
                               className="container-img bg-blue"
                               data-cursor-style="view"
@@ -585,10 +596,10 @@ console.log(blogData);
                                 adipiscing elit.
                               </p>
                             </div>
-                          </Link>
+                          </DelayedLink>
                         </div>
                         <div className="swiper-slide grid-item">
-                          <Link to="/blog-post" className="link-blog">
+                          <DelayedLink to="/blog-post" className="link-blog">
                             <div
                               className="container-img bg-blue"
                               data-cursor-style="view"
@@ -625,7 +636,7 @@ console.log(blogData);
                                 adipiscing elit.
                               </p>
                             </div>
-                          </Link>
+                          </DelayedLink>
                         </div>
                         <div className="swiper-slide grid-item">
                           <a href="blog-post.html" className="link-blog">
@@ -668,7 +679,7 @@ console.log(blogData);
                           </a>
                         </div>
                         <div className="swiper-slide grid-item">
-                          <Link to="/blog-post" className="link-blog">
+                          <DelayedLink to="/blog-post" className="link-blog">
                             <div
                               className="container-img bg-blue"
                               data-cursor-style="view"
@@ -705,7 +716,7 @@ console.log(blogData);
                                 adipiscing elit.
                               </p>
                             </div>
-                          </Link>
+                          </DelayedLink>
                         </div>
                       </div>
                     </div>
@@ -723,17 +734,17 @@ console.log(blogData);
                     data-aos
                   >
                     <li className="grid-item">
-                      <Link to="/" className="link-order-pages">
+                      <DelayedLink to="/" className="link-order-pages">
                         <h3 className="title-order-pages">About</h3>
                         <p className="text-order-pages">
                           In the heart of the great outdoors, with nature as our
                           backdrop, Blueprint Studios embarked on a creative
                           journey - a photoshoot
                         </p>
-                      </Link>
+                      </DelayedLink>
                     </li>
                     <li className="grid-item">
-                      <Link to="/" className="link-order-pages">
+                      <DelayedLink to="/" className="link-order-pages">
                         <h3 className="title-order-pages">Lorem ipsum dolor</h3>
                         <p className="text-order-pages">
                           Etiam mi felis, commodo eu augue in, sagittis faucibus
@@ -745,10 +756,10 @@ console.log(blogData);
                           faucibus orci luctus et ultrices posuere cubilia
                           curae; Nullam efficitur ac urna at vehicula.
                         </p>
-                      </Link>
+                      </DelayedLink>
                     </li>
                     <li className="grid-item">
-                      <Link to="/" className="link-order-pages">
+                      <DelayedLink to="/" className="link-order-pages">
                         <h3 className="title-order-pages">
                           Donec vel sem at enim
                         </h3>
@@ -759,10 +770,10 @@ console.log(blogData);
                           Nam sit amet odio justo. Pellentesque vitae dolor at
                           ipsum mollis malesuada. Aliquam non dolor augue.
                         </p>
-                      </Link>
+                      </DelayedLink>
                     </li>
                     <li className="grid-item">
-                      <Link to="/" className="link-order-pages">
+                      <DelayedLink to="/" className="link-order-pages">
                         <h3 className="title-order-pages">
                           Etiam ultricies nulla
                         </h3>
@@ -774,10 +785,10 @@ console.log(blogData);
                           Etiam ultricies nulla volutpat lorem lobortis, sed
                           sollicitudin arcu pretium.
                         </p>
-                      </Link>
+                      </DelayedLink>
                     </li>
                     <li className="grid-item">
-                      <Link to="/" className="link-order-pages">
+                      <DelayedLink to="/" className="link-order-pages">
                         <h3 className="title-order-pages">
                           Quisque lacinia nisi
                         </h3>
@@ -786,7 +797,7 @@ console.log(blogData);
                           quis nunc. Morbi posuere nibh purus, eget molestie
                           erat scelerisque a. Phasellus ut mauris mi.
                         </p>
-                      </Link>
+                      </DelayedLink>
                     </li>
                   </ul>
                 </div>
