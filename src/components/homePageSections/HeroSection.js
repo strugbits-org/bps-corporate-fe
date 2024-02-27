@@ -1,11 +1,10 @@
-import React from 'react'
-import img6 from "../../utilis/images/lib/06_desktop.jpg"
+
 const HeroSection = () => {
   return (
     <section className="home-intro" data-aos="d:loop">
     <div className="container-img">
       <img
-        src={img6}
+        src="https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040865/utiles/libs/06_desktop_iterkd.jpg"
         data-preload
         className="media"
         alt=""
