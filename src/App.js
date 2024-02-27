@@ -31,7 +31,6 @@ function App() {
           content="Events are crucial for enhancing brand awareness, offering exclusive
            chances to showcase ideas, products, and services intimately."
         />
-
         <meta name="format-detection" content="telephone=no" />
         <meta property="og:title" content="Blueprint" />
         <meta name="description" content="" />

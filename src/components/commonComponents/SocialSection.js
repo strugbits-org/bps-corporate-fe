@@ -1,6 +1,6 @@
 
 import DelayedLink from "../../common/DelayedLink";
-import { blogData, socialData, instafeeds, pinfeeds} from "../../common/constats";
+import { blogData, socialData, instafeeds, pinfeeds} from "../../common/constats/constats";
 const SocialSection = () => {
   return (
     <section className="section-lets-get-social z-5 pt-lg-195 pt-tablet-105 pt-phone-155 pb-lg-130 pb-tablet-105 pb-phone-140 mt-lg-240">

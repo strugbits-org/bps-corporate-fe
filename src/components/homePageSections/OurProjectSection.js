@@ -1,6 +1,6 @@
 import React from "react";
 // import img1 from "../../utilis/images/lib/01_desktop.jpg";
-import { ourprojectSlider } from "../../common/constats";
+import { ourprojectSlider } from "../../common/constats/constats";
 import DelayedLink from "../../common/DelayedLink";
 const OurProjectSection = () => {
   return (

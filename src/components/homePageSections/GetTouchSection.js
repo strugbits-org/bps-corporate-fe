@@ -1,6 +1,6 @@
 import React from "react";
-import {datagettouch} from "../../common/constats";
 import DelayedLink from "../../common/DelayedLink";
+import {datagettouch} from "../../common/constats";
 const GetTouchSection = () => {
   return (
     <section className="home-solution pt-220 pb-110">

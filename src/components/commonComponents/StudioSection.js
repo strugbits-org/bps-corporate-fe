@@ -1,5 +1,5 @@
-import React from 'react'
-import {dataStudio, studioCard} from "../../common/constats";
+import React from "react";
+import { dataStudio, studioCard } from "../../common/constats/constats";
 
 const StudioSection = () => {
   return (
@@ -27,35 +27,37 @@ const StudioSection = () => {
         <div className="row mt-lg-95 mt-tablet-45 mt-phone-40">
           <div className="col-lg-12">
             <ul className="accordion-list-studios" data-aos="d:loop">
-            {studioCard.map((data, index) => {
-        return (
-          <li key={index} className="accordion-item">
-            <div className="accordion-header">
-              <h3
-                className="accordion-title split-words"
-                data-aos="d:loop"
-              >
-                {data.name}
-              </h3>
-            </div>
-            <div className="accordion-content">
-              <div className="container-img bg-blue">
-                <img src={data.img} data-preload className="media" alt="" />
-              </div>
-              <p className="accordion-text">
-                {data.desc}
-              </p>
-            </div>
-          </li>
-        );
-      })}
-            
+              {studioCard.map((data, index) => {
+                return (
+                  <li key={index} className="accordion-item">
+                    <div className="accordion-header">
+                      <h3
+                        className="accordion-title split-words"
+                        data-aos="d:loop"
+                      >
+                        {data.name}
+                      </h3>
+                    </div>
+                    <div className="accordion-content">
+                      <div className="container-img bg-blue">
+                        <img
+                          src={data.img}
+                          data-preload
+                          className="media"
+                          alt=""
+                        />
+                      </div>
+                      <p className="accordion-text">{data.desc}</p>
+                    </div>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default StudioSection
+export default StudioSection;

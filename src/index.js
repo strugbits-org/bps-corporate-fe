@@ -45,7 +45,7 @@ const router = createBrowserRouter([
         element: <Portfolio />,
       },
       {
-        path: "services-post",
+        path: "services-post/:id",
         element: <ServicePostPage />,
       },
       {
@@ -53,19 +53,24 @@ const router = createBrowserRouter([
         element: <ServicePostPage />,
       },
       {
-        path: "market-post",
+        path: "services-post/:id",
+        element: <ServicePostPage />,
+      },
+      {
+        path: "market-post/:id",
         element: <MarketPost />,
       },
       {
        
-        path: "portfolio-post", 
+        path: "portfolio-post/:id", 
         element: <PortfolioPost />,
       },
       {
        
-        path: "blog-post", 
+        path: "blog-post/:id", 
         element: <BlogPost/>,
       },
+      
       //////////// private route start ///////////////////////
       // {
       //   element: <PrivateRoute/>,
