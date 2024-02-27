@@ -1,5 +1,5 @@
 import DelayedLink from "../../common/DelayedLink";
-import { marketCards } from "../../common/constats";
+import { marketCards } from "../../common/constats/constats";
 
 const MarketSection = () => {
   let data_delay = 0;
