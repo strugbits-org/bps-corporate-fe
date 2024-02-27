@@ -1,5 +1,5 @@
-import { ourFamily } from "../../common/constats/aboutData";
 import DelayedLink from "../../common/DelayedLink";
+import { ourFamily } from "../../common/constats/aboutData";
 const OurFamily = () => {
   return (
     <section className="about-meet-the-rest-of-the-family pt-lg-245 pt-mobile-205">
@@ -10,19 +10,21 @@ const OurFamily = () => {
               className="fs--80 blue-1 text-center split-words"
               data-aos="d:loop"
             >
-              Meet the rest of the family
+              {ourFamily.title}
             </h2>
           </div>
           <div className="col-lg-12 mt-lg-80 mt-mobile-40">
             <ul className="list-family">
-              <li className="list-item item-01">
-                <div className="content">
-                  <div className="container-img logo-img">
-                    <img
-                      src={img1}
-                      data-preload
-                      className="media"
-                      data-aos="scaleOut
+              {ourFamily.Cards.map((data, index) => {
+                return (
+                  <li key={index} className="list-item item-01">
+                    <div className="content">
+                      <div className="container-img logo-img">
+                        <img
+                          src={data.img1}
+                          data-preload
+                          className="media"
+                          data-aos="scaleOut
                                 .8s ease-out-cubic .2s, d:loop"
                           alt=""
                         />
@@ -46,15 +48,15 @@ const OurFamily = () => {
                         <p>{data.p3}</p>
                       </div>
                       <div className="container-btn">
-                      <DelayedLink
-                      to="/"
-                      className="btn-border-white"
-                      attributes={{
-                        "data-cursor-style": "off",
-                      }}
-                    >
-                      <span>{data.btntext}</span>
-                    </DelayedLink>
+                        <DelayedLink
+                          to="/"
+                          className="btn-border-white"
+                          attributes={{
+                            "data-cursor-style": "off",
+                          }}
+                        >
+                          <span>{data.btntext}</span>
+                        </DelayedLink>
                       </div>
                     </div>
                   </li>
@@ -67,5 +69,4 @@ const OurFamily = () => {
     </section>
   );
 };
-
 export default OurFamily;

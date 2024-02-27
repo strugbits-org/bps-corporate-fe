@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import img1 from "../../../utilis/images/chairs/bristol-chair.png";
 import imgC1 from "../../../utilis/images/chairs/bristol-chair-color-1.png";
 import imgC2 from "../../../utilis/images/chairs/bristol-chair-color-2.png";
@@ -13,6 +12,7 @@ import { OurCardData } from "../../../common/constats/portfolioData";
 import { postes } from "../../../common/constats/blogData";
 import { modelData } from "../../../common/constats/marketData";
 import { studioCard } from "../../../common/constats/constats";
+import DelayedLink from "../../../common/DelayedLink";
 
 const Search = () => {
   const [searchTerm, setSearchTerm] = useState("");

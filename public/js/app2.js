@@ -16135,6 +16135,9 @@ var require_app2 = __commonJS({
       }
     });
     
+    const updateWatchedTrigger = document.querySelector(".updateWatchedTrigger");
+    updateWatchedTrigger.addEventListener("click", updateWatched);
+
     document.addEventListener("pjax:complete", whenContainerReady);
     document.addEventListener("pjax:send", whenContainerLeave);
     function whenContainerLeave() {
