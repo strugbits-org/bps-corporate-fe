@@ -80,18 +80,18 @@ const ExploreWorkSection = () => {
               className="container-list-tags mt-lg-55 mt-tablet-40 mt-phone-30"
               data-aos="fadeIn .8s ease-in-out .2s, d:loop"
             >
-              <div class="portfolio-tags">
+              <div className="portfolio-tags">
                 <button
-                  class="btn-tag-mobile no-desktop"
+                  className="btn-tag-mobile no-desktop"
                   data-set-tag="portfolio"
                 >
                   <span>All Studios</span>
-                  <i class="icon-arrow-down"></i>
+                  <i className="icon-arrow-down"></i>
                 </button>
-                <div class="list-dropdown" data-get-tag="portfolio">
-                  <div class="container-wrapper-list">
-                    <div class="wrapper-list">
-                      <ul class="list-portfolio-tags list-dropdown-tags">
+                <div className="list-dropdown" data-get-tag="portfolio">
+                  <div className="container-wrapper-list">
+                    <div className="wrapper-list">
+                      <ul className="list-portfolio-tags list-dropdown-tags">
                         <li>
                           <button
                             onClick={() =>
@@ -107,7 +107,7 @@ const ExploreWorkSection = () => {
                           </button>
                         </li>
                         {allstudiomenuitems.map((categories, idx) => (
-                          <li>
+                          <li key={idx}>
                             <Link
                               onClick={() => handleAllStudioFilter(categories)}
                               className={`portfolio-btn-tag ${
@@ -127,15 +127,15 @@ const ExploreWorkSection = () => {
                 </div>
               </div>
 
-              <div class="market-tags">
-                <button class="btn-tag-mobile no-desktop" data-set-tag="market">
+              <div className="market-tags">
+                <button className="btn-tag-mobile no-desktop" data-set-tag="market">
                   <span>All Markets</span>
-                  <i class="icon-arrow-down"></i>
+                  <i className="icon-arrow-down"></i>
                 </button>
-                <div class="list-dropdown" data-get-tag="market">
-                  <div class="container-wrapper-list">
-                    <div class="wrapper-list">
-                      <ul class="list-market-tags list-dropdown-tags">
+                <div className="list-dropdown" data-get-tag="market">
+                  <div className="container-wrapper-list">
+                    <div className="wrapper-list">
+                      <ul className="list-market-tags list-dropdown-tags">
                         <li>
                           <button
                             onClick={() =>
@@ -151,7 +151,7 @@ const ExploreWorkSection = () => {
                           </button>
                         </li>
                         {allmarketmenuitems.map((categories, idx) => (
-                          <li>
+                          <li key={idx}>
                             <Link
                               onClick={() => handleAllMarketFilter(categories)}
                               className={`portfolio-btn-tag ${

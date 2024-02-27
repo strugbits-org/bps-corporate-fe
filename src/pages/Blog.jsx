@@ -80,7 +80,7 @@ const Blog = () => {
                         </li>
 
                         {menuitems.map((category, idx) => (
-                          <li>
+                          <li key={idx}>
                             <Link
                               onClick={() => handleFilterButtonClick(category)}
                               className={`blog-btn-tag ${
