@@ -11,6 +11,7 @@ import imgd2 from "../../../utilis/images/lib/02_desktop.jpg";
 
 import { studioCard } from "../../../common/constats/constats";
 import { modelData } from "../../../common/constats/marketData";
+import DelayedLink from "../../../common/DelayedLink";
 const Search = () => {
   return (
     <div className="container-fluid">
