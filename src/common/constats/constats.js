@@ -1,24 +1,29 @@
-import img from "../utilis/images/lib/06_desktop.jpg";
-import img1 from "../utilis/images/lib/01_desktop.jpg";
-import img2 from "../utilis/images/lib/02_desktop.jpg";
-import img7 from "../utilis/images/lib/07_desktop.jpg";
-import img8 from "../utilis/images/lib/08_desktop.jpg";
-import img9 from "../utilis/images/lib/09_desktop.jpg";
-import img11 from "../utilis/images/home/section-rental-store-chair-1.png";
-import img22 from "../utilis/images/home/section-rental-store-chair-2.png";
-import img33 from "../utilis/images/home/section-rental-store-chair-3.png";
-import img44 from "../utilis/images/home/section-rental-store-table-1.png";
-import img6 from "../utilis/images/lib/06_desktop.jpg";
-import img5 from "../utilis/images/lib/05_desktop.jpg";
+import img from "../../utilis/images/lib/06_desktop.jpg";
+import img1 from "../../utilis/images/lib/01_desktop.jpg";
+import img2 from "../../utilis/images/lib/02_desktop.jpg";
+import img7 from "../../utilis/images/lib/07_desktop.jpg";
+import img8 from "../../utilis/images/lib/08_desktop.jpg";
+import img9 from "../../utilis/images/lib/09_desktop.jpg";
+import img11 from "../../utilis/images/home/section-rental-store-chair-1.png";
+import img22 from "../../utilis/images/home/section-rental-store-chair-2.png";
+import img33 from "../../utilis/images/home/section-rental-store-chair-3.png";
+import img44 from "../../utilis/images/home/section-rental-store-table-1.png";
+import img6 from "../../utilis/images/lib/06_desktop.jpg";
+import img5 from "../../utilis/images/lib/05_desktop.jpg";
+import img88 from "../../utilis/images/lib/08_desktop.jpg";
+import img99 from "../../utilis/images/lib/09_desktop.jpg";
+import db1 from "../../utilis/images/dream-big.jpg";
+import db2 from "../../utilis/images/dream-big-mobile.jpg";
+import logob from "../../utilis/images/logo/logo-bps-b.svg";
+import logop from "../../utilis/images/logo/logo-bps-p.svg";
+import logos from "../../utilis/images/logo/logo-bps-s.svg";
+import googleimg from "../../utilis/images/about/google-workspace.jpg"
 
-import img88 from "../utilis/images/lib/08_desktop.jpg";
-import img99 from "../utilis/images/lib/09_desktop.jpg";
+export const HeroData = {
+  image: img,
+desc: " © Blueprint studios. All rights reserved."
+}
 
-import db1 from "../utilis/images/dream-big.jpg";
-import db2 from "../utilis/images/dream-big-mobile.jpg";
-import logob from "../utilis/images/logo/logo-bps-b.svg";
-import logop from "../utilis/images/logo/logo-bps-p.svg";
-import logos from "../utilis/images/logo/logo-bps-s.svg";
 
 export const dataConcept = {
   text1: "From concept",
@@ -348,3 +353,42 @@ export const address = [
   },
 ];
 // footer content end /////
+
+export const  Slider = [
+  {
+    img: googleimg,
+    title: "Google Workspace",
+    tags:{
+      tag1:"Personal",
+      tag2:"Wedding",
+      tag3:"Milestone event",
+    },
+    desc1: "Every project is unique, ",
+      desc2: "each event its own.",
+      btntext: "Check out our portfolio"
+  },
+  {
+    img: img6,
+    title: "White Wedding",
+    tags:{
+      tag1:"Personal",
+      tag2:"Wedding",
+      tag3:"Milestone event",
+    },
+    desc1: "Every project is unique, ",
+      desc2: "each event its own.",
+      btntext: "Check out our portfolio"
+  },
+  {
+    img: googleimg,
+    title: "Google Workspace",
+    tags:{
+      tag1:"Personal",
+      tag2:"Wedding",
+      tag3:"Milestone event",
+    },
+    desc1: "Every project is unique, ",
+      desc2: "each event its own.",
+      btntext: "Check out our portfolio"
+  },
+]

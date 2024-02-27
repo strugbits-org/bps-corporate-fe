@@ -1,660 +1,178 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import SocialSection from "../components/commonComponents/SocialSection";
-import img from "../utilis/images/lib/08_desktop.jpg"
 import DelayedLink from "../common/DelayedLink";
+import { head, postes } from "../common/constats/blogData";
 
 const Blog = () => {
+  const [selectedFilters, setSelectedFilters] = useState([]);
+  const [filteredItems, setFilteredItems] = useState(postes);
+
+  const menuitems = [...new Set(postes.map((data) => data.category))];
+
+  const handleFilterButtonClick = (selectedCategory) => {
+    if (selectedFilters.includes(selectedCategory)) {
+      setSelectedFilters(
+        selectedFilters.filter((el) => el !== selectedCategory)
+      );
+    } else {
+      setSelectedFilters([...selectedFilters, selectedCategory]);
+    }
+  };
+
+  useEffect(() => {
+    const filterItems = () => {
+      if (selectedFilters.length > 0) {
+        let tempItems = postes.filter((item) =>
+          selectedFilters.includes(item.category)
+        );
+        setFilteredItems(tempItems);
+      } else {
+        setFilteredItems(postes);
+      }
+    };
+    filterItems();
+    console.log(selectedFilters, "rerender here");
+  }, [selectedFilters]); // Ensure useEffect runs when selectedFilters changes
+
+  // Add console.log to check rendering
+  console.log("Rendering Blog component");
+
+  // Add console.log to check if filteredItems changes
+  useEffect(() => {
+    console.log("filteredItems changed:", filteredItems);
+  }, [filteredItems]);
+
   return (
     <>
-    <section className="blog-intro pt-lg-145 pt-tablet-115 pt-phone-120 pb-lg-150 pb-tablet-100 pb-phone-155">
-      <div className="container-fluid">
-        <div className="row row-1">
-          <div className="col-12 column-1">
-            <h1
-              className="fs--60 text-center mb-lg-45 mb-mobile-40 split-words"
-              data-aos="d:loop"
-            >
-              Read our blog posts
-            </h1>
-            <div
-              className="blog-tags dropdown-tags"
-              data-aos="fadeIn .8s ease-in-out .2s, d:loop"
-            >
-              <button className="btn-tag-mobile no-desktop" data-set-tag="blog">
-                <span>All Categories</span>
-                <i className="icon-arrow-down"></i>
-              </button>
-              <div className="list-dropdown" data-set-tag="blog">
-                <div className="container-wrapper-list">
-                  <div className="wrapper-list">
-                    <ul className="list-blog-tags list-dropdown-tags">
-                      <li>
-                        <DelayedLink to="/blog" className="blog-btn-tag active">
-                          <span>All Studios</span>
-                        </DelayedLink>
-                      </li>
-                      <li>
-                        <DelayedLink to="/blog" className="blog-btn-tag">
-                          <span>Event Design and Production</span>
-                        </DelayedLink>
-                      </li>
-                      <li>
-                        <DelayedLink to="/blog" className="blog-btn-tag">
-                          <span>Creative Services Agency</span>
-                        </DelayedLink>
-                      </li>
-                      <li>
-                        <DelayedLink to="/blog" className="blog-btn-tag">
-                          <span>Floral Design</span>
-                        </DelayedLink>
-                      </li>
-                      <li>
-                        <DelayedLink to="/blog" className="blog-btn-tag">
-                          <span>Custom Fabrication</span>
-                        </DelayedLink>
-                      </li>
-                      <li>
-                        <DelayedLink to="/blog" className="blog-btn-tag">
-                          <span>Printing Services</span>
-                        </DelayedLink>
-                      </li>
-                    </ul>
+      <section className="blog-intro pt-lg-145 pt-tablet-115 pt-phone-120 pb-lg-150 pb-tablet-100 pb-phone-155">
+        <div className="container-fluid">
+          <div className="row row-1">
+            <div className="col-12 column-1">
+              <h1
+                className="fs--60 text-center mb-lg-45 mb-mobile-40 split-words"
+                data-aos="d:loop"
+              >
+                {head.title}
+              </h1>
+              <div
+                className="blog-tags dropdown-tags"
+                data-aos="fadeIn .8s ease-in-out .2s, d:loop"
+              >
+                <button
+                  className="btn-tag-mobile no-desktop"
+                  data-set-tag="blog"
+                >
+                  <span>{head.name}</span>
+                  <i className="icon-arrow-down"></i>
+                </button>
+                <div className="list-dropdown" data-set-tag="blog">
+                  <div className="container-wrapper-list">
+                    <div className="wrapper-list">
+                      <ul className="list-blog-tags list-dropdown-tags">
+                        {menuitems.map((category, idx) => (
+                          <li
+                            onClick={() => handleFilterButtonClick(category)}
+                            className={`blog-btn-tag ${
+                              selectedFilters?.includes(category)
+                                ? "active"
+                                : ""
+                            }`}
+                            key={`filters-${idx}`}
+                          >
+                            {category}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className="row row-2 mt-lg-60 mt-tablet-40 mt-phone-35">
-          <div className="col-lg-12 column-1">
-            <ul className="list-blog grid-lg-25 grid-tablet-50">
-              <li className="grid-item" data-aos="d:loop">
-                <DelayedLink
-                  to="/blog-post"
-                  className="link-blog link-blog-animation"
-                    attributes={{
-                      "data-aos": "d:loop",
-                    }}
+          <div className="row row-2 mt-lg-60 mt-tablet-40 mt-phone-35">
+            <div className="col-lg-12 column-1">
+              <ul className="list-blog grid-lg-25 grid-tablet-50">
+                {filteredItems.map((data, index) => (
+                  <li
+                    key={`postes-${index}`}
+                    className="grid-item"
+                    data-aos="d:loop"
                   >
-                  <div
-                    className="container-img bg-blue"
-                    data-cursor-style="view"
-                  >
-                    <div className="wrapper-img">
-                      <img
-                        src={img}
-                        data-preload
-                        className="media"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                  <div className="container-text">
-                    <div className="container-author-post-info">
-                      <div className="author">
-                        <span className="author-name">Lily Yeung</span>
+                    <DelayedLink
+                      to="/blog-post"
+                      className="link-blog link-blog-animation"
+                      attributes={{
+                        "data-aos": "d:loop",
+                      }}
+                    >
+                      <div
+                        className="container-img bg-blue"
+                        data-cursor-style="view"
+                      >
+                        <div className="wrapper-img">
+                          <img
+                            src={data.img}
+                            data-preload
+                            className="media"
+                            alt=""
+                          />
+                        </div>
                       </div>
-                      <div className="date">
-                        <span>Sep 30</span>
+                      <div className="container-text">
+                        <div className="container-author-post-info">
+                          <div className="author">
+                            <span className="author-name">{data.userName}</span>
+                          </div>
+                          <div className="date">
+                            <span>{data.date}</span>
+                          </div>
+                        </div>
+                        <h2 className="title-blog">{data.heading}</h2>
+                        <p className="text-blog">{data.p}</p>
+                        <ul className="list-tags-small">
+                          {Object.values(data.tags).map((tag, index) => (
+                            <React.Fragment key={index}>
+                              {index < 3 ? (
+                                <li
+                                  className={`tag-small ${
+                                    data.category?.includes(tag) ? "active" : ""
+                                  }`}
+                                >
+                                  <span>{tag}</span>
+                                </li>
+                              ) : null}
+                            </React.Fragment>
+                          ))}
+                          {Object.values(data.tags).length > 3 ? (
+                            <li className="tag-small">
+                              <span>
+                                +{Object.values(data.tags).length - 3} studios
+                              </span>
+                            </li>
+                          ) : null}
+                        </ul>
                       </div>
-                    </div>
-                    <h2 className="title-blog">
-                      A Taste Explosion: Event Design Extravaganza at Boa
-                      Restaurant
-                    </h2>
-                    <p className="text-blog">
-                      Beverly Hills, renowned for its luxury and panache,
-                      witnessed an unforgettable evening that melded culinary
-                      wonders with unmatched event Lorem ipsum dolor sit amet,
-                      consectetur adipiscing elit.
-                    </p>
-                    <ul className="list-tags-small">
-                      <li className="tag-small active">
-                        <span>Corporate</span>
-                      </li>
-                      <li className="tag-small">
-                        <span>Event Design and Production</span>
-                      </li>
-                      <li className="tag-small">
-                        <span>Creative Services Agency</span>
-                      </li>
-                      <li className="tag-small">
-                        <span>+ 3 studios</span>
-                      </li>
-                    </ul>
-                  </div>
-                </DelayedLink>
-              </li>
-              <li className="grid-item" data-aos="d:loop">
-                <DelayedLink
-                  to="/blog-post"
-                  className="link-blog link-blog-animation"
-                    attributes={{
-                      "data-aos": "d:loop",
-                    }}
-                  >
-                  <div
-                    className="container-img bg-blue"
-                    data-cursor-style="view"
-                  >
-                    <div className="wrapper-img">
-                      <img
-                        src={img}
-                        data-preload
-                        className="media"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                  <div className="container-text">
-                    <div className="container-author-post-info">
-                      <div className="author">
-                        <span className="author-name">Lily Yeung</span>
-                      </div>
-                      <div className="date">
-                        <span>Sep 30</span>
-                      </div>
-                    </div>
-                    <h2 className="title-blog">
-                      A Taste Explosion: Event Design Extravaganza at Boa
-                      Restaurant
-                    </h2>
-                    <p className="text-blog">
-                      Beverly Hills, renowned for its luxury and panache,
-                      witnessed an unforgettable evening that melded culinary
-                      wonders with unmatched event Lorem ipsum dolor sit amet,
-                      consectetur adipiscing elit.
-                    </p>
-                    <ul className="list-tags-small">
-                      <li className="tag-small active">
-                        <span>Corporate</span>
-                      </li>
-                      <li className="tag-small">
-                        <span>Event Design and Production</span>
-                      </li>
-                      <li className="tag-small">
-                        <span>Creative Services Agency</span>
-                      </li>
-                      <li className="tag-small">
-                        <span>+ 3 studios</span>
-                      </li>
-                    </ul>
-                  </div>
-                </DelayedLink>
-              </li>
-              <li className="grid-item" data-aos="d:loop">
-                <DelayedLink
-                  to="/blog-post"
-                  className="link-blog link-blog-animation"
-                    attributes={{
-                      "data-aos": "d:loop",
-                    }}
-                  >
-                  <div
-                    className="container-img bg-blue"
-                    data-cursor-style="view"
-                  >
-                    <div className="wrapper-img">
-                      <img
-                        src={img}
-                        data-preload
-                        className="media"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                  <div className="container-text">
-                    <div className="container-author-post-info">
-                      <div className="author">
-                        <span className="author-name">Lily Yeung</span>
-                      </div>
-                      <div className="date">
-                        <span>Sep 30</span>
-                      </div>
-                    </div>
-                    <h2 className="title-blog">
-                      A Taste Explosion: Event Design Extravaganza at Boa
-                      Restaurant
-                    </h2>
-                    <p className="text-blog">
-                      Beverly Hills, renowned for its luxury and panache,
-                      witnessed an unforgettable evening that melded culinary
-                      wonders with unmatched event Lorem ipsum dolor sit amet,
-                      consectetur adipiscing elit.
-                    </p>
-                    <ul className="list-tags-small">
-                      <li className="tag-small active">
-                        <span>Corporate</span>
-                      </li>
-                      <li className="tag-small">
-                        <span>Event Design and Production</span>
-                      </li>
-                      <li className="tag-small">
-                        <span>Creative Services Agency</span>
-                      </li>
-                      <li className="tag-small">
-                        <span>+ 3 studios</span>
-                      </li>
-                    </ul>
-                  </div>
-                </DelayedLink>
-              </li>
-              <li className="grid-item" data-aos="d:loop">
-                <DelayedLink
-                  to="/blog-post"
-                  className="link-blog link-blog-animation"
-                    attributes={{
-                      "data-aos": "d:loop",
-                    }}
-                  >
-                  <div
-                    className="container-img bg-blue"
-                    data-cursor-style="view"
-                  >
-                    <div className="wrapper-img">
-                      <img
-                        src={img}
-                        data-preload
-                        className="media"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                  <div className="container-text">
-                    <div className="container-author-post-info">
-                      <div className="author">
-                        <span className="author-name">Lily Yeung</span>
-                      </div>
-                      <div className="date">
-                        <span>Sep 30</span>
-                      </div>
-                    </div>
-                    <h2 className="title-blog">
-                      A Taste Explosion: Event Design Extravaganza at Boa
-                      Restaurant
-                    </h2>
-                    <p className="text-blog">
-                      Beverly Hills, renowned for its luxury and panache,
-                      witnessed an unforgettable evening that melded culinary
-                      wonders with unmatched event Lorem ipsum dolor sit amet,
-                      consectetur adipiscing elit.
-                    </p>
-                    <ul className="list-tags-small">
-                      <li className="tag-small active">
-                        <span>Corporate</span>
-                      </li>
-                      <li className="tag-small">
-                        <span>Event Design and Production</span>
-                      </li>
-                      <li className="tag-small">
-                        <span>Creative Services Agency</span>
-                      </li>
-                      <li className="tag-small">
-                        <span>+ 3 studios</span>
-                      </li>
-                    </ul>
-                  </div>
-                </DelayedLink>
-              </li>
-              <li className="grid-item" data-aos="d:loop">
-                <DelayedLink
-                  to="/blog-post"
-                  className="link-blog link-blog-animation"
-                    attributes={{
-                      "data-aos": "d:loop",
-                    }}
-                  >
-                  <div
-                    className="container-img bg-blue"
-                    data-cursor-style="view"
-                  >
-                    <div className="wrapper-img">
-                      <img
-                        src={img}
-                        data-preload
-                        className="media"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                  <div className="container-text">
-                    <div className="container-author-post-info">
-                      <div className="author">
-                        <span className="author-name">Lily Yeung</span>
-                      </div>
-                      <div className="date">
-                        <span>Sep 30</span>
-                      </div>
-                    </div>
-                    <h2 className="title-blog">
-                      A Taste Explosion: Event Design Extravaganza at Boa
-                      Restaurant
-                    </h2>
-                    <p className="text-blog">
-                      Beverly Hills, renowned for its luxury and panache,
-                      witnessed an unforgettable evening that melded culinary
-                      wonders with unmatched event Lorem ipsum dolor sit amet,
-                      consectetur adipiscing elit.
-                    </p>
-                    <ul className="list-tags-small">
-                      <li className="tag-small active">
-                        <span>Corporate</span>
-                      </li>
-                      <li className="tag-small">
-                        <span>Event Design and Production</span>
-                      </li>
-                      <li className="tag-small">
-                        <span>Creative Services Agency</span>
-                      </li>
-                      <li className="tag-small">
-                        <span>+ 3 studios</span>
-                      </li>
-                    </ul>
-                  </div>
-                </DelayedLink>
-              </li>
-              <li className="grid-item" data-aos="d:loop">
-                <DelayedLink
-                  to="/blog-post"
-                  className="link-blog link-blog-animation"
-                    attributes={{
-                      "data-aos": "d:loop",
-                    }}
-                  >
-                  <div
-                    className="container-img bg-blue"
-                    data-cursor-style="view"
-                  >
-                    <div className="wrapper-img">
-                      <img
-                        src={img}
-                        data-preload
-                        className="media"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                  <div className="container-text">
-                    <div className="container-author-post-info">
-                      <div className="author">
-                        <span className="author-name">Lily Yeung</span>
-                      </div>
-                      <div className="date">
-                        <span>Sep 30</span>
-                      </div>
-                    </div>
-                    <h2 className="title-blog">
-                      A Taste Explosion: Event Design Extravaganza at Boa
-                      Restaurant
-                    </h2>
-                    <p className="text-blog">
-                      Beverly Hills, renowned for its luxury and panache,
-                      witnessed an unforgettable evening that melded culinary
-                      wonders with unmatched event Lorem ipsum dolor sit amet,
-                      consectetur adipiscing elit.
-                    </p>
-                    <ul className="list-tags-small">
-                      <li className="tag-small active">
-                        <span>Corporate</span>
-                      </li>
-                      <li className="tag-small">
-                        <span>Event Design and Production</span>
-                      </li>
-                      <li className="tag-small">
-                        <span>Creative Services Agency</span>
-                      </li>
-                      <li className="tag-small">
-                        <span>+ 3 studios</span>
-                      </li>
-                    </ul>
-                  </div>
-                </DelayedLink>
-              </li>
-              <li className="grid-item" data-aos="d:loop">
-                <DelayedLink
-                  to="/blog-post"
-                  className="link-blog link-blog-animation"
-                    attributes={{
-                      "data-aos": "d:loop",
-                    }}
-                  >
-                  <div
-                    className="container-img bg-blue"
-                    data-cursor-style="view"
-                  >
-                    <div className="wrapper-img">
-                      <img
-                        src={img}
-                        data-preload
-                        className="media"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                  <div className="container-text">
-                    <div className="container-author-post-info">
-                      <div className="author">
-                        <span className="author-name">Lily Yeung</span>
-                      </div>
-                      <div className="date">
-                        <span>Sep 30</span>
-                      </div>
-                    </div>
-                    <h2 className="title-blog">
-                      A Taste Explosion: Event Design Extravaganza at Boa
-                      Restaurant
-                    </h2>
-                    <p className="text-blog">
-                      Beverly Hills, renowned for its luxury and panache,
-                      witnessed an unforgettable evening that melded culinary
-                      wonders with unmatched event Lorem ipsum dolor sit amet,
-                      consectetur adipiscing elit.
-                    </p>
-                    <ul className="list-tags-small">
-                      <li className="tag-small active">
-                        <span>Corporate</span>
-                      </li>
-                      <li className="tag-small">
-                        <span>Event Design and Production</span>
-                      </li>
-                      <li className="tag-small">
-                        <span>Creative Services Agency</span>
-                      </li>
-                      <li className="tag-small">
-                        <span>+ 3 studios</span>
-                      </li>
-                    </ul>
-                  </div>
-                </DelayedLink>
-              </li>
-              <li className="grid-item" data-aos="d:loop">
-                <DelayedLink
-                  to="/blog-post"
-                  className="link-blog link-blog-animation"
-                    attributes={{
-                      "data-aos": "d:loop",
-                    }}
-                  >
-                  <div
-                    className="container-img bg-blue"
-                    data-cursor-style="view"
-                  >
-                    <div className="wrapper-img">
-                      <img
-                        src={img}
-                        data-preload
-                        className="media"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                  <div className="container-text">
-                    <div className="container-author-post-info">
-                      <div className="author">
-                        <span className="author-name">Lily Yeung</span>
-                      </div>
-                      <div className="date">
-                        <span>Sep 30</span>
-                      </div>
-                    </div>
-                    <h2 className="title-blog">
-                      A Taste Explosion: Event Design Extravaganza at Boa
-                      Restaurant
-                    </h2>
-                    <p className="text-blog">
-                      Beverly Hills, renowned for its luxury and panache,
-                      witnessed an unforgettable evening that melded culinary
-                      wonders with unmatched event Lorem ipsum dolor sit amet,
-                      consectetur adipiscing elit.
-                    </p>
-                    <ul className="list-tags-small">
-                      <li className="tag-small active">
-                        <span>Corporate</span>
-                      </li>
-                      <li className="tag-small">
-                        <span>Event Design and Production</span>
-                      </li>
-                      <li className="tag-small">
-                        <span>Creative Services Agency</span>
-                      </li>
-                      <li className="tag-small">
-                        <span>+ 3 studios</span>
-                      </li>
-                    </ul>
-                  </div>
-                </DelayedLink>
-              </li>
-              <li className="grid-item" data-aos="d:loop">
-                <DelayedLink
-                  to="/blog-post"
-                  className="link-blog link-blog-animation"
-                    attributes={{
-                      "data-aos": "d:loop",
-                    }}
-                  >
-                  <div
-                    className="container-img bg-blue"
-                    data-cursor-style="view"
-                  >
-                    <div className="wrapper-img">
-                      <img
-                        src={img}
-                        data-preload
-                        className="media"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                  <div className="container-text">
-                    <div className="container-author-post-info">
-                      <div className="author">
-                        <span className="author-name">Lily Yeung</span>
-                      </div>
-                      <div className="date">
-                        <span>Sep 30</span>
-                      </div>
-                    </div>
-                    <h2 className="title-blog">
-                      A Taste Explosion: Event Design Extravaganza at Boa
-                      Restaurant
-                    </h2>
-                    <p className="text-blog">
-                      Beverly Hills, renowned for its luxury and panache,
-                      witnessed an unforgettable evening that melded culinary
-                      wonders with unmatched event Lorem ipsum dolor sit amet,
-                      consectetur adipiscing elit.
-                    </p>
-                    <ul className="list-tags-small">
-                      <li className="tag-small active">
-                        <span>Corporate</span>
-                      </li>
-                      <li className="tag-small">
-                        <span>Event Design and Production</span>
-                      </li>
-                      <li className="tag-small">
-                        <span>Creative Services Agency</span>
-                      </li>
-                      <li className="tag-small">
-                        <span>+ 3 studios</span>
-                      </li>
-                    </ul>
-                  </div>
-                </DelayedLink>
-              </li>
-              <li className="grid-item" data-aos="d:loop">
-                <DelayedLink
-                  to="/blog-post"
-                  className="link-blog link-blog-animation"
-                    attributes={{
-                      "data-aos": "d:loop",
-                    }}
-                  >
-                  <div
-                    className="container-img bg-blue"
-                    data-cursor-style="view"
-                  >
-                    <div className="wrapper-img">
-                      <img
-                        src={img}
-                        data-preload
-                        className="media"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                  <div className="container-text">
-                    <div className="container-author-post-info">
-                      <div className="author">
-                        <span className="author-name">Lily Yeung</span>
-                      </div>
-                      <div className="date">
-                        <span>Sep 30</span>
-                      </div>
-                    </div>
-                    <h2 className="title-blog">
-                      A Taste Explosion: Event Design Extravaganza at Boa
-                      Restaurant
-                    </h2>
-                    <p className="text-blog">
-                      Beverly Hills, renowned for its luxury and panache,
-                      witnessed an unforgettable evening that melded culinary
-                      wonders with unmatched event Lorem ipsum dolor sit amet,
-                      consectetur adipiscing elit.
-                    </p>
-                    <ul className="list-tags-small">
-                      <li className="tag-small active">
-                        <span>Corporate</span>
-                      </li>
-                      <li className="tag-small">
-                        <span>Event Design and Production</span>
-                      </li>
-                      <li className="tag-small">
-                        <span>Creative Services Agency</span>
-                      </li>
-                      <li className="tag-small">
-                        <span>+ 3 studios</span>
-                      </li>
-                    </ul>
-                  </div>
-                </DelayedLink>
-              </li>
-            </ul>
-          </div>
-          <div className="col-lg-2 offset-lg-5 flex-center mt-lg-70 mt-tablet-60 mt-phone-85">
-            <DelayedLink to="/blog-post" className="btn-border-blue" 
-            attributes={{
-              "data-cursor-style": "off",
-            }}
-            >
-              <span>See all</span>
-            </DelayedLink>
+                    </DelayedLink>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="col-lg-2 offset-lg-5 flex-center mt-lg-70 mt-tablet-60 mt-phone-85">
+              <DelayedLink
+                to="/blog-post"
+                className="btn-border-blue"
+                attributes={{
+                  "data-cursor-style": "off",
+                }}
+              >
+                <span>See all</span>
+              </DelayedLink>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-    <SocialSection/>
+      </section>
+      <SocialSection />
     </>
-    
   );
 };
 

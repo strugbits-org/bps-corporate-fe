@@ -3,8 +3,8 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import contactusSchema from "../common/schema/contactusSchema";
 import { useDispatch, useSelector } from "react-redux";
-// import { submitFormSuccess, submitFormFailure} from "../redux/reducers/contactus";
 import { postFormData } from "../redux/reducers/contactus";
+import { Contact } from "./constats/contactusData";
 import DelayedLink from "../common/DelayedLink";
 
 const ContactForm = () => {
@@ -95,33 +95,34 @@ const ContactForm = () => {
             <div className="container-submit col-12">
               <button type="submit" className="bt-submit btn-medium">
                 <span className="submit-text">
-                  {loading ? "Submitting..." : "Send"}
+                  {/* {loading ? "Submitting..." : "Send"} */}
+                  Send
                 </span>
               </button>
             </div>
           </form>
           {/* Error message */}
           {error && <span className="error">{error}</span>}
-          <h3 data-aos="fadeIn" data-form-error>
+          {/* <h3 data-aos="fadeIn" data-form-error>
             Error, Try again!
           </h3>
           <h3 data-aos="fadeIn" data-form-success>
             Success!
-          </h3>
+          </h3> */}
         </div>
       </div>
       <div className="column-2">
         <div className="container-info">
           <div className="container-tel">
             <DelayedLink to="tel:" target="_blank" >
-              <span>SF (415) 922-9004</span>
+              <span>{Contact.phone1}</span>
             </DelayedLink>
             <DelayedLink href="tel:" target="_blank" >
-              <span>LV (702) 757-7987</span>
+              <span>{Contact.phone2}</span>
             </DelayedLink>
           </div>
           <DelayedLink to="mailto:info@blueprintstudios.com" target="_blank" >
-            <span>info@blueprintstudios.com</span>
+            <span>{Contact.email}</span>
           </DelayedLink>
         </div>
         <ul className="list-social-media">
@@ -158,50 +159,28 @@ const ContactForm = () => {
             </DelayedLink>
           </li>
         </ul>
+
         <ul className="list-address">
-          <li>
-            <h3 className="city">Napa Valley</h3>
-            <address>
-              955 Vintage Ave <br />
-              St. Helena, CA 94574
-            </address>
-            <div className="phones">
-              <DelayedLink to="tel:" target="_blank" >
-                <span>P / 707742.7777</span>
-              </DelayedLink>
-              <DelayedLink to="tel:" target="_blank" >
-                <span>F / 415.822.8844</span>
-              </DelayedLink>
-            </div>
-          </li>
-          <li>
-            <h3 className="city">Las Vegas</h3>
-            <address>
-              7900 W Sunset RD <br />
-              Suite 400 <br />
-              Las Vegas, NV 89113
-            </address>
-            <div className="phones">
-              <DelayedLink to="tel:" target="_blank" >
-                <span>P / 702.757.7987</span>
-              </DelayedLink>
-            </div>
-          </li>
-          <li>
-            <h3 className="city">San Francisco</h3>
-            <address>
-              352 Shaw RD <br />
-              S. San Francisco, CA 94080
-            </address>
-            <div className="phones">
-              <DelayedLink to="tel:" target="_blank" >
-                <span>P / 415.922.9004</span>
-              </DelayedLink>
-              <DelayedLink to="tel:" target="_blank" >
-                <span>F / 415.822.8844</span>
-              </DelayedLink>
-            </div>
-          </li>
+          {Contact.address.map((data, index) => {
+            return (
+              <li key={index}>
+                <h3 className="city">{data.city}</h3>
+                <address>
+                 {data.address1}<br />
+                  {data.address2} <br/>
+                  {data.address3}
+                </address>
+                <div className="phones">
+                  <Link to="tel:">
+                    <span>{data.contact.phone1}</span>
+                  </Link>
+                  <Link to="tel:">
+                    <span>{data.contact.phone2}</span>
+                  </Link>
+                </div>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </div>

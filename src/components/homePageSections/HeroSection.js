@@ -1,11 +1,11 @@
-import React from 'react'
-import img6 from "../../utilis/images/lib/06_desktop.jpg"
+import {HeroData} from "../../common/constats/constats";
+
 const HeroSection = () => {
   return (
     <section className="home-intro" data-aos="d:loop">
     <div className="container-img">
       <img
-        src={img6}
+        src={HeroData.image}
         data-preload
         className="media"
         alt=""
@@ -14,7 +14,7 @@ const HeroSection = () => {
       />
     </div>
     <p className="fs--14 font-2 blue-1">
-      © Blueprint studios. All rights reserved.
+     {HeroData.desc}
     </p>
   </section>
   
