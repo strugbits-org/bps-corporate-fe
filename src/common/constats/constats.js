@@ -66,7 +66,7 @@ export const studioCard = [
   {
     id: "04",
     name: "Custom Fabrication",
-    img: img7,
+    img: img9,
     desc: "We're not afraid to get technical. After all, themore technical we get the better the final result.This is why our pre-production design servicesinclude a thorough strategy and understanding of theattendee journey that leads to the best flow, laterrepresented in technical drawings.",
   },
   {
@@ -78,7 +78,7 @@ export const studioCard = [
   {
     id: "06",
     name: "Floral Design",
-    img: img9,
+    img: img7,
     desc: "We're not afraid to get technical. After all, themore technical we get the better the final result.This is why our pre-production design servicesinclude a thorough strategy and understanding of theattendee journey that leads to the best flow, laterrepresented in technical drawings.",
   },
 ];

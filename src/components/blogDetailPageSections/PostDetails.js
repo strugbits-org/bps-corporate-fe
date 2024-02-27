@@ -1,3 +1,4 @@
+import React from "react";
 import { useParams } from "react-router-dom";
 import ProductCartSlider from "../commonComponents/ProductCartSlider";
 import SocialVerticalBar from "./SocialVerticalBar";
