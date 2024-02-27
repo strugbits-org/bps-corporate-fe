@@ -7150,9 +7150,9 @@ var require_app2 = __commonJS({
       sliderTestimony();
       sliderBanner();
       if (screen.isMobile) {
-        scrollVideo(".home-from-concept-to-reality", ".container-frame-by-frame", "js/home-animation-min-mobile.mp4");
+        scrollVideo(".home-from-concept-to-reality", ".container-frame-by-frame", "https://res.cloudinary.com/dzk0coq3y/video/upload/v1709038146/home-animation-min_paf2nc.mp4");
       } else {
-        scrollVideo(".home-from-concept-to-reality", ".container-frame-by-frame", "js/home-animation-min.mp4");
+        scrollVideo(".home-from-concept-to-reality", ".container-frame-by-frame", "https://res.cloudinary.com/dzk0coq3y/video/upload/v1709038145/home-animation-min-mobile_nzjtzm.mp4");
       }
     }
     const pgHome = new Page({

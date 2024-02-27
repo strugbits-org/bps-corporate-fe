@@ -1,26 +1,10 @@
-import img6 from "../../utilis/images/lib/06_desktop.jpg";
-import destop1 from "../../utilis/images/lib/06_desktop.jpg";
-import destop2 from "../../utilis/images/lib/04_desktop.jpg";
-import destop3 from "../../utilis/images/lib/03_desktop.jpg";
-import destop0 from "../../utilis/images/lib/01_desktop.jpg";
-import destop9 from "../../utilis/images/lib/09_desktop.jpg";
-import destop7 from "../../utilis/images/lib/07_desktop.jpg";
-import destop8 from "../../utilis/images/lib/02_desktop.jpg";
-import destop55 from "../../utilis/images/lib/05_desktop.jpg";
-import img1 from "../../utilis/images/about/illumeet.png";
-import img2 from "../../utilis/images/about/family01.jpg";
-import img3 from "../../utilis/images/about/hensley.png";
-import img4 from "../../utilis/images/about/family02.jpg";
-import img5 from "../../utilis/images/about/vident.png";
-import img66 from "../../utilis/images/about/family03.jpg";
-import image from "../../utilis/images/about/magazine.jpg";
 
 export const IntroData = {
   upSecton: {
     title1: "We are",
     title2: "Blueprint Studios",
     videotitle: "Watch the video",
-    img: img6,
+    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040865/utiles/libs/06_desktop_iterkd.jpg",
     subtitle:
       "Events are crucial for enhancing brand awareness, offering exclusive chances to showcase ideas, products, and services intimately.",
     p1: "We specialize in optimizing these engagements by collaborating with you to craft an experience that elevates your brand, conveys messages effectively, and captivates attendees.",
@@ -49,42 +33,42 @@ export const ourCommitment = [
 
 export const DreamData = [
   {
-    img: destop1,
+    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040865/utiles/libs/06_desktop_iterkd.jpg",
     heading: "Mircea Manea",
     pragh: "Event Designer & Co-Founder",
   },
   {
-    img: destop2,
+    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040850/utiles/libs/04_desktop_rqwz5o.jpg",
     heading: "Mircea Manea",
     pragh: "Event Designer & Co-Founder",
   },
   {
-    img: destop0,
+    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040910/utiles/libs/01_desktop_nv6kjl.jpg",
     heading: "Mircea Manea",
     pragh: "Event Designer & Co-Founder",
   },
   {
-    img: destop3,
+    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040842/utiles/libs/03_desktop_wemcej.jpg",
     heading: "Mircea Manea",
     pragh: "Event Designer & Co-Founder",
   },
   {
-    img: destop9,
+    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040908/utiles/libs/09_desktop_pvob8a.jpg",
     heading: "Mircea Manea",
     pragh: "Event Designer & Co-Founder",
   },
   {
-    img: destop7,
+    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040874/utiles/libs/07_desktop_pg3hvz.jpg",
     heading: "Mircea Manea",
     pragh: "Event Designer & Co-Founder",
   },
   {
-    img: destop8,
+    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040834/utiles/libs/02_desktop_brfodn.jpg",
     heading: "Mircea Manea",
     pragh: "Event Designer & Co-Founder",
   },
   {
-    img: destop55,
+    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040879/utiles/libs/05_desktop_cobyhs.jpg",
     heading: "Mircea Manea",
     pragh: "Event Designer & Co-Founder",
   },
@@ -94,24 +78,24 @@ export const ourFamily = {
   title: "Meet the rest of the family",
   Cards: [
     {
-      img1: img1,
-      img2: img2,
+      img1: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040643/utiles/about/illumeet_kdnzzp.png",
+      img2: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040648/utiles/about/family01_hwpjya.jpg",
       p1: "Cloud based tech for digital events that are functional, immersive and user friendly. Illumeet is the first event ecosystem that approaches virtual experiences from space planning and attendee journey.",
       p2: "We understand the importance of the user experience from the event's perspective and create a custom road-map ideating wire-frames that are as compelling as they are functional, immersive, and engage key audiences.",
       p3: "Whether your event is a social gathering, a non-profit gala, a conference or trade show experience, learn how our platforms become the virtual venue to produce and host aflawless virtual or hybrid engagements.",
       btntext: "Learn More",
     },
     {
-      img1: img3,
-      img2: img4,
+      img1: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040642/utiles/about/hensley_jdjwac.png",
+      img2: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040650/utiles/about/family02_pcmwx4.jpg",
       p1: "Cloud based tech for digital events that are functional, immersive and user friendly. Illumeet is the first event ecosystem that approaches virtual experiences from space planning and attendee journey.",
       p2: "We understand the importance of the user experience from the event's perspective and create a custom road-map ideating wire-frames that are as compelling as they are functional, immersive, and engage key audiences.",
       p3: "Whether your event is a social gathering, a non-profit gala, a conference or trade show experience, learn how our platforms become the virtual venue to produce and host aflawless virtual or hybrid engagements.",
       btntext: "Learn More",
     },
     {
-      img1: img5,
-      img2: img66,
+      img1: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040647/utiles/about/vident_wg4rcb.png",
+      img2: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040652/utiles/about/family03_zetvev.jpg",
       p1: "Cloud based tech for digital events that are functional, immersive and user friendly. Illumeet is the first event ecosystem that approaches virtual experiences from space planning and attendee journey.",
       p2: "We understand the importance of the user experience from the event's perspective and create a custom road-map ideating wire-frames that are as compelling as they are functional, immersive, and engage key audiences.",
       p3: "Whether your event is a social gathering, a non-profit gala, a conference or trade show experience, learn how our platforms become the virtual venue to produce and host aflawless virtual or hybrid engagements.",
@@ -123,6 +107,6 @@ export const ourFamily = {
 export const bottomSection = {
   title1: "Check out our latest",
   title2: "Trends magazine",
-  img : image,
+  img : "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040645/utiles/about/magazine_xawpqd.jpg",
 
 }
