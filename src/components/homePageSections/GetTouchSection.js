@@ -1,7 +1,6 @@
 import React from "react";
 import DelayedLink from "../../common/DelayedLink";
 import {datagettouch} from "../../common/constats/constats";
-import DelayedLink from "../../common/DelayedLink";
 const GetTouchSection = () => {
   return (
     <section className="home-solution pt-220 pb-110">
@@ -23,13 +22,8 @@ const GetTouchSection = () => {
           </div>
           <div className="col-lg-4 offset-lg-4 flex-center mt-lg-60 mt-mobile-50">
             <DelayedLink
-            <DelayedLink
               to={"/portfolio"}
               className="btn-blue btn-medium"
-              attributes={{
-                "data-aos":"fadeIn - .3s, d:loop",
-                "data-cursor-style":"off"
-                }}
               attributes={{
                 "data-aos":"fadeIn - .3s, d:loop",
                 "data-cursor-style":"off"
@@ -37,7 +31,6 @@ const GetTouchSection = () => {
             >
               <span>{datagettouch.btntext} </span>
               <i className="icon-arrow-right-2"></i>
-            </DelayedLink>
             </DelayedLink>
           </div>
         </div>
