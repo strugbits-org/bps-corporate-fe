@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import contactusSchema from "../common/schema/contactusSchema";
 import { useDispatch, useSelector } from "react-redux";
-// import { submitFormSuccess, submitFormFailure} from "../redux/reducers/contactus";
 import { postFormData } from "../redux/reducers/contactus";
 import { Contact } from "./constats/contactusData";
 import DelayedLink from "../common/DelayedLink";
