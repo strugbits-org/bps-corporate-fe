@@ -1,15 +1,4 @@
-import img from "../../utilis/images/lib/08_desktop.jpg";
-import img1 from "../../utilis/images/chairs/bristol-chair.png";
-import img2 from "../../utilis/images/chairs/bristol-chair-color-1.png";
-import img3 from "../../utilis/images/chairs/bristol-chair-color-2.png";
-import img33 from "../../utilis/images/chairs/bristol-chair-color-3.png";
-import img4 from "../../utilis/images/chairs/bristol-chair-color-4.png";
-import img5 from "../../utilis/images/chairs/manette-pillow.png";
-import imgm from "../../utilis/images/chairs/marais-chair.png";
-import imgm1 from "../../utilis/images/chairs/marais-chair-color-1.png";
-import imgm2 from "../../utilis/images/chairs/marais-chair-color-2.png";
-import imgm3 from "../../utilis/images/chairs/marais-chair-color-3.png";
-import imgm4 from "../../utilis/images/chairs/marais-chair-color-4.png";
+
 
 export const head = {
   title: "Read our blog posts",
@@ -19,7 +8,7 @@ export const head = {
 export const postes = [
   {
     id:"1",
-    img: img,
+    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040915/utiles/libs/08_desktop_s0swwk.jpg",
     userName: "Lily Yeung",
     date: "Sep 30",
     category: "Event Design and Production",
@@ -43,7 +32,7 @@ export const postes = [
   },
   {
     id:"2",
-    img: img,
+    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040915/utiles/libs/08_desktop_s0swwk.jpg",
     userName: "Lily Yeung",
     date: "Sep 30",
     category: "Creative Services Agency",
@@ -67,7 +56,7 @@ export const postes = [
   },
   {
     id:"3",
-    img: img,
+    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040915/utiles/libs/08_desktop_s0swwk.jpg",
     userName: "Lily Yeung",
     date: "Sep 30",
     category: "Floral Design",
@@ -91,7 +80,7 @@ export const postes = [
   },
   {
     id:"4",
-    img: img,
+    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040915/utiles/libs/08_desktop_s0swwk.jpg",
     userName: "Lily Yeung",
     date: "Sep 30",
     category: "Printing Services",
@@ -115,7 +104,7 @@ export const postes = [
   },
   {
     id:"5",
-    img: img,
+    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040915/utiles/libs/08_desktop_s0swwk.jpg",
     userName: "Lily Yeung",
     date: "Sep 30",
     category: "Floral Design",
@@ -139,7 +128,7 @@ export const postes = [
   },
   {
     id:"6",
-    img: img,
+    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040915/utiles/libs/08_desktop_s0swwk.jpg",
     userName: "Lily Yeung",
     date: "Sep 30",
     category: "Printing Services",
@@ -163,7 +152,7 @@ export const postes = [
   },
   {
     id:"7",
-    img: img,
+    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040915/utiles/libs/08_desktop_s0swwk.jpg",
     userName: "Lily Yeung",
     date: "Sep 30",
     category: "Custom Fabrication",
@@ -187,7 +176,7 @@ export const postes = [
   },
   {
     id:"8",
-    img: img,
+    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040915/utiles/libs/08_desktop_s0swwk.jpg",
     userName: "Lily Yeung",
     date: "Sep 30",
     category: "Wedding",
@@ -211,7 +200,7 @@ export const postes = [
   },
   {
     id:"9",
-    img: img,
+    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040915/utiles/libs/08_desktop_s0swwk.jpg",
     userName: "Lily Yeung",
     date: "Sep 30",
     category: "Printing Services",
@@ -235,7 +224,7 @@ export const postes = [
   },
   {
     id:"10",
-    img: img,
+    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040915/utiles/libs/08_desktop_s0swwk.jpg",
     userName: "Lily Yeung",
     date: "Sep 30",
     category: "Printing Services",
@@ -259,7 +248,7 @@ export const postes = [
   },
   {
     id:"11",
-    img: img,
+    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040915/utiles/libs/08_desktop_s0swwk.jpg",
     userName: "Lily Yeung",
     date: "Sep 30",
     category: "Custom Fabrication",
@@ -283,7 +272,7 @@ export const postes = [
   },
   {
     id:"12",
-    img: img,
+    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040915/utiles/libs/08_desktop_s0swwk.jpg",
     userName: "Lily Yeung",
     date: "Sep 30",
     category: "Floral Design",
@@ -310,79 +299,79 @@ export const postes = [
 export const productSlider = [
   {
     name: "Bristol Chair",
-    img1: img1,
+    img1: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040727/utiles/chairs/bristol-chair_mxxqtk.png",
     btntext: "View more",
     list: {
-      img2: img2,
-      img3: img3,
-      img4: img33,
-      img5: img4,
+      img2: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040729/utiles/chairs/bristol-chair-color-1_rx40rw.png",
+      img3: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040731/utiles/chairs/bristol-chair-color-2_dyucnr.png",
+      img4: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040733/utiles/chairs/bristol-chair-color-3_grxcwi.png",
+      img5: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040707/utiles/chairs/bristol-chair-color-4_ybuhhl.png",
     },
   },
   {
     name: "Manette Pillow",
-    img1: img5,
+    img1: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040709/utiles/chairs/manette-pillow_pafvgq.png",
     btntext: "View more",
     list: {
-      img2: img2,
-      img3: img3,
-      img4: img33,
-      img5: img4,
+      img2: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040729/utiles/chairs/bristol-chair-color-1_rx40rw.png",
+      img3: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040731/utiles/chairs/bristol-chair-color-2_dyucnr.png",
+      img4: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040733/utiles/chairs/bristol-chair-color-3_grxcwi.png",
+      img5: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040707/utiles/chairs/bristol-chair-color-4_ybuhhl.png",
     },
   },
   {
     name: "Marais Chair",
-    img1: imgm,
+    img1: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040718/utiles/chairs/marais-chair_tsr80e.png",
     btntext: "View more",
     list: {
-      img2: img2,
-      img3: img3,
-      img4: img33,
-      img5: img4,
+      img2: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040729/utiles/chairs/bristol-chair-color-1_rx40rw.png",
+      img3: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040731/utiles/chairs/bristol-chair-color-2_dyucnr.png",
+      img4: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040733/utiles/chairs/bristol-chair-color-3_grxcwi.png",
+      img5: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040707/utiles/chairs/bristol-chair-color-4_ybuhhl.png",
     },
   },
   {
     name: "Bristol Chair",
-    img1: imgm1,
+    img1: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040719/utiles/chairs/marais-chair-color-1_gc6cww.png",
     btntext: "View more",
     list: {
-      img2: img2,
-      img3: img3,
-      img4: img33,
-      img5: img4,
+      img2: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040729/utiles/chairs/bristol-chair-color-1_rx40rw.png",
+      img3: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040731/utiles/chairs/bristol-chair-color-2_dyucnr.png",
+      img4: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040733/utiles/chairs/bristol-chair-color-3_grxcwi.png",
+      img5: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040707/utiles/chairs/bristol-chair-color-4_ybuhhl.png",
     },
   },
   {
     name: "Manette Pillow",
-    img1: imgm2,
+    img1: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040721/utiles/chairs/marais-chair-color-2_e5yk1e.png",
     btntext: "View more",
     list: {
-      img2: img2,
-      img3: img3,
-      img4: img33,
-      img5: img4,
+      img2: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040729/utiles/chairs/bristol-chair-color-1_rx40rw.png",
+      img3: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040731/utiles/chairs/bristol-chair-color-2_dyucnr.png",
+      img4: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040733/utiles/chairs/bristol-chair-color-3_grxcwi.png",
+      img5: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040707/utiles/chairs/bristol-chair-color-4_ybuhhl.png",
     },
   },
   {
     name: "Manette Pillow",
-    img1: imgm3,
+    img1: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040723/utiles/chairs/marais-chair-color-3_eepad0.png",
     btntext: "View more",
     list: {
-      img2: img2,
-      img3: img3,
-      img4: img33,
-      img5: img4,
+      img2: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040729/utiles/chairs/bristol-chair-color-1_rx40rw.png",
+      img3: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040731/utiles/chairs/bristol-chair-color-2_dyucnr.png",
+      img4: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040733/utiles/chairs/bristol-chair-color-3_grxcwi.png",
+      img5: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040707/utiles/chairs/bristol-chair-color-4_ybuhhl.png",
     },
   },
   {
     name: "Marais Chair",
-    img1: imgm4,
+    img1: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040725/utiles/chairs/marais-chair-color-4_v2dfbp.png",
     btntext: "View more",
     list: {
-      img2: img2,
-      img3: img3,
-      img4: img33,
-      img5: img4,
+      img2: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040729/utiles/chairs/bristol-chair-color-1_rx40rw.png",
+      img3: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040731/utiles/chairs/bristol-chair-color-2_dyucnr.png",
+      img4: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040733/utiles/chairs/bristol-chair-color-3_grxcwi.png",
+      img5: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040707/utiles/chairs/bristol-chair-color-4_ybuhhl.png",
     },
   },
 ];

@@ -1,13 +1,4 @@
-import React, { useState } from "react";
-import img1 from "../../../utilis/images/chairs/bristol-chair.png";
-import imgC1 from "../../../utilis/images/chairs/bristol-chair-color-1.png";
-import imgC2 from "../../../utilis/images/chairs/bristol-chair-color-2.png";
-import imgC3 from "../../../utilis/images/chairs/bristol-chair-color-3.png";
-import imgC4 from "../../../utilis/images/chairs/bristol-chair-color-4.png";
-import imgd6 from "../../../utilis/images/lib/06_desktop.jpg";
-import imgd8 from "../../../utilis/images/lib/08_desktop.jpg";
-import imgd1 from "../../../utilis/images/lib/01_desktop.jpg";
-import imgd2 from "../../../utilis/images/lib/02_desktop.jpg";
+import React, { useMemo, useState } from "react";
 import { OurCardData } from "../../../common/constats/portfolioData";
 import { postes } from "../../../common/constats/blogData";
 import { modelData } from "../../../common/constats/marketData";
@@ -23,17 +14,26 @@ const Search = () => {
     setSearchTerm(e.target.value.trim().toLowerCase());
   };
 
+  const filteredPortfolioData = useMemo(() => {
+    return OurCardData.filter(
+      (item) =>
+        item.categories && item.categories.toLowerCase().includes(searchTerm)
+    );
+  }, [searchTerm]);
+
+  const filteredBlogData = useMemo(() => {
+    return postes.filter(
+      (item) =>
+        item.category && item.category.toLowerCase().includes(searchTerm)
+    );
+  }, [searchTerm]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    const portfolioResult = OurCardData.filter(item =>
-      item.categories && item.categories.toLowerCase() === searchTerm
-    );
-    const blogResult = postes.filter(item =>
-      item.category && item.category.toLowerCase() === searchTerm
-    );
-    setPortfolioData(portfolioResult);
-    setBlogData(blogResult);
+    setPortfolioData(filteredPortfolioData);
+    setBlogData(filteredBlogData);
   };
+
 console.log(portfolioData);
 console.log(blogData);
 
@@ -138,7 +138,7 @@ console.log(blogData);
                                 <div className="wrapper-img">
                                   <div className="container-img">
                                     <img
-                                      src={img1}
+                                      src="https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040727/utiles/chairs/bristol-chair_mxxqtk.png"
                                       data-preload
                                       className="media"
                                       alt=""
@@ -156,7 +156,7 @@ console.log(blogData);
                                     <li>
                                       <div className="container-img">
                                         <img
-                                          src={imgC1}
+                                          src="https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040729/utiles/chairs/bristol-chair-color-1_rx40rw.png"
                                           data-preload
                                           className="media"
                                           alt=""
@@ -166,7 +166,7 @@ console.log(blogData);
                                     <li>
                                       <div className="container-img">
                                         <img
-                                          src={imgC2}
+                                          src="https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040731/utiles/chairs/bristol-chair-color-2_dyucnr.png"
                                           data-preload
                                           className="media"
                                           alt=""
@@ -176,7 +176,7 @@ console.log(blogData);
                                     <li>
                                       <div className="container-img">
                                         <img
-                                          src={imgC3}
+                                          src="https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040733/utiles/chairs/bristol-chair-color-3_grxcwi.png"
                                           data-preload
                                           className="media"
                                           alt=""
@@ -186,7 +186,7 @@ console.log(blogData);
                                     <li>
                                       <div className="container-img">
                                         <img
-                                          src={imgC4}
+                                          src="https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040707/utiles/chairs/bristol-chair-color-4_ybuhhl.png"
                                           data-preload
                                           className="media"
                                           alt=""
@@ -209,7 +209,7 @@ console.log(blogData);
                                 <div className="wrapper-img">
                                   <div className="container-img">
                                     <img
-                                      src={img1}
+                                      src="https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040727/utiles/chairs/bristol-chair_mxxqtk.png"
                                       data-preload
                                       className="media"
                                       alt=""
@@ -227,7 +227,7 @@ console.log(blogData);
                                     <li>
                                       <div className="container-img">
                                         <img
-                                          src={imgC1}
+                                          src="https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040729/utiles/chairs/bristol-chair-color-1_rx40rw.png"
                                           data-preload
                                           className="media"
                                           alt=""
@@ -237,7 +237,7 @@ console.log(blogData);
                                     <li>
                                       <div className="container-img">
                                         <img
-                                          src={imgC2}
+                                          src="https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040731/utiles/chairs/bristol-chair-color-2_dyucnr.png"
                                           data-preload
                                           className="media"
                                           alt=""
@@ -247,7 +247,7 @@ console.log(blogData);
                                     <li>
                                       <div className="container-img">
                                         <img
-                                          src={imgC3}
+                                          src="https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040733/utiles/chairs/bristol-chair-color-3_grxcwi.png"
                                           data-preload
                                           className="media"
                                           alt=""
@@ -257,7 +257,7 @@ console.log(blogData);
                                     <li>
                                       <div className="container-img">
                                         <img
-                                          src={imgC4}
+                                          src="https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040707/utiles/chairs/bristol-chair-color-4_ybuhhl.png"
                                           data-preload
                                           className="media"
                                           alt=""
@@ -280,7 +280,7 @@ console.log(blogData);
                                 <div className="wrapper-img">
                                   <div className="container-img">
                                     <img
-                                      src={img1}
+                                      src="https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040727/utiles/chairs/bristol-chair_mxxqtk.png"
                                       data-preload
                                       className="media"
                                       alt=""
@@ -298,7 +298,7 @@ console.log(blogData);
                                     <li>
                                       <div className="container-img">
                                         <img
-                                          src={imgC1}
+                                          src="https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040729/utiles/chairs/bristol-chair-color-1_rx40rw.png"
                                           data-preload
                                           className="media"
                                           alt=""
@@ -308,7 +308,7 @@ console.log(blogData);
                                     <li>
                                       <div className="container-img">
                                         <img
-                                          src={imgC2}
+                                          src="https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040731/utiles/chairs/bristol-chair-color-2_dyucnr.png"
                                           data-preload
                                           className="media"
                                           alt=""
@@ -318,7 +318,7 @@ console.log(blogData);
                                     <li>
                                       <div className="container-img">
                                         <img
-                                          src={imgC3}
+                                          src="https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040733/utiles/chairs/bristol-chair-color-3_grxcwi.png"
                                           data-preload
                                           className="media"
                                           alt=""
@@ -328,7 +328,7 @@ console.log(blogData);
                                     <li>
                                       <div className="container-img">
                                         <img
-                                          src={imgC4}
+                                          src="https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040707/utiles/chairs/bristol-chair-color-4_ybuhhl.png"
                                           data-preload
                                           className="media"
                                           alt=""
@@ -376,7 +376,7 @@ console.log(blogData);
                               >
                                 <div className="wrapper-img">
                                   <img
-                                    src={imgd6}
+                                    src="https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040865/utiles/libs/06_desktop_iterkd.jpg"
                                     data-preload
                                     className="media"
                                     alt=""
@@ -394,7 +394,7 @@ console.log(blogData);
                             <DelayedLink to="/" className="link-portfolio">
                               <div className="container-img">
                                 <img
-                                  src={imgd8}
+                                  src="https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040915/utiles/libs/08_desktop_s0swwk.jpg"
                                   data-preload
                                   className="media"
                                   alt=""
@@ -409,7 +409,7 @@ console.log(blogData);
                             <DelayedLink to="/" className="link-portfolio">
                               <div className="container-img">
                                 <img
-                                  src={imgd8}
+                                  src="https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040915/utiles/libs/08_desktop_s0swwk.jpg"
                                   data-preload
                                   className="media"
                                   alt=""
@@ -424,7 +424,7 @@ console.log(blogData);
                             <DelayedLink to="/" className="link-portfolio">
                               <div className="container-img">
                                 <img
-                                  src={imgd1}
+                                  src="https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040910/utiles/libs/01_desktop_nv6kjl.jpg"
                                   data-preload
                                   className="media"
                                   alt=""
@@ -439,7 +439,7 @@ console.log(blogData);
                             <DelayedLink to="/" className="link-portfolio">
                               <div className="container-img">
                                 <img
-                                  src={imgd2}
+                                  src="https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040834/utiles/libs/02_desktop_brfodn.jpg"
                                   data-preload
                                   className="media"
                                   alt=""
@@ -526,7 +526,7 @@ console.log(blogData);
                             >
                               <div className="wrapper-img">
                                 <img
-                                  src={imgd8}
+                                  src="https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040915/utiles/libs/08_desktop_s0swwk.jpg"
                                   data-preload
                                   className="media"
                                   alt=""
@@ -566,7 +566,7 @@ console.log(blogData);
                             >
                               <div className="wrapper-img">
                                 <img
-                                  src={imgd8}
+                                  src="https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040915/utiles/libs/08_desktop_s0swwk.jpg"
                                   data-preload
                                   className="media"
                                   alt=""
@@ -606,7 +606,7 @@ console.log(blogData);
                             >
                               <div className="wrapper-img">
                                 <img
-                                  src={imgd8}
+                                  src="https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040915/utiles/libs/08_desktop_s0swwk.jpg"
                                   data-preload
                                   className="media"
                                   alt=""
@@ -646,7 +646,7 @@ console.log(blogData);
                             >
                               <div className="wrapper-img">
                                 <img
-                                  src={imgd8}
+                                  src="https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040915/utiles/libs/08_desktop_s0swwk.jpg"
                                   data-preload
                                   className="media"
                                   alt=""
@@ -686,7 +686,7 @@ console.log(blogData);
                             >
                               <div className="wrapper-img">
                                 <img
-                                  src={imgd8}
+                                  src="https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040915/utiles/libs/08_desktop_s0swwk.jpg"
                                   data-preload
                                   className="media"
                                   alt=""
