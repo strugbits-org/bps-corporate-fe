@@ -2,6 +2,16 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const SocialVerticalBar = () => {
+
+  // function copyLink() {
+  //   var copyTextareaBtn = document.querySelector(".copy-link");
+  //   copyTextareaBtn.addEventListener("click", function(event) {
+  //     this.querySelector("span").innerText = "Copied!";
+  //     this.classList.add("copied");
+  //     document.querySelector(".copy-link-url").select();
+  //     document.execCommand("copy");
+  //   });
+  // }
   return (
     <div
     className="col-lg-1 column-2 no-mobile"

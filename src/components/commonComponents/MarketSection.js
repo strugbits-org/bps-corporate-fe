@@ -19,7 +19,7 @@ const MarketSection = () => {
             <ul className="list-markets list-projects font-60 grid-lg-25 grid-tablet-50">
               {marketCards.map((data, index) => {
                 data_delay += 50;
-
+                
                 return (
                   <li
                     key={index}
@@ -55,7 +55,6 @@ const MarketSection = () => {
                             <li key={index}>
                               <span>{tag}</span>
                             </li>
-                            
                           ))}
                         </ul>
                       </div>

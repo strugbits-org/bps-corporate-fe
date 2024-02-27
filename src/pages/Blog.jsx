@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import SocialSection from "../components/commonComponents/SocialSection";
-import DelayedLink from "../common/DelayedLink";
 import { head, postes } from "../common/constats/blogData";
+import DelayedLink from "../common/DelayedLink";
+import { Link } from "react-router-dom";
 
 const Blog = () => {
   const [selectedFilters, setSelectedFilters] = useState([]);
@@ -31,16 +32,12 @@ const Blog = () => {
       }
     };
     filterItems();
-    console.log(selectedFilters, "rerender here");
-  }, [selectedFilters]); // Ensure useEffect runs when selectedFilters changes
+  }, [selectedFilters,]);
 
-  // Add console.log to check rendering
-  console.log("Rendering Blog component");
-
-  // Add console.log to check if filteredItems changes
   useEffect(() => {
-    console.log("filteredItems changed:", filteredItems);
+    document.querySelector(".updateWatchedTrigger").click();
   }, [filteredItems]);
+
 
   return (
     <>
@@ -65,21 +62,36 @@ const Blog = () => {
                   <span>{head.name}</span>
                   <i className="icon-arrow-down"></i>
                 </button>
+
                 <div className="list-dropdown" data-set-tag="blog">
                   <div className="container-wrapper-list">
                     <div className="wrapper-list">
                       <ul className="list-blog-tags list-dropdown-tags">
-                        {menuitems.map((category, idx) => (
-                          <li
-                            onClick={() => handleFilterButtonClick(category)}
+                        <li>
+                          <Link
                             className={`blog-btn-tag ${
-                              selectedFilters?.includes(category)
-                                ? "active"
-                                : ""
+                              selectedFilters.length === 0 ? "active" : ""
                             }`}
-                            key={`filters-${idx}`}
                           >
-                            {category}
+                            <span onClick={() => setFilteredItems(postes)}>
+                              All Studios
+                            </span>
+                          </Link>
+                        </li>
+
+                        {menuitems.map((category, idx) => (
+                          <li key={idx}>
+                            <Link
+                              onClick={() => handleFilterButtonClick(category)}
+                              className={`blog-btn-tag ${
+                                selectedFilters?.includes(category)
+                                  ? "active"
+                                  : ""
+                              }`}
+                              key={`filters-${idx}`}
+                            >
+                              <span>{category}</span>
+                            </Link>
                           </li>
                         ))}
                       </ul>
@@ -92,14 +104,14 @@ const Blog = () => {
           <div className="row row-2 mt-lg-60 mt-tablet-40 mt-phone-35">
             <div className="col-lg-12 column-1">
               <ul className="list-blog grid-lg-25 grid-tablet-50">
-                {filteredItems.map((data, index) => (
+                {filteredItems.map((data) => (
                   <li
-                    key={`postes-${index}`}
+                    key={`postes-${data.id}`}
                     className="grid-item"
                     data-aos="d:loop"
                   >
                     <DelayedLink
-                      to="/blog-post"
+                      to={`/blog-post/${data.id}`}
                       className="link-blog link-blog-animation"
                       attributes={{
                         "data-aos": "d:loop",

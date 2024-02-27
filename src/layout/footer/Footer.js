@@ -1,6 +1,7 @@
 import DelayedLink from "../../common/DelayedLink";
 import { footerData, address } from "../../common/constats/constats";
 import Newsletter from "../../common/Newsletter";
+
 const Footer = () => {
   return (
     <footer id="footer" data-cursor-style="off">
@@ -53,6 +54,7 @@ const Footer = () => {
           </div>
           <div className="col-lg-5 column-2 pt-lg-65 pt-mobile-50">
             <div className="wrapper-newsletter-menu">
+              
               <Newsletter />
 
               <div className="container-footer-menu mt-lg-165 mt-tablet-55 mt-phone-125">

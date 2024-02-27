@@ -10,21 +10,19 @@ const OurFamily = () => {
               className="fs--80 blue-1 text-center split-words"
               data-aos="d:loop"
             >
-              {ourFamily.title}
+              Meet the rest of the family
             </h2>
           </div>
           <div className="col-lg-12 mt-lg-80 mt-mobile-40">
             <ul className="list-family">
-              {ourFamily.Cards.map((data, index) => {
-                return (
-                  <li key={index} className="list-item item-01">
-                    <div className="content">
-                      <div className="container-img logo-img">
-                        <img
-                          src={data.img1}
-                          data-preload
-                          className="media"
-                          data-aos="scaleOut
+              <li className="list-item item-01">
+                <div className="content">
+                  <div className="container-img logo-img">
+                    <img
+                      src={img1}
+                      data-preload
+                      className="media"
+                      data-aos="scaleOut
                                 .8s ease-out-cubic .2s, d:loop"
                           alt=""
                         />

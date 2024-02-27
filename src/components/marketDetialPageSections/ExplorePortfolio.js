@@ -66,4 +66,4 @@ const ExplorePortfolio = () => {
   );
 };
 
-export default ExplorePortfolio;
+export default ExplorePortfolio

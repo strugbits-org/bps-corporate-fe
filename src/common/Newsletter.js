@@ -1,22 +1,37 @@
+import React, { useState } from "react";
 import * as Yup from "yup";
-import { newsletter } from "./constats/constats";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-hook-form";
-
+import { newsletter } from "../common/constats/constats";
 const Newsletter = () => {
+  const [formData, setFormData] = useState({
+    email: "",
+  });
+
+  const [errors, setErrors] = useState({});
+
   const validationSchema = Yup.object().shape({
     email: Yup.string().email("Invalid email address").required("Required"),
   });
 
-  const { register, handleSubmit, formState: { errors } } = useForm({
-    resolver: yupResolver(validationSchema)
-  });
-
-  const onSubmit = (data) => {
-    console.log("Form submitted with values:", data);
-    // Handle form submission here
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
   };
-  
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await validationSchema.validate(formData, { abortEarly: false });
+      // If validation passes, handle form submission here
+    } catch (error) {
+      const newErrors = {};
+      error.inner.forEach((err) => {
+        newErrors[err.path] = err.message;
+      });
+      setErrors(newErrors);
+    }
+  };
   return (
     <div className="container-newsletter" data-form-container>
       <div className="container-text">
@@ -27,18 +42,21 @@ const Newsletter = () => {
       </div>
 
       <div className="container-newsletter mt-mobile-25">
-        <form className="form-newsletter" onSubmit={handleSubmit(onSubmit)}>
+        <form className="form-newsletter" onSubmit={handleSubmit}>
           <input type="hidden" name="assunto" value="[newsletter]" />
           <div className="container-input">
-            <label htmlFor="newsletter-email">Enter your email</label>
+            {formData === "" && <label htmlFor="newsletter-email">Enter your email</label>}
+            
             <input
               id="newsletter-email"
-              {...register("email")}
+              name="email"
               type="email"
+              onChange={handleChange}
+              value={formData.email}
               required
             />
             {errors.email && (
-              <div className="error-message">{errors.email.message}</div>
+              <div className="error-message">{errors.email}</div>
             )}
           </div>
           <div className="container-submit">

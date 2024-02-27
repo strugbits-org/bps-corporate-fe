@@ -14,6 +14,7 @@ import PortfolioPost from "./pages/dynamicPages/PortfolioPost";
 import MarketPost from "./pages/dynamicPages/MarketPost";
 import BlogPost from "./pages/dynamicPages/BlogPost";
 import ServicePostPage from "./pages/dynamicPages/ServicePostPage";
+import Blogs from "./common/Blogs";
 // import MemberPage from './pages/MemberPage';
 // import PrivateRoute from './utilis/PrivateRoute';
 
@@ -38,18 +39,18 @@ const router = createBrowserRouter([
       {
         path: "blog",
         element: <Blog />,
-      },      
+      },
+      {
+        path: "blogs",
+        element: <Blogs />,
+      },       
       {
        
         path: "portfolio", 
         element: <Portfolio />,
       },
       {
-        path: "services-post/:id",
-        element: <ServicePostPage />,
-      },
-      {
-        path: "services-post/:id",
+        path: "services-post",
         element: <ServicePostPage />,
       },
       {
@@ -70,7 +71,6 @@ const router = createBrowserRouter([
         path: "blog-post/:id", 
         element: <BlogPost/>,
       },
-      
       //////////// private route start ///////////////////////
       // {
       //   element: <PrivateRoute/>,

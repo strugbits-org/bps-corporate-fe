@@ -484,6 +484,11 @@ var require_app2 = __commonJS({
               } else {
                 slide2.autoplay.stop();
               }
+              if (entry.intersectionRatio > 0) {
+                slide2.autoplay.start();
+              } else {
+                slide2.autoplay.stop();
+              }
           }, 1500);
         });
       }, {
@@ -12863,7 +12868,7 @@ var require_app2 = __commonJS({
     const pageName$6 = "portfolio-post";
     function main$6() {
       sliderFeaturedProducts();
-      copyLink();
+      // copyLink();
       let readMore = document.querySelectorAll(".container-read-more");
       if (readMore) {
         readMore.forEach((element) => {
@@ -15317,7 +15322,7 @@ var require_app2 = __commonJS({
     const pageName$4 = "blog-post";
     function main$4() {
       sliderFeaturedProducts();
-      copyLink();
+      // copyLink();
       if (document.querySelectorAll(".slider-blog-post")) {
         let sliderGallery = document.querySelectorAll(".slider-blog-post");
         sliderGallery.forEach((slider) => {
@@ -15848,7 +15853,6 @@ var require_app2 = __commonJS({
     function main() {
       dropdownTags();
     }
-    
     const pgBlog = new Page({
       pageName,
       main
