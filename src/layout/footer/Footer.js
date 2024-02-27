@@ -1,4 +1,4 @@
-import { footerData, address } from "../../common/constats";
+import { footerData, address } from "../../common/constats/constats";
 import Newsletter from "../../common/Newsletter";
 import DelayedLink from "../../common/DelayedLink";
 const Footer = () => {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import * as Yup from "yup";
-import { newsletter } from "../common/constats";
+import { newsletter } from "../common/constats/constats";
 const Newsletter = () => {
   const [formData, setFormData] = useState({
     email: "",

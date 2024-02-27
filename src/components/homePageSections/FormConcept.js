@@ -1,5 +1,5 @@
 import React from 'react'
-import {dataConcept} from "../../common/constats"
+import {dataConcept} from "../../common/constats/constats"
 
 const FormConcept = () => {
   return (
