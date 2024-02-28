@@ -1,4 +1,5 @@
 import React from 'react'
+import DelayedLink from './DelayedLink'
 
 const Cookies = () => {
   return (
@@ -12,9 +13,9 @@ const Cookies = () => {
             This website uses cookies to provide necessary website
             functionality, improve your experience and analyze our traffic. By
             using our website, you agree to our
-            <a className="link-underline white-1" href="/">
+            <DelayedLink className="link-underline white-1" to="/">
               Privacy Policy
-            </a>{" "}
+            </DelayedLink>
             and our cookies usage.
           </p>
 
