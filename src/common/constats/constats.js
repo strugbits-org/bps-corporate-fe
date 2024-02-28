@@ -186,15 +186,16 @@ export const marketCards = [
 export const rentalData = {
   title: "Rental Store",
   p1: "Over 300,000 rental",
+  p2: "products with diverse",
+  p3: "collections of specialty furnishings, props",
   p4: "and accessories, provide us the range to support various large-scale events",
-
+  p5: " concurrently.",
+  
+  
   img1: img11,
   img2: img22,
   img3: img33,
   img4: img44,
-  p5: " concurrently.",
-  p2: "products with diverse",
-  p3: "collections of specialty furnishings, props",
   btntext: "Get In Touch With Us",
 };
 

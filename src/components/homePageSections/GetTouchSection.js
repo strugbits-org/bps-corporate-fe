@@ -1,7 +1,8 @@
-import React from "react";
 import DelayedLink from "../../common/DelayedLink";
 import {datagettouch} from "../../common/constats/constats";
-const GetTouchSection = () => {
+
+const GetTouchSection = ({items}) => {
+  
   return (
     <section className="home-solution pt-220 pb-110">
       <div className="container-fluid">

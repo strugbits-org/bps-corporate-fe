@@ -2,23 +2,45 @@ import { createClient, OAuthStrategy } from "@wix/sdk";
 import React from "react";
 import { posts, tags } from "@wix/blog";
 import ReactPlayer from "react-player";
+import { collections, items } from '@wix/data';
 
 function Blogs() {
   const [data, setData] = React.useState([]);
   const getImageURL = (src) => `https://static.wixstatic.com/media/${src}`;
 
+  
+  const wixClient = createClient({
+    modules: { collections, items} ,
+    auth: OAuthStrategy({ clientId: '04038da0-732b-471d-babe-4e90ad785740' })
+  });
+  
+ 
+
+  async function queryDataItems() {
+    let options = {
+      dataCollectionId: "HomeTopSectionData"
+    }
+    const { items } = await wixClient.items.queryDataItems(options).eq("title", "TopSection").find();
+    console.log(items, "all data")
+  }
+
+  
+ // async function getDataCollection(dataCollectionId, options) {
+  //   const response = await wixClient.collections.getDataCollection("HomeContent", options);
+  //   console.log(response,"resp");
+  // }
   const getBlogData = async () => {
     const myWixClient = await createClient({
       modules: { posts, tags },
       auth: OAuthStrategy({
-        clientId: "c370cd92-21ab-433b-b95f-d26077bce257",
+        clientId: "04038da0-732b-471d-babe-4e90ad785740",
       }),
     });
 
     const tokens = await myWixClient.auth.generateVisitorTokens();
     await myWixClient.auth.setTokens(tokens);
 
-    const post = await myWixClient.posts.getPost("632a9f902384acfb0919b328", {
+    const post = await myWixClient.posts.getPost("65ddef5e81e8a94423399b62", {
       fieldsToInclude: [
         "RICH_CONTENT",
         "RICH_CONTENT_STRING",
@@ -27,7 +49,7 @@ function Blogs() {
         "CONTENT",
       ],
     });
-
+console.log(post);
     const blogData = [];
 
     // Cover Image
@@ -132,6 +154,8 @@ function Blogs() {
   };
   React.useEffect(() => {
     getBlogData();
+    // getDataCollection();
+    queryDataItems();
   }, []);
   return (
     <div>

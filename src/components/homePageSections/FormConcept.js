@@ -1,7 +1,8 @@
 import React from 'react'
 import {dataConcept} from "../../common/constats/constats"
 
-const FormConcept = () => {
+const FormConcept = ({items}) => {
+  console.log("formConceptdata",items)
   return (
     <section className="home-from-concept-to-reality overflow-hidden">
     <div

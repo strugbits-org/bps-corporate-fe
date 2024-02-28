@@ -8,16 +8,44 @@ import DreamBigSection from "../components/commonComponents/DreamBigSection";
 import SocialSection from "../components/commonComponents/SocialSection";
 import PeopleReviewSLider from "../components/commonComponents/PeopleReviewSlider";
 import MarketSection from "../components/commonComponents/MarketSection";
+import React, { useEffect, useState } from "react";
+import { createClient, OAuthStrategy } from "@wix/sdk";
+import { collections, items } from '@wix/data';
 
 const Home = () => {
+  const [dataItems, setDataItems] = useState([]);
+
+  useEffect(() => {
+    async function fetchDataItems() {
+      const wixClient = createClient({
+        modules: { collections, items },
+        auth: OAuthStrategy({ clientId: "04038da0-732b-471d-babe-4e90ad785740" }),
+      });
+
+      let options = {
+        dataCollectionId: "HomeTopSectionData",
+      };
+
+      const { items: fetchedItems } = await wixClient.items
+        .queryDataItems(options)
+        .eq("title", "TopSection")
+        .find();
+      
+      console.log(fetchedItems, "all data");
+      setDataItems(fetchedItems);
+    }
+
+    fetchDataItems();
+  }, []);
+  
   return (
     <>
       {/* hero section here */}
-      <HeroSection />
+      <HeroSection items={dataItems} />
       {/* form concept section here */}
-      <FormConcept />
+      <FormConcept items={dataItems}/>
       {/* get touch section here */}
-      <GetTouchSection />
+      <GetTouchSection items={dataItems}/>
       {/* studio section here */}
       <StudioSection />
       {/* Some of our project section */}
