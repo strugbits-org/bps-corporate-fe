@@ -9,15 +9,15 @@ import React, { useEffect } from "react";
 
 function App() {
   const location = useLocation();
-  const pathname = location.pathname.trim() === "/" ? "home" : location.pathname.substring(1); // Remove leading slash
+  const pathname =
+    location.pathname.trim() === "/" ? "home" : location.pathname.substring(1); // Remove leading slash
   const cleanPath = pathname.split("/")[0].trim();
-    const reloadTrigger = React.useRef();
-    useEffect(() => {
-      reloadTrigger.current.click();
-    },[location.pathname]);
+  const reloadTrigger = React.useRef();
+  useEffect(() => {
+    reloadTrigger.current.click();
+  }, [location.pathname]);
   return (
     <div>
-      
       {/* helpers */}
       <span ref={reloadTrigger} className="reloadScript d-none"></span>
       <span className="updateWatchedTrigger d-none"></span>
@@ -48,16 +48,38 @@ function App() {
         <meta property="og:site_name" content="Blueprint" />
         <meta property="og:locale" content="en" />
         <link rel="canonical" href="" />
-        <link rel="icon" type="image/png" href={process.env.PUBLIC_URL + "favicon.png"} />
+        <link
+          rel="icon"
+          type="image/png"
+          href={process.env.PUBLIC_URL + "favicon.png"}
+        />
 
-        <script type="module" src={ process.env.PUBLIC_URL + "/js/app2.js"}></script>
-        <script type="module" src={ process.env.PUBLIC_URL + "/js/search.js"}></script>
-        <script type="module" src={ process.env.PUBLIC_URL + "/js/forms.js"}></script>
-        <script type="module" src={ process.env.PUBLIC_URL + "/js/chat.js"}></script>
-        <script type="module" src={ process.env.PUBLIC_URL + "/js/loader.js"}></script>
+        <script
+          type="module"
+          src={process.env.PUBLIC_URL + "/js/app2.js"}
+        ></script>
+        <script
+          type="module"
+          src={process.env.PUBLIC_URL + "/js/search.js"}
+        ></script>
+        <script
+          type="module"
+          src={process.env.PUBLIC_URL + "/js/forms.js"}
+        ></script>
+        <script
+          type="module"
+          src={process.env.PUBLIC_URL + "/js/chat.js"}
+        ></script>
+        <script
+          type="module"
+          src={process.env.PUBLIC_URL + "/js/loader.js"}
+        ></script>
 
-        <link rel="stylesheet" href={ process.env.PUBLIC_URL + "/js/utils.css"} />
-        <link rel="stylesheet" href={ process.env.PUBLIC_URL + "/js/app.css"} />
+        <link
+          rel="stylesheet"
+          href={process.env.PUBLIC_URL + "/js/utils.css"}
+        />
+        <link rel="stylesheet" href={process.env.PUBLIC_URL + "/js/app.css"} />
       </Helmet>
 
       <div id="main-transition">
