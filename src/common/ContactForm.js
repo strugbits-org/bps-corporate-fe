@@ -21,7 +21,6 @@ const ContactForm = () => {
   });
 
   const onSubmit = (data) => {
-    // console.log("Form submitted:", data);
     dispatch(postFormData(data));
   };
 
@@ -113,68 +112,92 @@ const ContactForm = () => {
       <div className="column-2">
         <div className="container-info">
           <div className="container-tel">
-            <DelayedLink to="tel:" target="_blank" >
+            <DelayedLink to="tel:" target="_blank">
               <span>{Contact.phone1}</span>
             </DelayedLink>
-            <DelayedLink href="tel:" target="_blank" >
+            <DelayedLink to="tel:" target="_blank">
               <span>{Contact.phone2}</span>
             </DelayedLink>
           </div>
-          <DelayedLink to="mailto:info@blueprintstudios.com" target="_blank" >
+          <DelayedLink to="mailto:info@blueprintstudios.com" target="_blank">
             <span>{Contact.email}</span>
           </DelayedLink>
         </div>
         <ul className="list-social-media">
           <li>
-            <DelayedLink to="/" target="_blank" 
-            attributes={{
-              "rel":"noopener noreferrer"
-              }}>
-            <DelayedLink to="/" target="_blank" 
-            attributes={{
-              "rel":"noopener noreferrer"
-              }}>
-              <i className="icon-facebook"></i>
-            </DelayedLink>
-            </DelayedLink>
-          </li>
-          <li>
-            <DelayedLink to="/" target="_blank" 
-            attributes={{
-              "rel":"noopener noreferrer"
-              }}>
-            <DelayedLink to="/" target="_blank" 
-            attributes={{
-              "rel":"noopener noreferrer"
-              }}>
-              <i className="icon-instagram"></i>
-            </DelayedLink>
+            <DelayedLink
+              to="/"
+              target="_blank"
+              attributes={{
+                rel: "noopener noreferrer",
+              }}
+            >
+              <DelayedLink
+                to="/"
+                target="_blank"
+                attributes={{
+                  rel: "noopener noreferrer",
+                }}
+              >
+                <i className="icon-facebook"></i>
+              </DelayedLink>
             </DelayedLink>
           </li>
           <li>
-            <DelayedLink to="/" target="_blank" 
-            attributes={{
-              "rel":"noopener noreferrer"
-              }}>
-            <DelayedLink to="/" target="_blank" 
-            attributes={{
-              "rel":"noopener noreferrer"
-              }}>
-              <i className="icon-x"></i>
-            </DelayedLink>
+            <DelayedLink
+              to="/"
+              target="_blank"
+              attributes={{
+                rel: "noopener noreferrer",
+              }}
+            >
+              <DelayedLink
+                to="/"
+                target="_blank"
+                attributes={{
+                  rel: "noopener noreferrer",
+                }}
+              >
+                <i className="icon-instagram"></i>
+              </DelayedLink>
             </DelayedLink>
           </li>
           <li>
-            <DelayedLink to="/as" target="_blank" 
-            attributes={{
-              "rel":"noopener noreferrer"
-              }}>
-            <DelayedLink to="/as" target="_blank" 
-            attributes={{
-              "rel":"noopener noreferrer"
-              }}>
-              <i className="icon-linkedin"></i>
+            <DelayedLink
+              to="/"
+              target="_blank"
+              attributes={{
+                rel: "noopener noreferrer",
+              }}
+            >
+              <DelayedLink
+                to="/"
+                target="_blank"
+                attributes={{
+                  rel: "noopener noreferrer",
+                }}
+              >
+                <i className="icon-x"></i>
+              </DelayedLink>
             </DelayedLink>
+          </li>
+          <li>
+            <DelayedLink
+              to="/as"
+              target="_blank"
+              attributes={{
+                rel: "noopener noreferrer",
+              }}
+            >
+              <DelayedLink
+                to="/as"
+                target="_blank"
+                attributes={{
+                  rel: "noopener noreferrer",
+                }}
+              >
+                <i className="icon-linkedin"></i>
+              </DelayedLink>
             </DelayedLink>
           </li>
         </ul>
@@ -186,10 +209,10 @@ const ContactForm = () => {
               St. Helena, CA 94574
             </address>
             <div className="phones">
-              <DelayedLink to="tel:" target="_blank" >
+              <DelayedLink to="tel:" target="_blank">
                 <span>P / 707742.7777</span>
               </DelayedLink>
-              <DelayedLink to="tel:" target="_blank" >
+              <DelayedLink to="tel:" target="_blank">
                 <span>F / 415.822.8844</span>
               </DelayedLink>
             </div>
@@ -202,7 +225,7 @@ const ContactForm = () => {
               Las Vegas, NV 89113
             </address>
             <div className="phones">
-              <DelayedLink to="tel:" target="_blank" >
+              <DelayedLink to="tel:" target="_blank">
                 <span>P / 702.757.7987</span>
               </DelayedLink>
             </div>
@@ -214,10 +237,10 @@ const ContactForm = () => {
               S. San Francisco, CA 94080
             </address>
             <div className="phones">
-              <DelayedLink to="tel:" target="_blank" >
+              <DelayedLink to="tel:" target="_blank">
                 <span>P / 415.922.9004</span>
               </DelayedLink>
-              <DelayedLink to="tel:" target="_blank" >
+              <DelayedLink to="tel:" target="_blank">
                 <span>F / 415.822.8844</span>
               </DelayedLink>
             </div>

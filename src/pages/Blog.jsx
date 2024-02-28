@@ -32,12 +32,11 @@ const Blog = () => {
       }
     };
     filterItems();
-  }, [selectedFilters,]);
+  }, [selectedFilters]);
 
   useEffect(() => {
     document.querySelector(".updateWatchedTrigger").click();
   }, [filteredItems]);
-
 
   return (
     <>
