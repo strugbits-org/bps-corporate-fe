@@ -1,41 +1,47 @@
-import React, { useState } from "react";
-import img1 from "../../../utilis/images/chairs/bristol-chair.png";
-import imgC1 from "../../../utilis/images/chairs/bristol-chair-color-1.png";
-import imgC2 from "../../../utilis/images/chairs/bristol-chair-color-2.png";
-import imgC3 from "../../../utilis/images/chairs/bristol-chair-color-3.png";
-import imgC4 from "../../../utilis/images/chairs/bristol-chair-color-4.png";
-import imgd6 from "../../../utilis/images/lib/06_desktop.jpg";
-import imgd8 from "../../../utilis/images/lib/08_desktop.jpg";
-import imgd1 from "../../../utilis/images/lib/01_desktop.jpg";
-import imgd2 from "../../../utilis/images/lib/02_desktop.jpg";
+import React, { useMemo, useState } from "react";
 import { OurCardData } from "../../../common/constats/portfolioData";
 import { postes } from "../../../common/constats/blogData";
 import { modelData } from "../../../common/constats/marketData";
 import { studioCard } from "../../../common/constats/constats";
 import DelayedLink from "../../../common/DelayedLink";
+import { productSlider } from "../../../common/constats/blogData";
 
 const Search = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [portfolioData, setPortfolioData] = useState([]);
   const [blogData, setBlogData] = useState([]);
-
+  const [productSliderData, setProductSliderData] = useState([]);
   const handleInputChange = (e) => {
     setSearchTerm(e.target.value.trim().toLowerCase());
   };
 
+  const filteredPortfolioData = useMemo(() => {
+    return OurCardData.filter(
+      (item) =>
+        item.categories && item.categories.toLowerCase().includes(searchTerm)
+    );
+  }, [searchTerm]);
+
+  const filteredBlogData = useMemo(() => {
+    return postes.filter(
+      (item) =>
+        item.category && item.category.toLowerCase().includes(searchTerm)
+    );
+  }, [searchTerm]);
+
+  const filteredProductData = useMemo(() => {
+    return productSlider.filter(
+      (item) =>
+        item.category && item.category.toLowerCase().includes(searchTerm)
+    );
+  }, [searchTerm]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    const portfolioResult = OurCardData.filter(item =>
-      item.categories && item.categories.toLowerCase() === searchTerm
-    );
-    const blogResult = postes.filter(item =>
-      item.category && item.category.toLowerCase() === searchTerm
-    );
-    setPortfolioData(portfolioResult);
-    setBlogData(blogResult);
+    setPortfolioData(filteredPortfolioData);
+    setBlogData(filteredBlogData);
+    setProductSliderData(filteredProductData);
   };
-console.log(portfolioData);
-console.log(blogData);
 
   return (
     <div className="container-fluid">
@@ -49,11 +55,7 @@ console.log(blogData);
                 onSubmit={handleSubmit}
               >
                 <div className="container-input input-header">
-                  <label
-
-                    className="split-chars"
-                    data-aos="d:loop"
-                  >
+                  <label className="split-chars" data-aos="d:loop">
                     Type here
                   </label>
                   <input
@@ -113,13 +115,15 @@ console.log(blogData);
                   <div className="result-rental">
                     <div className="container-title-results">
                       <h2 className="title-results split-chars" data-aos>
-                        Rental <span>“Wedding”</span>
+                        Rental <span>{`"${searchTerm}"`}</span>
                       </h2>
-                      <DelayedLink to="/" className="btn-border-blue"
+                      <DelayedLink
+                        to="/"
+                        className="btn-border-blue"
                         attributes={{
                           "data-aos": "",
                         }}
-                        >
+                      >
                         <span>See more</span>
                         <i className="icon-arrow-right"></i>
                       </DelayedLink>
@@ -130,219 +134,60 @@ console.log(blogData);
                           className="swiper-wrapper list-result-rental list-slider-phone grid-md-33"
                           data-aos
                         >
-                          <div className="swiper-slide grid-item">
-                            <div className="rental-product-link">
-                              <DelayedLink to="/" className="product-link">
-                                <h3 className="product-name">Bristol Chair</h3>
+                          {productSliderData.map((data) => {
+                            return (
+                              <div
+                                key={data.id}
+                                className="swiper-slide grid-item"
+                              >
+                                <div className="rental-product-link">
+                                  <DelayedLink to="/" className="product-link">
+                                    <h3 className="product-name">
+                                      {data.name}
+                                    </h3>
 
-                                <div className="wrapper-img">
-                                  <div className="container-img">
-                                    <img
-                                      src={img1}
-                                      data-preload
-                                      className="media"
-                                      alt=""
-                                    />
-                                  </div>
+                                    <div className="wrapper-img">
+                                      <div className="container-img">
+                                        <img
+                                          src={data.img1}
+                                          data-preload
+                                          className="media"
+                                          alt=""
+                                        />
+                                      </div>
+                                    </div>
+                                    <div className="container-bottom">
+                                      <div className="view-more">
+                                        <span className="view">
+                                          <span>{data.btntext}</span>
+                                        </span>
+                                        <i className="icon-arrow-diagonal-right"></i>
+                                      </div>
+                                      <ul className="list-thumb">
+                                        {Object.values(data.list).map(
+                                          (list, index) => (
+                                            <li key={index}>
+                                              <div className="container-img">
+                                                <img
+                                                  src={list}
+                                                  data-preload
+                                                  className="media"
+                                                  alt=""
+                                                />
+                                              </div>
+                                            </li>
+                                          )
+                                        )}
+                                      </ul>
+                                      <div className="colors-number">
+                                        <span>+3</span>
+                                      </div>
+                                    </div>
+                                  </DelayedLink>
                                 </div>
-                                <div className="container-bottom">
-                                  <div className="view-more">
-                                    <span className="view">
-                                      <span>View more</span>
-                                    </span>
-                                    <i className="icon-arrow-diagonal-right"></i>
-                                  </div>
-                                  <ul className="list-thumb">
-                                    <li>
-                                      <div className="container-img">
-                                        <img
-                                          src={imgC1}
-                                          data-preload
-                                          className="media"
-                                          alt=""
-                                        />
-                                      </div>
-                                    </li>
-                                    <li>
-                                      <div className="container-img">
-                                        <img
-                                          src={imgC2}
-                                          data-preload
-                                          className="media"
-                                          alt=""
-                                        />
-                                      </div>
-                                    </li>
-                                    <li>
-                                      <div className="container-img">
-                                        <img
-                                          src={imgC3}
-                                          data-preload
-                                          className="media"
-                                          alt=""
-                                        />
-                                      </div>
-                                    </li>
-                                    <li>
-                                      <div className="container-img">
-                                        <img
-                                          src={imgC4}
-                                          data-preload
-                                          className="media"
-                                          alt=""
-                                        />
-                                      </div>
-                                    </li>
-                                  </ul>
-                                  <div className="colors-number">
-                                    <span>+3</span>
-                                  </div>
-                                </div>
-                              </DelayedLink>
-                            </div>
-                          </div>
-                          <div className="swiper-slide grid-item">
-                            <div className="rental-product-link">
-                              <DelayedLink to="/" className="product-link">
-                                <h3 className="product-name">Bristol Chair</h3>
-
-                                <div className="wrapper-img">
-                                  <div className="container-img">
-                                    <img
-                                      src={img1}
-                                      data-preload
-                                      className="media"
-                                      alt=""
-                                    />
-                                  </div>
-                                </div>
-                                <div className="container-bottom">
-                                  <div className="view-more">
-                                    <span className="view">
-                                      <span>View more</span>
-                                    </span>
-                                    <i className="icon-arrow-diagonal-right"></i>
-                                  </div>
-                                  <ul className="list-thumb">
-                                    <li>
-                                      <div className="container-img">
-                                        <img
-                                          src={imgC1}
-                                          data-preload
-                                          className="media"
-                                          alt=""
-                                        />
-                                      </div>
-                                    </li>
-                                    <li>
-                                      <div className="container-img">
-                                        <img
-                                          src={imgC2}
-                                          data-preload
-                                          className="media"
-                                          alt=""
-                                        />
-                                      </div>
-                                    </li>
-                                    <li>
-                                      <div className="container-img">
-                                        <img
-                                          src={imgC3}
-                                          data-preload
-                                          className="media"
-                                          alt=""
-                                        />
-                                      </div>
-                                    </li>
-                                    <li>
-                                      <div className="container-img">
-                                        <img
-                                          src={imgC4}
-                                          data-preload
-                                          className="media"
-                                          alt=""
-                                        />
-                                      </div>
-                                    </li>
-                                  </ul>
-                                  <div className="colors-number">
-                                    <span>+3</span>
-                                  </div>
-                                </div>
-                              </DelayedLink>
-                            </div>
-                          </div>
-                          <div className="swiper-slide grid-item">
-                            <div className="rental-product-link">
-                              <DelayedLink to="/" className="product-link">
-                                <h3 className="product-name">Bristol Chair</h3>
-
-                                <div className="wrapper-img">
-                                  <div className="container-img">
-                                    <img
-                                      src={img1}
-                                      data-preload
-                                      className="media"
-                                      alt=""
-                                    />
-                                  </div>
-                                </div>
-                                <div className="container-bottom">
-                                  <div className="view-more">
-                                    <span className="view">
-                                      <span>View more</span>
-                                    </span>
-                                    <i className="icon-arrow-diagonal-right"></i>
-                                  </div>
-                                  <ul className="list-thumb">
-                                    <li>
-                                      <div className="container-img">
-                                        <img
-                                          src={imgC1}
-                                          data-preload
-                                          className="media"
-                                          alt=""
-                                        />
-                                      </div>
-                                    </li>
-                                    <li>
-                                      <div className="container-img">
-                                        <img
-                                          src={imgC2}
-                                          data-preload
-                                          className="media"
-                                          alt=""
-                                        />
-                                      </div>
-                                    </li>
-                                    <li>
-                                      <div className="container-img">
-                                        <img
-                                          src={imgC3}
-                                          data-preload
-                                          className="media"
-                                          alt=""
-                                        />
-                                      </div>
-                                    </li>
-                                    <li>
-                                      <div className="container-img">
-                                        <img
-                                          src={imgC4}
-                                          data-preload
-                                          className="media"
-                                          alt=""
-                                        />
-                                      </div>
-                                    </li>
-                                  </ul>
-                                  <div className="colors-number">
-                                    <span>+3</span>
-                                  </div>
-                                </div>
-                              </DelayedLink>
-                            </div>
-                          </div>
+                              </div>
+                            );
+                          })}
                         </div>
                       </div>
                     </div>
@@ -350,11 +195,15 @@ console.log(blogData);
                   <div className="result-portfolio mt-lg-60 mt-mobile-40">
                     <div className="container-title-results">
                       <h2 className="title-results split-chars" data-aos>
-                        Portfolio <span>“Wedding”</span>
+                        Portfolio <span>{`"${searchTerm}"`}</span>
                       </h2>
-                      <DelayedLink to="/" className="btn-border-blue" attributes={{
+                      <DelayedLink
+                        to={`/portfolio-post`}
+                        className="btn-border-blue"
+                        attributes={{
                           "data-aos": "",
-                        }}>
+                        }}
+                      >
                         <span>See more</span>
                         <i className="icon-arrow-right"></i>
                       </DelayedLink>
@@ -365,89 +214,38 @@ console.log(blogData);
                           className="swiper-wrapper list-result-portfolio list-slider-phone grid-md-20"
                           data-aos
                         >
-                          <div className="swiper-slide grid-item">
-                            <DelayedLink
-                              to="/portfolio-post"
-                              className="link-portfolio"
-                            >
+                          {portfolioData.map((data) => {
+                            return (
                               <div
-                                className="container-img bg-blue"
-                                data-cursor-style="view"
+                                key={data.id}
+                                className="swiper-slide grid-item"
                               >
-                                <div className="wrapper-img">
-                                  <img
-                                    src={imgd6}
-                                    data-preload
-                                    className="media"
-                                    alt=""
-                                  />
-                                </div>
+                                <DelayedLink
+                                  to={`/portfolio-post/${data.id}`}
+                                  className="link-portfolio"
+                                >
+                                  <div
+                                    className="container-img bg-blue"
+                                    data-cursor-style="view"
+                                  >
+                                    <div className="wrapper-img">
+                                      <img
+                                        src={data.img}
+                                        data-preload
+                                        className="media"
+                                        alt=""
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="container-text">
+                                    <h2 className="title-portfolio">
+                                      {data.title}
+                                    </h2>
+                                  </div>
+                                </DelayedLink>
                               </div>
-                              <div className="container-text">
-                                <h2 className="title-portfolio">
-                                  F1 Las Vegas Grand Prix
-                                </h2>
-                              </div>
-                            </DelayedLink>
-                          </div>
-                          <div className="swiper-slide grid-item">
-                            <DelayedLink to="/" className="link-portfolio">
-                              <div className="container-img">
-                                <img
-                                  src={imgd8}
-                                  data-preload
-                                  className="media"
-                                  alt=""
-                                />
-                              </div>
-                              <h3 className="title-portfolio">
-                                Brasil Design Awards 2023
-                              </h3>
-                            </DelayedLink>
-                          </div>
-                          <div className="swiper-slide grid-item">
-                            <DelayedLink to="/" className="link-portfolio">
-                              <div className="container-img">
-                                <img
-                                  src={imgd8}
-                                  data-preload
-                                  className="media"
-                                  alt=""
-                                />
-                              </div>
-                              <h3 className="title-portfolio">
-                                Brasil Design Awards 2023
-                              </h3>
-                            </DelayedLink>
-                          </div>
-                          <div className="swiper-slide grid-item">
-                            <DelayedLink to="/" className="link-portfolio">
-                              <div className="container-img">
-                                <img
-                                  src={imgd1}
-                                  data-preload
-                                  className="media"
-                                  alt=""
-                                />
-                              </div>
-                              <h3 className="title-portfolio">
-                                Latin American Design Awards 2023
-                              </h3>
-                            </DelayedLink>
-                          </div>
-                          <div className="swiper-slide grid-item">
-                            <DelayedLink to="/" className="link-portfolio">
-                              <div className="container-img">
-                                <img
-                                  src={imgd2}
-                                  data-preload
-                                  className="media"
-                                  alt=""
-                                />
-                              </div>
-                              <h3 className="title-portfolio">Wedding</h3>
-                            </DelayedLink>
-                          </div>
+                            );
+                          })}
                         </div>
                       </div>
                     </div>
@@ -501,12 +299,15 @@ console.log(blogData);
                 <div className="result-blog">
                   <div className="container-title-results">
                     <h2 className="title-results split-chars" data-aos>
-                      Blog <span>“Wedding”</span>
+                      Blog <span>{`"${searchTerm}"`}</span>
                     </h2>
-                    <DelayedLink to="/" className="btn-border-blue" 
-                    attributes={{
-                      "data-aos": "",
-                    }}>
+                    <DelayedLink
+                      to="/"
+                      className="btn-border-blue"
+                      attributes={{
+                        "data-aos": "",
+                      }}
+                    >
                       <span>See more</span>
                       <i className="icon-arrow-right"></i>
                     </DelayedLink>
@@ -518,206 +319,47 @@ console.log(blogData);
                         className="swiper-wrapper list-result-blog list-slider-mobile list-blog grid-lg-20"
                         data-aos
                       >
-                        <div className="swiper-slide grid-item">
-                          <DelayedLink to="/blog-post" className="link-blog">
+                        {blogData.map((data) => {
+                          return (
                             <div
-                              className="container-img bg-blue"
-                              data-cursor-style="view"
+                              key={data.id}
+                              className="swiper-slide grid-item"
                             >
-                              <div className="wrapper-img">
-                                <img
-                                  src={imgd8}
-                                  data-preload
-                                  className="media"
-                                  alt=""
-                                />
-                              </div>
-                            </div>
-                            <div className="container-text">
-                              <div className="container-author-post-info">
-                                <div className="author">
-                                  <span className="author-name">
-                                    Lily Yeung
-                                  </span>
+                              <DelayedLink
+                                to="/blog-post"
+                                className="link-blog"
+                              >
+                                <div
+                                  className="container-img bg-blue"
+                                  data-cursor-style="view"
+                                >
+                                  <div className="wrapper-img">
+                                    <img
+                                      src={data.img}
+                                      data-preload
+                                      className="media"
+                                      alt=""
+                                    />
+                                  </div>
                                 </div>
-                                <div className="date">
-                                  <span>Sep 30</span>
+                                <div className="container-text">
+                                  <div className="container-author-post-info">
+                                    <div className="author">
+                                      <span className="author-name">
+                                        {data.userName}
+                                      </span>
+                                    </div>
+                                    <div className="date">
+                                      <span>{data.date}</span>
+                                    </div>
+                                  </div>
+                                  <h2 className="title-blog">{data.heading}</h2>
+                                  <p className="text-blog">{data.p}</p>
                                 </div>
-                              </div>
-                              <h2 className="title-blog">
-                                A Taste Explosion: Event Design Extravaganza at
-                                Boa Restaurant
-                              </h2>
-                              <p className="text-blog">
-                                Beverly Hills, renowned for its luxury and
-                                panache, witnessed an unforgettable evening that
-                                melded culinary wonders with unmatched event
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit.
-                              </p>
+                              </DelayedLink>
                             </div>
-                          </DelayedLink>
-                        </div>
-                        <div className="swiper-slide grid-item">
-                          <DelayedLink to="/blog-post" className="link-blog">
-                            <div
-                              className="container-img bg-blue"
-                              data-cursor-style="view"
-                            >
-                              <div className="wrapper-img">
-                                <img
-                                  src={imgd8}
-                                  data-preload
-                                  className="media"
-                                  alt=""
-                                />
-                              </div>
-                            </div>
-                            <div className="container-text">
-                              <div className="container-author-post-info">
-                                <div className="author">
-                                  <span className="author-name">
-                                    Lily Yeung
-                                  </span>
-                                </div>
-                                <div className="date">
-                                  <span>Sep 30</span>
-                                </div>
-                              </div>
-                              <h2 className="title-blog">
-                                A Taste Explosion: Event Design Extravaganza at
-                                Boa Restaurant
-                              </h2>
-                              <p className="text-blog">
-                                Beverly Hills, renowned for its luxury and
-                                panache, witnessed an unforgettable evening that
-                                melded culinary wonders with unmatched event
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit.
-                              </p>
-                            </div>
-                          </DelayedLink>
-                        </div>
-                        <div className="swiper-slide grid-item">
-                          <DelayedLink to="/blog-post" className="link-blog">
-                            <div
-                              className="container-img bg-blue"
-                              data-cursor-style="view"
-                            >
-                              <div className="wrapper-img">
-                                <img
-                                  src={imgd8}
-                                  data-preload
-                                  className="media"
-                                  alt=""
-                                />
-                              </div>
-                            </div>
-                            <div className="container-text">
-                              <div className="container-author-post-info">
-                                <div className="author">
-                                  <span className="author-name">
-                                    Lily Yeung
-                                  </span>
-                                </div>
-                                <div className="date">
-                                  <span>Sep 30</span>
-                                </div>
-                              </div>
-                              <h2 className="title-blog">
-                                A Taste Explosion: Event Design Extravaganza at
-                                Boa Restaurant
-                              </h2>
-                              <p className="text-blog">
-                                Beverly Hills, renowned for its luxury and
-                                panache, witnessed an unforgettable evening that
-                                melded culinary wonders with unmatched event
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit.
-                              </p>
-                            </div>
-                          </DelayedLink>
-                        </div>
-                        <div className="swiper-slide grid-item">
-                          <a href="blog-post.html" className="link-blog">
-                            <div
-                              className="container-img bg-blue"
-                              data-cursor-style="view"
-                            >
-                              <div className="wrapper-img">
-                                <img
-                                  src={imgd8}
-                                  data-preload
-                                  className="media"
-                                  alt=""
-                                />
-                              </div>
-                            </div>
-                            <div className="container-text">
-                              <div className="container-author-post-info">
-                                <div className="author">
-                                  <span className="author-name">
-                                    Lily Yeung
-                                  </span>
-                                </div>
-                                <div className="date">
-                                  <span>Sep 30</span>
-                                </div>
-                              </div>
-                              <h2 className="title-blog">
-                                A Taste Explosion: Event Design Extravaganza at
-                                Boa Restaurant
-                              </h2>
-                              <p className="text-blog">
-                                Beverly Hills, renowned for its luxury and
-                                panache, witnessed an unforgettable evening that
-                                melded culinary wonders with unmatched event
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit.
-                              </p>
-                            </div>
-                          </a>
-                        </div>
-                        <div className="swiper-slide grid-item">
-                          <DelayedLink to="/blog-post" className="link-blog">
-                            <div
-                              className="container-img bg-blue"
-                              data-cursor-style="view"
-                            >
-                              <div className="wrapper-img">
-                                <img
-                                  src={imgd8}
-                                  data-preload
-                                  className="media"
-                                  alt=""
-                                />
-                              </div>
-                            </div>
-                            <div className="container-text">
-                              <div className="container-author-post-info">
-                                <div className="author">
-                                  <span className="author-name">
-                                    Lily Yeung
-                                  </span>
-                                </div>
-                                <div className="date">
-                                  <span>Sep 30</span>
-                                </div>
-                              </div>
-                              <h2 className="title-blog">
-                                A Taste Explosion: Event Design Extravaganza at
-                                Boa Restaurant
-                              </h2>
-                              <p className="text-blog">
-                                Beverly Hills, renowned for its luxury and
-                                panache, witnessed an unforgettable evening that
-                                melded culinary wonders with unmatched event
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit.
-                              </p>
-                            </div>
-                          </DelayedLink>
-                        </div>
+                          );
+                        })}
                       </div>
                     </div>
                   </div>
@@ -726,7 +368,7 @@ console.log(blogData);
                 <div className="result-order-pages">
                   <div className="container-title-results">
                     <h2 className="title-results split-chars" data-aos>
-                      Order pages <span>“Wedding”</span>
+                      Order pages <span>{`"${searchTerm}"`}</span>
                     </h2>
                   </div>
                   <ul

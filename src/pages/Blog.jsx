@@ -67,7 +67,21 @@ const Blog = () => {
                   <div className="container-wrapper-list">
                     <div className="wrapper-list">
                       <ul className="list-blog-tags list-dropdown-tags">
+                      <li>
+                          
+                          <Link
+                          to="/blogs"
+                            className={`blog-btn-tag ${
+                              selectedFilters.length === 0 ? "active" : ""
+                            }`}
+                          >
+                            <span >
+                              Blogs
+                            </span>
+                          </Link>
+                        </li>
                         <li>
+
                           <Link
                             className={`blog-btn-tag ${
                               selectedFilters.length === 0 ? "active" : ""

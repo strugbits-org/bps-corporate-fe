@@ -203,6 +203,7 @@ hr {
   overflow: visible;
   /* 2 */
 }
+iframe#webpack-dev-server-client-overlay{display:none!important}
 /**
  * 1. Correct the inheritance and scaling of font size in all browsers.
  * 2. Correct the odd `em` font sizing in all browsers.
