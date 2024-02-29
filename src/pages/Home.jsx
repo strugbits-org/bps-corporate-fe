@@ -31,13 +31,13 @@ const Home = () => {
         .eq("title", "TopSection")
         .find();
       
-      console.log(fetchedItems, "all data");
       setDataItems(fetchedItems);
     }
 
     fetchDataItems();
   }, []);
-  
+
+
   return (
     <>
       {/* hero section here */}
@@ -45,7 +45,7 @@ const Home = () => {
       {/* form concept section here */}
       <FormConcept items={dataItems}/>
       {/* get touch section here */}
-      <GetTouchSection items={dataItems}/>
+      <GetTouchSection />
       {/* studio section here */}
       <StudioSection />
       {/* Some of our project section */}

@@ -16003,7 +16003,11 @@ var require_app2 = __commonJS({
         }
       }
     }
+    
     if (firstLoad) {
+      setTimeout(() => {
+        window.scrollTo({top:0,behavior:'instant'});
+      }, 100);
       whenContainerReady();
     }
 
@@ -16138,6 +16142,12 @@ var require_app2 = __commonJS({
     const updateWatchedTrigger = document.querySelector(".updateWatchedTrigger");
     updateWatchedTrigger.addEventListener("click", updateWatched);
 
+    const triggerSplitWordAnimation = document.querySelector(".triggerSplitWordAnimation");
+    triggerSplitWordAnimation.addEventListener("click", () => {
+      splitWords();
+      splitChars();
+    } );
+    
     document.addEventListener("pjax:complete", whenContainerReady);
     document.addEventListener("pjax:send", whenContainerLeave);
     function whenContainerLeave() {
