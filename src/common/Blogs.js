@@ -74,7 +74,7 @@ console.log(post);
     blogData.push({ type: "tags", tags: tagsResolved });
 
     // Content
-    for (const [index, item] of post?.richContent?.nodes?.entries() || []) {
+    for (const [item] of post?.richContent?.nodes?.entries() || []) {
       switch (item.type) {
         case "PARAGRAPH": {
           const finalText = item.nodes
