@@ -1,8 +1,47 @@
-import React from "react";
-// import img1 from "../../utilis/images/lib/01_desktop.jpg";
-import { ourprojectSlider } from "../../common/constats/constats";
+// import { ourprojectSlider } from "../../common/constats/constats";
 import DelayedLink from "../../common/DelayedLink";
+import React, { useEffect, useState } from "react";
+import { createClient, OAuthStrategy } from "@wix/sdk";
+import { collections, items } from '@wix/data';
+
+function getFullImageURL(imageSRC) {
+  if (imageSRC.startsWith("wix:image://v1/")) {
+      const wixImageURL = "https://static.wixstatic.com/media/";
+      const wixLocalURL = imageSRC.replace('wix:image://v1/', '').split('/')[0];
+      return wixImageURL + wixLocalURL;
+  } else {
+      return imageSRC;
+  }
+}
 const OurProjectSection = () => {
+  const [dataItems, setDataItems] = useState([]);
+
+  const firstItem = dataItems[0]; 
+  const title = firstItem ? firstItem.data.title : "";
+  const btntext = firstItem ? firstItem.data.buttonText : "";
+  useEffect(() => {
+    async function fetchDataItems() {
+      const wixClient = createClient({
+        modules: { collections, items },
+        auth: OAuthStrategy({ clientId: "04038da0-732b-471d-babe-4e90ad785740" }),
+      });
+
+      let options = {
+        dataCollectionId: "SomeOfOurProjects",
+      };
+
+      const { items: fetchedItems } = await wixClient.items
+        .queryDataItems(options)
+        .eq("title", "Some of our projects")
+        .find();
+      
+      setDataItems(fetchedItems);
+    }
+
+    fetchDataItems();
+    
+  }, []);
+
   return (
     <section className="home-some-of-our-projects pt-lg-250 pt-mobile-130 pb-135">
       <div className="container-fluid">
@@ -12,7 +51,7 @@ const OurProjectSection = () => {
               className="fs--80 text-center mb-35 split-words"
               data-aos="d:loop"
             >
-              Some of our projects
+              {title}
             </h2>
 
             <div className="slider-some-of-our-projects slider-content-mobile">
@@ -20,7 +59,7 @@ const OurProjectSection = () => {
                 {/* <!-- Additional required wrapper --> */}
                 <div className="swiper-wrapper list-projects slider-mobile font-80">
                   {/* <!-- Slides --> */}
-                  {ourprojectSlider.map((data, index) => {
+                  {dataItems.map((data, index) => {
                     return (
                       <div key={index} className="swiper-slide list-item">
                         <DelayedLink
@@ -34,7 +73,7 @@ const OurProjectSection = () => {
                           <div className="container-img bg-blue">
                             <div className="wrapper-img">
                               <img
-                                src={data.img}
+                                src={getFullImageURL(data.data.image)}
                                 data-preload
                                 className="media"
                                 alt=""
@@ -42,9 +81,9 @@ const OurProjectSection = () => {
                             </div>
                           </div>
                           <div className="container-text">
-                            <h3 className="title-project">{data.title}</h3>
+                            <h3 className="title-project">{data.data.cardname}</h3>
                             <ul className="list-tags">
-                              {Object.values(data.tags).map((tag, index) => (
+                              {Object.values(data.data.tags).map((tag, index) => (
                                 <li key={index}>
                                   <span>{tag}</span>
                                 </li>
@@ -65,7 +104,7 @@ const OurProjectSection = () => {
               class="btn-blue"
               data-cursor-style="off"
             >
-              <span>Let's Craft Magic Together</span>
+              <span>{btntext}</span>
               <i className="icon-arrow-right-2"></i>
             </btn-modal-open>
           </div>
