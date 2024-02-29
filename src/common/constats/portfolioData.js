@@ -1,3 +1,10 @@
+import img1 from "../../utilis/images/lib/01_desktop.jpg";
+import img2 from "../../utilis/images/lib/02_desktop.jpg";
+import img6 from "../../utilis/images/lib/06_desktop.jpg";
+import img8 from "../../utilis/images/lib/08_desktop.jpg";
+import img11 from "../../utilis/images/portfolio/photo-gallery-1.jpg";
+import img22 from "../../utilis/images/portfolio/photo-gallery-2.jpg";
+import img33 from "../../utilis/images/portfolio/photo-gallery-3.jpg";
 
 export const categoriesData = {
   title: "Explore our work",
@@ -30,7 +37,7 @@ export const portfolioData = {
   AllMarketsitems: [
     {
       id: "01",
-      img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040910/utiles/libs/01_desktop_nv6kjl.jpg",
+      img: img1,
       title: "F1 Las Vegas Grand Prix",
       categories: "Corporate",
       tags: [
@@ -61,7 +68,7 @@ export const portfolioData = {
     },
     {
       id: "02",
-      img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040910/utiles/libs/01_desktop_nv6kjl.jpg",
+      img: img1,
       title: "F1 Las Vegas Grand Prix",
       categories: "Corporate",
       tags: [
@@ -92,7 +99,7 @@ export const portfolioData = {
     },
     {
       id: "03",
-      img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040910/utiles/libs/01_desktop_nv6kjl.jpg",
+      img: img1,
       title: "F1 Las Vegas Grand Prix",
       categories: "Corporate",
       tags: [
@@ -123,7 +130,7 @@ export const portfolioData = {
     },
     {
       id: "04",
-      img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040910/utiles/libs/01_desktop_nv6kjl.jpg",
+      img: img1,
       title: "F1 Las Vegas Grand Prix",
       categories: "Tradeshows",
       tags: [
@@ -154,7 +161,7 @@ export const portfolioData = {
     },
     {
       id: "05",
-      img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040910/utiles/libs/01_desktop_nv6kjl.jpg",
+      img: img1,
       title: "F1 Las Vegas Grand Prix",
       categories: "Weddings",
       tags: [
@@ -187,7 +194,7 @@ export const portfolioData = {
   AllStudioItems: [
     {
       id: "01",
-      img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040910/utiles/libs/01_desktop_nv6kjl.jpg",
+      img: img1,
       title: "F1 Las Vegas Grand Prix",
       categories: "Social",
       tags: [
@@ -218,7 +225,7 @@ export const portfolioData = {
     },
     {
       id: "02",
-      img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040910/utiles/libs/01_desktop_nv6kjl.jpg",
+      img: img1,
       title: "F1 Las Vegas Grand Prix",
       categories: "Event Design and Production",
       tags: [
@@ -249,7 +256,7 @@ export const portfolioData = {
     },
     {
       id: "03",
-      img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040910/utiles/libs/01_desktop_nv6kjl.jpg",
+      img: img1,
       title: "F1 Las Vegas Grand Prix",
       categories: "Creative Services Agency",
       tags: [
@@ -280,7 +287,7 @@ export const portfolioData = {
     },
     {
       id: "04",
-      img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040910/utiles/libs/01_desktop_nv6kjl.jpg",
+      img: img1,
       title: "F1 Las Vegas Grand Prix",
       categories: "Corporate",
       tags: [
@@ -311,7 +318,7 @@ export const portfolioData = {
     },
     {
       id: "05",
-      img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040910/utiles/libs/01_desktop_nv6kjl.jpg",
+      img: img1,
       title: "F1 Las Vegas Grand Prix",
       categories: "Floral Design",
       tags: [
@@ -342,7 +349,7 @@ export const portfolioData = {
     },
     {
       id: "06",
-      img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040910/utiles/libs/01_desktop_nv6kjl.jpg",
+      img: img1,
       title: "F1 Las Vegas Grand Prix",
       categories: "Custom Fabrication",
       tags: [
@@ -373,7 +380,7 @@ export const portfolioData = {
     },
     {
       id: "07",
-      img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040910/utiles/libs/01_desktop_nv6kjl.jpg",
+      img: img1,
       title: "F1 Las Vegas Grand Prix",
       categories: "Corporate",
       tags: [
@@ -409,7 +416,7 @@ export const OurCardData = [
   
   {
     id:"01",
-    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040910/utiles/libs/01_desktop_nv6kjl.jpg",
+    img: img1,
     categories: "Corporate",
     title: "F1 Las Vegas Grand Prix",
     tags: {
@@ -438,7 +445,7 @@ export const OurCardData = [
   },
   {
     id:"02",
-    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040834/utiles/libs/02_desktop_brfodn.jpg",
+    img: img2,
     categories: "Wedding",
     title: "F1 Las Vegas Grand Prix",
     tags: {
@@ -470,7 +477,7 @@ export const OurCardData = [
   },
   {
     id:"03",
-    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040865/utiles/libs/06_desktop_iterkd.jpg",
+    img: img6,
     categories: "Corporate",
     title: "F1 Las Vegas Grand Prix",
     tags: {
@@ -499,7 +506,7 @@ export const OurCardData = [
   },
   {
     id:"04",
-    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040915/utiles/libs/08_desktop_s0swwk.jpg",
+    img: img8,
     categories: "Corporate",
     title: "F1 Las Vegas Grand Prix",
     tags: {
@@ -528,7 +535,7 @@ export const OurCardData = [
   },
   {
     id:"05",
-    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040910/utiles/libs/01_desktop_nv6kjl.jpg",
+    img: img1,
     categories: "Corporate",
     title: "F1 Las Vegas Grand Prix",
     tags: {
@@ -557,7 +564,7 @@ export const OurCardData = [
   },
   {
     id:"06",
-    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040865/utiles/libs/06_desktop_iterkd.jpg",
+    img: img6,
     categories: "Corporate",
     title: "F1 Las Vegas Grand Prix",
     tags: {
@@ -585,7 +592,7 @@ export const OurCardData = [
   },
   {
     id:"07",
-    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040834/utiles/libs/02_desktop_brfodn.jpg",
+    img: img2,
     title: "F1 Las Vegas Grand Prix",
     tags: {
       tag1: "Creative Services Agency",
@@ -595,7 +602,7 @@ export const OurCardData = [
   },
   {
     id:"08",
-    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040915/utiles/libs/08_desktop_s0swwk.jpg",
+    img: img8,
     title: "F1 Las Vegas Grand Prix",
     tags: {
       tag1: "Corporate",
@@ -622,7 +629,7 @@ export const OurCardData = [
   },
   {
     id:"09",
-    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040865/utiles/libs/06_desktop_iterkd.jpg",
+    img: img6,
     title: "F1 Las Vegas Grand Prix",
     tags: {
       tag2: "Event Design and Production",
@@ -649,7 +656,7 @@ export const OurCardData = [
   },
   {
     id:"10",
-    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040910/utiles/libs/01_desktop_nv6kjl.jpg",
+    img: img1,
     title: "F1 Las Vegas Grand Prix",
     tags: {
       tag1: "Event Design and Production",
@@ -677,7 +684,7 @@ export const OurCardData = [
   },
   {
     id:"11",
-    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040834/utiles/libs/02_desktop_brfodn.jpg",
+    img: img2,
     title: "F1 Las Vegas Grand Prix",
     tags: {
       tag1: "Corporate",
@@ -687,7 +694,7 @@ export const OurCardData = [
   },
   {
     id:"12",
-    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040915/utiles/libs/08_desktop_s0swwk.jpg",
+    img: img8,
     title: "F1 Las Vegas Grand Prix",
     tags: {
       tag1: "Creative Services Agency",
@@ -717,7 +724,7 @@ export const OurCardData = [
 
 export const gallery = {
   title: "Photo gallery",
-  img1: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709041056/utiles/portfolio/photo-gallery-1_jwop41.jpg",
-  img2: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709041059/utiles/portfolio/photo-gallery-2_uqirwt.jpg",
-  img3: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709041054/utiles/portfolio/photo-gallery-3_awiamr.jpg",
+  img1: img11,
+  img2: img22,
+  img3: img33,
 };

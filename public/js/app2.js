@@ -7150,9 +7150,9 @@ var require_app2 = __commonJS({
       sliderTestimony();
       sliderBanner();
       if (screen.isMobile) {
-        scrollVideo(".home-from-concept-to-reality", ".container-frame-by-frame", "https://res.cloudinary.com/dzk0coq3y/video/upload/v1709038146/home-animation-min_paf2nc.mp4");
+        scrollVideo(".home-from-concept-to-reality", ".container-frame-by-frame", "js/home-animation-min-mobile.mp4");
       } else {
-        scrollVideo(".home-from-concept-to-reality", ".container-frame-by-frame", "https://res.cloudinary.com/dzk0coq3y/video/upload/v1709038145/home-animation-min-mobile_nzjtzm.mp4");
+        scrollVideo(".home-from-concept-to-reality", ".container-frame-by-frame", "js/home-animation-min.mp4");
       }
     }
     const pgHome = new Page({
@@ -16003,7 +16003,11 @@ var require_app2 = __commonJS({
         }
       }
     }
+    
     if (firstLoad) {
+      setTimeout(() => {
+        window.scrollTo({top:0,behavior:'instant'});
+      }, 100);
       whenContainerReady();
     }
 
@@ -16138,6 +16142,13 @@ var require_app2 = __commonJS({
     const updateWatchedTrigger = document.querySelector(".updateWatchedTrigger");
     updateWatchedTrigger.addEventListener("click", updateWatched);
 
+    const triggerSplitWordAnimation = document.querySelector(".triggerSplitWordAnimation");
+    triggerSplitWordAnimation.addEventListener("click", () => {
+      splitChars();
+      splitWords();
+      
+    } );
+    
     document.addEventListener("pjax:complete", whenContainerReady);
     document.addEventListener("pjax:send", whenContainerLeave);
     function whenContainerLeave() {

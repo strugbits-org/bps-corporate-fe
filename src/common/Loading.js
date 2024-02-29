@@ -1,4 +1,7 @@
-
+import React from "react";
+import image1 from "../utilis/images/logo/logo-bps-b.svg"
+import image2 from "../utilis/images/logo/logo-bps-p.svg"
+import image3 from "../utilis/images/logo/logo-bps-s.svg"
 const Loading = () => {
   return (
     <div id="loader">
@@ -8,7 +11,7 @@ const Loading = () => {
       <div className="container-logo">
         <div className="z-5">
           <img
-            src="https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040928/utiles/logo/logo-bps-b_wnegyd.svg"
+            src={image1}
             data-preload
             className="img-b z-3 media"
             alt=""
@@ -16,7 +19,7 @@ const Loading = () => {
         </div>
         <div className="z-4">
           <img
-            src="https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040930/utiles/logo/logo-bps-p_xjhbxm.svg"
+            src={image2}
             data-preload
             className="img-p z-2 media"
             alt=""
@@ -24,7 +27,7 @@ const Loading = () => {
         </div>
         <div className="z-3">
           <img
-            src="https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040932/utiles/logo/logo-bps-s_amm3nt.svg"
+            src={image3}
             data-preload
             className="img-s z-1 media"
             alt=""

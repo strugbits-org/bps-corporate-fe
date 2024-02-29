@@ -1,8 +1,26 @@
-
-
+import img from "../../utilis/images/lib/06_desktop.jpg";
+import img1 from "../../utilis/images/lib/01_desktop.jpg";
+import img2 from "../../utilis/images/lib/02_desktop.jpg";
+import img7 from "../../utilis/images/lib/07_desktop.jpg";
+import img8 from "../../utilis/images/lib/08_desktop.jpg";
+import img9 from "../../utilis/images/lib/09_desktop.jpg";
+import img11 from "../../utilis/images/home/section-rental-store-chair-1.png";
+import img22 from "../../utilis/images/home/section-rental-store-chair-2.png";
+import img33 from "../../utilis/images/home/section-rental-store-chair-3.png";
+import img44 from "../../utilis/images/home/section-rental-store-table-1.png";
+import img6 from "../../utilis/images/lib/06_desktop.jpg";
+import img5 from "../../utilis/images/lib/05_desktop.jpg";
+import img88 from "../../utilis/images/lib/08_desktop.jpg";
+import img99 from "../../utilis/images/lib/09_desktop.jpg";
+import db1 from "../../utilis/images/dream-big.jpg";
+import db2 from "../../utilis/images/dream-big-mobile.jpg";
+import logob from "../../utilis/images/logo/logo-bps-b.svg";
+import logop from "../../utilis/images/logo/logo-bps-p.svg";
+import logos from "../../utilis/images/logo/logo-bps-s.svg";
+import googleimg from "../../utilis/images/about/google-workspace.jpg"
 
 export const HeroData = {
-  image: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040865/utiles/libs/06_desktop_iterkd.jpg",
+  image: img,
 desc: " © Blueprint studios. All rights reserved."
 }
 
@@ -30,37 +48,37 @@ export const studioCard = [
   {
     id: "01",
     name: "Event Design & Production",
-    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040865/utiles/libs/06_desktop_iterkd.jpg",
+    img: img,
     desc: "We're not afraid to get technical. After all, themore technical we get the better the final result.This is why our pre-production design servicesinclude a thorough strategy and understanding of theattendee journey that leads to the best flow, laterrepresented in technical drawings.",
   },
   {
     id: "02",
     name: "Creative Agency",
-    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040910/utiles/libs/01_desktop_nv6kjl.jpg",
+    img: img1,
     desc: " Lorem ipsum dolor sit amet, consectetur adipiscingelit. Donec eget nibh nec odio ornare dictum.Suspendisse suscipit nunc purus, vitae sodales justopulvinar et. Cras et sem eu enim facilisis semper insed tortor. Nulla interdum eros et metus auctorhendrerit vel ut dui. Maecenas blandit maximustellus a convallis. Praesent condimentum ex libero,eu pulvinar tortor malesuada volutpat.",
   },
   {
     id: "03",
     name: "Specialty Rentals",
-    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040910/utiles/libs/01_desktop_nv6kjl.jpg",
+    img: img2,
     desc: "We're not afraid to get technical. After all, themore technical we get the better the final result.This is why our pre-production design servicesinclude a thorough strategy and understanding of theattendee journey that leads to the best flow, laterrepresented in technical drawings.",
   },
   {
     id: "04",
     name: "Custom Fabrication",
-    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040908/utiles/libs/09_desktop_pvob8a.jpg",
+    img: img9,
     desc: "We're not afraid to get technical. After all, themore technical we get the better the final result.This is why our pre-production design servicesinclude a thorough strategy and understanding of theattendee journey that leads to the best flow, laterrepresented in technical drawings.",
   },
   {
     id: "05",
     name: "Printing Services",
-    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040915/utiles/libs/08_desktop_s0swwk.jpg",
+    img: img8,
     desc: "We're not afraid to get technical. After all, themore technical we get the better the final result.This is why our pre-production design servicesinclude a thorough strategy and understanding of theattendee journey that leads to the best flow, laterrepresented in technical drawings.",
   },
   {
     id: "06",
     name: "Floral Design",
-    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040874/utiles/libs/07_desktop_pg3hvz.jpg",
+    img: img7,
     desc: "We're not afraid to get technical. After all, themore technical we get the better the final result.This is why our pre-production design servicesinclude a thorough strategy and understanding of theattendee journey that leads to the best flow, laterrepresented in technical drawings.",
   },
 ];
@@ -69,22 +87,22 @@ export const studioCard = [
 // Some of our project start
 export const ourprojectSlider = [
   {
-    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040910/utiles/libs/01_desktop_nv6kjl.jpg",
+    img: img1,
     title: "The Netflix Cup",
     tags: { tag1: "Convention", tag2: "Corporate" },
   },
   {
-    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040910/utiles/libs/01_desktop_nv6kjl.jpg",
+    img: img1,
     title: " Formula 1 Grand Prix Las Vegas",
     tags: { tag1: "Convention", tag2: "Corporate" },
   },
   {
-    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040910/utiles/libs/01_desktop_nv6kjl.jpg",
+    img: img1,
     title: "White Wedding",
     tags: { tag1: "Personal", tag2: "Wedding", tag3: "Milestone event" },
   },
   {
-    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040910/utiles/libs/01_desktop_nv6kjl.jpg",
+    img: img1,
     title: "Google Workspace",
     tags: { tag1: "Convention", tag2: "Corporate" },
   },
@@ -100,21 +118,21 @@ export const peoplereviewdata = {
 };
 export const reviewslider = [
   {
-    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040865/utiles/libs/06_desktop_iterkd.jpg",
+    img: img,
     name: "Jennifer Luu",
     pargh:
       " We partnered with Blueprint Studios to provide our employees with a virtual halloween experience instead of hosting an in-person party this year, and our employees loved it! The VES (Virtual Exploration Space) was well built, immersive, and even challenging to get through. We will definitely be doing this again as a safe alternative to celebrating our favorite holiday!",
     occupation: "Twitch / Global Internal Events Manager",
   },
   {
-    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040865/utiles/libs/06_desktop_iterkd.jpg",
+    img: img,
     name: "Jennifer Luu",
     pargh:
       " We partnered with Blueprint Studios to provide our employees with a virtual halloween experience instead of hosting an in-person party this year, and our employees loved it! The VES (Virtual Exploration Space) was well built, immersive, and even challenging to get through. We will definitely be doing this again as a safe alternative to celebrating our favorite holiday!",
     occupation: "Twitch / Global Internal Events Manager",
   },
   {
-    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040865/utiles/libs/06_desktop_iterkd.jpg",
+    img: img,
     name: "Jennifer Luu",
     pargh:
       " We partnered with Blueprint Studios to provide our employees with a virtual halloween experience instead of hosting an in-person party this year, and our employees loved it! The VES (Virtual Exploration Space) was well built, immersive, and even challenging to get through. We will definitely be doing this again as a safe alternative to celebrating our favorite holiday!",
@@ -132,7 +150,7 @@ export const marketCards = [
       tag2: "Wedding",
       tag3: "Milestone event",
     },
-    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040865/utiles/libs/06_desktop_iterkd.jpg",
+    img: img6,
   },
   {
     title: "Weddings",
@@ -141,7 +159,7 @@ export const marketCards = [
       tag2: "Wedding",
       tag3: "Milestone event",
     },
-    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040874/utiles/libs/07_desktop_pg3hvz.jpg",
+    img: img7,
   },
   {
     title: "Tradeshows",
@@ -150,7 +168,7 @@ export const marketCards = [
       tag2: "Wedding",
       tag3: "Milestone event",
     },
-    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040910/utiles/libs/01_desktop_nv6kjl.jpg",
+    img: img1,
   },
   {
     title: "Social",
@@ -159,7 +177,7 @@ export const marketCards = [
       tag2: "Wedding",
       tag3: "Milestone event",
     },
-    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040879/utiles/libs/05_desktop_cobyhs.jpg",
+    img: img5,
   },
 ];
 // Market Section data end
@@ -168,39 +186,40 @@ export const marketCards = [
 export const rentalData = {
   title: "Rental Store",
   p1: "Over 300,000 rental",
-  p4: "and accessories, provide us the range to support various large-scale events",
-
-  img1: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040794/utiles/home/section-rental-store-chair-1_hjqyl2.png",
-  img2: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040795/utiles/home/section-rental-store-chair-2_sbi0pi.png",
-  img3: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040798/utiles/home/section-rental-store-chair-3_z75b5z.png",
-  img4: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040799/utiles/home/section-rental-store-table-1_kj7c1c.png",
-  p5: " concurrently.",
   p2: "products with diverse",
   p3: "collections of specialty furnishings, props",
+  p4: "and accessories, provide us the range to support various large-scale events",
+  p5: " concurrently.",
+  
+  
+  img1: img11,
+  img2: img22,
+  img3: img33,
+  img4: img44,
   btntext: "Get In Touch With Us",
 };
 
 export const rentalCards = [
   {
-    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040865/utiles/libs/06_desktop_iterkd.jpg",
+    img: img6,
     tag: "New",
   },
   {
-    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040910/utiles/libs/01_desktop_nv6kjl.jpg",
+    img: img2,
   },
   {
-    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040915/utiles/libs/08_desktop_s0swwk.jpg",
+    img: img88,
   },
   {
-    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040908/utiles/libs/09_desktop_pvob8a.jpg",
+    img: img99,
   },
 ];
 ///rental section data end///
 
 // Dream big secton data start
 export const dreambig = {
-  img1: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709041183/utiles/dream-big_ule9x9.jpg",
-  img2: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709041186/utiles/dream-big-mobile_gvhjkc.jpg",
+  img1: db1,
+  img2: db2,
   btntext: "Let's Craft Magic Together",
   p1: "Click the button to start the journey.",
   p2: "Contact us and let's turn your ideas into extraordinary experiences.",
@@ -221,19 +240,19 @@ export const socialData = {
 };
 export const blogData = [
   {
-    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040910/utiles/libs/01_desktop_nv6kjl.jpg",
+    img: img1,
     title:
       "A Picturesque Day with Blueprint Studios: Showcasing Our New Wooden Furniture Collection",
     desc: "In the heart of the great outdoors, with nature as our backdrop, Blueprint Studios embarked on a creative journey",
   },
   {
-    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040865/utiles/libs/06_desktop_iterkd.jpg",
+    img: img6,
     title:
       "A Picturesque Day with Blueprint Studios: Showcasing Our New Wooden Furniture Collection",
     desc: "In the heart of the great outdoors, with nature as our backdrop, Blueprint Studios embarked on a creative journey",
   },
   {
-    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040910/utiles/libs/01_desktop_nv6kjl.jpg",
+    img: img1,
     title:
       "A Picturesque Day with Blueprint Studios: Showcasing Our New Wooden Furniture Collection",
     desc: "In the heart of the great outdoors, with nature as our backdrop, Blueprint Studios embarked on a creative journey",
@@ -242,60 +261,60 @@ export const blogData = [
 
 export const instafeeds = [
   {
-    image: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040910/utiles/libs/01_desktop_nv6kjl.jpg",
+    image: img1,
   },
   {
-    image: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040910/utiles/libs/01_desktop_nv6kjl.jpg",
+    image: img2,
   },
   {
-    image: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040915/utiles/libs/08_desktop_s0swwk.jpg",
+    image: img8,
   },
   {
-    image: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040908/utiles/libs/09_desktop_pvob8a.jpg",
+    image: img9,
   },
   {
-    image: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040910/utiles/libs/01_desktop_nv6kjl.jpg",
+    image: img1,
   },
   {
-    image: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040910/utiles/libs/01_desktop_nv6kjl.jpg",
+    image: img2,
   },
   {
-    image: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040915/utiles/libs/08_desktop_s0swwk.jpg",
+    image: img8,
   },
   {
-    image: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040910/utiles/libs/01_desktop_nv6kjl.jpg",
+    image: img1,
   },
   {
-    image: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040908/utiles/libs/09_desktop_pvob8a.jpg",
+    image: img9,
   },
 ];
 export const pinfeeds = [
   {
-    image: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040908/utiles/libs/09_desktop_pvob8a.jpg",
+    image: img9,
   },
   {
-    image: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040910/utiles/libs/01_desktop_nv6kjl.jpg",
+    image: img1,
   },
   {
-    image: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040910/utiles/libs/01_desktop_nv6kjl.jpg",
+    image: img2,
   },
   {
-    image: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040915/utiles/libs/08_desktop_s0swwk.jpg",
+    image: img8,
   },
   {
-    image: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040910/utiles/libs/01_desktop_nv6kjl.jpg",
+    image: img1,
   },
   {
-    image: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040908/utiles/libs/09_desktop_pvob8a.jpg",
+    image: img9,
   },
 ];
 // Social section data end /////
 
 // footer content start /////
 export const footerData = {
-  logob: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040928/utiles/logo/logo-bps-b_wnegyd.svg",
-  logop: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040930/utiles/logo/logo-bps-p_xjhbxm.svg",
-  logos: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040932/utiles/logo/logo-bps-s_amm3nt.svg",
+  logob: logob,
+  logop: logop,
+  logos: logos,
   title: "If it's not remarkable, it's invisible.",
   copyright:
     "© BLUEPRINT STUDIOS. ALL RIGHTS RESERVED. - If it's not remarkable, it's invisible is a trademark of blueprint studios.",
@@ -338,7 +357,7 @@ export const address = [
 
 export const  Slider = [
   {
-    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040642/utiles/about/google-workspace_cvvjsf.jpg",
+    img: googleimg,
     title: "Google Workspace",
     tags:{
       tag1:"Personal",
@@ -350,7 +369,7 @@ export const  Slider = [
       btntext: "Check out our portfolio"
   },
   {
-    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040865/utiles/libs/06_desktop_iterkd.jpg",
+    img: img6,
     title: "White Wedding",
     tags:{
       tag1:"Personal",
@@ -362,7 +381,7 @@ export const  Slider = [
       btntext: "Check out our portfolio"
   },
   {
-    img: "https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040642/utiles/about/google-workspace_cvvjsf.jpg",
+    img: googleimg,
     title: "Google Workspace",
     tags:{
       tag1:"Personal",
