@@ -16144,8 +16144,9 @@ var require_app2 = __commonJS({
 
     const triggerSplitWordAnimation = document.querySelector(".triggerSplitWordAnimation");
     triggerSplitWordAnimation.addEventListener("click", () => {
-      splitWords();
       splitChars();
+      splitWords();
+      
     } );
     
     document.addEventListener("pjax:complete", whenContainerReady);

@@ -47,9 +47,10 @@ const StudioSection = () => {
       setDataItems(fetchedItems);
       //trigger animation on data load
       setTimeout(() => {
-        document.querySelector(".triggerSplitWordAnimation").click();
         document.querySelector(".updateWatchedTrigger").click();
-      }, 3000);
+        document.querySelector(".triggerSplitWordAnimation").click();
+       
+      }, 1000);
     }
 
     fetchDataItems();
