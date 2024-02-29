@@ -8,28 +8,28 @@ function Blogs() {
   const [data, setData] = React.useState([]);
   const getImageURL = (src) => `https://static.wixstatic.com/media/${src}`;
 
-  
+
   const wixClient = createClient({
-    modules: { collections, items} ,
+    modules: { collections, items },
     auth: OAuthStrategy({ clientId: '04038da0-732b-471d-babe-4e90ad785740' })
   });
-  
- 
 
-  async function queryDataItems() {
+
+
+  const queryDataItems = React.useCallback(async () => {
     let options = {
       dataCollectionId: "HomeTopSectionData"
     }
     const { items } = await wixClient.items.queryDataItems(options).eq("title", "TopSection").find();
     console.log(items, "all data")
-  }
+  },[wixClient.items])
 
-  
- // async function getDataCollection(dataCollectionId, options) {
+
+  // async function getDataCollection(dataCollectionId, options) {
   //   const response = await wixClient.collections.getDataCollection("HomeContent", options);
   //   console.log(response,"resp");
   // }
-  const getBlogData = async () => {
+  const getBlogData =  React.useCallback(async () => {
     const myWixClient = await createClient({
       modules: { posts, tags },
       auth: OAuthStrategy({
@@ -49,7 +49,7 @@ function Blogs() {
         "CONTENT",
       ],
     });
-console.log(post);
+    console.log(post);
     const blogData = [];
 
     // Cover Image
@@ -151,12 +151,14 @@ console.log(post);
     }
 
     setData(blogData);
-  };
+  },[])
+  // getDataCollection();
+
   React.useEffect(() => {
     getBlogData();
-    // getDataCollection();
     queryDataItems();
-  }, []);
+  }, [getBlogData, queryDataItems]);
+
   return (
     <div>
       <h1>Blog</h1>
