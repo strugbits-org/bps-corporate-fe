@@ -1,3 +1,4 @@
+import video1 from "../../utilis/images/lib/video.mp4#t=0.01"
 
 export const Contact = {
     email: "info@blueprintstudios.com",
@@ -35,7 +36,7 @@ export const Contact = {
 }
 
 export const pageData ={
-  video: "https://res.cloudinary.com/dzk0coq3y/video/upload/v1709037609/video_qiqpq0.mp4",
+  video: video1,
  title: "Tried + True",
  desc1: "We are a customer-focused, industry leader with a streamlined approach to event design and production. We handle every step of the process in-house from concept logistics, space-planning, and rendering to graphics, printing, custom fabrication, furnishings, and on-site installation.",
  desc2: "With fully operational offices, showrooms and warehouses in San Francisco (our headquarters) and Las Vegas, our reachextends throughout the United States and internationally.",

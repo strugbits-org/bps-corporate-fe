@@ -1,5 +1,6 @@
 import React from "react";
 import ContactForm from "../common/ContactForm";
+import video1 from "../utilis/images/lib/video.mp4#t=0.01"
 const ContactUs = () => {
   return (
     <>
@@ -35,8 +36,8 @@ const ContactUs = () => {
         </div>
         <div className="container-img bg-img">
           <video
-            data-src="https://res.cloudinary.com/dzk0coq3y/video/upload/v1709037609/video_qiqpq0.mp4"
-            src="https://res.cloudinary.com/dzk0coq3y/video/upload/v1709037609/video_qiqpq0.mp4"
+            data-src={video1}
+            src={video1}
             data-preload
             autoPlay
             loop

@@ -2,6 +2,10 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import ProductCartSlider from "../commonComponents/ProductCartSlider";
 import SocialVerticalBar from "./SocialVerticalBar";
+import img1 from "../../utilis/images/lib/06_desktop.jpg";
+import img2 from "../../utilis/images/lib/02_desktop.jpg";
+import img8 from "../../utilis/images/lib/08_desktop.jpg";
+import img4 from "../../utilis/images/lib/04_desktop.jpg";
 import { postes } from "../../common/constats/blogData";
 import DelayedLink from "../../common/DelayedLink";
 
@@ -10,7 +14,7 @@ const PostDetails = () => {
 
   const post = postes.find((post) => post.id === params.id);
 
-  console.log("Post here", post);
+  // console.log("Post here", post);
 
 
   return (
@@ -79,7 +83,7 @@ const PostDetails = () => {
                     {post.p2}
                   </p>
 
-                  <img src="https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040865/utiles/libs/06_desktop_iterkd.jpg" alt="" />
+                  <img src={img1} alt="" />
 
                   <div className="slider-blog-post">
                     <div className="swiper-container">
@@ -87,7 +91,7 @@ const PostDetails = () => {
                         <div className="swiper-slide">
                           <div className="container-img">
                             <img
-                              src="https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040865/utiles/libs/06_desktop_iterkd.jpg"
+                              src={img1}
                               data-preload
                               className="media"
                               alt=""
@@ -97,7 +101,7 @@ const PostDetails = () => {
                         <div className="swiper-slide">
                           <div className="container-img">
                             <img
-                              src="https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040865/utiles/libs/06_desktop_iterkd.jpg"
+                              src={img2}
                               data-preload
                               className="media"
                               alt=""
@@ -107,7 +111,7 @@ const PostDetails = () => {
                         <div className="swiper-slide">
                           <div className="container-img">
                             <img
-                              src="https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040915/utiles/libs/08_desktop_s0swwk.jpg"
+                              src={img8}
                               data-preload
                               className="media"
                               alt=""
@@ -117,7 +121,7 @@ const PostDetails = () => {
                         <div className="swiper-slide">
                           <div className="container-img">
                             <img
-                              src="https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040850/utiles/libs/04_desktop_rqwz5o.jpg"
+                              src={img4}
                               data-preload
                               className="media"
                               alt=""

@@ -1,23 +1,40 @@
+import React from 'react';
 
-const HeroSection = () => {
-  return (
-    <section className="home-intro" data-aos="d:loop">
-    <div className="container-img">
-      <img
-        src="https://res.cloudinary.com/dzk0coq3y/image/upload/v1709040865/utiles/libs/06_desktop_iterkd.jpg"
-        data-preload
-        className="media"
-        alt=""
-        data-parallax-top
-        data-translate-y="50%"
-      />
-    </div>
-    <p className="fs--14 font-2 blue-1">
-      © Blueprint studios. All rights reserved.
-    </p>
-  </section>
-  
-  )
+function getFullImageURL(imageSRC) {
+    if (imageSRC.startsWith("wix:image://v1/")) {
+        const wixImageURL = "https://static.wixstatic.com/media/";
+        const wixLocalURL = imageSRC.replace('wix:image://v1/', '').split('/')[0];
+        return wixImageURL + wixLocalURL;
+    } else {
+        return imageSRC;
+    }
 }
 
-export default HeroSection
+const HeroSection = ({ items }) => {
+    const imageData = items.map(item => ({
+        topImage: getFullImageURL(item.data.topimage),
+        heroSectionTitle: item.data.heroSectionTitle
+    }));
+
+    return (
+        <section className="home-intro" data-aos="d:loop">
+            {imageData.map((data, index) => (
+                <div key={index} className="container-img">
+                    <img
+                        src={data.topImage}
+                        data-preload
+                        className="media"
+                        alt=""
+                        data-parallax-top
+                        data-translate-y="50%"
+                    />
+                    <p className="fs--14 font-2 blue-1">
+                        {data.heroSectionTitle}
+                    </p>
+                </div>
+            ))}
+        </section>
+    );
+};
+
+export default HeroSection;

@@ -1,4 +1,7 @@
-
+import React from 'react'
+import image1 from "../utilis/images/svg/btn-chat-1.svg"
+import image2 from "../utilis/images/svg/btn-chat-2.svg"
+import image3 from "../utilis/images/svg/btn-chat-3.svg"
 const Chat = () => {
   return (
     <div className="chat" data-cursor-style="off">
@@ -7,7 +10,7 @@ const Chat = () => {
         <span>Hello?</span>
         <div className="container-img btn-top">
           <img
-            src="https://res.cloudinary.com/dzk0coq3y/image/upload/v1709041132/utiles/svg/btn-chat-1_vet2hk.svg"
+            src={image1}
             data-preload
             className="media"
             alt=""
@@ -16,7 +19,7 @@ const Chat = () => {
         <div className="bg-1"></div>
         <div className="container-img btn-middle">
           <img
-            src="https://res.cloudinary.com/dzk0coq3y/image/upload/v1709041135/utiles/svg/btn-chat-2_e69rqr.svg"
+            src={image2}
             data-preload
             className="media"
             alt=""
@@ -25,7 +28,7 @@ const Chat = () => {
         <div className="bg-2"></div>
         <div className="container-img btn-bottom">
           <img
-            src="https://res.cloudinary.com/dzk0coq3y/image/upload/v1709041138/utiles/svg/btn-chat-3_d7gc5r.svg"
+            src={image3}
             data-preload
             className="media"
             alt=""
@@ -37,7 +40,7 @@ const Chat = () => {
       <div className="container-messages">
         <div className="message">
           <span>
-            Hi, I'm the chatbot from Blueprint Studios. How can I help you?
+            Hi, I’m the chatbot from Blueprint Studios. How can I help you?
           </span>
         </div>
         <div className="message message-sent">
@@ -59,4 +62,4 @@ const Chat = () => {
   )
 }
 
-export default Chat;
+export default Chat
