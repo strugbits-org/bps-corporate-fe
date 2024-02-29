@@ -1,8 +1,50 @@
 import DelayedLink from "../../common/DelayedLink";
-import { marketCards } from "../../common/constats/constats";
+import React, { useEffect, useState } from "react";
+import { createClient, OAuthStrategy } from "@wix/sdk";
+import { collections, items } from "@wix/data";
+
+function getFullImageURL(imageSRC) {
+  if (imageSRC.startsWith("wix:image://v1/")) {
+      const wixImageURL = "https://static.wixstatic.com/media/";
+      const wixLocalURL = imageSRC.replace('wix:image://v1/', '').split('/')[0];
+      return wixImageURL + wixLocalURL;
+  } else {
+      return imageSRC;
+  }
+};
 
 const MarketSection = () => {
   let data_delay = 0;
+
+  const [dataItems, setDataItems] = useState([]);
+
+  const firstItem = dataItems[0];
+  const title = firstItem ? firstItem.data.title : "";
+
+  useEffect(() => {
+    async function fetchDataItems() {
+      const wixClient = createClient({
+        modules: { collections, items },
+        auth: OAuthStrategy({
+          clientId: "04038da0-732b-471d-babe-4e90ad785740",
+        }),
+      });
+
+      let options = {
+        dataCollectionId: "MarketSection",
+      };
+
+      const { items: fetchedItems } = await wixClient.items
+        .queryDataItems(options)
+        .eq("title", "Markets")
+        .find();
+
+      setDataItems(fetchedItems);
+    }
+
+    fetchDataItems();
+  }, []);
+
   return (
     <section className="section-markets">
       <div className="container-fluid">
@@ -12,12 +54,12 @@ const MarketSection = () => {
               className="fs--60 fs-phone-40 blue-1 text-center split-chars"
               data-aos="d:loop"
             >
-              Markets
+              {title}
             </h2>
           </div>
           <div className="col-12 mt-lg-50 mt-tablet-40 mt-phone-35">
             <ul className="list-markets list-projects font-60 grid-lg-25 grid-tablet-50">
-              {marketCards.map((data, index) => {
+              {dataItems.map((data, index) => {
                 data_delay += 50;
                 
                 return (
@@ -40,7 +82,7 @@ const MarketSection = () => {
                         data-cursor-style="view"
                       >
                         <img
-                          src={data.img}
+                          src={getFullImageURL(data.data.image)}
                           data-preload
                           className="media"
                           alt=""
@@ -48,10 +90,10 @@ const MarketSection = () => {
                       </div>
                       <div className="container-text">
                         <h3 className="title-project split-words">
-                          {data.title}
+                          {data.data.cardname}
                         </h3>
                         <ul className="list-tags">
-                          {Object.values(data.tags).map((tag, index) => (
+                          {Object.values(data.data.tags).map((tag, index) => (
                             <li key={index}>
                               <span>{tag}</span>
                             </li>
