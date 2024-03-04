@@ -1,14 +1,5 @@
 import React from 'react';
-
-function getFullImageURL(imageSRC) {
-    if (imageSRC.startsWith("wix:image://v1/")) {
-        const wixImageURL = "https://static.wixstatic.com/media/";
-        const wixLocalURL = imageSRC.replace('wix:image://v1/', '').split('/')[0];
-        return wixImageURL + wixLocalURL;
-    } else {
-        return imageSRC;
-    }
-}
+import getFullImageURL from "../../common/common_functions/imageURL"
 
 const HeroSection = ({ items }) => {
     const imageData = items.map(item => ({
