@@ -1,4 +1,3 @@
-
 import DelayedLink from "../../../common/DelayedLink";
 import { OAuthStrategy, createClient } from "@wix/sdk";
 import React, { useEffect, useState } from "react";
