@@ -1,7 +1,8 @@
-import React from "react";
 import { Link } from "react-router-dom";
-import { Slider } from "../../common/constats/constats";
-const SliderBanner = () => {
+import getFullImageURL from "../../common/common_functions/imageURL";
+
+const SliderBanner = ({dataItems}) => {
+ 
   return (
     <section className="section-slider-banner">
       <div className="slider-banner banner-about" data-aos="d:loop">
@@ -9,13 +10,13 @@ const SliderBanner = () => {
           {/* <!-- Additional required wrapper --> */}
           <div className="swiper-wrapper">
             {/* <!-- Slides --> */}
-            {Slider.map((data, index) => {
+            {dataItems.map((data, index) => {
               return (
                 <div key={index} className="swiper-slide">
                   <Link to="/">
                     <div className="container-img">
                       <img
-                        src={data.img}
+                        src={getFullImageURL(data.data.image)}
                         data-preload
                         className="media"
                         data-parallax
@@ -25,20 +26,24 @@ const SliderBanner = () => {
                     </div>
 
                     <div className="container-project">
-                      <h4 className="project split-words">{data.title}</h4>
+                      <h4 className="project split-words">
+                        {data.data.sliderTitle}
+                      </h4>
                       <ul className="list-tags">
-                        {Object.values(data.tags).map((tag, index) => (
-                          <li key={index}>
-                            <span>{tag}</span>
-                          </li>
-                        ))}
+                        {data.data.arraystring.map((data, index) => {
+                          return (
+                            <li key={index}>
+                              <span>{data}</span>
+                            </li>
+                          );
+                        })}
                       </ul>
                     </div>
 
                     <div className="container-title">
                       <h3 className="title split-words">
-                        {data.desc1} <br />
-                        {data.desc2}
+                        {data.data.subtitle} <br />
+                        {data.data.subtitle1}
                       </h3>
 
                       <div className="container-btn-bottom">
@@ -46,7 +51,7 @@ const SliderBanner = () => {
                           className="btn-border-white btn-bottom btn-about"
                           data-cursor-style="off"
                         >
-                          <span>{data.btntext}</span>
+                          <span>{data.data.buttonText}</span>
                         </div>
                       </div>
                     </div>

@@ -1,4 +1,3 @@
-// import { ourprojectSlider } from "../../common/constats/constats";
 import DelayedLink from "../../common/DelayedLink";
 import React, { useEffect, useState } from "react";
 import { createClient, OAuthStrategy } from "@wix/sdk";
