@@ -1,8 +1,62 @@
 import DelayedLink from "../../common/DelayedLink";
-import { footerData, address } from "../../common/constats/constats";
 import Newsletter from "../../common/Newsletter";
+import { OAuthStrategy, createClient } from "@wix/sdk";
+import React, { useEffect, useState } from "react";
+import { collections, items } from "@wix/data";
+import getFullImageURL from "../../common/common_functions/imageURL";
 
 const Footer = () => {
+  const [dataItems, setDataItems] = useState([]);
+  const [dataContact, setDataContact] = useState([]);
+  const firstItem = dataItems[0]; // Assuming you want values from the first item
+  const logo1 = firstItem ? firstItem.data.logo1  : "";
+  const logo2 = firstItem ? firstItem.data.logo2  : "";
+  const logo3 = firstItem ? firstItem.data.logo3  : "";
+  const heading = firstItem ? firstItem.data.heading  : "";
+  const copyright = firstItem ? firstItem.data.copyright  : "";
+
+  useEffect(() => {
+    async function fetchDataItems() {
+      const wixClient = createClient({
+        modules: { collections, items },
+        auth: OAuthStrategy({
+          clientId: "04038da0-732b-471d-babe-4e90ad785740",
+        }),
+      });
+
+      let options = {
+        dataCollectionId: "Footer",
+      };
+
+      let contactus = {
+        dataCollectionId: "ContactDetails",
+      }
+
+      const { items: fetchedItems } = await wixClient.items
+        .queryDataItems(options)
+        .eq("title", "footer")
+        .find();
+
+        const { items: fetchedContact } = await wixClient.items
+        .queryDataItems(contactus)
+        .eq("title", "contact")
+        .find();
+
+      setDataItems(fetchedItems);
+      setDataContact(fetchedContact);
+
+      // trigger animation on data load
+      // setTimeout(() => {
+      //   document.querySelector(".updateWatchedTrigger").click();
+      //   document.querySelector(".triggerSplitWordAnimation").click();
+
+      // }, 1000);
+    }
+
+    fetchDataItems();
+   
+  }, []);
+
   return (
     <footer id="footer" data-cursor-style="off">
       <div className="container-fluid">
@@ -11,7 +65,7 @@ const Footer = () => {
             <div className="container-logo">
               <div data-parallax data-end="bottom bottom" className="z-3">
                 <img
-                  src={footerData.logob}
+                src={getFullImageURL(logo1)}            
                   data-preload
                   className="img-b z-3 media"
                   alt=""
@@ -26,7 +80,7 @@ const Footer = () => {
                 className="z-2"
               >
                 <img
-                  src={footerData.logop}
+                  src={getFullImageURL(logo2)}
                   data-preload
                   className="img-p z-2 media"
                   alt=""
@@ -41,7 +95,7 @@ const Footer = () => {
                 className="z-1"
               >
                 <img
-                  src={footerData.logos}
+                  src={getFullImageURL(logo3)}
                   data-preload
                   className="img-s z-1 media"
                   alt=""
@@ -49,7 +103,7 @@ const Footer = () => {
               </div>
             </div>
             <h2 className="fs--60 fs-mobile-50 title-footer white-1 mt-lg-170 mt-mobile-20">
-              {footerData.title}
+              {heading}
             </h2>
           </div>
           <div className="col-lg-5 column-2 pt-lg-65 pt-mobile-50">
@@ -157,17 +211,19 @@ const Footer = () => {
 
             <div className="container-address mt-lg-145 mt-phone-115">
               <ul className="list-address">
-                {address.map((data, index) => {
+                {dataContact.map((data, index) => {
+                
                   return (
+                  
                     <li key={index}>
-                      <h3 className="city">{data.city}</h3>
+                      <h3 className="city">{data.data.city}</h3>
                       <address>
-                        {data.address1} <br />
-                        {data.address2} <br />
-                        {data.address3}
+                        {data.data.address1} <br />
+                        {data.data.address2} <br />
+                        {data.data.address3}
                       </address>
                       <div className="phones">
-                        {Object.values(data.contact).map((phone, index) => (
+                        {Object.values(data.data.phone).map((phone, index) => (
                           <DelayedLink key={index} to="tel:">
                             <span>{phone}</span>
                           </DelayedLink>
@@ -182,7 +238,7 @@ const Footer = () => {
         </div>
         <div className="row row-2 mt-lg-80 mt-mobile-45">
           <div className="col-lg-12 column-1">
-            <p className="fs--14 font-2 white-1">{footerData.copyright}</p>
+            <p className="fs--14 font-2 white-1">{copyright}</p>
           </div>
         </div>
       </div>

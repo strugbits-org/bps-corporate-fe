@@ -1,7 +1,42 @@
 import DelayedLink from "../../common/DelayedLink";
 import { IntroData, ourCommitment } from "../../common/constats/aboutData";
+import React, { useEffect, useState } from "react";
+import { createClient, OAuthStrategy } from "@wix/sdk";
+import { collections, items } from "@wix/data";
+import getFullImageURL from "../../common/common_functions/imageURL";
 
 const IntroSection = () => {
+  const [dataItems, setDataItems] = useState([]);
+
+  const firstItem = dataItems[0];
+  const title1 = firstItem ? firstItem.data.title1: "";
+  const title2 = firstItem ? firstItem.data.title2: "";
+
+
+  useEffect(() => {
+    async function fetchDataItems() {
+      const wixClient = createClient({
+        modules: { collections, items },
+        auth: OAuthStrategy({
+          clientId: "04038da0-732b-471d-babe-4e90ad785740",
+        }),
+      });
+
+      let options = {
+        dataCollectionId: "AboutUsTopSection",
+      };
+
+      const { items: fetchedItems } = await wixClient.items
+        .queryDataItems(options)
+        .eq("title", "aboutustop")
+        .find();
+
+      setDataItems(fetchedItems);
+    }
+
+    fetchDataItems();
+  }, []);
+  console.log(dataItems,"about top data")
   const properties = [
     {
       translateY: "-2.5rem",
@@ -64,7 +99,7 @@ const IntroSection = () => {
             data-start="60% center"
             data-translate-y="20vh"
           >
-            {IntroData.upSecton.title1}
+            {title1}
           </h2>
         </div>
         <div className="wrapper-content z-4 content-2">
