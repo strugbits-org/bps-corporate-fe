@@ -5484,7 +5484,7 @@ body:after {
     right: auto;
     bottom: auto;
     left: 0;
-    background: linear-gradient(-90deg, rgba(255, 255, 255, 0) 0%, rgb(135, 195, 231) 100%);
+    /* background: linear-gradient(-90deg, rgba(255, 255, 255, 0) 0%, rgb(135, 195, 231) 100%); */
     z-index: 5;
   }
   .container-slider-produtcts .slider-featured-products:after {
@@ -5497,7 +5497,7 @@ body:after {
     right: 0;
     bottom: auto;
     left: auto;
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgb(135, 195, 231) 100%);
+    /* background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgb(135, 195, 231) 100%); */
     z-index: 5;
   }
 }

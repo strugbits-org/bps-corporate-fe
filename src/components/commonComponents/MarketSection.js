@@ -61,7 +61,7 @@ const MarketSection = () => {
                     data-delay-desktop={data_delay.toString()}
                   >
                     <DelayedLink
-                      to="/market-post"
+                      to={`/market-post/${data.data.slug}`}
                       className="market-link project-link"
                       attributes={{
                       "data-cursor-style":"view",
@@ -84,11 +84,11 @@ const MarketSection = () => {
                           {data.data.cardname}
                         </h3>
                         <ul className="list-tags">
-                          {Object.values(data.data.tags).map((tag, index) => (
+                          {data.data.marketTags.map((tag,index) => (
                             <li key={index}>
                               <span>{tag}</span>
                             </li>
-                          ))}
+                          ))};
                         </ul>
                       </div>
                     </DelayedLink>
