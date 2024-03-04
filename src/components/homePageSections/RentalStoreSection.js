@@ -15,7 +15,7 @@ const RentalStoreSection = () => {
   const title = firstItem ? firstItem.data.title : "";
   const descriptionText = firstItem ? firstItem.data.descriptionText : "";
   const descriptionImages = firstItem ? firstItem.data.descriptionImages : "";
-console.log(dataItems, "heereerere")
+
   useEffect(() => {
     async function fetchDataItems() {
       const wixClient = createClient({

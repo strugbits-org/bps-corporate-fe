@@ -1,7 +1,43 @@
-import React from "react";
 import ContactForm from "../common/ContactForm";
-import video1 from "../utilis/images/lib/video.mp4#t=0.01"
+import video1 from "../utilis/images/lib/video.mp4#t=0.01";
+import React, { useEffect, useState } from "react";
+import { createClient, OAuthStrategy } from "@wix/sdk";
+import { collections, items } from "@wix/data";
+
 const ContactUs = () => {
+  const [dataItems, setDataItems] = useState([]);
+  const firstItem = dataItems[0];
+  const title = firstItem ? firstItem.data.title : "";
+  const description1  = firstItem ? firstItem.data.description1  : "";
+  const description2  = firstItem ? firstItem.data.description2  : "";
+  const copyrightText  = firstItem ? firstItem.data.copyrightText  : "";
+  const bottomDescription  = firstItem ? firstItem.data.bottomDescription  : "";
+  // const backgroundVideo  = firstItem ? firstItem.data.backgroundVideo  : "";
+
+  useEffect(() => {
+    async function fetchDataItems() {
+      const wixClient = createClient({
+        modules: { collections, items },
+        auth: OAuthStrategy({
+          clientId: "04038da0-732b-471d-babe-4e90ad785740",
+        }),
+      });
+
+      let options = {
+        dataCollectionId: "ContactUsContent",
+      };
+
+      const { items: fetchedItems } = await wixClient.items
+        .queryDataItems(options)
+        .eq("title", "Tried + True")
+        .find();
+
+      setDataItems(fetchedItems);
+    }
+
+    fetchDataItems();
+  }, []);
+  console.log(dataItems,"contact us data")
   return (
     <>
       <section className="contact-intro" data-aos="d:loop">
@@ -12,23 +48,17 @@ const ContactUs = () => {
                 className="fs--165 title-contact white-1 split-chars"
                 data-aos="d:loop"
               >
-                Tried + True
+                {title}
               </h1>
               <div className="container-text fs--25 lh-140 fs-tablet-18 white-1 mt-15">
                 <p data-aos="fadeInUp .8s ease-out-cubic .8s, d:loop">
-                  We are a customer-focused, industry leader with a streamlined
-                  approach to event design and production. We handle every step
-                  of the process in-house from concept logistics,
-                  space-planning, and rendering to graphics, printing, custom
-                  fabrication, furnishings, and on-site installation.
+                 {description1}
                 </p>
                 <p
                   className="mt-lg-35 mt-mobile-15"
                   data-aos="fadeInUp .8s ease-out-cubic .9s, d:loop"
                 >
-                  With fully operational offices, showrooms and warehouses in
-                  San Francisco (our headquarters) and Las Vegas, our reach
-                  extends throughout the United States and internationally.
+                  {description2}
                 </p>
               </div>
             </div>
@@ -61,13 +91,12 @@ const ContactUs = () => {
           <div className="row mt-135 no-mobile">
             <div className="col-lg-6">
               <p className="fs--14 font-2 white-1">
-                © Blueprint studios. All rights reserved.
+                {copyrightText}
               </p>
             </div>
             <div className="col-lg-6 flex-end">
               <p className="fs--14 font-2 white-1">
-                If it's not remarkable, it's invisible is a trademark of
-                blueprint studios.
+                {bottomDescription}
               </p>
             </div>
           </div>

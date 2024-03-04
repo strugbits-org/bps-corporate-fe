@@ -1,6 +1,42 @@
 import DelayedLink from "../../common/DelayedLink";
-import { ourFamily } from "../../common/constats/aboutData";
+import { OAuthStrategy, createClient } from "@wix/sdk";
+import React, { useEffect, useState } from "react";
+import { collections, items } from "@wix/data";
+import getFullImageURL from "../../common/common_functions/imageURL";
+
 const OurFamily = () => {
+  const [dataItems, setDataItems] = useState([]);
+  const firstItem = dataItems[0];
+  const title = firstItem ? firstItem.data.title : "";
+
+  useEffect(() => {
+    async function fetchDataItems() {
+      const wixClient = createClient({
+        modules: { collections, items },
+        auth: OAuthStrategy({
+          clientId: "04038da0-732b-471d-babe-4e90ad785740",
+        }),
+      });
+
+      let options = {
+        dataCollectionId: "AboutUsRestOfFamily",
+      };
+
+      const { items: fetchedItems } = await wixClient.items
+        .queryDataItems(options)
+        .eq("title", "Meet the rest of the family")
+        .find();
+
+      setDataItems(fetchedItems);
+      //trigger animation on data load
+      setTimeout(() => {
+        document.querySelector(".updateWatchedTrigger").click();
+        document.querySelector(".triggerSplitWordAnimation").click();
+      }, 1000);
+    }
+    fetchDataItems();
+  }, []);
+
   return (
     <section className="about-meet-the-rest-of-the-family pt-lg-245 pt-mobile-205">
       <div className="container-fluid">
@@ -10,18 +46,18 @@ const OurFamily = () => {
               className="fs--80 blue-1 text-center split-words"
               data-aos="d:loop"
             >
-              {ourFamily.title}
+              {title}
             </h2>
           </div>
           <div className="col-lg-12 mt-lg-80 mt-mobile-40">
             <ul className="list-family">
-              {ourFamily.Cards.map((data, index) => {
+              {dataItems.map((data, index) => {
                 return (
                   <li key={index} className="list-item item-01">
                     <div className="content">
                       <div className="container-img logo-img">
                         <img
-                          src={data.img1}
+                          src={getFullImageURL(data.data.logo)}
                           data-preload
                           className="media"
                           data-aos="scaleOut
@@ -34,7 +70,7 @@ const OurFamily = () => {
                         data-aos="scaleOut .8s ease-out-cubic 0s, d:loop"
                       >
                         <img
-                          src={data.img2}
+                          src={getFullImageURL(data.data.image)}
                           data-preload
                           className="media"
                           data-parallax
@@ -43,9 +79,9 @@ const OurFamily = () => {
                         />
                       </div>
                       <div className="container-text">
-                        <p>{data.p1}</p>
-                        <p>{data.p2}</p>
-                        <p>{data.p3}</p>
+                        <p>{data.data.paragraph1}</p>
+                        <p>{data.data.paragraph2}</p>
+                        <p>{data.data.paragraph3}</p>
                       </div>
                       <div className="container-btn">
                         <DelayedLink
@@ -55,7 +91,7 @@ const OurFamily = () => {
                             "data-cursor-style": "off",
                           }}
                         >
-                          <span>{data.btntext}</span>
+                          <span>{data.data.buttonText}</span>
                         </DelayedLink>
                       </div>
                     </div>
