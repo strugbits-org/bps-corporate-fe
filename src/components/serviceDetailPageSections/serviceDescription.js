@@ -1,7 +1,8 @@
-import { posts } from "../../common/constats/serviceData";
+import getFullImageURL from "../../common/common_functions/imageURL";
 
-const serviceDescription = () => {
+const serviceDescription = ({data}) => {
   return (
+    data && data.length > 0 &&
     <section className="services-post-description pt-lg-210 pt-tablet-105 pt-phone-200">
       <div className="container-fluid">
         <div className="row">
@@ -15,13 +16,13 @@ const serviceDescription = () => {
               className="list-services grid-lg-25 grid-md-50"
               data-aos="d:loop"
             >
-              {posts.map((data, index) => {
+              {data.map((service, index) => {
                 return (
                   <li key={index} className="grid-item">
                     <div className="content">
                       <div className="container-img">
                         <img
-                          src={data.img}
+                          src={getFullImageURL(service.image)}
                           data-preload
                           className="media"
                           alt=""
@@ -29,9 +30,9 @@ const serviceDescription = () => {
                       </div>
                       <div className="container-text">
                         <h3 className="service-name split-words">
-                          {data.title}
+                          {service.title}
                         </h3>
-                        <p className="service-description">{data.desc}</p>
+                        <p className="service-description">{service.description}</p>
                       </div>
                     </div>
                   </li>

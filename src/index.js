@@ -54,21 +54,21 @@ const router = createBrowserRouter([
         element: <ServicePostPage />,
       },
       {
-        path: "services-post/:id",
+        path: "services-post/:slug",
         element: <ServicePostPage />,
       },
       {
-        path: "market-post/:id",
+        path: "market-post/:slug",
         element: <MarketPost />,
       },
       {
        
-        path: "portfolio-post/:id", 
+        path: "portfolio-post/:slug", 
         element: <PortfolioPost />,
       },
       {
        
-        path: "blog-post/:id", 
+        path: "blog-post/:slug", 
         element: <BlogPost/>,
       },
       //////////// private route start ///////////////////////

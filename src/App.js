@@ -11,15 +11,14 @@ function App() {
   const location = useLocation();
   const pathname = location.pathname.trim() === "/" ? "home" : location.pathname.substring(1); // Remove leading slash
   const cleanPath = pathname.split("/")[0].trim();
-    const reloadTrigger = React.useRef();
     useEffect(() => {
-      reloadTrigger.current.click();
+      document.querySelector(".reloadScript").click();
     },[location.pathname]);
   return (
     <div>
       
       {/* helpers */}
-      <span ref={reloadTrigger} className="reloadScript d-none"></span>
+      <span className="reloadScript d-none"></span>
       <span className="updateWatchedTrigger d-none"></span>
       <span className="triggerSplitWordAnimation d-none"></span>
       <Loading />
