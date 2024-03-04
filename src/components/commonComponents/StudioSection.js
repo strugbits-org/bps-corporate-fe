@@ -1,18 +1,7 @@
 import { OAuthStrategy, createClient } from "@wix/sdk";
 import React, { useEffect, useState } from "react";
 import { collections, items } from "@wix/data";
-
-const getFullImageURL = (imageSRC) => {
-
-  
-  if (imageSRC && imageSRC.startsWith("wix:image://v1/")) {
-    const wixImageURL = "https://static.wixstatic.com/media/";
-    const wixLocalURL = imageSRC.replace("wix:image://v1/", "").split("/")[0];
-    return wixImageURL + wixLocalURL;
-  } else {
-    return imageSRC;
-  }
-};
+import getFullImageURL from "../../common/common_functions/imageURL";
 
 const StudioSection = () => {
   const [dataItems, setDataItems] = useState([]);
@@ -55,7 +44,7 @@ const StudioSection = () => {
 
     fetchDataItems();
   }, []);
-
+  
   return (
     <section className="section-studios">
       <div className="container-fluid">
