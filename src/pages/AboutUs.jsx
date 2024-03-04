@@ -46,7 +46,7 @@ const AboutUs = () => {
     <IntroSection/>
     <OurDream/>
     <OurFamily/>
-    <SliderBanner dataItems={dataItems}/>
+    <SliderBanner />
     <AboutBottomSection dataItems={dataItems}/>
     <SocialSection/>
     </>
