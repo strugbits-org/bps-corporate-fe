@@ -1,16 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { createClient, OAuthStrategy } from "@wix/sdk";
 import { collections, items } from "@wix/data";
-
-function getFullImageURL(imageSRC) {
-  if (imageSRC.startsWith("wix:image://v1/")) {
-      const wixImageURL = "https://static.wixstatic.com/media/";
-      const wixLocalURL = imageSRC.replace('wix:image://v1/', '').split('/')[0];
-      return wixImageURL + wixLocalURL;
-  } else {
-      return imageSRC;
-  }
-};
+import getFullImageURL from "../../common/common_functions/imageURL";
 
 const PeopleReviewSLider = () => {
   const [dataItems, setDataItems] = useState([]);
