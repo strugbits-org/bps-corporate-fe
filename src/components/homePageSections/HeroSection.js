@@ -6,7 +6,7 @@ const HeroSection = ({ items }) => {
         topImage: getFullImageURL(item.data.topimage),
         heroSectionTitle: item.data.heroSectionTitle
     }));
-
+    
     return (
         <section className="home-intro" data-aos="d:loop">
             {imageData.map((data, index) => (
