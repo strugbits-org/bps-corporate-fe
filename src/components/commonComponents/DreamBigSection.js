@@ -19,9 +19,8 @@ const DreamBigSection = () => {
     dispatch(fetchDreamBigSection());
     // trigger animation on data load
     setTimeout(() => {
-      document.querySelector(".updateWatchedTrigger").click();
-      document.querySelector(".triggerSplitWordAnimation").click();
-    }, 1000);
+      document.querySelector(".homeAnimationsTrigger").click();
+    }, 1500);
   }, [dispatch]);
 
   return (
