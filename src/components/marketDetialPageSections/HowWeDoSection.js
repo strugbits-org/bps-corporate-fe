@@ -1,7 +1,8 @@
-import { howWeDoSection } from "../../common/constats/marketData";
+import getFullImageURL from "../../common/common_functions/imageURL";
 
-const HowWeDoSection = () => {
+const HowWeDoSection = ({data}) => {
   return (
+    data &&
     <section className="market-post-how-we-do-it pt-lg-270 pt-tablet-100 pt-phone-150">
       <div className="container-fluid">
         <div className="row">
@@ -10,13 +11,13 @@ const HowWeDoSection = () => {
               How we do it
             </h2>
             <ul className="list-how-we-do-it mt-lg-50 mt-mobile-40">
-              {howWeDoSection.map((data, index) => {
+              {data.howWeDoItSections.map((data, index) => {
                 return (
                   <li key={index}>
                     <div className="list-column-img">
                       <div className="container-img" data-aos="d:loop">
                         <img
-                          src={data.img}
+                          src={getFullImageURL(data.image)}
                           data-preload
                           className="media"
                           alt=""
@@ -36,7 +37,7 @@ const HowWeDoSection = () => {
                         className="column-paragraph"
                         data-aos="fadeInUp .6s ease-out-cubic .3s, d:loop"
                       >
-                        {data.desc}
+                        {data.description}
                       </p>
                     </div>
                   </li>

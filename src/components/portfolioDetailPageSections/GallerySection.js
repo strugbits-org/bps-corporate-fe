@@ -1,7 +1,7 @@
 import React from "react";
 import ProductCartSlider from "../commonComponents/ProductCartSlider";
 import {gallery} from "../../common/constats/portfolioData";
-const GallerySection = () => {
+const GallerySection = ({data}) => {
   return (
     <section className="portfolio-post-photo-gallery pt-lg-165 pt-tablet-105 pt-phone-145">
       <div className="container-fluid">
