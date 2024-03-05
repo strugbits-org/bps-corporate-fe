@@ -1,5 +1,6 @@
 const ServiceIntro = ({data}) => {
   return (
+    data &&
     <>
       <section className="services-post-intro">
         <div

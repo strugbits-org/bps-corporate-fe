@@ -16,6 +16,7 @@ import { useLocation, useParams } from "react-router-dom";
 const ServicePostPage = () => {
   const location = useLocation(); 
   const [serviceData, setServiceData] = useState(null);
+  
   const params = useParams();
   useEffect(() => {
     setServiceData(null);
@@ -53,12 +54,8 @@ const ServicePostPage = () => {
 
   return (
     <>
-      {serviceData && (
-        <>
-          <ServiceIntro data={serviceData} />
-          <ServiceDescription data={serviceData.subServices} />
-        </>
-      )}
+      <ServiceIntro data={serviceData} />
+      <ServiceDescription data={serviceData} />
 
       {/* commonComponents */}
       <SliderBanner />
