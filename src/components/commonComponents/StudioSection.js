@@ -11,12 +11,6 @@ const StudioSection = () => {
 
     useEffect(() => {
     dispatch(fetchStudioSection());
-    //trigger animation on data load
-    setTimeout(() => {
-      document.querySelector(".updateWatchedTrigger").click();
-      document.querySelector(".triggerSplitWordAnimation").click();
-     
-    }, 1000);
   }, [dispatch]);
 
   const [activeIndex, setActiveIndex] = useState(null);
@@ -29,18 +23,19 @@ const StudioSection = () => {
   const title = firstItem ? firstItem.data.title : "";
   const desc = firstItem ? firstItem.data.description : "";
 
-  
   return (
     <section className="section-studios">
       <div className="container-fluid">
         <div className="row row-1">
           <div className="col-lg-2 col-md-6">
+            { title && 
             <h2
               className="fs--90 fs-tablet-40 blue-1 split-chars"
               data-aos="d:loop"
             >
               {title}
             </h2>
+            }
           </div>
           <div className="col-lg-5 col-md-6 offset-lg-5 column-2">
             <p
