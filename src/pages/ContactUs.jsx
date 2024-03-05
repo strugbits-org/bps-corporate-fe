@@ -1,5 +1,4 @@
 import ContactForm from "../common/ContactForm";
-import video1 from "../utilis/images/lib/video.mp4#t=0.01";
 import React, { useEffect, useState } from "react";
 import { createClient, OAuthStrategy } from "@wix/sdk";
 import { collections, items } from "@wix/data";
@@ -13,11 +12,8 @@ const ContactUs = () => {
   const description2  = firstItem ? firstItem.data.description2  : "";
   const copyrightText  = firstItem ? firstItem.data.copyrightText  : "";
   const bottomDescription  = firstItem ? firstItem.data.bottomDescription  : "";
-  const backgroundVideo  = firstItem ? firstItem.data.backgroundVideo  : "";
-  const backgroundVideo1  = firstItem ? getFullVideoURL(firstItem.data.backgroundVideo)  : "";
+  const backgroundVideo  = firstItem ? getFullVideoURL(firstItem.data.backgroundVideo)  : "";
 
-console.log(backgroundVideo,"video url here");
-console.log(backgroundVideo1,"video url after here");
   useEffect(() => {
     async function fetchDataItems() {
       const wixClient = createClient({
@@ -70,8 +66,8 @@ console.log(backgroundVideo1,"video url after here");
         </div>
         <div className="container-img bg-img">
           <video
-            data-src={video1}
-            src={video1}
+            data-src={backgroundVideo}
+            src={backgroundVideo}
             data-preload
             autoPlay
             loop
