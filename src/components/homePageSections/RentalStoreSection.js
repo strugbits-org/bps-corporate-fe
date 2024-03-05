@@ -1,49 +1,33 @@
 import DelayedLink from "../../common/DelayedLink";
-import { OAuthStrategy, createClient } from "@wix/sdk";
 import React, { useEffect, useState } from "react";
-import { collections, items } from "@wix/data";
 import getFullImageURL from "../../common/common_functions/imageURL";
+import { fetchRentalStoreSection } from "../../redux/reducers/homeData";
+import { useDispatch, useSelector } from "react-redux";
 
 const RentalStoreSection = () => {
   let transition = -35;
 
-  const [dataItems, setDataItems] = useState([]);
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.home.rentalStoreData);
+  // const loading = useSelector((state) => state.home.rentalLoading);
+  // const error = useSelector((state) => state.home.error);
+
   const [object, setObject] = useState({});
 
-  const firstItem = dataItems[0]; // Assuming you want values from the first item
+  const firstItem = data[0]; // Assuming you want values from the first item
   const btntext = firstItem ? firstItem.data.buttonText : "";
   const title = firstItem ? firstItem.data.title : "";
   const descriptionText = firstItem ? firstItem.data.descriptionText : "";
   const descriptionImages = firstItem ? firstItem.data.descriptionImages : "";
 
   useEffect(() => {
-    async function fetchDataItems() {
-      const wixClient = createClient({
-        modules: { collections, items },
-        auth: OAuthStrategy({
-          clientId: "04038da0-732b-471d-babe-4e90ad785740",
-        }),
-      });
-
-      let options = {
-        dataCollectionId: "RentalStore",
-      };
-
-      const { items: fetchedItems } = await wixClient.items
-        .queryDataItems(options)
-        .eq("title", "Rental Store")
-        .find();
-
-      setDataItems(fetchedItems);
-    }
-
-    fetchDataItems();
+    dispatch(fetchRentalStoreSection());
     //trigger animation on data load
     setTimeout(() => {
       document.querySelector(".updateWatchedTrigger").click();
       document.querySelector(".triggerSplitWordAnimation").click();
     }, 1000);
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     // Process descriptionImages and update object state
@@ -125,7 +109,7 @@ const RentalStoreSection = () => {
 
           <div className="col-lg-12 column-2 mt-lg-140 mt-mobile-40">
             <ul className="list-rental-store">
-              {dataItems.map((data, index) => {
+              {data.map((data, index) => {
                 const translateYFrom = `${transition - 15 * index}rem`;
                 return (
                   <li
