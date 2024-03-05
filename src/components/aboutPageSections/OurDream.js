@@ -1,42 +1,27 @@
 import DelayedLink from "../../common/DelayedLink";
-import { OAuthStrategy, createClient } from "@wix/sdk";
-import React, { useEffect, useState } from "react";
-import { collections, items } from "@wix/data";
+import React, { useEffect } from "react";
 import getFullImageURL from "../../common/common_functions/imageURL";
+import { fetchOurDreamSection } from "../../redux/reducers/aboutusData";
+import { useDispatch, useSelector } from "react-redux";
 
 const OurDream = () => {
-  const [dataItems, setDataItems] = useState([]);
-  const firstItem = dataItems[0];
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.aboutus.OurDreamData);
+  // const loading = useSelector((state) => state.aboutus.OurDreamLoading);
+  // const error = useSelector((state) => state.aboutus.error);
+
+  const firstItem = data[0];
   const title = firstItem ? firstItem.data.title : "";
   const buttontext = firstItem ? firstItem.data.buttontext : "";
+
   useEffect(() => {
-    async function fetchDataItems() {
-      const wixClient = createClient({
-        modules: { collections, items },
-        auth: OAuthStrategy({
-          clientId: "04038da0-732b-471d-babe-4e90ad785740",
-        }),
-      });
-
-      let options = {
-        dataCollectionId: "AboutusDreamTeamSection",
-      };
-
-      const { items: fetchedItems } = await wixClient.items
-        .queryDataItems(options)
-        .eq("title", "The Dream Team")
-        .find();
-
-      setDataItems(fetchedItems);
-      //trigger animation on data load
-      setTimeout(() => {
-        document.querySelector(".updateWatchedTrigger").click();
-        document.querySelector(".triggerSplitWordAnimation").click();
-      }, 1000);
-    }
-
-    fetchDataItems();
-  }, []);
+    dispatch(fetchOurDreamSection());
+    //trigger animation on data load
+    setTimeout(() => {
+      document.querySelector(".updateWatchedTrigger").click();
+      document.querySelector(".triggerSplitWordAnimation").click();
+    }, 1000);
+  }, [dispatch]);
 
   return (
     <section className="about-dream-team pt-lg-195">
@@ -50,7 +35,7 @@ const OurDream = () => {
           <div className="col-lg-12 mt-lg-70 mt-mobile-40">
             <ul className="list-dream-team grid-lg-25 grid-tablet-50">
               <div className="line-wrapper" data-aos="d:loop">
-                {dataItems.map((data, index) => {
+                {data.map((data, index) => {
                   return (
                     <li key={index} className="grid-item">
                       <div className="wrapper-profile">

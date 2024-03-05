@@ -56,6 +56,8 @@ function App() {
         <script type="module" src={ process.env.PUBLIC_URL + "/js/chat.js"}></script>
         <script type="module" src={ process.env.PUBLIC_URL + "/js/loader.js"}></script>
 
+        <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
+        
         <link rel="stylesheet" href={ process.env.PUBLIC_URL + "/js/utils.css"} />
         <link rel="stylesheet" href={ process.env.PUBLIC_URL + "/js/app.css"} />
       </Helmet>
