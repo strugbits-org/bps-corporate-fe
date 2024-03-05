@@ -50,7 +50,7 @@ const ServicePostPage = () => {
       document.querySelector(".updateWatchedTrigger").click();
       document.querySelector(".triggerSplitWordAnimation").click();
     }, 1500);
-  }, [location]);
+  }, [location,params.slug]);
 
   return (
     <>
