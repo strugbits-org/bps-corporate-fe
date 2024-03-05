@@ -8,42 +8,26 @@ import DreamBigSection from "../components/commonComponents/DreamBigSection";
 import SocialSection from "../components/commonComponents/SocialSection";
 import PeopleReviewSLider from "../components/commonComponents/PeopleReviewSlider";
 import MarketSection from "../components/commonComponents/MarketSection";
-import React, { useEffect, useState } from "react";
-import { createClient, OAuthStrategy } from "@wix/sdk";
-import { collections, items } from '@wix/data';
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchHomeTopData } from "../redux/reducers/homeData";
 
 const Home = () => {
-  const [dataItems, setDataItems] = useState([]);
+  const dispatch = useDispatch();
+  const homeTopData = useSelector((state) => state.home.homeTopData);
+  // const loading = useSelector((state) => state.home.homeToploading);
+  // const error = useSelector((state) => state.home.error);
 
-  useEffect(() => {
-    async function fetchDataItems() {
-      const wixClient = createClient({
-        modules: { collections, items },
-        auth: OAuthStrategy({ clientId: "04038da0-732b-471d-babe-4e90ad785740" }),
-      });
-
-      let options = {
-        dataCollectionId: "HomeTopSectionData",
-      };
-
-      const { items: fetchedItems } = await wixClient.items
-        .queryDataItems(options)
-        .eq("title", "TopSection")
-        .find();
-      
-      setDataItems(fetchedItems);
-    }
-
-    fetchDataItems();
-  }, []);
-
+    useEffect(() => {
+    dispatch(fetchHomeTopData());
+  }, [dispatch]);
 
   return (
     <>
       {/* hero section here */}
-      <HeroSection items={dataItems} />
+      <HeroSection items={homeTopData} />
       {/* form concept section here */}
-      <FormConcept items={dataItems}/>
+      <FormConcept items={homeTopData}/>
       {/* get touch section here */}
       <GetTouchSection />
       {/* studio section here */}

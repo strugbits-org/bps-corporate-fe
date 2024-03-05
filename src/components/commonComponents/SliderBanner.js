@@ -1,35 +1,23 @@
 import { Link } from "react-router-dom";
-import { OAuthStrategy, createClient } from "@wix/sdk";
-import React, { useEffect, useState } from "react";
-import { collections, items } from "@wix/data";
+import React, { useEffect } from "react";
 import getFullImageURL from "../../common/common_functions/imageURL";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchOurFamilySection } from "../../redux/reducers/aboutusData";
 const SliderBanner = () => {
-  const [dataItems, setDataItems] = useState([]);
+  const disptach = useDispatch();
+  const data = useSelector((state) => state.aboutus.SliderData);
+  // const loading = useSelector((state) => state.aboutus.SliderLoading);
+  // const error = useSelector((state) => state.aboutus.error);
+  
   useEffect(() => {
-    async function fetchDataItems() {
-      const wixClient = createClient({
-        modules: { collections, items },
-        auth: OAuthStrategy({
-          clientId: "04038da0-732b-471d-babe-4e90ad785740",
-        }),
-      });
-      let options = {
-        dataCollectionId: "AboutUsSlider",
-      };
-      const { items: fetchedItems } = await wixClient.items
-        .queryDataItems(options)
-        .eq("title", "AboutUsSlider")
-        .find();
-      setDataItems(fetchedItems);
-    }
-    fetchDataItems();
-    //trigger animation on data load
-    // setTimeout(() => {
-    //   document.querySelector(".updateWatchedTrigger").click();
-    //   document.querySelector(".triggerSplitWordAnimation").click();
-    // }, 1000);
-  }, []);
-  console.log(dataItems,"slider data here")
+   disptach(fetchOurFamilySection());
+    // trigger animation on data load
+    setTimeout(() => {
+      document.querySelector(".updateWatchedTrigger").click();
+      document.querySelector(".triggerSplitWordAnimation").click();
+    }, 1000);
+  }, [disptach]);
+
   return (
     <section className="section-slider-banner">
       <div className="slider-banner banner-about" data-aos="d:loop">
@@ -37,7 +25,7 @@ const SliderBanner = () => {
           {/* <!-- Additional required wrapper --> */}
           <div className="swiper-wrapper">
             {/* <!-- Slides --> */}
-            {dataItems.map((data, index) => {
+            {data.map((data, index) => {
               return (
                 <div key={index} className="swiper-slide">
                   <Link to="/">
