@@ -1,40 +1,23 @@
 import DelayedLink from "../../common/DelayedLink";
-import React, { useEffect, useState } from "react";
-import { createClient, OAuthStrategy } from "@wix/sdk";
-import { collections, items } from "@wix/data";
+import React, { useEffect } from "react";
 import getFullImageURL from "../../common/common_functions/imageURL";
-
+import { fetchMarketSection } from "../../redux/reducers/homeData";
+import { useDispatch, useSelector } from "react-redux";
 const MarketSection = () => {
+  
   let data_delay = 0;
 
-  const [dataItems, setDataItems] = useState([]);
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.home.marketData);
+  // const loading = useSelector((state) => state.home.marketLoading);
+  // const error = useSelector((state) => state.home.error);
 
-  const firstItem = dataItems[0];
+  const firstItem = data[0];
   const title = firstItem ? firstItem.data.title : "";
 
   useEffect(() => {
-    async function fetchDataItems() {
-      const wixClient = createClient({
-        modules: { collections, items },
-        auth: OAuthStrategy({
-          clientId: "04038da0-732b-471d-babe-4e90ad785740",
-        }),
-      });
-
-      let options = {
-        dataCollectionId: "MarketSection",
-      };
-
-      const { items: fetchedItems } = await wixClient.items
-        .queryDataItems(options)
-        .eq("title", "Markets")
-        .find();
-
-      setDataItems(fetchedItems);
-    }
-
-    fetchDataItems();
-  }, []);
+    dispatch(fetchMarketSection());
+  }, [dispatch]);
 
   return (
     <section className="section-markets">
@@ -50,9 +33,9 @@ const MarketSection = () => {
           </div>
           <div className="col-12 mt-lg-50 mt-tablet-40 mt-phone-35">
             <ul className="list-markets list-projects font-60 grid-lg-25 grid-tablet-50">
-              {dataItems.map((data, index) => {
+              {data.map((data, index) => {
                 data_delay += 50;
-                
+
                 return (
                   <li
                     key={index}
@@ -64,8 +47,8 @@ const MarketSection = () => {
                       to={`/market-post/${data.data.slug}`}
                       className="market-link project-link"
                       attributes={{
-                      "data-cursor-style":"view",
-                      "data-menu-close":""
+                        "data-cursor-style": "view",
+                        "data-menu-close": "",
                       }}
                     >
                       <div
@@ -84,11 +67,12 @@ const MarketSection = () => {
                           {data.data.cardname}
                         </h3>
                         <ul className="list-tags">
-                          {data.data.marketTags.map((tag,index) => (
+                          {data.data.marketTags.map((tag, index) => (
                             <li key={index}>
                               <span>{tag}</span>
                             </li>
-                          ))};
+                          ))}
+                          ;
                         </ul>
                       </div>
                     </DelayedLink>

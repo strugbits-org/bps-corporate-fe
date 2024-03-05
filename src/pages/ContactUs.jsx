@@ -3,6 +3,7 @@ import video1 from "../utilis/images/lib/video.mp4#t=0.01";
 import React, { useEffect, useState } from "react";
 import { createClient, OAuthStrategy } from "@wix/sdk";
 import { collections, items } from "@wix/data";
+import getFullVideoURL from "../common/common_functions/videoURL";
 
 const ContactUs = () => {
   const [dataItems, setDataItems] = useState([]);
@@ -12,8 +13,11 @@ const ContactUs = () => {
   const description2  = firstItem ? firstItem.data.description2  : "";
   const copyrightText  = firstItem ? firstItem.data.copyrightText  : "";
   const bottomDescription  = firstItem ? firstItem.data.bottomDescription  : "";
-  // const backgroundVideo  = firstItem ? firstItem.data.backgroundVideo  : "";
+  const backgroundVideo  = firstItem ? firstItem.data.backgroundVideo  : "";
+  const backgroundVideo1  = firstItem ? getFullVideoURL(firstItem.data.backgroundVideo)  : "";
 
+console.log(backgroundVideo,"video url here");
+console.log(backgroundVideo1,"video url after here");
   useEffect(() => {
     async function fetchDataItems() {
       const wixClient = createClient({

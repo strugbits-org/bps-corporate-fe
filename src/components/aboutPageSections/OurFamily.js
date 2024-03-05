@@ -1,41 +1,24 @@
 import DelayedLink from "../../common/DelayedLink";
-import { OAuthStrategy, createClient } from "@wix/sdk";
-import React, { useEffect, useState } from "react";
-import { collections, items } from "@wix/data";
+import React, { useEffect } from "react";
 import getFullImageURL from "../../common/common_functions/imageURL";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchOurFamilySection } from "../../redux/reducers/aboutusData";
 
 const OurFamily = () => {
-  const [dataItems, setDataItems] = useState([]);
-  const firstItem = dataItems[0];
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.aboutus.OurFamilyData);
+
+  const firstItem = data[0];
   const title = firstItem ? firstItem.data.title : "";
 
   useEffect(() => {
-    async function fetchDataItems() {
-      const wixClient = createClient({
-        modules: { collections, items },
-        auth: OAuthStrategy({
-          clientId: "04038da0-732b-471d-babe-4e90ad785740",
-        }),
-      });
-
-      let options = {
-        dataCollectionId: "AboutUsRestOfFamily",
-      };
-
-      const { items: fetchedItems } = await wixClient.items
-        .queryDataItems(options)
-        .eq("title", "Meet the rest of the family")
-        .find();
-
-      setDataItems(fetchedItems);
-      //trigger animation on data load
-      setTimeout(() => {
-        document.querySelector(".updateWatchedTrigger").click();
-        document.querySelector(".triggerSplitWordAnimation").click();
-      }, 1000);
-    }
-    fetchDataItems();
-  }, []);
+    dispatch(fetchOurFamilySection());
+    //trigger animation on data load
+    setTimeout(() => {
+      document.querySelector(".updateWatchedTrigger").click();
+      document.querySelector(".triggerSplitWordAnimation").click();
+    }, 1000);
+  }, [dispatch]);
 
   return (
     <section className="about-meet-the-rest-of-the-family pt-lg-245 pt-mobile-205">
@@ -51,7 +34,7 @@ const OurFamily = () => {
           </div>
           <div className="col-lg-12 mt-lg-80 mt-mobile-40">
             <ul className="list-family">
-              {dataItems.map((data, index) => {
+              {data.map((data, index) => {
                 return (
                   <li key={index} className="list-item item-01">
                     <div className="content">

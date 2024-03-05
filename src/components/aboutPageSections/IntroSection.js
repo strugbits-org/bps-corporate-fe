@@ -1,13 +1,16 @@
 import DelayedLink from "../../common/DelayedLink";
-import React, { useEffect, useState } from "react";
-import { createClient, OAuthStrategy } from "@wix/sdk";
-import { collections, items } from "@wix/data";
+import React, { useEffect } from "react";
 import getFullImageURL from "../../common/common_functions/imageURL";
+import { fetchIntroSection } from "../../redux/reducers/aboutusData";
+import { useDispatch, useSelector } from "react-redux";
 
 const IntroSection = () => {
-  const [dataItems, setDataItems] = useState([]);
-
-  const firstItem = dataItems[0];
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.aboutus.IntroData);
+// const loading = useSelector((state) => state.aboutus.IntroLoading);
+  // const error = useSelector((state) => state.aboutus.error);
+  
+  const firstItem = data[0];
   const title1 = firstItem ? firstItem.data.title1 : "";
   const title2 = firstItem ? firstItem.data.title2 : "";
   const buttonText = firstItem ? firstItem.data.buttontext : "";
@@ -17,28 +20,8 @@ const IntroSection = () => {
   const paragraph2 = firstItem ? firstItem.data.paragraph2 : "";
 
   useEffect(() => {
-    async function fetchDataItems() {
-      const wixClient = createClient({
-        modules: { collections, items },
-        auth: OAuthStrategy({
-          clientId: "04038da0-732b-471d-babe-4e90ad785740",
-        }),
-      });
-
-      let options = {
-        dataCollectionId: "AboutUsTopSection",
-      };
-
-      const { items: fetchedItems } = await wixClient.items
-        .queryDataItems(options)
-        .eq("title", "aboutustop")
-        .find();
-
-      setDataItems(fetchedItems);
-    }
-
-    fetchDataItems();
-  }, []);
+    dispatch(fetchIntroSection());
+  }, [dispatch]);
 
   const properties = [
     {
@@ -171,7 +154,7 @@ const IntroSection = () => {
           <div className="row">
             <div className="col-lg-8 offset-lg-2">
               <ul className="list-boards">
-                {dataItems.map((data, index) => {
+                {data.map((data, index) => {
                   const {
                     translateY,
                     rotateTo,
@@ -181,7 +164,7 @@ const IntroSection = () => {
                     translateX,
                     rotateFrom,
                   } = properties[index] || {};
-                
+
                   return (
                     <li
                       key={index}

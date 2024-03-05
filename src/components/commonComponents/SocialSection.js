@@ -1,5 +1,6 @@
+import { Link } from "react-router-dom";
 import DelayedLink from "../../common/DelayedLink";
-import { blogData, socialData, instafeeds, pinfeeds} from "../../common/constats/constats";
+import { blogData, socialData, instafeeds} from "../../common/constats/constats";
 
 const SocialSection = () => {
   return (
@@ -135,66 +136,7 @@ const SocialSection = () => {
                     <i className="icon-pinterest"></i>
                     <h3>{socialData.title}</h3>
                   </div>
-
-                  <ul className="list-blog-lets-get-social">
-                    <li>
-                      <DelayedLink to="/blog-post" className="link-blog">
-                        <div className="container-text">
-                          <h4
-                            className=""
-                            style={{
-                              fontStyle: "bold",
-                              fontSize: "16px",
-                              color: "darkgray",
-                            }}
-                          >
-                            <i className="icon-instagram"></i>
-                            <span>
-                              Blueprint Studios - Event Design and Produc...
-                            </span>
-                          </h4>
-                        </div>
-                      </DelayedLink>
-                    </li>
-                    <li>
-                      <ul className="list-instagram">
-                      {pinfeeds.map((data, index) => {
-                      return (
-                        <li key={index}>
-                          <DelayedLink
-                            to="/"
-                            target="_blank"
-                            attributes={{
-                              "rel":"noopener noreferrer"
-                              }}                          >
-                            <div className="container-img">
-                              <img
-                                src={data.image}
-                                data-preload
-                                className="media"
-                                alt=""
-                              />
-                            </div>
-                          </DelayedLink>
-                        </li>
-                      );
-                    })}
-                      </ul>
-                    </li>
-                    <li>
-                      <DelayedLink to="/blog-post" className="link-blog">
-                        <div className="container-text">
-                          <h4 className="p-card">
-                            <span>Sign up</span>
-                            <i
-                              className="icon-instagram"
-                              style={{ color: "red" }}
-                            ></i>
-                          </h4>
-                        </div>
-                      </DelayedLink>
-                    </li>
-                  </ul>
+                  <Link data-pin-do="embedUser" data-pin-board-width="400" data-pin-scale-height="340" data-pin-scale-width="100" to="https://ro.pinterest.com/blueprintst"></Link>             
                 </div>
               </li>
               {/* Pinterest Feeds end */}
