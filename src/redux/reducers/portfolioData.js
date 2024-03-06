@@ -4,9 +4,15 @@ import { collections, items } from "@wix/data";
 import getFullImageURL from "../../common/common_functions/imageURL";
 
 const initialState = {
-  portfolioData: [],
+  portfolioData: {
+    data : [],
+    marketCategories : [],
+    studioTags : [],
+  },
+  singlePortfolioData: null,
 
-  portfolioLoading: false,
+  portfolioDataLoading: false,
+  singlePortfolioLoading: false,
   error: null,
 };
 
@@ -15,8 +21,48 @@ const wixClient = createClient({
   auth: OAuthStrategy({ clientId: "04038da0-732b-471d-babe-4e90ad785740" }),
 });
 
-export const fetchPortfolioSections = createAsyncThunk(
-  "data/fetchPortfolioSections",
+export const fetchPortfolio = createAsyncThunk(
+  "data/fetchPortfolio",
+  async () => {
+    try {
+      let options = {
+        dataCollectionId: "portfolioItems",
+        includeReferencedItems: ["marketCategory", "studioTags"],
+      };
+
+      const { items: fetchedItems } = await wixClient.items
+        .queryDataItems(options)
+        .find();
+
+      var marketCategoriesArray = [];
+      var studioTagsArray = [];
+      const portfolioArray = fetchedItems.map((item) => {
+        item.data.marketCategory = item.data.marketCategory.cardname;
+        marketCategoriesArray.push(item.data.marketCategory);
+
+        item.data.studioTags = item.data.studioTags.map((tag) => {
+          studioTagsArray.push(tag.cardName);
+          return tag.cardName
+        });
+        item.data.image = getFullImageURL(item.data.image);
+        return item.data;
+      });
+      const uniqueMarketCategories = [...new Map(marketCategoriesArray.map(item => [item, item])).values()];
+      const uniqueStudioTags = [...new Map(studioTagsArray.map(item => [item, item])).values()];
+
+      return {
+        data: portfolioArray,
+        marketCategories: uniqueMarketCategories,
+        studioTags: uniqueStudioTags,
+      };
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
+);
+
+export const fetchSinglePortfolio = createAsyncThunk(
+  "data/fetchSinglePortfolio",
   async (slug) => {
     try {
       let options = {
@@ -49,17 +95,30 @@ const contactUsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      /// Intro Section ////
-      .addCase(fetchPortfolioSections.pending, (state) => {
-        state.portfolioLoading = true;
+      /// Portfolio ////
+      .addCase(fetchPortfolio.pending, (state) => {
+        state.portfolioDataLoading = true;
         state.error = null;
       })
-      .addCase(fetchPortfolioSections.fulfilled, (state, action) => {
-        state.portfolioLoading = false;
+      .addCase(fetchPortfolio.fulfilled, (state, action) => {
+        state.portfolioDataLoading = false;
         state.portfolioData = action.payload;
       })
-      .addCase(fetchPortfolioSections.rejected, (state, action) => {
-        state.portfolioLoading = false;
+      .addCase(fetchPortfolio.rejected, (state, action) => {
+        state.portfolioDataLoading = false;
+        state.error = action.error.message;
+      })
+      /// Single Portfolio ////
+      .addCase(fetchSinglePortfolio.pending, (state) => {
+        state.singlePortfolioLoading = true;
+        state.error = null;
+      })
+      .addCase(fetchSinglePortfolio.fulfilled, (state, action) => {
+        state.singlePortfolioLoading = false;
+        state.singlePortfolioData = action.payload;
+      })
+      .addCase(fetchSinglePortfolio.rejected, (state, action) => {
+        state.singlePortfolioLoading = false;
         state.error = action.error.message;
       });
   },
