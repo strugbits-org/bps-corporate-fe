@@ -1,40 +1,23 @@
-import React, { useEffect, useState } from "react";
-import { createClient, OAuthStrategy } from "@wix/sdk";
-import { collections, items } from "@wix/data";
+import React, { useEffect } from "react";
 import getFullImageURL from "../../common/common_functions/imageURL";
+import { fetchPeopleReviewSlider } from "../../redux/reducers/homeData";
+import { useDispatch, useSelector } from "react-redux";
 
 const PeopleReviewSLider = () => {
-  const [dataItems, setDataItems] = useState([]);
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.home.peopleReviewData);
+  // const loading = useSelector((state) => state.home.peopleReviewLoading);
+  // const error = useSelector((state) => state.home.error);
 
-  const firstItem = dataItems[0];
+  const firstItem = data[0];
   const backbutton = firstItem ? firstItem.data.backbutton : "";
   const buttontext = firstItem ? firstItem.data.buttonText : "";
   const frontbutton = firstItem ? firstItem.data.frontbutton : "";
   const title = firstItem ? firstItem.data.title : "";
 
   useEffect(() => {
-    async function fetchDataItems() {
-      const wixClient = createClient({
-        modules: { collections, items },
-        auth: OAuthStrategy({
-          clientId: "04038da0-732b-471d-babe-4e90ad785740",
-        }),
-      });
-
-      let options = {
-        dataCollectionId: "PeopleReviewSlider",
-      };
-
-      const { items: fetchedItems } = await wixClient.items
-        .queryDataItems(options)
-        .eq("title", "Here's what people are saying.")
-        .find();
-
-      setDataItems(fetchedItems);
-    }
-
-    fetchDataItems();
-  }, []);
+    dispatch(fetchPeopleReviewSlider());
+  }, [dispatch]);
 
   return (
     <section className="section-heres-what-people-are-saying pt-lg-300 pt-tablet-105 pt-phone-145 pb-lg-130 pb-tablet-100 pb-phone-145 pos-relative">
@@ -54,7 +37,7 @@ const PeopleReviewSLider = () => {
                 {/* <!-- Additional required wrapper --> */}
                 <div className="swiper-wrapper">
                   {/* <!-- Slides --> */}
-                  {dataItems.map((data, index) => {
+                  {data.map((data, index) => {
                     return (
                       <div key={index} className="swiper-slide">
                         <div className="wrapper-content">

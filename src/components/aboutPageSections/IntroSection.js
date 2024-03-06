@@ -1,7 +1,28 @@
 import DelayedLink from "../../common/DelayedLink";
-import { IntroData, ourCommitment } from "../../common/constats/aboutData";
+import React, { useEffect } from "react";
+import getFullImageURL from "../../common/common_functions/imageURL";
+import { fetchIntroSection } from "../../redux/reducers/aboutusData";
+import { useDispatch, useSelector } from "react-redux";
 
 const IntroSection = () => {
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.aboutus.IntroData);
+// const loading = useSelector((state) => state.aboutus.IntroLoading);
+  // const error = useSelector((state) => state.aboutus.error);
+  
+  const firstItem = data[0];
+  const title1 = firstItem ? firstItem.data.title1 : "";
+  const title2 = firstItem ? firstItem.data.title2 : "";
+  const buttonText = firstItem ? firstItem.data.buttontext : "";
+  const image = firstItem ? firstItem.data.image : "";
+  const subtitle = firstItem ? firstItem.data.subtitle : "";
+  const paragraph1 = firstItem ? firstItem.data.paragraph1 : "";
+  const paragraph2 = firstItem ? firstItem.data.paragraph2 : "";
+
+  useEffect(() => {
+    dispatch(fetchIntroSection());
+  }, [dispatch]);
+
   const properties = [
     {
       translateY: "-2.5rem",
@@ -29,7 +50,7 @@ const IntroSection = () => {
       dataEnd: "center center",
     },
   ];
- 
+
   return (
     <>
       <section className="about-intro">
@@ -44,7 +65,7 @@ const IntroSection = () => {
             data-translate-y="5vh"
           >
             <img
-              src={IntroData.upSecton.img}
+              src={getFullImageURL(image)}
               data-preload
               className="media"
               data-parallax-top
@@ -64,7 +85,7 @@ const IntroSection = () => {
             data-start="60% center"
             data-translate-y="20vh"
           >
-            {IntroData.upSecton.title1}
+            {title1}
           </h2>
         </div>
         <div className="wrapper-content z-4 content-2">
@@ -75,7 +96,7 @@ const IntroSection = () => {
             data-start="60% center"
             data-translate-y="20vh"
           >
-            {IntroData.upSecton.title2}
+            {title2}
           </h2>
         </div>
 
@@ -93,7 +114,7 @@ const IntroSection = () => {
               "data-start": "60% center",
             }}
           >
-            <span>{IntroData.upSecton.videotitle}</span>
+            <span>{buttonText}</span>
             <i className="icon-arrow-right-2"></i>
           </DelayedLink>
         </div>
@@ -110,7 +131,7 @@ const IntroSection = () => {
                   data-end="center center"
                   data-trigger="parent"
                 >
-                  {IntroData.upSecton.subtitle}
+                  {subtitle}
                 </h3>
                 <div
                   className="container-text font-2 fs--16 lh-1375 mt-15"
@@ -119,8 +140,8 @@ const IntroSection = () => {
                   data-end="center center"
                   data-trigger="parent"
                 >
-                  <p>{IntroData.upSecton.p1}</p>
-                  <p className="mt-20">{IntroData.upSecton.p2}</p>
+                  <p>{paragraph1}</p>
+                  <p className="mt-20">{paragraph2}</p>
                 </div>
               </div>
             </div>
@@ -133,7 +154,7 @@ const IntroSection = () => {
           <div className="row">
             <div className="col-lg-8 offset-lg-2">
               <ul className="list-boards">
-                {ourCommitment.map((data, index) => {
+                {data.map((data, index) => {
                   const {
                     translateY,
                     rotateTo,
@@ -157,8 +178,8 @@ const IntroSection = () => {
                       data-rotate-from={rotateFrom || ""}
                     >
                       <div className="content">
-                        <h2 className="title">{data.title}</h2>
-                        <p className="text">{data.desc}</p>
+                        <h2 className="title">{data.data.cardtitle}</h2>
+                        <p className="text">{data.data.cardDescription}</p>
                       </div>
                     </li>
                   );

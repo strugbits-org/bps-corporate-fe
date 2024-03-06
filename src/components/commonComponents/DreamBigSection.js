@@ -1,47 +1,27 @@
-import { OAuthStrategy, createClient } from "@wix/sdk";
-import React, { useEffect, useState } from "react";
-import { collections, items } from "@wix/data";
+import React, { useEffect } from "react";
 import getFullImageURL from "../../common/common_functions/imageURL";
+import { fetchDreamBigSection } from "../../redux/reducers/homeData";
+import { useDispatch, useSelector } from "react-redux";
 
 const DreamBigSection = () => {
-  const [dataItems, setDataItems] = useState([]);
 
-  const firstItem = dataItems[0]; // Assuming you want values from the first item
-  const btntext = firstItem ? firstItem.data.buttonText  : "";
-  const pragraph1  = firstItem ? firstItem.data.pragraph1 : "";
-  const pragraph2  = firstItem ? firstItem.data.pragraph2 : "";
-  const desktopImg  = firstItem ? firstItem.data.desktopBackgroundImage : "";
-  const mobileImg  = firstItem ? firstItem.data.mobileBackgroundImage  : "";
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.home.dreamBigData);
+
+  const firstItem = data[0]; // Assuming you want values from the first item
+  const btntext = firstItem ? firstItem.data.buttonText : "";
+  const pragraph1 = firstItem ? firstItem.data.pragraph1 : "";
+  const pragraph2 = firstItem ? firstItem.data.pragraph2 : "";
+  const desktopImg = firstItem ? firstItem.data.desktopBackgroundImage : "";
+  const mobileImg = firstItem ? firstItem.data.mobileBackgroundImage : "";
+
   useEffect(() => {
-    async function fetchDataItems() {
-      const wixClient = createClient({
-        modules: { collections, items },
-        auth: OAuthStrategy({
-          clientId: "04038da0-732b-471d-babe-4e90ad785740",
-        }),
-      });
-
-      let options = {
-        dataCollectionId: "DreamBigSection",
-      };
-
-      const { items: fetchedItems } = await wixClient.items
-        .queryDataItems(options)
-        .eq("title", "dreambig")
-        .find();
-
-      setDataItems(fetchedItems);
-      // trigger animation on data load
-      setTimeout(() => {
-        document.querySelector(".updateWatchedTrigger").click();
-        document.querySelector(".triggerSplitWordAnimation").click();
-
-      }, 1000);
-    }
-
-    fetchDataItems();
-   
-  }, []);
+    dispatch(fetchDreamBigSection());
+    // trigger animation on data load
+    setTimeout(() => {
+      document.querySelector(".homeAnimationsTrigger").click();
+    }, 1500);
+  }, [dispatch]);
 
   return (
     <section className="section-dream-big">
@@ -49,10 +29,20 @@ const DreamBigSection = () => {
         <div className="row">
           <div className="col-lg-4 offset-lg-4 column-1">
             <div className="container-img no-phone">
-              <img src={getFullImageURL(desktopImg)} data-preload className="media" alt="" />
+              <img
+                src={getFullImageURL(desktopImg)}
+                data-preload
+                className="media"
+                alt=""
+              />
             </div>
             <div className="container-img no-desktop no-tablet">
-              <img src={getFullImageURL(mobileImg)}  data-preload className="media" alt="" />
+              <img
+                src={getFullImageURL(mobileImg)}
+                data-preload
+                className="media"
+                alt=""
+              />
             </div>
             <div
               data-parallax

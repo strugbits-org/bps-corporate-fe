@@ -1,38 +1,21 @@
-// import { ourprojectSlider } from "../../common/constats/constats";
 import DelayedLink from "../../common/DelayedLink";
-import React, { useEffect, useState } from "react";
-import { createClient, OAuthStrategy } from "@wix/sdk";
-import { collections, items } from '@wix/data';
+import React, { useEffect } from "react";
 import getFullImageURL from "../../common/common_functions/imageURL";
+import { fetchOurPorjectSection } from "../../redux/reducers/homeData";
+import { useDispatch, useSelector } from "react-redux";
 
 const OurProjectSection = () => {
-  const [dataItems, setDataItems] = useState([]);
-
-  const firstItem = dataItems[0]; 
+  const dispatch = useDispatch();
+  const ourProjectData = useSelector((state) => state.home.ourProjectData);
+  // const loading = useSelector((state) => state.home.ourProjectLoading);
+  // const error = useSelector((state) => state.home.error);
+  const firstItem = ourProjectData[0];
   const title = firstItem ? firstItem.data.title : "";
   const btntext = firstItem ? firstItem.data.buttonText : "";
+
   useEffect(() => {
-    async function fetchDataItems() {
-      const wixClient = createClient({
-        modules: { collections, items },
-        auth: OAuthStrategy({ clientId: "04038da0-732b-471d-babe-4e90ad785740" }),
-      });
-
-      let options = {
-        dataCollectionId: "SomeOfOurProjects",
-      };
-
-      const { items: fetchedItems } = await wixClient.items
-        .queryDataItems(options)
-        .eq("title", "Some of our projects")
-        .find();
-      
-      setDataItems(fetchedItems);
-    }
-
-    fetchDataItems();
-    
-  }, []);
+    dispatch(fetchOurPorjectSection());
+  }, [dispatch]);
 
   return (
     <section className="home-some-of-our-projects pt-lg-250 pt-mobile-130 pb-135">
@@ -51,16 +34,16 @@ const OurProjectSection = () => {
                 {/* <!-- Additional required wrapper --> */}
                 <div className="swiper-wrapper list-projects slider-mobile font-80">
                   {/* <!-- Slides --> */}
-                  {dataItems.map((data, index) => {
+                  {ourProjectData.map((data, index) => {
                     return (
                       <div key={index} className="swiper-slide list-item">
                         <DelayedLink
                           to="/"
                           className="project-link animation-project-link"
                           attributes={{
-                            "data-cursor-style":"view",
-                            "data-aos":"d:loop"
-                            }}
+                            "data-cursor-style": "view",
+                            "data-aos": "d:loop",
+                          }}
                         >
                           <div className="container-img bg-blue">
                             <div className="wrapper-img">
@@ -73,13 +56,17 @@ const OurProjectSection = () => {
                             </div>
                           </div>
                           <div className="container-text">
-                            <h3 className="title-project">{data.data.cardname}</h3>
+                            <h3 className="title-project">
+                              {data.data.cardname}
+                            </h3>
                             <ul className="list-tags">
-                              {Object.values(data.data.tags).map((tag, index) => (
-                                <li key={index}>
-                                  <span>{tag}</span>
-                                </li>
-                              ))}
+                              {Object.values(data.data.tags).map(
+                                (tag, index) => (
+                                  <li key={index}>
+                                    <span>{tag}</span>
+                                  </li>
+                                )
+                              )}
                             </ul>
                           </div>
                         </DelayedLink>

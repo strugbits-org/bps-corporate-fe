@@ -1,8 +1,45 @@
 import DelayedLink from "../../common/DelayedLink";
-import { rentalData, rentalCards } from "../../common/constats/constats";
+import React, { useEffect, useState } from "react";
+import getFullImageURL from "../../common/common_functions/imageURL";
+import { fetchRentalStoreSection } from "../../redux/reducers/homeData";
+import { useDispatch, useSelector } from "react-redux";
 
 const RentalStoreSection = () => {
   let transition = -35;
+
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.home.rentalStoreData);
+  // const loading = useSelector((state) => state.home.rentalLoading);
+  // const error = useSelector((state) => state.home.error);
+
+  const [object, setObject] = useState({});
+
+  const firstItem = data[0]; // Assuming you want values from the first item
+  const btntext = firstItem ? firstItem.data.buttonText : "";
+  const title = firstItem ? firstItem.data.title : "";
+  const descriptionText = firstItem ? firstItem.data.descriptionText : "";
+  const descriptionImages = firstItem ? firstItem.data.descriptionImages : "";
+
+  useEffect(() => {
+    dispatch(fetchRentalStoreSection());
+    //trigger animation on data load
+    setTimeout(() => {
+      document.querySelector(".updateWatchedTrigger").click();
+      document.querySelector(".triggerSplitWordAnimation").click();
+    }, 1000);
+  }, [dispatch]);
+
+  useEffect(() => {
+    // Process descriptionImages and update object state
+    if (Array.isArray(descriptionImages)) {
+      const processedObject = {};
+      descriptionImages.forEach((value, index) => {
+        processedObject[`item${index + 1}`] = value;
+      });
+      setObject(processedObject);
+    }
+  }, [descriptionImages]);
+
   return (
     <section className="home-rental-store pt-lg-145 pt-tablet-105 pt-phone-145 pb-lg-120 pb-tablet-100 pb-phone-145">
       <div
@@ -28,79 +65,81 @@ const RentalStoreSection = () => {
             data-end="top 20%"
             data-trigger=".home-rental-store"
           >
-            <h2 className="fs--100 text-center white-1">{rentalData.title}</h2>
+            <h2 className="fs--100 text-center white-1">{title}</h2>
             <p className="fs--50 fs-phone-18 white-1 paragraph mt-lg-15 mt-tablet-30 mt-phone-10">
-              {rentalData.p1}
+              {descriptionText.p1}
               <span>
                 <img
-                  src={rentalData.img1}
+                  src={getFullImageURL(object.item4)}
                   data-preload
                   alt=""
                   className="img-1 media"
                 />
               </span>
-              {rentalData.p2}
+              {descriptionText.p2}
               <span>
                 <img
-                  src={rentalData.img4}
+                  src={getFullImageURL(object.item1)}
                   data-preload
                   alt=""
                   className="img-2 media"
                 />
               </span>
-              {rentalData.p3}
+              {descriptionText.p3}
               <span>
                 <img
-                  src={rentalData.img2}
+                  src={getFullImageURL(object.item2)}
                   data-preload
                   alt=""
                   className="img-3 media"
                 />
               </span>
-              {rentalData.p4}
+              {descriptionText.p4}
               <span>
                 <img
-                  src={rentalData.img3}
+                  src={getFullImageURL(object.item3)}
                   data-preload
                   alt=""
                   className="img-4 media"
                 />
               </span>
-              {rentalData.p5}
+              {descriptionText.p5}
             </p>
           </div>
 
           <div className="col-lg-12 column-2 mt-lg-140 mt-mobile-40">
             <ul className="list-rental-store">
-              {rentalCards.map((data, index) => {
-                const translateYFrom = `${transition - (15 * index)}rem`;
+              {data.map((data, index) => {
+                const translateYFrom = `${transition - 15 * index}rem`;
                 return (
                   <li
                     key={index}
                     data-parallax
-                    data-translate-y-from = {translateYFrom}
+                    data-translate-y-from={translateYFrom}
                     data-parallax-no-phone
                     data-parallax-no-tablet
-                    data-start='top 85%'
-                    data-end='20% 40%'
+                    data-start="top 85%"
+                    data-end="20% 40%"
                     data-trigger=".home-rental-store"
                   >
-                    <DelayedLink to="/" className="link" 
-                    attributes={{
-                      "data-cursor-style":"view"
-                    }}
+                    <DelayedLink
+                      to="/"
+                      className="link"
+                      attributes={{
+                        "data-cursor-style": "view",
+                      }}
                     >
                       <div className="container-img">
                         <img
-                          src={data.img}
+                          src={getFullImageURL(data.data.image1)}
                           data-preload
                           className="media"
                           alt=""
                         />
                       </div>
-                      {data.new && (
+                      {data.data.newImageTag && (
                         <div className="tag-new no-mobile">
-                          <span>{data.tag}</span>
+                          <span>New</span>
                         </div>
                       )}
                     </DelayedLink>
@@ -120,21 +159,13 @@ const RentalStoreSection = () => {
                 class="btn-blue"
                 data-cursor-style="off"
               >
-                <span>{rentalData.btntext}</span>
+                <span>{btntext}</span>
                 <i className="icon-arrow-right-2"></i>
               </btn-modal-open>
             </div>
           </div>
         </div>
       </div>
-
-      {/* <li>
-        <Link to="/" className="link" data-cursor-style="view">
-          <div className="container-img">
-            <img src={img99} data-preload className="media" alt="" />
-          </div>
-        </Link>
-      </li> */}
     </section>
   );
 };

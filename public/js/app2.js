@@ -16139,14 +16139,31 @@ var require_app2 = __commonJS({
       }
     });
     
+    const homeAnimationsTrigger = document.querySelector(".homeAnimationsTrigger");
+    homeAnimationsTrigger.addEventListener("click", () => {
+      sticky();
+      observers();
+      marcarFormPreenchido();
+      initVideo();
+      scrollTo("", "");
+      Parallax();
+      splitWords();
+      splitChars();
+      sliderContentMobile();
+      footer();
+    });
+    
+    
     const updateWatchedTrigger = document.querySelector(".updateWatchedTrigger");
-    updateWatchedTrigger.addEventListener("click", updateWatched);
+    updateWatchedTrigger.addEventListener("click", ()=>{
+      initVideo();
+      updateWatched();
+    });
 
     const triggerSplitWordAnimation = document.querySelector(".triggerSplitWordAnimation");
     triggerSplitWordAnimation.addEventListener("click", () => {
       splitChars();
       splitWords();
-      
     } );
     
     document.addEventListener("pjax:complete", whenContainerReady);
