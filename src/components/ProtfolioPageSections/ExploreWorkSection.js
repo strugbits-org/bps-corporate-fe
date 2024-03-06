@@ -5,6 +5,7 @@ import { collections, items } from "@wix/data";
 import getFullImageURL from "../../common/common_functions/imageURL";
 
 const ExploreWorkSection = () => {
+  
   const [portfolioCollection, setPortfolioCollection] = useState([]);
   const [marketCategories, setMarketCategories] = useState([]);
   const [studioTags, setStudioTags] = useState([]);

@@ -84,11 +84,11 @@ export const fetchSliderSection = createAsyncThunk(
     async () => {
       try {
         let options = {
-            dataCollectionId: "AboutUsSlider",
+            dataCollectionId: "AboutBottomSlider",
           };
           const { items: fetchedSliderBanner } = await wixClient.items
             .queryDataItems(options)
-            .eq("title", "AboutUsSlider")
+            .eq("title", "aboutbottom")
             .find();
   
         return fetchedSliderBanner;

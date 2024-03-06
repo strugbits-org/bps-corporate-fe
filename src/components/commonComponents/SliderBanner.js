@@ -2,15 +2,16 @@ import { Link } from "react-router-dom";
 import React, { useEffect } from "react";
 import getFullImageURL from "../../common/common_functions/imageURL";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchOurFamilySection } from "../../redux/reducers/aboutusData";
+import { fetchSliderSection } from "../../redux/reducers/aboutusData";
+
 const SliderBanner = () => {
   const disptach = useDispatch();
   const data = useSelector((state) => state.aboutus.SliderData);
   // const loading = useSelector((state) => state.aboutus.SliderLoading);
   // const error = useSelector((state) => state.aboutus.error);
-  
+
   useEffect(() => {
-   disptach(fetchOurFamilySection());
+   disptach(fetchSliderSection());
     // trigger animation on data load
     setTimeout(() => {
       document.querySelector(".updateWatchedTrigger").click();

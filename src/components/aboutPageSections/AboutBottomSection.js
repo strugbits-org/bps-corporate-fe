@@ -1,12 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import DreamBigSection from "../commonComponents/DreamBigSection";
 import getFullImageURL from "../../common/common_functions/imageURL";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchSliderSection } from "../../redux/reducers/aboutusData";
 
-const AboutBottomSection = ({dataItems}) => {
-  const firstItem = dataItems[0]; 
+const AboutBottomSection = () => {
+  const disptach = useDispatch();
+  const data = useSelector((state) => state.aboutus.SliderData);
+  // const loading = useSelector((state) => state.aboutus.SliderLoading);
+  // const error = useSelector((state) => state.aboutus.error);
+  const firstItem = data[0]; 
   const trendingtitle = firstItem ? firstItem.data.trendingtitle: "";
   const trendingtitle1 = firstItem ? firstItem.data.trendingtitle1  : "";
   const trendingBackground = firstItem ? getFullImageURL(firstItem.data.trendingBackground)  : "";
+
+  useEffect(() => {
+    disptach(fetchSliderSection());
+     // trigger animation on data load
+     setTimeout(() => {
+       document.querySelector(".updateWatchedTrigger").click();
+       document.querySelector(".triggerSplitWordAnimation").click();
+     }, 1000);
+   }, [disptach]);
+
   return (
     <>
       <section className="about-check-out">
