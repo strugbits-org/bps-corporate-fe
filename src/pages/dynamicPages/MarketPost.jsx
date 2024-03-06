@@ -7,8 +7,6 @@ import StudioSection from "../../components/commonComponents/StudioSection";
 import SocialSection from "../../components/commonComponents/SocialSection";
 import DreamBigSection from "../../components/commonComponents/DreamBigSection";
 
-
-
 import { OAuthStrategy, createClient } from "@wix/sdk";
 import React, { useEffect, useState } from "react";
 import { collections, items } from "@wix/data";
@@ -20,6 +18,7 @@ const MarketPost = () => {
   const location = useLocation(); 
   const [marketsData, setMarketsData] = useState(null);
   const params = useParams();
+  
   useEffect(() => {
     setMarketsData(null);
     async function getMarketCollection() {
