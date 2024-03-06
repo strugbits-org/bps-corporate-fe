@@ -30,7 +30,7 @@ const PortfoliPost = () => {
     <>
       <PortfolioIntoSection data={portfolioData} />
       <GallerySection data={portfolioData} />
-      <ExploreProjectsSection />
+      <ExploreProjectsSection data={portfolioData} />
       <SocialSection />
     </>
   );

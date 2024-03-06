@@ -79,9 +79,9 @@ export const fetchSinglePortfolio = createAsyncThunk(
         item.data.marketCategory = item.data.marketCategory.cardname;
         item.data.studioTags = item.data.studioTags.map((tag) => tag.cardName);
         item.data.image = getFullImageURL(item.data.image);
+        item.data.gallery = item.data.gallery.map((image) => getFullImageURL(image.src));
         return item.data;
       });
-
       return portfolioArray[0];
     } catch (error) {
       throw new Error(error.message);

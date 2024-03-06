@@ -41,7 +41,7 @@ const MarketPost = () => {
   useEffect(() => {
     const filteredProjects = portfolioCollection.filter(item => item.marketCategory.toLowerCase() === params.slug);
     setFilteredPortfolioCollection(filteredProjects);
-  }, [portfolioCollection]);
+  }, [portfolioCollection,params.slug]);
 
 
   return (
