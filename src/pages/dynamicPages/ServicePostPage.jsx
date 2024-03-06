@@ -32,7 +32,7 @@ const ServicePostPage = () => {
   return (
     <>
       <ServiceIntro data={servicesData} />
-      {/* <ServiceDescription data={servicesData} /> */}
+      <ServiceDescription data={servicesData} />
 
       {/* commonComponents */}
       <SliderBanner />
