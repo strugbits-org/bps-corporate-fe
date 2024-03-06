@@ -5,7 +5,9 @@ import getFullImageURL from "../../common/common_functions/imageURL";
 
 const initialState = {
   marketTopData: [],
+  marketModel: [],
 
+  marketModelLoading: false,
   marketTopLoading: false,
   error: null,
 };
@@ -19,7 +21,6 @@ export const fetchMarketTopsections = createAsyncThunk(
   "data/fetchMarketTopsections",
   async (slug) => {
     try {
-
       let options = {
         dataCollectionId: "MarketSection",
         includeReferencedItems: ["howWeDoItSections"],
@@ -34,7 +35,6 @@ export const fetchMarketTopsections = createAsyncThunk(
         service.data.image = getFullImageURL(service.data.image);
         return service.data;
       });
-
       return marketsArray[0];
     } catch (error) {
       throw new Error(error.message);
@@ -42,26 +42,63 @@ export const fetchMarketTopsections = createAsyncThunk(
   }
 );
 
-const contactUsSlice = createSlice({
+export const getMarketCollection = createAsyncThunk(
+  "data/getMarketCollection",
+  async () => {
+    try {
+      let options = {
+        dataCollectionId: "MarketSection",
+      };
+
+      const { items: fetchedItems } = await wixClient.items
+        .queryDataItems(options)
+        .eq("title", "Markets")
+        .find();
+
+      const marketsArray = fetchedItems.map((item) => {
+        item.data.image = getFullImageURL(item.data.image);
+        return item.data;
+      });
+      return marketsArray;
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
+);
+
+const marketSlice = createSlice({
   name: "market",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      /// Intro Section ////
+
       .addCase(fetchMarketTopsections.pending, (state) => {
         state.marketTopLoading = true;
         state.error = null;
       })
       .addCase(fetchMarketTopsections.fulfilled, (state, action) => {
         state.marketTopLoading = false;
-        state.contactusData = action.payload;
+        state.marketTopData = action.payload;
       })
       .addCase(fetchMarketTopsections.rejected, (state, action) => {
         state.marketTopLoading = false;
+        state.error = action.error.message;
+      })
+      /// Market Model ////
+      .addCase(getMarketCollection.pending, (state) => {
+        state.marketModelLoading = true;
+        state.error = null;
+      })
+      .addCase(getMarketCollection.fulfilled, (state, action) => {
+        state.marketModelLoading = false;
+        state.marketModel = action.payload;
+      })
+      .addCase(getMarketCollection.rejected, (state, action) => {
+        state.marketModelLoading = false;
         state.error = action.error.message;
       });
   },
 });
 
-export default contactUsSlice.reducer;
+export default marketSlice.reducer;
