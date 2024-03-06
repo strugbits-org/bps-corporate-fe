@@ -2,52 +2,30 @@ import PortfolioIntoSection from "../../components/portfolioDetailPageSections/P
 import GallerySection from "../../components/portfolioDetailPageSections/GallerySection";
 import ExploreProjectsSection from "../../components/portfolioDetailPageSections/ExploreProjectsSection";
 import SocialSection from "../../components/commonComponents/SocialSection";
-
-import { OAuthStrategy, createClient } from "@wix/sdk";
-import React, { useEffect, useState } from "react";
-import { collections, items } from "@wix/data";
-import getFullImageURL from "../../common/common_functions/imageURL";
 import { useLocation, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchPortfolioSections } from "../../redux/reducers/portfolioData";
+import { useEffect } from "react";
 
 const PortfoliPost = () => {
-
   const location = useLocation(); 
-  const [ portfolioData, setPortfolioData ] = useState(null);
   const params = useParams();
+
+  const dispatch = useDispatch();
+  const portfolioData = useSelector((state) => state.portfolio.portfolioData);
+  // const loading = useSelector((state) => state.portfolio.portfolioLoading);
+  
+
+  // const [ portfolioData, setPortfolioData ] = useState(data);
   useEffect(() => {
-    setPortfolioData(null);
-    async function getMarketCollection() {
-      const wixClient = createClient({
-        modules: { collections, items },
-        auth: OAuthStrategy({
-          clientId: "04038da0-732b-471d-babe-4e90ad785740",
-        }),
-      });
+    dispatch(fetchPortfolioSections(params.slug));
+    // setPortfolioData(null);
+    // setTimeout(() => {
+    //   document.querySelector(".updateWatchedTrigger").click();
+    //   document.querySelector(".triggerSplitWordAnimation").click();
+    // }, 1500);
+  }, [dispatch,location, params.slug]);
 
-      let options = {
-        dataCollectionId: "portfolioItems",
-        includeReferencedItems: ["marketCategory","studioTags"]
-      };
-
-      const { items: fetchedItems } = await wixClient.items
-        .queryDataItems(options)
-        .eq("slug", params.slug)
-        .find();
-
-      const portfolioArray = fetchedItems.map((item) => {
-        item.data.marketCategory = item.data.marketCategory.cardname;      
-        item.data.studioTags = item.data.studioTags.map((tag)=>tag.cardName);
-        item.data.image = getFullImageURL(item.data.image);
-        return item.data;
-      });
-      setPortfolioData(portfolioArray[0]);
-    }
-    getMarketCollection();
-    setTimeout(() => {
-      document.querySelector(".updateWatchedTrigger").click();
-      document.querySelector(".triggerSplitWordAnimation").click();
-    }, 1500);
-  }, [location,params.slug]);
 
 
   return (
