@@ -1,73 +1,108 @@
-import { portfolioData } from "../../common/constats/portfolioData";
 import React, { useEffect, useState } from "react";
 import DelayedLink from "../../common/DelayedLink";
-import { Link } from "react-router-dom";
+import { createClient, OAuthStrategy } from "@wix/sdk";
+import { collections, items } from "@wix/data";
+import getFullImageURL from "../../common/common_functions/imageURL";
 
 const ExploreWorkSection = () => {
-  const [selectedFilters, setSelectedFilters] = useState([]);
-  const [allstudiofilteredItems, setAllstudiofilteredItems] = useState(
-    portfolioData.AllStudioItems
-  );
-  const [allmarketfilteredItems, setAllmarketfilteredItems] = useState(
-    portfolioData.AllMarketsitems
-  );
+  
+  const [portfolioCollection, setPortfolioCollection] = useState([]);
+  const [marketCategories, setMarketCategories] = useState([]);
+  const [studioTags, setStudioTags] = useState([]);
+  const [selectedStudio, setSelectedStudio] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState([]);
+  const [filteredPortfolioCollection, setFilteredPortfolioCollection] = useState(portfolioCollection);
 
-  const allstudiomenuitems = [
-    ...new Set(portfolioData.AllStudioItems.map((data) => data.categories)),
-  ];
-  const allmarketmenuitems = [
-    ...new Set(portfolioData.AllMarketsitems.map((data) => data.categories)),
-  ];
+  useEffect(()=>{
+    setFilteredPortfolioCollection(portfolioCollection);
+  },[portfolioCollection]);
 
-  const handleAllStudioFilter = (selectedCategory) => {
-    if (selectedFilters.includes(selectedCategory)) {
-      setSelectedFilters(
-        selectedFilters.filter((el) => el !== selectedCategory)
+  // Fetches the portfolio
+  async function getPortfolioCollection() {
+    const wixClient = createClient({
+      modules: { collections, items },
+      auth: OAuthStrategy({
+        clientId: "04038da0-732b-471d-babe-4e90ad785740",
+      }),
+    });
+
+    let options = {
+      dataCollectionId: "portfolioItems",
+      includeReferencedItems: ["marketCategory","studioTags"]
+    };
+
+    
+    const { items: fetchedItems } = await wixClient.items
+      .queryDataItems(options)
+      .find();
+
+      var marketCategoriesArray = [];
+      var studioTagsArray = [];
+      const portfolioArray = fetchedItems.map((item)=> {
+        item.data.marketCategory = item.data.marketCategory.cardname;
+        marketCategoriesArray.push(item.data.marketCategory);
+        
+        item.data.studioTags = item.data.studioTags.map((tag)=>{
+          studioTagsArray.push(tag.cardName);
+          return tag.cardName
+        });
+        item.data.image = getFullImageURL(item.data.image);
+        return item.data;
+      });
+      setPortfolioCollection(portfolioArray);
+
+      const uniqueMarketCategories = [...new Map(marketCategoriesArray.map(item => [item, item])).values()];
+      setMarketCategories(uniqueMarketCategories);
+      
+      const uniqueStudioTags = [...new Map(studioTagsArray.map(item => [item, item])).values()];
+      setStudioTags(uniqueStudioTags);
+
+
+      setTimeout(() => {
+        document.querySelector(".updateWatchedTrigger").click();
+      }, 200);
+  }
+
+  useEffect(() => {
+    getPortfolioCollection();
+  }, []);
+
+
+  const handleStudioFilter = (tag) => {
+    if (selectedStudio.includes(tag)) {
+      setSelectedStudio(
+        selectedStudio.filter((el) => el !== tag)
       );
     } else {
-      setSelectedFilters([...selectedFilters, selectedCategory]);
+      setSelectedStudio([...selectedStudio, tag]);
     }
   };
-  const handleAllMarketFilter = (selectedCategory) => {
-    if (selectedFilters.includes(selectedCategory)) {
-      setSelectedFilters(
-        selectedFilters.filter((el) => el !== selectedCategory)
+  const handleMarketFilter = (category) => {
+    if (selectedCategory.includes(category)) {
+      setSelectedCategory(
+        selectedCategory.filter((el) => el !== category)
       );
     } else {
-      setSelectedFilters([...selectedFilters, selectedCategory]);
+      setSelectedCategory([...selectedCategory, category]);
     }
   };
-  useEffect(() => {
-    document.querySelector(".updateWatchedTrigger").click();
-    const filterAllStudioItems = () => {
-      if (selectedFilters.length > 0) {
-        let tempItems = portfolioData.AllStudioItems.filter((item) =>
-          selectedFilters.includes(item.categories)
-        );
-        setAllstudiofilteredItems(tempItems);
-      } else {
-        setAllstudiofilteredItems(portfolioData.AllStudioItems);
-      }
-    };
-    const filterAllMarketItems = () => {
-      if (selectedFilters.length > 0) {
-        let tempItems = portfolioData.AllMarketsitems.filter((item) =>
-          selectedFilters.includes(item.categories)
-        );
-        setAllmarketfilteredItems(tempItems);
-      } else {
-        setAllmarketfilteredItems(portfolioData.AllMarketsitems);
-      }
-    };
-    filterAllStudioItems();
-    filterAllMarketItems();
-  }, [selectedFilters]);
 
   useEffect(() => {
-    document.querySelector(".updateWatchedTrigger").click();
-  }, [allstudiofilteredItems, allmarketfilteredItems]);
+    const filteredProjects = portfolioCollection.filter(item => {
+      return (
+        (selectedCategory.length === 0 || selectedCategory.includes(item.marketCategory)) &&
+        (selectedStudio.length === 0 || selectedStudio.some(r=> item.studioTags.includes(r)))
+      );
+    });
+    setFilteredPortfolioCollection(filteredProjects);
+  
+    setTimeout(() => {
+      document.querySelector(".updateWatchedTrigger").click();
+    }, 400);
+  }, [selectedStudio, selectedCategory, portfolioCollection]);
 
   return (
+    filteredPortfolioCollection && 
     <section className="portfolio-intro pt-lg-145 pt-mobile-105">
       <div className="container-fluid">
         <div className="row">
@@ -94,31 +129,25 @@ const ExploreWorkSection = () => {
                       <ul className="list-portfolio-tags list-dropdown-tags">
                         <li>
                           <button
-                            onClick={() =>
-                              setAllstudiofilteredItems(
-                                portfolioData.AllStudioItems
-                              )
-                            }
-                            className={`portfolio-btn-tag ${
-                              selectedFilters.length === 0 ? "active" : ""
-                            }`}
-                          >
+                              onClick={() => {setFilteredPortfolioCollection(portfolioCollection); setSelectedStudio([])}}
+                              className={`portfolio-btn-tag ${
+                                selectedStudio.length === 0 ? "active" : ""
+                              }`}>
                             <span>All Studios</span>
                           </button>
                         </li>
-                        {allstudiomenuitems.map((categories, idx) => (
-                          <li key={idx}>
-                            <Link
-                              onClick={() => handleAllStudioFilter(categories)}
+                        {studioTags.map((tag, index) => (
+                          <li key={index}>
+                            <button
+                             onClick={()=>{handleStudioFilter(tag)}}
                               className={`portfolio-btn-tag ${
-                                selectedFilters?.includes(categories)
+                                selectedStudio.includes(tag)
                                   ? "active"
                                   : ""
                               }`}
-                              key={`filters-${idx}`}
-                            >
-                              {categories}
-                            </Link>
+                             key={`studio-${index}`}>
+                              {tag}
+                            </button>
                           </li>
                         ))}
                       </ul>
@@ -138,33 +167,30 @@ const ExploreWorkSection = () => {
                       <ul className="list-market-tags list-dropdown-tags">
                         <li>
                           <button
-                            onClick={() =>
-                              setAllmarketfilteredItems(
-                                portfolioData.AllMarketsitems
-                              )
-                            }
-                            className={`portfolio-btn-tag ${
-                              selectedFilters.length === 0 ? "active" : ""
-                            }`}
-                          >
+                              onClick={() => {setFilteredPortfolioCollection(portfolioCollection); setSelectedCategory([])}}
+                              className={`portfolio-btn-tag ${
+                                selectedCategory.length === 0 ? "active" : ""
+                              }`}
+                              >
                             <span>All Markets</span>
                           </button>
                         </li>
-                        {allmarketmenuitems.map((categories, idx) => (
-                          <li key={idx}>
-                            <Link
-                              onClick={() => handleAllMarketFilter(categories)}
+                        {marketCategories.map((category, index) => (
+                          <li key={index}>
+                            <button
+                             onClick={()=>{handleMarketFilter(category)}}
                               className={`portfolio-btn-tag ${
-                                selectedFilters?.includes(categories)
+                                selectedCategory.includes(category)
                                   ? "active"
                                   : ""
                               }`}
-                              key={`filters-${idx}`}
+                              key={`category-${index}`}
                             >
-                              {categories}
-                            </Link>
+                              {category}
+                            </button>
                           </li>
                         ))}
+
                       </ul>
                     </div>
                   </div>
@@ -173,15 +199,19 @@ const ExploreWorkSection = () => {
             </div>
           </div>
         </div>
-
+          {
+            filteredPortfolioCollection.length === 0 && (
+              "No Data"
+            )
+          }
         <div className="row row-2">
           <div className="col-lg-12 column-1">
             <ul className="list-portfolio grid-lg-25 grid-tablet-50">
-              {allstudiofilteredItems.map((data) => {
+              {filteredPortfolioCollection.map((data) => {
                 return (
-                  <li key={data.id} className="grid-item">
+                  <li key={data._id} className="grid-item">
                     <DelayedLink
-                      to={`/portfolio-post/${data.id}`}
+                      to={`/portfolio-post/${data.slug}`}
                       className="link-portfolio link-portfolio-animation"
                       attributes={{
                         "data-aos": "d:loop",
@@ -193,7 +223,7 @@ const ExploreWorkSection = () => {
                       >
                         <div className="wrapper-img">
                           <img
-                            src={data.img}
+                            src={data.image}
                             data-preload
                             className="media"
                             alt=""
@@ -202,79 +232,24 @@ const ExploreWorkSection = () => {
                       </div>
                       <div className="container-text">
                         <ul className="list-tags-small">
-                          <>
-                            {data.tags.map((tag, index) => (
-                              <React.Fragment key={index}>
-                                {index < 3 && (
-                                  <li
-                                    className={`tag-small ${
-                                      index === 0 ? "active" : ""
-                                    }`}
-                                  >
-                                    <span>{tag.tag}</span>
-                                  </li>
-                                )}
-                              </React.Fragment>
-                            ))}
-                            {data.tags.length > 3 ? (
-                              <li className="tag-small">
-                                <span>+{data.tags.length - 3} studios</span>
-                              </li>
-                            ) : null}
-                          </>
-                        </ul>
-
-                        <h2 className="title-portfolio">{data.title}</h2>
-                      </div>
-                    </DelayedLink>
-                  </li>
-                );
-              })}
-              {allmarketfilteredItems.map((data, index) => {
-                return (
-                  <li key={index} className="grid-item">
-                    <DelayedLink
-                      to={`/portfolio-post/${data.id}`}
-                      className="link-portfolio link-portfolio-animation"
-                      attributes={{
-                        "data-aos": "d:loop",
-                      }}
-                    >
-                      <div
-                        className="container-img bg-blue"
-                        data-cursor-style="view"
-                      >
-                        <div className="wrapper-img">
-                          <img
-                            src={data.img}
-                            data-preload
-                            className="media"
-                            alt=""
-                          />
-                        </div>
-                      </div>
-                      <div className="container-text">
-                        <ul className="list-tags-small">
-                          {data.tags.map((tag, index) => (
+                          <li className={"tag-small active"} >
+                            <span>{data.marketCategory}</span>
+                          </li>
+                          {data.studioTags.map((tag, index) => (
                             <React.Fragment key={index}>
-                              {index < 3 && (
-                                <li
-                                  className={`tag-small ${
-                                    index === 0 ? "active" : ""
-                                  }`}
-                                >
-                                  <span>{tag.tag}</span>
+                              {index < 2 && (
+                                <li className={"tag-small"}>
+                                  <span>{tag}</span>
                                 </li>
                               )}
                             </React.Fragment>
                           ))}
-                          {data.tags.length > 3 ? (
-                            <li className="tag-small">
-                              <span>+{data.tags.length - 3} studios</span>
-                            </li>
-                          ) : null}
+                          {data.studioTags.length > 2 ? (
+                              <li className="tag-small">
+                                <span>+{data.studioTags.length - 2} studios</span>
+                              </li>
+                            ) : null}
                         </ul>
-
                         <h2 className="title-portfolio">{data.title}</h2>
                       </div>
                     </DelayedLink>

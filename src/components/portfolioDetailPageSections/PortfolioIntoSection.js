@@ -1,16 +1,44 @@
-import { Link, useParams } from "react-router-dom";
-import { OurCardData } from "../../common/constats/portfolioData";
-const PortfolioIntoSection = () => {
-  const params = useParams();
+import { Link } from "react-router-dom";
+const PortfolioIntoSection = ({data}) => {
 
-  const post = OurCardData.find((post) => post.id === params.id);
+  const post = {
+    id: "01",
+    title: "F1 Las Vegas Grand Prix",
+    categories: "Corporate",
+    tags: [
+      { tag: "Rental" },
+      { tag: "Wedding" },
+      { tag: "Floral Design" },
+      { tag: "Printing" },
+      { tag: "Design" },
+    ],
+    componentTitle: "COMPONENTS",
+    componentDesc:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices ipsum purus, at aliquam mauris interdum nec.",
+    challangesTitle: "THE CHALLENGE",
+    challangesDesc1:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices ipsum purus, at aliquam mauris interdum nec. Maecenas in pellentesque sapien, ut sodales augue. Sed magna lacus, scelerisque quis dui eu, tempus auctor nunc.",
+    challangesDesc2:
+      "In pulvinar sapien id mi mattis pulvinar. Vivamus lobortis nibh in blandit pulvinar. Morbi sagittis justo vitae risus tristique condimentum.",
+    subheading:
+      "Events are crucial for enhancing brand awareness, offering exclusive chances to showcase ideas, products, and services intimately.",
+    highlightTitle: "HIGHLIGHT",
+    highlightDesc:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices ipsum purus, at aliquam mauris interdum nec. Maecenas in pellentesque sapien, ut sodales augue.",
+    solutionTitle: "THE SOLUTION ",
+    solutionDesc1:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices ipsum purus, at aliquam mauris interdum nec. Maecenas in pellentesque sapien, ut sodales augue. Sed magna lacus, scelerisque quis dui eu, tempus auctor nunc. In pulvinar sapien id mi mattis pulvinar. Vivamus lobortis nibh in blandit pulvinar. Morbi sagittis justo vitae risus tristique condimentum. Pellentesque elementum convallis dui, sed aliquet odio rhoncus sed. Cras bibendum orci a turpis vulputate dictum. Suspendisse egestas enim lacus, eget volutpat tellus vestibulum at.",
+    solutionDesc2:
+      "Maecenas in pellentesque sapien, ut sodales augue. Sed magna lacus, scelerisque quis dui eu, tempus auctor nunc. In pulvinar sapien id mi mattis pulvinar. Vivamus lobortis nibh in blandit pulvinar. Morbi sagittis justo vitae risus tristique condimentum. Pellentesque elementum convallis dui, sed aliquet odio rhoncus sed. Cras bibendum orci a turpis vulputate dictum. Suspendisse egestas enim lacus, eget volutpat tellus vestibulum at.",
+  };
 
   return (
+    data &&
     <section className="portfolio-post-intro pb-lg-250">
       <div className="wrapper-banner-img" data-aos>
         <div className="container-img banner-img">
           <img
-            src={post.img}
+            src={data.image}
             data-preload
             className="media"
             alt=""
@@ -28,18 +56,18 @@ const PortfolioIntoSection = () => {
             >
               <div className="row-portfolio">
                 <div className="market-tag">
-                  <span>{post.categories}</span>
+                  <span>{data.marketCategory}</span>
                 </div>
                 <div className="column-1 column-portfolio">
                   <h1 className="fs--80 fs-mobile-60 title-project">
-                    {post.title}
+                    {data.title}
                   </h1>
                   <div className="wrapper-tags-small mt-lg-25 mt-tablet-20 mt-mobile-30 mb-lg-75 mb-tablet-40 mb-phone-35">
                     <ul className="list-tags-small">
-                      {Object.values(post.tags).map((data, id) => {
+                      {data.studioTags.map((tag, index) => {
                         return (
-                          <li key={id} className="tag-small">
-                            <span>{data}</span>
+                          <li key={index} className="tag-small">
+                            <span>{tag}</span>
                           </li>
                         );
                       })}
@@ -156,6 +184,8 @@ const PortfolioIntoSection = () => {
                     </li>
                   </ul>
                 </div>
+
+                
               </div>
             </div>
           </div>

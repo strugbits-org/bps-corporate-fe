@@ -1,7 +1,6 @@
-import {postData} from "../../common/constats/serviceData";
-
-const ServiceIntro = () => {
+const ServiceIntro = ({data}) => {
   return (
+    data &&
     <>
       <section className="services-post-intro">
         <div
@@ -16,13 +15,13 @@ const ServiceIntro = () => {
                   className="fs--90 fs-phone-60 white-1 split-chars"
                   data-aos="d:loop"
                 >
-                  {postData.title}
+                  {data.cardName}
                 </h1>
                 <p
                   className="fs--40 fs-tablet-18 white-1 mt-lg-20 mt-mobile-15"
                   data-aos="fadeInUp .8s ease-out-cubic .5s, d:loop"
                 >
-                  {postData.desc}
+                  {data.cardDescription}
                 </p>
 
                 <btn-modal-open
@@ -31,7 +30,7 @@ const ServiceIntro = () => {
                   data-aos="fadeInUp .8s ease-out-cubic .6s, d:loop"
                   data-cursor-style="off"
                 >
-                  <span>{postData.btntext}</span>
+                  <span>{data.buttonText}</span>
                   <i className="icon-arrow-right-2"></i>
                 </btn-modal-open>
               </div>
@@ -45,7 +44,7 @@ const ServiceIntro = () => {
           data-scale="1.2"
         >
           <img
-            src={postData.img}
+            src={data.modalImage}
             data-preload
             className="media"
             alt=""

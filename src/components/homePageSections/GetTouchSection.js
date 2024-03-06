@@ -1,43 +1,24 @@
 import DelayedLink from "../../common/DelayedLink";
-import { OAuthStrategy, createClient } from "@wix/sdk";
-import React, { useEffect, useState } from "react";
-import { collections, items } from "@wix/data";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchGetTouchSection } from "../../redux/reducers/homeData";
 
 const GetTouchSection = () => {
-  const [dataItems, setDataItems] = useState([]);
-  const gettouch = dataItems.map((item) => ({
+  const dispatch = useDispatch();
+  const getTouchData = useSelector((state) => state.home.getTouchData);
+// const loading = useSelector((state) => state.home.ourProjectLoading);
+  // const error = useSelector((state) => state.home.error);
+  
+  const gettouch = getTouchData.map((item) => ({
     p1: item.data.paragraph1,
     p2: item.data.paragraph2,
     p3: item.data.paragraph3,
     btntext: item.data.buttontext,
   }));
+
   useEffect(() => {
-    async function fetchDataItems() {
-      const wixClient = createClient({
-        modules: { collections, items },
-        auth: OAuthStrategy({
-          clientId: "04038da0-732b-471d-babe-4e90ad785740",
-        }),
-      });
-
-      let options = {
-        dataCollectionId: "GetTouchSection",
-      };
-
-      const { items: fetchedItems } = await wixClient.items
-        .queryDataItems(options)
-        .eq("title", "gettouch")
-        .find();
-
-      setDataItems(fetchedItems);
-      //trigger animation on data load
-      setTimeout(() => {
-        document.querySelector(".triggerSplitWordAnimation").click();
-      }, 1000);
-    }
-
-    fetchDataItems();
-  }, []);
+    dispatch(fetchGetTouchSection());
+  }, [dispatch]);
 
   return (
     <section className="home-solution pt-220 pb-110">
