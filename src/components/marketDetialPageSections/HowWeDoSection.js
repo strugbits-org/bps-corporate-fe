@@ -1,7 +1,6 @@
 import getFullImageURL from "../../common/common_functions/imageURL";
 
 const HowWeDoSection = ({data}) => {
-  console.log(data,"market data here");
   return (
   data && 
     <section className="market-post-how-we-do-it pt-lg-270 pt-tablet-100 pt-phone-150">

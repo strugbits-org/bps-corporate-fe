@@ -4,7 +4,7 @@ import { collections, items } from "@wix/data";
 import getFullImageURL from "../../common/common_functions/imageURL";
 
 const initialState = {
-  servicesData: [],
+  servicesData: null,
   servicesModelData: [],
 
   servicesModelLoading: false,

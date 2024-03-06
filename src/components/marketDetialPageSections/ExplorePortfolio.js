@@ -3,6 +3,7 @@ import DelayedLink from '../../common/DelayedLink'
 
 const ExplorePortfolio = ({data}) => {
   return (
+    data.length > 0 &&
     <section className="market-post-explore-portfolio overflow-hidden pt-lg-270 pb-lg-220 py-tablet-100 pt-phone-145 pb-phone-190">
       <div className="container-fluid">
         <div className="row">
@@ -20,7 +21,7 @@ const ExplorePortfolio = ({data}) => {
                   data-aos="d:loop"
                 >
                   {/* <!-- Slides --> */}
-                  {Explore.map((data, index) => {
+                  {data.map((item, index) => {
                     return (
                       <div key={index} className="swiper-slide grid-item">
                         <DelayedLink to="/portfolio-post" className="link">
@@ -30,7 +31,7 @@ const ExplorePortfolio = ({data}) => {
                               data-cursor-style="view"
                             >
                               <img
-                                src={data.img}
+                                src={item.image}
                                 data-preload
                                 className="media"
                                 alt=""
@@ -38,7 +39,7 @@ const ExplorePortfolio = ({data}) => {
                             </div>
                           </div>
                           <h3 className="title-portfolio split-words">
-                            {data.title}
+                            {item.title}
                           </h3>
                         </DelayedLink>
                       </div>
