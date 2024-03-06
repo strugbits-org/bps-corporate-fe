@@ -143,9 +143,11 @@ const SocialSection = () => {
                   <ul className="list-instagram">
                   <Link
                         data-pin-do="embedUser"
-                        data-pin-board-width="500"
-                        data-pin-scale-height="400"
-                        data-pin-scale-width="100"
+                        // data-pin-board-width="500"
+                        data-pin-scale-height="500"
+                        // data-pin-scale-width="100"
+                        data-pin-min-weight="100%"
+                        data-pin-max-weight="100%"
                         to="https://ro.pinterest.com/blueprintst"
                       ></Link>
                   </ul>

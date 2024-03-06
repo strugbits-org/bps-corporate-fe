@@ -9,6 +9,7 @@ const AboutBottomSection = () => {
   const data = useSelector((state) => state.aboutus.SliderData);
   // const loading = useSelector((state) => state.aboutus.SliderLoading);
   // const error = useSelector((state) => state.aboutus.error);
+  
   const firstItem = data[0]; 
   const trendingtitle = firstItem ? firstItem.data.trendingtitle: "";
   const trendingtitle1 = firstItem ? firstItem.data.trendingtitle1  : "";
