@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 import DelayedLink from "../../common/DelayedLink";
-import { blogData, socialData, instafeeds} from "../../common/constats/constats";
+import {
+  blogData,
+  socialData,
+  instafeeds,
+} from "../../common/constats/constats";
 
 const SocialSection = () => {
   return (
@@ -101,8 +105,8 @@ const SocialSection = () => {
                             to="/"
                             target="_blank"
                             attributes={{
-                              "rel":"noopener noreferrer"
-                              }}
+                              rel: "noopener noreferrer",
+                            }}
                           >
                             <div className="container-img">
                               <img
@@ -123,23 +127,31 @@ const SocialSection = () => {
 
               {/* Pinterest Feeds start */}
               <li
-                data-parallax
-                data-translate-y-from="-80%"
-                data-parallax-no-phone
-                data-parallax-no-tablet
-                data-end="center 80%"
-                data-phone-end="top top"
-                data-trigger="parent"
+                 data-parallax
+                 data-translate-y-from="-80%"
+                 data-parallax-no-phone
+                 data-parallax-no-tablet
+                 data-end="center 80%"
+                 data-phone-end="top top"
+                 data-trigger="parent"
               >
-                <div className="content blog-content">
+                <div className="content">
                   <div className="social-media-title">
-                    <i className="icon-pinterest"></i>
+                  <i className="icon-pinterest"></i>
                     <h3>{socialData.title}</h3>
                   </div>
-                  <Link data-pin-do="embedUser" data-pin-board-width="400" data-pin-scale-height="340" data-pin-scale-width="100" to="https://ro.pinterest.com/blueprintst"></Link>             
+                  <ul className="list-instagram">
+                  <Link
+                        data-pin-do="embedUser"
+                        data-pin-board-width="500"
+                        data-pin-scale-height="400"
+                        data-pin-scale-width="100"
+                        to="https://ro.pinterest.com/blueprintst"
+                      ></Link>
+                  </ul>
                 </div>
               </li>
-              {/* Pinterest Feeds end */}
+                {/* Pinterest Feeds end */}
             </ul>
           </div>
         </div>
