@@ -2,7 +2,7 @@ import React from "react";
 import ProductCartSlider from "../commonComponents/ProductCartSlider";
 import {gallery} from "../../common/constats/portfolioData";
 const GallerySection = ({data}) => {
-  return (
+  return data && data.gallery.length > 0 && (
     <section className="portfolio-post-photo-gallery pt-lg-165 pt-tablet-105 pt-phone-145">
       <div className="container-fluid">
         <div className="row">
@@ -20,7 +20,7 @@ const GallerySection = ({data}) => {
                   <div className="container-img bg-blue">
                     <div className="wrapper-img">
                       <img
-                        src={gallery.img1}
+                        src={data.gallery[0]}
                         data-preload
                         className="media"
                         alt=""
@@ -32,7 +32,7 @@ const GallerySection = ({data}) => {
                   <div className="container-img bg-blue">
                     <div className="wrapper-img">
                       <img
-                        src={gallery.img2}
+                        src={data.gallery[1]}
                         data-preload
                         className="media"
                         alt=""
@@ -46,7 +46,7 @@ const GallerySection = ({data}) => {
                   <div className="container-img bg-blue">
                     <div className="wrapper-img">
                       <img
-                        src={gallery.img3}
+                        src={data.gallery[2]}
                         data-preload
                         className="media"
                         alt=""

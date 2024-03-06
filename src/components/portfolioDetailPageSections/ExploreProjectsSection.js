@@ -1,8 +1,20 @@
-import React from "react";
-import { OurCardData } from "../../common/constats/portfolioData";
+import React, { useEffect } from "react";
 import DelayedLink from "../../common/DelayedLink";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchPortfolio } from "../../redux/reducers/portfolioData";
 
-const ExploreProjectsSection = () => {
+const ExploreProjectsSection = ({data}) => {
+  const dispatch = useDispatch();
+  const portfolioCollection = useSelector((state) => state.portfolio.portfolioData).data;
+  // const index = portfolioData.findIndex(item => item._id === data._id);
+  // console.log("portfolioData", portfolioData);
+  const portfolioData = portfolioCollection.slice(0,4);
+
+
+  useEffect(() => {
+    dispatch(fetchPortfolio());
+  }, [dispatch]);
+
   return (
     <section className="portfolio-post-explore-projects pt-lg-310 pt-tablet-100 pt-phone-160 pb-lg-190 pb-mobile-100">
       <div className="container-fluid">
@@ -20,7 +32,7 @@ const ExploreProjectsSection = () => {
                 {/* <!-- Additional required wrapper --> */}
                 <div className="swiper-wrapper list-portfolio list-slider-mobile grid-lg-25">
                   {/* <!-- Slides --> */}
-                  {OurCardData.slice(0, 4).map((data, index) => (
+                  {portfolioData.map((data, index) => (
                     <div key={index} className="swiper-slide grid-item">
                       <DelayedLink
                         to="/portfolio-post"
@@ -35,7 +47,7 @@ const ExploreProjectsSection = () => {
                         >
                           <div className="wrapper-img">
                             <img
-                              src={data.img}
+                              src={data.image}
                               data-preload
                               className="media"
                               alt=""
@@ -44,29 +56,26 @@ const ExploreProjectsSection = () => {
                         </div>
                         <div className="container-text">
                           <ul className="list-tags-small">
-                            {Object.values(data.tags).map((tag, index) => (
+                            <li className={"tag-small active"} >
+                              <span>{data.marketCategory}</span>
+                            </li>
+                            {data.studioTags.map((tag, index) => (
                               <React.Fragment key={index}>
-                                {index < 3 ? (
-                                  <li
-                                    className={`tag-small ${
-                                      index === 0 ? "active" : ""
-                                    }`}
-                                  >
+                                {index < 2 && (
+                                  <li className={"tag-small"}>
                                     <span>{tag}</span>
                                   </li>
-                                ) : null}
+                                )}
                               </React.Fragment>
                             ))}
-                            {Object.values(data.tags).length > 3 ? (
+                            {data.studioTags.length > 2 ? (
                               <li className="tag-small">
-                                <span>
-                                  +{Object.values(data.tags).length - 3} studios
-                                </span>
+                                <span>+{data.studioTags.length - 2} studios</span>
                               </li>
                             ) : null}
                           </ul>
                           <h2 className="title-portfolio">
-                            F1 Las Vegas Grand Prix
+                            {data.title}
                           </h2>
                         </div>
                       </DelayedLink>
@@ -80,10 +89,10 @@ const ExploreProjectsSection = () => {
             className="col-lg-2 offset-lg-5 flex-center mt-lg-60 mt-mobile-40"
             data-aos="fadeIn .8s ease-in-out .2s, d:loop"
           >
-            <DelayedLink to="/" className="btn-border-blue" 
-            attributes={{
-              "data-cursor-style": "off",
-            }}
+            <DelayedLink to="/" className="btn-border-blue"
+              attributes={{
+                "data-cursor-style": "off",
+              }}
             >
               <span>See more</span>
             </DelayedLink>

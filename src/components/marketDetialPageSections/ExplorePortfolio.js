@@ -1,4 +1,3 @@
-import { Explore } from "../../common/constats/marketData";
 import DelayedLink from '../../common/DelayedLink'
 
 const ExplorePortfolio = ({data}) => {
