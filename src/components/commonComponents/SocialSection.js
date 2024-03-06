@@ -5,8 +5,20 @@ import {
   socialData,
   instafeeds,
 } from "../../common/constats/constats";
+import { useEffect } from "react";
 
 const SocialSection = () => {
+
+  useEffect(() => {
+    const script = document.createElement('script')
+    script.async = true
+    script.type = 'text/javascript'
+    script.dataset.pinBuild = 'doBuild'
+    script.src = '//assets.pinterest.com/js/pinit.js'
+    document.body.appendChild(script)
+    if (window.doBuild) window.doBuild()
+  }, []) // only run once
+
   return (
     <section className="section-lets-get-social z-5 pt-lg-195 pt-tablet-105 pt-phone-155 pb-lg-130 pb-tablet-105 pb-phone-140 mt-lg-240">
       <div
@@ -143,9 +155,8 @@ const SocialSection = () => {
                   <ul className="list-instagram">
                   <Link
                         data-pin-do="embedUser"
-                        // data-pin-board-width="500"
-                        data-pin-scale-height="500"
-                        // data-pin-scale-width="100"
+                        data-pin-scale-height="400"
+                        data-pin-scale-width="1200"
                         data-pin-min-weight="100%"
                         data-pin-max-weight="100%"
                         to="https://ro.pinterest.com/blueprintst"
