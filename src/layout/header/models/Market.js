@@ -1,20 +1,36 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import DelayedLink from "../../../common/DelayedLink";
-import { useDispatch, useSelector } from "react-redux";
-import { getMarketCollection } from "../../../redux/reducers/marketData";
+import { getMarketData } from '../../../apiServices/market'
+
+import { useQuery } from '@tanstack/react-query'
+import { QueryCache } from '@tanstack/react-query'
+
 
 const Market = () => {
-  const dispatch = useDispatch();
+  const { isLoading, isError, data, error, status, refetch } = useQuery({ queryKey: ['marketData'], queryFn: getMarketData }); 
 
-  const data = useSelector((state) => state.market.marketModel);
-  // const loading = useSelector((state) => state.market.marketModelLoading);
-  // const error = useSelector((state) => state.market.error);
+  if (isLoading) return "Loading...";
+ 
+  if (error) return "An error has occurred: " + error.message;
 
-  useEffect(() => {
-    dispatch(getMarketCollection());
-  }, [dispatch]);
-  
+
+
+  const queryCache = new QueryCache({
+    onError: (error) => {
+      console.log(error)
+    },
+    onSuccess: (data) => {
+      console.log(data,"data")
+    },
+    onSettled: (data, error) => {
+      console.log(data, error)
+    },
+  })
+
+  queryCache.find(['marketData'])
+
   return (
+    status === 'success' &&
     <div className="wrapper-submenu-market wrapper-submenu">
       <div className="container-title-mobile">
         <h2 className="submenu-title">Markets</h2>

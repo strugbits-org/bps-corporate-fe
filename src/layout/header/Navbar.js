@@ -174,7 +174,7 @@ const Navbar = () => {
                 className="submenu-services submenu"
                 data-get-submenu="services"
               >
-                <Services />
+                {/* <Services /> */}
               </div>
               {/* services model component end */}
 

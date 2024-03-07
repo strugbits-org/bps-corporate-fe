@@ -15,8 +15,33 @@ import MarketPost from "./pages/dynamicPages/MarketPost";
 import BlogPost from "./pages/dynamicPages/BlogPost";
 import ServicePostPage from "./pages/dynamicPages/ServicePostPage";
 import Blogs from "./common/Blogs";
+
+import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client'
+import { createSyncStoragePersister } from '@tanstack/query-sync-storage-persister'
+
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 // import MemberPage from './pages/MemberPage';
 // import PrivateRoute from './utilis/PrivateRoute';
+
+// const queryClient = new QueryClient({
+//   defaultOptions: {
+//     queries: {
+//       cacheTime: 1000 * 60 * 60 * 24, // 24 hours
+//     },
+//   },
+// })
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      cacheTime: 1000 * 60 * 60 * 24, // 24 hours
+    },
+  },
+})
+
+const persister = createSyncStoragePersister({
+  storage: window.localStorage,
+})
 
 const router = createBrowserRouter([
   {
@@ -89,9 +114,17 @@ const router = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  // <React.StrictMode>
-    <Provider store={store}>
-      <RouterProvider router={router} />
-    </Provider>
-  // </React.StrictMode>
+  <PersistQueryClientProvider
+    client={queryClient}
+    persistOptions={{ persister }}
+  >
+  <Provider store={store}>
+    <RouterProvider router={router} />
+  </Provider>
+  </PersistQueryClientProvider>
+  // <QueryClientProvider client={queryClient}>
+  //   <Provider store={store}>
+  //     <RouterProvider router={router} />
+  //   </Provider>
+  // </QueryClientProvider>
 );

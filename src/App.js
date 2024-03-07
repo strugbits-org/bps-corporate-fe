@@ -63,8 +63,8 @@ function App() {
       <div id="main-transition">
         <div id={`pg-${cleanPath}`} className="wrapper" data-scroll-container>
           <main>
-            <Outlet />
-            <Footer />
+            {/* <Outlet />
+            <Footer /> */}
           </main>
         </div>
       </div>
