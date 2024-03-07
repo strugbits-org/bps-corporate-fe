@@ -18,9 +18,9 @@ const DreamBigSection = () => {
   useEffect(() => {
     dispatch(fetchDreamBigSection());
     // trigger animation on data load
-    setTimeout(() => {
-      document.querySelector(".homeAnimationsTrigger").click();
-    }, 1500);
+    // setTimeout(() => {
+    //   document.querySelector(".homeAnimationsTrigger").click();
+    // }, 1500);
   }, [dispatch]);
 
   return (

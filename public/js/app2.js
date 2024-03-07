@@ -15928,9 +15928,7 @@ var require_app2 = __commonJS({
           content: "[data-scroll-container]",
           smooth,
           normalizeScroll: true,
-          // prevents address bar from showing/hiding on most devices, solves various other browser inconsistencies
           ignoreMobileResize: true,
-          // skips ScrollTrigger.refresh() on mobile resizes from address bar showing/hiding
           effects: true,
           preventDefault: true
         });
@@ -16002,13 +16000,6 @@ var require_app2 = __commonJS({
           });
         }
       }
-    }
-    
-    if (firstLoad) {
-      setTimeout(() => {
-        window.scrollTo({top:0,behavior:'instant'});
-      }, 100);
-      whenContainerReady();
     }
 
     function reloadContainer() {
@@ -16129,18 +16120,20 @@ var require_app2 = __commonJS({
         }
       }
     }
-    const reloadButton = document.querySelector(".reloadScript");
-    
-    reloadButton.addEventListener("click", ()=>{
-      if(!firstLoad){
-        window.scrollTo({top:0,behavior:'instant'})
+
+    const initializeScript = () => {
+      window.scrollTo({ top:0,behavior:'instant' });
+      if(firstLoad){
+        whenContainerReady();
+      } else{
         closeSearch();
         reloadContainer();
       }
-    });
+    }
+    document.querySelector(".initScript").addEventListener("click", initializeScript );
+  
     
-    const homeAnimationsTrigger = document.querySelector(".homeAnimationsTrigger");
-    homeAnimationsTrigger.addEventListener("click", () => {
+    document.querySelector(".homeAnimationsTrigger").addEventListener("click", () => {
       sticky();
       observers();
       marcarFormPreenchido();
@@ -16154,19 +16147,17 @@ var require_app2 = __commonJS({
     });
     
     
-    const updateWatchedTrigger = document.querySelector(".updateWatchedTrigger");
-    updateWatchedTrigger.addEventListener("click", ()=>{
+    document.querySelector(".updateWatchedTrigger").addEventListener("click", ()=>{
       initVideo();
       updateWatched();
     });
 
-    const triggerSplitWordAnimation = document.querySelector(".triggerSplitWordAnimation");
-    triggerSplitWordAnimation.addEventListener("click", () => {
+    document.querySelector(".triggerSplitWordAnimation").addEventListener("click", () => {
       splitChars();
       splitWords();
     } );
     
-    document.addEventListener("pjax:complete", whenContainerReady);
+    // document.addEventListener("pjax:complete", whenContainerReady);
     document.addEventListener("pjax:send", whenContainerLeave);
     function whenContainerLeave() {
       document.body.classList.add("page-leave-active");
