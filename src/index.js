@@ -3,7 +3,6 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
-import store from "./redux/store";
 import Home from "./pages/Home";
 import AboutUs from "./pages/AboutUs";
 import ContactUs from "./pages/ContactUs";
@@ -15,8 +14,11 @@ import MarketPost from "./pages/dynamicPages/MarketPost";
 import BlogPost from "./pages/dynamicPages/BlogPost";
 import ServicePostPage from "./pages/dynamicPages/ServicePostPage";
 import Blogs from "./common/Blogs";
+import { PersistGate } from "redux-persist/integration/react";
 // import MemberPage from './pages/MemberPage';
 // import PrivateRoute from './utilis/PrivateRoute';
+import {store, persistor } from "./redux/store";
+
 
 const router = createBrowserRouter([
   {
@@ -43,10 +45,9 @@ const router = createBrowserRouter([
       {
         path: "blogs",
         element: <Blogs />,
-      },       
+      },
       {
-       
-        path: "portfolio", 
+        path: "portfolio",
         element: <Portfolio />,
       },
       {
@@ -62,14 +63,12 @@ const router = createBrowserRouter([
         element: <MarketPost />,
       },
       {
-       
-        path: "portfolio-post/:slug", 
+        path: "portfolio-post/:slug",
         element: <PortfolioPost />,
       },
       {
-       
-        path: "blog-post/:slug", 
-        element: <BlogPost/>,
+        path: "blog-post/:slug",
+        element: <BlogPost />,
       },
       //////////// private route start ///////////////////////
       // {
@@ -89,9 +88,10 @@ const router = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  // <React.StrictMode>
-    <Provider store={store}>
+  <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
       <RouterProvider router={router} />
-    </Provider>
+    </PersistGate>
+  </Provider>
   // </React.StrictMode>
 );
