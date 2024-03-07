@@ -1,37 +1,6 @@
 import { Link } from "react-router-dom";
 const PortfolioIntoSection = ({data}) => {
 
-  const post = {
-    id: "01",
-    title: "F1 Las Vegas Grand Prix",
-    categories: "Corporate",
-    tags: [
-      { tag: "Rental" },
-      { tag: "Wedding" },
-      { tag: "Floral Design" },
-      { tag: "Printing" },
-      { tag: "Design" },
-    ],
-    componentTitle: "COMPONENTS",
-    componentDesc:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices ipsum purus, at aliquam mauris interdum nec.",
-    challangesTitle: "THE CHALLENGE",
-    challangesDesc1:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices ipsum purus, at aliquam mauris interdum nec. Maecenas in pellentesque sapien, ut sodales augue. Sed magna lacus, scelerisque quis dui eu, tempus auctor nunc.",
-    challangesDesc2:
-      "In pulvinar sapien id mi mattis pulvinar. Vivamus lobortis nibh in blandit pulvinar. Morbi sagittis justo vitae risus tristique condimentum.",
-    subheading:
-      "Events are crucial for enhancing brand awareness, offering exclusive chances to showcase ideas, products, and services intimately.",
-    highlightTitle: "HIGHLIGHT",
-    highlightDesc:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices ipsum purus, at aliquam mauris interdum nec. Maecenas in pellentesque sapien, ut sodales augue.",
-    solutionTitle: "THE SOLUTION ",
-    solutionDesc1:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices ipsum purus, at aliquam mauris interdum nec. Maecenas in pellentesque sapien, ut sodales augue. Sed magna lacus, scelerisque quis dui eu, tempus auctor nunc. In pulvinar sapien id mi mattis pulvinar. Vivamus lobortis nibh in blandit pulvinar. Morbi sagittis justo vitae risus tristique condimentum. Pellentesque elementum convallis dui, sed aliquet odio rhoncus sed. Cras bibendum orci a turpis vulputate dictum. Suspendisse egestas enim lacus, eget volutpat tellus vestibulum at.",
-    solutionDesc2:
-      "Maecenas in pellentesque sapien, ut sodales augue. Sed magna lacus, scelerisque quis dui eu, tempus auctor nunc. In pulvinar sapien id mi mattis pulvinar. Vivamus lobortis nibh in blandit pulvinar. Morbi sagittis justo vitae risus tristique condimentum. Pellentesque elementum convallis dui, sed aliquet odio rhoncus sed. Cras bibendum orci a turpis vulputate dictum. Suspendisse egestas enim lacus, eget volutpat tellus vestibulum at.",
-  };
-
   return (
     data &&
     <section className="portfolio-post-intro pb-lg-250">
@@ -75,25 +44,25 @@ const PortfolioIntoSection = ({data}) => {
                   </div>
 
                   <div className="container-text">
-                    <h2 className="title">{post.componentTitle}</h2>
+                    <h2 className="title">{data.subheading1}</h2>
                     <div className="wrapper-text">
                       <div className="text">
                         <p>
-                          {post.componentDesc}
+                          {data.subheading1Description}
                         </p>
                       </div>
                     </div>
                   </div>
 
                   <div className="container-text">
-                    <h2 className="title">{post.challangesTitle}</h2>
+                    <h2 className="title">{data.subheading2}</h2>
                     <div className="wrapper-text">
                       <div className="text">
                         <p>
-                          {post.challangesDesc1}
+                          {data.subheading2Description}
                         </p>
                         <p>
-                          {post.challangesDesc2}
+                          {data.subheading2Description2}
                         </p>
                       </div>
                     </div>
@@ -102,29 +71,29 @@ const PortfolioIntoSection = ({data}) => {
 
                 <div className="column-2 column-portfolio">
                   <h3 className="fs--25 fs-phone-25 lh-140 mb-lg-20 mb-tablet-30 mb-mobile-10">
-                    {post.subheading}
+                    {data.description}
                   </h3>
 
                   <div className="container-text">
-                    <h2 className="title">{post.highlightTitle}</h2>
+                    <h2 className="title">{data.subheading3}</h2>
                     <div className="wrapper-text">
                       <div className="text">
                         <p>
-                          {post.highlightDesc}
+                          {data.subheading3Description}
                         </p>
                       </div>
                     </div>
                   </div>
 
                   <div className="container-text container-read-more">
-                    <h2 className="title">{post.solutionTitle}</h2>
+                    <h2 className="title">{data.subheading4}</h2>
                     <div className="wrapper-text">
                       <div className="text">
                         <p>
-                         {post.solutionDesc1}
+                         {data.subheading4Description}
                         </p>
                         <p>
-                          {post.solutionDesc2}
+                        {data.subheading4Description2}
                         </p>
                       </div>
                     </div>

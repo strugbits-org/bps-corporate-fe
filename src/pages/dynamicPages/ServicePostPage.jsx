@@ -5,57 +5,34 @@ import PeopleReviewSlider from "../../components/commonComponents/PeopleReviewSl
 import StudioSection from "../../components/commonComponents/StudioSection";
 import DreamBigSection from "../../components/commonComponents/DreamBigSection";
 import SocialSection from "../../components/commonComponents/SocialSection";
-
-import { OAuthStrategy, createClient } from "@wix/sdk";
-import React, { useEffect, useState } from "react";
-import { collections, items } from "@wix/data";
-import getFullImageURL from "../../common/common_functions/imageURL";
+import React, { useEffect } from "react";
 import { useLocation, useParams } from "react-router-dom";
-
+import { useDispatch, useSelector } from "react-redux";
+import { fetchServicesData } from "../../redux/reducers/servicesData";
 
 const ServicePostPage = () => {
-  const location = useLocation(); 
-  const [serviceData, setServiceData] = useState(null);
-  
+  // const [serviceData, setServiceData] = useState(null);
+  const location = useLocation();
   const params = useParams();
+
+  const dispatch = useDispatch();
+  const servicesData = useSelector((state) => state.services.servicesData);
+  // const loading = useSelector((state) => state.services.servicesLoading);
+  // const error = useSelector((state) => state.services.error);
+
   useEffect(() => {
-    setServiceData(null);
-    async function getServiceCollection() {
-      const wixClient = createClient({
-        modules: { collections, items },
-        auth: OAuthStrategy({
-          clientId: "04038da0-732b-471d-babe-4e90ad785740",
-        }),
-      });
-
-      let options = {
-        dataCollectionId: "StudiosSection",
-        includeReferencedItems: ["subServices"]
-      };
-
-      const { items: fetchedItems } = await wixClient.items
-        .queryDataItems(options)
-        .eq("slug", params.slug)
-        .find();
-
-      const servicesArray = fetchedItems.map((service) => {
-        service.data.modalImage = getFullImageURL(service.data.modalImage);
-        service.data.image = getFullImageURL(service.data.image);
-        return service.data;
-      });
-      setServiceData(servicesArray[0]);
-    }
-    getServiceCollection();
+    // setServiceData(null);
+    dispatch(fetchServicesData(params.slug));
     setTimeout(() => {
       document.querySelector(".updateWatchedTrigger").click();
       document.querySelector(".triggerSplitWordAnimation").click();
     }, 1500);
-  }, [location,params.slug]);
+  }, [dispatch, location, params.slug]);
 
   return (
     <>
-      <ServiceIntro data={serviceData} />
-      <ServiceDescription data={serviceData} />
+      <ServiceIntro data={servicesData} />
+      <ServiceDescription data={servicesData} />
 
       {/* commonComponents */}
       <SliderBanner />
@@ -64,7 +41,7 @@ const ServicePostPage = () => {
       <DreamBigSection />
       <SocialSection />
     </>
-  )
+  );
 };
 
 export default ServicePostPage;
