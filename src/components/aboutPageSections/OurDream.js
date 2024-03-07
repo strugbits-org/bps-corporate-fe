@@ -4,7 +4,7 @@ import getFullImageURL from "../../common/common_functions/imageURL";
 import { fetchOurDreamSection } from "../../redux/reducers/aboutusData";
 import { useDispatch, useSelector } from "react-redux";
 
-const OurDream = () => {
+const OurDream = ({handleLoadingFinished}) => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.aboutus.OurDreamData);
   // const loading = useSelector((state) => state.aboutus.OurDreamLoading);
@@ -22,6 +22,12 @@ const OurDream = () => {
       document.querySelector(".triggerSplitWordAnimation").click();
     }, 1000);
   }, [dispatch]);
+
+  useEffect(() => {
+    if (data.length > 0) {
+      handleLoadingFinished();
+    }
+  }, [data]);
 
   return (
     <section className="about-dream-team pt-lg-195">

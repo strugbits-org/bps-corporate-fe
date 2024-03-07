@@ -11,11 +11,11 @@ function App() {
   const location = useLocation();
   const pathname = location.pathname.trim() === "/" ? "home" : location.pathname.substring(1); // Remove leading slash
   const cleanPath = pathname.split("/")[0].trim();
-    useEffect(() => {
-      setTimeout(() => {
-        document.querySelector(".initScript").click();
-      }, 2500);
-    },[pathname]);
+    // useEffect(() => {
+    //   setTimeout(() => {
+    //     document.querySelector(".initScript").click();
+    //   }, 1500);
+    // },[pathname]);
   return (
     <div>
       

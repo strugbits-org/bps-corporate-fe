@@ -4,7 +4,7 @@ import getFullImageURL from "../../common/common_functions/imageURL";
 import { fetchIntroSection } from "../../redux/reducers/aboutusData";
 import { useDispatch, useSelector } from "react-redux";
 
-const IntroSection = () => {
+const IntroSection = ({handleLoadingFinished}) => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.aboutus.IntroData);
 // const loading = useSelector((state) => state.aboutus.IntroLoading);
@@ -22,6 +22,12 @@ const IntroSection = () => {
   useEffect(() => {
     dispatch(fetchIntroSection());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (data.length > 0) {
+      handleLoadingFinished();
+    }
+  }, [data]);
 
   const properties = [
     {

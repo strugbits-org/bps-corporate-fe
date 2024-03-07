@@ -4,7 +4,7 @@ import getFullImageURL from "../../common/common_functions/imageURL";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchOurFamilySection } from "../../redux/reducers/aboutusData";
 
-const OurFamily = () => {
+const OurFamily = ({handleLoadingFinished}) => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.aboutus.OurFamilyData);
 
@@ -19,6 +19,12 @@ const OurFamily = () => {
       document.querySelector(".triggerSplitWordAnimation").click();
     }, 1000);
   }, [dispatch]);
+
+  useEffect(() => {
+    if (data.length > 0) {
+      handleLoadingFinished();
+    }
+  }, [data]);
 
   return (
     <section className="about-meet-the-rest-of-the-family pt-lg-245 pt-mobile-205">
