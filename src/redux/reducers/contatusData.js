@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { createClient, OAuthStrategy } from "@wix/sdk";
-import { collections, items } from "@wix/data";
+import createWixClient from "../wixClient";
+
+const wixClient = createWixClient();
 
 const initialState = {
   contactusData: [],
@@ -8,11 +9,6 @@ const initialState = {
   contactusLoading: false,
   error: null,
 };
-
-const wixClient = createClient({
-  modules: { collections, items },
-  auth: OAuthStrategy({ clientId: "04038da0-732b-471d-babe-4e90ad785740" }),
-});
 
 
 export const fetchContactUs = createAsyncThunk(

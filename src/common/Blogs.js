@@ -2,19 +2,13 @@ import { createClient, OAuthStrategy } from "@wix/sdk";
 import React from "react";
 import { posts, tags } from "@wix/blog";
 import ReactPlayer from "react-player";
-import { collections, items } from '@wix/data';
+import createWixClient from "../redux/wixClient";
+
+const wixClient = createWixClient();
 
 function Blogs() {
   const [data, setData] = React.useState([]);
   const getImageURL = (src) => `https://static.wixstatic.com/media/${src}`;
-
-
-  const wixClient = createClient({
-    modules: { collections, items },
-    auth: OAuthStrategy({ clientId: '04038da0-732b-471d-babe-4e90ad785740' })
-  });
-
-
 
   const queryDataItems = React.useCallback(async () => {
     let options = {

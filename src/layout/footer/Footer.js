@@ -1,9 +1,10 @@
 import DelayedLink from "../../common/DelayedLink";
 import Newsletter from "../../common/Newsletter";
-import { OAuthStrategy, createClient } from "@wix/sdk";
 import React, { useEffect, useState } from "react";
-import { collections, items } from "@wix/data";
 import getFullImageURL from "../../common/common_functions/imageURL";
+import createWixClient from "../../redux/wixClient";
+
+const wixClient = createWixClient();
 
 const Footer = () => {
   const [dataItems, setDataItems] = useState([]);
@@ -17,12 +18,7 @@ const Footer = () => {
 
   useEffect(() => {
     async function fetchDataItems() {
-      const wixClient = createClient({
-        modules: { collections, items },
-        auth: OAuthStrategy({
-          clientId: "04038da0-732b-471d-babe-4e90ad785740",
-        }),
-      });
+    
 
       let options = {
         dataCollectionId: "Footer",
