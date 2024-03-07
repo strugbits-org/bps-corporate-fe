@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { createClient, OAuthStrategy } from "@wix/sdk";
-import { collections, items } from "@wix/data";
+import createWixClient from "../wixClient";
+
+const wixClient = createWixClient();
 
 const initialState = {
   homeTopData: [],
@@ -23,10 +24,6 @@ const initialState = {
   error: null,
 };
 
-const wixClient = createClient({
-  modules: { collections, items },
-  auth: OAuthStrategy({ clientId: "04038da0-732b-471d-babe-4e90ad785740" }),
-});
 
 export const fetchHomeTopData = createAsyncThunk(
   "data/fetchDataItems",
@@ -188,7 +185,7 @@ export const fetchDreamBigSection = createAsyncThunk(
   }
 );
 
-const dataSlice = createSlice({
+const homeSlice = createSlice({
   name: "home",
   initialState,
   reducers: {},
@@ -301,4 +298,4 @@ const dataSlice = createSlice({
   },
 });
 
-export default dataSlice.reducer;
+export default homeSlice.reducer;

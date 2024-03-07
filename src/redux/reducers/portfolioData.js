@@ -1,7 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { createClient, OAuthStrategy } from "@wix/sdk";
-import { collections, items } from "@wix/data";
 import getFullImageURL from "../../common/common_functions/imageURL";
+import createWixClient from "../wixClient";
+
+const wixClient = createWixClient();
 
 const initialState = {
   portfolioData: {
@@ -15,11 +16,6 @@ const initialState = {
   singlePortfolioLoading: false,
   error: null,
 };
-
-const wixClient = createClient({
-  modules: { collections, items },
-  auth: OAuthStrategy({ clientId: "04038da0-732b-471d-babe-4e90ad785740" }),
-});
 
 export const fetchPortfolio = createAsyncThunk(
   "data/fetchPortfolio",
@@ -89,7 +85,7 @@ export const fetchSinglePortfolio = createAsyncThunk(
   }
 );
 
-const contactUsSlice = createSlice({
+const portfolioSlice = createSlice({
   name: "portfolio",
   initialState,
   reducers: {},
@@ -124,4 +120,4 @@ const contactUsSlice = createSlice({
   },
 });
 
-export default contactUsSlice.reducer;
+export default portfolioSlice.reducer;

@@ -1,7 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { createClient, OAuthStrategy } from "@wix/sdk";
-import { collections, items } from "@wix/data";
 import getFullImageURL from "../../common/common_functions/imageURL";
+import createWixClient from "../wixClient";
+
+const wixClient = createWixClient();
 
 const initialState = {
   marketTopData: null,
@@ -12,10 +13,7 @@ const initialState = {
   error: null,
 };
 
-const wixClient = createClient({
-  modules: { collections, items },
-  auth: OAuthStrategy({ clientId: "04038da0-732b-471d-babe-4e90ad785740" }),
-});
+
 
 export const fetchMarketTopsections = createAsyncThunk(
   "data/fetchMarketTopsections",
