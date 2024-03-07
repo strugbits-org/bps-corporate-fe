@@ -6,7 +6,7 @@ import aboutusReducer from "./reducers/aboutusData";
 import contactusReducer from "./reducers/contatusData";
 import porfolioReducer from "./reducers/portfolioData";
 import marketReducer from "./reducers/marketData";
-
+import servicesReducer from "./reducers/servicesData";
 export default configureStore({
   reducer: {
     user: userReducer,
@@ -15,7 +15,8 @@ export default configureStore({
     aboutus: aboutusReducer,
     contactus: contactusReducer,
     portfolio: porfolioReducer,
-    market: marketReducer
+    market: marketReducer,
+    services: servicesReducer
   },
  
 });

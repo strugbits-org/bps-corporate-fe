@@ -9,6 +9,7 @@ const OurProjectSection = () => {
   const ourProjectData = useSelector((state) => state.home.ourProjectData);
   // const loading = useSelector((state) => state.home.ourProjectLoading);
   // const error = useSelector((state) => state.home.error);
+  
   const firstItem = ourProjectData[0];
   const title = firstItem ? firstItem.data.title : "";
   const btntext = firstItem ? firstItem.data.buttonText : "";
