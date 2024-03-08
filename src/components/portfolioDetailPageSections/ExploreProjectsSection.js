@@ -5,7 +5,7 @@ import { fetchPortfolio } from "../../redux/reducers/portfolioData";
 
 const ExploreProjectsSection = ({data, handleCollectionLoaded}) => {
   const dispatch = useDispatch();
-  const portfolioCollection = useSelector((state) => state.portfolio.portfolioData).data;
+  const portfolioCollection = useSelector((state) => state.portfolio.portfolioData.data);
   // const index = portfolioData.findIndex(item => item._id === data._id);
   // console.log("portfolioData", portfolioData);
   const portfolioData = portfolioCollection.slice(0,4);

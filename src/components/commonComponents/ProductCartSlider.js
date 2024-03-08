@@ -1,28 +1,28 @@
 import React from "react";
-import { productSlider } from "../../common/constats/blogData";
 import DelayedLink from "../../common/DelayedLink";
+import getFullImageURL from "../../common/common_functions/imageURL";
 
-const ProductCartSlider = () => {
+const ProductCartSlider = ({data}) => {
   return (
     <div className="slider-featured-products" data-aos="d:loop">
       <div className="swiper-container">
         <div className="swiper-wrapper">
-          {productSlider.map((data, index) => {
+          {data.storeProducts.map((item, index) => {
             return (
               <div key={index} className="swiper-slide">
                 <div className="rental-product-link">
-                  <button className="btn-bookmark">
+                  {/* <button className="btn-bookmark">
                     <i className="icon-bookmark"></i>
                     <i className="icon-bookmark-full"></i>
-                  </button>
+                  </button> */}
 
-                  <DelayedLink to="/" className="product-link">
-                    <h3 className="product-name">{data.name}</h3>
+                  <DelayedLink to={item.productPageUrl} className="product-link">
+                    <h3 className="product-name">{item.name}</h3>
 
                     <div className="wrapper-img">
                       <div className="container-img">
                         <img
-                          src={data.img1}
+                          src={getFullImageURL(item.mainMedia)}
                           data-preload
                           className="media"
                           alt=""
@@ -32,27 +32,33 @@ const ProductCartSlider = () => {
                     <div className="container-bottom">
                       <div className="view-more">
                         <span className="view">
-                          <span>{data.btntext}</span>
+                          <span>View more</span>
                         </span>
                         <i className="icon-arrow-diagonal-right"></i>
                       </div>
                       <ul className="list-thumb">
-                        {Object.values(data.list).map((list, index) => (
-                          <li key={index}>
-                            <div className="container-img">
-                              <img
-                                src={list}
-                                data-preload
-                                className="media"
-                                alt=""
-                              />
-                            </div>
-                          </li>
-                        ))}
+                            {item.productOptions.Color.choices.map((option, index) => (
+                              <React.Fragment key={index}>
+                                {index < 2 && (
+                                  <li key={index}>
+                                  <div className="container-img">
+                                    <img
+                                      src={getFullImageURL(option.mainMedia)}
+                                      data-preload
+                                      className="media"
+                                      alt=""
+                                    />
+                                  </div>
+                                </li>
+                                )}
+                              </React.Fragment>
+                            ))}
+                            {item.productOptions.Color.choices.length > 2 ? (
+                              <div className="colors-number">
+                                <span>+{item.productOptions.Color.choices.length - 2}</span>
+                              </div>
+                            ) : null}
                       </ul>
-                      <div className="colors-number">
-                        <span>+3</span>
-                      </div>
                     </div>
                   </DelayedLink>
                 </div>
