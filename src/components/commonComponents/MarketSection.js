@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import getFullImageURL from "../../common/common_functions/imageURL";
 import { fetchMarketSection } from "../../redux/reducers/homeData";
 import { useDispatch, useSelector } from "react-redux";
-const MarketSection = () => {
+const MarketSection = ({handleCollectionLoaded}) => {
   
   let data_delay = 0;
 
@@ -18,6 +18,12 @@ const MarketSection = () => {
   useEffect(() => {
     dispatch(fetchMarketSection());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (data.length > 0 && handleCollectionLoaded) {
+      handleCollectionLoaded();
+    }
+  }, [data]);
 
   return (
     <section className="section-markets">

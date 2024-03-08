@@ -5,10 +5,9 @@ import SocialSection from "../../components/commonComponents/SocialSection";
 import { useLocation, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSinglePortfolio } from "../../redux/reducers/portfolioData";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 const PortfoliPost = () => {
-  const [loadedSections, setLoadedSections] = useState([])
   const location = useLocation();
   const params = useParams();
 
@@ -23,29 +22,28 @@ const PortfoliPost = () => {
   
   useEffect(() => {
     if (portfolioData) {
-      setLoadedSections([...loadedSections, true]);
+      handleCollectionLoaded();
     }
   }, [portfolioData]);
 
 
   // Load animation when all sections are loaded
-
-  const numberOfSections = 2;
-  const handleLoadingFinished = () => {
-    setLoadedSections([...loadedSections, true]);
-  }
-  useEffect(() => {
-    console.log("portfolio loadedSections",loadedSections);
-    if (loadedSections.length === numberOfSections) {
-      document.querySelector(".initScript").click();
+  const numberOfCollections = 2;
+  const collectionLoaded = [];
+  const handleCollectionLoaded = () => {
+    collectionLoaded.push(true);
+    if (collectionLoaded.length === numberOfCollections) {
+      setTimeout(() => {
+        document.querySelector(".initScript").click();
+      }, 200);
     }
-  }, [loadedSections])
+  }
 
   return (
     <>
       <PortfolioIntoSection data={portfolioData} />
       <GallerySection data={portfolioData} />
-      <ExploreProjectsSection handleLoadingFinished={handleLoadingFinished} data={portfolioData} />
+      <ExploreProjectsSection handleCollectionLoaded={handleCollectionLoaded} data={portfolioData} />
       <SocialSection />
     </>
   );

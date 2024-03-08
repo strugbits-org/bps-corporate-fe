@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchGetTouchSection } from "../../redux/reducers/homeData";
 
-const GetTouchSection = () => {
+const GetTouchSection = ({handleCollectionLoaded}) => {
   const dispatch = useDispatch();
   const getTouchData = useSelector((state) => state.home.getTouchData);
 // const loading = useSelector((state) => state.home.ourProjectLoading);
@@ -19,6 +19,12 @@ const GetTouchSection = () => {
   useEffect(() => {
     dispatch(fetchGetTouchSection());
   }, [dispatch]);
+  
+  useEffect(() => {
+    if (getTouchData.length > 0) {
+      handleCollectionLoaded();
+    }
+  }, [getTouchData]);
 
   return (
     <section className="home-solution pt-220 pb-110">

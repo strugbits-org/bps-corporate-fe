@@ -4,32 +4,35 @@ import OurFamily from '../components/aboutPageSections/OurFamily';
 import SliderBanner from '../components/commonComponents/SliderBanner';
 import AboutBottomSection from '../components/aboutPageSections/AboutBottomSection';
 import SocialSection from '../components/commonComponents/SocialSection';
-import { useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 
 const AboutUs = () => {
- 
-    // Load animation when all sections are loaded
-    const [loadedSections, setLoadedSections] = useState([])
 
-    const numberOfSections = 5;
-    const handleLoadingFinished = () => {
-      setLoadedSections([...loadedSections, true]);
-    }
-    useEffect(() => {
-      console.log("about us loadedSections",loadedSections);
-      if (loadedSections.length === numberOfSections) {
+  // Animations Load
+  const numberOfCollections = 5;
+  const [animationsLoaded, setAnimationsLoaded] = useState(false);
+  const [collectionLoaded, setCollectionLoaded] = useState(0);
+  
+  const handleCollectionLoaded = useCallback(() => {
+    setCollectionLoaded((prevCount) => prevCount + 1);
+    if ((collectionLoaded + 1) >= numberOfCollections && !animationsLoaded) {
+      setTimeout(() => {
         document.querySelector(".initScript").click();
-      }
-    }, [loadedSections])
+      }, 200);
+      setAnimationsLoaded(true);
+      setCollectionLoaded(0);
+    }
+  }, [collectionLoaded]);
+  // Animations Load
 
   return (
-    <>  
-    <IntroSection handleLoadingFinished={handleLoadingFinished} />
-    <OurDream handleLoadingFinished={handleLoadingFinished} />
-    <OurFamily handleLoadingFinished={handleLoadingFinished} />
-    <SliderBanner  handleLoadingFinished={handleLoadingFinished} />
-    <AboutBottomSection handleLoadingFinished={handleLoadingFinished} />
-    <SocialSection />
+    <>
+      <IntroSection handleCollectionLoaded={handleCollectionLoaded} />
+      <OurDream handleCollectionLoaded={handleCollectionLoaded} />
+      <OurFamily handleCollectionLoaded={handleCollectionLoaded} />
+      <SliderBanner handleCollectionLoaded={handleCollectionLoaded} />
+      <AboutBottomSection handleCollectionLoaded={handleCollectionLoaded} />
+      <SocialSection />
     </>
   )
 }

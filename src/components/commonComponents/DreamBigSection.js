@@ -3,7 +3,7 @@ import getFullImageURL from "../../common/common_functions/imageURL";
 import { fetchDreamBigSection } from "../../redux/reducers/homeData";
 import { useDispatch, useSelector } from "react-redux";
 
-const DreamBigSection = () => {
+const DreamBigSection = ({handleCollectionLoaded}) => {
 
   const dispatch = useDispatch();
   const data = useSelector((state) => state.home.dreamBigData);
@@ -17,12 +17,14 @@ const DreamBigSection = () => {
 
   useEffect(() => {
     dispatch(fetchDreamBigSection());
-    // trigger animation on data load
-    // setTimeout(() => {
-    //   document.querySelector(".homeAnimationsTrigger").click();
-    // }, 1500);
   }, [dispatch]);
 
+  useEffect(() => {
+    if (data.length > 0 && handleCollectionLoaded) {
+      handleCollectionLoaded();
+    }
+  }, [data]);
+  
   return (
     <section className="section-dream-big">
       <div className="container-fluid">

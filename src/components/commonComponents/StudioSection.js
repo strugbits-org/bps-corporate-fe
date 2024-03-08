@@ -3,7 +3,7 @@ import getFullImageURL from "../../common/common_functions/imageURL";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchStudioSection } from "../../redux/reducers/homeData";
 
-const StudioSection = () => {
+const StudioSection = ({handleCollectionLoaded}) => {
   const dispatch = useDispatch();
   const studioData = useSelector((state) => state.home.studioData);
   // const loading = useSelector((state) => state.home.studioLoading);
@@ -22,6 +22,12 @@ const StudioSection = () => {
   const firstItem = studioData[0]; // Assuming you want values from the first item
   const title = firstItem ? firstItem.data.title : "";
   const desc = firstItem ? firstItem.data.description : "";
+
+  useEffect(() => {
+    if (studioData.length > 0 && handleCollectionLoaded) {
+      handleCollectionLoaded();
+    }
+  }, [studioData]);
 
   return (
     <section className="section-studios">

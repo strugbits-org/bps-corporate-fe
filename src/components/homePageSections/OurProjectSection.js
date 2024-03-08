@@ -4,7 +4,7 @@ import getFullImageURL from "../../common/common_functions/imageURL";
 import { fetchOurPorjectSection } from "../../redux/reducers/homeData";
 import { useDispatch, useSelector } from "react-redux";
 
-const OurProjectSection = () => {
+const OurProjectSection = ({handleCollectionLoaded}) => {
   const dispatch = useDispatch();
   const ourProjectData = useSelector((state) => state.home.ourProjectData);
   // const loading = useSelector((state) => state.home.ourProjectLoading);
@@ -17,6 +17,12 @@ const OurProjectSection = () => {
   useEffect(() => {
     dispatch(fetchOurPorjectSection());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (ourProjectData.length > 0) {
+      handleCollectionLoaded();
+    }
+  }, [ourProjectData]);
 
   return (
     <section className="home-some-of-our-projects pt-lg-250 pt-mobile-130 pb-135">

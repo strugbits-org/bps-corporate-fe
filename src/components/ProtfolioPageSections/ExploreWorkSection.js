@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchPortfolio } from "../../redux/reducers/portfolioData";
 
 
-const ExploreWorkSection = () => {
+const ExploreWorkSection = ({handleCollectionLoaded}) => {
   
   const dispatch = useDispatch();
   // const loading = useSelector((state) => state.market.marketModelLoading);
@@ -57,6 +57,12 @@ const ExploreWorkSection = () => {
       document.querySelector(".updateWatchedTrigger").click();
     }, 400);
   }, [selectedStudio, selectedCategory, portfolioCollection]);
+
+  useEffect(() => {
+    if (portfolioCollection.length > 0 && handleCollectionLoaded) {
+      handleCollectionLoaded();
+    }
+  }, [portfolioCollection]);
 
   return (
     filteredPortfolioCollection && 

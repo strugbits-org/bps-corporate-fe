@@ -4,7 +4,7 @@ import getFullImageURL from "../../common/common_functions/imageURL";
 import { fetchRentalStoreSection } from "../../redux/reducers/homeData";
 import { useDispatch, useSelector } from "react-redux";
 
-const RentalStoreSection = () => {
+const RentalStoreSection = ({handleCollectionLoaded}) => {
   let transition = -35;
 
   const dispatch = useDispatch();
@@ -39,6 +39,12 @@ const RentalStoreSection = () => {
       setObject(processedObject);
     }
   }, [descriptionImages]);
+
+  useEffect(() => {
+    if (data.length > 0 && handleCollectionLoaded) {
+      handleCollectionLoaded();
+    }
+  }, [data]);
 
   return (
     <section className="home-rental-store pt-lg-145 pt-tablet-105 pt-phone-145 pb-lg-120 pb-tablet-100 pb-phone-145">

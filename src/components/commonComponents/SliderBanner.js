@@ -4,7 +4,7 @@ import getFullImageURL from "../../common/common_functions/imageURL";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSliderSection } from "../../redux/reducers/aboutusData";
 
-const SliderBanner = ({handleLoadingFinished}) => {
+const SliderBanner = ({handleCollectionLoaded}) => {
   const disptach = useDispatch();
   const data = useSelector((state) => state.aboutus.SliderData);
   // const loading = useSelector((state) => state.aboutus.SliderLoading);
@@ -20,8 +20,8 @@ const SliderBanner = ({handleLoadingFinished}) => {
   }, [disptach]);
 
   useEffect(() => {
-    if (data.length > 0) {
-      handleLoadingFinished();
+    if (data.length > 0 && handleCollectionLoaded) {
+      handleCollectionLoaded();
     }
   }, [data]);
 

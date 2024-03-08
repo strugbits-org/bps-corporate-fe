@@ -11,17 +11,10 @@ function App() {
   const location = useLocation();
   const pathname = location.pathname.trim() === "/" ? "home" : location.pathname.substring(1); // Remove leading slash
   const cleanPath = pathname.split("/")[0].trim();
-    // useEffect(() => {
-    //   setTimeout(() => {
-    //     document.querySelector(".initScript").click();
-    //   }, 1500);
-    // },[pathname]);
   return (
     <div>
       
       {/* helpers */}
-      <span className="initScript d-none"></span>
-      <span className="homeAnimationsTrigger d-none"></span>
       <span className="updateWatchedTrigger d-none"></span>
       <span className="triggerSplitWordAnimation d-none"></span>
       <Loading />
