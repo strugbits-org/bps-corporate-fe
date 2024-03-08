@@ -23,7 +23,7 @@ export const fetchPortfolio = createAsyncThunk(
     try {
       let options = {
         dataCollectionId: "portfolioItems",
-        includeReferencedItems: ["marketCategory", "studioTags"],
+        includeReferencedItems: ["marketCategory", "studioTags","customData","storeProducts"],
       };
 
       const { items: fetchedItems } = await wixClient.items
@@ -63,7 +63,7 @@ export const fetchSinglePortfolio = createAsyncThunk(
     try {
       let options = {
         dataCollectionId: "portfolioItems",
-        includeReferencedItems: ["marketCategory", "studioTags"],
+        includeReferencedItems: ["marketCategory", "studioTags","customData","storeProducts"],
       };
 
       const { items: fetchedItems } = await wixClient.items
