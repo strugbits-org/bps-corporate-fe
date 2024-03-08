@@ -63,7 +63,7 @@ const GallerySection = ({data}) => {
                 Products featured in this blog entry:
               </h2>
 
-              <ProductCartSlider/>
+              <ProductCartSlider data={data}/>
             </div>
           </div>
         </div>
