@@ -10,9 +10,8 @@ const ExploreWorkSection = ({handleCollectionLoaded}) => {
   // const loading = useSelector((state) => state.market.marketModelLoading);
   // const error = useSelector((state) => state.market.error);
 
-  const portfolioCollection = useSelector((state) => state.portfolio.portfolioData).data;
-  const marketCategories = useSelector((state) => state.portfolio.portfolioData.marketCategories);
-  const studioTags = useSelector((state) => state.portfolio.portfolioData.studioTags);
+  const portfolioCollection = useSelector((state) => state.portfolio.portfolioData.data);
+  const {marketCategories, studioTags} = useSelector((state) => state.portfolio.portfolioData);
   const [selectedStudio, setSelectedStudio] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState([]);
   const [filteredPortfolioCollection, setFilteredPortfolioCollection] = useState(portfolioCollection);

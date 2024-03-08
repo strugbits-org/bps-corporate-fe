@@ -28,7 +28,7 @@ const ContactUs = () => {
     if (data.length > 0) {
       setTimeout(() => {
         document.querySelector(".initScript").click();
-      }, 200);
+      }, 500);
     }
   }, [data]);
 

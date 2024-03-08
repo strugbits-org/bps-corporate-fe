@@ -30,9 +30,10 @@ const Home = () => {
   const handleCollectionLoaded = useCallback(() => {
     setCollectionLoaded((prevCount) => prevCount + 1);
     if ((collectionLoaded + 1) >= numberOfCollections && !animationsLoaded) {
+      // console.log("collectionLoaded + 1",collectionLoaded + 1);
       setTimeout(() => {
         document.querySelector(".initScript").click();
-      }, 200);
+      }, 400);
       setAnimationsLoaded(true);
       setCollectionLoaded(0);
     }
@@ -44,7 +45,7 @@ const Home = () => {
       handleCollectionLoaded();
       setTimeout(() => {
         document.querySelector(".stickyAnimationTrigger").click();
-      }, 200);
+      }, 1500);
     }
   }, [homeTopData]);
   
