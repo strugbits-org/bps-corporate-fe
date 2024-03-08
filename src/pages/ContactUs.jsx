@@ -24,6 +24,14 @@ const ContactUs = () => {
     dispatch(fetchContactUs());
   }, [dispatch]);
 
+  useEffect(() => {
+    if (data.length > 0) {
+      setTimeout(() => {
+        document.querySelector(".initScript").click();
+      }, 200);
+    }
+  }, [data]);
+
   return (
     <>
       <section className="contact-intro" data-aos="d:loop">

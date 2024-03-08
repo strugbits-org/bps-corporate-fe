@@ -3,7 +3,7 @@ import getFullImageURL from "../../common/common_functions/imageURL";
 import { fetchPeopleReviewSlider } from "../../redux/reducers/homeData";
 import { useDispatch, useSelector } from "react-redux";
 
-const PeopleReviewSLider = () => {
+const PeopleReviewSLider = ({handleCollectionLoaded}) => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.home.peopleReviewData);
   // const loading = useSelector((state) => state.home.peopleReviewLoading);
@@ -18,6 +18,12 @@ const PeopleReviewSLider = () => {
   useEffect(() => {
     dispatch(fetchPeopleReviewSlider());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (data.length > 0 && handleCollectionLoaded) {
+      handleCollectionLoaded();
+    }
+  }, [data]);
 
   return (
     <section className="section-heres-what-people-are-saying pt-lg-300 pt-tablet-105 pt-phone-145 pb-lg-130 pb-tablet-100 pb-phone-145 pos-relative">

@@ -4,7 +4,7 @@ import getFullImageURL from "../../common/common_functions/imageURL";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchOurFamilySection } from "../../redux/reducers/aboutusData";
 
-const OurFamily = ({handleLoadingFinished}) => {
+const OurFamily = ({handleCollectionLoaded}) => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.aboutus.OurFamilyData);
 
@@ -21,8 +21,8 @@ const OurFamily = ({handleLoadingFinished}) => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (data.length > 0) {
-      handleLoadingFinished();
+    if (data.length > 0 && handleCollectionLoaded) {
+      handleCollectionLoaded();
     }
   }, [data]);
 

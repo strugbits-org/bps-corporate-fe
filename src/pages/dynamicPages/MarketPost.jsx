@@ -43,6 +43,23 @@ const MarketPost = () => {
     setFilteredPortfolioCollection(filteredProjects);
   }, [portfolioCollection,params.slug]);
 
+  useEffect(() => {
+    if (marketsData) {
+      handleCollectionLoaded();
+    }
+  }, [marketsData]);
+
+  // Load animation when all sections are loaded
+  const numberOfCollections = 3;
+  const collectionLoaded = [];
+  const handleCollectionLoaded = () => {
+    collectionLoaded.push(true);
+    if (collectionLoaded.length === numberOfCollections) {
+      setTimeout(() => {
+        document.querySelector(".initScript").click();
+      }, 200);
+    }
+  }
 
   return (
     <>
@@ -50,10 +67,10 @@ const MarketPost = () => {
       <HowWeDoSection data={marketsData} />
       <ExplorePortfolio data={filteredPortfolioCollection} />
 
-      <PeopleReviewSlider/>
-      <MarketSection/>
-      <StudioSection/>
-      <DreamBigSection/>
+      <PeopleReviewSlider handleCollectionLoaded={handleCollectionLoaded}/>
+      <MarketSection handleCollectionLoaded={handleCollectionLoaded}/>
+      <StudioSection handleCollectionLoaded={handleCollectionLoaded}/>
+      <DreamBigSection handleCollectionLoaded={handleCollectionLoaded}/>
       <SocialSection/>
     </>
   );

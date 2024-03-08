@@ -29,15 +29,34 @@ const ServicePostPage = () => {
     }, 1500);
   }, [dispatch, location, params.slug]);
 
+  useEffect(() => {
+    if (servicesData) {
+      handleCollectionLoaded();
+    }
+  }, [servicesData]);
+
+  // Load animation when all sections are loaded
+  const numberOfCollections = 2;
+  const collectionLoaded = [];
+  const handleCollectionLoaded = () => {
+    collectionLoaded.push(true);
+    console.log("collectionLoaded",collectionLoaded.length);
+    if (collectionLoaded.length === numberOfCollections) {
+      setTimeout(() => {
+        document.querySelector(".initScript").click();
+      }, 200);
+    }
+  }
+
   return (
     <>
       <ServiceIntro data={servicesData} />
       <ServiceDescription data={servicesData} />
       {/* commonComponents */}
-      <SliderBanner />
-      <PeopleReviewSlider />
-      <StudioSection />
-      <DreamBigSection />
+      <SliderBanner handleCollectionLoaded={handleCollectionLoaded} />
+      <PeopleReviewSlider handleCollectionLoaded={handleCollectionLoaded} />
+      <StudioSection handleCollectionLoaded={handleCollectionLoaded} />
+      <DreamBigSection handleCollectionLoaded={handleCollectionLoaded} />
       <SocialSection />
     </>
   );

@@ -16122,6 +16122,7 @@ var require_app2 = __commonJS({
     }
 
     const initializeScript = () => {
+    console.log("Initialized");
       window.scrollTo({ top:0,behavior:'instant' });
       if(firstLoad){
         whenContainerReady();
@@ -16133,17 +16134,8 @@ var require_app2 = __commonJS({
     document.querySelector(".initScript").addEventListener("click", initializeScript );
   
     
-    document.querySelector(".homeAnimationsTrigger").addEventListener("click", () => {
+    document.querySelector(".stickyAnimationTrigger").addEventListener("click", () => {
       sticky();
-      observers();
-      marcarFormPreenchido();
-      initVideo();
-      scrollTo("", "");
-      Parallax();
-      splitWords();
-      splitChars();
-      sliderContentMobile();
-      footer();
     });
     
     

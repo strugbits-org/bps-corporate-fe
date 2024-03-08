@@ -4,7 +4,7 @@ import getFullImageURL from "../../common/common_functions/imageURL";
 import { fetchOurDreamSection } from "../../redux/reducers/aboutusData";
 import { useDispatch, useSelector } from "react-redux";
 
-const OurDream = ({handleLoadingFinished}) => {
+const OurDream = ({handleCollectionLoaded}) => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.aboutus.OurDreamData);
   // const loading = useSelector((state) => state.aboutus.OurDreamLoading);
@@ -24,8 +24,8 @@ const OurDream = ({handleLoadingFinished}) => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (data.length > 0) {
-      handleLoadingFinished();
+    if (data.length > 0 && handleCollectionLoaded) {
+      handleCollectionLoaded();
     }
   }, [data]);
 

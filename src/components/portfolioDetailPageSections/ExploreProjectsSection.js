@@ -3,7 +3,7 @@ import DelayedLink from "../../common/DelayedLink";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPortfolio } from "../../redux/reducers/portfolioData";
 
-const ExploreProjectsSection = ({data, handleLoadingFinished}) => {
+const ExploreProjectsSection = ({data, handleCollectionLoaded}) => {
   const dispatch = useDispatch();
   const portfolioCollection = useSelector((state) => state.portfolio.portfolioData).data;
   // const index = portfolioData.findIndex(item => item._id === data._id);
@@ -16,8 +16,8 @@ const ExploreProjectsSection = ({data, handleLoadingFinished}) => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (portfolioCollection.length > 0) {
-      handleLoadingFinished();
+    if (portfolioCollection.length > 0 && handleCollectionLoaded) {
+      handleCollectionLoaded();
     }
   }, [portfolioCollection]);
 

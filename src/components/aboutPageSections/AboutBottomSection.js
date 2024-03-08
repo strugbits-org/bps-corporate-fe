@@ -4,7 +4,7 @@ import getFullImageURL from "../../common/common_functions/imageURL";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSliderSection } from "../../redux/reducers/aboutusData";
 
-const AboutBottomSection = ({handleLoadingFinished}) => {
+const AboutBottomSection = ({handleCollectionLoaded}) => {
   const disptach = useDispatch();
   const data = useSelector((state) => state.aboutus.SliderData);
   // const loading = useSelector((state) => state.aboutus.SliderLoading);
@@ -24,9 +24,9 @@ const AboutBottomSection = ({handleLoadingFinished}) => {
      }, 1000);
    }, [disptach]);
 
-   useEffect(() => {
-    if (data.length > 0) {
-      handleLoadingFinished();
+  useEffect(() => {
+    if (data.length > 0 && handleCollectionLoaded) {
+      handleCollectionLoaded();
     }
   }, [data]);
 
