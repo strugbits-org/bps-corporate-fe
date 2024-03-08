@@ -3,8 +3,21 @@ import SocialSection from "../components/commonComponents/SocialSection";
 import { head, postes } from "../common/constats/blogData";
 import DelayedLink from "../common/DelayedLink";
 import { Link } from "react-router-dom";
+import { getBlogList } from "../redux/reducers/blogData";
+import { useDispatch, useSelector } from "react-redux";
+import getFullImageURL from "../common/common_functions/imageURL";
+import formatDate from "../common/common_functions/dateFormat";
+import {postData} from "../redux/reducers/blogData";
 
 const Blog = () => {
+  const dispatch = useDispatch();
+  const blogData = useSelector((state) => state.blog.blogListData);
+  const blogauth = useSelector((state) => state.blog.blogAuth);
+  useEffect(() => {
+    dispatch(getBlogList());
+    dispatch(postData());
+  }, [dispatch]);
+console.log(blogauth,"auth data here")
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [filteredItems, setFilteredItems] = useState(postes);
 
@@ -32,12 +45,11 @@ const Blog = () => {
       }
     };
     filterItems();
-  }, [selectedFilters,]);
+  }, [selectedFilters]);
 
   useEffect(() => {
     document.querySelector(".updateWatchedTrigger").click();
   }, [filteredItems]);
-
 
   return (
     <>
@@ -67,21 +79,17 @@ const Blog = () => {
                   <div className="container-wrapper-list">
                     <div className="wrapper-list">
                       <ul className="list-blog-tags list-dropdown-tags">
-                      <li>
-                          
+                        <li>
                           <Link
-                          to="/blogs"
+                            to="/blogs"
                             className={`blog-btn-tag ${
                               selectedFilters.length === 0 ? "active" : ""
                             }`}
                           >
-                            <span >
-                              Blogs
-                            </span>
+                            <span>Blogs</span>
                           </Link>
                         </li>
                         <li>
-
                           <Link
                             className={`blog-btn-tag ${
                               selectedFilters.length === 0 ? "active" : ""
@@ -115,10 +123,11 @@ const Blog = () => {
               </div>
             </div>
           </div>
+
           <div className="row row-2 mt-lg-60 mt-tablet-40 mt-phone-35">
             <div className="col-lg-12 column-1">
               <ul className="list-blog grid-lg-25 grid-tablet-50">
-                {filteredItems.map((data) => (
+                {/* {filteredItems.map((data) => (
                   <li
                     key={`postes-${data.id}`}
                     className="grid-item"
@@ -180,7 +189,77 @@ const Blog = () => {
                       </div>
                     </DelayedLink>
                   </li>
-                ))}
+                ))} */}
+                {blogData.posts &&
+                  blogData.posts.map((data, index) => {
+
+                    return (
+                      <li key={index} className="grid-item" data-aos="d:loop">
+                        <DelayedLink
+                          // to={`/blog-post/${data.id}`}
+                          className="link-blog link-blog-animation"
+                          attributes={{
+                            "data-aos": "d:loop",
+                          }}
+                        >
+                          <div
+                            className="container-img bg-blue"
+                            data-cursor-style="view"
+                          >
+                            <div className="wrapper-img">
+                              <img
+                                src={getFullImageURL(data.coverMedia.image)}
+                                data-preload
+                                className="media"
+                                alt=""
+                              />
+                            </div>
+                          </div>
+                          <div className="container-text">
+                            <div className="container-author-post-info">
+                              {/* <div className="author">
+                                  <span className="author-name">
+                                    {data.userName}
+                                  </span>
+                                </div> */}
+                              <div className="date">
+                                <span>
+                                  {formatDate(data.lastPublishedDate)}
+                                </span>
+                              </div>
+                            </div>
+                            <h2 className="title-blog">{data.title}</h2>
+                            <p className="text-blog">{data.excerpt}</p>
+                            <ul className="list-tags-small">
+                                {data.tagIds.map((tag, index) => (
+                                  <React.Fragment key={index}>
+                                    {index < 3 ? (
+                                      <li
+                                        className={`tag-small ${
+                                          data.category?.includes(tag)
+                                            ? "active"
+                                            : ""
+                                        }`}
+                                      >
+                                        <span>{tag}</span>
+                                      </li>
+                                    ) : null}
+                                  </React.Fragment>
+                                ))}
+                                {data.tagIds.length > 3 ? (
+                                  <li className="tag-small">
+                                    <span>
+                                      +{(data.tagIds).length - 3}{" "}
+                                      studios
+                                    </span>
+                                  </li>
+                                ) : null}
+                              </ul>
+                          </div>
+                        </DelayedLink>
+                      </li>
+                    );
+                  })}
               </ul>
             </div>
             <div className="col-lg-2 offset-lg-5 flex-center mt-lg-70 mt-tablet-60 mt-phone-85">
