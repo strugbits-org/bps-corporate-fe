@@ -5,7 +5,7 @@ import SocialSection from "../../components/commonComponents/SocialSection";
 import { useLocation, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSinglePortfolio } from "../../redux/reducers/portfolioData";
-import { useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const PortfoliPost = () => {
   const location = useLocation();
@@ -27,17 +27,22 @@ const PortfoliPost = () => {
   }, [portfolioData]);
 
 
-  // Load animation when all sections are loaded
+  // Animations Load
   const numberOfCollections = 2;
-  const collectionLoaded = [];
-  const handleCollectionLoaded = () => {
-    collectionLoaded.push(true);
-    if (collectionLoaded.length === numberOfCollections) {
+  const [animationsLoaded, setAnimationsLoaded] = useState(false);
+  const [collectionLoaded, setCollectionLoaded] = useState(0);
+
+  const handleCollectionLoaded = useCallback(() => {
+    setCollectionLoaded((prevCount) => prevCount + 1);
+    if ((collectionLoaded + 1) >= numberOfCollections && !animationsLoaded) {
       setTimeout(() => {
         document.querySelector(".initScript").click();
-      }, 200);
+      }, 400);
+      setAnimationsLoaded(true);
+      setCollectionLoaded(0);
     }
-  }
+  }, [collectionLoaded]);
+  // Animations Load
 
   return (
     <>

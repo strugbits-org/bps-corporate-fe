@@ -7,7 +7,7 @@ import StudioSection from "../../components/commonComponents/StudioSection";
 import SocialSection from "../../components/commonComponents/SocialSection";
 import DreamBigSection from "../../components/commonComponents/DreamBigSection";
 
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMarketTopsections } from "../../redux/reducers/marketData";
@@ -49,17 +49,22 @@ const MarketPost = () => {
     }
   }, [marketsData]);
 
-  // Load animation when all sections are loaded
-  const numberOfCollections = 3;
-  const collectionLoaded = [];
-  const handleCollectionLoaded = () => {
-    collectionLoaded.push(true);
-    if (collectionLoaded.length === numberOfCollections) {
+  // Animations Load
+  const numberOfCollections = 5;
+  const [animationsLoaded, setAnimationsLoaded] = useState(false);
+  const [collectionLoaded, setCollectionLoaded] = useState(0);
+
+  const handleCollectionLoaded = useCallback(() => {
+    setCollectionLoaded((prevCount) => prevCount + 1);
+    if ((collectionLoaded + 1) >= numberOfCollections && !animationsLoaded) {
       setTimeout(() => {
         document.querySelector(".initScript").click();
-      }, 200);
+      }, 400);
+      setAnimationsLoaded(true);
+      setCollectionLoaded(0);
     }
-  }
+  }, [collectionLoaded]);
+  // Animations Load
 
   return (
     <>

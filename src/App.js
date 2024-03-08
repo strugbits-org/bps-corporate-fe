@@ -5,7 +5,7 @@ import Navbar from "./layout/header/Navbar";
 import Loading from "./common/Loading";
 import Chat from "./common/Chat";
 import Cookies from "./common/Cookies";
-import React, { useEffect } from "react";
+import React from "react";
 
 function App() {
   const location = useLocation();
