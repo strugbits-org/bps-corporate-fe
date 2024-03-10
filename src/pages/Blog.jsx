@@ -3,21 +3,22 @@ import SocialSection from "../components/commonComponents/SocialSection";
 import { head, postes } from "../common/constats/blogData";
 import DelayedLink from "../common/DelayedLink";
 import { Link } from "react-router-dom";
-import { getBlogList } from "../redux/reducers/blogData";
+import {  getblogPostData } from "../redux/reducers/blogData";
 import { useDispatch, useSelector } from "react-redux";
 import getFullImageURL from "../common/common_functions/imageURL";
 import formatDate from "../common/common_functions/dateFormat";
-import {postData} from "../redux/reducers/blogData";
 
 const Blog = () => {
   const dispatch = useDispatch();
-  const blogData = useSelector((state) => state.blog.blogListData);
-  const blogauth = useSelector((state) => state.blog.blogAuth);
+
+ const blogPostData = useSelector((state) => state.blog.blogPostData);
+ const blogPostLoading = useSelector((state) => state.blog.blogPostLoading);
+console.log(blogPostData,"test data here");
+
   useEffect(() => {
-    dispatch(getBlogList());
-    dispatch(postData());
+    dispatch(getblogPostData());
   }, [dispatch]);
-console.log(blogauth,"auth data here")
+
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [filteredItems, setFilteredItems] = useState(postes);
 
@@ -53,6 +54,7 @@ console.log(blogauth,"auth data here")
 
   return (
     <>
+    
       <section className="blog-intro pt-lg-145 pt-tablet-115 pt-phone-120 pb-lg-150 pb-tablet-100 pb-phone-155">
         <div className="container-fluid">
           <div className="row row-1">
@@ -190,10 +192,10 @@ console.log(blogauth,"auth data here")
                     </DelayedLink>
                   </li>
                 ))} */}
-                {blogData.posts &&
-                  blogData.posts.map((data, index) => {
-
+                {blogPostData &&
+                  blogPostData.map((data, index) => {
                     return (
+                    
                       <li key={index} className="grid-item" data-aos="d:loop">
                         <DelayedLink
                           // to={`/blog-post/${data.id}`}
@@ -208,7 +210,7 @@ console.log(blogauth,"auth data here")
                           >
                             <div className="wrapper-img">
                               <img
-                                src={getFullImageURL(data.coverMedia.image)}
+                                src={getFullImageURL(data.data.coverImage)}
                                 data-preload
                                 className="media"
                                 alt=""
@@ -217,21 +219,21 @@ console.log(blogauth,"auth data here")
                           </div>
                           <div className="container-text">
                             <div className="container-author-post-info">
-                              {/* <div className="author">
+                              <div className="author">
                                   <span className="author-name">
-                                    {data.userName}
+                                    {data.data.author.nickname}
                                   </span>
-                                </div> */}
+                                </div>
                               <div className="date">
                                 <span>
-                                  {formatDate(data.lastPublishedDate)}
+                                  {formatDate(data.data.lastPublishedDate)}
                                 </span>
                               </div>
                             </div>
-                            <h2 className="title-blog">{data.title}</h2>
-                            <p className="text-blog">{data.excerpt}</p>
+                            <h2 className="title-blog">{data.data.title}</h2>
+                            <p className="text-blog">{data.data.excerpt}</p>
                             <ul className="list-tags-small">
-                                {data.tagIds.map((tag, index) => (
+                                {data.tags.map((tag, index) => (
                                   <React.Fragment key={index}>
                                     {index < 3 ? (
                                       <li
