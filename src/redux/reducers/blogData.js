@@ -1,40 +1,43 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { createClient, OAuthStrategy } from "@wix/sdk";
-import { posts } from "@wix/blog";
-import getFullImageURL from "../../common/common_functions/imageURL";
+// import { createClient, OAuthStrategy } from "@wix/sdk";
+// import { posts } from "@wix/blog";
+import createWixClient from "../wixClient";
 
-const wixClient = createClient({
-  modules: { posts },
-  auth: OAuthStrategy({ clientId: "04038da0-732b-471d-babe-4e90ad785740" }),
-});
+const wixClient = createWixClient();
+
+// const blogwixClient = createClient({
+//   modules: { posts },
+//   auth: OAuthStrategy({ clientId: "04038da0-732b-471d-babe-4e90ad785740" }),
+// });
 
 const initialState = {
-  blogListData: [],
-  blogAuth: [],
-  blogListLoading: false,
+  // blogListData: [],
+  blogPostData: [],
+
+  // blogListLoading: false,
+  blogPostLoading: false,
   error: null,
 };
 
-export const getBlogList = createAsyncThunk("data/getBlogList", async () => {
-  try {
-    const response = await wixClient.posts.listPosts();
+// export const getBlogList = createAsyncThunk("data/getBlogList", async () => {
+//   try {
+//     const response = await blogwixClient.posts.listPosts();
 
-    return response;
-  } catch (error) {
-    throw new Error(error.message);
-  }
-});
+//     return response;
+//   } catch (error) {
+//     throw new Error(error.message);
+//   }
+// });
 
-export const postData = createAsyncThunk("data/postData", async () => {
+export const getblogPostData = createAsyncThunk("data/getblogPostData", async () => {
   try {
     let options = {
-      dataCollectionId: "Posts",
-      includeReferencedItems: ["tags"],
+      dataCollectionId: "Blog/Posts",
+      includeReferencedItems: ["tags", "author"],
     };
 
     const { items: fetchedItems } = await wixClient.items
       .queryDataItems(options)
-      .eq("language", "en" )
       .find();
     return fetchedItems;
   } catch (error) {
@@ -49,29 +52,29 @@ const blogSlice = createSlice({
   extraReducers: (builder) => {
     builder
       /// all blog posts ////
-      .addCase(getBlogList.pending, (state) => {
-        state.portfolioDataLoading = true;
+      // .addCase(getBlogList.pending, (state) => {
+      //   state.portfolioDataLoading = true;
+      //   state.error = null;
+      // })
+      // .addCase(getBlogList.fulfilled, (state, action) => {
+      //   state.portfolioDataLoading = false;
+      //   state.blogListData = action.payload;
+      // })
+      // .addCase(getBlogList.rejected, (state, action) => {
+      //   state.portfolioDataLoading = false;
+      //   state.error = action.error.message;
+      // })
+      /// test data posts ////
+      .addCase(getblogPostData.pending, (state) => {
+        state.blogPostLoading = true;
         state.error = null;
       })
-      .addCase(getBlogList.fulfilled, (state, action) => {
-        state.portfolioDataLoading = false;
-        state.blogListData = action.payload;
+      .addCase(getblogPostData.fulfilled, (state, action) => {
+        state.blogPostLoading = false;
+        state.blogPostData = action.payload;
       })
-      .addCase(getBlogList.rejected, (state, action) => {
-        state.portfolioDataLoading = false;
-        state.error = action.error.message;
-      })
-      /// blog auth posts ////
-      .addCase(postData.pending, (state) => {
-        state.portfolioDataLoading = true;
-        state.error = null;
-      })
-      .addCase(postData.fulfilled, (state, action) => {
-        state.portfolioDataLoading = false;
-        state.blogAuth = action.payload;
-      })
-      .addCase(postData.rejected, (state, action) => {
-        state.portfolioDataLoading = false;
+      .addCase(getblogPostData.rejected, (state, action) => {
+        state.blogPostLoading = false;
         state.error = action.error.message;
       });
   },
