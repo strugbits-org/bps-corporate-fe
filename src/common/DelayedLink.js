@@ -21,7 +21,7 @@ const DelayedLink = ({ to, children, className,target, attributes}) => {
     }else{
       document.body.classList.add("page-leave-active");
       setTimeout(() => {
-        window.scrollTo({top:0});
+        window.scrollTo( { top:0 } );
         document.body.classList.add("page-enter-active");
         document.body.classList.remove("page-leave-active");
         setTimeout(() => {

@@ -1,7 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { createClient, OAuthStrategy } from "@wix/sdk";
-import { collections, items } from "@wix/data";
 import getFullImageURL from "../../common/common_functions/imageURL";
+import createWixClient from "../wixClient";
+import { handleCollectionLoaded } from "../../utilis/loadAnimations";
+
+const wixClient = createWixClient();
 
 const initialState = {
   servicesData: null,
@@ -11,11 +13,6 @@ const initialState = {
   servicesLoading: false,
   error: null,
 };
-
-const wixClient = createClient({
-  modules: { collections, items },
-  auth: OAuthStrategy({ clientId: "04038da0-732b-471d-babe-4e90ad785740" }),
-});
 
 export const fetchServicesData = createAsyncThunk(
   "data/fetchServicesData",
@@ -36,7 +33,7 @@ export const fetchServicesData = createAsyncThunk(
         service.data.image = getFullImageURL(service.data.image);
         return service.data;
       });
-
+      handleCollectionLoaded();
       return servicesArray[0];
     } catch (error) {
       throw new Error(error.message);
@@ -68,7 +65,7 @@ export const getServicesModel = createAsyncThunk(
   }
 );
 
-const contactUsSlice = createSlice({
+const servicesSlice = createSlice({
   name: "services",
   initialState,
   reducers: {},
@@ -102,4 +99,4 @@ const contactUsSlice = createSlice({
   },
 });
 
-export default contactUsSlice.reducer;
+export default servicesSlice.reducer;

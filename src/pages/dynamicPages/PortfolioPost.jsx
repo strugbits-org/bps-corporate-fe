@@ -16,14 +16,8 @@ const PortfoliPost = () => {
   // const loading = useSelector((state) => state.portfolio.portfolioLoading);
   // const error = useSelector((state) => state.services.error);
 
-  // const [ portfolioData, setPortfolioData ] = useState(data);
   useEffect(() => {
     dispatch(fetchSinglePortfolio(params.slug));
-    // setPortfolioData(null);
-    setTimeout(() => {
-      document.querySelector(".updateWatchedTrigger").click();
-      document.querySelector(".triggerSplitWordAnimation").click();
-    }, 1500);
   }, [dispatch, location, params.slug]);
 
   return (
