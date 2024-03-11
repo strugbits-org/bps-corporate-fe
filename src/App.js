@@ -5,21 +5,16 @@ import Navbar from "./layout/header/Navbar";
 import Loading from "./common/Loading";
 import Chat from "./common/Chat";
 import Cookies from "./common/Cookies";
-import React, { useEffect } from "react";
+import React from "react";
 
 function App() {
   const location = useLocation();
   const pathname = location.pathname.trim() === "/" ? "home" : location.pathname.substring(1); // Remove leading slash
   const cleanPath = pathname.split("/")[0].trim();
-    useEffect(() => {
-      document.querySelector(".reloadScript").click();
-    },[location.pathname]);
   return (
     <div>
       
       {/* helpers */}
-      <span className="reloadScript d-none"></span>
-      <span className="homeAnimationsTrigger d-none"></span>
       <span className="updateWatchedTrigger d-none"></span>
       <span className="triggerSplitWordAnimation d-none"></span>
       <Loading />

@@ -1,6 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { createClient, OAuthStrategy } from "@wix/sdk";
-import { collections, items } from "@wix/data";
+import createWixClient from "../wixClient";
+import { handleCollectionLoaded } from "../../utilis/loadAnimations";
+
+const wixClient = createWixClient();
 
 const initialState = {
   homeTopData: [],
@@ -23,10 +25,6 @@ const initialState = {
   error: null,
 };
 
-const wixClient = createClient({
-  modules: { collections, items },
-  auth: OAuthStrategy({ clientId: "04038da0-732b-471d-babe-4e90ad785740" }),
-});
 
 export const fetchHomeTopData = createAsyncThunk(
   "data/fetchDataItems",
@@ -40,7 +38,7 @@ export const fetchHomeTopData = createAsyncThunk(
         .queryDataItems(options)
         .eq("title", "TopSection")
         .find();
-
+      handleCollectionLoaded();
       return fetchHomeTopData;
     } catch (error) {
       throw new Error(error.message);
@@ -60,7 +58,7 @@ export const fetchGetTouchSection = createAsyncThunk(
         .queryDataItems(options)
         .eq("title", "gettouch")
         .find();
-
+        handleCollectionLoaded();
       return fetchGetTouchSection;
     } catch (error) {
       throw new Error(error.message);
@@ -80,28 +78,11 @@ export const fetchStudioSection = createAsyncThunk(
         .queryDataItems(options)
         .eq("title", "Studios")
         .find();
-
+        handleCollectionLoaded();
+        setTimeout(() => {
+          document.querySelector(".updateWatchedTrigger").click();
+        }, 1000);
       return fetchedStudioItems;
-    } catch (error) {
-      throw new Error(error.message);
-    }
-  }
-);
-
-export const fetchOurPorjectSection = createAsyncThunk(
-  "data/fetchOurPorjectSection",
-  async () => {
-    try {
-      let options = {
-        dataCollectionId: "SomeOfOurProjects",
-      };
-
-      const { items: fetchedOurProject } = await wixClient.items
-        .queryDataItems(options)
-        .eq("title", "Some of our projects")
-        .find();
-
-      return fetchedOurProject;
     } catch (error) {
       throw new Error(error.message);
     }
@@ -120,7 +101,7 @@ export const fetchPeopleReviewSlider = createAsyncThunk(
         .queryDataItems(options)
         .eq("title", "Here's what people are saying.")
         .find();
-
+        handleCollectionLoaded();
       return fetchedPeopleReview;
     } catch (error) {
       throw new Error(error.message);
@@ -141,6 +122,7 @@ export const fetchMarketSection = createAsyncThunk(
         .eq("title", "Markets")
         .find();
 
+      handleCollectionLoaded();
       return fetchedMarketSection;
     } catch (error) {
       throw new Error(error.message);
@@ -160,6 +142,7 @@ export const fetchRentalStoreSection = createAsyncThunk(
         .queryDataItems(options)
         .eq("title", "Rental Store")
         .find();
+        handleCollectionLoaded();
 
       return fetchedRentalSection;
     } catch (error) {
@@ -180,7 +163,7 @@ export const fetchDreamBigSection = createAsyncThunk(
         .queryDataItems(options)
         .eq("title", "dreambig")
         .find();
-
+        handleCollectionLoaded();
       return fetchedDreamBIgSection;
     } catch (error) {
       throw new Error(error.message);
@@ -188,7 +171,7 @@ export const fetchDreamBigSection = createAsyncThunk(
   }
 );
 
-const dataSlice = createSlice({
+const homeSlice = createSlice({
   name: "home",
   initialState,
   reducers: {},
@@ -230,19 +213,6 @@ const dataSlice = createSlice({
         state.studioData = action.payload;
       })
       .addCase(fetchStudioSection.rejected, (state, action) => {
-        state.studioLoading = false;
-        state.error = action.error.message;
-      })
-      /// Our Project Section ////
-      .addCase(fetchOurPorjectSection.pending, (state) => {
-        state.studioLoading = true;
-        state.error = null;
-      })
-      .addCase(fetchOurPorjectSection.fulfilled, (state, action) => {
-        state.studioLoading = false;
-        state.ourProjectData = action.payload;
-      })
-      .addCase(fetchOurPorjectSection.rejected, (state, action) => {
         state.studioLoading = false;
         state.error = action.error.message;
       })
@@ -301,4 +271,4 @@ const dataSlice = createSlice({
   },
 });
 
-export default dataSlice.reducer;
+export default homeSlice.reducer;

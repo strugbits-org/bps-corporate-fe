@@ -1,8 +1,7 @@
 import React from "react";
 import ProductCartSlider from "../commonComponents/ProductCartSlider";
-import {gallery} from "../../common/constats/portfolioData";
 const GallerySection = ({data}) => {
-  return data && data.gallery.length > 0 && (
+  return (
     <section className="portfolio-post-photo-gallery pt-lg-165 pt-tablet-105 pt-phone-145">
       <div className="container-fluid">
         <div className="row">
@@ -11,7 +10,7 @@ const GallerySection = ({data}) => {
               className="fs--60 text-center mb-md-40 mb-phone-30 split-words"
               data-aos="d:loop"
             >
-              {gallery.title}
+              Photo gallery
             </h2>
 
             <div className="wrapper-gallery">
@@ -20,7 +19,7 @@ const GallerySection = ({data}) => {
                   <div className="container-img bg-blue">
                     <div className="wrapper-img">
                       <img
-                        src={data.gallery[0]}
+                        src={data?.gallery[0]}
                         data-preload
                         className="media"
                         alt=""
@@ -32,7 +31,7 @@ const GallerySection = ({data}) => {
                   <div className="container-img bg-blue">
                     <div className="wrapper-img">
                       <img
-                        src={data.gallery[1]}
+                        src={data?.gallery[1]}
                         data-preload
                         className="media"
                         alt=""
@@ -46,7 +45,7 @@ const GallerySection = ({data}) => {
                   <div className="container-img bg-blue">
                     <div className="wrapper-img">
                       <img
-                        src={data.gallery[2]}
+                        src={data?.gallery[2]}
                         data-preload
                         className="media"
                         alt=""
@@ -60,10 +59,10 @@ const GallerySection = ({data}) => {
           <div className="col-lg-10 offset-lg-1 column-2">
             <div className="container-slider-produtcts">
               <h2 className="slider-title split-words" data-aos="d:loop">
-                Products featured in this blog entry:
+                Products featured in this project entry:
               </h2>
 
-              <ProductCartSlider/>
+              <ProductCartSlider data={data}/>
             </div>
           </div>
         </div>

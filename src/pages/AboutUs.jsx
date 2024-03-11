@@ -6,16 +6,15 @@ import AboutBottomSection from '../components/aboutPageSections/AboutBottomSecti
 import SocialSection from '../components/commonComponents/SocialSection';
 
 const AboutUs = () => {
- 
 
   return (
-    <>  
-    <IntroSection/>
-    <OurDream/>
-    <OurFamily/>
-    <SliderBanner />
-    <AboutBottomSection/>
-    <SocialSection/>
+    <>
+      <IntroSection />
+      <OurDream />
+      <OurFamily />
+      <SliderBanner />
+      <AboutBottomSection />
+      <SocialSection />
     </>
   )
 }

@@ -1,6 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { createClient, OAuthStrategy } from "@wix/sdk";
-import { collections, items } from "@wix/data";
+import createWixClient from "../wixClient";
+import { handleCollectionLoaded } from "../../utilis/loadAnimations";
+
+const wixClient = createWixClient();
 
 const initialState = {
   IntroData: [],
@@ -15,10 +17,6 @@ const initialState = {
   error: null,
 };
 
-const wixClient = createClient({
-  modules: { collections, items },
-  auth: OAuthStrategy({ clientId: "04038da0-732b-471d-babe-4e90ad785740" }),
-});
 
 export const fetchIntroSection = createAsyncThunk(
   "data/fetchIntroSection",
@@ -32,6 +30,7 @@ export const fetchIntroSection = createAsyncThunk(
         .queryDataItems(options)
         .eq("title", "aboutustop")
         .find();
+        handleCollectionLoaded();
 
       return fetchIntroSection;
     } catch (error) {
@@ -52,6 +51,7 @@ export const fetchOurDreamSection = createAsyncThunk(
         .queryDataItems(options)
         .eq("title", "The Dream Team")
         .find();
+        handleCollectionLoaded();
 
       return fetchedOurDream;
     } catch (error) {
@@ -72,7 +72,7 @@ export const fetchOurFamilySection = createAsyncThunk(
         .queryDataItems(options)
         .eq("title", "Meet the rest of the family")
         .find();
-
+        handleCollectionLoaded();
       return fetchedOurFamily;
     } catch (error) {
       throw new Error(error.message);
@@ -90,6 +90,7 @@ export const fetchSliderSection = createAsyncThunk(
             .queryDataItems(options)
             .eq("title", "aboutbottom")
             .find();
+            handleCollectionLoaded();
   
         return fetchedSliderBanner;
       } catch (error) {

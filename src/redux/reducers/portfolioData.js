@@ -1,7 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { createClient, OAuthStrategy } from "@wix/sdk";
-import { collections, items } from "@wix/data";
 import getFullImageURL from "../../common/common_functions/imageURL";
+import createWixClient from "../wixClient";
+import { handleCollectionLoaded } from "../../utilis/loadAnimations";
+
+const wixClient = createWixClient();
 
 const initialState = {
   portfolioData: {
@@ -16,18 +18,13 @@ const initialState = {
   error: null,
 };
 
-const wixClient = createClient({
-  modules: { collections, items },
-  auth: OAuthStrategy({ clientId: "04038da0-732b-471d-babe-4e90ad785740" }),
-});
-
 export const fetchPortfolio = createAsyncThunk(
   "data/fetchPortfolio",
-  async () => {
+  async (sliced = false) => {
     try {
       let options = {
         dataCollectionId: "portfolioItems",
-        includeReferencedItems: ["marketCategory", "studioTags"],
+        includeReferencedItems: ["marketCategory", "studioTags","customData","storeProducts"],
       };
 
       const { items: fetchedItems } = await wixClient.items
@@ -49,9 +46,12 @@ export const fetchPortfolio = createAsyncThunk(
       });
       const uniqueMarketCategories = [...new Map(marketCategoriesArray.map(item => [item, item])).values()];
       const uniqueStudioTags = [...new Map(studioTagsArray.map(item => [item, item])).values()];
-
+      handleCollectionLoaded();
+      setTimeout(() => {
+        document.querySelector(".updateWatchedTrigger").click();
+      }, 1000);
       return {
-        data: portfolioArray,
+        data: sliced ? portfolioArray.slice(0,4) : portfolioArray,
         marketCategories: uniqueMarketCategories,
         studioTags: uniqueStudioTags,
       };
@@ -67,14 +67,14 @@ export const fetchSinglePortfolio = createAsyncThunk(
     try {
       let options = {
         dataCollectionId: "portfolioItems",
-        includeReferencedItems: ["marketCategory", "studioTags"],
+        includeReferencedItems: ["marketCategory", "studioTags","customData","storeProducts"],
       };
 
       const { items: fetchedItems } = await wixClient.items
         .queryDataItems(options)
         .eq("slug", slug)
         .find();
-
+        handleCollectionLoaded();
       const portfolioArray = fetchedItems.map((item) => {
         item.data.marketCategory = item.data.marketCategory.cardname;
         item.data.studioTags = item.data.studioTags.map((tag) => tag.cardName);
@@ -89,7 +89,7 @@ export const fetchSinglePortfolio = createAsyncThunk(
   }
 );
 
-const contactUsSlice = createSlice({
+const portfolioSlice = createSlice({
   name: "portfolio",
   initialState,
   reducers: {},
@@ -124,4 +124,4 @@ const contactUsSlice = createSlice({
   },
 });
 
-export default contactUsSlice.reducer;
+export default portfolioSlice.reducer;
