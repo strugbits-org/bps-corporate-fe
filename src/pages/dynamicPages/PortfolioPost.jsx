@@ -6,7 +6,6 @@ import { useLocation, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSinglePortfolio } from "../../redux/reducers/portfolioData";
 import { useEffect } from "react";
-import { handleCollectionLoaded } from "../../utilis/loadAnimations";
 
 const PortfoliPost = () => {
   const location = useLocation();
@@ -20,12 +19,6 @@ const PortfoliPost = () => {
   useEffect(() => {
     dispatch(fetchSinglePortfolio(params.slug));
   }, [dispatch, location, params.slug]);
-  
-  useEffect(() => {
-    if (portfolioData) {
-      handleCollectionLoaded();
-    }
-  }, [portfolioData]);
 
   return (
     <>

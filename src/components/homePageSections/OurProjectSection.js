@@ -3,7 +3,6 @@ import React, { useEffect } from "react";
 import getFullImageURL from "../../common/common_functions/imageURL";
 import { fetchPortfolio } from "../../redux/reducers/portfolioData";
 import { useDispatch, useSelector } from "react-redux";
-import { handleCollectionLoaded } from "../../utilis/loadAnimations";
 
 const OurProjectSection = () => {
   const dispatch = useDispatch();
@@ -12,14 +11,8 @@ const OurProjectSection = () => {
   // const error = useSelector((state) => state.home.error);
   
   useEffect(() => {
-    dispatch(fetchPortfolio());
+    dispatch(fetchPortfolio(true));
   }, [dispatch]);
-
-  useEffect(() => {
-    if (portfolioCollection.length > 0) {
-      handleCollectionLoaded();
-    }
-  }, [portfolioCollection]);
 
   return (
     <section className="home-some-of-our-projects pt-lg-250 pt-mobile-130 pb-135">
@@ -36,7 +29,7 @@ const OurProjectSection = () => {
             <div className="slider-some-of-our-projects slider-content-mobile">
               <div className="swiper-container">
                 <div className="swiper-wrapper list-projects slider-mobile font-80">
-                  {portfolioCollection.slice(0,4).map((item, index) => {
+                  {portfolioCollection.map((item, index) => {
                     return (
                       <div key={index} className="swiper-slide list-item">
                         <DelayedLink

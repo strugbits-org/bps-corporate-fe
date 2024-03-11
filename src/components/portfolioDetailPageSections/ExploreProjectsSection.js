@@ -2,26 +2,17 @@ import React, { useEffect } from "react";
 import DelayedLink from "../../common/DelayedLink";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPortfolio } from "../../redux/reducers/portfolioData";
-import { handleCollectionLoaded } from "../../utilis/loadAnimations";
 
 const ExploreProjectsSection = ({data}) => {
   const dispatch = useDispatch();
   const portfolioCollection = useSelector((state) => state.portfolio.portfolioData.data);
   // const index = portfolioData.findIndex(item => item._id === data._id);
   // console.log("portfolioData", portfolioData);
-  const portfolioData = portfolioCollection.slice(0,4);
-
+  // const portfolioData = portfolioCollection.slice(0,4);
 
   useEffect(() => {
-    dispatch(fetchPortfolio());
+    dispatch(fetchPortfolio(true));
   }, [dispatch]);
-
-  useEffect(() => {
-    if (portfolioCollection.length > 0 && handleCollectionLoaded) {
-      handleCollectionLoaded();
-    }
-  }, [portfolioCollection]);
-
 
   return (
     <section className="portfolio-post-explore-projects pt-lg-310 pt-tablet-100 pt-phone-160 pb-lg-190 pb-mobile-100">
@@ -40,7 +31,7 @@ const ExploreProjectsSection = ({data}) => {
                 {/* <!-- Additional required wrapper --> */}
                 <div className="swiper-wrapper list-portfolio list-slider-mobile grid-lg-25">
                   {/* <!-- Slides --> */}
-                  {portfolioData.map((data, index) => (
+                  {portfolioCollection.map((data, index) => (
                     <div key={index} className="swiper-slide grid-item">
                       <DelayedLink
                         to="/portfolio-post"

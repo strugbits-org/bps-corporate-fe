@@ -1,5 +1,7 @@
+import getFullVideoURL from "../../common/common_functions/videoURL"
+
 const MarketTopSection = ({data}) => {
-  return ( data &&
+  return (
     <>
      <section className="market-post-intro">
         <div
@@ -14,13 +16,13 @@ const MarketTopSection = ({data}) => {
                   className="fs--90 fs-phone-60 split-chars"
                   data-aos="d:loop"
                 >
-                  {data.cardname}
+                  {data?.cardname}
                 </h1>
                 <p
                   className="fs--40 fs-tablet-40 text text-center mt-20"
                   data-aos="fadeInUp .8s ease-out-cubic .5s, d:loop"
                 >
-                  {data.description}
+                  {data?.description}
                 </p>
                 <btn-modal-open
                   group="modal-contact"
@@ -28,7 +30,7 @@ const MarketTopSection = ({data}) => {
                   data-aos="fadeInUp .8s ease-out-cubic .6s, d:loop"
                   data-cursor-style="off"
                 >
-                  <span>{data.buttonText}</span>
+                  <span>{data?.buttonText}</span>
                   <i className="icon-arrow-right-2"></i>
                 </btn-modal-open>
               </div>
@@ -42,7 +44,7 @@ const MarketTopSection = ({data}) => {
           data-scale="1.2"
         >
           <img
-            src={data.image}
+            src={data?.image}
             data-preload
             className="media"
             alt=""
@@ -57,8 +59,8 @@ const MarketTopSection = ({data}) => {
             <div className="col-lg-4 offset-lg-4 column-1">
               <div className="container-img" data-aos="d:loop">
                 <video
-                  data-src={"https://video.wixstatic.com/video/547143_9cead2c912214ac59599cc4a967d83e0/1080p/mp4/file.mp4"}
-                  src={"https://video.wixstatic.com/video/547143_9cead2c912214ac59599cc4a967d83e0/1080p/mp4/file.mp4"}
+                  data-src={getFullVideoURL(data?.video)}
+                  src={getFullVideoURL(data?.video)}
                   data-preload
                   className="player-video media"
                   autoPlay
@@ -66,16 +68,6 @@ const MarketTopSection = ({data}) => {
                   loop
                   playsInline
                 ></video>
-                {/* <video
-                  data-src={data.video}
-                  src={data.video}
-                  data-preload
-                  className="player-video media"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                ></video> */}
               </div>
             </div>
             <div className="col-lg-6 col-md-9 offset-lg-3 column-2 mx-tablet-auto mt-md-35 mt-mobile-50">
@@ -83,7 +75,7 @@ const MarketTopSection = ({data}) => {
                 className="fs--40 fs-tablet-40 fs-phone-30 blue-3 text-center"
                 data-aos="fadeInUp .8s ease-out-cubic .1s, d:loop, trigger:.column-2"
               >
-                {data.heroSectionTitle}
+                {data?.heroSectionTitle}
               </h2>
 
               <div
@@ -91,7 +83,7 @@ const MarketTopSection = ({data}) => {
                 data-aos="fadeInUp .8s ease-out-cubic .3s, d:loop, trigger:.column-2"
               >
                 <p style={{whiteSpace:"preserve-breaks"}}>
-                  {data.heroSectionDescription}
+                  {data?.heroSectionDescription}
                 </p>
               </div>
             </div>

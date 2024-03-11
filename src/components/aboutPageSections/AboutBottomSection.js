@@ -3,7 +3,6 @@ import DreamBigSection from "../commonComponents/DreamBigSection";
 import getFullImageURL from "../../common/common_functions/imageURL";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSliderSection } from "../../redux/reducers/aboutusData";
-import { handleCollectionLoaded } from "../../utilis/loadAnimations";
 
 const AboutBottomSection = () => {
   const disptach = useDispatch();
@@ -24,12 +23,6 @@ const AboutBottomSection = () => {
        document.querySelector(".triggerSplitWordAnimation").click();
      }, 1000);
    }, [disptach]);
-
-  useEffect(() => {
-    if (data.length > 0 && handleCollectionLoaded) {
-      handleCollectionLoaded();
-    }
-  }, [data]);
 
   return (
     <>

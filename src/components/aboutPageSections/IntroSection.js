@@ -3,7 +3,6 @@ import React, { useEffect } from "react";
 import getFullImageURL from "../../common/common_functions/imageURL";
 import { fetchIntroSection } from "../../redux/reducers/aboutusData";
 import { useDispatch, useSelector } from "react-redux";
-import { handleCollectionLoaded } from "../../utilis/loadAnimations";
 
 const IntroSection = () => {
   const dispatch = useDispatch();
@@ -23,12 +22,6 @@ const IntroSection = () => {
   useEffect(() => {
     dispatch(fetchIntroSection());
   }, [dispatch]);
-
-  useEffect(() => {
-    if (data.length > 0 && handleCollectionLoaded) {
-      handleCollectionLoaded();
-    }
-  }, [data]);
 
   const properties = [
     {

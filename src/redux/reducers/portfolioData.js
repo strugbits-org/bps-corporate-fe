@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import getFullImageURL from "../../common/common_functions/imageURL";
 import createWixClient from "../wixClient";
+import { handleCollectionLoaded } from "../../utilis/loadAnimations";
 
 const wixClient = createWixClient();
 
@@ -19,7 +20,7 @@ const initialState = {
 
 export const fetchPortfolio = createAsyncThunk(
   "data/fetchPortfolio",
-  async () => {
+  async (sliced = false) => {
     try {
       let options = {
         dataCollectionId: "portfolioItems",
@@ -45,9 +46,12 @@ export const fetchPortfolio = createAsyncThunk(
       });
       const uniqueMarketCategories = [...new Map(marketCategoriesArray.map(item => [item, item])).values()];
       const uniqueStudioTags = [...new Map(studioTagsArray.map(item => [item, item])).values()];
-
+      handleCollectionLoaded();
+      setTimeout(() => {
+        document.querySelector(".updateWatchedTrigger").click();
+      }, 1000);
       return {
-        data: portfolioArray,
+        data: sliced ? portfolioArray.slice(0,4) : portfolioArray,
         marketCategories: uniqueMarketCategories,
         studioTags: uniqueStudioTags,
       };
@@ -70,7 +74,7 @@ export const fetchSinglePortfolio = createAsyncThunk(
         .queryDataItems(options)
         .eq("slug", slug)
         .find();
-
+        handleCollectionLoaded();
       const portfolioArray = fetchedItems.map((item) => {
         item.data.marketCategory = item.data.marketCategory.cardname;
         item.data.studioTags = item.data.studioTags.map((tag) => tag.cardName);

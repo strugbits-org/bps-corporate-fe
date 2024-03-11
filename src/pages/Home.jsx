@@ -11,7 +11,6 @@ import MarketSection from "../components/commonComponents/MarketSection";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchHomeTopData } from "../redux/reducers/homeData";
-import { handleCollectionLoaded } from "../utilis/loadAnimations";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -20,15 +19,6 @@ const Home = () => {
   useEffect(() => {
     dispatch(fetchHomeTopData());
   }, [dispatch]);
-  
-  useEffect(() => {
-    if (homeTopData.length > 0) {
-      handleCollectionLoaded();
-      setTimeout(() => {
-        document.querySelector(".stickyAnimationTrigger").click();
-      }, 1500);
-    }
-  }, [homeTopData]);
 
   return (
     <>

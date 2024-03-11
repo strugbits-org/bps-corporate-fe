@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import DelayedLink from "../../common/DelayedLink";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPortfolio } from "../../redux/reducers/portfolioData";
-import { handleCollectionLoaded } from "../../utilis/loadAnimations";
 
 const ExploreWorkSection = () => {
   
@@ -57,11 +56,6 @@ const ExploreWorkSection = () => {
     }, 400);
   }, [selectedStudio, selectedCategory, portfolioCollection]);
 
-  useEffect(() => {
-    if (portfolioCollection.length > 0 && handleCollectionLoaded) {
-      handleCollectionLoaded();
-    }
-  }, [portfolioCollection]);
 
   return (
     filteredPortfolioCollection && 

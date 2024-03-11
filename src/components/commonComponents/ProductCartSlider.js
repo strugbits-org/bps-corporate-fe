@@ -3,11 +3,12 @@ import DelayedLink from "../../common/DelayedLink";
 import getFullImageURL from "../../common/common_functions/imageURL";
 
 const ProductCartSlider = ({data}) => {
+  const EXTERNAL_SITE_URL = "https://www.rentals.blueprintstudios.com";
   return (
     <div className="slider-featured-products" data-aos="d:loop">
       <div className="swiper-container">
         <div className="swiper-wrapper">
-          {data.storeProducts.map((item, index) => {
+          {data?.storeProducts.map((item, index) => {
             return (
               <div key={index} className="swiper-slide">
                 <div className="rental-product-link">
@@ -16,7 +17,7 @@ const ProductCartSlider = ({data}) => {
                     <i className="icon-bookmark-full"></i>
                   </button> */}
 
-                  <DelayedLink to={item.productPageUrl} className="product-link">
+                  <DelayedLink to={EXTERNAL_SITE_URL + item.productPageUrl} target={"blank"} className="product-link">
                     <h3 className="product-name">{item.name}</h3>
 
                     <div className="wrapper-img">
@@ -39,11 +40,11 @@ const ProductCartSlider = ({data}) => {
                       <ul className="list-thumb">
                             {item.productOptions.Color.choices.map((option, index) => (
                               <React.Fragment key={index}>
-                                {index < 2 && (
+                                {index < 4 && (
                                   <li key={index}>
                                   <div className="container-img">
                                     <img
-                                      src={getFullImageURL(option.mainMedia)}
+                                      src={getFullImageURL(option.mainMedia ? option.mainMedia : item.mainMedia )}
                                       data-preload
                                       className="media"
                                       alt=""
@@ -53,9 +54,9 @@ const ProductCartSlider = ({data}) => {
                                 )}
                               </React.Fragment>
                             ))}
-                            {item.productOptions.Color.choices.length > 2 ? (
+                            {item.productOptions.Color.choices.length > 4 ? (
                               <div className="colors-number">
-                                <span>+{item.productOptions.Color.choices.length - 2}</span>
+                                <span>+{item.productOptions.Color.choices.length - 4}</span>
                               </div>
                             ) : null}
                       </ul>
