@@ -4,33 +4,12 @@ import createWixClient from "../wixClient";
 
 const wixClient = createWixClient();
 
-
 const initialState = {
-
   blogPostData: [],
-
 
   blogPostLoading: false,
   error: null,
 };
-
-
-
-// export const getblogPostData = createAsyncThunk("data/getblogPostData", async () => {
-//   try {
-//     let options = {
-//       dataCollectionId: "Blog/Posts",
-//       includeReferencedItems: ["tags", "author","categories"],
-//     };
-
-//     const { items: fetchedItems } = await wixClient.items
-//       .queryDataItems(options)
-//       .find();
-//     return fetchedItems;
-//   } catch (error) {
-//     throw new Error(error.message);
-//   }
-// });
 
 export const getblogPostData = createAsyncThunk(
   "data/getblogPostData",
@@ -38,7 +17,7 @@ export const getblogPostData = createAsyncThunk(
     try {
       let options = {
         dataCollectionId: "Blog/Posts",
-        includeReferencedItems: ["tags", "author","categories"],
+        includeReferencedItems: ["tags", "author", "categories"],
       };
 
       const { items: fetchedItems } = await wixClient.items
@@ -46,16 +25,18 @@ export const getblogPostData = createAsyncThunk(
         .find();
 
       var CategoriesArray = [];
-  
+
       const portfolioArray = fetchedItems.map((item) => {
         item.data.categories = item.data.categories.map((tag) => {
           CategoriesArray.push(tag.label);
-          return tag.label
+          return tag.label;
         });
         return item.data;
       });
 
-      const uniqueCategories = [...new Map(CategoriesArray.map(item => [item, item])).values()];
+      const uniqueCategories = [
+        ...new Map(CategoriesArray.map((item) => [item, item])).values(),
+      ];
 
       return {
         data: portfolioArray,
@@ -73,7 +54,7 @@ const blogSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
- 
+
       .addCase(getblogPostData.pending, (state) => {
         state.blogPostLoading = true;
         state.error = null;
