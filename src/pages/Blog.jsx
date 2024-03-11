@@ -7,7 +7,6 @@ import { getblogPostData } from "../redux/reducers/blogData";
 import { useDispatch, useSelector } from "react-redux";
 import getFullImageURL from "../common/common_functions/imageURL";
 import formatDate from "../common/common_functions/dateFormat";
-import { handleCollectionLoaded } from "../utilis/loadAnimations";
 
 const Blog = () => {
   const dispatch = useDispatch();
