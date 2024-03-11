@@ -2,7 +2,7 @@ import DelayedLink from '../../common/DelayedLink'
 
 const ExplorePortfolio = ({data}) => {
   return (
-    data.length > 0 &&
+    data && data.length > 0 &&
     <section className="market-post-explore-portfolio overflow-hidden pt-lg-270 pb-lg-220 py-tablet-100 pt-phone-145 pb-phone-190">
       <div className="container-fluid">
         <div className="row">

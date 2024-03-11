@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import createWixClient from "../wixClient";
+import { handleCollectionLoaded } from "../../utilis/loadAnimations";
 
 const wixClient = createWixClient();
 
@@ -23,6 +24,7 @@ export const fetchContactUs = createAsyncThunk(
             .queryDataItems(options)
             .eq("title", "Tried + True")
             .find();
+            handleCollectionLoaded();
 
       return fetchContactUs;
     } catch (error) {

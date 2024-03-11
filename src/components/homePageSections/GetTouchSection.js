@@ -20,6 +20,7 @@ const GetTouchSection = () => {
     dispatch(fetchGetTouchSection());
   }, [dispatch]);
 
+
   return (
     <section className="home-solution pt-220 pb-110">
       <div className="container-fluid">

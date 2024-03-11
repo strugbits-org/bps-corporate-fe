@@ -15,10 +15,8 @@ import { fetchHomeTopData } from "../redux/reducers/homeData";
 const Home = () => {
   const dispatch = useDispatch();
   const homeTopData = useSelector((state) => state.home.homeTopData);
-  // const loading = useSelector((state) => state.home.homeToploading);
-  // const error = useSelector((state) => state.home.error);
 
-    useEffect(() => {
+  useEffect(() => {
     dispatch(fetchHomeTopData());
   }, [dispatch]);
 
