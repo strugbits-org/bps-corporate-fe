@@ -9,7 +9,6 @@ import React, { useEffect } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchServicesData } from "../../redux/reducers/servicesData";
-import { handleCollectionLoaded } from "../../utilis/loadAnimations";
 
 const ServicePostPage = () => {
   // const [serviceData, setServiceData] = useState(null);
@@ -29,12 +28,6 @@ const ServicePostPage = () => {
       document.querySelector(".triggerSplitWordAnimation").click();
     }, 1500);
   }, [dispatch, location, params.slug]);
-
-  useEffect(() => {
-    if (servicesData) {
-      handleCollectionLoaded();
-    }
-  }, [servicesData]);
 
   return (
     <>

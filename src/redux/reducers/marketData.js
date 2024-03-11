@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import getFullImageURL from "../../common/common_functions/imageURL";
 import createWixClient from "../wixClient";
+import { handleCollectionLoaded } from "../../utilis/loadAnimations";
 
 const wixClient = createWixClient();
 
@@ -28,7 +29,7 @@ export const fetchMarketTopsections = createAsyncThunk(
         .queryDataItems(options)
         .eq("slug", slug)
         .find();
-
+        handleCollectionLoaded();
       const marketsArray = fetchedItems.map((service) => {
         service.data.image = getFullImageURL(service.data.image);
         return service.data;

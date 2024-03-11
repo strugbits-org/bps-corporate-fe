@@ -2,7 +2,6 @@ import DelayedLink from "../../common/DelayedLink";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchGetTouchSection } from "../../redux/reducers/homeData";
-import { handleCollectionLoaded } from "../../utilis/loadAnimations";
 
 const GetTouchSection = () => {
   const dispatch = useDispatch();
@@ -20,12 +19,7 @@ const GetTouchSection = () => {
   useEffect(() => {
     dispatch(fetchGetTouchSection());
   }, [dispatch]);
-  
-  useEffect(() => {
-    if (getTouchData.length > 0) {
-      handleCollectionLoaded(10);
-    }
-  }, [getTouchData]);
+
 
   return (
     <section className="home-solution pt-220 pb-110">

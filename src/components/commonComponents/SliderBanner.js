@@ -3,7 +3,6 @@ import React, { useEffect } from "react";
 import getFullImageURL from "../../common/common_functions/imageURL";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSliderSection } from "../../redux/reducers/aboutusData";
-import { handleCollectionLoaded } from "../../utilis/loadAnimations";
 
 const SliderBanner = () => {
   const disptach = useDispatch();
@@ -19,12 +18,6 @@ const SliderBanner = () => {
       document.querySelector(".triggerSplitWordAnimation").click();
     }, 1000);
   }, [disptach]);
-
-  useEffect(() => {
-    if (data.length > 0 && handleCollectionLoaded) {
-      handleCollectionLoaded();
-    }
-  }, [data]);
 
   return (
     <section className="section-slider-banner">

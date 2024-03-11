@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import getFullImageURL from "../../common/common_functions/imageURL";
 import createWixClient from "../wixClient";
+import { handleCollectionLoaded } from "../../utilis/loadAnimations";
 
 const wixClient = createWixClient();
 
@@ -32,7 +33,7 @@ export const fetchServicesData = createAsyncThunk(
         service.data.image = getFullImageURL(service.data.image);
         return service.data;
       });
-
+      handleCollectionLoaded();
       return servicesArray[0];
     } catch (error) {
       throw new Error(error.message);

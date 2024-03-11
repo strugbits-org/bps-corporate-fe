@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import getFullImageURL from "../../common/common_functions/imageURL";
 import { fetchDreamBigSection } from "../../redux/reducers/homeData";
 import { useDispatch, useSelector } from "react-redux";
-import { handleCollectionLoaded } from "../../utilis/loadAnimations";
 
 const DreamBigSection = () => {
 
@@ -19,12 +18,6 @@ const DreamBigSection = () => {
   useEffect(() => {
     dispatch(fetchDreamBigSection());
   }, [dispatch]);
-
-  useEffect(() => {
-    if (data.length > 0 && handleCollectionLoaded) {
-      handleCollectionLoaded();
-    }
-  }, [data]);
   
   return (
     <section className="section-dream-big">

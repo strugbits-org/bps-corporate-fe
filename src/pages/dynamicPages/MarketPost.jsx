@@ -12,7 +12,6 @@ import { useLocation, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMarketTopsections } from "../../redux/reducers/marketData";
 import { fetchPortfolio } from "../../redux/reducers/portfolioData";
-import { handleCollectionLoaded } from "../../utilis/loadAnimations";
 
 
 
@@ -35,12 +34,6 @@ const MarketPost = () => {
     const filteredProjects = portfolioCollection.filter(item => item.marketCategory.toLowerCase() === params.slug);
     setFilteredPortfolioCollection(filteredProjects);
   }, [portfolioCollection,params.slug]);
-
-  useEffect(() => {
-    if (marketsData) {
-      handleCollectionLoaded();
-    }
-  }, [marketsData]);
 
   return (
     <>
