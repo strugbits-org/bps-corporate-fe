@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import contactusSchema from "../common/schema/contactusSchema";
 import { useDispatch, useSelector } from "react-redux";
-// import { submitFormSuccess, submitFormFailure} from "../redux/reducers/contactus";
 import { postFormData } from "../redux/reducers/contactus";
 import { Contact } from "./constats/contactusData";
 import DelayedLink from "../common/DelayedLink";
@@ -22,8 +21,8 @@ const ContactForm = () => {
   });
 
   const onSubmit = (data) => {
-    // console.log("Form submitted:", data);
     dispatch(postFormData(data));
+    console.log(data,"data here")
   };
 
   return (
@@ -102,13 +101,14 @@ const ContactForm = () => {
             </div>
           </form>
           {/* Error message */}
-          {error && <span className="error">{error}</span>}
-          <h3 data-aos="fadeIn" data-form-error>
+          {error && <h3 data-aos="fadeIn" data-form-error>
             Error, Try again!
-          </h3>
-          <h3 data-aos="fadeIn" data-form-success>
+          </h3>}
+          
+          {/* <h3 data-aos="fadeIn" data-form-success>
             Success!
-          </h3>
+          </h3> */}
+
         </div>
       </div>
       <div className="column-2">

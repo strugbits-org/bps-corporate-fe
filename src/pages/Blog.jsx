@@ -1,44 +1,56 @@
 import React, { useEffect, useState } from "react";
 import SocialSection from "../components/commonComponents/SocialSection";
-import { head, postes } from "../common/constats/blogData";
+import { head } from "../common/constats/blogData";
 import DelayedLink from "../common/DelayedLink";
 import { Link } from "react-router-dom";
+import { getblogPostData } from "../redux/reducers/blogData";
+import { useDispatch, useSelector } from "react-redux";
+import getFullImageURL from "../common/common_functions/imageURL";
+import formatDate from "../common/common_functions/dateFormat";
 import { handleCollectionLoaded } from "../utilis/loadAnimations";
 
 const Blog = () => {
-  const [selectedFilters, setSelectedFilters] = useState([]);
-  const [filteredItems, setFilteredItems] = useState(postes);
+  const dispatch = useDispatch();
 
-  const menuitems = [...new Set(postes.map((data) => data.category))];
+  const blogPostData = useSelector((state) => state.blog.blogPostData).data;
+  const Categories = useSelector((state) => state.blog.blogPostData.Categories);
 
-  const handleFilterButtonClick = (selectedCategory) => {
-    if (selectedFilters.includes(selectedCategory)) {
-      setSelectedFilters(
-        selectedFilters.filter((el) => el !== selectedCategory)
-      );
+  // const blogPostLoading = useSelector((state) => state.blog.blogPostLoading);
+
+  const [selectedCategory, setSelectedCategory] = useState([]);
+  const [filteredBlogCollection, setFilteredBlogCollection] =
+    useState(blogPostData);
+
+  useEffect(() => {
+    dispatch(getblogPostData());
+  }, [dispatch]);
+
+  useEffect(() => {
+    setFilteredBlogCollection(blogPostData);
+  }, [blogPostData]);
+
+  const handleFilter = (category) => {
+    if (selectedCategory.includes(category)) {
+      setSelectedCategory(selectedCategory.filter((el) => el !== category));
     } else {
-      setSelectedFilters([...selectedFilters, selectedCategory]);
+      setSelectedCategory([...selectedCategory, category]);
     }
   };
 
   useEffect(() => {
-    const filterItems = () => {
-      if (selectedFilters.length > 0) {
-        let tempItems = postes.filter((item) =>
-          selectedFilters.includes(item.category)
-        );
-        setFilteredItems(tempItems);
-      } else {
-        setFilteredItems(postes);
-      }
-    };
-    filterItems();
-  }, [selectedFilters,]);
+    if (!blogPostData || !selectedCategory) return; // Add this guard clause
 
-  useEffect(() => {
-    handleCollectionLoaded();
-    document.querySelector(".updateWatchedTrigger").click();
-  }, [filteredItems]);
+    const filteredProjects = blogPostData.filter((item) => {
+
+        return selectedCategory.length === 0 || (item.categories.length !== 0 && selectedCategory.some(r => item.categories.includes(r)));
+    });
+    setFilteredBlogCollection(filteredProjects);
+
+    setTimeout(() => {
+        document.querySelector(".updateWatchedTrigger").click();
+    }, 400);
+}, [blogPostData, selectedCategory]);
+
 
   return (
     <>
@@ -68,38 +80,30 @@ const Blog = () => {
                   <div className="container-wrapper-list">
                     <div className="wrapper-list">
                       <ul className="list-blog-tags list-dropdown-tags">
-                      <li>
-                          
-                          <Link
-                          to="/blogs"
-                            className={`blog-btn-tag ${
-                              selectedFilters.length === 0 ? "active" : ""
-                            }`}
-                          >
-                            <span >
-                              Blogs
-                            </span>
-                          </Link>
-                        </li>
                         <li>
-
                           <Link
                             className={`blog-btn-tag ${
-                              selectedFilters.length === 0 ? "active" : ""
+                              selectedCategory.length === 0 ? "active" : ""
                             }`}
                           >
-                            <span onClick={() => setFilteredItems(postes)}>
+                            <span
+                              onClick={() => {
+                                setFilteredBlogCollection(blogPostData);
+                                setSelectedCategory([]);
+                              }}
+                            >
                               All Studios
                             </span>
                           </Link>
                         </li>
 
-                        {menuitems.map((category, idx) => (
+                        {Categories?.map((category, idx) => (
                           <li key={idx}>
                             <Link
-                              onClick={() => handleFilterButtonClick(category)}
+                              onClick={() => handleFilter(category)}
                               className={`blog-btn-tag ${
-                                selectedFilters?.includes(category)
+                                selectedCategory &&
+                                selectedCategory.includes(category)
                                   ? "active"
                                   : ""
                               }`}
@@ -116,72 +120,77 @@ const Blog = () => {
               </div>
             </div>
           </div>
+
           <div className="row row-2 mt-lg-60 mt-tablet-40 mt-phone-35">
             <div className="col-lg-12 column-1">
               <ul className="list-blog grid-lg-25 grid-tablet-50">
-                {filteredItems.map((data) => (
-                  <li
-                    key={`postes-${data.id}`}
-                    className="grid-item"
-                    data-aos="d:loop"
-                  >
-                    <DelayedLink
-                      to={`/blog-post/${data.id}`}
-                      className="link-blog link-blog-animation"
-                      attributes={{
-                        "data-aos": "d:loop",
-                      }}
-                    >
-                      <div
-                        className="container-img bg-blue"
-                        data-cursor-style="view"
+                {filteredBlogCollection?.map((data, index) => {
+                  return (
+                    <li key={index} className="grid-item" data-aos="d:loop">
+                      <DelayedLink
+                        // to={`/blog-post/${data.id}`}
+                        className="link-blog link-blog-animation"
+                        attributes={{
+                          "data-aos": "d:loop",
+                        }}
                       >
-                        <div className="wrapper-img">
-                          <img
-                            src={data.img}
-                            data-preload
-                            className="media"
-                            alt=""
-                          />
-                        </div>
-                      </div>
-                      <div className="container-text">
-                        <div className="container-author-post-info">
-                          <div className="author">
-                            <span className="author-name">{data.userName}</span>
-                          </div>
-                          <div className="date">
-                            <span>{data.date}</span>
+                        <div
+                          className="container-img bg-blue"
+                          data-cursor-style="view"
+                        >
+                          <div className="wrapper-img">
+                            <img
+                              src={getFullImageURL(data.coverImage)}
+                              data-preload
+                              className="media"
+                              alt=""
+                            />
                           </div>
                         </div>
-                        <h2 className="title-blog">{data.heading}</h2>
-                        <p className="text-blog">{data.p}</p>
-                        <ul className="list-tags-small">
-                          {Object.values(data.tags).map((tag, index) => (
-                            <React.Fragment key={index}>
-                              {index < 3 ? (
-                                <li
-                                  className={`tag-small ${
-                                    data.category?.includes(tag) ? "active" : ""
-                                  }`}
-                                >
-                                  <span>{tag}</span>
-                                </li>
-                              ) : null}
-                            </React.Fragment>
-                          ))}
-                          {Object.values(data.tags).length > 3 ? (
-                            <li className="tag-small">
-                              <span>
-                                +{Object.values(data.tags).length - 3} studios
+                        <div className="container-text">
+                          <div className="container-author-post-info">
+                            <div className="author">
+                              <span className="author-name">
+                                {data.author.nickname}
                               </span>
-                            </li>
-                          ) : null}
-                        </ul>
-                      </div>
-                    </DelayedLink>
-                  </li>
-                ))}
+                            </div>
+                            <div className="date">
+                              <span>{formatDate(data.lastPublishedDate.$date)}</span>
+                            </div>
+                          </div>
+                          <h2 className="title-blog">{data.title}</h2>
+                          <p className="text-blog">{data.excerpt}</p>
+                          <ul className="list-tags-small">
+                           
+                            {data.tags.map((tag, index) => (
+                                  <React.Fragment key={index}>
+                                    {index < 3 ? (
+                                      <li
+                                        className={`tag-small ${
+                                          data.categories?.includes(tag.label)
+                                            ? "active"
+                                            : ""
+                                        }`}
+                                      >
+                                        <span>{tag.label}</span>
+                                      </li>
+                                    ) : null}
+                                  </React.Fragment>
+                                ))}
+                                {data?.tags.length > 3 ? (
+                                  <li className="tag-small">
+                                    <span>
+                                      +{data.tags.length - 3}{" "}
+                                      studios
+                                    </span>
+                                  </li>
+                                ) : null}
+                          </ul>
+                        </div>
+                      </DelayedLink>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
             <div className="col-lg-2 offset-lg-5 flex-center mt-lg-70 mt-tablet-60 mt-phone-85">
