@@ -1,12 +1,25 @@
-import React, { useMemo, useState } from "react";
-import { OurCardData } from "../../../common/constats/portfolioData";
+import React, { useEffect, useMemo, useState } from "react";
 import { postes } from "../../../common/constats/blogData";
 import { modelData } from "../../../common/constats/marketData";
-import { studioCard } from "../../../common/constats/constats";
 import DelayedLink from "../../../common/DelayedLink";
 import { productSlider } from "../../../common/constats/blogData";
+import { fetchPortfolio } from "../../../redux/reducers/portfolioData";
+import { fetchStudioSection } from "../../../redux/reducers/homeData";
+import { useDispatch, useSelector } from "react-redux";
+import { getMarketCollection } from "../../../redux/reducers/marketData";
 
 const Search = () => {
+  const dispatch = useDispatch();
+  const portfolioCollection = useSelector((state) => state.portfolio.portfolioData.data);
+  const studioData = useSelector((state) => state.home.studioData);
+  const marketData = useSelector((state) => state.market.marketModel);
+
+  useEffect(() => {
+    dispatch(fetchPortfolio());
+    dispatch(fetchStudioSection());
+    dispatch(getMarketCollection());
+  }, [dispatch]);
+  
   const [searchTerm, setSearchTerm] = useState("");
   const [portfolioData, setPortfolioData] = useState([]);
   const [blogData, setBlogData] = useState([]);
@@ -16,9 +29,12 @@ const Search = () => {
   };
 
   const filteredPortfolioData = useMemo(() => {
-    return OurCardData.filter(
+    return portfolioCollection.filter(
       (item) =>
-        item.categories && item.categories.toLowerCase().includes(searchTerm)
+      item.title && item.title.toLowerCase().includes(searchTerm) ||
+      item.description && item.description.toLowerCase().includes(searchTerm) ||
+      item.studioTags && (item.studioTags + "").toLowerCase().includes(searchTerm) ||
+      item.marketCategory && item.marketCategory.toLowerCase().includes(searchTerm)
     );
   }, [searchTerm]);
 
@@ -32,7 +48,7 @@ const Search = () => {
   const filteredProductData = useMemo(() => {
     return productSlider.filter(
       (item) =>
-        item.category && item.category.toLowerCase().includes(searchTerm)
+        item.name && item.name.toLowerCase().includes(searchTerm)
     );
   }, [searchTerm]);
 
@@ -97,12 +113,12 @@ const Search = () => {
                     className="list-result-all-studios grid-lg-16 grid-tablet-33 grid-phone-50"
                     data-aos
                   >
-                    {studioCard.map((data, index) => {
+                    {studioData.map((item, index) => {
                       return (
                         <li key={index} className="grid-item">
-                          <DelayedLink to="/" className="link-studios">
+                          <DelayedLink to={item.data.slug} className="link-studios">
                             <h3 className="title-all-studios">
-                              <span>{data.name}</span>
+                              <span>{item.data.cardName}</span>
                             </h3>
                           </DelayedLink>
                         </li>
@@ -198,7 +214,7 @@ const Search = () => {
                         Portfolio <span>{`"${searchTerm}"`}</span>
                       </h2>
                       <DelayedLink
-                        to={`/portfolio-post`}
+                        to={`/portfolio`}
                         className="btn-border-blue"
                         attributes={{
                           "data-aos": "",
@@ -221,7 +237,7 @@ const Search = () => {
                                 className="swiper-slide grid-item"
                               >
                                 <DelayedLink
-                                  to={`/portfolio-post/${data.id}`}
+                                  to={`/portfolio-post/${data.slug}`}
                                   className="link-portfolio"
                                 >
                                   <div
@@ -230,7 +246,7 @@ const Search = () => {
                                   >
                                     <div className="wrapper-img">
                                       <img
-                                        src={data.img}
+                                        src={data.image}
                                         data-preload
                                         className="media"
                                         alt=""
@@ -262,11 +278,11 @@ const Search = () => {
                     className="list-result-our-markets list-projects font-35 grid-md-50"
                     data-aos
                   >
-                    {modelData.map((data, index) => {
+                    {marketData.map((item, index) => {
                       return (
                         <li key={index} className="grid-item">
                           <DelayedLink
-                            to="/market-post"
+                            to={item.slug}
                             className="market-link project-link"
                             attributes={{
                               "data-cursor-style": "view",
@@ -278,7 +294,7 @@ const Search = () => {
                               data-cursor-style="view"
                             >
                               <img
-                                src={data.img}
+                                src={item.image}
                                 data-preload
                                 className="media"
                                 alt=""
@@ -286,7 +302,7 @@ const Search = () => {
                             </div>
                             <div className="container-text">
                               <h3 className="title-project split-words">
-                                {data.title}
+                                {item.cardname}
                               </h3>
                             </div>
                           </DelayedLink>
