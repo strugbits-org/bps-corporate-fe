@@ -39,6 +39,9 @@ export const fetchHomeTopData = createAsyncThunk(
         .eq("title", "TopSection")
         .find();
       handleCollectionLoaded();
+      setTimeout(() => {
+        document.querySelector(".stickyAnimationTrigger").click();
+      }, 1000);
       return fetchHomeTopData;
     } catch (error) {
       throw new Error(error.message);
@@ -143,8 +146,8 @@ export const fetchRentalStoreSection = createAsyncThunk(
         .eq("title", "Rental Store")
         .find();
         handleCollectionLoaded();
-
-      return fetchedRentalSection;
+        const response = fetchedRentalSection.sort((a, b) => (a.data.newImageTag === b.data.newImageTag) ? 0 : a.data.newImageTag ? -1 : 1);
+      return response;
     } catch (error) {
       throw new Error(error.message);
     }

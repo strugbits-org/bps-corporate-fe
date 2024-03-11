@@ -5,7 +5,6 @@ const FormConcept = ({ items }) => {
     fromConcept1: item.data.fromConceptText1,
     fromConcept2: item.data.fromConceptText2
   }));
-
   return (
     <section className="home-from-concept-to-reality overflow-hidden">
       <div
