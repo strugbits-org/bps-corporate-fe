@@ -13,11 +13,6 @@ const OurFamily = () => {
 
   useEffect(() => {
     dispatch(fetchOurFamilySection());
-    //trigger animation on data load
-    setTimeout(() => {
-      document.querySelector(".updateWatchedTrigger").click();
-      document.querySelector(".triggerSplitWordAnimation").click();
-    }, 1000);
   }, [dispatch]);
 
   return (

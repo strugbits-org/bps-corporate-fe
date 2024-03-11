@@ -73,6 +73,10 @@ export const fetchOurFamilySection = createAsyncThunk(
         .eq("title", "Meet the rest of the family")
         .find();
         handleCollectionLoaded();
+        setTimeout(() => {
+          document.querySelector(".updateWatchedTrigger").click();
+          document.querySelector(".triggerSplitWordAnimation").click();
+        }, 1000);
       return fetchedOurFamily;
     } catch (error) {
       throw new Error(error.message);
