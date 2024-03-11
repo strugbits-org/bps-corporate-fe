@@ -39,6 +39,9 @@ export const fetchHomeTopData = createAsyncThunk(
         .eq("title", "TopSection")
         .find();
       handleCollectionLoaded();
+      setTimeout(() => {
+        document.querySelector(".stickyAnimationTrigger").click();
+      }, 1000);
       return fetchHomeTopData;
     } catch (error) {
       throw new Error(error.message);
