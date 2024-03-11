@@ -24,9 +24,6 @@ const Blog = () => {
     dispatch(getblogPostData());
   }, [dispatch]);
 
-  console.log(blogPostData, "here is blog data");
-  console.log(Categories, "here is Categories data");
-  console.log(filteredBlogCollection, "filter objects");
   useEffect(() => {
     setFilteredBlogCollection(blogPostData);
   }, [blogPostData]);
@@ -43,7 +40,7 @@ const Blog = () => {
     if (!blogPostData || !selectedCategory) return; // Add this guard clause
 
     const filteredProjects = blogPostData.filter((item) => {
-      console.log(item,"herererererer")
+
         return selectedCategory.length === 0 || (item.categories.length !== 0 && selectedCategory.some(r => item.categories.includes(r)));
     });
     setFilteredBlogCollection(filteredProjects);
