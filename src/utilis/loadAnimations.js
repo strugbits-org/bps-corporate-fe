@@ -13,6 +13,7 @@ export const handleCollectionLoaded = () => {
         'services-post': 5,
         'portfolio-post': 2,
         'blog-post': 0,
+        'blog': 1,
         'contact': 1,
     }[cleanPage] || 0;
 

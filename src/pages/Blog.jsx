@@ -3,6 +3,7 @@ import SocialSection from "../components/commonComponents/SocialSection";
 import { head, postes } from "../common/constats/blogData";
 import DelayedLink from "../common/DelayedLink";
 import { Link } from "react-router-dom";
+import { handleCollectionLoaded } from "../utilis/loadAnimations";
 
 const Blog = () => {
   const [selectedFilters, setSelectedFilters] = useState([]);
@@ -35,9 +36,9 @@ const Blog = () => {
   }, [selectedFilters,]);
 
   useEffect(() => {
+    handleCollectionLoaded();
     document.querySelector(".updateWatchedTrigger").click();
   }, [filteredItems]);
-
 
   return (
     <>
