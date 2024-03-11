@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import SocialSection from "../components/commonComponents/SocialSection";
-import { head, postes } from "../common/constats/blogData";
+import { head } from "../common/constats/blogData";
 import DelayedLink from "../common/DelayedLink";
 import { Link } from "react-router-dom";
-import {  getblogPostData } from "../redux/reducers/blogData";
+import { getblogPostData } from "../redux/reducers/blogData";
 import { useDispatch, useSelector } from "react-redux";
 import getFullImageURL from "../common/common_functions/imageURL";
 import formatDate from "../common/common_functions/dateFormat";
@@ -11,50 +11,51 @@ import formatDate from "../common/common_functions/dateFormat";
 const Blog = () => {
   const dispatch = useDispatch();
 
- const blogPostData = useSelector((state) => state.blog.blogPostData);
- const blogPostLoading = useSelector((state) => state.blog.blogPostLoading);
-console.log(blogPostData,"test data here");
+  const blogPostData = useSelector((state) => state.blog.blogPostData).data;
+  const Categories = useSelector((state) => state.blog.blogPostData.Categories);
+
+  // const blogPostLoading = useSelector((state) => state.blog.blogPostLoading);
+
+  const [selectedCategory, setSelectedCategory] = useState([]);
+  const [filteredBlogCollection, setFilteredBlogCollection] =
+    useState(blogPostData);
 
   useEffect(() => {
     dispatch(getblogPostData());
   }, [dispatch]);
 
-  const [selectedFilters, setSelectedFilters] = useState([]);
-  const [filteredItems, setFilteredItems] = useState(postes);
+  console.log(blogPostData, "here is blog data");
+  console.log(Categories, "here is Categories data");
+  console.log(filteredBlogCollection, "filter objects");
+  useEffect(() => {
+    setFilteredBlogCollection(blogPostData);
+  }, [blogPostData]);
 
-  const menuitems = [...new Set(postes.map((data) => data.category))];
-
-  const handleFilterButtonClick = (selectedCategory) => {
-    if (selectedFilters.includes(selectedCategory)) {
-      setSelectedFilters(
-        selectedFilters.filter((el) => el !== selectedCategory)
-      );
+  const handleFilter = (category) => {
+    if (selectedCategory.includes(category)) {
+      setSelectedCategory(selectedCategory.filter((el) => el !== category));
     } else {
-      setSelectedFilters([...selectedFilters, selectedCategory]);
+      setSelectedCategory([...selectedCategory, category]);
     }
   };
 
   useEffect(() => {
-    const filterItems = () => {
-      if (selectedFilters.length > 0) {
-        let tempItems = postes.filter((item) =>
-          selectedFilters.includes(item.category)
-        );
-        setFilteredItems(tempItems);
-      } else {
-        setFilteredItems(postes);
-      }
-    };
-    filterItems();
-  }, [selectedFilters]);
+    if (!blogPostData || !selectedCategory) return; // Add this guard clause
 
-  useEffect(() => {
-    document.querySelector(".updateWatchedTrigger").click();
-  }, [filteredItems]);
+    const filteredProjects = blogPostData.filter((item) => {
+      console.log(item,"herererererer")
+        return selectedCategory.length === 0 || (item.categories.length !== 0 && selectedCategory.some(r => item.categories.includes(r)));
+    });
+    setFilteredBlogCollection(filteredProjects);
+
+    setTimeout(() => {
+        document.querySelector(".updateWatchedTrigger").click();
+    }, 400);
+}, [blogPostData, selectedCategory]);
+
 
   return (
     <>
-    
       <section className="blog-intro pt-lg-145 pt-tablet-115 pt-phone-120 pb-lg-150 pb-tablet-100 pb-phone-155">
         <div className="container-fluid">
           <div className="row row-1">
@@ -83,32 +84,28 @@ console.log(blogPostData,"test data here");
                       <ul className="list-blog-tags list-dropdown-tags">
                         <li>
                           <Link
-                            to="/blogs"
                             className={`blog-btn-tag ${
-                              selectedFilters.length === 0 ? "active" : ""
+                              selectedCategory.length === 0 ? "active" : ""
                             }`}
                           >
-                            <span>Blogs</span>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            className={`blog-btn-tag ${
-                              selectedFilters.length === 0 ? "active" : ""
-                            }`}
-                          >
-                            <span onClick={() => setFilteredItems(postes)}>
+                            <span
+                              onClick={() => {
+                                setFilteredBlogCollection(blogPostData);
+                                setSelectedCategory([]);
+                              }}
+                            >
                               All Studios
                             </span>
                           </Link>
                         </li>
 
-                        {menuitems.map((category, idx) => (
+                        {Categories?.map((category, idx) => (
                           <li key={idx}>
                             <Link
-                              onClick={() => handleFilterButtonClick(category)}
+                              onClick={() => handleFilter(category)}
                               className={`blog-btn-tag ${
-                                selectedFilters?.includes(category)
+                                selectedCategory &&
+                                selectedCategory.includes(category)
                                   ? "active"
                                   : ""
                               }`}
@@ -129,139 +126,73 @@ console.log(blogPostData,"test data here");
           <div className="row row-2 mt-lg-60 mt-tablet-40 mt-phone-35">
             <div className="col-lg-12 column-1">
               <ul className="list-blog grid-lg-25 grid-tablet-50">
-                {/* {filteredItems.map((data) => (
-                  <li
-                    key={`postes-${data.id}`}
-                    className="grid-item"
-                    data-aos="d:loop"
-                  >
-                    <DelayedLink
-                      to={`/blog-post/${data.id}`}
-                      className="link-blog link-blog-animation"
-                      attributes={{
-                        "data-aos": "d:loop",
-                      }}
-                    >
-                      <div
-                        className="container-img bg-blue"
-                        data-cursor-style="view"
+                {filteredBlogCollection?.map((data, index) => {
+                  return (
+                    <li key={index} className="grid-item" data-aos="d:loop">
+                      <DelayedLink
+                        // to={`/blog-post/${data.id}`}
+                        className="link-blog link-blog-animation"
+                        attributes={{
+                          "data-aos": "d:loop",
+                        }}
                       >
-                        <div className="wrapper-img">
-                          <img
-                            src={data.img}
-                            data-preload
-                            className="media"
-                            alt=""
-                          />
-                        </div>
-                      </div>
-                      <div className="container-text">
-                        <div className="container-author-post-info">
-                          <div className="author">
-                            <span className="author-name">{data.userName}</span>
-                          </div>
-                          <div className="date">
-                            <span>{data.date}</span>
-                          </div>
-                        </div>
-                        <h2 className="title-blog">{data.heading}</h2>
-                        <p className="text-blog">{data.p}</p>
-                        <ul className="list-tags-small">
-                          {Object.values(data.tags).map((tag, index) => (
-                            <React.Fragment key={index}>
-                              {index < 3 ? (
-                                <li
-                                  className={`tag-small ${
-                                    data.category?.includes(tag) ? "active" : ""
-                                  }`}
-                                >
-                                  <span>{tag}</span>
-                                </li>
-                              ) : null}
-                            </React.Fragment>
-                          ))}
-                          {Object.values(data.tags).length > 3 ? (
-                            <li className="tag-small">
-                              <span>
-                                +{Object.values(data.tags).length - 3} studios
-                              </span>
-                            </li>
-                          ) : null}
-                        </ul>
-                      </div>
-                    </DelayedLink>
-                  </li>
-                ))} */}
-                {blogPostData &&
-                  blogPostData.map((data, index) => {
-                    return (
-                    
-                      <li key={index} className="grid-item" data-aos="d:loop">
-                        <DelayedLink
-                          // to={`/blog-post/${data.id}`}
-                          className="link-blog link-blog-animation"
-                          attributes={{
-                            "data-aos": "d:loop",
-                          }}
+                        <div
+                          className="container-img bg-blue"
+                          data-cursor-style="view"
                         >
-                          <div
-                            className="container-img bg-blue"
-                            data-cursor-style="view"
-                          >
-                            <div className="wrapper-img">
-                              <img
-                                src={getFullImageURL(data.data.coverImage)}
-                                data-preload
-                                className="media"
-                                alt=""
-                              />
+                          <div className="wrapper-img">
+                            <img
+                              src={getFullImageURL(data.coverImage)}
+                              data-preload
+                              className="media"
+                              alt=""
+                            />
+                          </div>
+                        </div>
+                        <div className="container-text">
+                          <div className="container-author-post-info">
+                            <div className="author">
+                              <span className="author-name">
+                                {data.author.nickname}
+                              </span>
+                            </div>
+                            <div className="date">
+                              <span>{formatDate(data.lastPublishedDate.$date)}</span>
                             </div>
                           </div>
-                          <div className="container-text">
-                            <div className="container-author-post-info">
-                              <div className="author">
-                                  <span className="author-name">
-                                    {data.data.author.nickname}
-                                  </span>
-                                </div>
-                              <div className="date">
-                                <span>
-                                  {formatDate(data.data.lastPublishedDate)}
-                                </span>
-                              </div>
-                            </div>
-                            <h2 className="title-blog">{data.data.title}</h2>
-                            <p className="text-blog">{data.data.excerpt}</p>
-                            <ul className="list-tags-small">
-                                {data.tags.map((tag, index) => (
+                          <h2 className="title-blog">{data.title}</h2>
+                          <p className="text-blog">{data.excerpt}</p>
+                          <ul className="list-tags-small">
+                           
+                            {data.tags.map((tag, index) => (
                                   <React.Fragment key={index}>
                                     {index < 3 ? (
                                       <li
                                         className={`tag-small ${
-                                          data.category?.includes(tag)
+                                          data.categories?.includes(tag.label)
                                             ? "active"
                                             : ""
                                         }`}
                                       >
-                                        <span>{tag}</span>
+                                        <span>{tag.label}</span>
                                       </li>
                                     ) : null}
                                   </React.Fragment>
                                 ))}
-                                {data.tagIds.length > 3 ? (
+                                {data?.tags.length > 3 ? (
                                   <li className="tag-small">
                                     <span>
-                                      +{(data.tagIds).length - 3}{" "}
+                                      +{data.tags.length - 3}{" "}
                                       studios
                                     </span>
                                   </li>
                                 ) : null}
-                              </ul>
-                          </div>
-                        </DelayedLink>
-                      </li>
-                    );
-                  })}
+                          </ul>
+                        </div>
+                      </DelayedLink>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
             <div className="col-lg-2 offset-lg-5 flex-center mt-lg-70 mt-tablet-60 mt-phone-85">
