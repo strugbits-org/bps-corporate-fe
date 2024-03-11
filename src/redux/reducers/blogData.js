@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 import createWixClient from "../wixClient";
+import { handleCollectionLoaded } from "../../utilis/loadAnimations";
 
 const wixClient = createWixClient();
 
@@ -37,7 +38,7 @@ export const getblogPostData = createAsyncThunk(
       const uniqueCategories = [
         ...new Map(CategoriesArray.map((item) => [item, item])).values(),
       ];
-
+      handleCollectionLoaded();
       return {
         data: portfolioArray,
         Categories: uniqueCategories,
