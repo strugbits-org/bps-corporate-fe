@@ -2,8 +2,9 @@ import DelayedLink from "../../common/DelayedLink";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchGetTouchSection } from "../../redux/reducers/homeData";
+import { handleCollectionLoaded } from "../../utilis/loadAnimations";
 
-const GetTouchSection = ({handleCollectionLoaded}) => {
+const GetTouchSection = () => {
   const dispatch = useDispatch();
   const getTouchData = useSelector((state) => state.home.getTouchData);
 // const loading = useSelector((state) => state.home.ourProjectLoading);
@@ -22,7 +23,7 @@ const GetTouchSection = ({handleCollectionLoaded}) => {
   
   useEffect(() => {
     if (getTouchData.length > 0) {
-      handleCollectionLoaded();
+      handleCollectionLoaded(10);
     }
   }, [getTouchData]);
 

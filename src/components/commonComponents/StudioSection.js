@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import getFullImageURL from "../../common/common_functions/imageURL";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchStudioSection } from "../../redux/reducers/homeData";
+import { handleCollectionLoaded } from "../../utilis/loadAnimations";
 
-const StudioSection = ({handleCollectionLoaded}) => {
+const StudioSection = () => {
   const dispatch = useDispatch();
   const studioData = useSelector((state) => state.home.studioData);
   // const loading = useSelector((state) => state.home.studioLoading);

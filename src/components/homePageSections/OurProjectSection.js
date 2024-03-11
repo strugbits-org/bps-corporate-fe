@@ -3,8 +3,9 @@ import React, { useEffect } from "react";
 import getFullImageURL from "../../common/common_functions/imageURL";
 import { fetchPortfolio } from "../../redux/reducers/portfolioData";
 import { useDispatch, useSelector } from "react-redux";
+import { handleCollectionLoaded } from "../../utilis/loadAnimations";
 
-const OurProjectSection = ({handleCollectionLoaded}) => {
+const OurProjectSection = () => {
   const dispatch = useDispatch();
   const portfolioCollection = useSelector((state) => state.portfolio.portfolioData.data);
   // const loading = useSelector((state) => state.home.ourProjectLoading);

@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import getFullVideoURL from "../common/common_functions/videoURL";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchContactUs } from "../redux/reducers/contatusData";
+import { handleCollectionLoaded } from "../utilis/loadAnimations";
 
 const ContactUs = () => {
   const dispatch = useDispatch();
@@ -26,9 +27,7 @@ const ContactUs = () => {
 
   useEffect(() => {
     if (data.length > 0) {
-      setTimeout(() => {
-        document.querySelector(".initScript").click();
-      }, 500);
+      handleCollectionLoaded();
     }
   }, [data]);
 

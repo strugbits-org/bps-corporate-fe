@@ -1,20 +1,26 @@
-// import { React, useCallback, useState } from "react";
+let collectionLoaded = 0;
 
-//  // Animations Load
-//  const numberOfCollections = 8;
-//  const [animationsLoaded, setAnimationsLoaded] = useState(false);
-//  const [collectionLoaded, setCollectionLoaded] = useState(0);
+export const handleCollectionLoaded = () => {
+    collectionLoaded++;
+    // console.log(collectionLoaded);
 
-//  const handleCollectionLoaded = useCallback(() => {
-//    setCollectionLoaded((prevCount) => prevCount + 1);
-//    if ((collectionLoaded + 1) >= numberOfCollections && !animationsLoaded) {
-//      setTimeout(() => {
-//        document.querySelector(".initScript").click();
-//      }, 200);
-//      setAnimationsLoaded(true);
-//      setCollectionLoaded(0);
-//    }
-//  }, [collectionLoaded]);
-//  // Animations Load
+    const page = window.location.pathname.trim() === "/" ? "home" : window.location.pathname.substring(1);
+    const cleanPage = page.split("/")[0].trim();
 
-//  export default handleCollectionLoaded;
+    const collectionsCount = {
+        'home': 8,
+        'about': 4,
+        'portfolio-post': 2,
+        'market-post': 5,
+        'blog-post': 0,
+        'services-post': 5,
+        'contact': 1,
+        'portfolio': 2,
+    }[cleanPage] || 0;
+
+    if (collectionLoaded >= collectionsCount) {
+        collectionLoaded = 0;
+        document.querySelector(".initScript").click();
+        // console.log("Animations loaded on page", cleanPage);
+    }
+};

@@ -3,8 +3,9 @@ import React, { useEffect } from "react";
 import getFullImageURL from "../../common/common_functions/imageURL";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSliderSection } from "../../redux/reducers/aboutusData";
+import { handleCollectionLoaded } from "../../utilis/loadAnimations";
 
-const SliderBanner = ({handleCollectionLoaded}) => {
+const SliderBanner = () => {
   const disptach = useDispatch();
   const data = useSelector((state) => state.aboutus.SliderData);
   // const loading = useSelector((state) => state.aboutus.SliderLoading);
