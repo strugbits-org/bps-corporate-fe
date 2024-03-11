@@ -3,8 +3,9 @@ import React, { useEffect, useState } from "react";
 import getFullImageURL from "../../common/common_functions/imageURL";
 import { fetchRentalStoreSection } from "../../redux/reducers/homeData";
 import { useDispatch, useSelector } from "react-redux";
+import { handleCollectionLoaded } from "../../utilis/loadAnimations";
 
-const RentalStoreSection = ({handleCollectionLoaded}) => {
+const RentalStoreSection = () => {
   let transition = -35;
 
   const dispatch = useDispatch();

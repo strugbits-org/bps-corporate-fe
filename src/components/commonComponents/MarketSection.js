@@ -3,7 +3,9 @@ import React, { useEffect } from "react";
 import getFullImageURL from "../../common/common_functions/imageURL";
 import { fetchMarketSection } from "../../redux/reducers/homeData";
 import { useDispatch, useSelector } from "react-redux";
-const MarketSection = ({handleCollectionLoaded}) => {
+import { handleCollectionLoaded } from "../../utilis/loadAnimations";
+
+const MarketSection = () => {
   
   let data_delay = 0;
 

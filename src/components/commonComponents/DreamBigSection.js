@@ -2,8 +2,9 @@ import React, { useEffect } from "react";
 import getFullImageURL from "../../common/common_functions/imageURL";
 import { fetchDreamBigSection } from "../../redux/reducers/homeData";
 import { useDispatch, useSelector } from "react-redux";
+import { handleCollectionLoaded } from "../../utilis/loadAnimations";
 
-const DreamBigSection = ({handleCollectionLoaded}) => {
+const DreamBigSection = () => {
 
   const dispatch = useDispatch();
   const data = useSelector((state) => state.home.dreamBigData);

@@ -2,8 +2,9 @@ import React, { useEffect } from "react";
 import DelayedLink from "../../common/DelayedLink";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPortfolio } from "../../redux/reducers/portfolioData";
+import { handleCollectionLoaded } from "../../utilis/loadAnimations";
 
-const ExploreProjectsSection = ({data, handleCollectionLoaded}) => {
+const ExploreProjectsSection = ({data}) => {
   const dispatch = useDispatch();
   const portfolioCollection = useSelector((state) => state.portfolio.portfolioData.data);
   // const index = portfolioData.findIndex(item => item._id === data._id);

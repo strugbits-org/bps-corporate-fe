@@ -3,8 +3,9 @@ import React, { useEffect } from "react";
 import getFullImageURL from "../../common/common_functions/imageURL";
 import { fetchOurDreamSection } from "../../redux/reducers/aboutusData";
 import { useDispatch, useSelector } from "react-redux";
+import { handleCollectionLoaded } from "../../utilis/loadAnimations";
 
-const OurDream = ({handleCollectionLoaded}) => {
+const OurDream = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.aboutus.OurDreamData);
   // const loading = useSelector((state) => state.aboutus.OurDreamLoading);

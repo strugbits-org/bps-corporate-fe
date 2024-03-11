@@ -5,10 +5,11 @@ import PeopleReviewSlider from "../../components/commonComponents/PeopleReviewSl
 import StudioSection from "../../components/commonComponents/StudioSection";
 import DreamBigSection from "../../components/commonComponents/DreamBigSection";
 import SocialSection from "../../components/commonComponents/SocialSection";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchServicesData } from "../../redux/reducers/servicesData";
+import { handleCollectionLoaded } from "../../utilis/loadAnimations";
 
 const ServicePostPage = () => {
   // const [serviceData, setServiceData] = useState(null);
@@ -35,32 +36,15 @@ const ServicePostPage = () => {
     }
   }, [servicesData]);
 
-  // Animations Load
-  const numberOfCollections = 5;
-  const [animationsLoaded, setAnimationsLoaded] = useState(false);
-  const [collectionLoaded, setCollectionLoaded] = useState(0);
-
-  const handleCollectionLoaded = useCallback(() => {
-    setCollectionLoaded((prevCount) => prevCount + 1);
-    if ((collectionLoaded + 1) >= numberOfCollections && !animationsLoaded) {
-      setTimeout(() => {
-        document.querySelector(".initScript").click();
-      }, 400);
-      setAnimationsLoaded(true);
-      setCollectionLoaded(0);
-    }
-  }, [collectionLoaded]);
-  // Animations Load
-
   return (
     <>
       <ServiceIntro data={servicesData} />
       <ServiceDescription data={servicesData} />
       {/* commonComponents */}
-      <SliderBanner handleCollectionLoaded={handleCollectionLoaded} />
-      <PeopleReviewSlider handleCollectionLoaded={handleCollectionLoaded} />
-      <StudioSection handleCollectionLoaded={handleCollectionLoaded} />
-      <DreamBigSection handleCollectionLoaded={handleCollectionLoaded} />
+      <SliderBanner />
+      <PeopleReviewSlider />
+      <StudioSection />
+      <DreamBigSection />
       <SocialSection />
     </>
   );

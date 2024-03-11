@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import DelayedLink from "../../common/DelayedLink";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPortfolio } from "../../redux/reducers/portfolioData";
+import { handleCollectionLoaded } from "../../utilis/loadAnimations";
 
-
-const ExploreWorkSection = ({handleCollectionLoaded}) => {
+const ExploreWorkSection = () => {
   
   const dispatch = useDispatch();
   // const loading = useSelector((state) => state.market.marketModelLoading);
