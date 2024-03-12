@@ -20,7 +20,7 @@ const initialState = {
 
 export const fetchPortfolio = createAsyncThunk(
   "data/fetchPortfolio",
-  async (sliced = false) => {
+  async (triggerAnimations = true) => {
     try {
       let options = {
         dataCollectionId: "portfolioItems",
@@ -46,12 +46,14 @@ export const fetchPortfolio = createAsyncThunk(
       });
       const uniqueMarketCategories = [...new Map(marketCategoriesArray.map(item => [item, item])).values()];
       const uniqueStudioTags = [...new Map(studioTagsArray.map(item => [item, item])).values()];
-      handleCollectionLoaded();
+      if (triggerAnimations) {
+        handleCollectionLoaded();
+      }
       setTimeout(() => {
         document.querySelector(".updateWatchedTrigger").click();
       }, 1000);
       return {
-        data: sliced ? portfolioArray.slice(0,4) : portfolioArray,
+        data: portfolioArray,
         marketCategories: uniqueMarketCategories,
         studioTags: uniqueStudioTags,
       };
