@@ -2,15 +2,19 @@ import DelayedLink from "../../common/DelayedLink";
 import React, { useEffect } from "react";
 import getFullImageURL from "../../common/common_functions/imageURL";
 import { fetchPortfolio } from "../../redux/reducers/portfolioData";
+import { fetchPortfolio } from "../../redux/reducers/portfolioData";
 import { useDispatch, useSelector } from "react-redux";
 
 const OurProjectSection = () => {
   const dispatch = useDispatch();
   const portfolioCollection = useSelector((state) => state.portfolio.portfolioData.data);
+  const portfolioCollection = useSelector((state) => state.portfolio.portfolioData.data);
   // const loading = useSelector((state) => state.home.ourProjectLoading);
   // const error = useSelector((state) => state.home.error);
   
+  
   useEffect(() => {
+    dispatch(fetchPortfolio(true));
     dispatch(fetchPortfolio(true));
   }, [dispatch]);
 
@@ -35,6 +39,8 @@ const OurProjectSection = () => {
                         <DelayedLink
                         to={`/portfolio-post/${item.slug}`}
                         className="project-link animation-project-link"
+                        to={`/portfolio-post/${item.slug}`}
+                        className="project-link animation-project-link"
                           attributes={{
                             "data-cursor-style": "view",
                             "data-aos": "d:loop",
@@ -43,6 +49,7 @@ const OurProjectSection = () => {
                           <div className="container-img bg-blue">
                             <div className="wrapper-img">
                               <img
+                                src={getFullImageURL(item.image)}
                                 src={getFullImageURL(item.image)}
                                 data-preload
                                 className="media"
@@ -53,12 +60,15 @@ const OurProjectSection = () => {
                           <div className="container-text">
                             <h3 className="title-project">
                               {item.cardname}
+                              {item.cardname}
                             </h3>
                             <ul className="list-tags">
+                              {item.studioTags.map((tag, index) => (
                               {item.studioTags.map((tag, index) => (
                                   <li key={index}>
                                     <span>{tag}</span>
                                   </li>
+                                ))}
                                 ))}
                             </ul>
                           </div>
@@ -76,6 +86,7 @@ const OurProjectSection = () => {
               class="btn-blue"
               data-cursor-style="off"
             >
+              <span>Let’s Craft Magic Together</span>
               <span>Let’s Craft Magic Together</span>
               <i className="icon-arrow-right-2"></i>
             </btn-modal-open>
