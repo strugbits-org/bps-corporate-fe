@@ -1,26 +1,41 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { useParams } from "react-router-dom";
 import ProductCartSlider from "../commonComponents/ProductCartSlider";
 import SocialVerticalBar from "./SocialVerticalBar";
-import img1 from "../../utilis/images/lib/06_desktop.jpg";
-import img2 from "../../utilis/images/lib/02_desktop.jpg";
-import img8 from "../../utilis/images/lib/08_desktop.jpg";
-import img4 from "../../utilis/images/lib/04_desktop.jpg";
-import { postes } from "../../common/constats/blogData";
-import DelayedLink from "../../common/DelayedLink";
+// import img1 from "../../utilis/images/lib/06_desktop.jpg";
+// import img2 from "../../utilis/images/lib/02_desktop.jpg";
+// import img8 from "../../utilis/images/lib/08_desktop.jpg";
+// import img4 from "../../utilis/images/lib/04_desktop.jpg";
+// import { postes } from "../../common/constats/blogData";
+// import DelayedLink from "../../common/DelayedLink";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom/dist";
+import {fetchSingleBlog } from "../../redux/reducers/blogData";
 
 const PostDetails = () => {
+
+  const location = useLocation();
   const params = useParams();
+ 
+  // const params = decodeURIComponent(param)
+  const dispatch = useDispatch();
+ 
+  const singleBlogData = useSelector((state) => state.blog.singleBlogData);
+  // const loading = useSelector((state) => state.blog.singleBlogLoading);
+  // const error = useSelector((state) => state.services.error);
 
-  const post = postes.find((post) => post.id === params.id);
+  useEffect(() => {
+    dispatch(fetchSingleBlog(params.slug));
+  }, [dispatch, location, params.slug]);
 
-  // console.log("Post here", post);
+console.log(singleBlogData,"single post data here")
 
 
   return (
+
     <section className="blog-post-intro pt-lg-150 pt-mobile-125">
       <div className="container-fluid">
-        <div className="row row-1">
+        {/* <div className="row row-1">
           <div className="col-lg-5 offset-lg-3 column-1">
             <div className="wrapper-text">
               <div
@@ -45,10 +60,10 @@ const PostDetails = () => {
               </h1>
             </div>
           </div>
-        </div>
+        </div> */}
         <div className="row row-2 mt-lg-15 mt-tablet-25 mt-phone-45">
           <div className="col-lg-10 offset-lg-1 column-1">
-            <div className="blog-post-content pb-lg-180 pb-tablet-60 pb-phone-40">
+            {/* <div className="blog-post-content pb-lg-180 pb-tablet-60 pb-phone-40">
               <div className="blog-post-thumb" data-aos="d:loop">
                 <div className="container-img">
                   <img
@@ -169,7 +184,7 @@ const PostDetails = () => {
                   </li>
                 </ul>
               </div>
-            </div>
+            </div> */}
 
             {/* Product Cart Slider start */}
             <div className="container-slider-produtcts mt-lg-padding-fluid mt-tablet-100 mt-phone-105">

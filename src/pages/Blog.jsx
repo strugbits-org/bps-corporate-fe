@@ -27,7 +27,7 @@ const Blog = () => {
   useEffect(() => {
     setFilteredBlogCollection(blogPostData);
   }, [blogPostData]);
-
+console.log(blogPostData,"all blogs")
   const handleFilter = (category) => {
     if (selectedCategory.includes(category)) {
       setSelectedCategory(selectedCategory.filter((el) => el !== category));
@@ -80,6 +80,7 @@ const capitalizeText = (text)=> text.toLowerCase().replace(/\b(\w)/g, x => x.toU
                   <div className="container-wrapper-list">
                     <div className="wrapper-list">
                       <ul className="list-blog-tags list-dropdown-tags">
+                    
                         <li>
                           <Link
                             className={`blog-btn-tag ${
@@ -128,7 +129,7 @@ const capitalizeText = (text)=> text.toLowerCase().replace(/\b(\w)/g, x => x.toU
                   return (
                     <li key={index} className="grid-item" data-aos="d:loop">
                       <DelayedLink
-                        // to={`/blog-post/${data.id}`}
+                        to={`/blog-post/${encodeURIComponent(data._id)}`}
                         className="link-blog link-blog-animation"
                         attributes={{
                           "data-aos": "d:loop",
@@ -162,7 +163,7 @@ const capitalizeText = (text)=> text.toLowerCase().replace(/\b(\w)/g, x => x.toU
                           <p className="text-blog">{data.excerpt}</p>
                           <ul className="list-tags-small">
                            
-                            {data.tags.map((tag, index) => (
+                            {/* {data.tags.map((tag, index) => (
                                   <React.Fragment key={index}>
                                     {index < 3 ? (
                                       <li
@@ -184,7 +185,7 @@ const capitalizeText = (text)=> text.toLowerCase().replace(/\b(\w)/g, x => x.toU
                                       studios
                                     </span>
                                   </li>
-                                ) : null}
+                                ) : null} */}
                           </ul>
                         </div>
                       </DelayedLink>

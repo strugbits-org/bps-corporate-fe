@@ -18,9 +18,11 @@ export const fetchContactUs = createAsyncThunk(
     try {
         let options = {
             dataCollectionId: "ContactUsContent",
+            includeReferencedItems: ["blog"],
           };
     
           const { items: fetchContactUs } = await wixClient.items
+          
             .queryDataItems(options)
             .eq("title", "Tried + True")
             .find();
