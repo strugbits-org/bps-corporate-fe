@@ -11,7 +11,7 @@ const ExploreProjectsSection = ({data}) => {
   // const portfolioData = portfolioCollection.slice(0,4);
 
   useEffect(() => {
-    dispatch(fetchPortfolio(true));
+    dispatch(fetchPortfolio());
   }, [dispatch]);
 
   return (
@@ -31,7 +31,7 @@ const ExploreProjectsSection = ({data}) => {
                 {/* <!-- Additional required wrapper --> */}
                 <div className="swiper-wrapper list-portfolio list-slider-mobile grid-lg-25">
                   {/* <!-- Slides --> */}
-                  {portfolioCollection.map((data, index) => (
+                  {portfolioCollection.slice(0,4).map((data, index) => (
                     <div key={index} className="swiper-slide grid-item">
                       <DelayedLink
                         to="/portfolio-post"
