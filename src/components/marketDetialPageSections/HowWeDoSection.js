@@ -2,7 +2,6 @@ import getFullImageURL from "../../common/common_functions/imageURL";
 
 const HowWeDoSection = ({data}) => {
   return (
-  data && 
     <section className="market-post-how-we-do-it pt-lg-270 pt-tablet-100 pt-phone-150">
       <div className="container-fluid">
         <div className="row">
@@ -11,13 +10,13 @@ const HowWeDoSection = ({data}) => {
               How we do it
             </h2>
             <ul className="list-how-we-do-it mt-lg-50 mt-mobile-40">
-              {data.howWeDoItSections.map((data, index) => {
+              {data?.howWeDoItSections.map((item, index) => {
                 return (
                   <li key={index}>
                     <div className="list-column-img">
                       <div className="container-img" data-aos="d:loop">
                         <img
-                          src={getFullImageURL(data.image)}
+                          src={getFullImageURL(item.image)}
                           data-preload
                           className="media"
                           alt=""
@@ -31,13 +30,13 @@ const HowWeDoSection = ({data}) => {
                         className="column-title split-words"
                         data-aos="d:loop"
                       >
-                        {data.title}
+                        {item.title}
                       </h3>
                       <p
                         className="column-paragraph"
                         data-aos="fadeInUp .6s ease-out-cubic .3s, d:loop"
                       >
-                        {data.description}
+                        {item.description}
                       </p>
                     </div>
                   </li>

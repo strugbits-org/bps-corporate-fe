@@ -5,6 +5,8 @@ import Search from "./models/Search";
 import DelayedLink from "../../common/DelayedLink";
 
 const Navbar = () => {
+  const EXTERNAL_SITE_URL = "https://www.rentals.blueprintstudios.com";
+
   return (
     <>
       <div className="cursor-wrapper" id="wrapper-cursor">
@@ -90,7 +92,8 @@ const Navbar = () => {
                     </li>
                     <li>
                       <DelayedLink
-                        to="/"
+                        to={EXTERNAL_SITE_URL}
+                        target={"blank"}
                         className="header-link"
                         attributes={{"data-menu-close":"","data-pg-active":"pg-rental-store"}}
                       >

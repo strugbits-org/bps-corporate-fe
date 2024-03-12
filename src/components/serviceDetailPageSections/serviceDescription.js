@@ -2,7 +2,6 @@ import getFullImageURL from "../../common/common_functions/imageURL";
 
 const serviceDescription = ({data}) => {
   return (
-    data &&
     <section className="services-post-description pt-lg-210 pt-tablet-105 pt-phone-200">
       <div className="container-fluid">
         <div className="row">
@@ -16,7 +15,7 @@ const serviceDescription = ({data}) => {
               className="list-services grid-lg-25 grid-md-50"
               data-aos="d:loop"
             >
-              {data.subServices.map((service, index) => {
+              {data?.subServices.map((service, index) => {
                 return (
                   <li key={index} className="grid-item">
                     <div className="content">
