@@ -2,12 +2,11 @@ import { Link } from "react-router-dom";
 const PortfolioIntoSection = ({data}) => {
 
   return (
-    data &&
     <section className="portfolio-post-intro pb-lg-250">
       <div className="wrapper-banner-img" data-aos>
         <div className="container-img banner-img">
           <img
-            src={data.image}
+            src={data?.image}
             data-preload
             className="media"
             alt=""
@@ -25,15 +24,15 @@ const PortfolioIntoSection = ({data}) => {
             >
               <div className="row-portfolio">
                 <div className="market-tag">
-                  <span>{data.marketCategory}</span>
+                  <span>{data?.marketCategory}</span>
                 </div>
                 <div className="column-1 column-portfolio">
                   <h1 className="fs--80 fs-mobile-60 title-project">
-                    {data.title}
+                    {data?.title}
                   </h1>
                   <div className="wrapper-tags-small mt-lg-25 mt-tablet-20 mt-mobile-30 mb-lg-75 mb-tablet-40 mb-phone-35">
                     <ul className="list-tags-small">
-                      {data.studioTags.map((tag, index) => {
+                      {data?.studioTags.map((tag, index) => {
                         return (
                           <li key={index} className="tag-small">
                             <span>{tag}</span>
@@ -44,25 +43,25 @@ const PortfolioIntoSection = ({data}) => {
                   </div>
 
                   <div className="container-text">
-                    <h2 className="title">{data.subheading1}</h2>
+                    <h2 className="title">{data?.subheading1}</h2>
                     <div className="wrapper-text">
                       <div className="text">
                         <p>
-                          {data.subheading1Description}
+                          {data?.subheading1Description}
                         </p>
                       </div>
                     </div>
                   </div>
 
                   <div className="container-text">
-                    <h2 className="title">{data.subheading2}</h2>
+                    <h2 className="title">{data?.subheading2}</h2>
                     <div className="wrapper-text">
                       <div className="text">
                         <p>
-                          {data.subheading2Description}
+                          {data?.subheading2Description}
                         </p>
                         <p>
-                          {data.subheading2Description2}
+                          {data?.subheading2Description2}
                         </p>
                       </div>
                     </div>
@@ -71,29 +70,29 @@ const PortfolioIntoSection = ({data}) => {
 
                 <div className="column-2 column-portfolio">
                   <h3 className="fs--25 fs-phone-25 lh-140 mb-lg-20 mb-tablet-30 mb-mobile-10">
-                    {data.description}
+                    {data?.description}
                   </h3>
 
                   <div className="container-text">
-                    <h2 className="title">{data.subheading3}</h2>
+                    <h2 className="title">{data?.subheading3}</h2>
                     <div className="wrapper-text">
                       <div className="text">
                         <p>
-                          {data.subheading3Description}
+                          {data?.subheading3Description}
                         </p>
                       </div>
                     </div>
                   </div>
 
                   <div className="container-text container-read-more">
-                    <h2 className="title">{data.subheading4}</h2>
+                    <h2 className="title">{data?.subheading4}</h2>
                     <div className="wrapper-text">
                       <div className="text">
                         <p>
-                         {data.subheading4Description}
+                         {data?.subheading4Description}
                         </p>
                         <p>
-                        {data.subheading4Description2}
+                        {data?.subheading4Description2}
                         </p>
                       </div>
                     </div>

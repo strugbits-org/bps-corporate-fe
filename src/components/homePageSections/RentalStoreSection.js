@@ -40,6 +40,7 @@ const RentalStoreSection = () => {
     }
   }, [descriptionImages]);
 
+
   return (
     <section className="home-rental-store pt-lg-145 pt-tablet-105 pt-phone-145 pb-lg-120 pb-tablet-100 pb-phone-145">
       <div

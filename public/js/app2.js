@@ -15918,100 +15918,8 @@ var require_app2 = __commonJS({
     });
     
     var firstLoad = true;
-    function whenContainerReady() {
-      if (!screen.isMobile) {
-        let smooth = 2;
-        if (screen.isSafariDesktop)
-          smooth = 1.5;
-        ScrollSmoother.create({
-          wrapper: "#main-transition",
-          content: "[data-scroll-container]",
-          smooth,
-          normalizeScroll: true,
-          // prevents address bar from showing/hiding on most devices, solves various other browser inconsistencies
-          ignoreMobileResize: true,
-          // skips ScrollTrigger.refresh() on mobile resizes from address bar showing/hiding
-          effects: true,
-          preventDefault: true
-        });
-      }
-      if (firstLoad) {
-        firstLoad = false;
-      } else {
-        document.body.classList.add("page-enter-active");
-        document.body.classList.remove("page-leave-active");
-        setTimeout(() => {
-          document.body.classList.remove("page-enter-active");
-        }, 900);
-        setTimeout(() => {
-          updateWatched();
-        }, 300);
-      }
-      setTimeout(() => {
-        ScrollTrigger$1.refresh();
-      }, 1e3);
-      document.body.classList.remove("page-leave-active");
-      sticky();
-      observers();
-      marcarFormPreenchido();
-      initVideo();
-      scrollTo("", "");
-      Parallax();
-      splitWords();
-      splitChars();
-      sliderContentMobile();
-      footer();
-      let sectionHeresWhatPeopleAreSaying = document.querySelector(".section-heres-what-people-are-saying");
-      if (sectionHeresWhatPeopleAreSaying) {
-        let bg = gsapWithCSS$1.timeline({
-          scrollTrigger: {
-            trigger: ".section-heres-what-people-are-saying",
-            start: "top center",
-            end: "bottom 30%",
-            // pin: containerScroll,
-            pinSpacing: false,
-            markers: false,
-            scrub: false,
-            anticipatePin: true,
-            invalidateOnRefresh: true,
-            toggleActions: "play reverse play reverse",
-            onUpdate: function(ev) {
-            }
-          }
-        });
-        bg.fromTo("body", {
-          backgroundColor: "#f2f2f2",
-          duration: 0.3
-        }, {
-          backgroundColor: "#87C3E7",
-          duration: 0.3
-        });
-        document.addEventListener("pjax:switch", function() {
-          document.body.style.backgroundColor = "";
-        }, { once: true });
-      }
-      if (document.querySelector(".accordion-list-studios")) {
-        if (screen.isDesktop) {
-          accordion(".accordion-list-studios .accordion-item", {
-            clickToggle: true,
-            allowMultipleActive: false
-          });
-        } else {
-          document.querySelectorAll(".accordion-list-studios").forEach((element) => {
-            accordionGsap(element);
-          });
-        }
-      }
-    }
-    
-    if (firstLoad) {
-      setTimeout(() => {
-        window.scrollTo({top:0,behavior:'instant'});
-      }, 100);
-      whenContainerReady();
-    }
 
-    function reloadContainer() {
+    function whenContainerReady() {
       if (!screen.isMobile) {
         let smooth = 2;
         if (screen.isSafariDesktop)
@@ -16129,44 +16037,32 @@ var require_app2 = __commonJS({
         }
       }
     }
-    const reloadButton = document.querySelector(".reloadScript");
-    
-    reloadButton.addEventListener("click", ()=>{
+
+    document.querySelector(".initScript").addEventListener("click", ()=>{
+      window.scrollTo({ top:0,behavior:'instant' });
+      whenContainerReady();
       if(!firstLoad){
-        window.scrollTo({top:0,behavior:'instant'})
         closeSearch();
-        reloadContainer();
       }
-    });
+    } );
+  
     
-    const homeAnimationsTrigger = document.querySelector(".homeAnimationsTrigger");
-    homeAnimationsTrigger.addEventListener("click", () => {
+    document.querySelector(".stickyAnimationTrigger").addEventListener("click", () => {
       sticky();
-      observers();
-      marcarFormPreenchido();
-      initVideo();
-      scrollTo("", "");
-      Parallax();
-      splitWords();
-      splitChars();
-      sliderContentMobile();
-      footer();
     });
     
     
-    const updateWatchedTrigger = document.querySelector(".updateWatchedTrigger");
-    updateWatchedTrigger.addEventListener("click", ()=>{
+    document.querySelector(".updateWatchedTrigger").addEventListener("click", ()=>{
       initVideo();
       updateWatched();
     });
 
-    const triggerSplitWordAnimation = document.querySelector(".triggerSplitWordAnimation");
-    triggerSplitWordAnimation.addEventListener("click", () => {
+    document.querySelector(".triggerSplitWordAnimation").addEventListener("click", () => {
       splitChars();
       splitWords();
     } );
     
-    document.addEventListener("pjax:complete", whenContainerReady);
+    // document.addEventListener("pjax:complete", whenContainerReady);
     document.addEventListener("pjax:send", whenContainerLeave);
     function whenContainerLeave() {
       document.body.classList.add("page-leave-active");

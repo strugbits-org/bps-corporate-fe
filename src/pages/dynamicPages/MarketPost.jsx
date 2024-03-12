@@ -25,17 +25,9 @@ const MarketPost = () => {
   const portfolioCollection = useSelector((state) => state.portfolio.portfolioData).data;
   const [filteredPortfolioCollection, setFilteredPortfolioCollection] = useState(portfolioCollection);
   
-  // const loading = useSelector((state) => state.portfolio.portfolioLoading);
-  
-  // const [ portfolioData, setPortfolioData ] = useState(data);
   useEffect(() => {
     dispatch(fetchMarketTopsections(params.slug));
     dispatch(fetchPortfolio());
-
-    setTimeout(() => {
-      document.querySelector(".updateWatchedTrigger").click();
-      document.querySelector(".triggerSplitWordAnimation").click();
-    }, 1500);
   }, [dispatch,location, params.slug]);
 
   useEffect(() => {
@@ -43,17 +35,16 @@ const MarketPost = () => {
     setFilteredPortfolioCollection(filteredProjects);
   }, [portfolioCollection,params.slug]);
 
-
   return (
     <>
       <MarketTopSection data={marketsData} />
       <HowWeDoSection data={marketsData} />
       <ExplorePortfolio data={filteredPortfolioCollection} />
 
-      <PeopleReviewSlider/>
-      <MarketSection/>
-      <StudioSection/>
-      <DreamBigSection/>
+      <PeopleReviewSlider />
+      <MarketSection />
+      <StudioSection />
+      <DreamBigSection />
       <SocialSection/>
     </>
   );
