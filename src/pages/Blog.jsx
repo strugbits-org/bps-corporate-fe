@@ -50,6 +50,7 @@ const Blog = () => {
     }, 400);
 }, [blogPostData, selectedCategory]);
 
+const capitalizeText = (text)=> text.toLowerCase().replace(/\b(\w)/g, x => x.toUpperCase());
 
   return (
     <>
@@ -165,13 +166,13 @@ const Blog = () => {
                                   <React.Fragment key={index}>
                                     {index < 3 ? (
                                       <li
-                                        className={`tag-small ${
+                                        className={`tag-small capitalizeText ${
                                           data.categories?.includes(tag.label)
                                             ? "active"
                                             : ""
                                         }`}
                                       >
-                                        <span>{tag.label}</span>
+                                        <span>{capitalizeText(tag.label)}</span>
                                       </li>
                                     ) : null}
                                   </React.Fragment>
