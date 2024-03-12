@@ -29,7 +29,7 @@ const OurProjectSection = () => {
             <div className="slider-some-of-our-projects slider-content-mobile">
               <div className="swiper-container">
                 <div className="swiper-wrapper list-projects slider-mobile font-80">
-                  {portfolioCollection.map((item, index) => {
+                  {portfolioCollection?.slice(0,4).map((item, index) => {
                     return (
                       <div key={index} className="swiper-slide list-item">
                         <DelayedLink
