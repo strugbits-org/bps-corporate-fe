@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { postes } from "../../../common/constats/blogData";
-import { modelData } from "../../../common/constats/marketData";
 import DelayedLink from "../../../common/DelayedLink";
 import { productSlider } from "../../../common/constats/blogData";
 import { fetchPortfolio } from "../../../redux/reducers/portfolioData";
@@ -31,12 +30,12 @@ const Search = () => {
   const filteredPortfolioData = useMemo(() => {
     return portfolioCollection.filter(
       (item) =>
-      item.title && item.title.toLowerCase().includes(searchTerm) ||
-      item.description && item.description.toLowerCase().includes(searchTerm) ||
-      item.studioTags && (item.studioTags + "").toLowerCase().includes(searchTerm) ||
-      item.marketCategory && item.marketCategory.toLowerCase().includes(searchTerm)
+     ( item.title && item.title.toLowerCase().includes(searchTerm)) ||
+      (item.description && item.description.toLowerCase().includes(searchTerm)) ||
+      (item.studioTags && (item.studioTags + "").toLowerCase().includes(searchTerm)) ||
+      (item.marketCategory && item.marketCategory.toLowerCase().includes(searchTerm))
     );
-  }, [searchTerm]);
+  }, [searchTerm, portfolioCollection]);
 
   const filteredBlogData = useMemo(() => {
     return postes.filter(
