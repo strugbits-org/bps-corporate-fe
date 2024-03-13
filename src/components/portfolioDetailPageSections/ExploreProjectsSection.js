@@ -9,7 +9,6 @@ const ExploreProjectsSection = ({ data }) => {
   const portfolioCollection = useSelector(
     (state) => state.portfolio.portfolioData
   );
-  console.log("here is portfolioCollection", portfolioCollection);
 
   const marketTags = data?.markets[0]?.marketTags;
   const categories = data?.markets?.map((item) => item.cardname);
