@@ -4,6 +4,7 @@ import getFullImageURL from "../../common/common_functions/imageURL";
 
 const ProductCartSlider = ({data}) => {
   const EXTERNAL_SITE_URL = "https://www.rentals.blueprintstudios.com";
+  
   return (
     <div className="slider-featured-products" data-aos="d:loop">
       <div className="swiper-container">

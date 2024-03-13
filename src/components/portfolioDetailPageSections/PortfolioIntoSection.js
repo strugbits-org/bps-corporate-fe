@@ -1,12 +1,36 @@
 import { Link } from "react-router-dom";
-const PortfolioIntoSection = ({data}) => {
+import getFullImageURL from "../../common/common_functions/imageURL";
+import React from "react";
+
+const PortfolioIntoSection = ({ data }) => {
+
+  const coverImage = getFullImageURL(data?.portfolioRef?.coverImage.imageInfo);
+  const categories = data?.markets?.map((item) => item.cardname);
+  const title = data?.portfolioRef?.title;
+  const description = data?.portfolioRef?.description;
+  const marketTags = data?.markets[0]?.marketTags;
+  
+  const componentObject = data?.portfolioRef?.details?.find(
+    (item) => item.label === "COMPONENTS"
+  );
+  const highlightObject = data?.portfolioRef?.details?.find(
+    (item) => item.label === "HIGHLIGHT"
+  );
+
+  const challengeObject = data?.portfolioRef?.details?.find(
+    (item) => item.label === "THE CHALLENGE"
+  );
+  const solutionObject = data?.portfolioRef?.details?.find(
+    (item) => item.label === "THE SOLUTION"
+  );
+ 
 
   return (
     <section className="portfolio-post-intro pb-lg-250">
       <div className="wrapper-banner-img" data-aos>
         <div className="container-img banner-img">
           <img
-            src={data?.image}
+            src={coverImage}
             data-preload
             className="media"
             alt=""
@@ -24,15 +48,13 @@ const PortfolioIntoSection = ({data}) => {
             >
               <div className="row-portfolio">
                 <div className="market-tag">
-                  <span>{data?.marketCategory}</span>
+                  {categories && <span>{categories[0]}</span>}
                 </div>
                 <div className="column-1 column-portfolio">
-                  <h1 className="fs--80 fs-mobile-60 title-project">
-                    {data?.title}
-                  </h1>
+                  <h1 className="fs--80 fs-mobile-60 title-project">{title}</h1>
                   <div className="wrapper-tags-small mt-lg-25 mt-tablet-20 mt-mobile-30 mb-lg-75 mb-tablet-40 mb-phone-35">
                     <ul className="list-tags-small">
-                      {data?.studioTags.map((tag, index) => {
+                      {marketTags?.map((tag, index) => {
                         return (
                           <li key={index} className="tag-small">
                             <span>{tag}</span>
@@ -41,61 +63,55 @@ const PortfolioIntoSection = ({data}) => {
                       })}
                     </ul>
                   </div>
-
-                  <div className="container-text">
-                    <h2 className="title">{data?.subheading1}</h2>
-                    <div className="wrapper-text">
-                      <div className="text">
-                        <p>
-                          {data?.subheading1Description}
-                        </p>
+               
+                    <div className="container-text">
+                      <h2 className="title">{componentObject?.label}</h2>
+                      <div className="wrapper-text">
+                        <div className="text">
+                          <p>{componentObject?.text}</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
+              
 
-                  <div className="container-text">
-                    <h2 className="title">{data?.subheading2}</h2>
-                    <div className="wrapper-text">
-                      <div className="text">
-                        <p>
-                          {data?.subheading2Description}
-                        </p>
-                        <p>
-                          {data?.subheading2Description2}
-                        </p>
+                  
+                    <div className="container-text">
+                      <h2 className="title">{challengeObject?.label}</h2>
+                      <div className="wrapper-text">
+                        <div className="text">
+                          <p>{challengeObject?.text}</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                 
                 </div>
 
                 <div className="column-2 column-portfolio">
                   <h3 className="fs--25 fs-phone-25 lh-140 mb-lg-20 mb-tablet-30 mb-mobile-10">
-                    {data?.description}
+                    {description} 
                   </h3>
 
-                  <div className="container-text">
-                    <h2 className="title">{data?.subheading3}</h2>
-                    <div className="wrapper-text">
-                      <div className="text">
-                        <p>
-                          {data?.subheading3Description}
-                        </p>
+              
+                    <div  className="container-text">
+                      <h2 className="title">{highlightObject?.label}</h2>
+                      <div className="wrapper-text">
+                        <div className="text">
+                          <p>{highlightObject?.text}</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
+               
 
                   <div className="container-text container-read-more">
-                    <h2 className="title">{data?.subheading4}</h2>
-                    <div className="wrapper-text">
-                      <div className="text">
-                        <p>
-                         {data?.subheading4Description}
-                        </p>
-                        <p>
-                        {data?.subheading4Description2}
-                        </p>
-                      </div>
-                    </div>
+                 
+                        <h2 className="title">{solutionObject?.label}</h2>
+                        <div className="wrapper-text">
+                          <div className="text">
+                            <p>{solutionObject?.text}</p>
+                            {/* <p>{data?.subheading4Description2}</p> */}
+                          </div>
+                        </div>
+                    
                     <button className="btn-read-more">
                       <div className="btn-text">
                         <span className="read-more">Read More</span>
@@ -152,8 +168,6 @@ const PortfolioIntoSection = ({data}) => {
                     </li>
                   </ul>
                 </div>
-
-                
               </div>
             </div>
           </div>
