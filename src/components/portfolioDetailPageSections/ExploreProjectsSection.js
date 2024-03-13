@@ -9,12 +9,12 @@ const ExploreProjectsSection = ({ data }) => {
   const portfolioCollection = useSelector(
     (state) => state.portfolio.portfolioData
   );
-  console.log("here is portfolioCollection", portfolioCollection);
 
   const marketTags = data?.markets[0]?.marketTags;
   const categories = data?.markets?.map((item) => item.cardname);
   useEffect(() => {
-    dispatch(fetchPortfolio());
+    const options = { page: 1, pageSize: 4 };
+    dispatch(fetchPortfolio(options));
   }, [dispatch]);
 
   return (
@@ -32,7 +32,7 @@ const ExploreProjectsSection = ({ data }) => {
             <div className="slider-content-mobile">
               <div className="swiper-container">
                 <div className="swiper-wrapper list-portfolio list-slider-mobile grid-lg-25">
-                  {portfolioCollection?.slice(0, 4).map((data, index) => (
+                  {portfolioCollection?.map((data, index) => (
                     <div key={index} className="swiper-slide grid-item">
                       <DelayedLink
                         to="/portfolio-post"

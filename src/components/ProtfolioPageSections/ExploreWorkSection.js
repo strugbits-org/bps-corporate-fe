@@ -5,7 +5,7 @@ import getFullImageURL from "../../common/common_functions/imageURL";
 import { fetchStudioSection } from "../../redux/reducers/homeData";
 import { fetchMarketTopsections } from "../../redux/reducers/marketData";
 
-const ExploreWorkSection = ({data}) => {
+const ExploreWorkSection = ({data,totalCount,seeMore}) => {
 
   const dispatch = useDispatch();
   const studios = useSelector((state) => state.home.studioData);
@@ -224,14 +224,13 @@ const ExploreWorkSection = ({data}) => {
               {filteredPortfolioCollection.length === 0 && <h6 style={{width:"100%"}} className="fs--40 text-center split-words" data-aos="d:loop">No Data found</h6>}
             </ul>
           </div>
-          <div
-            className="col-lg-2 offset-lg-5 flex-center mt-lg-60 mt-mobile-40"
-            data-aos="fadeIn .8s ease-in-out .2s, d:loop"
-          >
-            <button className="btn-border-blue" data-cursor-style="off">
-              <span>See more</span>
-            </button>
-          </div>
+          {filteredPortfolioCollection.length !== totalCount && (
+              <div className="col-lg-2 offset-lg-5 flex-center mt-lg-60 mt-mobile-40" data-aos="fadeIn .8s ease-in-out .2s, d:loop">
+                <button onClick={seeMore} className="btn-border-blue" data-cursor-style="off">
+                  <span>See more</span>
+                </button>
+              </div>
+            )}
         </div>
       </div>
     </section>

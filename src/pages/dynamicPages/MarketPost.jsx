@@ -27,7 +27,9 @@ const MarketPost = () => {
   
   useEffect(() => {
     dispatch(fetchMarketTopsections(params.slug));
-    dispatch(fetchPortfolio());
+
+    const options = { page: 1, pageSize: 4 };
+    dispatch(fetchPortfolio(options));
   }, [dispatch,location, params.slug]);
 
   useEffect(() => {
