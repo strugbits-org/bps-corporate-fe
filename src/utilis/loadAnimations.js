@@ -9,7 +9,7 @@ export const handleCollectionLoaded = () => {
         'home': 8,
         'about': 6,
         'portfolio': 2,
-        'market-post': 6,
+        'market-post': 5,
         'services-post': 5,
         'portfolio-post': 2,
         'blog-post': 0,
@@ -21,7 +21,9 @@ export const handleCollectionLoaded = () => {
         collectionLoaded = 0;
         document.body.classList.add(cleanPage+"-loaded");
         document.querySelector(".initScript").click();
-    } else if (cleanPage == "services-post" && document.body.classList.contains(cleanPage + "-loaded")) {
+    } else if (cleanPage === "services-post" && document.body.classList.contains(cleanPage + "-loaded")) {
+        document.querySelector(".initScript").click();
+    } else if (cleanPage === "market-post" && document.body.classList.contains(cleanPage + "-loaded")) {
         document.querySelector(".initScript").click();
     }
 };

@@ -6,21 +6,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchPortfolio } from "../redux/reducers/portfolioData";
 
 const Portfolio = () => {
-
   const dispatch = useDispatch();
   const portfolioCollection = useSelector((state) => state.portfolio.portfolioData);
   
   useEffect(() => {
     dispatch(fetchPortfolio());
   }, [dispatch]);
-
-  useEffect(() => {
-    console.log("portfolioCollection",portfolioCollection);
-  }, [portfolioCollection]);
   
   return (
     <>
-      {/* <ExploreWorkSection /> */}
+      <ExploreWorkSection data={portfolioCollection} />
       <MarketSection />
       <SocialSection />
     </>
