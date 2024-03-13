@@ -1,6 +1,7 @@
 import React from "react";
 import ProductCartSlider from "../commonComponents/ProductCartSlider";
 const GallerySection = ({data}) => {
+ 
   return (
     <section className="portfolio-post-photo-gallery pt-lg-165 pt-tablet-105 pt-phone-145">
       <div className="container-fluid">
@@ -13,7 +14,7 @@ const GallerySection = ({data}) => {
               Photo gallery
             </h2>
 
-            <div className="wrapper-gallery">
+            {/* <div className="wrapper-gallery">
               <div className="module-photo-gallery-img-50 module-gallery">
                 <div className="module-column" data-aos="d:loop">
                   <div className="container-img bg-blue">
@@ -54,7 +55,7 @@ const GallerySection = ({data}) => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
           <div className="col-lg-10 offset-lg-1 column-2">
             <div className="container-slider-produtcts">
