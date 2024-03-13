@@ -7,9 +7,9 @@ export const handleCollectionLoaded = () => {
 
     const collectionsCount = {
         'home': 8,
-        'about': 4,
+        'about': 6,
         'portfolio': 2,
-        'market-post': 5,
+        'market-post': 6,
         'services-post': 5,
         'portfolio-post': 2,
         'blog-post': 0,
@@ -19,6 +19,10 @@ export const handleCollectionLoaded = () => {
 
     if (collectionLoaded >= collectionsCount) {
         collectionLoaded = 0;
+        document.body.classList.add(cleanPage+"-loaded");
+        document.querySelector(".initScript").click();
+    }
+    if (document.body.classList.contains(cleanPage + "-loaded")) {
         document.querySelector(".initScript").click();
     }
 };

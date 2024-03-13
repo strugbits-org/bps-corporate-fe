@@ -22,7 +22,7 @@ const MarketPost = () => {
   const dispatch = useDispatch();
 
   const marketsData = useSelector((state) => state.market.marketTopData);
-  const portfolioCollection = useSelector((state) => state.portfolio.portfolioData).data;
+  const portfolioCollection = useSelector((state) => state.portfolio.portfolioData.data);
   const [filteredPortfolioCollection, setFilteredPortfolioCollection] = useState(portfolioCollection);
   
   useEffect(() => {

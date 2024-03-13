@@ -52,6 +52,11 @@ export const fetchOurDreamSection = createAsyncThunk(
         .eq("title", "The Dream Team")
         .find();
         handleCollectionLoaded();
+        //trigger animation on data load
+        setTimeout(() => {
+          document.querySelector(".updateWatchedTrigger").click();
+          document.querySelector(".triggerSplitWordAnimation").click();
+        }, 1000);
 
       return fetchedOurDream;
     } catch (error) {

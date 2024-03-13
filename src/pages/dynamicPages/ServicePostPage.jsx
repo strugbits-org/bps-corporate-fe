@@ -5,12 +5,13 @@ import PeopleReviewSlider from "../../components/commonComponents/PeopleReviewSl
 import StudioSection from "../../components/commonComponents/StudioSection";
 import DreamBigSection from "../../components/commonComponents/DreamBigSection";
 import SocialSection from "../../components/commonComponents/SocialSection";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchServicesData } from "../../redux/reducers/servicesData";
 
 const ServicePostPage = () => {
+
   // const [serviceData, setServiceData] = useState(null);
   const location = useLocation();
   const params = useParams();
@@ -21,13 +22,12 @@ const ServicePostPage = () => {
   // const error = useSelector((state) => state.services.error);
 
   useEffect(() => {
-    // setServiceData(null);
     dispatch(fetchServicesData(params.slug));
-    setTimeout(() => {
-      document.querySelector(".updateWatchedTrigger").click();
-      document.querySelector(".triggerSplitWordAnimation").click();
-    }, 1500);
   }, [dispatch, location, params.slug]);
+  
+  // setTimeout(() => {
+  //   document.querySelector(".initScript").click();
+  // }, 1500);
 
   return (
     <>

@@ -16,11 +16,6 @@ const OurDream = () => {
 
   useEffect(() => {
     dispatch(fetchOurDreamSection());
-    //trigger animation on data load
-    setTimeout(() => {
-      document.querySelector(".updateWatchedTrigger").click();
-      document.querySelector(".triggerSplitWordAnimation").click();
-    }, 1000);
   }, [dispatch]);
 
   return (
