@@ -16,20 +16,15 @@ const PortfoliPost = () => {
   // const loading = useSelector((state) => state.portfolio.portfolioLoading);
   // const error = useSelector((state) => state.services.error);
 
-
-  useEffect(() => {
-    console.log("portfolioData",portfolioData);
-  }, [portfolioData]);
-
   useEffect(() => {
     dispatch(fetchSinglePortfolio(params.slug));
   }, [dispatch, location, params.slug]);
 
   return (
     <>
-      {/* <PortfolioIntoSection data={portfolioData} />
+      <PortfolioIntoSection data={portfolioData} />
       <GallerySection data={portfolioData} />
-      <ExploreProjectsSection data={portfolioData} /> */}
+      <ExploreProjectsSection data={portfolioData} />
       <SocialSection />
     </>
   );
