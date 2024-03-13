@@ -6,10 +6,11 @@ import { fetchPortfolio } from "../../../redux/reducers/portfolioData";
 import { fetchStudioSection } from "../../../redux/reducers/homeData";
 import { useDispatch, useSelector } from "react-redux";
 import { getMarketCollection } from "../../../redux/reducers/marketData";
+import getFullImageURL from "../../../common/common_functions/imageURL";
 
 const Search = () => {
   const dispatch = useDispatch();
-  const portfolioCollection = useSelector((state) => state.portfolio.portfolioData.data);
+  const portfolioCollection = useSelector((state) => state.portfolio.portfolioData);
   const studioData = useSelector((state) => state.home.studioData);
   const marketData = useSelector((state) => state.market.marketModel);
 
@@ -28,13 +29,14 @@ const Search = () => {
   };
 
   const filteredPortfolioData = useMemo(() => {
-    return portfolioCollection.filter(
-      (item) =>
-     ( item.title && item.title.toLowerCase().includes(searchTerm)) ||
-      (item.description && item.description.toLowerCase().includes(searchTerm)) ||
-      (item.studioTags && (item.studioTags + "").toLowerCase().includes(searchTerm)) ||
-      (item.marketCategory && item.marketCategory.toLowerCase().includes(searchTerm))
-    );
+    // return portfolioCollection.filter(
+    //   (item) =>
+    //  ( item.title && item.title.toLowerCase().includes(searchTerm)) ||
+    //   (item.description && item.description.toLowerCase().includes(searchTerm)) ||
+    //   (item.studioTags && (item.studioTags + "").toLowerCase().includes(searchTerm)) ||
+    //   (item.marketCategory && item.marketCategory.toLowerCase().includes(searchTerm))
+    // );
+    return portfolioCollection;
   }, [searchTerm, portfolioCollection]);
 
   const filteredBlogData = useMemo(() => {
@@ -245,7 +247,7 @@ const Search = () => {
                                   >
                                     <div className="wrapper-img">
                                       <img
-                                        src={data.image}
+                                        src={getFullImageURL(data.portfolioRef.coverImage.imageInfo)}
                                         data-preload
                                         className="media"
                                         alt=""
@@ -254,7 +256,7 @@ const Search = () => {
                                   </div>
                                   <div className="container-text">
                                     <h2 className="title-portfolio">
-                                      {data.title}
+                                      {data.portfolioRef.title}
                                     </h2>
                                   </div>
                                 </DelayedLink>

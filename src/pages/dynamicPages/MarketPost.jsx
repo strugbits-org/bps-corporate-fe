@@ -22,7 +22,7 @@ const MarketPost = () => {
   const dispatch = useDispatch();
 
   const marketsData = useSelector((state) => state.market.marketTopData);
-  const portfolioCollection = useSelector((state) => state.portfolio.portfolioData.data);
+  const portfolioCollection = useSelector((state) => state.portfolio.portfolioData);
   const [filteredPortfolioCollection, setFilteredPortfolioCollection] = useState(portfolioCollection);
   
   useEffect(() => {
@@ -32,11 +32,10 @@ const MarketPost = () => {
 
   useEffect(() => {
     const filteredProjects = portfolioCollection.filter(item => {
-      const marketLabels = item.markets.map((item)=>item.cardname)
-      // return (selectedMarkets.some(r=> marketLabels.includes(r)))
+      const marketLabels = item.markets.map((item)=>item.cardname.toLowerCase())
+      return ([params.slug].some(r=> marketLabels.includes(r)))
     });
     setFilteredPortfolioCollection(filteredProjects);
-    // selectedMarkets.some(r=> marketLabels.includes(r)
   }, [portfolioCollection,params.slug]);
 
   return (
