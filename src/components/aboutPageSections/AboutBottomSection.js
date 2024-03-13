@@ -17,11 +17,6 @@ const AboutBottomSection = () => {
 
   useEffect(() => {
     disptach(fetchSliderSection());
-     // trigger animation on data load
-     setTimeout(() => {
-       document.querySelector(".updateWatchedTrigger").click();
-       document.querySelector(".triggerSplitWordAnimation").click();
-     }, 1000);
    }, [disptach]);
 
   return (
@@ -50,8 +45,6 @@ const AboutBottomSection = () => {
           </div>
         </div>
       </section>
-
-      <DreamBigSection />
     </>
   );
 };

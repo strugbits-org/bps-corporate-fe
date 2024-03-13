@@ -29,11 +29,11 @@ export const fetchMarketTopsections = createAsyncThunk(
         .queryDataItems(options)
         .eq("slug", slug)
         .find();
+        const marketsArray = fetchedItems.map((service) => {
+          service.data.image = getFullImageURL(service.data.image);
+          return service.data;
+        });
         handleCollectionLoaded();
-      const marketsArray = fetchedItems.map((service) => {
-        service.data.image = getFullImageURL(service.data.image);
-        return service.data;
-      });
       return marketsArray[0];
     } catch (error) {
       throw new Error(error.message);
