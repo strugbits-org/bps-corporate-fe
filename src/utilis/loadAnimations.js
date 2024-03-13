@@ -21,9 +21,7 @@ export const handleCollectionLoaded = () => {
         collectionLoaded = 0;
         document.body.classList.add(cleanPage+"-loaded");
         document.querySelector(".initScript").click();
-    }
-    if (cleanPage == "services-post" && document.body.classList.contains(cleanPage + "-loaded")) {
-        console.log("sasd");
+    } else if (cleanPage == "services-post" && document.body.classList.contains(cleanPage + "-loaded")) {
         document.querySelector(".initScript").click();
     }
 };

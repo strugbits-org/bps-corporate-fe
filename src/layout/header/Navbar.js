@@ -189,7 +189,7 @@ const Navbar = () => {
 
               {/* search model component start */}
               <section className="menu-search" data-get-submenu="search">
-                <Search />
+                {/* <Search /> */}
                
               </section>
               {/* search model component end */}

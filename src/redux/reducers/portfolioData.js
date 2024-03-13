@@ -6,11 +6,7 @@ import { handleCollectionLoaded } from "../../utilis/loadAnimations";
 const wixClient = createWixClient();
 
 const initialState = {
-  portfolioData: {
-    data : [],
-    marketCategories : [],
-    studioTags : [],
-  },
+  portfolioData: [],
   singlePortfolioData: null,
 
   portfolioDataLoading: false,
@@ -21,6 +17,57 @@ const initialState = {
 export const fetchPortfolio = createAsyncThunk(
   "data/fetchPortfolio",
   async (triggerAnimations = true) => {
+    try {
+      let options = {
+        dataCollectionId: "PortfolioCollection",
+        includeReferencedItems: ["portfolioRef", "locationFilteredVariant", "storeProducts", "studios", "markets"],
+      };
+  
+      const { items: fetchedItems } = await wixClient.items.queryDataItems(options).find();
+      if (triggerAnimations) {
+        handleCollectionLoaded();
+        setTimeout(() => {
+          document.querySelector(".updateWatchedTrigger").click();
+        }, 1000);
+      }
+      const data = fetchedItems.map((item)=> item.data);
+      return data;
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
+);
+
+export const fetchSinglePortfolio = createAsyncThunk(
+  "data/fetchSinglePortfolio",
+  async (slug) => {
+    try {
+      let options = {
+        dataCollectionId: "PortfolioCollection",
+        includeReferencedItems: ["portfolioRef", "locationFilteredVariant", "storeProducts", "studios", "markets"],
+      };
+      const { items: fetchedItems } = await wixClient.items
+      .queryDataItems(options)
+      .eq("slug", slug).find();
+
+      handleCollectionLoaded();
+      setTimeout(() => {
+        document.querySelector(".updateWatchedTrigger").click();
+      }, 1000);
+
+      const data = fetchedItems.map((item)=> item.data);
+      return data[0];
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
+);
+
+
+export const __fetchPortfolio = createAsyncThunk(
+  "data/fetchPortfolio",
+  async (triggerAnimations = true) => {
+
     try {
       let options = {
         dataCollectionId: "portfolioItems",
@@ -63,7 +110,7 @@ export const fetchPortfolio = createAsyncThunk(
   }
 );
 
-export const fetchSinglePortfolio = createAsyncThunk(
+export const __fetchSinglePortfolio = createAsyncThunk(
   "data/fetchSinglePortfolio",
   async (slug) => {
     try {
