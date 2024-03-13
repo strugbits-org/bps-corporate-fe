@@ -31,8 +31,12 @@ const MarketPost = () => {
   }, [dispatch,location, params.slug]);
 
   useEffect(() => {
-    const filteredProjects = portfolioCollection.filter(item => item.marketCategory.toLowerCase() === params.slug);
+    const filteredProjects = portfolioCollection.filter(item => {
+      const marketLabels = item.markets.map((item)=>item.cardname)
+      // return (selectedMarkets.some(r=> marketLabels.includes(r)))
+    });
     setFilteredPortfolioCollection(filteredProjects);
+    // selectedMarkets.some(r=> marketLabels.includes(r)
   }, [portfolioCollection,params.slug]);
 
   return (

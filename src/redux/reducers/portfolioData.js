@@ -20,7 +20,7 @@ export const fetchPortfolio = createAsyncThunk(
     try {
       let options = {
         dataCollectionId: "PortfolioCollection",
-        includeReferencedItems: ["portfolioRef", "locationFilteredVariant", "storeProducts", "studios", "markets"],
+        includeReferencedItems: ["portfolioRef", "locationFilteredVariant", "storeProducts", "studios", "markets","gallery","media"],
       };
   
       const { items: fetchedItems } = await wixClient.items.queryDataItems(options).find();
