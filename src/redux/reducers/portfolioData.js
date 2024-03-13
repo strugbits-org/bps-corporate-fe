@@ -8,6 +8,7 @@ const wixClient = createWixClient();
 const initialState = {
   portfolioData: [],
   singlePortfolioData: null,
+  totalPortfolios: null,
 
   portfolioDataLoading: false,
   singlePortfolioLoading: false,
@@ -16,21 +17,25 @@ const initialState = {
 
 export const fetchPortfolio = createAsyncThunk(
   "data/fetchPortfolio",
-  async (triggerAnimations = true) => {
+  async ({page = 1, pageSize = 10, triggerAnimations = true}) => {
     try {
+      const skip = (page - 1) * pageSize;
+
       let options = {
         dataCollectionId: "PortfolioCollection",
         includeReferencedItems: ["portfolioRef", "locationFilteredVariant", "storeProducts", "studios", "markets","gallery","media"],
+        returnTotalCount: true,
       };
   
-      const { items: fetchedItems } = await wixClient.items.queryDataItems(options).find();
+      const response = await wixClient.items.queryDataItems(options).limit(pageSize).skip(skip).find();
       if (triggerAnimations) {
         handleCollectionLoaded();
         setTimeout(() => {
           document.querySelector(".updateWatchedTrigger").click();
         }, 1000);
       }
-      const data = fetchedItems.map((item)=> item.data);
+
+      const data = response.items.map((item)=> item.data);
       return data;
     } catch (error) {
       throw new Error(error.message);
