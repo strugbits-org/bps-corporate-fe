@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 const OurProjectSection = () => {
   const dispatch = useDispatch();
-  const portfolioCollection = useSelector((state) => state.portfolio.portfolioData.data);
+  const portfolioCollection = useSelector((state) => state.portfolio.portfolioData);
   // const loading = useSelector((state) => state.home.ourProjectLoading);
   // const error = useSelector((state) => state.home.error);
   
@@ -44,8 +44,8 @@ const OurProjectSection = () => {
                           <div className="container-img bg-blue">
                             <div className="wrapper-img">
                               <img
-                                src={getFullImageURL(item.image)}
-                                data-preload
+                            src={getFullImageURL(item.portfolioRef.coverImage.imageInfo)}
+                            data-preload
                                 className="media"
                                 alt=""
                               />
@@ -53,12 +53,12 @@ const OurProjectSection = () => {
                           </div>
                           <div className="container-text">
                             <h3 className="title-project">
-                              {item.cardname}
+                              {item.portfolioRef.title}
                             </h3>
                             <ul className="list-tags">
-                              {item.studioTags.map((tag, index) => (
+                              {item.studios.map((tag, index) => (
                                   <li key={index}>
-                                    <span>{tag}</span>
+                                    <span>{tag.cardName}</span>
                                   </li>
                                 ))}
                             </ul>
