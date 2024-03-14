@@ -8,7 +8,7 @@ import ReactPlayer from "react-player";
 
 const PostDetails = ({ data }) => {
   const [singleData, setSingleData] = useState([]);
-console.log(data,"wholeee dataaaaa")
+  console.log(data, "wholeee dataaaaa");
   const title = data?.blogRef?.title;
   const date = formatDate(data?.blogRef?.lastPublishedDate?.$date);
   const profileImage = getFullImageURL(data?.author?.profilePhoto);
@@ -126,6 +126,24 @@ console.log(data,"wholeee dataaaaa")
               sq: index + 1,
             });
           }
+        } else if (item.type === "GALLERY") {
+          const gallery = [];
+          item?.galleryData?.items?.forEach((item) => {
+            if (item.image?.media?.src) {
+              const image = getFullImageURL(data?.blogRef?.coverImage);
+              gallery.push({
+                type: "cover",
+                image: image,
+                sq: 0,
+              });
+            }
+          });
+
+          blogData.push({
+            type: "gallery",
+            images: gallery,
+            sq: 0,
+          });
         }
       });
       setSingleData(blogData);
@@ -215,63 +233,38 @@ console.log(data,"wholeee dataaaaa")
                           />
                         </div>
                       );
+                    } else if (item.type === "gallery") {
+                      <div className="slider-blog-post">
+                        <div className="swiper-container">
+                          <div className="swiper-wrapper">
+                            {item?.images?.map((item, index) => {
+                              console.log(item.image,"gallery data here")
+                              return (
+                                <div key={index} className="swiper-slide">
+                                  <div className="container-img">
+                                    <img
+                                      src={item.image}
+                                      data-preload
+                                      className="media"
+                                      alt=""
+                                    />
+                                  </div>
+                                </div>
+                              );
+                            })}
+                          </div>
+                        </div>
+                        <div className="swiper-button-prev">
+                          <i className="icon-arrow-left-3"></i>
+                        </div>
+                        <div className="swiper-button-next">
+                          <i className="icon-arrow-right-3"></i>
+                        </div>
+                      </div>;
                     }
                   })}
 
                   {/* <img src={coverImage} alt="" /> */}
-
-                  {/* <div className="slider-blog-post">
-                    <div className="swiper-container">
-                      <div className="swiper-wrapper">
-                        <div className="swiper-slide">
-                          <div className="container-img">
-                            <img
-                              src={img1}
-                              data-preload
-                              className="media"
-                              alt=""
-                            />
-                          </div>
-                        </div>
-                        <div className="swiper-slide">
-                          <div className="container-img">
-                            <img
-                              src={img2}
-                              data-preload
-                              className="media"
-                              alt=""
-                            />
-                          </div>
-                        </div>
-                        <div className="swiper-slide">
-                          <div className="container-img">
-                            <img
-                              src={img8}
-                              data-preload
-                              className="media"
-                              alt=""
-                            />
-                          </div>
-                        </div>
-                        <div className="swiper-slide">
-                          <div className="container-img">
-                            <img
-                              src={img4}
-                              data-preload
-                              className="media"
-                              alt=""
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="swiper-button-prev">
-                      <i className="icon-arrow-left-3"></i>
-                    </div>
-                    <div className="swiper-button-next">
-                      <i className="icon-arrow-right-3"></i>
-                    </div>
-                  </div>  */}
                 </div>
               </div>
               <div className="blog-post-tags mt-lg-140 mt-tablet-40 mt-phone-115">
