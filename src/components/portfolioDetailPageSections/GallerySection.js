@@ -1,5 +1,6 @@
 import React from "react";
 import ProductCartSlider from "../commonComponents/ProductCartSlider";
+import {gallery} from "../../common/constats/portfolioData"
 const GallerySection = ({data}) => {
  
   return (
@@ -14,13 +15,13 @@ const GallerySection = ({data}) => {
               Photo gallery
             </h2>
 
-            {/* <div className="wrapper-gallery">
+            <div className="wrapper-gallery">
               <div className="module-photo-gallery-img-50 module-gallery">
                 <div className="module-column" data-aos="d:loop">
                   <div className="container-img bg-blue">
                     <div className="wrapper-img">
                       <img
-                        src={data?.gallery[0]}
+                        src={gallery.img1}
                         data-preload
                         className="media"
                         alt=""
@@ -32,7 +33,7 @@ const GallerySection = ({data}) => {
                   <div className="container-img bg-blue">
                     <div className="wrapper-img">
                       <img
-                        src={data?.gallery[1]}
+                        src={gallery.img2}
                         data-preload
                         className="media"
                         alt=""
@@ -46,7 +47,7 @@ const GallerySection = ({data}) => {
                   <div className="container-img bg-blue">
                     <div className="wrapper-img">
                       <img
-                        src={data?.gallery[2]}
+                        src={gallery.img3}
                         data-preload
                         className="media"
                         alt=""
@@ -55,7 +56,7 @@ const GallerySection = ({data}) => {
                   </div>
                 </div>
               </div>
-            </div> */}
+            </div>
           </div>
           <div className="col-lg-10 offset-lg-1 column-2">
             <div className="container-slider-produtcts">
