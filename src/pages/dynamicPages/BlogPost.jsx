@@ -1,6 +1,6 @@
 import React from "react";
 import RecentPosts from "../../components/blogDetailPageSections/RecentPosts";
-import PostDetails from "../../components/blogDetailPageSections/PostDetails";
+// import PostDetails from "../../components/blogDetailPageSections/PostDetails";
 import SocialSection from "../../components/commonComponents/SocialSection";
 
 const BlogPost = () => {
