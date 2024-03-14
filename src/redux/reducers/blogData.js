@@ -21,7 +21,7 @@ export const getblogPostData = createAsyncThunk(
     try {
       let options = {
         dataCollectionId: "BlogProductData",
-        includeReferencedItems: ["portfolioRef", "locationFilteredVariant", "storeProducts", "studios", "markets","gallery","media"],
+        includeReferencedItems: ["blogRef", "locationFilteredVariant", "storeProducts", "studios", "markets","gallery","media"],
       };
   
       const { items: fetchedItems } = await wixClient.items.queryDataItems(options).find();
@@ -46,7 +46,7 @@ export const fetchSingleBlog = createAsyncThunk(
     try {
       let options = {
         dataCollectionId: "BlogProductData",
-        includeReferencedItems: ["portfolioRef", "locationFilteredVariant", "storeProducts", "studios", "markets"],
+        includeReferencedItems: ["blogRef","author","tags", "locationFilteredVariant", "storeProducts", "studios","gallery","media","markets"],
       };
       const { items: fetchedItems } = await wixClient.items
       .queryDataItems(options)

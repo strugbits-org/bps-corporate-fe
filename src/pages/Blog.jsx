@@ -27,7 +27,7 @@ const Blog = () => {
   useEffect(() => {
     setFilteredBlogCollection(blogPostData);
   }, [blogPostData]);
-console.log(blogPostData,"all blogs")
+console.log(blogPostData,"all blogs ....")
   const handleFilter = (category) => {
     if (selectedCategory.includes(category)) {
       setSelectedCategory(selectedCategory.filter((el) => el !== category));
@@ -80,7 +80,15 @@ const capitalizeText = (text)=> text.toLowerCase().replace(/\b(\w)/g, x => x.toU
                   <div className="container-wrapper-list">
                     <div className="wrapper-list">
                       <ul className="list-blog-tags list-dropdown-tags">
-                    
+                      <li>
+                          <Link
+                          to={"/blogs"}
+                            className="blog-btn-tag">
+                            <span>
+                              Blogs here
+                            </span>
+                          </Link>
+                        </li>
                         <li>
                           <Link
                             className={`blog-btn-tag ${
