@@ -32,7 +32,6 @@ export const getblogPostData = createAsyncThunk(
         }, 1000);
       }
       const data = fetchedItems.map((item)=> item.data);
-      console.log(data);
       return data;
     } catch (error) {
       throw new Error(error.message);

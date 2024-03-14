@@ -21,7 +21,7 @@ const BlogListing = ({ data, totalCount, seeAllBlogs }) => {
 
     useEffect(() => {
         dispatch(fetchStudioSection());
-        dispatch(getMarketCollection());
+        dispatch(getMarketCollection(true));
     }, [dispatch]);
 
 
@@ -63,14 +63,11 @@ const BlogListing = ({ data, totalCount, seeAllBlogs }) => {
         }, 400);
     }, [selectedStudio, selectedMarkets, data]);
 
-    console.log("data item", data[0]);
-    console.log("data item", data[1]);
-
     return (
         <section className="blog-intro pt-lg-145 pt-tablet-115 pt-phone-120 pb-lg-150 pb-tablet-100 pb-phone-155">
             <div className="container-fluid">
-                <div className="row row-1">
-                    <div className="col-12 column-1">
+                <div className="row">
+                    <div className="col-12">
                         <h1
                             className="fs--60 text-center mb-lg-45 mb-mobile-40 split-words"
                             data-aos="d:loop"
@@ -86,7 +83,7 @@ const BlogListing = ({ data, totalCount, seeAllBlogs }) => {
                                     className="btn-tag-mobile no-desktop"
                                     data-set-tag="portfolio"
                                 >
-                                    <span>All Studios a</span>
+                                    <span>All Studios</span>
                                     <i className="icon-arrow-down"></i>
                                 </button>
                                 <div className="list-dropdown" data-get-tag="portfolio">

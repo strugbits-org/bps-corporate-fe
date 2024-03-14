@@ -7,7 +7,7 @@ const BlogPost = () => {
   return (
     <>
       {/*  Post details Section start */}
-      <PostDetails />
+      {/* <PostDetails /> */}
       {/*  Post details Section end */}
       {/* Recent Post Section start */}
       <RecentPosts />
