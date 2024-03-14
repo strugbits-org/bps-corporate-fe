@@ -4,6 +4,7 @@ import OurFamily from '../components/aboutPageSections/OurFamily';
 import SliderBanner from '../components/commonComponents/SliderBanner';
 import AboutBottomSection from '../components/aboutPageSections/AboutBottomSection';
 import SocialSection from '../components/commonComponents/SocialSection';
+import DreamBigSection from '../components/commonComponents/DreamBigSection';
 
 const AboutUs = () => {
 
@@ -14,6 +15,7 @@ const AboutUs = () => {
       <OurFamily />
       <SliderBanner />
       <AboutBottomSection />
+      <DreamBigSection />
       <SocialSection />
     </>
   )

@@ -1,6 +1,8 @@
 import React from "react";
 import ProductCartSlider from "../commonComponents/ProductCartSlider";
+import {gallery} from "../../common/constats/portfolioData"
 const GallerySection = ({data}) => {
+ 
   return (
     <section className="portfolio-post-photo-gallery pt-lg-165 pt-tablet-105 pt-phone-145">
       <div className="container-fluid">
@@ -19,7 +21,7 @@ const GallerySection = ({data}) => {
                   <div className="container-img bg-blue">
                     <div className="wrapper-img">
                       <img
-                        src={data?.gallery[0]}
+                        src={gallery.img1}
                         data-preload
                         className="media"
                         alt=""
@@ -31,7 +33,7 @@ const GallerySection = ({data}) => {
                   <div className="container-img bg-blue">
                     <div className="wrapper-img">
                       <img
-                        src={data?.gallery[1]}
+                        src={gallery.img2}
                         data-preload
                         className="media"
                         alt=""
@@ -45,7 +47,7 @@ const GallerySection = ({data}) => {
                   <div className="container-img bg-blue">
                     <div className="wrapper-img">
                       <img
-                        src={data?.gallery[2]}
+                        src={gallery.img3}
                         data-preload
                         className="media"
                         alt=""

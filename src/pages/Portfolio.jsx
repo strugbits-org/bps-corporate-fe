@@ -1,13 +1,42 @@
-import React from "react";
-import ExploreWorkSection from "../components/ProtfolioPageSections/ExploreWorkSection";
+import React, { useEffect, useState } from "react";
+import PortfolioListing from "../components/ProtfolioPageSections/PortfolioListing";
 import SocialSection from "../components/commonComponents/SocialSection";
 import MarketSection from "../components/commonComponents/MarketSection";
+import { useDispatch } from "react-redux";
+import { listPortfolios } from "../utilis/queryCollections";
+import { handleCollectionLoaded } from "../utilis/loadAnimations";
 
 const Portfolio = () => {
+  const dispatch = useDispatch();
+  const [portfolioResponse, setPortfolioResponse] = useState(null);
+  const [portfolioCollection, setPortfolioCollection] = useState([]);
+
+  useEffect(() => {
+    fetchCollection();
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (portfolioResponse && portfolioResponse.totalCount !== 0) {
+      const newItems = portfolioResponse.items.map((item)=>item.data);
+      setPortfolioCollection(portfolios => [...portfolios,...newItems]);
+    }
+  }, [portfolioResponse]);
+  
+  const fetchCollection = async ()=>{
+    const response = await listPortfolios({pageSize : 8});
+    handleCollectionLoaded();
+    // document.querySelector(".updateWatchedTrigger").click();
+    setPortfolioResponse(response);
+  }
+
+  const handleSeeMore = async ()=>{
+    const response = await portfolioResponse.next();
+    setPortfolioResponse(response);
+  }
 
   return (
     <>
-      <ExploreWorkSection />
+      <PortfolioListing totalCount={portfolioResponse?.totalCount} seeMore={handleSeeMore} data={portfolioCollection} />
       <MarketSection />
       <SocialSection />
     </>

@@ -6,12 +6,9 @@ import { handleCollectionLoaded } from "../../utilis/loadAnimations";
 const wixClient = createWixClient();
 
 const initialState = {
-  portfolioData: {
-    data : [],
-    marketCategories : [],
-    studioTags : [],
-  },
+  portfolioData: [],
   singlePortfolioData: null,
+  totalPortfolios: null,
 
   portfolioDataLoading: false,
   singlePortfolioLoading: false,
@@ -20,7 +17,60 @@ const initialState = {
 
 export const fetchPortfolio = createAsyncThunk(
   "data/fetchPortfolio",
-  async (sliced = false) => {
+  async ({pageSize = 4, triggerAnimations = true}) => {
+    try {
+      let options = {
+        dataCollectionId: "PortfolioCollection",
+        includeReferencedItems: ["portfolioRef", "locationFilteredVariant", "storeProducts", "studios", "markets","gallery","media"],
+        returnTotalCount: true,
+      };
+  
+      const response = await wixClient.items.queryDataItems(options).limit(pageSize).find();
+      if (triggerAnimations) {
+        handleCollectionLoaded();
+        setTimeout(() => {
+          document.querySelector(".updateWatchedTrigger").click();
+        }, 1000);
+      }
+
+      const data = response.items.map((item)=> item.data);
+      return data;
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
+);
+
+export const fetchSinglePortfolio = createAsyncThunk(
+  "data/fetchSinglePortfolio",
+  async (slug) => {
+    try {
+      let options = {
+        dataCollectionId: "PortfolioCollection",
+        includeReferencedItems: ["portfolioRef", "locationFilteredVariant", "storeProducts", "studios", "markets"],
+      };
+      const { items: fetchedItems } = await wixClient.items
+      .queryDataItems(options)
+      .eq("slug", slug).find();
+
+      handleCollectionLoaded();
+      setTimeout(() => {
+        document.querySelector(".updateWatchedTrigger").click();
+      }, 1000);
+
+      const data = fetchedItems.map((item)=> item.data);
+      return data[0];
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
+);
+
+
+export const __fetchPortfolio = createAsyncThunk(
+  "data/fetchPortfolio",
+  async (triggerAnimations = true) => {
+
     try {
       let options = {
         dataCollectionId: "portfolioItems",
@@ -46,12 +96,14 @@ export const fetchPortfolio = createAsyncThunk(
       });
       const uniqueMarketCategories = [...new Map(marketCategoriesArray.map(item => [item, item])).values()];
       const uniqueStudioTags = [...new Map(studioTagsArray.map(item => [item, item])).values()];
-      handleCollectionLoaded();
+      if (triggerAnimations) {
+        handleCollectionLoaded();
+      }
       setTimeout(() => {
         document.querySelector(".updateWatchedTrigger").click();
       }, 1000);
       return {
-        data: sliced ? portfolioArray.slice(0,4) : portfolioArray,
+        data: portfolioArray,
         marketCategories: uniqueMarketCategories,
         studioTags: uniqueStudioTags,
       };
@@ -61,7 +113,7 @@ export const fetchPortfolio = createAsyncThunk(
   }
 );
 
-export const fetchSinglePortfolio = createAsyncThunk(
+export const __fetchSinglePortfolio = createAsyncThunk(
   "data/fetchSinglePortfolio",
   async (slug) => {
     try {

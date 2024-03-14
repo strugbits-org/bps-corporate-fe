@@ -1,57 +1,25 @@
 import DelayedLink from "../../common/DelayedLink";
 import Newsletter from "../../common/Newsletter";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import getFullImageURL from "../../common/common_functions/imageURL";
-import createWixClient from "../../redux/wixClient";
-
-const wixClient = createWixClient();
+import { useDispatch, useSelector } from "react-redux";
+import { fetchFooterData } from "../../redux/reducers/footerData";
 
 const Footer = () => {
-  const [dataItems, setDataItems] = useState([]);
-  const [dataContact, setDataContact] = useState([]);
-  const firstItem = dataItems[0]; // Assuming you want values from the first item
-  const logo1 = firstItem ? firstItem.data.logo1  : "";
-  const logo2 = firstItem ? firstItem.data.logo2  : "";
-  const logo3 = firstItem ? firstItem.data.logo3  : "";
-  const heading = firstItem ? firstItem.data.heading  : "";
-  const copyright = firstItem ? firstItem.data.copyright  : "";
+  const dispatch = useDispatch();
+  const footerData = useSelector((state) => state.footer.data.footerData);
+  const contactData = useSelector((state) => state.footer.data.contactData);
 
   useEffect(() => {
-    async function fetchDataItems() {
-    
-
-      let options = {
-        dataCollectionId: "Footer",
-      };
-
-      let contactus = {
-        dataCollectionId: "ContactDetails",
-      }
-
-      const { items: fetchedItems } = await wixClient.items
-        .queryDataItems(options)
-        .eq("title", "footer")
-        .find();
-
-        const { items: fetchedContact } = await wixClient.items
-        .queryDataItems(contactus)
-        .eq("title", "contact")
-        .find();
-
-      setDataItems(fetchedItems);
-      setDataContact(fetchedContact);
-
-      // trigger animation on data load
-      // setTimeout(() => {
-      //   document.querySelector(".updateWatchedTrigger").click();
-      //   document.querySelector(".triggerSplitWordAnimation").click();
-
-      // }, 1000);
-    }
-
-    fetchDataItems();
-   
-  }, []);
+    dispatch(fetchFooterData());
+  }, [dispatch]);
+  
+  const firstItem = footerData[0]?.data; // Assuming you want values from the first item
+  const logo1 = firstItem ? firstItem.logo1  : "";
+  const logo2 = firstItem ? firstItem.logo2  : "";
+  const logo3 = firstItem ? firstItem.logo3  : "";
+  const heading = firstItem ? firstItem.heading  : "";
+  const copyright = firstItem ? firstItem.copyright  : "";
 
   return (
     <footer id="footer" data-cursor-style="off">
@@ -207,7 +175,7 @@ const Footer = () => {
 
             <div className="container-address mt-lg-145 mt-phone-115">
               <ul className="list-address">
-                {dataContact.map((data, index) => {
+                {contactData.map((data, index) => {
                 
                   return (
                   

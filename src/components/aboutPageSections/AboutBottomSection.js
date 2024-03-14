@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import DreamBigSection from "../commonComponents/DreamBigSection";
 import getFullImageURL from "../../common/common_functions/imageURL";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSliderSection } from "../../redux/reducers/aboutusData";
@@ -17,11 +16,6 @@ const AboutBottomSection = () => {
 
   useEffect(() => {
     disptach(fetchSliderSection());
-     // trigger animation on data load
-     setTimeout(() => {
-       document.querySelector(".updateWatchedTrigger").click();
-       document.querySelector(".triggerSplitWordAnimation").click();
-     }, 1000);
    }, [disptach]);
 
   return (
@@ -50,8 +44,6 @@ const AboutBottomSection = () => {
           </div>
         </div>
       </section>
-
-      <DreamBigSection />
     </>
   );
 };

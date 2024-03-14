@@ -22,16 +22,20 @@ const MarketPost = () => {
   const dispatch = useDispatch();
 
   const marketsData = useSelector((state) => state.market.marketTopData);
-  const portfolioCollection = useSelector((state) => state.portfolio.portfolioData).data;
+  const portfolioCollection = useSelector((state) => state.portfolio.portfolioData);
   const [filteredPortfolioCollection, setFilteredPortfolioCollection] = useState(portfolioCollection);
   
   useEffect(() => {
     dispatch(fetchMarketTopsections(params.slug));
-    dispatch(fetchPortfolio());
+
+    dispatch(fetchPortfolio({pageSize: 4 }));
   }, [dispatch,location, params.slug]);
 
   useEffect(() => {
-    const filteredProjects = portfolioCollection.filter(item => item.marketCategory.toLowerCase() === params.slug);
+    const filteredProjects = portfolioCollection.filter(item => {
+      const marketLabels = item.markets.map((item)=>item.cardname.toLowerCase())
+      return ([params.slug].some(r=> marketLabels.includes(r)))
+    });
     setFilteredPortfolioCollection(filteredProjects);
   }, [portfolioCollection,params.slug]);
 

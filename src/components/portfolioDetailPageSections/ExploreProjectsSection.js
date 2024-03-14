@@ -2,16 +2,18 @@ import React, { useEffect } from "react";
 import DelayedLink from "../../common/DelayedLink";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPortfolio } from "../../redux/reducers/portfolioData";
+import getFullImageURL from "../../common/common_functions/imageURL";
 
-const ExploreProjectsSection = ({data}) => {
+const ExploreProjectsSection = ({ data }) => {
   const dispatch = useDispatch();
-  const portfolioCollection = useSelector((state) => state.portfolio.portfolioData.data);
-  // const index = portfolioData.findIndex(item => item._id === data._id);
-  // console.log("portfolioData", portfolioData);
-  // const portfolioData = portfolioCollection.slice(0,4);
+  const portfolioCollection = useSelector(
+    (state) => state.portfolio.portfolioData
+  );
 
+  const marketTags = data?.markets[0]?.marketTags;
+  const categories = data?.markets?.map((item) => item.cardname);
   useEffect(() => {
-    dispatch(fetchPortfolio(true));
+    dispatch(fetchPortfolio({pageSize: 4 }));
   }, [dispatch]);
 
   return (
@@ -28,10 +30,8 @@ const ExploreProjectsSection = ({data}) => {
 
             <div className="slider-content-mobile">
               <div className="swiper-container">
-                {/* <!-- Additional required wrapper --> */}
                 <div className="swiper-wrapper list-portfolio list-slider-mobile grid-lg-25">
-                  {/* <!-- Slides --> */}
-                  {portfolioCollection.map((data, index) => (
+                  {portfolioCollection?.map((data, index) => (
                     <div key={index} className="swiper-slide grid-item">
                       <DelayedLink
                         to="/portfolio-post"
@@ -46,7 +46,9 @@ const ExploreProjectsSection = ({data}) => {
                         >
                           <div className="wrapper-img">
                             <img
-                              src={data.image}
+                              src={getFullImageURL(
+                                data?.portfolioRef.coverImage.imageInfo
+                              )}
                               data-preload
                               className="media"
                               alt=""
@@ -55,26 +57,24 @@ const ExploreProjectsSection = ({data}) => {
                         </div>
                         <div className="container-text">
                           <ul className="list-tags-small">
-                            <li className={"tag-small active"} >
-                              <span>{data.marketCategory}</span>
-                            </li>
-                            {data.studioTags.map((tag, index) => (
-                              <React.Fragment key={index}>
-                                {index < 2 && (
-                                  <li className={"tag-small"}>
-                                    <span>{tag}</span>
-                                  </li>
-                                )}
-                              </React.Fragment>
+                            {marketTags?.map((tag, index) => (
+                              <li
+                                className={
+                                  "tag-small" +
+                                  (tag === categories[0] ? " active" : "")
+                                }
+                              >
+                                <span>{tag}</span>
+                              </li>
                             ))}
-                            {data.studioTags.length > 2 ? (
+                            {marketTags?.length > 3 ? (
                               <li className="tag-small">
-                                <span>+{data.studioTags.length - 2} studios</span>
+                                <span>+{marketTags?.length - 3} studios</span>
                               </li>
                             ) : null}
                           </ul>
                           <h2 className="title-portfolio">
-                            {data.title}
+                            {data?.portfolioRef.title}
                           </h2>
                         </div>
                       </DelayedLink>
@@ -88,7 +88,9 @@ const ExploreProjectsSection = ({data}) => {
             className="col-lg-2 offset-lg-5 flex-center mt-lg-60 mt-mobile-40"
             data-aos="fadeIn .8s ease-in-out .2s, d:loop"
           >
-            <DelayedLink to="/" className="btn-border-blue"
+            <DelayedLink
+              to="/"
+              className="btn-border-blue"
               attributes={{
                 "data-cursor-style": "off",
               }}
