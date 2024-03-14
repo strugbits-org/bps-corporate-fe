@@ -51,7 +51,6 @@ export const getMarketCollection = createAsyncThunk(
 
       const { items: fetchedItems } = await wixClient.items
         .queryDataItems(options)
-        .eq("title", "Markets")
         .find();
 
       const marketsArray = fetchedItems.map((item) => {

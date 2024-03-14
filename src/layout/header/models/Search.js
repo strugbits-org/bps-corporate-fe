@@ -15,8 +15,7 @@ const Search = () => {
   const marketData = useSelector((state) => state.market.marketModel);
 
   useEffect(() => {
-    const options = { page: 1, pageSize: 10, triggerAnimations: false };
-    dispatch(fetchPortfolio(options));
+    dispatch(fetchPortfolio({pageSize: 4}));
     dispatch(fetchStudioSection(false));
     dispatch(getMarketCollection());
   }, [dispatch]);
@@ -38,7 +37,8 @@ const Search = () => {
     //   (item.marketCategory && item.marketCategory.toLowerCase().includes(searchTerm))
     // );
     return portfolioCollection;
-  }, [searchTerm, portfolioCollection]);
+  }, [portfolioCollection]);
+  // }, [searchTerm, portfolioCollection]);
 
   const filteredBlogData = useMemo(() => {
     return postes.filter(
