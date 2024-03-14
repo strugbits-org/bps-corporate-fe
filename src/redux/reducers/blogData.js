@@ -17,35 +17,23 @@ singleBlogLoading:false,
 
 export const getblogPostData = createAsyncThunk(
   "data/getblogPostData",
-  async () => {
+  async (triggerAnimations = true) => {
     try {
       let options = {
-        dataCollectionId: "Blog/Posts",
-        includeReferencedItems: ["tags", "author", "categories"],
+        dataCollectionId: "BlogProductData",
+        includeReferencedItems: ["portfolioRef", "locationFilteredVariant", "storeProducts", "studios", "markets","gallery","media"],
       };
-
-      const { items: fetchedItems } = await wixClient.items
-        .queryDataItems(options)
-        .find();
-
-      var CategoriesArray = [];
-
-      const portfolioArray = fetchedItems.map((item) => {
-        item.data.categories = item.data.categories.map((tag) => {
-          CategoriesArray.push(tag.label);
-          return tag.label;
-        });
-        return item.data;
-      });
-
-      const uniqueCategories = [
-        ...new Map(CategoriesArray.map((item) => [item, item])).values(),
-      ];
-      handleCollectionLoaded();
-      return {
-        data: portfolioArray,
-        Categories: uniqueCategories,
-      };
+  
+      const { items: fetchedItems } = await wixClient.items.queryDataItems(options).find();
+      if (triggerAnimations) {
+        handleCollectionLoaded();
+        setTimeout(() => {
+          document.querySelector(".updateWatchedTrigger").click();
+        }, 1000);
+      }
+      const data = fetchedItems.map((item)=> item.data);
+      console.log(data);
+      return data;
     } catch (error) {
       throw new Error(error.message);
     }
@@ -54,49 +42,29 @@ export const getblogPostData = createAsyncThunk(
 
 export const fetchSingleBlog = createAsyncThunk(
   "data/fetchSingleBlog",
-  async (slug) => { 
-    try {  
-    let options = {
-      dataCollectionId: "Blog/Posts",
-        includeReferencedItems: ["tags", "author", "categories"],
-    };
-
-    const { items: fetchedItems } = await wixClient.items
+  async (slug) => {
+    try {
+      let options = {
+        dataCollectionId: "BlogProductData",
+        includeReferencedItems: ["portfolioRef", "locationFilteredVariant", "storeProducts", "studios", "markets"],
+      };
+      const { items: fetchedItems } = await wixClient.items
       .queryDataItems(options)
-      .eq("_id", slug)
-      .find();
+      .eq("slug", slug).find();
 
-return fetchedItems;
+      handleCollectionLoaded();
+      setTimeout(() => {
+        document.querySelector(".updateWatchedTrigger").click();
+      }, 1000);
+
+      const data = fetchedItems.map((item)=> item.data);
+      return data[0];
     } catch (error) {
       throw new Error(error.message);
     }
   }
 );
 
-// export const fetchSingleBlog = createAsyncThunk(
-//   "data/fetchSingleBlog",
-//   async (slug) => { 
-//     try {  
-//       const tokens = await SingleBlogWixClient.auth.generateVisitorTokens();
-//       await SingleBlogWixClient.auth.setTokens(tokens);
-      
-//       const post = await SingleBlogWixClient.posts.getPost(slug, {
-//         fieldsToInclude: [
-//           "RICH_CONTENT",
-//           "RICH_CONTENT_STRING",
-//           "RICH_CONTENT_COMPRESSED",
-//           "CONTENT_TEXT",
-//           "CONTENT",
-//         ],
-//         includeReferencedItems: ["tags", "author", "categories","memberId"],
-//       });
-
-// return post;
-//     } catch (error) {
-//       throw new Error(error.message);
-//     }
-//   }
-// );
 
 const blogSlice = createSlice({
   name: "blog",
