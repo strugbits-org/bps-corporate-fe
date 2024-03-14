@@ -3,6 +3,7 @@ import SocialSection from "../components/commonComponents/SocialSection";
 import { useDispatch } from "react-redux";
 import { listBlogs } from "../utilis/queryCollections";
 import BlogListing from "../components/blogPageSections/BlogListing";
+import { handleCollectionLoaded } from "../utilis/loadAnimations";
 
 const Blog = () => {
   const dispatch = useDispatch();
@@ -15,20 +16,22 @@ const Blog = () => {
 
   useEffect(() => {
     if (blogResponse && blogResponse.totalCount !== 0) {
-      const newItems = blogResponse.items.map((item)=>item.data);
-      setBlogCollection(blogs => [...blogs,...newItems]);
+      const items = blogResponse.items.map((item) => item.data);
+      setBlogCollection(items);
     }
   }, [blogResponse]);
   
-  const fetchCollection = async ()=>{
-    const response = await listBlogs({pageSize : 50});
-    setBlogResponse(response);
+  const fetchCollection = async (totalCount = false)=>{
+    const response = await listBlogs({pageSize : totalCount ? totalCount : 8});
     document.querySelector(".updateWatchedTrigger").click();
+    setBlogResponse(response);
+    if (!totalCount) {
+      handleCollectionLoaded();
+    }
   }
 
   const handleSeeAllBlogs = async ()=>{
-    const response = await blogResponse.next();
-    setBlogResponse(response);
+    fetchCollection(blogResponse.totalCount);
   }
 
   return (

@@ -4,6 +4,7 @@ import SocialSection from "../components/commonComponents/SocialSection";
 import MarketSection from "../components/commonComponents/MarketSection";
 import { useDispatch } from "react-redux";
 import { listPortfolios } from "../utilis/queryCollections";
+import { handleCollectionLoaded } from "../utilis/loadAnimations";
 
 const Portfolio = () => {
   const dispatch = useDispatch();
@@ -22,9 +23,10 @@ const Portfolio = () => {
   }, [portfolioResponse]);
   
   const fetchCollection = async ()=>{
-    const response = await listPortfolios({pageSize : 50});
+    const response = await listPortfolios({pageSize : 8});
+    handleCollectionLoaded();
+    // document.querySelector(".updateWatchedTrigger").click();
     setPortfolioResponse(response);
-    document.querySelector(".updateWatchedTrigger").click();
   }
 
   const handleSeeMore = async ()=>{

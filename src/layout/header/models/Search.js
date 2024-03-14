@@ -15,7 +15,7 @@ const Search = () => {
   const marketData = useSelector((state) => state.market.marketModel);
 
   useEffect(() => {
-    dispatch(fetchPortfolio({pageSize: 4}));
+    dispatch(fetchPortfolio({pageSize: 4,triggerAnimations:false}));
     dispatch(fetchStudioSection(false));
     dispatch(getMarketCollection());
   }, [dispatch]);

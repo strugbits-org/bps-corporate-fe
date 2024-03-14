@@ -73,7 +73,6 @@ export const fetchStudioSection = createAsyncThunk(
   "data/fetchStudioSection",
   async (triggerAnimations = true) => {
     try {
-
       let options = {
         dataCollectionId: "StudiosSection",
       };
