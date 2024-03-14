@@ -16,3 +16,18 @@ export const listPortfolios = async ({pageSize = 10}) => {
         throw new Error(error.message);
     }
 }
+
+export const listBlogs = async ({pageSize = 10}) => {
+    try {
+        let options = {
+            dataCollectionId: "BlogProductData",
+            includeReferencedItems: ["blogRef", "locationFilteredVariant", "storeProducts", "studios", "markets","author"],
+            returnTotalCount: true,
+        };
+
+        const response = await wixClient.items.queryDataItems(options).limit(pageSize).find();
+        return response;
+    } catch (error) {
+        throw new Error(error.message);
+    }
+}

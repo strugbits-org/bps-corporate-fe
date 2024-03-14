@@ -17,17 +17,15 @@ const initialState = {
 
 export const fetchPortfolio = createAsyncThunk(
   "data/fetchPortfolio",
-  async ({page = 1, pageSize = 10, triggerAnimations = true}) => {
+  async ({pageSize = 4, triggerAnimations = true}) => {
     try {
-      const skip = (page - 1) * pageSize;
-
       let options = {
         dataCollectionId: "PortfolioCollection",
         includeReferencedItems: ["portfolioRef", "locationFilteredVariant", "storeProducts", "studios", "markets","gallery","media"],
         returnTotalCount: true,
       };
   
-      const response = await wixClient.items.queryDataItems(options).limit(pageSize).skip(skip).find();
+      const response = await wixClient.items.queryDataItems(options).limit(pageSize).find();
       if (triggerAnimations) {
         handleCollectionLoaded();
         setTimeout(() => {

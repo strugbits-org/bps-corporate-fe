@@ -13,8 +13,7 @@ const ExploreProjectsSection = ({ data }) => {
   const marketTags = data?.markets[0]?.marketTags;
   const categories = data?.markets?.map((item) => item.cardname);
   useEffect(() => {
-    const options = { page: 1, pageSize: 4 };
-    dispatch(fetchPortfolio(options));
+    dispatch(fetchPortfolio({pageSize: 4 }));
   }, [dispatch]);
 
   return (

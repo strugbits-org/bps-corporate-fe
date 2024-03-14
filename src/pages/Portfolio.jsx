@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ExploreWorkSection from "../components/ProtfolioPageSections/ExploreWorkSection";
+import PortfolioListing from "../components/ProtfolioPageSections/PortfolioListing";
 import SocialSection from "../components/commonComponents/SocialSection";
 import MarketSection from "../components/commonComponents/MarketSection";
 import { useDispatch } from "react-redux";
@@ -15,15 +15,16 @@ const Portfolio = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (portfolioResponse && portfolioResponse.totalCount != 0) {
+    if (portfolioResponse && portfolioResponse.totalCount !== 0) {
       const newItems = portfolioResponse.items.map((item)=>item.data);
-      setPortfolioCollection([...portfolioCollection,...newItems]);
+      setPortfolioCollection(portfolios => [...portfolios,...newItems]);
     }
   }, [portfolioResponse]);
   
   const fetchCollection = async ()=>{
-    const response = await listPortfolios({pageSize : 1});
+    const response = await listPortfolios({pageSize : 50});
     setPortfolioResponse(response);
+    document.querySelector(".updateWatchedTrigger").click();
   }
 
   const handleSeeMore = async ()=>{
@@ -33,7 +34,7 @@ const Portfolio = () => {
 
   return (
     <>
-      <ExploreWorkSection totalCount={portfolioResponse?.totalCount} seeMore={handleSeeMore} data={portfolioCollection} />
+      <PortfolioListing totalCount={portfolioResponse?.totalCount} seeMore={handleSeeMore} data={portfolioCollection} />
       <MarketSection />
       <SocialSection />
     </>

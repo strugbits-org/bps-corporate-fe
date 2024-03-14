@@ -1,5 +1,5 @@
 import DelayedLink from '../../common/DelayedLink'
-import getFullImageURL from '../../common/common_functions/imageURL';
+import { getFullImagePost } from '../../common/common_functions/imageURL';
 
 const ExplorePortfolio = ({data}) => {
   return (
@@ -31,7 +31,7 @@ const ExplorePortfolio = ({data}) => {
                               data-cursor-style="view"
                             >
                               <img
-                                src={getFullImageURL(item.portfolioRef.coverImage.imageInfo)}
+                                src={getFullImagePost(item.portfolioRef.coverImage.imageInfo)}
                                 data-preload
                                 className="media"
                                 alt=""

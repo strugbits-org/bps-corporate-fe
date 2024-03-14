@@ -1,6 +1,6 @@
 import DelayedLink from "../../common/DelayedLink";
 import React, { useEffect } from "react";
-import getFullImageURL from "../../common/common_functions/imageURL";
+import { getFullImagePost } from "../../common/common_functions/imageURL";
 import { fetchPortfolio } from "../../redux/reducers/portfolioData";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -12,8 +12,7 @@ const OurProjectSection = () => {
   
   
   useEffect(() => {
-    const options = { page: 1, pageSize: 4 };
-    dispatch(fetchPortfolio(options));
+    dispatch(fetchPortfolio({pageSize: 4 }));
   }, [dispatch]);
 
   return (
@@ -45,7 +44,7 @@ const OurProjectSection = () => {
                           <div className="container-img bg-blue">
                             <div className="wrapper-img">
                               <img
-                            src={getFullImageURL(item.portfolioRef.coverImage.imageInfo)}
+                            src={getFullImagePost(item.portfolioRef.coverImage.imageInfo)}
                             data-preload
                                 className="media"
                                 alt=""
