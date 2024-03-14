@@ -71,7 +71,7 @@ export const fetchGetTouchSection = createAsyncThunk(
 
 export const fetchStudioSection = createAsyncThunk(
   "data/fetchStudioSection",
-  async () => {
+  async (triggerAnimations = true) => {
     try {
       let options = {
         dataCollectionId: "StudiosSection",
@@ -81,7 +81,9 @@ export const fetchStudioSection = createAsyncThunk(
         .queryDataItems(options)
         .eq("title", "Studios")
         .find();
-        handleCollectionLoaded();
+        if (triggerAnimations) {
+          handleCollectionLoaded();
+        }
         setTimeout(() => {
           document.querySelector(".updateWatchedTrigger").click();
         }, 1000);

@@ -29,11 +29,11 @@ export const fetchMarketTopsections = createAsyncThunk(
         .queryDataItems(options)
         .eq("slug", slug)
         .find();
+        const marketsArray = fetchedItems.map((service) => {
+          service.data.image = getFullImageURL(service.data.image);
+          return service.data;
+        });
         handleCollectionLoaded();
-      const marketsArray = fetchedItems.map((service) => {
-        service.data.image = getFullImageURL(service.data.image);
-        return service.data;
-      });
       return marketsArray[0];
     } catch (error) {
       throw new Error(error.message);
@@ -43,7 +43,7 @@ export const fetchMarketTopsections = createAsyncThunk(
 
 export const getMarketCollection = createAsyncThunk(
   "data/getMarketCollection",
-  async () => {
+  async (markLoaded = false) => {
     try {
       let options = {
         dataCollectionId: "MarketSection",
@@ -51,13 +51,15 @@ export const getMarketCollection = createAsyncThunk(
 
       const { items: fetchedItems } = await wixClient.items
         .queryDataItems(options)
-        .eq("title", "Markets")
         .find();
 
       const marketsArray = fetchedItems.map((item) => {
         item.data.image = getFullImageURL(item.data.image);
         return item.data;
       });
+      if (markLoaded) {
+        handleCollectionLoaded();
+      }
       return marketsArray;
     } catch (error) {
       throw new Error(error.message);

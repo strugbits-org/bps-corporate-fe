@@ -1,4 +1,5 @@
 import DelayedLink from '../../common/DelayedLink'
+import { getFullImagePost } from '../../common/common_functions/imageURL';
 
 const ExplorePortfolio = ({data}) => {
   return (
@@ -20,17 +21,17 @@ const ExplorePortfolio = ({data}) => {
                   data-aos="d:loop"
                 >
                   {/* <!-- Slides --> */}
-                  {data.map((item, index) => {
+                  {data?.map((item, index) => {
                     return (
                       <div key={index} className="swiper-slide grid-item">
-                        <DelayedLink to="/portfolio-post" className="link">
+                        <DelayedLink to={`/portfolio-post/${item.slug}`} className="link">
                           <div className="img-wrapper">
                             <div
                               className="container-img"
                               data-cursor-style="view"
                             >
                               <img
-                                src={item.image}
+                                src={getFullImagePost(item.portfolioRef.coverImage.imageInfo)}
                                 data-preload
                                 className="media"
                                 alt=""
@@ -38,7 +39,7 @@ const ExplorePortfolio = ({data}) => {
                             </div>
                           </div>
                           <h3 className="title-portfolio split-words">
-                            {item.title}
+                            {item.portfolioRef.title}
                           </h3>
                         </DelayedLink>
                       </div>

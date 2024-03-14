@@ -1,27 +1,32 @@
 import React, { useEffect, useState } from "react";
 import DelayedLink from "../../common/DelayedLink";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchPortfolio } from "../../redux/reducers/portfolioData";
+import { fetchStudioSection } from "../../redux/reducers/homeData";
+import { getMarketCollection } from "../../redux/reducers/marketData";
+import { getFullImagePost } from "../../common/common_functions/imageURL";
 
-const ExploreWorkSection = () => {
-  
+const PortfolioListing = ({ data, totalCount, seeMore }) => {
+
   const dispatch = useDispatch();
+  const studios = useSelector((state) => state.home.studioData);
+  const markets = useSelector((state) => state.market.marketModel);
+
   // const loading = useSelector((state) => state.market.marketModelLoading);
   // const error = useSelector((state) => state.market.error);
 
-  const portfolioCollection = useSelector((state) => state.portfolio.portfolioData.data);
-  const {marketCategories, studioTags} = useSelector((state) => state.portfolio.portfolioData);
   const [selectedStudio, setSelectedStudio] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState([]);
-  const [filteredPortfolioCollection, setFilteredPortfolioCollection] = useState(portfolioCollection);
+  const [selectedMarkets, setSelectedMarkets] = useState([]);
+  const [filteredPortfolioCollection, setFilteredPortfolioCollection] = useState(data);
 
   useEffect(() => {
-    dispatch(fetchPortfolio());
+    dispatch(fetchStudioSection());
+    dispatch(getMarketCollection());
   }, [dispatch]);
 
-  useEffect(()=>{
-    setFilteredPortfolioCollection(portfolioCollection);
-  },[portfolioCollection]);
+
+  useEffect(() => {
+    setFilteredPortfolioCollection(data);
+  }, [data]);
 
   const handleStudioFilter = (tag) => {
     if (selectedStudio.includes(tag)) {
@@ -33,32 +38,31 @@ const ExploreWorkSection = () => {
     }
   };
   const handleMarketFilter = (category) => {
-    if (selectedCategory.includes(category)) {
-      setSelectedCategory(
-        selectedCategory.filter((el) => el !== category)
+    if (selectedMarkets.includes(category)) {
+      setSelectedMarkets(
+        selectedMarkets.filter((el) => el !== category)
       );
     } else {
-      setSelectedCategory([...selectedCategory, category]);
+      setSelectedMarkets([...selectedMarkets, category]);
     }
   };
 
   useEffect(() => {
-    const filteredProjects = portfolioCollection.filter(item => {
+    const filteredProjects = data.filter(item => {
+      const studiosLabels = item.studios.map((item) => item.cardName)
+      const marketLabels = item.markets.map((item) => item.cardname)
       return (
-        (selectedCategory.length === 0 || selectedCategory.includes(item.marketCategory)) &&
-        (selectedStudio.length === 0 || selectedStudio.some(r=> item.studioTags.includes(r)))
+        (selectedMarkets.length === 0 || selectedMarkets.some(r => marketLabels.includes(r))) &&
+        (selectedStudio.length === 0 || selectedStudio.some(r => studiosLabels.includes(r)))
       );
     });
     setFilteredPortfolioCollection(filteredProjects);
-  
     setTimeout(() => {
       document.querySelector(".updateWatchedTrigger").click();
     }, 400);
-  }, [selectedStudio, selectedCategory, portfolioCollection]);
-
-
+  }, [selectedStudio, selectedMarkets, data]);
+  
   return (
-    filteredPortfolioCollection && 
     <section className="portfolio-intro pt-lg-145 pt-mobile-105">
       <div className="container-fluid">
         <div className="row">
@@ -85,24 +89,21 @@ const ExploreWorkSection = () => {
                       <ul className="list-portfolio-tags list-dropdown-tags">
                         <li>
                           <button
-                              onClick={() => {setFilteredPortfolioCollection(portfolioCollection); setSelectedStudio([])}}
-                              className={`portfolio-btn-tag ${
-                                selectedStudio.length === 0 ? "active" : ""
+                            onClick={() => { setFilteredPortfolioCollection(data); setSelectedStudio([]) }}
+                            className={`portfolio-btn-tag ${selectedStudio.length === 0 ? "active" : ""
                               }`}>
                             <span>All Studios</span>
                           </button>
                         </li>
-                        {studioTags.map((tag, index) => (
+                        {studios?.map((item, index) => (
                           <li key={index}>
                             <button
-                             onClick={()=>{handleStudioFilter(tag)}}
-                              className={`portfolio-btn-tag ${
-                                selectedStudio.includes(tag)
-                                  ? "active"
-                                  : ""
-                              }`}
-                             key={`studio-${index}`}>
-                              {tag}
+                              onClick={() => { handleStudioFilter(item.data.cardName) }}
+                              className={`portfolio-btn-tag ${selectedStudio.includes(item.data.cardName)
+                                ? "active"
+                                : ""
+                                }`}>
+                              {item.data.cardName}
                             </button>
                           </li>
                         ))}
@@ -123,30 +124,27 @@ const ExploreWorkSection = () => {
                       <ul className="list-market-tags list-dropdown-tags">
                         <li>
                           <button
-                              onClick={() => {setFilteredPortfolioCollection(portfolioCollection); setSelectedCategory([])}}
-                              className={`portfolio-btn-tag ${
-                                selectedCategory.length === 0 ? "active" : ""
+                            onClick={() => { setFilteredPortfolioCollection(data); setSelectedMarkets([]) }}
+                            className={`portfolio-btn-tag ${selectedMarkets.length === 0 ? "active" : ""
                               }`}
-                              >
+                          >
                             <span>All Markets</span>
                           </button>
                         </li>
-                        {marketCategories.map((category, index) => (
+                        {markets?.map((market, index) => (
                           <li key={index}>
                             <button
-                             onClick={()=>{handleMarketFilter(category)}}
-                              className={`portfolio-btn-tag ${
-                                selectedCategory.includes(category)
-                                  ? "active"
-                                  : ""
-                              }`}
+                              onClick={() => { handleMarketFilter(market.cardname) }}
+                              className={`portfolio-btn-tag ${selectedMarkets.includes(market.cardname)
+                                ? "active"
+                                : ""
+                                }`}
                               key={`category-${index}`}
                             >
-                              {category}
+                              {market.cardname}
                             </button>
                           </li>
                         ))}
-
                       </ul>
                     </div>
                   </div>
@@ -155,19 +153,14 @@ const ExploreWorkSection = () => {
             </div>
           </div>
         </div>
-          {
-            filteredPortfolioCollection.length === 0 && (
-              "No Data"
-            )
-          }
         <div className="row row-2">
           <div className="col-lg-12 column-1">
             <ul className="list-portfolio grid-lg-25 grid-tablet-50">
-              {filteredPortfolioCollection.map((data) => {
+              {filteredPortfolioCollection?.map((item) => {
                 return (
-                  <li key={data._id} className="grid-item">
+                  <li key={item._id} className="grid-item">
                     <DelayedLink
-                      to={`/portfolio-post/${data.slug}`}
+                      to={`/portfolio-post/${item.slug}`}
                       className="link-portfolio link-portfolio-animation"
                       attributes={{
                         "data-aos": "d:loop",
@@ -179,53 +172,63 @@ const ExploreWorkSection = () => {
                       >
                         <div className="wrapper-img">
                           <img
-                            src={data.image}
+                            src={getFullImagePost(item.portfolioRef.coverImage.imageInfo)}
                             data-preload
                             className="media"
                             alt=""
                           />
                         </div>
                       </div>
+                    </DelayedLink>
+                    <div className="link-portfolio">
                       <div className="container-text">
                         <ul className="list-tags-small">
-                          <li className={"tag-small active"} >
-                            <span>{data.marketCategory}</span>
-                          </li>
-                          {data.studioTags.map((tag, index) => (
+                          {item.markets.map((market, index) => (
+                            <li key={index} onClick={() => { handleMarketFilter(market.cardname) }} className={`tag-small ${selectedMarkets.includes(market.cardname)
+                              ? "active"
+                              : ""
+                              }`}  >
+                              <span>{market.cardname}</span>
+                            </li>
+                          ))}
+                          {item.studios.map((studio, index) => (
                             <React.Fragment key={index}>
                               {index < 2 && (
-                                <li className={"tag-small"}>
-                                  <span>{tag}</span>
+                                <li onClick={() => { handleStudioFilter(studio.cardName) }} className={`tag-small ${selectedStudio.includes(studio.cardName)
+                                  ? "active"
+                                  : ""
+                                  }`} >
+                                  <span>{studio.cardName}</span>a
                                 </li>
                               )}
                             </React.Fragment>
                           ))}
-                          {data.studioTags.length > 2 ? (
-                              <li className="tag-small">
-                                <span>+{data.studioTags.length - 2} studios</span>
-                              </li>
-                            ) : null}
+                          {item.studios.length > 2 ? (
+                            <li className="tag-small">
+                              <span>+{item.studios.length - 2} studios</span>
+                            </li>
+                          ) : null}
                         </ul>
-                        <h2 className="title-portfolio">{data.title}</h2>
+                        <h2 className="title-portfolio">{item.portfolioRef.title}</h2>
                       </div>
-                    </DelayedLink>
+                    </div>
                   </li>
                 );
               })}
+              {filteredPortfolioCollection.length === 0 && <h6 style={{ width: "100%" }} className="fs--40 text-center split-words" data-aos="d:loop">No Data found</h6>}
             </ul>
           </div>
-          <div
-            className="col-lg-2 offset-lg-5 flex-center mt-lg-60 mt-mobile-40"
-            data-aos="fadeIn .8s ease-in-out .2s, d:loop"
-          >
-            <button className="btn-border-blue" data-cursor-style="off">
-              <span>See more</span>
-            </button>
-          </div>
+          {filteredPortfolioCollection.length !== totalCount && (
+            <div className="col-lg-2 offset-lg-5 flex-center mt-lg-60 mt-mobile-40" data-aos="fadeIn .8s ease-in-out .2s, d:loop">
+              <button onClick={seeMore} className="btn-border-blue" data-cursor-style="off">
+                <span>See more</span>
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </section>
   );
 };
 
-export default ExploreWorkSection;
+export default PortfolioListing;
