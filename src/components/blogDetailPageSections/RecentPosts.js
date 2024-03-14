@@ -2,7 +2,7 @@ import React from "react";
 import { postes } from "../../common/constats/blogData";
 
 import DelayedLink from "../../common/DelayedLink";
-const RecentPosts = () => {
+const RecentPosts = ({data}) => {
   return (
     <section className="blog-post-recent-posts pt-lg-245 pt-tablet-105 pt-phone-150 pb-lg-150 pb-mobile-100">
       <div className="container-fluid">

@@ -61,7 +61,7 @@ const ExploreWorkSection = ({data,totalCount,seeMore}) => {
       document.querySelector(".updateWatchedTrigger").click();
     }, 400);
   }, [selectedStudio, selectedMarkets, data]);
-
+  
   return (
     <section className="portfolio-intro pt-lg-145 pt-mobile-105">
       <div className="container-fluid">
