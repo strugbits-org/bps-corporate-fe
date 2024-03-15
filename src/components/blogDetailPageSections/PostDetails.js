@@ -8,6 +8,8 @@ import ReactPlayer from "react-player";
 
 const PostDetails = ({ data }) => {
   const [singleData, setSingleData] = useState([]);
+  const getImageURL = (src) =>
+    `https://static.wixstatic.com/media/${src}/v1/fit/w_1000,h_1000,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/compress.webp`;
   console.log(data, "wholeee dataaaaa");
   const title = data?.blogRef?.title;
   const date = formatDate(data?.blogRef?.lastPublishedDate?.$date);
@@ -130,7 +132,7 @@ const PostDetails = ({ data }) => {
           const gallery = [];
           item?.galleryData?.items?.forEach((item) => {
             if (item.image?.media?.src) {
-              const image = getFullImageURL(data?.blogRef?.coverImage);
+              const image = getImageURL(item.image?.media?.src.url);
               gallery.push({
                 type: "cover",
                 image: image,
@@ -138,12 +140,14 @@ const PostDetails = ({ data }) => {
               });
             }
           });
-
           blogData.push({
             type: "gallery",
             images: gallery,
             sq: 0,
           });
+        } else if (item.type === "IMAGE") {
+          const imageURL = getFullImageURL(item.imageData.image.src._id);
+          blogData.push({ type: "image", image: imageURL });
         }
       });
       setSingleData(blogData);
@@ -233,38 +237,39 @@ const PostDetails = ({ data }) => {
                           />
                         </div>
                       );
-                    } else if (item.type === "gallery") {
-                      <div className="slider-blog-post">
-                        <div className="swiper-container">
-                          <div className="swiper-wrapper">
-                            {item?.images?.map((item, index) => {
-                              console.log(item.image,"gallery data here")
-                              return (
-                                <div key={index} className="swiper-slide">
-                                  <div className="container-img">
-                                    <img
-                                      src={item.image}
-                                      data-preload
-                                      className="media"
-                                      alt=""
-                                    />
+                    } else if (item?.type === "gallery") {
+                      return (
+                        <div className="slider-blog-post">
+                          <div className="swiper-container">
+                            <div className="swiper-wrapper">
+                              {item?.images?.map((item, index) => {
+                                return (
+                                  <div key={index} className="swiper-slide">
+                                    <div className="container-img">
+                                      <img
+                                        src={item.image}
+                                        data-preload
+                                        className="media"
+                                        alt=""
+                                      />
+                                    </div>
                                   </div>
-                                </div>
-                              );
-                            })}
+                                );
+                              })}
+                            </div>
+                          </div>
+                          <div className="swiper-button-prev">
+                            <i className="icon-arrow-left-3"></i>
+                          </div>
+                          <div className="swiper-button-next">
+                            <i className="icon-arrow-right-3"></i>
                           </div>
                         </div>
-                        <div className="swiper-button-prev">
-                          <i className="icon-arrow-left-3"></i>
-                        </div>
-                        <div className="swiper-button-next">
-                          <i className="icon-arrow-right-3"></i>
-                        </div>
-                      </div>;
+                      );
+                    } else if (item?.type === "image") {
+                      return <img src={item.image} alt="" />;
                     }
                   })}
-
-                  {/* <img src={coverImage} alt="" /> */}
                 </div>
               </div>
               <div className="blog-post-tags mt-lg-140 mt-tablet-40 mt-phone-115">
