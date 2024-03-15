@@ -5,16 +5,48 @@ import getFullImageURL from "../../common/common_functions/imageURL";
 import ProductCartSlider from "../commonComponents/ProductCartSlider";
 import SocialVerticalBar from "./SocialVerticalBar";
 import ReactPlayer from "react-player";
+import { getblogTags } from "../../redux/reducers/blogData";
+import { useDispatch, useSelector } from "react-redux";
 
 const PostDetails = ({ data }) => {
+  const dispatch = useDispatch();
+  const tags = useSelector((state) => state.blog.blogTags);
   const [singleData, setSingleData] = useState([]);
+
   const getImageURL = (src) =>
     `https://static.wixstatic.com/media/${src}/v1/fit/w_1000,h_1000,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/compress.webp`;
-  console.log(data, "wholeee dataaaaa");
   const title = data?.blogRef?.title;
   const date = formatDate(data?.blogRef?.lastPublishedDate?.$date);
   const profileImage = getFullImageURL(data?.author?.profilePhoto);
   const authorName = data?.author?.nickname;
+
+  // Function to parse URLs, emails, and phone numbers from text
+  const extractLinks = (text) => {
+    const linkRegex =
+      /((?:https?:\/\/)?(?:www\.)?\S+\.\S+)|(?:\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b)|(?:\(\d{3}\)\s*\d{3}-\d{4})/gi;
+    return text.match(linkRegex) || [];
+  };
+
+  // Function to replace URLs, emails, and phone numbers with clickable links
+  const ClickableLink = (text) => {
+    const links = extractLinks(text);
+    if (!links.length) return text; // Return original text if no links found
+    return links.reduce((acc, link) => {
+      if (link.startsWith("http")) {
+        return acc.replace(link, `<a href="${link}">${link}</a>`);
+      } else if (link.includes("@")) {
+        return acc.replace(link, `<a href="mailto:${link}">${link}</a>`);
+      } else if (link.match(/\(\d{3}\)\s*\d{3}-\d{4}/)) {
+        return acc.replace(
+          link,
+          `<a href="tel:${link.replace(/[^\d]/g, "")}">${link}</a>`
+        );
+      } else if (link.startsWith("www")) {
+        return acc.replace(link, `<a href="http://${link}">${link}</a>`);
+      }
+      return acc;
+    }, text);
+  };
 
   useEffect(() => {
     const singlePost = async () => {
@@ -50,6 +82,7 @@ const PostDetails = ({ data }) => {
                 }
               }
             });
+
             blogData.push({
               type: "paragraph",
               text: finalText,
@@ -155,8 +188,11 @@ const PostDetails = ({ data }) => {
 
     singlePost();
   }, [data]);
-  console.log(singleData, "data after modifing");
 
+  useEffect(() => {
+    dispatch(getblogTags());
+  }, [dispatch]);
+  console.log(tags, "tags here");
   return (
     <section className="blog-post-intro pt-lg-150 pt-mobile-125">
       <div className="container-fluid">
@@ -216,7 +252,14 @@ const PostDetails = ({ data }) => {
                 >
                   {singleData.map((item, index) => {
                     if (item.type === "paragraph") {
-                      return <p key={index}>{item.text}</p>;
+                      return (
+                        <p
+                          key={index}
+                          dangerouslySetInnerHTML={{
+                            __html: ClickableLink(item.text),
+                          }}
+                        />
+                      );
                     } else if (item.type === "heading") {
                       return <h2>{item.text}</h2>;
                     } else if (item.type === "video") {
@@ -268,6 +311,8 @@ const PostDetails = ({ data }) => {
                       );
                     } else if (item?.type === "image") {
                       return <img src={item.image} alt="" />;
+                    } else {
+                      return null;
                     }
                   })}
                 </div>
@@ -280,26 +325,15 @@ const PostDetails = ({ data }) => {
                   Tags
                 </h3>
                 <ul className="list-post-tags" data-aos="d:loop">
-                  <li>
-                    <DelayedLink to="/" className="btn-tag">
-                      <span>Custom fabrication</span>
-                    </DelayedLink>
-                  </li>
-                  <li>
-                    <DelayedLink to="/" className="btn-tag">
-                      <span>Event design & Production</span>
-                    </DelayedLink>
-                  </li>
-                  <li>
-                    <DelayedLink to="/" className="btn-tag">
-                      <span>Printing</span>
-                    </DelayedLink>
-                  </li>
-                  <li>
-                    <DelayedLink to="/" className="btn-tag">
-                      <span>Venues</span>
-                    </DelayedLink>
-                  </li>
+                  {tags.map((items, index) => {
+                    return (
+                      <li key={index}> 
+                        <DelayedLink to="/" className="btn-tag">
+                          <span>{items.label}</span>
+                        </DelayedLink>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             </div>

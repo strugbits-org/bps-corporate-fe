@@ -1,16 +1,17 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import createWixClient from "../wixClient";
 import { handleCollectionLoaded } from "../../utilis/loadAnimations";
-// import SingleBlogWixClient from "../wixClientSingleBlog";
-
+import SingleBlogWixClient from "../wixClientSingleBlog";
 
 const wixClient = createWixClient();
 
 const initialState = {
   blogPostData: [],
-singleBlogData: [],
+  singleBlogData: [],
+  blogTags: [],
 
-singleBlogLoading:false,
+  singleBlogLoading: false,
+  blogTagsLoading: false,
   blogPostLoading: false,
   error: null,
 };
@@ -21,17 +22,27 @@ export const getblogPostData = createAsyncThunk(
     try {
       let options = {
         dataCollectionId: "BlogProductData",
-        includeReferencedItems: ["blogRef", "locationFilteredVariant", "storeProducts", "studios", "markets","gallery","media"],
+        includeReferencedItems: [
+          "blogRef",
+          "locationFilteredVariant",
+          "storeProducts",
+          "studios",
+          "markets",
+          "gallery",
+          "media",
+        ],
       };
-  
-      const { items: fetchedItems } = await wixClient.items.queryDataItems(options).find();
+
+      const { items: fetchedItems } = await wixClient.items
+        .queryDataItems(options)
+        .find();
       if (triggerAnimations) {
         handleCollectionLoaded();
         setTimeout(() => {
           document.querySelector(".updateWatchedTrigger").click();
         }, 1000);
       }
-      const data = fetchedItems.map((item)=> item.data);
+      const data = fetchedItems.map((item) => item.data);
       console.log(data);
       return data;
     } catch (error) {
@@ -46,18 +57,29 @@ export const fetchSingleBlog = createAsyncThunk(
     try {
       let options = {
         dataCollectionId: "BlogProductData",
-        includeReferencedItems: ["blogRef","author","tags", "locationFilteredVariant", "storeProducts", "studios","gallery","media","markets"],
+        includeReferencedItems: [
+          "blogRef",
+          "author",
+          "tags",
+          "locationFilteredVariant",
+          "storeProducts",
+          "studios",
+          "gallery",
+          "media",
+          "markets",
+        ],
       };
       const { items: fetchedItems } = await wixClient.items
-      .queryDataItems(options)
-      .eq("slug", slug).find();
+        .queryDataItems(options)
+        .eq("slug", slug)
+        .find();
 
       handleCollectionLoaded();
       setTimeout(() => {
         document.querySelector(".updateWatchedTrigger").click();
       }, 1000);
 
-      const data = fetchedItems.map((item)=> item.data);
+      const data = fetchedItems.map((item) => item.data);
       return data[0];
     } catch (error) {
       throw new Error(error.message);
@@ -65,6 +87,14 @@ export const fetchSingleBlog = createAsyncThunk(
   }
 );
 
+export const getblogTags = createAsyncThunk("data/getblogTags", async () => {
+  try {
+    const { items } = await SingleBlogWixClient.tags.queryTags().find();
+    return items;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+});
 
 const blogSlice = createSlice({
   name: "blog",
@@ -85,7 +115,6 @@ const blogSlice = createSlice({
         state.blogPostLoading = false;
         state.error = action.error.message;
       })
-
       .addCase(fetchSingleBlog.pending, (state) => {
         state.singleBlogLoading = true;
         state.error = null;
@@ -96,6 +125,18 @@ const blogSlice = createSlice({
       })
       .addCase(fetchSingleBlog.rejected, (state, action) => {
         state.singleBlogLoading = false;
+        state.error = action.error.message;
+      })
+      .addCase(getblogTags.pending, (state) => {
+        state.blogTagsLoading = true;
+        state.error = null;
+      })
+      .addCase(getblogTags.fulfilled, (state, action) => {
+        state.blogTagsLoading = false;
+        state.blogTags = action.payload;
+      })
+      .addCase(getblogTags.rejected, (state, action) => {
+        state.blogTagsLoading = false;
         state.error = action.error.message;
       });
   },
