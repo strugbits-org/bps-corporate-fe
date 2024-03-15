@@ -152,30 +152,7 @@ function Blogs() {
   return (
     <div>
       {console.log("data -> ", data)}
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<InitialLayout />}>
-            <Route path="/" element={<LandingPage />} />
-            <Route path="/auth" element={<AuthLayout />}>
-              <Route path="/auth" element={<Auth />} />
-              <Route path="/auth/requestToken" element={<RequstToken />} />
-              <Route path="/auth/forgot-password" element={<RequstToken />} />
-              <Route
-                path="/auth/verifyEmail/:email"
-                element={<VerifyEmail />}
-              />
-              <Route
-                path="/auth/resetPassword/:email"
-                element={<ResetPassword />}
-              />
-            </Route>
-          </Route>
-          <Route path="/dashboard" element={<DashboardLayout />}>
-            <Route path="/dashboard/admin" element={<AdminDashboard />} />
-            <Route path="/dashboard/user" element={<UserDashboard />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+    
       <h1>Blog</h1>
       {data.length > 0 && data[0].type === "cover" ? (
         <img
