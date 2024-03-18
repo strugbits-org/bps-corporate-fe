@@ -1,5 +1,4 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { postes } from "../../../common/constats/blogData";
 import DelayedLink from "../../../common/DelayedLink";
 import { productSlider } from "../../../common/constats/blogData";
 import { fetchStudioSection } from "../../../redux/reducers/homeData";
@@ -15,20 +14,18 @@ const Search = () => {
   const markets = useSelector((state) => state.market.marketModel);
 
   const [searchTerm, setSearchTerm] = useState("");
-  const [blogCollection, setBlogCollection] = useState([]);
-  const [portfolioCollection, setPortfolioCollection] = useState([]);
   const [selectedStudio, setSelectedStudio] = useState([]);
   const [selectedMarkets, setSelectedMarkets] = useState([]);
-  const [productSliderData, setProductSliderData] = useState([]);
 
+  const [blogCollection, setBlogCollection] = useState([]);
+  const [portfolioCollection, setPortfolioCollection] = useState([]);
+  const [productSliderData, setProductSliderData] = useState([]);
+  
   useEffect(() => {
     dispatch(fetchStudioSection(false));
     dispatch(getMarketCollection());
   }, [dispatch]);
-
-
-
-
+  
   const filteredProductData = useMemo(() => {
     return productSlider.filter(
       (item) =>
@@ -36,6 +33,29 @@ const Search = () => {
     );
   }, [searchTerm]);
 
+  const filteredPortfolioCollection = useMemo(() => {
+    const data = portfolioCollection.filter(item => {
+      const studiosLabels = item.studios.map((item) => item.cardName)
+      const marketLabels = item.markets.map((item) => item.cardname)
+      return (
+        (selectedMarkets.length === 0 || selectedMarkets.some(r => marketLabels.includes(r))) &&
+        (selectedStudio.length === 0 || selectedStudio.some(r => studiosLabels.includes(r)))
+      );
+    });
+    return data;
+  }, [selectedStudio, selectedMarkets, portfolioCollection]);
+
+  const filteredBlogCollection = useMemo(() => {
+    const data = blogCollection.filter(item => {
+      const studiosLabels = item.studios.map((item) => item.cardName)
+      const marketLabels = item.markets.map((item) => item.cardname)
+      return (
+        (selectedMarkets.length === 0 || selectedMarkets.some(r => marketLabels.includes(r))) &&
+        (selectedStudio.length === 0 || selectedStudio.some(r => studiosLabels.includes(r)))
+      );
+    });
+    return data;
+  }, [selectedStudio, selectedMarkets, blogCollection]);
 
   const handleStudioFilter = (tag) => {
     if (selectedStudio.includes(tag)) {
@@ -75,20 +95,6 @@ const Search = () => {
     e.preventDefault();
   };
 
-  // useEffect(() => {
-  //   const filteredProjects = data.filter(item => {
-  //     const studiosLabels = item.studios.map((item) => item.cardName)
-  //     const marketLabels = item.markets.map((item) => item.cardname)
-  //     return (
-  //       (selectedMarkets.length === 0 || selectedMarkets.some(r => marketLabels.includes(r))) &&
-  //       (selectedStudio.length === 0 || selectedStudio.some(r => studiosLabels.includes(r)))
-  //     );
-  //   });
-  //   setFilteredPortfolioCollection(filteredProjects);
-  //   setTimeout(() => {
-  //     document.querySelector(".updateWatchedTrigger").click();
-  //   }, 400);
-  // }, [selectedStudio, selectedMarkets, data]);
   return (
     <div className="container-fluid">
       <div className="row">
@@ -129,7 +135,7 @@ const Search = () => {
             </div>
 
             <div className="container-results">
-              <div className="inner-container-results">
+              <div className="inner-container-results" data-cursor-style="default">
                 <button className="btn-close-results" data-search-remove>
                   X
                 </button>
@@ -142,6 +148,7 @@ const Search = () => {
                   <ul
                     className="list-result-all-studios grid-lg-16 grid-tablet-33 grid-phone-50"
                     data-aos
+                    data-cursor-style="default"
                   >
                     {studios?.map((item, index) => {
                       return (
@@ -162,7 +169,8 @@ const Search = () => {
                 </div>
 
                 <div className="column-results">
-                  <div className={`result-rental ${productSliderData.length === 0 ? "hidden": ""}`}>
+
+                  <div className="result-rental">
                     <div className="container-title-results">
                       <h2 className="title-results split-chars" data-aos>
                         Rental <span>{`"${searchTerm}"`}</span>
@@ -183,6 +191,7 @@ const Search = () => {
                         <div
                           className="swiper-wrapper list-result-rental list-slider-phone grid-md-33"
                           data-aos
+                          data-cursor-style="default"
                         >
                           {productSliderData.map((data) => {
                             return (
@@ -238,12 +247,13 @@ const Search = () => {
                               </div>
                             );
                           })}
+                          {searchTerm !== "" && productSliderData.length === 0 && <h6 style={{ width: "100%" }} className="ml-4 fs--20 split-words" data-aos="d:loop">No matches for "{ searchTerm }" found</h6>}
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  <div className={`result-portfolio mt-lg-60 mt-mobile-40 ${portfolioCollection.length === 0 ? "hidden": ""}`}>
+                  <div className="result-portfolio mt-lg-60 mt-mobile-40">
                     <div className="container-title-results">
                       <h2 className="title-results split-chars" data-aos>
                         Portfolio <span>{`"${searchTerm}"`}</span>
@@ -264,8 +274,9 @@ const Search = () => {
                         <div
                           className="swiper-wrapper list-result-portfolio list-slider-phone grid-md-20"
                           data-aos
+                          data-cursor-style="default"
                         >
-                          {portfolioCollection?.map((data) => {
+                          {filteredPortfolioCollection?.map((data) => {
                             return (
                               <div
                                 key={data.id}
@@ -297,6 +308,7 @@ const Search = () => {
                               </div>
                             );
                           })}
+                        {searchTerm !== "" && filteredPortfolioCollection.length === 0 && <h6 style={{ width: "100%" }} className="ml-4 fs--20 split-words" data-aos="d:loop">No matches for "{ searchTerm }" found</h6>}
                         </div>
                       </div>
                     </div>
@@ -313,24 +325,23 @@ const Search = () => {
                   <ul
                     className="list-result-our-markets list-projects font-35 grid-md-50"
                     data-aos
+                    data-cursor-style="default"
                   >
                     {markets?.map((item, index) => {
                       return (
                         <li key={index} className="grid-item">
                           <div
-                            // to={item.slug}
-                            // className="market-link project-link"
                             onClick={() => { handleMarketFilter(item.cardname) }}
                             className={`market-link project-link ${selectedMarkets.includes(item.cardname)
                               ? "active"
                               : ""
                               }`}
-                            data-cursor-style="view"
+                            data-cursor-style="default"
                             data-menu-close
                           >
                             <div
                               className="container-img bg-blue"
-                              data-cursor-style="view"
+                              data-cursor-style="default"
                             >
                               <img
                                 src={item.image}
@@ -351,7 +362,7 @@ const Search = () => {
                   </ul>
                 </div>
 
-                <div className={`result-blog ${blogCollection.length === 0 ? "hidden": ""}`}>
+                <div className={`result-blog ${filteredBlogCollection.length > 0 ? "": "hidden"}`}>
                   <div className="container-title-results">
                     <h2 className="title-results split-chars" data-aos>
                       Blog <span>{`"${searchTerm}"`}</span>
@@ -374,7 +385,7 @@ const Search = () => {
                         className="swiper-wrapper list-result-blog list-slider-mobile list-blog grid-lg-20"
                         data-aos
                       >
-                        {blogCollection?.map((blog) => {
+                        {filteredBlogCollection?.map((blog) => {
                           return (
                             <div
                               key={blog.blogId}
@@ -417,6 +428,7 @@ const Search = () => {
                             </div>
                           );
                         })}
+                        {searchTerm !== "" && filteredBlogCollection.length === 0 && <h6 style={{ width: "100%" }} className="ml-4 fs--20 split-words" data-aos="d:loop">No matches for "{ searchTerm }" found</h6>}
                       </div>
                     </div>
                   </div>
