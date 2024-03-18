@@ -12,8 +12,14 @@ const initialState = {
 export const postFormData = createAsyncThunk(
   "contact/postFormData",
   async (formData) => {
+
     try {
-      const response = await wixClientForm.submissions.createSubmission(formData);
+      let submission = {
+        formId: "287dbc30-d7fb-4e4c-b9ce-7c11047f69cf",
+       status: "CONFIRMED",
+       submissions: formData
+     }
+      const response = await wixClientForm.submissions.createSubmission(submission);
       return response;
     } catch (error) {
       throw new Error(error.message);
