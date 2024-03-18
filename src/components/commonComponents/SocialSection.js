@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import DelayedLink from "../../common/DelayedLink";
 import {
-  blogData,
   socialData,
   instafeeds,
 } from "../../common/constats/constats";

@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import getFullVideoURL from "../common/common_functions/videoURL";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchContactUs } from "../redux/reducers/contatusData";
+import ContactDetails from "../components/commonComponents/ContactDetails";
 
 const ContactUs = () => {
   const dispatch = useDispatch();
@@ -71,9 +72,15 @@ const ContactUs = () => {
         data-aos="d:loop, trigger:.contact-intro"
       >
         <div className="container-fluid">
-          {/* contact form here.. */}
-          <ContactForm />
-          {/* contact form here.. */}
+          <div className="row contact-info">
+            {/* contact form start.. */}
+            <ContactForm />
+            {/* contact form end.. */}
+
+            {/* contactDetails here */}
+            <ContactDetails />
+          </div>
+
           <div className="row mt-135 no-mobile">
             <div className="col-lg-6">
               <p className="fs--14 font-2 white-1">{copyrightText}</p>
