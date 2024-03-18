@@ -19179,7 +19179,15 @@ body.page-leave-active[data-load="first-done"] .overlay {
 .hidden{
   display: none;
 }
-.menu-search .wrapper-search .container-results .result-all-studios .list-result-all-studios .grid-item .link-studios:not(.active) {
-    background-color: white;
-    color: #0f41fa;
+.menu-search .wrapper-search .container-results .result-all-studios .list-result-all-studios .grid-item .link-studios:not(.active){
+  background-color: white;
+  color: #0f41fa;
+}
+
+.menu-search .wrapper-search .container-results .result-all-studios .list-result-all-studios .grid-item .link-studios:not(.active):before {
+  color: #0f41fa;
+}
+  
+.result-our-markets .market-link.project-link.active .container-text {
+  color: #0f41fa;
 }
