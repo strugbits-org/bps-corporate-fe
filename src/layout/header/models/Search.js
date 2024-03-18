@@ -2,50 +2,32 @@ import React, { useEffect, useMemo, useState } from "react";
 import { postes } from "../../../common/constats/blogData";
 import DelayedLink from "../../../common/DelayedLink";
 import { productSlider } from "../../../common/constats/blogData";
-import { fetchPortfolio } from "../../../redux/reducers/portfolioData";
 import { fetchStudioSection } from "../../../redux/reducers/homeData";
 import { useDispatch, useSelector } from "react-redux";
 import { getMarketCollection } from "../../../redux/reducers/marketData";
-import getFullImageURL from "../../../common/common_functions/imageURL";
+import getFullImageURL, { getFullImagePost } from "../../../common/common_functions/imageURL";
+import { listBlogs, listPortfolios } from "../../../utilis/queryCollections";
+import formatDate from "../../../common/common_functions/dateFormat";
 
 const Search = () => {
   const dispatch = useDispatch();
-  const portfolioCollection = useSelector((state) => state.portfolio.portfolioData);
-  const studioData = useSelector((state) => state.home.studioData);
-  const marketData = useSelector((state) => state.market.marketModel);
+  const studios = useSelector((state) => state.home.studioData);
+  const markets = useSelector((state) => state.market.marketModel);
+
+  const [searchTerm, setSearchTerm] = useState("");
+  const [blogCollection, setBlogCollection] = useState([]);
+  const [portfolioCollection, setPortfolioCollection] = useState([]);
+  const [selectedStudio, setSelectedStudio] = useState([]);
+  const [selectedMarkets, setSelectedMarkets] = useState([]);
+  const [productSliderData, setProductSliderData] = useState([]);
 
   useEffect(() => {
-    const options = { page: 1, pageSize: 10, triggerAnimations: false };
-    dispatch(fetchPortfolio(options));
     dispatch(fetchStudioSection(false));
     dispatch(getMarketCollection());
   }, [dispatch]);
-  
-  const [searchTerm, setSearchTerm] = useState("");
-  const [portfolioData, setPortfolioData] = useState([]);
-  const [blogData, setBlogData] = useState([]);
-  const [productSliderData, setProductSliderData] = useState([]);
-  const handleInputChange = (e) => {
-    setSearchTerm(e.target.value.trim().toLowerCase());
-  };
 
-  const filteredPortfolioData = useMemo(() => {
-    // return portfolioCollection.filter(
-    //   (item) =>
-    //  ( item.title && item.title.toLowerCase().includes(searchTerm)) ||
-    //   (item.description && item.description.toLowerCase().includes(searchTerm)) ||
-    //   (item.studioTags && (item.studioTags + "").toLowerCase().includes(searchTerm)) ||
-    //   (item.marketCategory && item.marketCategory.toLowerCase().includes(searchTerm))
-    // );
-    return portfolioCollection;
-  }, [searchTerm, portfolioCollection]);
 
-  const filteredBlogData = useMemo(() => {
-    return postes.filter(
-      (item) =>
-        item.category && item.category.toLowerCase().includes(searchTerm)
-    );
-  }, [searchTerm]);
+
 
   const filteredProductData = useMemo(() => {
     return productSlider.filter(
@@ -54,13 +36,59 @@ const Search = () => {
     );
   }, [searchTerm]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setPortfolioData(filteredPortfolioData);
-    setBlogData(filteredBlogData);
-    setProductSliderData(filteredProductData);
+
+  const handleStudioFilter = (tag) => {
+    if (selectedStudio.includes(tag)) {
+      setSelectedStudio(
+        selectedStudio.filter((el) => el !== tag)
+      );
+    } else {
+      setSelectedStudio([...selectedStudio, tag]);
+    }
+  };
+  const handleMarketFilter = (category) => {
+    if (selectedMarkets.includes(category)) {
+      setSelectedMarkets(
+        selectedMarkets.filter((el) => el !== category)
+      );
+    } else {
+      setSelectedMarkets([...selectedMarkets, category]);
+    }
+  };
+  const handleInputChange = (e) => {
+    setSearchTerm(e.target.value.trim().toLowerCase());
   };
 
+  const handleSubmit = async (e) => {
+    try {
+      setProductSliderData(filteredProductData);
+
+      const portfolio = await listPortfolios({ pageSize: 10, searchTerm: searchTerm });
+      setPortfolioCollection(portfolio.items.map((item) => item.data));
+
+      const blog = await listBlogs({ pageSize: 10, searchTerm: searchTerm });
+      setBlogCollection(blog.items.map((item) => item.data));
+
+    } catch (error) {
+      console.log("error", error);
+    }
+    e.preventDefault();
+  };
+
+  // useEffect(() => {
+  //   const filteredProjects = data.filter(item => {
+  //     const studiosLabels = item.studios.map((item) => item.cardName)
+  //     const marketLabels = item.markets.map((item) => item.cardname)
+  //     return (
+  //       (selectedMarkets.length === 0 || selectedMarkets.some(r => marketLabels.includes(r))) &&
+  //       (selectedStudio.length === 0 || selectedStudio.some(r => studiosLabels.includes(r)))
+  //     );
+  //   });
+  //   setFilteredPortfolioCollection(filteredProjects);
+  //   setTimeout(() => {
+  //     document.querySelector(".updateWatchedTrigger").click();
+  //   }, 400);
+  // }, [selectedStudio, selectedMarkets, data]);
   return (
     <div className="container-fluid">
       <div className="row">
@@ -115,14 +143,18 @@ const Search = () => {
                     className="list-result-all-studios grid-lg-16 grid-tablet-33 grid-phone-50"
                     data-aos
                   >
-                    {studioData.map((item, index) => {
+                    {studios?.map((item, index) => {
                       return (
                         <li key={index} className="grid-item">
-                          <DelayedLink to={item.data.slug} className="link-studios">
+                          <div onClick={() => { handleStudioFilter(item.data.cardName) }}
+                            className={`link-studios ${selectedStudio.includes(item.data.cardName)
+                              ? "active"
+                              : ""
+                              }`}>
                             <h3 className="title-all-studios">
                               <span>{item.data.cardName}</span>
                             </h3>
-                          </DelayedLink>
+                          </div>
                         </li>
                       );
                     })}
@@ -130,7 +162,7 @@ const Search = () => {
                 </div>
 
                 <div className="column-results">
-                  <div className="result-rental">
+                  <div className={`result-rental ${productSliderData.length === 0 ? "hidden": ""}`}>
                     <div className="container-title-results">
                       <h2 className="title-results split-chars" data-aos>
                         Rental <span>{`"${searchTerm}"`}</span>
@@ -210,7 +242,8 @@ const Search = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="result-portfolio mt-lg-60 mt-mobile-40">
+
+                  <div className={`result-portfolio mt-lg-60 mt-mobile-40 ${portfolioCollection.length === 0 ? "hidden": ""}`}>
                     <div className="container-title-results">
                       <h2 className="title-results split-chars" data-aos>
                         Portfolio <span>{`"${searchTerm}"`}</span>
@@ -232,7 +265,7 @@ const Search = () => {
                           className="swiper-wrapper list-result-portfolio list-slider-phone grid-md-20"
                           data-aos
                         >
-                          {portfolioData.map((data) => {
+                          {portfolioCollection?.map((data) => {
                             return (
                               <div
                                 key={data.id}
@@ -248,7 +281,7 @@ const Search = () => {
                                   >
                                     <div className="wrapper-img">
                                       <img
-                                        src={getFullImageURL(data.portfolioRef.coverImage.imageInfo)}
+                                        src={getFullImagePost(data.portfolioRef.coverImage.imageInfo)}
                                         data-preload
                                         className="media"
                                         alt=""
@@ -270,6 +303,7 @@ const Search = () => {
                   </div>
                 </div>
 
+
                 <div className="result-our-markets">
                   <div className="container-title-results">
                     <h2 className="title-results split-chars" data-aos>
@@ -280,16 +314,19 @@ const Search = () => {
                     className="list-result-our-markets list-projects font-35 grid-md-50"
                     data-aos
                   >
-                    {marketData.map((item, index) => {
+                    {markets?.map((item, index) => {
                       return (
                         <li key={index} className="grid-item">
-                          <DelayedLink
-                            to={item.slug}
-                            className="market-link project-link"
-                            attributes={{
-                              "data-cursor-style": "view",
-                              "data-menu-close": "",
-                            }}
+                          <div
+                            // to={item.slug}
+                            // className="market-link project-link"
+                            onClick={() => { handleMarketFilter(item.cardname) }}
+                            className={`market-link project-link ${selectedMarkets.includes(item.cardname)
+                              ? "active"
+                              : ""
+                              }`}
+                            data-cursor-style="view"
+                            data-menu-close
                           >
                             <div
                               className="container-img bg-blue"
@@ -307,14 +344,14 @@ const Search = () => {
                                 {item.cardname}
                               </h3>
                             </div>
-                          </DelayedLink>
+                          </div>
                         </li>
                       );
                     })}
                   </ul>
                 </div>
 
-                <div className="result-blog">
+                <div className={`result-blog ${blogCollection.length === 0 ? "hidden": ""}`}>
                   <div className="container-title-results">
                     <h2 className="title-results split-chars" data-aos>
                       Blog <span>{`"${searchTerm}"`}</span>
@@ -337,14 +374,14 @@ const Search = () => {
                         className="swiper-wrapper list-result-blog list-slider-mobile list-blog grid-lg-20"
                         data-aos
                       >
-                        {blogData.map((data) => {
+                        {blogCollection?.map((blog) => {
                           return (
                             <div
-                              key={data.id}
+                              key={blog.blogId}
                               className="swiper-slide grid-item"
                             >
                               <DelayedLink
-                                to="/blog-post"
+                                to={`/blog-post/${blog.slug}`}
                                 className="link-blog"
                               >
                                 <div
@@ -352,27 +389,29 @@ const Search = () => {
                                   data-cursor-style="view"
                                 >
                                   <div className="wrapper-img">
-                                    <img
-                                      src={data.img}
-                                      data-preload
-                                      className="media"
-                                      alt=""
-                                    />
+                                    {blog.blogRef.coverImage &&
+                                      <img
+                                        src={getFullImageURL(blog.blogRef.coverImage) + "/v1/fit/w_1000,h_1000,al_c,q_75,usm_0.66_1.00_0.01,enc_auto/compress.webp"}
+                                        data-preload
+                                        className="media"
+                                        alt=""
+                                      />}
+
                                   </div>
                                 </div>
                                 <div className="container-text">
                                   <div className="container-author-post-info">
                                     <div className="author">
                                       <span className="author-name">
-                                        {data.userName}
+                                        {blog.author.nickname}
                                       </span>
                                     </div>
                                     <div className="date">
-                                      <span>{data.date}</span>
+                                      <span>{formatDate(blog.blogRef.lastPublishedDate.$date)}</span>
                                     </div>
                                   </div>
-                                  <h2 className="title-blog">{data.heading}</h2>
-                                  <p className="text-blog">{data.p}</p>
+                                  <h2 className="title-blog">{blog.blogRef.title}</h2>
+                                  <p className="text-blog">{blog.blogRef.excerpt}</p>
                                 </div>
                               </DelayedLink>
                             </div>
