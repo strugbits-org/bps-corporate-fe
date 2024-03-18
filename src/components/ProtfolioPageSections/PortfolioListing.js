@@ -218,7 +218,7 @@ const PortfolioListing = ({ data, totalCount, seeMore }) => {
               {filteredPortfolioCollection.length === 0 && <h6 style={{ width: "100%" }} className="fs--40 text-center split-words" data-aos="d:loop">No Data found</h6>}
             </ul>
           </div>
-          {filteredPortfolioCollection.length !== totalCount && (
+          {filteredPortfolioCollection.length > 0 && filteredPortfolioCollection.length !== totalCount && (
             <div className="col-lg-2 offset-lg-5 flex-center mt-lg-60 mt-mobile-40" data-aos="fadeIn .8s ease-in-out .2s, d:loop">
               <button onClick={seeMore} className="btn-border-blue" data-cursor-style="off">
                 <span>See more</span>
