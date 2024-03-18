@@ -1,15 +1,20 @@
 import React, { useState } from "react";
 import * as Yup from "yup";
 import { newsletter } from "../common/constats/constats";
+import { postNewsletter } from "../redux/reducers/contactus";
+import { useDispatch } from "react-redux";
 const Newsletter = () => {
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState({
-    email: "",
+    email_ac30: "",
   });
 
   const [errors, setErrors] = useState({});
 
   const validationSchema = Yup.object().shape({
-    email: Yup.string().email("Invalid email address").required("Required"),
+    email_ac30: Yup.string()
+      .email("Invalid email address")
+      .required("Required"),
   });
 
   const handleChange = (e) => {
@@ -24,6 +29,7 @@ const Newsletter = () => {
     try {
       await validationSchema.validate(formData, { abortEarly: false });
       // If validation passes, handle form submission here
+      dispatch(postNewsletter())
     } catch (error) {
       const newErrors = {};
       error.inner.forEach((err) => {
@@ -45,11 +51,13 @@ const Newsletter = () => {
         <form className="form-newsletter" onSubmit={handleSubmit}>
           <input type="hidden" name="assunto" value="[newsletter]" />
           <div className="container-input">
-            {formData === "" && <label htmlFor="newsletter-email">Enter your email</label>}
-            
+            {formData === "" && (
+              <label htmlFor="newsletter-email">Enter your email</label>
+            )}
+
             <input
-              id="newsletter-email"
-              name="email"
+              id="email_ac30"
+              name="email_ac30"
               type="email"
               onChange={handleChange}
               value={formData.email}

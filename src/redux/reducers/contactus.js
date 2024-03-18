@@ -20,8 +20,25 @@ export const postFormData = createAsyncThunk(
        submissions: formData
      }
       const response = await wixClientForm.submissions.createSubmission(submission);
+    
       return response;
     } catch (error) {
+      throw new Error(error.message);
+    }
+  }
+);
+
+export const postNewsletter = createAsyncThunk(
+  async (formData) => {
+    try {
+      let submission = {
+        formId: "cf9ecfbe-c453-4787-96d7-cea56975a924",
+       status: "CONFIRMED",
+       submissions: formData
+     }
+      const response = await wixClientForm.submissions.createSubmission(submission);
+      
+    }catch (error) {
       throw new Error(error.message);
     }
   }
