@@ -19183,11 +19183,27 @@ body.page-leave-active[data-load="first-done"] .overlay {
   background-color: white;
   color: #0f41fa;
 }
-
 .menu-search .wrapper-search .container-results .result-all-studios .list-result-all-studios .grid-item .link-studios:not(.active):before {
   color: #0f41fa;
 }
+
+.menu-search .wrapper-search .container-results .result-all-studios .list-result-all-studios .grid-item .link-studios.disabled{
+  background-color: gray;
+  color: white;
+  user-select: none;
+  pointer-events: none;
+}
+
+.menu-search .wrapper-search .container-results .result-all-studios .list-result-all-studios .grid-item .link-studios.disabled:before {
+  color: white;
+}
+
   
 .result-our-markets .market-link.project-link.active .container-text {
   color: #0f41fa;
+}
+.result-our-markets .market-link.project-link.disabled .container-text {
+  color: gray;
+  user-select: none;
+  pointer-events: none;
 }
