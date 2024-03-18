@@ -21,6 +21,19 @@ const Search = () => {
   const [portfolioCollection, setPortfolioCollection] = useState([]);
   const [productSliderData, setProductSliderData] = useState([]);
   
+  const [resultStudios, setResultStudios] = useState([]);
+  const [resultMarkets, setResultMarkets] = useState([]);
+  
+  useEffect(() => {
+    const portfolioStudios = portfolioCollection.flatMap(item => item.studios.map(studio => studio.cardName));
+    const blogStudios = blogCollection.flatMap(item => item.studios.map(studio => studio.cardName));
+    const portfolioMarkets = portfolioCollection.flatMap(item => item.markets.map(market => market.cardname));
+    const blogMarkets = blogCollection.flatMap(item => item.markets.map(market => market.cardname));
+
+    setResultStudios([...new Set([...portfolioStudios, ...blogStudios])]);
+    setResultMarkets([...new Set([...portfolioMarkets, ...blogMarkets])]);
+  }, [portfolioCollection, blogCollection]);
+
   useEffect(() => {
     dispatch(fetchStudioSection(false));
     dispatch(getMarketCollection());
@@ -38,7 +51,7 @@ const Search = () => {
       const studiosLabels = item.studios.map((item) => item.cardName)
       const marketLabels = item.markets.map((item) => item.cardname)
       return (
-        (selectedMarkets.length === 0 || selectedMarkets.some(r => marketLabels.includes(r))) &&
+        (selectedMarkets.length === 0 || selectedMarkets.some(r => marketLabels.includes(r))) ||
         (selectedStudio.length === 0 || selectedStudio.some(r => studiosLabels.includes(r)))
       );
     });
@@ -154,10 +167,7 @@ const Search = () => {
                       return (
                         <li key={index} className="grid-item">
                           <div onClick={() => { handleStudioFilter(item.data.cardName) }}
-                            className={`link-studios ${selectedStudio.includes(item.data.cardName)
-                              ? "active"
-                              : ""
-                              }`}>
+                            className={`link-studios ${selectedStudio.includes(item.data.cardName) ? "active" : "" } ${resultStudios.includes(item.data.cardName) ? "" : "disabled" }`}>
                             <h3 className="title-all-studios">
                               <span>{item.data.cardName}</span>
                             </h3>
@@ -176,7 +186,8 @@ const Search = () => {
                         Rental <span>{`"${searchTerm}"`}</span>
                       </h2>
                       <DelayedLink
-                        to="/"
+                        to="https://www.rentals.blueprintstudios.com/"
+                        target="blank"
                         className="btn-border-blue"
                         attributes={{
                           "data-aos": "",
@@ -247,7 +258,7 @@ const Search = () => {
                               </div>
                             );
                           })}
-                          {searchTerm !== "" && productSliderData.length === 0 && <h6 style={{ width: "100%" }} className="ml-4 fs--20 split-words" data-aos="d:loop">No matches for "{ searchTerm }" found</h6>}
+                          {productSliderData.length === 0 && <h6 style={{ width: "100%" }} className="ml-4 fs--20">No matches found for "{ searchTerm }"</h6>}
                         </div>
                       </div>
                     </div>
@@ -308,7 +319,7 @@ const Search = () => {
                               </div>
                             );
                           })}
-                        {searchTerm !== "" && filteredPortfolioCollection.length === 0 && <h6 style={{ width: "100%" }} className="ml-4 fs--20 split-words" data-aos="d:loop">No matches for "{ searchTerm }" found</h6>}
+                        {filteredPortfolioCollection.length === 0 && <h6 style={{ width: "100%" }} className="ml-4 fs--20">No matches found for "{ searchTerm }"</h6>}
                         </div>
                       </div>
                     </div>
@@ -332,10 +343,7 @@ const Search = () => {
                         <li key={index} className="grid-item">
                           <div
                             onClick={() => { handleMarketFilter(item.cardname) }}
-                            className={`market-link project-link ${selectedMarkets.includes(item.cardname)
-                              ? "active"
-                              : ""
-                              }`}
+                            className={`market-link project-link ${selectedMarkets.includes(item.cardname) ? "active" : "" } ${resultMarkets.includes(item.cardname) ? "" : "disabled" }`}
                             data-cursor-style="default"
                             data-menu-close
                           >
@@ -368,7 +376,7 @@ const Search = () => {
                       Blog <span>{`"${searchTerm}"`}</span>
                     </h2>
                     <DelayedLink
-                      to="/"
+                      to="/blog"
                       className="btn-border-blue"
                       attributes={{
                         "data-aos": "",
@@ -428,7 +436,7 @@ const Search = () => {
                             </div>
                           );
                         })}
-                        {searchTerm !== "" && filteredBlogCollection.length === 0 && <h6 style={{ width: "100%" }} className="ml-4 fs--20 split-words" data-aos="d:loop">No matches for "{ searchTerm }" found</h6>}
+                        {filteredBlogCollection.length === 0 && <h6 style={{ width: "100%" }} className="ml-4 fs--20">No matches found for "{ searchTerm }"</h6>}
                       </div>
                     </div>
                   </div>

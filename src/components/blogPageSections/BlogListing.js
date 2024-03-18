@@ -53,7 +53,7 @@ const BlogListing = ({ data, totalCount, seeAllBlogs }) => {
             const studiosLabels = item.studios.map((item) => item.cardName)
             const marketLabels = item.markets.map((item) => item.cardname)
             return (
-                (selectedMarkets.length === 0 || selectedMarkets.some(r => marketLabels.includes(r))) &&
+                (selectedMarkets.length === 0 || selectedMarkets.some(r => marketLabels.includes(r))) ||
                 (selectedStudio.length === 0 || selectedStudio.some(r => studiosLabels.includes(r)))
             );
         });
