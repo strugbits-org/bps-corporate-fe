@@ -11,7 +11,6 @@ const ContactForm = () => {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.contact.loading);
   const error = useSelector((state) => state.contact.error);
-
   const {
     register,
     handleSubmit,
@@ -22,7 +21,7 @@ const ContactForm = () => {
 
   const onSubmit = (data) => {
     dispatch(postFormData(data));
-    console.log(data,"data here")
+    console.log(data,"contact form data here")
   };
 
   return (
@@ -41,12 +40,12 @@ const ContactForm = () => {
             <div className="container-input col-md-6">
               <label htmlFor="contact-first-name">First name</label>
               <input
-                id="contact-first-name"
-                name="firstName"
+                id="first_name_584c"
+                name="first_name_584c"
                 type="text"
                 required
                 disabled={loading}
-                {...register("firstName")}
+                {...register("first_name_584c")}
               />
               {formErrors.firstName && (
                 <span className="error">{formErrors.firstName.message}</span>
@@ -55,11 +54,11 @@ const ContactForm = () => {
             <div className="container-input col-md-6">
               <label htmlFor="contact-last-name">Last name</label>
               <input
-                id="contact-last-name"
-                name="lastName"
+                id="last_name_51ee"
+                name="last_name_51ee"
                 type="text"
                 required
-                {...register("lastName")}
+                {...register("last_name_51ee")}
                 disabled={loading}
               />
               {formErrors.lastName && (
@@ -69,11 +68,11 @@ const ContactForm = () => {
             <div className="container-input col-12">
               <label htmlFor="contact-email">E-mail</label>
               <input
-                id="contact-email"
-                name="email"
+                id="email_bd82"
+                name="email_bd82"
                 type="email"
                 required
-                {...register("email")}
+                {...register("email_bd82")}
                 disabled={loading}
               />
               {formErrors.email && (
@@ -83,9 +82,9 @@ const ContactForm = () => {
             <div className="container-textarea col-12">
               <label htmlFor="contact-message">Message</label>
               <textarea
-                id="contact-message"
-                name="message"
-                {...register("message")}
+                id="long_answer_afda"
+                name="long_answer_afda"
+                {...register("long_answer_afda")}
                 disabled={loading}
               ></textarea>
               {formErrors.message && (

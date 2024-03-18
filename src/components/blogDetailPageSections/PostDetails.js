@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 const PostDetails = ({ data }) => {
   const dispatch = useDispatch();
-  
+
   const tags = useSelector((state) => state.blog.blogTags);
   const [singleData, setSingleData] = useState([]);
 
@@ -70,19 +70,18 @@ const PostDetails = ({ data }) => {
             item.nodes.forEach((node) => {
               if (node.type === "TEXT") {
                 if (
-                    node?.textData?.decorations.findIndex(
-                        (item) => item.type === "LINK"
-                    ) !== -1
+                  node?.textData?.decorations.findIndex(
+                    (item) => item.type === "LINK"
+                  ) !== -1
                 ) {
-                    let link = node.textData.decorations.find(
-                        (item) => item.type === "LINK"
-                    ).linkData.link.url;
-                    finalText += ` <a href="${link}">${node.textData.text}</a>`;
+                  let link = node.textData.decorations.find(
+                    (item) => item.type === "LINK"
+                  ).linkData.link.url;
+                  finalText += ` <a href="${link}">${node.textData.text}</a>`;
                 } else {
-                    finalText += node.textData.text;
+                  finalText += node.textData.text;
                 }
-            }
-            
+              }
             });
 
             blogData.push({
@@ -126,10 +125,10 @@ const PostDetails = ({ data }) => {
             type: "video",
             video:
               item.videoData.video.src.url ||
-              `https://video.wixstatic.com/${item.videoData.video.src._id}`,
+              `https://video.wixstatic.com/${item.videoData.video.src.id}`,
             thumbnail:
               item.videoData.thumbnail.src.url ||
-              `https://static.wixstatic.com/${item.videoData.thumbnail.src._id}`,
+              `https://static.wixstatic.com/${item.videoData.thumbnail.src.id}`,
             sq: index + 1,
           });
         } else if (item.type === "line-break") {
@@ -185,6 +184,7 @@ const PostDetails = ({ data }) => {
           blogData.push({ type: "image", image: imageURL });
         }
       });
+
       setSingleData(blogData);
     };
 
@@ -193,7 +193,7 @@ const PostDetails = ({ data }) => {
 
   useEffect(() => {
     dispatch(getblogTags(data?.blogRef?.tags));
-  }, [dispatch,data?.blogRef?.tags]);
+  }, [dispatch, data?.blogRef?.tags]);
 
   return (
     <section className="blog-post-intro pt-lg-150 pt-mobile-125">
@@ -207,12 +207,14 @@ const PostDetails = ({ data }) => {
               >
                 <div className="author">
                   <div className="container-img">
-                    <img
-                      src={profileImage}
-                      data-preload
-                      className="media"
-                      alt=""
-                    />
+                    {profileImage && (
+                      <img
+                        src={profileImage}
+                        data-preload
+                        className="media"
+                        alt=""
+                      />
+                    )}
                   </div>
                   <h2 className="author-name">{authorName}</h2>
                 </div>
@@ -329,7 +331,7 @@ const PostDetails = ({ data }) => {
                 <ul className="list-post-tags" data-aos="d:loop">
                   {tags?.map((items, index) => {
                     return (
-                      <li key={index}> 
+                      <li key={index}>
                         <DelayedLink to="/" className="btn-tag">
                           <span>{items.label}</span>
                         </DelayedLink>
@@ -341,7 +343,7 @@ const PostDetails = ({ data }) => {
             </div>
 
             {/* Product Cart Slider start */}
-            <div className="container-slider-produtcts mt-lg-padding-fluid mt-tablet-100 mt-phone-105">
+            <div className={`container-slider-produtcts mt-lg-padding-fluid mt-tablet-100 mt-phone-105 ${data?.storeProducts?.length === 0 ? "hidden": ""}`}>
               <h2 className="slider-title">
                 Products featured in this blog entry:
               </h2>

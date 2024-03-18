@@ -22,17 +22,7 @@ export const getblogPostData = createAsyncThunk(
     try {
       let options = {
         dataCollectionId: "BlogProductData",
-        includeReferencedItems: ["blogRef", "locationFilteredVariant", "storeProducts", "studios", "markets","author"],
-        includeReferencedItems: [
-          "blogRef",
-          "locationFilteredVariant",
-          "storeProducts",
-          "studios",
-          "markets",
-          "gallery",
-          "media",
-          "author"
-        ],
+            includeReferencedItems: ["blogRef", "locationFilteredVariant", "storeProducts", "studios", "markets", "author"],
       };
 
       const { items: fetchedItems } = await wixClient.items
@@ -45,7 +35,6 @@ export const getblogPostData = createAsyncThunk(
         }, 1000);
       }
       const data = fetchedItems.map((item) => item.data);
-      console.log(data);
       return data;
     } catch (error) {
       throw new Error(error.message);
