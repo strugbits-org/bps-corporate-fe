@@ -15217,7 +15217,7 @@ modal-item .shopify-buy-frame iframe {
     --pt: 14.3rem;
   }
 }
-#pg-portfolio .portfolio-intro .container-list-tags {
+.container-list-tags {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -15228,25 +15228,25 @@ modal-item .shopify-buy-frame iframe {
   z-index: 10;
 }
 @media only screen and (min-width: 1025.1px) {
-  #pg-portfolio .portfolio-intro .container-list-tags {
+  .container-list-tags {
     padding-left: 4.6rem;
     padding-right: 4.6rem;
   }
 }
 @media only screen and (min-width: 767.98px) and (max-width: 1025px) {
-  #pg-portfolio .portfolio-intro .container-list-tags {
+  .container-list-tags {
     padding-left: 12.6rem;
     padding-right: 12.6rem;
   }
 }
 @media only screen and (max-width: 767.98px) {
-  #pg-portfolio .portfolio-intro .container-list-tags {
+  .container-list-tags {
     padding-left: var(--px-fluid);
     padding-right: var(--px-fluid);
   }
 }
 @media only screen and (min-width: 1025.1px) {
-  #pg-portfolio .portfolio-intro .container-list-tags .list-portfolio-tags {
+  .container-list-tags .list-portfolio-tags {
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -15257,7 +15257,7 @@ modal-item .shopify-buy-frame iframe {
   }
 }
 @media only screen and (min-width: 1025.1px) {
-  #pg-portfolio .portfolio-intro .container-list-tags .list-market-tags {
+  .container-list-tags .list-market-tags {
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -15267,11 +15267,11 @@ modal-item .shopify-buy-frame iframe {
     padding-left: 6.4rem;
   }
 }
-#pg-portfolio .portfolio-intro .container-list-tags .portfolio-tags {
+.container-list-tags .portfolio-tags {
   position: relative;
 }
 @media only screen and (min-width: 1025.1px) {
-  #pg-portfolio .portfolio-intro .container-list-tags .portfolio-tags:before {
+  .container-list-tags .portfolio-tags:before {
     content: "";
     width: 1px;
     height: 7rem;
@@ -15284,18 +15284,18 @@ modal-item .shopify-buy-frame iframe {
     background: var(--blue-1);
   }
 }
-#pg-portfolio .portfolio-intro .container-list-tags .portfolio-tags,
-#pg-portfolio .portfolio-intro .container-list-tags .market-tags {
+.container-list-tags .portfolio-tags,
+.container-list-tags .market-tags {
   position: relative;
 }
 @media only screen and (max-width: 1025px) {
-  #pg-portfolio .portfolio-intro .container-list-tags .portfolio-tags,
-  #pg-portfolio .portfolio-intro .container-list-tags .market-tags {
+  .container-list-tags .portfolio-tags,
+  .container-list-tags .market-tags {
     max-width: calc(50% - var(--padding) * 1);
   }
 }
 @media only screen and (max-width: 1025px) {
-  #pg-portfolio .portfolio-intro .container-list-tags .portfolio-tags .list-dropdown {
+  .container-list-tags .portfolio-tags .list-dropdown {
     position: absolute;
     top: 100%;
     right: auto;
@@ -15304,7 +15304,7 @@ modal-item .shopify-buy-frame iframe {
   }
 }
 @media only screen and (max-width: 1025px) {
-  #pg-portfolio .portfolio-intro .container-list-tags .market-tags .list-dropdown {
+  .container-list-tags .market-tags .list-dropdown {
     position: absolute;
     top: 100%;
     right: 0;
@@ -15313,14 +15313,14 @@ modal-item .shopify-buy-frame iframe {
   }
 }
 @media only screen and (min-width: 1025.1px) {
-  #pg-portfolio .portfolio-intro .container-list-tags .list-portfolio-tags,
-  #pg-portfolio .portfolio-intro .container-list-tags .list-market-tags {
+  .container-list-tags .list-portfolio-tags,
+  .container-list-tags .list-market-tags {
     margin: -0.5rem -0.7rem;
   }
 }
 @media only screen and (min-width: 1025.1px) {
-  #pg-portfolio .portfolio-intro .container-list-tags .list-portfolio-tags li,
-  #pg-portfolio .portfolio-intro .container-list-tags .list-market-tags li {
+  .container-list-tags .list-portfolio-tags li,
+  .container-list-tags .list-market-tags li {
     margin: 0.5rem 0.7rem;
   }
 }
@@ -19175,3 +19175,11 @@ body.page-leave-active[data-load="first-done"] .overlay {
   opacity: 1;
   z-index: 97;
 } */
+
+.hidden{
+  display: none;
+}
+.menu-search .wrapper-search .container-results .result-all-studios .list-result-all-studios .grid-item .link-studios:not(.active) {
+    background-color: white;
+    color: #0f41fa;
+}

@@ -43,7 +43,7 @@ export const fetchMarketTopsections = createAsyncThunk(
 
 export const getMarketCollection = createAsyncThunk(
   "data/getMarketCollection",
-  async () => {
+  async (markLoaded = false) => {
     try {
       let options = {
         dataCollectionId: "MarketSection",
@@ -51,13 +51,15 @@ export const getMarketCollection = createAsyncThunk(
 
       const { items: fetchedItems } = await wixClient.items
         .queryDataItems(options)
-        .eq("title", "Markets")
         .find();
 
       const marketsArray = fetchedItems.map((item) => {
         item.data.image = getFullImageURL(item.data.image);
         return item.data;
       });
+      if (markLoaded) {
+        handleCollectionLoaded();
+      }
       return marketsArray;
     } catch (error) {
       throw new Error(error.message);

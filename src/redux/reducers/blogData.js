@@ -22,6 +22,7 @@ export const getblogPostData = createAsyncThunk(
     try {
       let options = {
         dataCollectionId: "BlogProductData",
+        includeReferencedItems: ["blogRef", "locationFilteredVariant", "storeProducts", "studios", "markets","author"],
         includeReferencedItems: [
           "blogRef",
           "locationFilteredVariant",

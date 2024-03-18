@@ -4,7 +4,7 @@ import PostDetails from "../../components/blogDetailPageSections/PostDetails";
 import SocialSection from "../../components/commonComponents/SocialSection";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useParams } from "react-router-dom/dist";
-import {fetchSingleBlog } from "../../redux/reducers/blogData";
+import { fetchSingleBlog } from "../../redux/reducers/blogData";
 
 const BlogPost = () => {
   const location = useLocation();

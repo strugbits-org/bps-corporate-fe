@@ -16054,12 +16054,14 @@ var require_app2 = __commonJS({
     
     document.querySelector(".updateWatchedTrigger").addEventListener("click", ()=>{
       initVideo();
+      dropdownTags();
       updateWatched();
     });
 
     document.querySelector(".triggerSplitWordAnimation").addEventListener("click", () => {
       splitChars();
       splitWords();
+      sliderContentMobile();
     } );
     
     // document.addEventListener("pjax:complete", whenContainerReady);
