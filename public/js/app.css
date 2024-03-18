@@ -19175,3 +19175,11 @@ body.page-leave-active[data-load="first-done"] .overlay {
   opacity: 1;
   z-index: 97;
 } */
+
+.hidden{
+  display: none;
+}
+.menu-search .wrapper-search .container-results .result-all-studios .list-result-all-studios .grid-item .link-studios:not(.active) {
+    background-color: white;
+    color: #0f41fa;
+}

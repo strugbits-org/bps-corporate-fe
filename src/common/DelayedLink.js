@@ -2,6 +2,9 @@ import React from 'react'
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const DelayedLink = ({ to, children, className,target, attributes}) => {
+  if (to === undefined) {
+    return;
+  }
   const navigate = useNavigate();
   const location = useLocation();
   const delayedRedirect = (e)=>{
