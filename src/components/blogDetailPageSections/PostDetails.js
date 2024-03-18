@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 const PostDetails = ({ data }) => {
   const dispatch = useDispatch();
+  
   const tags = useSelector((state) => state.blog.blogTags);
   const [singleData, setSingleData] = useState([]);
 
@@ -69,18 +70,19 @@ const PostDetails = ({ data }) => {
             item.nodes.forEach((node) => {
               if (node.type === "TEXT") {
                 if (
-                  node.textData.decorations.findIndex(
-                    (item) => item === "LINK"
-                  ) !== -1
+                    node?.textData?.decorations.findIndex(
+                        (item) => item.type === "LINK"
+                    ) !== -1
                 ) {
-                  let link = node.textData.decorations.find(
-                    (item) => item.type === "LINK"
-                  ).linkData.link.url;
-                  finalText += ` <a href="${link}">${node.textData.text}</a>`;
+                    let link = node.textData.decorations.find(
+                        (item) => item.type === "LINK"
+                    ).linkData.link.url;
+                    finalText += ` <a href="${link}">${node.textData.text}</a>`;
                 } else {
-                  finalText += node.textData.text;
+                    finalText += node.textData.text;
                 }
-              }
+            }
+            
             });
 
             blogData.push({
@@ -190,9 +192,9 @@ const PostDetails = ({ data }) => {
   }, [data]);
 
   useEffect(() => {
-    dispatch(getblogTags());
-  }, [dispatch]);
-  console.log(tags, "tags here");
+    dispatch(getblogTags(data?.blogRef?.tags));
+  }, [dispatch,data?.blogRef?.tags]);
+
   return (
     <section className="blog-post-intro pt-lg-150 pt-mobile-125">
       <div className="container-fluid">
@@ -325,7 +327,7 @@ const PostDetails = ({ data }) => {
                   Tags
                 </h3>
                 <ul className="list-post-tags" data-aos="d:loop">
-                  {tags.map((items, index) => {
+                  {tags?.map((items, index) => {
                     return (
                       <li key={index}> 
                         <DelayedLink to="/" className="btn-tag">

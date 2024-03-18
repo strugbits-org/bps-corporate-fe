@@ -27,7 +27,7 @@ const BlogPost = () => {
       {/*  Post details Section end */}
 
       {/* Recent Post Section start */}
-      <RecentPosts data={singleBlogData}/>
+      <RecentPosts/>
       {/* Recent Post Section end */}
       <SocialSection/>
     </>
