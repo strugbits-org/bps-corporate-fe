@@ -16061,6 +16061,7 @@ var require_app2 = __commonJS({
     document.querySelector(".triggerSplitWordAnimation").addEventListener("click", () => {
       splitChars();
       splitWords();
+      sliderContentMobile();
     } );
     
     // document.addEventListener("pjax:complete", whenContainerReady);
