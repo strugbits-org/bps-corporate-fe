@@ -7,6 +7,8 @@ import SocialVerticalBar from "./SocialVerticalBar";
 import ReactPlayer from "react-player";
 import { getblogTags } from "../../redux/reducers/blogData";
 import { useDispatch, useSelector } from "react-redux";
+import blogPostImageURL from "../../common/common_functions/blogPostImageURL";
+import TextTOClickableLink from "../../common/common_functions/textTOClickableLink";
 
 const PostDetails = ({ data }) => {
   const dispatch = useDispatch();
@@ -14,40 +16,10 @@ const PostDetails = ({ data }) => {
   const tags = useSelector((state) => state.blog.blogTags);
   const [singleData, setSingleData] = useState([]);
 
-  const getImageURL = (src) =>
-    `https://static.wixstatic.com/media/${src}/v1/fit/w_1000,h_1000,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/compress.webp`;
   const title = data?.blogRef?.title;
   const date = formatDate(data?.blogRef?.lastPublishedDate?.$date);
   const profileImage = getFullImageURL(data?.author?.profilePhoto);
   const authorName = data?.author?.nickname;
-
-  // Function to parse URLs, emails, and phone numbers from text
-  const extractLinks = (text) => {
-    const linkRegex =
-      /((?:https?:\/\/)?(?:www\.)?\S+\.\S+)|(?:\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b)|(?:\(\d{3}\)\s*\d{3}-\d{4})/gi;
-    return text.match(linkRegex) || [];
-  };
-
-  // Function to replace URLs, emails, and phone numbers with clickable links
-  const ClickableLink = (text) => {
-    const links = extractLinks(text);
-    if (!links.length) return text; // Return original text if no links found
-    return links.reduce((acc, link) => {
-      if (link.startsWith("http")) {
-        return acc.replace(link, `<a href="${link}">${link}</a>`);
-      } else if (link.includes("@")) {
-        return acc.replace(link, `<a href="mailto:${link}">${link}</a>`);
-      } else if (link.match(/\(\d{3}\)\s*\d{3}-\d{4}/)) {
-        return acc.replace(
-          link,
-          `<a href="tel:${link.replace(/[^\d]/g, "")}">${link}</a>`
-        );
-      } else if (link.startsWith("www")) {
-        return acc.replace(link, `<a href="http://${link}">${link}</a>`);
-      }
-      return acc;
-    }, text);
-  };
 
   useEffect(() => {
     const singlePost = async () => {
@@ -166,7 +138,7 @@ const PostDetails = ({ data }) => {
           const gallery = [];
           item?.galleryData?.items?.forEach((item) => {
             if (item.image?.media?.src) {
-              const image = getImageURL(item.image?.media?.src.url);
+              const image = blogPostImageURL(item.image?.media?.src.url);
               gallery.push({
                 type: "cover",
                 image: image,
@@ -260,7 +232,7 @@ const PostDetails = ({ data }) => {
                         <p
                           key={index}
                           dangerouslySetInnerHTML={{
-                            __html: ClickableLink(item.text),
+                            __html: TextTOClickableLink(item.text),
                           }}
                         />
                       );
@@ -343,7 +315,11 @@ const PostDetails = ({ data }) => {
             </div>
 
             {/* Product Cart Slider start */}
-            <div className={`container-slider-produtcts mt-lg-padding-fluid mt-tablet-100 mt-phone-105 ${data?.storeProducts?.length === 0 ? "hidden": ""}`}>
+            <div
+              className={`container-slider-produtcts mt-lg-padding-fluid mt-tablet-100 mt-phone-105 ${
+                data?.storeProducts?.length === 0 ? "hidden" : ""
+              }`}
+            >
               <h2 className="slider-title">
                 Products featured in this blog entry:
               </h2>

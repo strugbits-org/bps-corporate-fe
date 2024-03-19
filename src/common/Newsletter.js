@@ -4,12 +4,14 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { postNewsletter } from "../redux/reducers/contactus";
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 const Newsletter = () => {
   const dispatch = useDispatch();
-  
+
   const [isLabelHidden, setIsLabelHidden] = useState(false);
-  const {loading, success, error} = useSelector((state) => state.contact);
+  const { loading, success, error } = useSelector((state) => state.contact);
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [showError, setShowError] = useState(false);
 
   const handleInputFocus = () => {
     setIsLabelHidden(true);
@@ -28,15 +30,36 @@ const Newsletter = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors: formErrors },
   } = useForm({
     resolver: yupResolver(validationSchema),
   });
   const onSubmit = (data) => {
     dispatch(postNewsletter(data));
-    console.log(data,"here is newsletter data");
   };
+  useEffect(() => {
+    if (success) {
+      setShowSuccess(true);
 
+      const timeoutId = setTimeout(() => {
+        setShowSuccess(false);
+        reset();
+      }, 3000);
+
+      return () => clearTimeout(timeoutId);
+    }
+    if (error) {
+      setShowError(true);
+
+      const timeoutId = setTimeout(() => {
+        setShowError(false);
+        reset();
+      }, 3000);
+
+      return () => clearTimeout(timeoutId);
+    }
+  }, [success, error, reset]);
   return (
     <div className="container-newsletter" data-form-container>
       <div className="container-text">
@@ -48,7 +71,7 @@ const Newsletter = () => {
 
       <div className="container-newsletter mt-mobile-25">
         <form className="form-newsletter" onSubmit={handleSubmit(onSubmit)}>
-          {/* <input type="hidden" name="assunto" value="[newsletter]" /> */}
+          <input type="hidden" name="assunto" value="[newsletter]" />
           <div className="container-input">
             <label
               htmlFor="newsletter-email"
@@ -81,22 +104,12 @@ const Newsletter = () => {
           </div>
         </form>
 
-        
-
-        {success && (
-          <h3
-            className="feedback-newsletter white-1"
-          >
-            Success!
-          </h3>
+        {showSuccess && (
+          <h3 className="feedback-newsletter white-1">Success!</h3>
         )}
-        {error}
-        {error && (
-          <h3
-            className="feedback-newsletter white-1"
-          >
-            Error, Try again!
-          </h3>
+
+        {showError && (
+          <h3 className="feedback-newsletter white-1">Error, Try again!</h3>
         )}
       </div>
     </div>
