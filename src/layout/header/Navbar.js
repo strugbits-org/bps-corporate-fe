@@ -1,6 +1,6 @@
 import Services from "./models/Services";
 import Market from "./models/Market";
-import ContactForm from "./models/ContactForm";
+import ContactUs from "./models/ContactUs";
 import Search from "./models/Search";
 import DelayedLink from "../../common/DelayedLink";
 
@@ -198,7 +198,7 @@ const Navbar = () => {
               <modal-group name="modal-contact" data-cursor-style="default">
                 <modal-container>
                   <modal-item>
-                    <ContactForm />
+                    <ContactUs />
                   </modal-item>
                 </modal-container>
               </modal-group>

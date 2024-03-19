@@ -29,7 +29,7 @@ const BlogPost = () => {
       {/* Recent Post Section start */}
       <RecentPosts/>
       {/* Recent Post Section end */}
-      <SocialSection/>
+      <SocialSection />
     </>
   );
 };
