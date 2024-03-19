@@ -1,36 +1,11 @@
 import React, { useEffect, useState } from "react";
 import DelayedLink from "../../common/DelayedLink";
-// import { useDispatch, useSelector } from "react-redux";
-// import { fetchStudioSection } from "../../redux/reducers/homeData";
-// import { getMarketCollection } from "../../redux/reducers/marketData";
 import { getFullImagePost } from "../../common/common_functions/imageURL";
 
 const PortfolioListing = ({ data, seeMore, applyFilters }) => {
 
-  // console.log("data",data);
-
-  // const dispatch = useDispatch();
-  // const studios = useSelector((state) => state.home.studioData);
-  // const markets = useSelector((state) => state.market.marketModel);
-
-  // const loading = useSelector((state) => state.market.marketModelLoading);
-  // const error = useSelector((state) => state.market.error);
-
   const [selectedStudios, setSelectedStudios] = useState([]);
   const [selectedMarkets, setSelectedMarkets] = useState([]);
-  // const [toggleStudiosFilter, setToggleStudiosFilter] = useState(true);
-  // const [toggleMarketsFilter, setToggleMarketsFilter] = useState(true);
-  // const [filteredPortfolioCollection, setFilteredPortfolioCollection] = useState(data);
-
-  // useEffect(() => {
-  //   dispatch(fetchStudioSection());
-  //   dispatch(getMarketCollection());
-  // }, [dispatch]);
-
-
-  // useEffect(() => {
-  //   setFilteredPortfolioCollection(data);
-  // }, [data]);
 
   const handleStudioFilter = (tag) => {
     if (selectedStudios.includes(tag)) {
@@ -52,51 +27,6 @@ const PortfolioListing = ({ data, seeMore, applyFilters }) => {
       applyFilters({selectedStudios, selectedMarkets});
     }
   }, [selectedStudios, selectedMarkets]);
-
-  // const handleStudioFilter = (tag) => {
-  //   setToggleStudiosFilter(true);
-  //   if (selectedStudios.includes(tag)) {
-  //     setSelectedStudios(selectedStudios.filter((el) => el !== tag));
-  //   } else {
-  //     setSelectedStudios([...selectedStudios, tag]);
-  //   }
-  //   if (selectedMarkets.length === 0) {
-  //     setToggleMarketsFilter(false);
-  //   }
-  // };
-  // const handleMarketFilter = (category) => {
-  //   setToggleMarketsFilter(true);
-  //   if (selectedMarkets.includes(category)) {
-  //     setSelectedMarkets(selectedMarkets.filter((el) => el !== category));
-  //   } else {
-  //     setSelectedMarkets([...selectedMarkets, category]);
-  //   }
-  //   if (selectedStudios.length === 0) {
-  //     setToggleStudiosFilter(false);
-  //   }
-  // };
-
-  
-  // useEffect(() => {
-  //   if (selectedMarkets.length === 0) {
-  //     setToggleMarketsFilter(false);
-  //   } else if(selectedStudios.length === 0){
-  //     setToggleStudiosFilter(false);
-  //   }
-    
-  //   const filteredProjects = data.filter(item => {
-  //     const studiosLabels = item.studios.map((item) => item.cardName)
-  //     const marketLabels = item.markets.map((item) => item.cardname)
-  //     return (
-  //       (toggleMarketsFilter === true && selectedMarkets.length === 0 || selectedMarkets.some(r => marketLabels.includes(r)))
-  //       || (toggleStudiosFilter === true && selectedStudios.length === 0 || selectedStudios.some(r => studiosLabels.includes(r)))
-  //     );
-  //   });
-  //   setFilteredPortfolioCollection(filteredProjects);
-  //   setTimeout(() => {
-  //     document.querySelector(".updateWatchedTrigger").click();
-  //   }, 400);
-  // }, [selectedStudios, selectedMarkets, data]);
   
   return (
     <section className="portfolio-intro pt-lg-145 pt-mobile-105">

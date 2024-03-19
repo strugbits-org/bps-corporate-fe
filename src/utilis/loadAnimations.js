@@ -4,7 +4,7 @@ export const handleCollectionLoaded = () => {
     collectionLoaded++;
     const page = window.location.pathname.trim() === "/" ? "home" : window.location.pathname.substring(1);
     const cleanPage = page.split("/")[0].trim();
-
+    
     const collectionsCount = {
         'home': 8,
         'about': 6,
