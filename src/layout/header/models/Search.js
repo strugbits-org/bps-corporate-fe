@@ -258,7 +258,7 @@ const Search = () => {
                               </div>
                             );
                           })}
-                          {productSliderData.length === 0 && <h6 style={{ width: "100%" }} className="ml-4 fs--20">No matches found for "{ searchTerm }"</h6>}
+                          {productSliderData.length === 0 && <h6 style={{ width: "100%" }} className="ml-4 mt-3-cs fs--20">No matches found for "{ searchTerm }"</h6>}
                         </div>
                       </div>
                     </div>
@@ -319,7 +319,7 @@ const Search = () => {
                               </div>
                             );
                           })}
-                        {filteredPortfolioCollection.length === 0 && <h6 style={{ width: "100%" }} className="ml-4 fs--20">No matches found for "{ searchTerm }"</h6>}
+                        {filteredPortfolioCollection.length === 0 && <h6 style={{ width: "100%" }} className="ml-4 mt-3-cs fs--20">No matches found for "{ searchTerm }"</h6>}
                         </div>
                       </div>
                     </div>
@@ -370,7 +370,7 @@ const Search = () => {
                   </ul>
                 </div>
 
-                <div className={`result-blog ${filteredBlogCollection.length > 0 ? "": "hidden"}`}>
+                <div className="result-blog">
                   <div className="container-title-results">
                     <h2 className="title-results split-chars" data-aos>
                       Blog <span>{`"${searchTerm}"`}</span>
@@ -436,7 +436,7 @@ const Search = () => {
                             </div>
                           );
                         })}
-                        {filteredBlogCollection.length === 0 && <h6 style={{ width: "100%" }} className="ml-4 fs--20">No matches found for "{ searchTerm }"</h6>}
+                        {filteredBlogCollection.length === 0 && <h6 style={{ width: "100%" }} className="ml-4 mt-3-cs fs--20">No matches found for "{ searchTerm }"</h6>}
                       </div>
                     </div>
                   </div>
