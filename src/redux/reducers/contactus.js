@@ -5,8 +5,13 @@ const initialState = {
   formData: null,
   newletter: null,
 
-  loading: false,
   error: null,
+  loading: false,
+  success: false,
+  
+  errorForm: null,
+  loadingForm: false,
+  successForm: false,
 };
 
 export const postFormData = createAsyncThunk(
@@ -57,19 +62,19 @@ const contactSlice = createSlice({
       .addCase(postFormData.fulfilled, (state, { payload }) => {
         console.log("contact form", payload);
         state.formData = payload;
-        state.loading = false;
-        state.success = true;
+        state.loadingForm = false;
+        state.successForm = true;
       })
       .addCase(postFormData.pending, (state) => {
         console.log("ispending");
-        state.loading = true;
-        state.success = false;
+        state.loadingForm = true;
+        state.successForm = false;
       })
       .addCase(postFormData.rejected, (state) => {
         console.log("is rejected");
-        state.error = true;
-        state.loading = false;
-        state.success = false;
+        state.errorForm = true;
+        state.loadingForm = false;
+        state.successForm = false;
       })
       .addCase(postNewsletter.fulfilled, (state, { payload }) => {
         console.log("newsletter data", payload);
@@ -86,6 +91,7 @@ const contactSlice = createSlice({
         console.log("is rejected");
         state.loading = false;
         state.success = false;
+        state.error = true;
       });
   },
 });

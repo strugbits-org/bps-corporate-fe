@@ -7,9 +7,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 const Newsletter = () => {
   const dispatch = useDispatch();
-  const loading = useSelector((state) => state.contact.loading);
-  const error = useSelector((state) => state.contact.error);
+  
   const [isLabelHidden, setIsLabelHidden] = useState(false);
+  const {loading, success, error} = useSelector((state) => state.contact);
 
   const handleInputFocus = () => {
     setIsLabelHidden(true);
@@ -75,25 +75,25 @@ const Newsletter = () => {
           <div className="container-submit">
             <button type="submit" className="bt-submit">
               <span className="submit-text">
-                {loading ? "Submitting..." : "Send"}
+                {loading ? "sending.." : "Send"}
               </span>
             </button>
           </div>
         </form>
 
-        {/* <h3
-          className="feedback-newsletter white-1"
-          data-aos="fadeIn"
-          data-form-success
-        >
-          Success!
-        </h3> */}
+        
 
+        {success && (
+          <h3
+            className="feedback-newsletter white-1"
+          >
+            Success!
+          </h3>
+        )}
+        {error}
         {error && (
           <h3
             className="feedback-newsletter white-1"
-            data-aos="fadeIn"
-            data-form-error
           >
             Error, Try again!
           </h3>
