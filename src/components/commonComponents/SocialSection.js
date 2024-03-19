@@ -26,7 +26,7 @@ const SocialSection = () => {
     document.body.appendChild(script);
     if (window.doBuild) window.doBuild();
   }, []); // only run once
-  console.log(postes, "socila data");
+  
   return (
     <section className="section-lets-get-social z-5 pt-lg-195 pt-tablet-105 pt-phone-155 pb-lg-130 pb-tablet-105 pb-phone-140 mt-lg-240">
       <div

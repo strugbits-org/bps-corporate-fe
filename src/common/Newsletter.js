@@ -1,15 +1,23 @@
-import React, { useState } from "react";
 import * as Yup from "yup";
 import { newsletter } from "../common/constats/constats";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { postNewsletter } from "../redux/reducers/contactus";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
 const Newsletter = () => {
   const dispatch = useDispatch();
-  const [formData, setFormData] = useState({
-    email_ac30: "",
-  });
+  const loading = useSelector((state) => state.contact.loading);
+  const error = useSelector((state) => state.contact.error);
+  const [isLabelHidden, setIsLabelHidden] = useState(false);
 
-  const [errors, setErrors] = useState({});
+  const handleInputFocus = () => {
+    setIsLabelHidden(true);
+  };
+
+  const handleInputBlur = () => {
+    setIsLabelHidden(false);
+  };
 
   const validationSchema = Yup.object().shape({
     email_ac30: Yup.string()
@@ -17,27 +25,18 @@ const Newsletter = () => {
       .required("Required"),
   });
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors: formErrors },
+  } = useForm({
+    resolver: yupResolver(validationSchema),
+  });
+  const onSubmit = (data) => {
+    dispatch(postNewsletter(data));
+    console.log(data,"here is newsletter data");
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await validationSchema.validate(formData, { abortEarly: false });
-      // If validation passes, handle form submission here
-      dispatch(postNewsletter())
-    } catch (error) {
-      const newErrors = {};
-      error.inner.forEach((err) => {
-        newErrors[err.path] = err.message;
-      });
-      setErrors(newErrors);
-    }
-  };
   return (
     <div className="container-newsletter" data-form-container>
       <div className="container-text">
@@ -48,45 +47,57 @@ const Newsletter = () => {
       </div>
 
       <div className="container-newsletter mt-mobile-25">
-        <form className="form-newsletter" onSubmit={handleSubmit}>
-          <input type="hidden" name="assunto" value="[newsletter]" />
+        <form className="form-newsletter" onSubmit={handleSubmit(onSubmit)}>
+          {/* <input type="hidden" name="assunto" value="[newsletter]" /> */}
           <div className="container-input">
-            {formData === "" && (
-              <label htmlFor="newsletter-email">Enter your email</label>
-            )}
+            <label
+              htmlFor="newsletter-email"
+              className={isLabelHidden ? "hidden" : ""}
+            >
+              Enter your email
+            </label>
 
             <input
               id="email_ac30"
               name="email_ac30"
               type="email"
-              onChange={handleChange}
-              value={formData.email}
+              {...register("email_ac30")}
               required
+              disabled={loading}
+              onFocus={handleInputFocus}
+              onBlur={handleInputBlur}
             />
-            {errors.email && (
-              <div className="error-message">{errors.email}</div>
+
+            {formErrors.email_ac30 && (
+              <span className="error">{formErrors.email_bd82.message}</span>
             )}
           </div>
           <div className="container-submit">
             <button type="submit" className="bt-submit">
-              <span className="submit-text">Send</span>
+              <span className="submit-text">
+                {loading ? "Submitting..." : "Send"}
+              </span>
             </button>
           </div>
         </form>
-        <h3
+
+        {/* <h3
           className="feedback-newsletter white-1"
           data-aos="fadeIn"
           data-form-success
         >
           Success!
-        </h3>
-        <h3
-          className="feedback-newsletter white-1"
-          data-aos="fadeIn"
-          data-form-error
-        >
-          Error, Try again!
-        </h3>
+        </h3> */}
+
+        {error && (
+          <h3
+            className="feedback-newsletter white-1"
+            data-aos="fadeIn"
+            data-form-error
+          >
+            Error, Try again!
+          </h3>
+        )}
       </div>
     </div>
   );

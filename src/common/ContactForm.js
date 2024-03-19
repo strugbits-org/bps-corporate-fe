@@ -7,7 +7,6 @@ import { postFormData } from "../redux/reducers/contactus";
 
 const ContactForm = () => {
   const dispatch = useDispatch();
-  const success = useSelector((state) => state.contact.formData);
   const loading = useSelector((state) => state.contact.loading);
   const error = useSelector((state) => state.contact.error);
   const {
@@ -44,8 +43,10 @@ const ContactForm = () => {
               disabled={loading}
               {...register("first_name_584c")}
             />
-            {formErrors.firstName && (
-              <span className="error">{formErrors.firstName.message}</span>
+            {formErrors.first_name_584c && (
+              <span className="error">
+                {formErrors.first_name_584c.message}
+              </span>
             )}
           </div>
           <div className="container-input col-md-6">
@@ -58,8 +59,8 @@ const ContactForm = () => {
               {...register("last_name_51ee")}
               disabled={loading}
             />
-            {formErrors.lastName && (
-              <span className="error">{formErrors.lastName.message}</span>
+            {formErrors.last_name_51ee && (
+              <span className="error">{formErrors.last_name_51ee.message}</span>
             )}
           </div>
           <div className="container-input col-12">
@@ -72,8 +73,8 @@ const ContactForm = () => {
               {...register("email_bd82")}
               disabled={loading}
             />
-            {formErrors.email && (
-              <span className="error">{formErrors.email.message}</span>
+            {formErrors.email_bd82 && (
+              <span className="error">{formErrors.email_bd82.message}</span>
             )}
           </div>
           <div className="container-textarea col-12">
@@ -84,8 +85,10 @@ const ContactForm = () => {
               {...register("long_answer_afda")}
               disabled={loading}
             ></textarea>
-            {formErrors.message && (
-              <span className="error">{formErrors.message.message}</span>
+            {formErrors.long_answer_afda && (
+              <span className="error">
+                {formErrors.long_answer_afda.message}
+              </span>
             )}
           </div>
           <div className="container-submit col-12">
@@ -102,11 +105,10 @@ const ContactForm = () => {
             Error, Try again!
           </h3>
         )}
-        {success && (
-          <h3 data-aos="fadeIn" data-form-success>
-            Success!
-          </h3>
-        )}
+
+        <h3 data-aos="fadeIn" data-form-success>
+          Success!
+        </h3>
       </div>
     </div>
   );
