@@ -53,7 +53,7 @@ const BlogListing = ({ data, totalCount, seeAllBlogs }) => {
             const studiosLabels = item.studios.map((item) => item.cardName)
             const marketLabels = item.markets.map((item) => item.cardname)
             return (
-                (selectedMarkets.length === 0 || selectedMarkets.some(r => marketLabels.includes(r))) &&
+                (selectedMarkets.length === 0 || selectedMarkets.some(r => marketLabels.includes(r))) ||
                 (selectedStudio.length === 0 || selectedStudio.some(r => studiosLabels.includes(r)))
             );
         });
@@ -164,7 +164,7 @@ const BlogListing = ({ data, totalCount, seeAllBlogs }) => {
                                 return item.blogRef && item.author && (
                                     <li key={item._id} className="grid-item" data-aos="d:loop">
                                         <DelayedLink
-                                            to={`/blog-post/${encodeURIComponent(item._id)}`}
+                                            to={`/blog-post/${encodeURIComponent(item.slug)}`}
                                             className="link-blog link-blog-animation"
                                             attributes={{
                                                 "data-aos": "d:loop",
@@ -228,7 +228,7 @@ const BlogListing = ({ data, totalCount, seeAllBlogs }) => {
                         </ul>
                         {filteredBlogCollection.length === 0 && <h6 style={{ width: "100%" }} className="fs--40 text-center split-words" data-aos="d:loop">No Data found</h6>}
                     </div>
-                    {filteredBlogCollection.length !== totalCount && (
+                    {filteredBlogCollection.length > 0 && filteredBlogCollection.length !== totalCount && (
                         <div className="col-lg-2 offset-lg-5 flex-center mt-lg-70 mt-tablet-60 mt-phone-85">
                             <button
                                 onClick={seeAllBlogs}

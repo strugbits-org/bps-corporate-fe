@@ -1,52 +1,44 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { postes } from "../../../common/constats/blogData";
 import DelayedLink from "../../../common/DelayedLink";
 import { productSlider } from "../../../common/constats/blogData";
-import { fetchPortfolio } from "../../../redux/reducers/portfolioData";
 import { fetchStudioSection } from "../../../redux/reducers/homeData";
 import { useDispatch, useSelector } from "react-redux";
 import { getMarketCollection } from "../../../redux/reducers/marketData";
-import getFullImageURL from "../../../common/common_functions/imageURL";
+import getFullImageURL, { getFullImagePost } from "../../../common/common_functions/imageURL";
+import { listBlogs, listPortfolios } from "../../../utilis/queryCollections";
+import formatDate from "../../../common/common_functions/dateFormat";
 
 const Search = () => {
   const dispatch = useDispatch();
-  const portfolioCollection = useSelector((state) => state.portfolio.portfolioData);
-  const studioData = useSelector((state) => state.home.studioData);
-  const marketData = useSelector((state) => state.market.marketModel);
+  const studios = useSelector((state) => state.home.studioData);
+  const markets = useSelector((state) => state.market.marketModel);
+
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedStudio, setSelectedStudio] = useState([]);
+  const [selectedMarkets, setSelectedMarkets] = useState([]);
+
+  const [blogCollection, setBlogCollection] = useState([]);
+  const [portfolioCollection, setPortfolioCollection] = useState([]);
+  const [productSliderData, setProductSliderData] = useState([]);
+  
+  const [resultStudios, setResultStudios] = useState([]);
+  const [resultMarkets, setResultMarkets] = useState([]);
+  
+  useEffect(() => {
+    const portfolioStudios = portfolioCollection.flatMap(item => item.studios.map(studio => studio.cardName));
+    const blogStudios = blogCollection.flatMap(item => item.studios.map(studio => studio.cardName));
+    const portfolioMarkets = portfolioCollection.flatMap(item => item.markets.map(market => market.cardname));
+    const blogMarkets = blogCollection.flatMap(item => item.markets.map(market => market.cardname));
+
+    setResultStudios([...new Set([...portfolioStudios, ...blogStudios])]);
+    setResultMarkets([...new Set([...portfolioMarkets, ...blogMarkets])]);
+  }, [portfolioCollection, blogCollection]);
 
   useEffect(() => {
-    dispatch(fetchPortfolio({pageSize: 4,triggerAnimations:false}));
     dispatch(fetchStudioSection(false));
     dispatch(getMarketCollection());
   }, [dispatch]);
   
-  const [searchTerm, setSearchTerm] = useState("");
-  const [portfolioData, setPortfolioData] = useState([]);
-  const [blogData, setBlogData] = useState([]);
-  const [productSliderData, setProductSliderData] = useState([]);
-  const handleInputChange = (e) => {
-    setSearchTerm(e.target.value.trim().toLowerCase());
-  };
-
-  const filteredPortfolioData = useMemo(() => {
-    // return portfolioCollection.filter(
-    //   (item) =>
-    //  ( item.title && item.title.toLowerCase().includes(searchTerm)) ||
-    //   (item.description && item.description.toLowerCase().includes(searchTerm)) ||
-    //   (item.studioTags && (item.studioTags + "").toLowerCase().includes(searchTerm)) ||
-    //   (item.marketCategory && item.marketCategory.toLowerCase().includes(searchTerm))
-    // );
-    return portfolioCollection;
-  }, [portfolioCollection]);
-  // }, [searchTerm, portfolioCollection]);
-
-  const filteredBlogData = useMemo(() => {
-    return postes.filter(
-      (item) =>
-        item.category && item.category.toLowerCase().includes(searchTerm)
-    );
-  }, [searchTerm]);
-
   const filteredProductData = useMemo(() => {
     return productSlider.filter(
       (item) =>
@@ -54,11 +46,66 @@ const Search = () => {
     );
   }, [searchTerm]);
 
-  const handleSubmit = (e) => {
+  const filteredPortfolioCollection = useMemo(() => {
+    const data = portfolioCollection.filter(item => {
+      const studiosLabels = item.studios.map((item) => item.cardName)
+      const marketLabels = item.markets.map((item) => item.cardname)
+      return (
+        (selectedMarkets.length === 0 || selectedMarkets.some(r => marketLabels.includes(r))) ||
+        (selectedStudio.length === 0 || selectedStudio.some(r => studiosLabels.includes(r)))
+      );
+    });
+    return data;
+  }, [selectedStudio, selectedMarkets, portfolioCollection]);
+
+  const filteredBlogCollection = useMemo(() => {
+    const data = blogCollection.filter(item => {
+      const studiosLabels = item.studios.map((item) => item.cardName)
+      const marketLabels = item.markets.map((item) => item.cardname)
+      return (
+        (selectedMarkets.length === 0 || selectedMarkets.some(r => marketLabels.includes(r))) &&
+        (selectedStudio.length === 0 || selectedStudio.some(r => studiosLabels.includes(r)))
+      );
+    });
+    return data;
+  }, [selectedStudio, selectedMarkets, blogCollection]);
+
+  const handleStudioFilter = (tag) => {
+    if (selectedStudio.includes(tag)) {
+      setSelectedStudio(
+        selectedStudio.filter((el) => el !== tag)
+      );
+    } else {
+      setSelectedStudio([...selectedStudio, tag]);
+    }
+  };
+  const handleMarketFilter = (category) => {
+    if (selectedMarkets.includes(category)) {
+      setSelectedMarkets(
+        selectedMarkets.filter((el) => el !== category)
+      );
+    } else {
+      setSelectedMarkets([...selectedMarkets, category]);
+    }
+  };
+  const handleInputChange = (e) => {
+    setSearchTerm(e.target.value.trim().toLowerCase());
+  };
+
+  const handleSubmit = async (e) => {
+    try {
+      setProductSliderData(filteredProductData);
+
+      const portfolio = await listPortfolios({ pageSize: 10, searchTerm: searchTerm });
+      setPortfolioCollection(portfolio.items.map((item) => item.data));
+
+      const blog = await listBlogs({ pageSize: 10, searchTerm: searchTerm });
+      setBlogCollection(blog.items.map((item) => item.data));
+
+    } catch (error) {
+      console.log("error", error);
+    }
     e.preventDefault();
-    setPortfolioData(filteredPortfolioData);
-    setBlogData(filteredBlogData);
-    setProductSliderData(filteredProductData);
   };
 
   return (
@@ -101,7 +148,7 @@ const Search = () => {
             </div>
 
             <div className="container-results">
-              <div className="inner-container-results">
+              <div className="inner-container-results" data-cursor-style="default">
                 <button className="btn-close-results" data-search-remove>
                   X
                 </button>
@@ -114,15 +161,17 @@ const Search = () => {
                   <ul
                     className="list-result-all-studios grid-lg-16 grid-tablet-33 grid-phone-50"
                     data-aos
+                    data-cursor-style="default"
                   >
-                    {studioData.map((item, index) => {
+                    {studios?.map((item, index) => {
                       return (
                         <li key={index} className="grid-item">
-                          <DelayedLink to={item.data.slug} className="link-studios">
+                          <div onClick={() => { handleStudioFilter(item.data.cardName) }}
+                            className={`link-studios ${selectedStudio.includes(item.data.cardName) ? "active" : "" } ${resultStudios.includes(item.data.cardName) ? "" : "disabled" }`}>
                             <h3 className="title-all-studios">
                               <span>{item.data.cardName}</span>
                             </h3>
-                          </DelayedLink>
+                          </div>
                         </li>
                       );
                     })}
@@ -130,13 +179,15 @@ const Search = () => {
                 </div>
 
                 <div className="column-results">
+
                   <div className="result-rental">
                     <div className="container-title-results">
                       <h2 className="title-results split-chars" data-aos>
                         Rental <span>{`"${searchTerm}"`}</span>
                       </h2>
                       <DelayedLink
-                        to="/"
+                        to="https://www.rentals.blueprintstudios.com/"
+                        target="blank"
                         className="btn-border-blue"
                         attributes={{
                           "data-aos": "",
@@ -151,6 +202,7 @@ const Search = () => {
                         <div
                           className="swiper-wrapper list-result-rental list-slider-phone grid-md-33"
                           data-aos
+                          data-cursor-style="default"
                         >
                           {productSliderData.map((data) => {
                             return (
@@ -206,10 +258,12 @@ const Search = () => {
                               </div>
                             );
                           })}
+                          {productSliderData.length === 0 && <h6 style={{ width: "100%" }} className="ml-4 mt-3-cs fs--20">No matches found for "{ searchTerm }"</h6>}
                         </div>
                       </div>
                     </div>
                   </div>
+
                   <div className="result-portfolio mt-lg-60 mt-mobile-40">
                     <div className="container-title-results">
                       <h2 className="title-results split-chars" data-aos>
@@ -231,8 +285,9 @@ const Search = () => {
                         <div
                           className="swiper-wrapper list-result-portfolio list-slider-phone grid-md-20"
                           data-aos
+                          data-cursor-style="default"
                         >
-                          {portfolioData.map((data) => {
+                          {filteredPortfolioCollection?.map((data) => {
                             return (
                               <div
                                 key={data.id}
@@ -248,7 +303,7 @@ const Search = () => {
                                   >
                                     <div className="wrapper-img">
                                       <img
-                                        src={getFullImageURL(data.portfolioRef.coverImage.imageInfo)}
+                                        src={getFullImagePost(data.portfolioRef.coverImage.imageInfo)}
                                         data-preload
                                         className="media"
                                         alt=""
@@ -264,11 +319,13 @@ const Search = () => {
                               </div>
                             );
                           })}
+                        {filteredPortfolioCollection.length === 0 && <h6 style={{ width: "100%" }} className="ml-4 mt-3-cs fs--20">No matches found for "{ searchTerm }"</h6>}
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
+
 
                 <div className="result-our-markets">
                   <div className="container-title-results">
@@ -279,21 +336,20 @@ const Search = () => {
                   <ul
                     className="list-result-our-markets list-projects font-35 grid-md-50"
                     data-aos
+                    data-cursor-style="default"
                   >
-                    {marketData.map((item, index) => {
+                    {markets?.map((item, index) => {
                       return (
                         <li key={index} className="grid-item">
-                          <DelayedLink
-                            to={item.slug}
-                            className="market-link project-link"
-                            attributes={{
-                              "data-cursor-style": "view",
-                              "data-menu-close": "",
-                            }}
+                          <div
+                            onClick={() => { handleMarketFilter(item.cardname) }}
+                            className={`market-link project-link ${selectedMarkets.includes(item.cardname) ? "active" : "" } ${resultMarkets.includes(item.cardname) ? "" : "disabled" }`}
+                            data-cursor-style="default"
+                            data-menu-close
                           >
                             <div
                               className="container-img bg-blue"
-                              data-cursor-style="view"
+                              data-cursor-style="default"
                             >
                               <img
                                 src={item.image}
@@ -307,7 +363,7 @@ const Search = () => {
                                 {item.cardname}
                               </h3>
                             </div>
-                          </DelayedLink>
+                          </div>
                         </li>
                       );
                     })}
@@ -320,7 +376,7 @@ const Search = () => {
                       Blog <span>{`"${searchTerm}"`}</span>
                     </h2>
                     <DelayedLink
-                      to="/"
+                      to="/blog"
                       className="btn-border-blue"
                       attributes={{
                         "data-aos": "",
@@ -337,14 +393,14 @@ const Search = () => {
                         className="swiper-wrapper list-result-blog list-slider-mobile list-blog grid-lg-20"
                         data-aos
                       >
-                        {blogData.map((data) => {
+                        {filteredBlogCollection?.map((blog) => {
                           return (
                             <div
-                              key={data.id}
+                              key={blog.blogId}
                               className="swiper-slide grid-item"
                             >
                               <DelayedLink
-                                to="/blog-post"
+                                to={`/blog-post/${blog.slug}`}
                                 className="link-blog"
                               >
                                 <div
@@ -352,32 +408,35 @@ const Search = () => {
                                   data-cursor-style="view"
                                 >
                                   <div className="wrapper-img">
-                                    <img
-                                      src={data.img}
-                                      data-preload
-                                      className="media"
-                                      alt=""
-                                    />
+                                    {blog.blogRef.coverImage &&
+                                      <img
+                                        src={getFullImageURL(blog.blogRef.coverImage) + "/v1/fit/w_1000,h_1000,al_c,q_75,usm_0.66_1.00_0.01,enc_auto/compress.webp"}
+                                        data-preload
+                                        className="media"
+                                        alt=""
+                                      />}
+
                                   </div>
                                 </div>
                                 <div className="container-text">
                                   <div className="container-author-post-info">
                                     <div className="author">
                                       <span className="author-name">
-                                        {data.userName}
+                                        {blog.author.nickname}
                                       </span>
                                     </div>
                                     <div className="date">
-                                      <span>{data.date}</span>
+                                      <span>{formatDate(blog.blogRef.lastPublishedDate.$date)}</span>
                                     </div>
                                   </div>
-                                  <h2 className="title-blog">{data.heading}</h2>
-                                  <p className="text-blog">{data.p}</p>
+                                  <h2 className="title-blog">{blog.blogRef.title}</h2>
+                                  <p className="text-blog">{blog.blogRef.excerpt}</p>
                                 </div>
                               </DelayedLink>
                             </div>
                           );
                         })}
+                        {filteredBlogCollection.length === 0 && <h6 style={{ width: "100%" }} className="ml-4 mt-3-cs fs--20">No matches found for "{ searchTerm }"</h6>}
                       </div>
                     </div>
                   </div>

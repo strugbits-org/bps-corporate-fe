@@ -9,7 +9,7 @@ const ProductCartSlider = ({data}) => {
     <div className="slider-featured-products" data-aos="d:loop">
       <div className="swiper-container">
         <div className="swiper-wrapper">
-          {data?.storeProducts.map((item, index) => {
+          {data?.storeProducts?.map((item, index) => {
             return (
               <div key={index} className="swiper-slide">
                 <div className="rental-product-link">
