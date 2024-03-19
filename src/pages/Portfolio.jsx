@@ -2,41 +2,57 @@ import React, { useEffect, useState } from "react";
 import PortfolioListing from "../components/ProtfolioPageSections/PortfolioListing";
 import SocialSection from "../components/commonComponents/SocialSection";
 import MarketSection from "../components/commonComponents/MarketSection";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { listPortfolios } from "../utilis/queryCollections";
 import { handleCollectionLoaded } from "../utilis/loadAnimations";
+import { fetchStudioSection } from "../redux/reducers/homeData";
+import { getMarketCollection } from "../redux/reducers/marketData";
 
 const Portfolio = () => {
   const dispatch = useDispatch();
   const [portfolioResponse, setPortfolioResponse] = useState(null);
   const [portfolioCollection, setPortfolioCollection] = useState([]);
 
+  const studios = useSelector((state) => state.home.studioData);
+  const markets = useSelector((state) => state.market.marketModel);
+
   useEffect(() => {
-    fetchCollection();
+    // fetchCollection();
+    dispatch(fetchStudioSection());
+    dispatch(getMarketCollection());
   }, [dispatch]);
-
-  useEffect(() => {
-    if (portfolioResponse && portfolioResponse.totalCount !== 0) {
-      const newItems = portfolioResponse.items.map((item)=>item.data);
-      setPortfolioCollection(portfolios => [...portfolios,...newItems]);
-    }
-  }, [portfolioResponse]);
   
-  const fetchCollection = async ()=>{
-    const response = await listPortfolios({pageSize : 8});
-    handleCollectionLoaded();
-    // document.querySelector(".updateWatchedTrigger").click();
-    setPortfolioResponse(response);
-  }
+  // const fetchCollection = async () => {
+  //   const response = await listPortfolios({pageSize : 8});
+  //   setPortfolioCollection(response.items.map((item)=>item.data));
+  //   setPortfolioResponse(response);
 
-  const handleSeeMore = async ()=>{
+  //   handleCollectionLoaded();
+  //   // document.querySelector(".updateWatchedTrigger").click();
+  // }
+
+  const handleSeeMore = async () => {
     const response = await portfolioResponse.next();
     setPortfolioResponse(response);
+    setTimeout(() => {
+      document.querySelector(".updateWatchedTrigger").click();
+    }, 400);
+  }
+
+  const applyFilters = async ({selectedStudios = [], selectedMarkets = []}) => {
+    console.log("hello hello");
+    const response = await listPortfolios({ pageSize : 8, studios: selectedStudios, markets: selectedMarkets });
+    console.log("response",response);
+    setPortfolioCollection(response.items.map((item)=>item.data));
+    setPortfolioResponse(response);
+    setTimeout(() => {
+      document.querySelector(".updateWatchedTrigger").click();
+    }, 400);
   }
 
   return (
     <>
-      <PortfolioListing totalCount={portfolioResponse?.totalCount} seeMore={handleSeeMore} data={portfolioCollection} />
+      <PortfolioListing data={{items: portfolioCollection, studios, markets, totalCount: portfolioResponse?.totalCount}} applyFilters={applyFilters} seeMore={handleSeeMore} />
       <MarketSection />
       <SocialSection />
     </>
