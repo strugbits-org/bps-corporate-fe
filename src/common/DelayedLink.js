@@ -7,7 +7,10 @@ const DelayedLink = ({ to, children, className,target, attributes}) => {
   const delayedRedirect = (e)=>{
     document.querySelector(".submenu").classList.remove("active");
     document.querySelector("#wrapper-cursor").click();
-
+    if (to === undefined) {
+      return;
+    }
+    
     if (location.pathname !== to) {
       if(target === undefined){
         document.body.classList.add("page-leave-active");

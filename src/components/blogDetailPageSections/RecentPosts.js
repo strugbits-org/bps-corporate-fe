@@ -1,8 +1,18 @@
-import React from "react";
-import { postes } from "../../common/constats/blogData";
-
+import React, { useEffect } from "react";
 import DelayedLink from "../../common/DelayedLink";
+import { useDispatch, useSelector } from "react-redux";
+import { getblogPostData } from "../../redux/reducers/blogData";
+import { getFullImagePost } from "../../common/common_functions/imageURL";
+import formatDate from "../../common/common_functions/dateFormat";
+
 const RecentPosts = () => {
+  const dispatch = useDispatch();
+  const postes = useSelector((state) => state.blog.blogPostData);
+
+  useEffect(() => {
+    dispatch(getblogPostData());
+  }, [dispatch]);
+
   return (
     <section className="blog-post-recent-posts pt-lg-245 pt-tablet-105 pt-phone-150 pb-lg-150 pb-mobile-100">
       <div className="container-fluid">
@@ -19,9 +29,9 @@ const RecentPosts = () => {
             <div className="slider-content-mobile">
               <div className="swiper-container">
                 <div className="swiper-wrapper list-blog list-slider-mobile grid-lg-25">
-                  {postes.slice(0, 4).map((data) => {
+                  {postes?.slice(0, 4).map((data) => {
                     return (
-                      <div key={data.id} className="swiper-slide grid-item">
+                      <div key={data._id} className="swiper-slide grid-item">
                         <DelayedLink
                           to={`/blog`}
                           className="link-blog link-blog-animation"
@@ -35,7 +45,10 @@ const RecentPosts = () => {
                           >
                             <div className="wrapper-img">
                               <img
-                                src={data.img}
+                                src={
+                                  getFullImagePost(data?.blogRef?.coverImage) +
+                                  "/v1/fit/w_1000,h_1000,al_c,q_75,usm_0.66_1.00_0.01,enc_auto/compress.webp"
+                                }
                                 data-preload
                                 className="media"
                                 alt=""
@@ -46,36 +59,56 @@ const RecentPosts = () => {
                             <div className="container-author-post-info">
                               <div className="author">
                                 <span className="author-name">
-                                  {data.userName}
+                                  {data?.author?.nickname}
                                 </span>
                               </div>
                               <div className="date">
-                                <span>{data.date}</span>
+                                <span>
+                                  {formatDate(data?._updatedDate.$date)}
+                                </span>
                               </div>
                             </div>
-                            <h2 className="title-blog">{data.heading}</h2>
-                            <p className="text-blog">{data.p}</p>
-                            <ul className="list-tags-small">
-                              {Object.values(data.tags).map((tag, index) => (
+                            <h2 className="title-blog">
+                              {data?.blogRef?.title}
+                            </h2>
+                            <p className="text-blog">
+                              {data?.blogRef?.excerpt}
+                            </p>
+                            <ul
+                              style={{ marginTop: 2 }}
+                              className="list-tags-small"
+                            >
+                              {data.markets.map((market, index) => (
+                                <li
+                                  key={index}
+                                  className={`tag-small
+                                                    ? "active"
+                                                    : ""
+                                                    }`}
+                                >
+                                  <span>{market.cardname}</span>
+                                </li>
+                              ))}
+                              {data.studios.map((studio, index) => (
                                 <React.Fragment key={index}>
-                                  {index < 3 ? (
+                                  {index < 2 && (
                                     <li
-                                      className={`tag-small ${
-                                        data.category?.includes(tag)
-                                          ? "active"
-                                          : ""
-                                      }`}
+                                      className={`tag-small 
+                                                            ? ${
+                                                              index === 0
+                                                            } "active"
+                                                            : ""
+                                                            }`}
                                     >
-                                      <span>{tag}</span>
+                                      <span>{studio.cardName}</span>a
                                     </li>
-                                  ) : null}
+                                  )}
                                 </React.Fragment>
                               ))}
-                              {Object.values(data.tags).length > 3 ? (
+                              {data.studios.length > 2 ? (
                                 <li className="tag-small">
                                   <span>
-                                    +{Object.values(data.tags).length - 3}{" "}
-                                    studios
+                                    +{data.studios.length - 2} studios
                                   </span>
                                 </li>
                               ) : null}
@@ -91,7 +124,7 @@ const RecentPosts = () => {
           </div>
           <div className="col-lg-2 offset-lg-5 flex-center mt-70">
             <DelayedLink
-              to="/"
+              to="/blog"
               className="btn-border-blue"
               attributes={{
                 "data-cursor-style": "off",
