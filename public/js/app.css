@@ -19202,6 +19202,10 @@ body.page-leave-active[data-load="first-done"] .overlay {
 .result-our-markets .market-link.project-link.active .container-text {
   color: #0f41fa;
 }
+.result-our-markets .market-link.project-link.disabled {
+  user-select: none;
+  pointer-events: none;
+}
 .result-our-markets .market-link.project-link.disabled .container-text {
   color: gray;
   user-select: none;
