@@ -1364,7 +1364,7 @@ html {
     font-size: 1.07299vw;
   }
 }
-[data-form-container] [data-form-success], [data-form-container] [data-form-error] {
+[data-form-container] [data-form-success], [data-form-container] [data-form-error]:not(.disable-css) {
   display: none;
 }
 [data-form-container][data-form-state=success] [data-form-success] {
@@ -3772,7 +3772,7 @@ body:after {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.container-contact[data-form-state=success] .form-contact {
+.container-contact[data-form-state=success]:not(.formError) .form-contact {
   opacity: 0.2;
   pointer-events: none;
   -webkit-transition: all 0.6s cubic-bezier(0.42, 0, 0.58, 1);
