@@ -38,30 +38,37 @@ const Newsletter = () => {
   const onSubmit = (data) => {
     dispatch(postNewsletter(data));
   };
-  useEffect(() => {
+
+ useEffect(() => {
     if (success) {
       setShowSuccess(true);
-
       const timeoutId = setTimeout(() => {
         setShowSuccess(false);
         reset();
+        Array.from(document.querySelectorAll('.preenchido')).forEach(
+          (el) => el.classList.remove('preenchido')
+        );
       }, 3000);
-
+      // Clean up the timeout
       return () => clearTimeout(timeoutId);
     }
     if (error) {
       setShowError(true);
-
       const timeoutId = setTimeout(() => {
         setShowError(false);
         reset();
+        Array.from(document.querySelectorAll('.preenchido')).forEach(
+          (el) => el.classList.remove('preenchido')
+        );
       }, 3000);
-
+      // Clean up the timeout
       return () => clearTimeout(timeoutId);
     }
   }, [success, error, reset]);
   return (
-    <div className="container-newsletter" data-form-container>
+    <div className={`container-newsletter ${showSuccess ? "letter-success" : ""}  ${showError ? "formError" : ""}`}   
+    // data-form-container
+    >
       <div className="container-text">
         <h3 className="fs-25 white-1">{newsletter.title}</h3>
         <p className="fs--16 fs-phone-15 font-2 white-1 mt-5">
@@ -70,8 +77,12 @@ const Newsletter = () => {
       </div>
 
       <div className="container-newsletter mt-mobile-25">
-        <form className="form-newsletter" onSubmit={handleSubmit(onSubmit)}>
-          <input type="hidden" name="assunto" value="[newsletter]" />
+        <form 
+        className={`form-newsletter ${
+          showSuccess ? "letter-success" : ""
+        } ${showError ? "formError" : ""}`}
+        onSubmit={handleSubmit(onSubmit)}>
+          {/* <input type="hidden" name="assunto" value="[newsletter]" /> */}
           <div className="container-input">
             <label
               htmlFor="newsletter-email"

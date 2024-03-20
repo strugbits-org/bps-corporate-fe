@@ -4,14 +4,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import contactusSchema from "../common/schema/contactusSchema";
 import { useDispatch, useSelector } from "react-redux";
 import { postFormData } from "../redux/reducers/contactus";
-
 const ContactForm = () => {
   const dispatch = useDispatch();
   const [showSuccess, setShowSuccess] = useState(false);
   const { loadingForm, successForm, errorForm } = useSelector(
     (state) => state.contact
   );
-
   const {
     register,
     handleSubmit,
@@ -20,11 +18,10 @@ const ContactForm = () => {
   } = useForm({
     resolver: yupResolver(contactusSchema),
   });
-
   const onSubmit = (data) => {
     dispatch(postFormData(data));
   };
- 
+
   useEffect(() => {
     if (successForm) {
       setShowSuccess(true);
@@ -32,10 +29,18 @@ const ContactForm = () => {
         setShowSuccess(false);
        
         reset();
-       
       }, 3000);
 
-      // Clean up the timeout
+      return () => clearTimeout(timeoutId);
+    }
+    if (errorForm) {
+      setShowError(true);
+
+      const timeoutId = setTimeout(() => {
+        setShowError(false);
+        reset();
+      }, 3000);
+
       return () => clearTimeout(timeoutId);
     }
     
@@ -49,9 +54,9 @@ const ContactForm = () => {
       </h2>
       <div
         className={`container-contact mt-lg-140 mt-tablet-65 ${
-          showSuccess ? "form-success" : ""
-        } ${errorForm ? "formError" : ""}`}
-        // data-form-container
+          errorForm ? "formError" : ""
+        }`}
+        data-form-container
       >
         <form className="form-contact" onSubmit={handleSubmit(onSubmit)}>
           {/* <input type="hidden" name="assunto" value="[contact]" /> */}
@@ -123,16 +128,15 @@ const ContactForm = () => {
         </form>
         {/* Error message */}
 
-        {errorForm && (
+        {showError && (
           <h3 className="disable-css" data-form-error>
             Error, Try again!
           </h3>
         )}
 
-        {showSuccess  && <h3 data-form-success>Success!</h3>}
+        {showSuccess && <h3 data-form-success>Success!</h3>}
       </div>
     </div>
   );
 };
-
 export default ContactForm;
