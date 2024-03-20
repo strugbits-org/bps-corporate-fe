@@ -4,7 +4,7 @@ import React from "react";
 
 const PortfolioIntoSection = ({ data }) => {
 
-  const coverImage = getFullImageURL(data?.portfolioRef?.coverImage.imageInfo);
+  const coverImage = getFullImageURL(data?.portfolioRef?.coverImage?.imageInfo);
   const categories = data?.markets?.map((item) => item.cardname);
   const title = data?.portfolioRef?.title;
   const description = data?.portfolioRef?.description;

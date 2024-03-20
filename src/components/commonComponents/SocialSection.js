@@ -163,7 +163,7 @@ const SocialSection = () => {
                 <div className="content">
                   <div className="social-media-title">
                     <i className="icon-pinterest"></i>
-                    <h3>{socialData.title}</h3>
+                    <h3>{socialData.pinatitle}</h3>
                   </div>
                   <ul className="list-instagram">
                     <Link
