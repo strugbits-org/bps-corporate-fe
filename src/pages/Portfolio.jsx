@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { listPortfolios } from "../utilis/queryCollections";
 import { fetchStudioSection } from "../redux/reducers/homeData";
 import { getMarketCollection } from "../redux/reducers/marketData";
+import { updatedWatched } from "../utilis/animtationsTriggers";
 
 const Portfolio = () => {
   const dispatch = useDispatch();
@@ -24,18 +25,13 @@ const Portfolio = () => {
     const response = await portfolioResponse.next();
     setPortfolioCollection(prev => [...prev, ...response.items.map(item => item.data)]);
     setPortfolioResponse(response);
-    setTimeout(() => {
-      document.querySelector(".updateWatchedTrigger").click();
-    }, 400);
+    updatedWatched();
   }
 
   const applyFilters = async ({selectedStudios = [], selectedMarkets = []}) => {
     const response = await listPortfolios({ pageSize : 8, studios: selectedStudios, markets: selectedMarkets });
     setPortfolioCollection(response.items.map(item => item.data));
     setPortfolioResponse(response);
-    setTimeout(() => {
-      document.querySelector(".updateWatchedTrigger").click();
-    }, 400);
   }
 
   return (

@@ -10196,7 +10196,7 @@ modal-item .shopify-buy-frame iframe {
     transition-delay: 0s;
   }
 }
-[data-search-container][data-search-state=success] .menu-search .wrapper-search .container-results .inner-container-results {
+[data-search-container][data-search-state=success] .menu-search .wrapper-search .container-results:not(.searching) .inner-container-results {
   display: flex;
   -webkit-animation: fadeIn 0.6s cubic-bezier(0.42, 0, 0.58, 1) 0.6s both 1;
   -moz-animation: fadeIn 0.6s cubic-bezier(0.42, 0, 0.58, 1) 0.6s both 1;
@@ -19213,4 +19213,10 @@ body.page-leave-active[data-load="first-done"] .overlay {
 }
 .mt-3-cs {
   margin-top: 3rem;
+}
+
+.column-results.custom-css {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
 }

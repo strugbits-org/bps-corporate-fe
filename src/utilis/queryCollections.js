@@ -3,9 +3,9 @@ import { endLoading, startLoading } from "./loadingUtils";
 
 const wixClient = createWixClient();
 
-export const listPortfolios = async ({ pageSize = 10, searchTerm = "", studios = [], markets = [] }) => {
+export const listPortfolios = async ({ pageSize = 10, searchTerm = "", studios = [], markets = [], disableLoader = false }) => {
     try {
-        startLoading();
+        startLoading(disableLoader);
         let options = {
             dataCollectionId: "PortfolioCollection",
             includeReferencedItems: ["portfolioRef", "locationFilteredVariant", "storeProducts", "studios", "markets", "gallery", "media"],
@@ -25,18 +25,18 @@ export const listPortfolios = async ({ pageSize = 10, searchTerm = "", studios =
         const response = await query.contains('titleAndDescription', searchTerm)
             .limit(pageSize)
             .find();
-            
-        endLoading();
+
+        endLoading(disableLoader);
         return response;
     } catch (error) {
-        endLoading();
+        endLoading(disableLoader);
         throw new Error(error.message);
     }
 }
 
-export const listBlogs = async ({ pageSize = 10, searchTerm = "", studios = [], markets = [] }) => {
+export const listBlogs = async ({ pageSize = 10, searchTerm = "", studios = [], markets = [], disableLoader = false }) => {
     try {
-        startLoading();
+        startLoading(disableLoader);
         let options = {
             dataCollectionId: "BlogProductData",
             includeReferencedItems: ["blogRef", "locationFilteredVariant", "storeProducts", "studios", "markets", "author"],
@@ -56,11 +56,38 @@ export const listBlogs = async ({ pageSize = 10, searchTerm = "", studios = [], 
         const response = await query.contains('titleAndDescription', searchTerm)
             .limit(pageSize)
             .find();
-            
-        endLoading();
+
+        endLoading(disableLoader);
         return response;
     } catch (error) {
-        endLoading();
+        endLoading(disableLoader);
         throw new Error(error.message);
     }
 }
+
+
+// export const queryBlogCollection = async ({searchTerm = ""}) => {
+//     try {
+//         let options = {
+//             dataCollectionId: "PortfolioCollection",
+//             includeReferencedItems: ["blogRef", "locationFilteredVariant", "storeProducts", "studios", "markets", "author"],
+//             returnTotalCount: true,
+//         };
+
+//         const blog_response = await wixClient.items.queryDataItems(options)
+//             .contains('titleAndDescription', searchTerm)
+//             .find();
+//         const portfolio_response = await wixClient.items.queryDataItems(options)
+//             .contains('titleAndDescription', searchTerm)
+//             .find();
+
+//             console.log("response", response);
+//         return {
+//             items: response.items,
+//             // studios: response.items,
+//             // markets: response.items,
+//         };
+//     } catch (error) {
+//         throw new Error(error.message);
+//     }
+// }
