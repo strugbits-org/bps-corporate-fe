@@ -26,7 +26,6 @@ const Search = () => {
   const [resultMarkets, setResultMarkets] = useState([]);
 
   const [searchActive, setSearchActive] = useState(false);
-  const [searching, setSearching] = useState(false);
 
   useEffect(() => {
     dispatch(fetchStudioSection(false));
@@ -43,14 +42,52 @@ const Search = () => {
     setResultMarkets([...new Set([...portfolioMarkets, ...blogMarkets])]);
   }, [portfolioCollection, blogCollection]);
 
-
-
   const filteredProductData = useMemo(() => {
     return productSlider.filter(
       (item) =>
         item.name && item.name.toLowerCase().includes(searchTerm)
     );
   }, [searchTerm]);
+
+  const filteredPortfolioCollection = useMemo(() => {
+    let data = portfolioCollection;
+
+    if (selectedStudios.length > 0 && selectedMarkets.length > 0) {
+      data = data.filter(item =>
+        item.studios.some(studio => selectedStudios.includes(studio._id)) ||
+        item.markets.some(market => selectedMarkets.includes(market._id))
+      );
+    } else if (selectedStudios.length > 0) {
+      data = data.filter(item =>
+        item.studios.some(studio => selectedStudios.includes(studio._id))
+      );
+    } else if (selectedMarkets.length > 0) {
+      data = data.filter(item =>
+        item.markets.some(market => selectedMarkets.includes(market._id))
+      );
+    }
+    return data;
+  }, [selectedStudios, selectedMarkets, portfolioCollection]);
+
+  const filteredBlogCollection = useMemo(() => {
+    let data = blogCollection;
+
+    if (selectedStudios.length > 0 && selectedMarkets.length > 0) {
+      data = data.filter(item =>
+        item.studios.some(studio => selectedStudios.includes(studio._id)) ||
+        item.markets.some(market => selectedMarkets.includes(market._id))
+      );
+    } else if (selectedStudios.length > 0) {
+      data = data.filter(item =>
+        item.studios.some(studio => selectedStudios.includes(studio._id))
+      );
+    } else if (selectedMarkets.length > 0) {
+      data = data.filter(item =>
+        item.markets.some(market => selectedMarkets.includes(market._id))
+      );
+    }
+    return data;
+  }, [selectedStudios, selectedMarkets, blogCollection]);
 
   const handleStudioFilter = (tag) => {
     if (selectedStudios.includes(tag)) {
@@ -73,10 +110,8 @@ const Search = () => {
       setProductSliderData(filteredProductData);
 
       const options = {
-        pageSize: 10,
+        pageSize: 50,
         searchTerm: searchTerm,
-        studios: selectedStudios,
-        markets: selectedMarkets,
         disableLoader: true
       };
 
@@ -85,7 +120,6 @@ const Search = () => {
 
       const blog = await listBlogs(options);
       setBlogCollection(blog.items.map((item) => item.data));
-      // setSearching(false);
     } catch (error) {
       console.log("error", error);
     }
@@ -93,14 +127,11 @@ const Search = () => {
 
   useEffect(() => {
     if (searchActive) {
-      // setSearching(true);
       const delayedSearch = debounce(searchCollections, 1000);
       delayedSearch();
       return () => delayedSearch.cancel();
     }
-  }, [selectedStudios, selectedMarkets, searchActive, searchTerm]);
-
-
+  }, [searchActive, searchTerm]);
 
 
   const handleInputChange = (e) => {
@@ -158,7 +189,7 @@ const Search = () => {
                 </form>
               </div>
 
-              <div className={`container-results ${searching ? "searching" : ""}`}>
+              <div className="container-results">
                 <div className="inner-container-results" data-cursor-style="default">
                   <button className="btn-close-results" data-search-remove>
                     X
@@ -215,7 +246,7 @@ const Search = () => {
                             data-aos
                             data-cursor-style="default"
                           >
-                            {productSliderData.map((data, index) => {
+                            {productSliderData.slice(0, 6).map((data, index) => {
                               return (
                                 <div
                                   key={index}
@@ -298,7 +329,7 @@ const Search = () => {
                             data-aos
                             data-cursor-style="default"
                           >
-                            {portfolioCollection?.map((data) => {
+                            {filteredPortfolioCollection?.slice(0, 15).map((data) => {
                               return (
                                 <div
                                   key={data._id}
@@ -330,7 +361,7 @@ const Search = () => {
                                 </div>
                               );
                             })}
-                            {portfolioCollection.length === 0 && <h6 style={{ width: "100%" }} className="ml-4 mt-3-cs fs--20">No matches found for "{searchTerm}"</h6>}
+                            {filteredPortfolioCollection.length === 0 && <h6 style={{ width: "100%" }} className="ml-4 mt-3-cs fs--20">No matches found for "{searchTerm}"</h6>}
                           </div>
                         </div>
                       </div>
@@ -404,7 +435,7 @@ const Search = () => {
                           className="swiper-wrapper list-result-blog list-slider-mobile list-blog grid-lg-20"
                           data-aos
                         >
-                          {blogCollection?.map((blog) => {
+                          {filteredBlogCollection?.slice(0, 15).map((blog) => {
                             return (
                               <div
                                 key={blog.blogId}
@@ -447,7 +478,7 @@ const Search = () => {
                               </div>
                             );
                           })}
-                          {blogCollection.length === 0 && <h6 style={{ width: "100%" }} className="ml-4 mt-3-cs fs--20">No matches found for "{searchTerm}"</h6>}
+                          {filteredBlogCollection.length === 0 && <h6 style={{ width: "100%" }} className="ml-4 mt-3-cs fs--20">No matches found for "{searchTerm}"</h6>}
                         </div>
                       </div>
                     </div>
