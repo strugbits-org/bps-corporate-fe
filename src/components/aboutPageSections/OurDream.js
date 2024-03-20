@@ -30,7 +30,7 @@ const OurDream = () => {
           <div className="col-lg-12 mt-lg-70 mt-mobile-40">
             <ul className="list-dream-team grid-lg-25 grid-tablet-50">
               <div className="line-wrapper" data-aos="d:loop">
-                {data.map((data, index) => {
+                {[...data].reverse().map((data, index) => {
                   return (
                     <li key={index} className="grid-item">
                       <div className="wrapper-profile">

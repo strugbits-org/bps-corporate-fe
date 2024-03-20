@@ -19,8 +19,8 @@ const ProductCartSlider = ({data}) => {
                   </button> */}
 
                   <DelayedLink to={EXTERNAL_SITE_URL + item.productPageUrl} target={"blank"} className="product-link">
-                    <h3 className="product-name">{item.name}</h3>
-
+                    <h3 className="product-name productSlider-label">{item.name}</h3>
+                  
                     <div className="wrapper-img">
                       <div className="container-img">
                         <img
