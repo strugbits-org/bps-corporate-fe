@@ -7,6 +7,7 @@ import { postFormData } from "../redux/reducers/contactus";
 const ContactForm = () => {
   const dispatch = useDispatch();
   const [showSuccess, setShowSuccess] = useState(false);
+  const [showError, setShowError] = useState(false);
   const { loadingForm, successForm, errorForm } = useSelector(
     (state) => state.contact
   );
@@ -21,30 +22,32 @@ const ContactForm = () => {
   const onSubmit = (data) => {
     dispatch(postFormData(data));
   };
-
   useEffect(() => {
     if (successForm) {
       setShowSuccess(true);
       const timeoutId = setTimeout(() => {
         setShowSuccess(false);
-       
         reset();
+        Array.from(document.querySelectorAll('.preenchido')).forEach(
+          (el) => el.classList.remove('preenchido')
+        );
       }, 3000);
-
+      // Clean up the timeout
       return () => clearTimeout(timeoutId);
     }
     if (errorForm) {
       setShowError(true);
-
       const timeoutId = setTimeout(() => {
         setShowError(false);
         reset();
+        Array.from(document.querySelectorAll('.preenchido')).forEach(
+          (el) => el.classList.remove('preenchido')
+        );
       }, 3000);
-
+      // Clean up the timeout
       return () => clearTimeout(timeoutId);
     }
-    
-  }, [successForm, reset]);
+  }, [successForm, errorForm, reset]);
 
   return (
     <div className="column-1">
@@ -54,9 +57,9 @@ const ContactForm = () => {
       </h2>
       <div
         className={`container-contact mt-lg-140 mt-tablet-65 ${
-          errorForm ? "formError" : ""
-        }`}
-        data-form-container
+          showSuccess ? "form-success" : ""
+        } ${showError ? "formError" : ""}`}
+        // data-form-container
       >
         <form className="form-contact" onSubmit={handleSubmit(onSubmit)}>
           {/* <input type="hidden" name="assunto" value="[contact]" /> */}
@@ -127,13 +130,11 @@ const ContactForm = () => {
           </div>
         </form>
         {/* Error message */}
-
         {showError && (
           <h3 className="disable-css" data-form-error>
             Error, Try again!
           </h3>
         )}
-
         {showSuccess && <h3 data-form-success>Success!</h3>}
       </div>
     </div>
