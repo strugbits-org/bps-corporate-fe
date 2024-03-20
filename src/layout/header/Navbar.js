@@ -188,10 +188,8 @@ const Navbar = () => {
               {/* market model component end */}
 
               {/* search model component start */}
-              <section className="menu-search" data-get-submenu="search">
                 <Search />
                
-              </section>
               {/* search model component end */}
 
               {/* contactform model component start */}

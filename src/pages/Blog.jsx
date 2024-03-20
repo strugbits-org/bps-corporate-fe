@@ -5,6 +5,8 @@ import { listBlogs } from "../utilis/queryCollections";
 import BlogListing from "../components/blogPageSections/BlogListing";
 import { fetchStudioSection } from "../redux/reducers/homeData";
 import { getMarketCollection } from "../redux/reducers/marketData";
+import { handleCollectionLoaded } from "../utilis/loadAnimations";
+import { updatedWatched } from "../utilis/animtationsTriggers";
 
 const Blog = () => {
 
@@ -24,18 +26,14 @@ const Blog = () => {
     const response = await blogResponse.next();
     setBlogCollection(prev => [...prev, ...response.items.map(item => item.data)]);
     setBlogResponse(response);
-    setTimeout(() => {
-      document.querySelector(".updateWatchedTrigger").click();
-    }, 400);
+    updatedWatched();
   }
 
   const applyFilters = async ({selectedStudios = [], selectedMarkets = []}) => {
     const response = await listBlogs({ pageSize : 8, studios: selectedStudios, markets: selectedMarkets });
     setBlogCollection(response.items.map(item => item.data));
     setBlogResponse(response);
-    setTimeout(() => {
-      document.querySelector(".updateWatchedTrigger").click();
-    }, 400);
+    handleCollectionLoaded();
   }
 
   return (
