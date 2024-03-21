@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DelayedLink from "../../common/DelayedLink";
 import { getFullImagePost } from "../../common/common_functions/imageURL";
 
@@ -11,31 +11,27 @@ const PortfolioListing = ({ data, seeMore, applyFilters }) => {
   const [marketsDropdownActive, setMarketsDropdownActive] = useState([]);
 
   const handleStudioFilter = (tag) => {
-    setSudiosDropdownActive(false);
-    setMarketsDropdownActive(false);
     if (selectedStudios.includes(tag)) {
-      const _selectedStudios = selectedStudios.filter((el) => el !== tag);
-      setSelectedStudios(_selectedStudios);
-      applyFilters({ selectedStudios: _selectedStudios, selectedMarkets });
+      setSelectedStudios(selectedStudios.filter((el) => el !== tag));
     } else {
-      const _selectedStudios = [...selectedStudios, tag];
-      setSelectedStudios(_selectedStudios);
-      applyFilters({ selectedStudios: _selectedStudios, selectedMarkets });
+      setSelectedStudios([...selectedStudios, tag]);
     }
   };
   const handleMarketFilter = (category) => {
-    setSudiosDropdownActive(false);
-    setMarketsDropdownActive(false);
     if (selectedMarkets.includes(category)) {
-      const _selectedMarkets = selectedMarkets.filter((el) => el !== category);
-      setSelectedMarkets(_selectedMarkets);
-      applyFilters({ selectedStudios, selectedMarkets: _selectedMarkets });
+      setSelectedMarkets(selectedMarkets.filter((el) => el !== category));
     } else {
-      const _selectedMarkets = [...selectedMarkets, category];
-      setSelectedMarkets(_selectedMarkets);
-      applyFilters({ selectedStudios, selectedMarkets: _selectedMarkets });
+      setSelectedMarkets([...selectedMarkets, category]);
     }
   };
+
+  useEffect(() => {
+    if (data.items !== undefined) {
+      setSudiosDropdownActive(false);
+      setMarketsDropdownActive(false);
+      applyFilters({ selectedStudios, selectedMarkets });
+    }
+  }, [selectedStudios, selectedMarkets]);
 
   return (
     <section className="portfolio-intro pt-lg-145 pt-mobile-105">

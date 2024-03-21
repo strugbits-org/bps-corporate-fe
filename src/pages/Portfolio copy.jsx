@@ -19,7 +19,6 @@ const Portfolio = () => {
   useEffect(() => {
     dispatch(fetchStudioSection());
     dispatch(getMarketCollection());
-    applyFilters({});
   }, [dispatch]);
   
   const handleSeeMore = async () => {
