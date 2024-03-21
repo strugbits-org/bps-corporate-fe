@@ -1,4 +1,4 @@
-import { updatedWatched } from "./animtationsTriggers";
+import { updatedWatched } from "./animationsTriggers";
 
 export const startLoading = (disableLoader) => {
     if (disableLoader) { return };

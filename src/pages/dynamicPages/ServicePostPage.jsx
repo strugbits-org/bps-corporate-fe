@@ -24,7 +24,6 @@ const ServicePostPage = () => {
     dispatch(fetchServicesData(params.slug));
   }, [dispatch, location, params.slug]);
   
-
   return (
     <>
       <ServiceIntro data={servicesData} />

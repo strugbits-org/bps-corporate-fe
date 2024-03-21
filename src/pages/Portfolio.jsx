@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { listPortfolios } from "../utilis/queryCollections";
 import { fetchStudioSection } from "../redux/reducers/homeData";
 import { getMarketCollection } from "../redux/reducers/marketData";
-import { updatedWatched } from "../utilis/animtationsTriggers";
+import { updatedWatched } from "../utilis/animationsTriggers";
 
 const Portfolio = () => {
   const dispatch = useDispatch();
