@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import getFullImageURL from "../../common/common_functions/imageURL";
+import { getFullImagePost } from "../../common/common_functions/imageURL";
 import React from "react";
 
 const PortfolioIntoSection = ({ data }) => {
 
-  const coverImage = getFullImageURL(data?.portfolioRef?.coverImage.imageInfo);
+  const coverImage = getFullImagePost(data?.portfolioRef?.coverImage?.imageInfo);
   const categories = data?.markets?.map((item) => item.cardname);
   const title = data?.portfolioRef?.title;
   const description = data?.portfolioRef?.description;
@@ -29,14 +29,14 @@ const PortfolioIntoSection = ({ data }) => {
     <section className="portfolio-post-intro pb-lg-250">
       <div className="wrapper-banner-img" data-aos>
         <div className="container-img banner-img">
-          <img
+          {coverImage && <img
             src={coverImage}
             data-preload
             className="media"
             alt=""
             data-parallax-top
             data-translate-y="50%"
-          />
+          />}
         </div>
       </div>
       <div className="container-fluid pos-relative z-5">
@@ -162,7 +162,7 @@ const PortfolioIntoSection = ({ data }) => {
                       <input
                         type="text"
                         className="copy-link-url"
-                        value="portfolio-post"
+                        // value="portfolio-post"
                         style={{ position: "absolute", opacity: 0 }}
                       />
                     </li>

@@ -1,10 +1,12 @@
+import { initAnimations, updatedWatched } from "./animtationsTriggers";
+
 let collectionLoaded = 0;
 
 export const handleCollectionLoaded = () => {
     collectionLoaded++;
     const page = window.location.pathname.trim() === "/" ? "home" : window.location.pathname.substring(1);
     const cleanPage = page.split("/")[0].trim();
-
+    
     const collectionsCount = {
         'home': 8,
         'about': 6,
@@ -20,11 +22,11 @@ export const handleCollectionLoaded = () => {
     if (collectionLoaded >= collectionsCount) {
         collectionLoaded = 0;
         document.body.classList.add(cleanPage+"-loaded");
-        document.querySelector(".initScript").click();
-        document.querySelector(".updateWatchedTrigger").click();
+        initAnimations();
+        updatedWatched();
     } else if (cleanPage === "services-post" && document.body.classList.contains(cleanPage + "-loaded")) {
-        document.querySelector(".initScript").click();
+        initAnimations();
     } else if (cleanPage === "market-post" && document.body.classList.contains(cleanPage + "-loaded")) {
-        document.querySelector(".initScript").click();
+        initAnimations();
     }
 };

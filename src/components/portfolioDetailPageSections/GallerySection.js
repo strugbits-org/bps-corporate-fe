@@ -1,8 +1,8 @@
 import React from "react";
 import ProductCartSlider from "../commonComponents/ProductCartSlider";
-import {gallery} from "../../common/constats/portfolioData"
-const GallerySection = ({data}) => {
- 
+import { gallery } from "../../common/constats/portfolioData"
+const GallerySection = ({ data }) => {
+
   return (
     <section className="portfolio-post-photo-gallery pt-lg-165 pt-tablet-105 pt-phone-145">
       <div className="container-fluid">
@@ -58,13 +58,13 @@ const GallerySection = ({data}) => {
               </div>
             </div>
           </div>
-          <div className="col-lg-10 offset-lg-1 column-2">
+          <div className={`col-lg-10 offset-lg-1 column-2 ${data?.storeProducts.length === 0 ? "hidden" : ""}`} >
             <div className="container-slider-produtcts">
               <h2 className="slider-title split-words" data-aos="d:loop">
                 Products featured in this project entry:
               </h2>
 
-              <ProductCartSlider data={data}/>
+              <ProductCartSlider data={data} />
             </div>
           </div>
         </div>

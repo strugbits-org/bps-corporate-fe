@@ -230,7 +230,7 @@ export const dreambig = {
 
 export const socialData = {
   title: "Let's get social",
-  subtitle: "Connect, create, celebrate: /BlueprintVibes",
+  subtitle: "Connect, create, celebrate: #BlueprintVibes",
   blogtitle: "From our blog",
   instatitle: "Stay connected Feed",
   pinatitle: "Stay connected Feed",

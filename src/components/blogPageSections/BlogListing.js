@@ -1,67 +1,38 @@
 import React, { useEffect, useState } from "react";
 import DelayedLink from "../../common/DelayedLink";
-import { useDispatch, useSelector } from "react-redux";
 import getFullImageURL from "../../common/common_functions/imageURL";
-import { fetchStudioSection } from "../../redux/reducers/homeData";
 import formatDate from "../../common/common_functions/dateFormat";
-import { getMarketCollection } from "../../redux/reducers/marketData";
 
-const BlogListing = ({ data, totalCount, seeAllBlogs }) => {
+const BlogListing = ({ data, seeMore, applyFilters }) => {
 
-    const dispatch = useDispatch();
-    const studios = useSelector((state) => state.home.studioData);
-    const markets = useSelector((state) => state.market.marketModel);
-
-    // const loading = useSelector((state) => state.market.marketModelLoading);
-    // const error = useSelector((state) => state.market.error);
-
-    const [selectedStudio, setSelectedStudio] = useState([]);
+    const [selectedStudios, setSelectedStudios] = useState([]);
     const [selectedMarkets, setSelectedMarkets] = useState([]);
-    const [filteredBlogCollection, setFilteredBlogCollection] = useState(data);
 
-    useEffect(() => {
-        dispatch(fetchStudioSection());
-        dispatch(getMarketCollection(true));
-    }, [dispatch]);
-
-
-    useEffect(() => {
-        setFilteredBlogCollection(data);
-    }, [data]);
+    const [studiosDropdownActive, setSudiosDropdownActive] = useState(false);
+    const [marketsDropdownActive, setMarketsDropdownActive] = useState([]);
 
     const handleStudioFilter = (tag) => {
-        if (selectedStudio.includes(tag)) {
-            setSelectedStudio(
-                selectedStudio.filter((el) => el !== tag)
-            );
+        if (selectedStudios.includes(tag)) {
+            setSelectedStudios(selectedStudios.filter((el) => el !== tag));
         } else {
-            setSelectedStudio([...selectedStudio, tag]);
+            setSelectedStudios([...selectedStudios, tag]);
         }
     };
     const handleMarketFilter = (category) => {
         if (selectedMarkets.includes(category)) {
-            setSelectedMarkets(
-                selectedMarkets.filter((el) => el !== category)
-            );
+            setSelectedMarkets(selectedMarkets.filter((el) => el !== category));
         } else {
             setSelectedMarkets([...selectedMarkets, category]);
         }
     };
 
     useEffect(() => {
-        const filteredBlogs = data.filter(item => {
-            const studiosLabels = item.studios.map((item) => item.cardName)
-            const marketLabels = item.markets.map((item) => item.cardname)
-            return (
-                (selectedMarkets.length === 0 || selectedMarkets.some(r => marketLabels.includes(r))) ||
-                (selectedStudio.length === 0 || selectedStudio.some(r => studiosLabels.includes(r)))
-            );
-        });
-        setFilteredBlogCollection(filteredBlogs);
-        setTimeout(() => {
-            document.querySelector(".updateWatchedTrigger").click();
-        }, 400);
-    }, [selectedStudio, selectedMarkets, data]);
+        if (data.items !== undefined) {
+            setSudiosDropdownActive(false);
+            setMarketsDropdownActive(false);
+            applyFilters({ selectedStudios, selectedMarkets });
+        }
+    }, [selectedStudios, selectedMarkets]);
 
     return (
         <section className="blog-intro pt-lg-145 pt-tablet-115 pt-phone-120 pb-lg-150 pb-tablet-100 pb-phone-155">
@@ -80,29 +51,29 @@ const BlogListing = ({ data, totalCount, seeAllBlogs }) => {
                         >
                             <div className="portfolio-tags">
                                 <button
-                                    className="btn-tag-mobile no-desktop"
-                                    data-set-tag="portfolio"
+                                    onClick={() => { setSudiosDropdownActive(!studiosDropdownActive) }}
+                                    className={`btn-tag-mobile no-desktop ${studiosDropdownActive ? "active" : ""}`}
                                 >
                                     <span>All Studios</span>
                                     <i className="icon-arrow-down"></i>
                                 </button>
-                                <div className="list-dropdown" data-get-tag="portfolio">
+                                <div className={`list-dropdown ${studiosDropdownActive ? "active" : ""}`}>
                                     <div className="container-wrapper-list">
                                         <div className="wrapper-list">
                                             <ul className="list-portfolio-tags list-dropdown-tags">
                                                 <li>
                                                     <button
-                                                        onClick={() => { setFilteredBlogCollection(data); setSelectedStudio([]) }}
-                                                        className={`portfolio-btn-tag ${selectedStudio.length === 0 ? "active" : ""
+                                                        onClick={() => { setSelectedStudios([]) }}
+                                                        className={`portfolio-btn-tag ${selectedStudios.length === 0 ? "active" : ""
                                                             }`}>
                                                         <span>All Studios</span>
                                                     </button>
                                                 </li>
-                                                {studios?.map((item, index) => (
+                                                {data.studios?.map((item, index) => (
                                                     <li key={index}>
                                                         <button
-                                                            onClick={() => { handleStudioFilter(item.data.cardName) }}
-                                                            className={`portfolio-btn-tag ${selectedStudio.includes(item.data.cardName)
+                                                            onClick={() => { handleStudioFilter(item.data._id) }}
+                                                            className={`portfolio-btn-tag ${selectedStudios.includes(item.data._id)
                                                                 ? "active"
                                                                 : ""
                                                                 }`}>
@@ -117,28 +88,31 @@ const BlogListing = ({ data, totalCount, seeAllBlogs }) => {
                             </div>
 
                             <div className="market-tags">
-                                <button className="btn-tag-mobile no-desktop" data-set-tag="market">
+                                <button
+                                    onClick={() => { setMarketsDropdownActive(!marketsDropdownActive) }}
+                                    className={`btn-tag-mobile no-desktop ${marketsDropdownActive ? "active" : ""}`}
+                                >
                                     <span>All Markets</span>
                                     <i className="icon-arrow-down"></i>
                                 </button>
-                                <div className="list-dropdown" data-get-tag="market">
+                                <div className={`list-dropdown ${marketsDropdownActive ? "active" : ""}`}>
                                     <div className="container-wrapper-list">
                                         <div className="wrapper-list">
                                             <ul className="list-market-tags list-dropdown-tags">
                                                 <li>
                                                     <button
-                                                        onClick={() => { setFilteredBlogCollection(data); setSelectedMarkets([]) }}
+                                                        onClick={() => { setSelectedMarkets([]) }}
                                                         className={`portfolio-btn-tag ${selectedMarkets.length === 0 ? "active" : ""
                                                             }`}
                                                     >
                                                         <span>All Markets</span>
                                                     </button>
                                                 </li>
-                                                {markets?.map((market, index) => (
+                                                {data.markets?.map((market, index) => (
                                                     <li key={index}>
                                                         <button
-                                                            onClick={() => { handleMarketFilter(market.cardname) }}
-                                                            className={`portfolio-btn-tag ${selectedMarkets.includes(market.cardname)
+                                                            onClick={() => { handleMarketFilter(market._id) }}
+                                                            className={`portfolio-btn-tag ${selectedMarkets.includes(market._id)
                                                                 ? "active"
                                                                 : ""
                                                                 }`}
@@ -160,7 +134,7 @@ const BlogListing = ({ data, totalCount, seeAllBlogs }) => {
                 <div className="row row-2 mt-lg-60 mt-tablet-40 mt-phone-35">
                     <div className="col-lg-12 column-1">
                         <ul className="list-blog grid-lg-25 grid-tablet-50">
-                            {filteredBlogCollection?.map((item) => {
+                            {data.items?.map((item) => {
                                 return item.blogRef && item.author && (
                                     <li key={item._id} className="grid-item" data-aos="d:loop">
                                         <DelayedLink
@@ -195,9 +169,9 @@ const BlogListing = ({ data, totalCount, seeAllBlogs }) => {
                                                 <p className="text-blog">{item.blogRef.excerpt}</p>
                                             </div>
                                         </DelayedLink>
-                                        <ul style={{marginTop:2}} className="list-tags-small">
+                                        <ul style={{ marginTop: 2 }} className="list-tags-small">
                                             {item.markets.map((market, index) => (
-                                                <li key={index} onClick={() => { handleMarketFilter(market.cardname) }} className={`tag-small ${selectedMarkets.includes(market.cardname)
+                                                <li key={index} onClick={() => { handleMarketFilter(market._id) }} className={`tag-small ${selectedMarkets.includes(market._id)
                                                     ? "active"
                                                     : ""
                                                     }`}  >
@@ -207,7 +181,7 @@ const BlogListing = ({ data, totalCount, seeAllBlogs }) => {
                                             {item.studios.map((studio, index) => (
                                                 <React.Fragment key={index}>
                                                     {index < 2 && (
-                                                        <li onClick={() => { handleStudioFilter(studio.cardName) }} className={`tag-small ${selectedStudio.includes(studio.cardName)
+                                                        <li onClick={() => { handleStudioFilter(studio._id) }} className={`tag-small ${selectedStudios.includes(studio._id)
                                                             ? "active"
                                                             : ""
                                                             }`} >
@@ -226,18 +200,18 @@ const BlogListing = ({ data, totalCount, seeAllBlogs }) => {
                                 );
                             })}
                         </ul>
-                        {filteredBlogCollection.length === 0 && <h6 style={{ width: "100%" }} className="fs--40 text-center split-words" data-aos="d:loop">No Data found</h6>}
+                        {data.items.length === 0 && <h6 style={{ width: "100%" }} className="fs--40 text-center split-words" data-aos="d:loop">No Data found</h6>}
                     </div>
-                    {filteredBlogCollection.length > 0 && filteredBlogCollection.length !== totalCount && (
+                    {data.items.length > 0 && data.items.length !== data.totalCount && (
                         <div className="col-lg-2 offset-lg-5 flex-center mt-lg-70 mt-tablet-60 mt-phone-85">
                             <button
-                                onClick={seeAllBlogs}
+                                onClick={seeMore}
                                 className="btn-border-blue"
                                 attributes={{
                                     "data-cursor-style": "off",
                                 }}
                             >
-                                <span>See all</span>
+                                <span>See more</span>
                             </button>
                         </div>
                     )}
