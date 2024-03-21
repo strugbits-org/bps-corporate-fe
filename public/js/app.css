@@ -19268,3 +19268,23 @@ body.page-leave-active[data-load="first-done"] .overlay {
   overflow: hidden; 
   white-space: nowrap;
 }
+
+.list-instagram > span {
+  min-width: 100% !important;
+  max-width: 100% !important;
+  display: flex;
+}
+
+.list-instagram > span > span:nth-child(1) {
+  display:none;
+}
+
+.list-instagram > span > span:nth-child(3) {
+  display:none;
+}
+
+
+.list-instagram > span > span:nth-child(2) {
+  height:100%!important;
+  max-height:52vh!important;
+}
