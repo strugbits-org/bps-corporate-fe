@@ -2,13 +2,15 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import getFullImageURL from "../../common/common_functions/imageURL";
 import createWixClient from "../wixClient";
 import { handleCollectionLoaded } from "../../utilis/loadAnimations";
-
+import { listPortfolios } from "../../utilis/queryCollections";
 const wixClient = createWixClient();
 
 const initialState = {
   servicesData: null,
   servicesModelData: [],
+  servicesSlider: [],
 
+  servicesSliderLoading: false,
   servicesModelLoading: false,
   servicesLoading: false,
   error: null,
@@ -53,10 +55,10 @@ export const getServicesModel = createAsyncThunk(
         .queryDataItems(options)
         .eq("title", "Studios")
         .find();
-        const servicesArray = fetchedItems.map((service)=> {
-          service.data.image = getFullImageURL(service.data.modalImage);
-          return service.data;
-        });
+      const servicesArray = fetchedItems.map((service) => {
+        service.data.image = getFullImageURL(service.data.modalImage);
+        return service.data;
+      });
 
       return servicesArray;
     } catch (error) {
@@ -64,6 +66,33 @@ export const getServicesModel = createAsyncThunk(
     }
   }
 );
+
+// const options = {
+//   pageSize: 3,
+//   disableLoader: true,
+//   studios: [service id],
+// };
+
+// const portfolio = await listPortfolios(options);
+
+export const getServicesSlider = createAsyncThunk(
+  "data/getServicesSlider",
+  async (id) => {
+    try {
+      const options = {
+        pageSize: 3,
+        disableLoader: true,
+        studios: [id],
+      };
+
+      const portfolio = await listPortfolios(options);
+      return portfolio;
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
+);
+
 
 const servicesSlice = createSlice({
   name: "services",
@@ -94,6 +123,19 @@ const servicesSlice = createSlice({
       })
       .addCase(getServicesModel.rejected, (state, action) => {
         state.servicesLoading = false;
+        state.error = action.error.message;
+      })
+      //slider reducers//
+      .addCase(getServicesSlider.pending, (state) => {
+        state.servicesSliderLoading = true;
+        state.error = null;
+      })
+      .addCase(getServicesSlider.fulfilled, (state, action) => {
+        state.servicesSliderLoading = false;
+        state.servicesSlider = action.payload;
+      })
+      .addCase(getServicesSlider.rejected, (state, action) => {
+        state.servicesSliderLoading = false;
         state.error = action.error.message;
       });
   },

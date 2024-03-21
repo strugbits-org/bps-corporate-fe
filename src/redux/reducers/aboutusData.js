@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import createWixClient from "../wixClient";
 import { handleCollectionLoaded } from "../../utilis/loadAnimations";
+import { listPortfolios } from "../../utilis/queryCollections";
 
 const wixClient = createWixClient();
 
@@ -9,7 +10,9 @@ const initialState = {
   OurDreamData: [],
   OurFamilyData: [],
   SliderData: [],
+  AboutSlider: [],
 
+  AboutSliderLoading: false,
   IntroLoading: false,
   OurDreamLoading: false,
   OurFamilyLoading: false,
@@ -108,6 +111,22 @@ export const fetchSliderSection = createAsyncThunk(
     }
   );
 
+  export const getAboutSlider = createAsyncThunk(
+    "data/getServicesSlider",
+    async (id) => {
+      try {
+        const options = {
+          pageSize: 3,
+          disableLoader: true,
+        };
+  
+        const portfolio = await listPortfolios(options);
+        return portfolio;
+      } catch (error) {
+        throw new Error(error.message);
+      }
+    }
+  );
 const aboutUsSlice = createSlice({
   name: "aboutus",
   initialState,
@@ -165,7 +184,20 @@ const aboutUsSlice = createSlice({
       .addCase(fetchSliderSection.rejected, (state, action) => {
         state.SliderLoading = false;
         state.error = action.error.message;
-      });
+      })
+         /// Slider Section ////
+         .addCase(getAboutSlider.pending, (state) => {
+          state.AboutSliderLoading = true;
+          state.error = null;
+        })
+        .addCase(getAboutSlider.fulfilled, (state, action) => {
+          state.AboutSliderLoading = false;
+          state.AboutSlider = action.payload;
+        })
+        .addCase(getAboutSlider.rejected, (state, action) => {
+          state.AboutSliderLoading = false;
+          state.error = action.error.message;
+        });
   },
 });
 

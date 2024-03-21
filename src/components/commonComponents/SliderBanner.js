@@ -1,19 +1,7 @@
 import { Link } from "react-router-dom";
-import React, { useEffect } from "react";
 import getFullImageURL from "../../common/common_functions/imageURL";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchSliderSection } from "../../redux/reducers/aboutusData";
 
-const SliderBanner = () => {
-  const disptach = useDispatch();
-  const data = useSelector((state) => state.aboutus.SliderData);
-  // const loading = useSelector((state) => state.aboutus.SliderLoading);
-  // const error = useSelector((state) => state.aboutus.error);
-
-  useEffect(() => {
-   disptach(fetchSliderSection());
-  }, [disptach]);
-
+const SliderBanner = ({ data }) => {
   return (
     <section className="section-slider-banner">
       <div className="slider-banner banner-about" data-aos="d:loop">
@@ -21,7 +9,7 @@ const SliderBanner = () => {
           {/* <!-- Additional required wrapper --> */}
           <div className="swiper-wrapper">
             {/* <!-- Slides --> */}
-            {data.map((data, index) => {
+            {data?.map((data, index) => {
               return (
                 <div key={index} className="swiper-slide">
                   <Link to="/">
@@ -36,28 +24,55 @@ const SliderBanner = () => {
                       />
                     </div>
                     <div className="container-project">
-                      <h4 className="project split-words">{data.data.sliderTitle}</h4>
+                      <h4 className="project split-words">
+                        {data.data.sliderTitle}
+                      </h4>
                       <ul className="list-tags">
-                         {data.data.arraystring.map((data, index) => {
-                              return  <li key={index}>
+                        {data.data.arraystring.map((data, index) => {
+                          return (
+                            <li key={index}>
                               <span>{data}</span>
                             </li>
+                          );
                         })}
                       </ul>
+                      {data?.data?.subtitleButtion && (
+                        <div class="container-btn-top">
+                          <div
+                            class="btn-border-white btn-top mt-30"
+                            data-cursor-style="off"
+                          >
+                            <span>{data?.data?.subtitleButtion}</span>
+                          </div>
+                        </div>
+                      )}
                     </div>
                     <div className="container-title">
                       <h3 className="title split-words">
-                        {data.data.subtitle} <br />
-                        {data.data.subtitle1}
+                        {data?.data?.subtitle} <br />
+                        {data?.data?.subtitle1}
                       </h3>
-                      <div className="container-btn-bottom">
-                        <div
-                          className="btn-border-white btn-bottom btn-about"
-                          data-cursor-style="off"
-                        >
-                          <span>{data.data.buttonText}</span>
+                      {data?.data?.buttonText && (
+                        <div className="container-btn-bottom">
+                          <div
+                            className="btn-border-white btn-bottom btn-about"
+                            data-cursor-style="off"
+                          >
+                            <span>{data?.data?.buttonText}</span>
+                          </div>
                         </div>
-                      </div>
+                      )}
+                      {data?.data?.subtitle1Button && (
+                        <div class="container-btn-bottom">
+                          <div
+                            class="btn-blue btn-bottom"
+                            data-cursor-style="off"
+                          >
+                            <span>{data?.data?.subtitle1Button}</span>
+                            <i class="icon-arrow-right"></i>
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </Link>
                 </div>

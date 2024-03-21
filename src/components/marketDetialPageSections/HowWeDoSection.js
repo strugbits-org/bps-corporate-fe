@@ -1,6 +1,7 @@
 import getFullImageURL from "../../common/common_functions/imageURL";
 
 const HowWeDoSection = ({data}) => {
+ 
   return (
     <section className="market-post-how-we-do-it pt-lg-270 pt-tablet-100 pt-phone-150">
       <div className="container-fluid">
@@ -10,7 +11,7 @@ const HowWeDoSection = ({data}) => {
               How we do it
             </h2>
             <ul className="list-how-we-do-it mt-lg-50 mt-mobile-40">
-              {data?.howWeDoItSections.map((item, index) => {
+              {data?.howWeDoItSections.slice().reverse().map((item, index) => {
                 return (
                   <li key={index}>
                     <div className="list-column-img">
