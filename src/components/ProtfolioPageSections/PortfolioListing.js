@@ -6,6 +6,9 @@ const PortfolioListing = ({ data, seeMore, applyFilters }) => {
 
   const [selectedStudios, setSelectedStudios] = useState([]);
   const [selectedMarkets, setSelectedMarkets] = useState([]);
+  
+  const [studiosDropdownActive, setSudiosDropdownActive] = useState(false);
+  const [marketsDropdownActive, setMarketsDropdownActive] = useState([]);
 
   const handleStudioFilter = (tag) => {
     if (selectedStudios.includes(tag)) {
@@ -24,6 +27,8 @@ const PortfolioListing = ({ data, seeMore, applyFilters }) => {
   
   useEffect(() => {
     if (data.items !== undefined) {
+      setSudiosDropdownActive(false);
+      setMarketsDropdownActive(false);
       applyFilters({selectedStudios, selectedMarkets});
     }
   }, [selectedStudios, selectedMarkets]);
@@ -43,13 +48,13 @@ const PortfolioListing = ({ data, seeMore, applyFilters }) => {
             >
               <div className="portfolio-tags">
                 <button
-                  className="btn-tag-mobile no-desktop"
-                  data-set-tag="portfolio"
+                  onClick={()=>{setSudiosDropdownActive(!studiosDropdownActive)} }
+                  className={`btn-tag-mobile no-desktop ${studiosDropdownActive ? "active" : ""}`}
                 >
                   <span>All Studios</span>
                   <i className="icon-arrow-down"></i>
                 </button>
-                <div className="list-dropdown" data-get-tag="portfolio">
+                <div className={`list-dropdown ${studiosDropdownActive ? "active" : ""}`}>
                   <div className="container-wrapper-list">
                     <div className="wrapper-list">
                       <ul className="list-portfolio-tags list-dropdown-tags">
@@ -80,11 +85,14 @@ const PortfolioListing = ({ data, seeMore, applyFilters }) => {
               </div>
 
               <div className="market-tags">
-                <button className="btn-tag-mobile no-desktop" data-set-tag="market">
+                <button 
+                onClick={()=>{setMarketsDropdownActive(!marketsDropdownActive)} }
+                className={`btn-tag-mobile no-desktop ${marketsDropdownActive ? "active" : ""}`}
+                >
                   <span>All Markets</span>
                   <i className="icon-arrow-down"></i>
                 </button>
-                <div className="list-dropdown" data-get-tag="market">
+                <div className={`list-dropdown ${marketsDropdownActive ? "active" : ""}`}>
                   <div className="container-wrapper-list">
                     <div className="wrapper-list">
                       <ul className="list-market-tags list-dropdown-tags">
