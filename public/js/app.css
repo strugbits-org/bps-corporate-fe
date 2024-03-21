@@ -1367,7 +1367,7 @@ html {
 [data-form-container] [data-form-success], [data-form-container] [data-form-error]:not(.disable-css) {
   display: none;
 }
-[data-form-container][data-form-state=success] [data-form-success] {
+[data-form-container].form-success [data-form-success] {
   display: block;
 }
 [data-form-container][data-form-state=error] [data-form-error] {
@@ -2001,26 +2001,26 @@ html {
   }
 }
 .fs--16, .section-slider-banner .slider-banner .swiper-slide a .container-project .list-tags li span, #pg-market-post .market-post-how-we-do-it .list-how-we-do-it .list-column-text .column-paragraph, #pg-portfolio-post .portfolio-post-intro .wrapper-portfolio .column-portfolio .container-text .wrapper-text, #pg-portfolio-post .portfolio-post-intro .wrapper-portfolio .column-portfolio .container-text .title, #pg-services-post .services-post-description .list-services li .content .container-text .service-description, #pg-about .about-meet-the-rest-of-the-family .list-family .list-item .content .container-text, #pg-about .about-dream-team .list-dream-team .line-wrapper .grid-item .container-text .occupation, .chat .container-chat .container-messages .message, .menu-search .wrapper-search .container-results .result-order-pages .list-order-pages .link-order-pages .text-order-pages, .menu-search .wrapper-search .container-results .column-results .result-portfolio .list-result-portfolio .grid-item .link-portfolio .title-portfolio, .editor, #footer .column-2 .container-footer-menu .list-footer-menu .list-item .link-footer-menu, .rental-product-link .product-link .product-name, .list-blog .grid-item .link-blog .text-blog, .list-address li .phones a, .list-address li address, .list-projects.font-submenu .list-item .project-link .container-text .list-tags li span, .list-projects.font-80 .list-item .project-link .container-text .list-tags li span, .list-projects.font-60 .project-link .container-text .list-tags li span, .form-search .container-submit a,
-.form-search .container-submit button, .container-contact [data-form-error], .container-newsletter[data-form-state=success] .feedback-newsletter {
+.form-search .container-submit button, .container-contact [data-form-error], .container-newsletter.letter-success .feedback-newsletter {
   line-height: 1.2em;
   letter-spacing: 0;
   font-weight: 400;
 }
 @media only screen and (min-width: 1025.1px) {
   .fs--16, .section-slider-banner .slider-banner .swiper-slide a .container-project .list-tags li span, #pg-market-post .market-post-how-we-do-it .list-how-we-do-it .list-column-text .column-paragraph, #pg-portfolio-post .portfolio-post-intro .wrapper-portfolio .column-portfolio .container-text .wrapper-text, #pg-portfolio-post .portfolio-post-intro .wrapper-portfolio .column-portfolio .container-text .title, #pg-services-post .services-post-description .list-services li .content .container-text .service-description, #pg-about .about-meet-the-rest-of-the-family .list-family .list-item .content .container-text, #pg-about .about-dream-team .list-dream-team .line-wrapper .grid-item .container-text .occupation, .chat .container-chat .container-messages .message, .menu-search .wrapper-search .container-results .result-order-pages .list-order-pages .link-order-pages .text-order-pages, .menu-search .wrapper-search .container-results .column-results .result-portfolio .list-result-portfolio .grid-item .link-portfolio .title-portfolio, .editor, #footer .column-2 .container-footer-menu .list-footer-menu .list-item .link-footer-menu, .rental-product-link .product-link .product-name, .list-blog .grid-item .link-blog .text-blog, .list-address li .phones a, .list-address li address, .list-projects.font-submenu .list-item .project-link .container-text .list-tags li span, .list-projects.font-80 .list-item .project-link .container-text .list-tags li span, .list-projects.font-60 .project-link .container-text .list-tags li span, .form-search .container-submit a,
-  .form-search .container-submit button, .container-contact [data-form-error], .container-newsletter[data-form-state=success] .feedback-newsletter {
+  .form-search .container-submit button, .container-contact [data-form-error], .container-newsletter.letter-success .feedback-newsletter {
     font-size: clamp(14px,1.6rem,1.6rem);
   }
 }
 @media only screen and (min-width: 767.98px) and (max-width: 1025px) {
   .fs--16, .section-slider-banner .slider-banner .swiper-slide a .container-project .list-tags li span, #pg-market-post .market-post-how-we-do-it .list-how-we-do-it .list-column-text .column-paragraph, #pg-portfolio-post .portfolio-post-intro .wrapper-portfolio .column-portfolio .container-text .wrapper-text, #pg-portfolio-post .portfolio-post-intro .wrapper-portfolio .column-portfolio .container-text .title, #pg-services-post .services-post-description .list-services li .content .container-text .service-description, #pg-about .about-meet-the-rest-of-the-family .list-family .list-item .content .container-text, #pg-about .about-dream-team .list-dream-team .line-wrapper .grid-item .container-text .occupation, .chat .container-chat .container-messages .message, .menu-search .wrapper-search .container-results .result-order-pages .list-order-pages .link-order-pages .text-order-pages, .menu-search .wrapper-search .container-results .column-results .result-portfolio .list-result-portfolio .grid-item .link-portfolio .title-portfolio, .editor, #footer .column-2 .container-footer-menu .list-footer-menu .list-item .link-footer-menu, .rental-product-link .product-link .product-name, .list-blog .grid-item .link-blog .text-blog, .list-address li .phones a, .list-address li address, .list-projects.font-submenu .list-item .project-link .container-text .list-tags li span, .list-projects.font-80 .list-item .project-link .container-text .list-tags li span, .list-projects.font-60 .project-link .container-text .list-tags li span, .form-search .container-submit a,
-  .form-search .container-submit button, .container-contact [data-form-error], .container-newsletter[data-form-state=success] .feedback-newsletter {
+  .form-search .container-submit button, .container-contact [data-form-error], .container-newsletter.letter-success .feedback-newsletter {
     font-size: clamp(14px,1.6rem,1.6rem);
   }
 }
 @media only screen and (max-width: 767.98px) {
   .fs--16, .section-slider-banner .slider-banner .swiper-slide a .container-project .list-tags li span, #pg-market-post .market-post-how-we-do-it .list-how-we-do-it .list-column-text .column-paragraph, #pg-portfolio-post .portfolio-post-intro .wrapper-portfolio .column-portfolio .container-text .wrapper-text, #pg-portfolio-post .portfolio-post-intro .wrapper-portfolio .column-portfolio .container-text .title, #pg-services-post .services-post-description .list-services li .content .container-text .service-description, #pg-about .about-meet-the-rest-of-the-family .list-family .list-item .content .container-text, #pg-about .about-dream-team .list-dream-team .line-wrapper .grid-item .container-text .occupation, .chat .container-chat .container-messages .message, .menu-search .wrapper-search .container-results .result-order-pages .list-order-pages .link-order-pages .text-order-pages, .menu-search .wrapper-search .container-results .column-results .result-portfolio .list-result-portfolio .grid-item .link-portfolio .title-portfolio, .editor, #footer .column-2 .container-footer-menu .list-footer-menu .list-item .link-footer-menu, .rental-product-link .product-link .product-name, .list-blog .grid-item .link-blog .text-blog, .list-address li .phones a, .list-address li address, .list-projects.font-submenu .list-item .project-link .container-text .list-tags li span, .list-projects.font-80 .list-item .project-link .container-text .list-tags li span, .list-projects.font-60 .project-link .container-text .list-tags li span, .form-search .container-submit a,
-  .form-search .container-submit button, .container-contact [data-form-error], .container-newsletter[data-form-state=success] .feedback-newsletter {
+  .form-search .container-submit button, .container-contact [data-form-error], .container-newsletter.letter-success .feedback-newsletter {
     font-size: 1.6rem;
   }
 }
@@ -3531,11 +3531,11 @@ body:after {
     width: 100%;
   }
 }
-.container-newsletter[data-form-state=success] .form-newsletter {
+.container-newsletter.letter-success .form-newsletter {
   opacity: 0.2;
   pointer-events: none;
 }
-.container-newsletter[data-form-state=success] .feedback-newsletter {
+.container-newsletter.letter-success .feedback-newsletter {
   position: absolute;
   top: 55%;
   right: auto;
@@ -19219,4 +19219,52 @@ body.page-leave-active[data-load="first-done"] .overlay {
     display: flex;
     flex-flow: column;
     justify-content: space-evenly;
+}
+
+.container-contact.form-success:not(.formError) .form-contact {
+  opacity: 0.2;
+  pointer-events: none;
+  -webkit-transition: all 0.6s cubic-bezier(0.42, 0, 0.58, 1);
+  -moz-transition: all 0.6s cubic-bezier(0.42, 0, 0.58, 1);
+  -ms-transition: all 0.6s cubic-bezier(0.42, 0, 0.58, 1);
+  -o-transition: all 0.6s cubic-bezier(0.42, 0, 0.58, 1);
+  transition: all 0.6s cubic-bezier(0.42, 0, 0.58, 1);
+  transition-delay: 0s;
+}
+
+.container-newsletter.form-success .form-newsletter {
+  opacity: 0.2;
+  pointer-events: none;
+}
+.container-newsletter.form-success .feedback-newsletter {
+  position: absolute;
+  top: 55%;
+  right: auto;
+  bottom: auto;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--white-1);
+}
+.container-newsletter.form-success .feedback-newsletter {
+  position: absolute;
+  top: auto;
+  right: auto;
+  bottom: -3rem;
+  left: 0;
+  color: var(--white-1);
+}
+
+.container-newsletter.formError .feedback-newsletter {
+  position: absolute;
+  top: auto;
+  right: auto;
+  bottom: -3rem;
+  left: 0;
+  color: var(--white-1);
+}
+
+.productSlider-label {
+  text-overflow: ellipsis; 
+  overflow: hidden; 
+  white-space: nowrap;
 }
