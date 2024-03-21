@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import DelayedLink from "../../common/DelayedLink";
 import { getFullImagePost } from "../../common/common_functions/imageURL";
 
@@ -6,33 +6,37 @@ const PortfolioListing = ({ data, seeMore, applyFilters }) => {
 
   const [selectedStudios, setSelectedStudios] = useState([]);
   const [selectedMarkets, setSelectedMarkets] = useState([]);
-  
+
   const [studiosDropdownActive, setSudiosDropdownActive] = useState(false);
   const [marketsDropdownActive, setMarketsDropdownActive] = useState([]);
 
   const handleStudioFilter = (tag) => {
+    setSudiosDropdownActive(false);
+    setMarketsDropdownActive(false);
     if (selectedStudios.includes(tag)) {
-      setSelectedStudios(selectedStudios.filter((el) => el !== tag));
+      const _selectedStudios = selectedStudios.filter((el) => el !== tag);
+      setSelectedStudios(_selectedStudios);
+      applyFilters({ selectedStudios: _selectedStudios, selectedMarkets });
     } else {
-      setSelectedStudios([...selectedStudios, tag]);
+      const _selectedStudios = [...selectedStudios, tag];
+      setSelectedStudios(_selectedStudios);
+      applyFilters({ selectedStudios: _selectedStudios, selectedMarkets });
     }
   };
   const handleMarketFilter = (category) => {
+    setSudiosDropdownActive(false);
+    setMarketsDropdownActive(false);
     if (selectedMarkets.includes(category)) {
-      setSelectedMarkets(selectedMarkets.filter((el) => el !== category));
+      const _selectedMarkets = selectedMarkets.filter((el) => el !== category);
+      setSelectedMarkets(_selectedMarkets);
+      applyFilters({ selectedStudios, selectedMarkets: _selectedMarkets });
     } else {
-      setSelectedMarkets([...selectedMarkets, category]);
+      const _selectedMarkets = [...selectedMarkets, category];
+      setSelectedMarkets(_selectedMarkets);
+      applyFilters({ selectedStudios, selectedMarkets: _selectedMarkets });
     }
   };
-  
-  useEffect(() => {
-    if (data.items !== undefined) {
-      setSudiosDropdownActive(false);
-      setMarketsDropdownActive(false);
-      applyFilters({selectedStudios, selectedMarkets});
-    }
-  }, [selectedStudios, selectedMarkets]);
-  
+
   return (
     <section className="portfolio-intro pt-lg-145 pt-mobile-105">
       <div className="container-fluid">
@@ -48,7 +52,7 @@ const PortfolioListing = ({ data, seeMore, applyFilters }) => {
             >
               <div className="portfolio-tags">
                 <button
-                  onClick={()=>{setSudiosDropdownActive(!studiosDropdownActive)} }
+                  onClick={() => { setSudiosDropdownActive(!studiosDropdownActive) }}
                   className={`btn-tag-mobile no-desktop ${studiosDropdownActive ? "active" : ""}`}
                 >
                   <span>All Studios</span>
@@ -85,9 +89,9 @@ const PortfolioListing = ({ data, seeMore, applyFilters }) => {
               </div>
 
               <div className="market-tags">
-                <button 
-                onClick={()=>{setMarketsDropdownActive(!marketsDropdownActive)} }
-                className={`btn-tag-mobile no-desktop ${marketsDropdownActive ? "active" : ""}`}
+                <button
+                  onClick={() => { setMarketsDropdownActive(!marketsDropdownActive) }}
+                  className={`btn-tag-mobile no-desktop ${marketsDropdownActive ? "active" : ""}`}
                 >
                   <span>All Markets</span>
                   <i className="icon-arrow-down"></i>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import DelayedLink from "../../common/DelayedLink";
 import getFullImageURL from "../../common/common_functions/imageURL";
 import formatDate from "../../common/common_functions/dateFormat";
@@ -12,27 +12,31 @@ const BlogListing = ({ data, seeMore, applyFilters }) => {
     const [marketsDropdownActive, setMarketsDropdownActive] = useState([]);
 
     const handleStudioFilter = (tag) => {
+        setSudiosDropdownActive(false);
+        setMarketsDropdownActive(false);
         if (selectedStudios.includes(tag)) {
-            setSelectedStudios(selectedStudios.filter((el) => el !== tag));
+          const _selectedStudios = selectedStudios.filter((el) => el !== tag);
+          setSelectedStudios(_selectedStudios);
+          applyFilters({ selectedStudios: _selectedStudios, selectedMarkets });
         } else {
-            setSelectedStudios([...selectedStudios, tag]);
+          const _selectedStudios = [...selectedStudios, tag];
+          setSelectedStudios(_selectedStudios);
+          applyFilters({ selectedStudios: _selectedStudios, selectedMarkets });
         }
-    };
-    const handleMarketFilter = (category) => {
+      };
+      const handleMarketFilter = (category) => {
+        setSudiosDropdownActive(false);
+        setMarketsDropdownActive(false);
         if (selectedMarkets.includes(category)) {
-            setSelectedMarkets(selectedMarkets.filter((el) => el !== category));
+          const _selectedMarkets = selectedMarkets.filter((el) => el !== category);
+          setSelectedMarkets(_selectedMarkets);
+          applyFilters({ selectedStudios, selectedMarkets: _selectedMarkets });
         } else {
-            setSelectedMarkets([...selectedMarkets, category]);
+          const _selectedMarkets = [...selectedMarkets, category];
+          setSelectedMarkets(_selectedMarkets);
+          applyFilters({ selectedStudios, selectedMarkets: _selectedMarkets });
         }
-    };
-
-    useEffect(() => {
-        if (data.items !== undefined) {
-            setSudiosDropdownActive(false);
-            setMarketsDropdownActive(false);
-            applyFilters({ selectedStudios, selectedMarkets });
-        }
-    }, [selectedStudios, selectedMarkets]);
+      };
 
     return (
         <section className="blog-intro pt-lg-145 pt-tablet-115 pt-phone-120 pb-lg-150 pb-tablet-100 pb-phone-155">
