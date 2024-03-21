@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import DelayedLink from "../../common/DelayedLink";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPortfolio } from "../../redux/reducers/portfolioData";
-import getFullImageURL, { getFullImagePost } from "../../common/common_functions/imageURL";
+import { getFullImagePost } from "../../common/common_functions/imageURL";
 
 const ExploreProjectsSection = ({ data }) => {
   const dispatch = useDispatch();

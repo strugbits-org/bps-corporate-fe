@@ -2,9 +2,9 @@ import React from "react";
 import DelayedLink from "../../common/DelayedLink";
 import getFullImageURL from "../../common/common_functions/imageURL";
 
-const ProductCartSlider = ({data}) => {
+const ProductCartSlider = ({ data }) => {
   const EXTERNAL_SITE_URL = "https://www.rentals.blueprintstudios.com";
-  
+
   return (
     <div className="slider-featured-products" data-aos="d:loop">
       <div className="swiper-container">
@@ -20,7 +20,7 @@ const ProductCartSlider = ({data}) => {
 
                   <DelayedLink to={EXTERNAL_SITE_URL + item.productPageUrl} target={"blank"} className="product-link">
                     <h3 className="product-name productSlider-label">{item.name}</h3>
-                  
+
                     <div className="wrapper-img">
                       <div className="container-img">
                         <img
@@ -39,28 +39,28 @@ const ProductCartSlider = ({data}) => {
                         <i className="icon-arrow-diagonal-right"></i>
                       </div>
                       <ul className="list-thumb">
-                            {item.productOptions.Color.choices.map((option, index) => (
-                              <React.Fragment key={index}>
-                                {index < 4 && (
-                                  <li key={index}>
-                                  <div className="container-img">
-                                    <img
-                                      src={getFullImageURL(option.mainMedia ? option.mainMedia : item.mainMedia )}
-                                      data-preload
-                                      className="media"
-                                      alt=""
-                                    />
-                                  </div>
-                                </li>
-                                )}
-                              </React.Fragment>
-                            ))}
-                            {item.productOptions.Color.choices.length > 4 ? (
-                              <div className="colors-number">
-                                <span>+{item.productOptions.Color.choices.length - 4}</span>
-                              </div>
-                            ) : null}
+                        {item.productOptions.Color.choices.map((option, index) => (
+                          <React.Fragment key={index}>
+                            {index < 4 && (
+                              <li key={index}>
+                                <div className="container-img">
+                                  <img
+                                    src={getFullImageURL(option.mainMedia ? option.mainMedia : item.mainMedia)}
+                                    data-preload
+                                    className="media"
+                                    alt=""
+                                  />
+                                </div>
+                              </li>
+                            )}
+                          </React.Fragment>
+                        ))}
                       </ul>
+                      {item.productOptions.Color.choices.length > 4 ? (
+                        <div className="colors-number">
+                          <span>+{item.productOptions.Color.choices.length - 4}</span>
+                        </div>
+                      ) : null}
                     </div>
                   </DelayedLink>
                 </div>

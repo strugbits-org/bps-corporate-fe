@@ -1,11 +1,10 @@
 import React, { useEffect, useMemo, useState } from "react";
 import DelayedLink from "../../../common/DelayedLink";
-import { productSlider } from "../../../common/constats/blogData";
 import { fetchStudioSection } from "../../../redux/reducers/homeData";
 import { useDispatch, useSelector } from "react-redux";
 import { getMarketCollection } from "../../../redux/reducers/marketData";
 import getFullImageURL, { getFullImagePost } from "../../../common/common_functions/imageURL";
-import { listBlogs, listPortfolios } from "../../../utilis/queryCollections";
+import { listBlogs, listPortfolios, listProducts } from "../../../utilis/queryCollections";
 import formatDate from "../../../common/common_functions/dateFormat";
 import debounce from "lodash/debounce";
 
@@ -14,13 +13,15 @@ const Search = () => {
   const studios = useSelector((state) => state.home.studioData);
   const markets = useSelector((state) => state.market.marketModel);
 
+  const EXTERNAL_SITE_URL = "https://www.rentals.blueprintstudios.com";
+
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedStudios, setSelectedStudios] = useState([]);
   const [selectedMarkets, setSelectedMarkets] = useState([]);
 
   const [blogCollection, setBlogCollection] = useState([]);
   const [portfolioCollection, setPortfolioCollection] = useState([]);
-  const [productSliderData, setProductSliderData] = useState([]);
+  const [productCollection, setProductCollection] = useState([]);
 
   const [resultStudios, setResultStudios] = useState([]);
   const [resultMarkets, setResultMarkets] = useState([]);
@@ -42,16 +43,8 @@ const Search = () => {
     setResultMarkets([...new Set([...portfolioMarkets, ...blogMarkets])]);
   }, [portfolioCollection, blogCollection]);
 
-  const filteredProductData = useMemo(() => {
-    return productSlider.filter(
-      (item) =>
-        item.name && item.name.toLowerCase().includes(searchTerm)
-    );
-  }, [searchTerm]);
-
-  const filteredPortfolioCollection = useMemo(() => {
-    let data = portfolioCollection;
-
+  const filterColection = (collection, selectedStudios, selectedMarkets) => {
+    let data = collection;
     if (selectedStudios.length > 0 && selectedMarkets.length > 0) {
       data = data.filter(item =>
         item.studios.some(studio => selectedStudios.includes(studio._id)) ||
@@ -67,27 +60,10 @@ const Search = () => {
       );
     }
     return data;
-  }, [selectedStudios, selectedMarkets, portfolioCollection]);
-
-  const filteredBlogCollection = useMemo(() => {
-    let data = blogCollection;
-
-    if (selectedStudios.length > 0 && selectedMarkets.length > 0) {
-      data = data.filter(item =>
-        item.studios.some(studio => selectedStudios.includes(studio._id)) ||
-        item.markets.some(market => selectedMarkets.includes(market._id))
-      );
-    } else if (selectedStudios.length > 0) {
-      data = data.filter(item =>
-        item.studios.some(studio => selectedStudios.includes(studio._id))
-      );
-    } else if (selectedMarkets.length > 0) {
-      data = data.filter(item =>
-        item.markets.some(market => selectedMarkets.includes(market._id))
-      );
-    }
-    return data;
-  }, [selectedStudios, selectedMarkets, blogCollection]);
+  }
+  
+  const filteredPortfolioCollection = useMemo(() => filterColection(portfolioCollection, selectedStudios, selectedMarkets), [selectedStudios, selectedMarkets, portfolioCollection]);
+  const filteredBlogCollection = useMemo(() => filterColection(blogCollection, selectedStudios, selectedMarkets), [selectedStudios, selectedMarkets, blogCollection]);
 
   const handleStudioFilter = (tag) => {
     if (selectedStudios.includes(tag)) {
@@ -105,18 +81,19 @@ const Search = () => {
   };
 
 
-  const searchCollections = async () => {
+  const searchCollections = async (term = "") => {
     try {
-      setProductSliderData(filteredProductData);
-
       const options = {
         pageSize: 50,
-        searchTerm: searchTerm,
+        searchTerm: term,
         disableLoader: true
       };
 
       const portfolio = await listPortfolios(options);
       setPortfolioCollection(portfolio.items.map((item) => item.data));
+
+      const products = await listProducts(options);
+      setProductCollection(products.items.map((item) => item.data));
 
       const blog = await listBlogs(options);
       setBlogCollection(blog.items.map((item) => item.data));
@@ -127,7 +104,7 @@ const Search = () => {
 
   useEffect(() => {
     if (searchActive) {
-      const delayedSearch = debounce(searchCollections, 1000);
+      const delayedSearch = debounce(()=>{searchCollections(searchTerm)}, 1000);
       delayedSearch();
       return () => delayedSearch.cancel();
     }
@@ -141,7 +118,7 @@ const Search = () => {
 
   const handleSubmit = async (e) => {
     if (searchActive) {
-      searchCollections();
+      searchCollections(searchCollections);
     } else {
       setSearchActive(true);
     }
@@ -220,7 +197,7 @@ const Search = () => {
                     </ul>
                   </div>
 
-                  <div className="column-results custom-css">
+                  <div className={`column-results ${filteredPortfolioCollection.length === 0 && filteredBlogCollection.length === 0 ? "custom-css" : ""}`}>
 
                     <div className="result-rental">
                       <div className="container-title-results">
@@ -246,22 +223,22 @@ const Search = () => {
                             data-aos
                             data-cursor-style="default"
                           >
-                            {productSliderData.slice(0, 6).map((data, index) => {
-                              return (
+                            {productCollection.slice(0, 3).map((item, index) => {
+                              return ( item.product._id && 
                                 <div
                                   key={index}
                                   className="swiper-slide grid-item"
                                 >
                                   <div className="rental-product-link">
-                                    <DelayedLink to="/" className="product-link">
+                                    <DelayedLink to={EXTERNAL_SITE_URL + item.product.productPageUrl} target={"blank"} className="product-link">
                                       <h3 className="product-name">
-                                        {data.name}
+                                        {item.product.name}
                                       </h3>
 
                                       <div className="wrapper-img">
                                         <div className="container-img">
                                           <img
-                                            src={data.img1}
+                                            src={getFullImageURL(item.product.mainMedia)}
                                             data-preload
                                             className="media"
                                             alt=""
@@ -271,36 +248,40 @@ const Search = () => {
                                       <div className="container-bottom">
                                         <div className="view-more">
                                           <span className="view">
-                                            <span>{data.btntext}</span>
+                                            <span>View more</span>
                                           </span>
                                           <i className="icon-arrow-diagonal-right"></i>
                                         </div>
                                         <ul className="list-thumb">
-                                          {Object.values(data.list).map(
-                                            (list, index) => (
-                                              <li key={index}>
-                                                <div className="container-img">
-                                                  <img
-                                                    src={list}
-                                                    data-preload
-                                                    className="media"
-                                                    alt=""
-                                                  />
-                                                </div>
-                                              </li>
-                                            )
-                                          )}
+                                          {item.product.productOptions.Color.choices.map((option, index) => (
+                                            <React.Fragment key={index}>
+                                              {index < 4 && (
+                                                <li key={index}>
+                                                  <div className="container-img">
+                                                    <img
+                                                      src={getFullImageURL(option.mainMedia ? option.mainMedia : item.product.mainMedia)}
+                                                      data-preload
+                                                      className="media"
+                                                      alt=""
+                                                    />
+                                                  </div>
+                                                </li>
+                                              )}
+                                            </React.Fragment>
+                                          ))}
                                         </ul>
-                                        <div className="colors-number">
-                                          <span>+3</span>
-                                        </div>
+                                        {item.product.productOptions.Color.choices.length > 4 ? (
+                                          <div className="colors-number">
+                                            <span>+{item.product.productOptions.Color.choices.length - 4}</span>
+                                          </div>
+                                        ) : null}
                                       </div>
                                     </DelayedLink>
                                   </div>
                                 </div>
                               );
                             })}
-                            {productSliderData.length === 0 && <h6 style={{ width: "100%" }} className="ml-4 mt-3-cs fs--20">No matches found for "{searchTerm}"</h6>}
+                            {productCollection.length === 0 && <h6 style={{ width: "100%" }} className="ml-4 mt-3-cs fs--20">No matches found for "{searchTerm}"</h6>}
                           </div>
                         </div>
                       </div>
@@ -329,7 +310,7 @@ const Search = () => {
                             data-aos
                             data-cursor-style="default"
                           >
-                            {filteredPortfolioCollection?.slice(0, 15).map((data) => {
+                            {filteredPortfolioCollection?.slice(0, 5).map((data) => {
                               return (
                                 <div
                                   key={data._id}
@@ -435,7 +416,7 @@ const Search = () => {
                           className="swiper-wrapper list-result-blog list-slider-mobile list-blog grid-lg-20"
                           data-aos
                         >
-                          {filteredBlogCollection?.slice(0, 15).map((blog) => {
+                          {filteredBlogCollection?.slice(0, 5).map((blog) => {
                             return (
                               <div
                                 key={blog.blogId}
