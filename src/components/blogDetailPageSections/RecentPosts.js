@@ -7,7 +7,7 @@ import formatDate from "../../common/common_functions/dateFormat";
 
 const RecentPosts = () => {
   const dispatch = useDispatch();
-  const postes = useSelector((state) => state.blog.blogPostData);
+  const posts = useSelector((state) => state.blog.blogPostData);
 
   useEffect(() => {
     dispatch(getblogPostData());
@@ -29,7 +29,7 @@ const RecentPosts = () => {
             <div className="slider-content-mobile">
               <div className="swiper-container">
                 <div className="swiper-wrapper list-blog list-slider-mobile grid-lg-25">
-                  {postes?.slice(0, 4).map((data) => {
+                  {posts?.slice(0, 4).map((data) => {
                     return (
                       <div key={data._id} className="swiper-slide grid-item">
                         <DelayedLink

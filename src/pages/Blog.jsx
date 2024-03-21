@@ -6,7 +6,7 @@ import BlogListing from "../components/blogPageSections/BlogListing";
 import { fetchStudioSection } from "../redux/reducers/homeData";
 import { getMarketCollection } from "../redux/reducers/marketData";
 import { handleCollectionLoaded } from "../utilis/loadAnimations";
-import { updatedWatched } from "../utilis/animtationsTriggers";
+import { updatedWatched } from "../utilis/animationsTriggers";
 
 const Blog = () => {
 
