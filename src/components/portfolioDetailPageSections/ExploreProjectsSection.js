@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import DelayedLink from "../../common/DelayedLink";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPortfolio } from "../../redux/reducers/portfolioData";
-import getFullImageURL from "../../common/common_functions/imageURL";
+import getFullImageURL, { getFullImagePost } from "../../common/common_functions/imageURL";
 
 const ExploreProjectsSection = ({ data }) => {
   const dispatch = useDispatch();
@@ -46,7 +46,7 @@ const ExploreProjectsSection = ({ data }) => {
                         >
                           <div className="wrapper-img">
                             <img
-                              src={getFullImageURL(
+                              src={getFullImagePost(
                                 data?.portfolioRef.coverImage.imageInfo
                               )}
                               data-preload
@@ -59,6 +59,7 @@ const ExploreProjectsSection = ({ data }) => {
                           <ul className="list-tags-small">
                             {marketTags?.map((tag, index) => (
                               <li
+                                key={index}
                                 className={
                                   "tag-small" +
                                   (tag === categories[0] ? " active" : "")
