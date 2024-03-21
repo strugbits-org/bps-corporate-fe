@@ -10,14 +10,14 @@ const AboutBottomSection = () => {
   // const error = useSelector((state) => state.aboutus.error);
   
   const firstItem = data[0]; 
-  const trendingtitle = firstItem ? firstItem.data.trendingtitle: "";
-  const trendingtitle1 = firstItem ? firstItem.data.trendingtitle1  : "";
+  const trendingtitle = firstItem ? firstItem.data.trendingTitle: "";
+  const trendingtitle1 = firstItem ? firstItem.data.trendingTitle1  : "";
   const trendingBackground = firstItem ? getFullImageURL(firstItem.data.trendingBackground)  : "";
 
   useEffect(() => {
     disptach(fetchSliderSection());
    }, [disptach]);
-
+console.log(firstItem,"about us data here")
   return (
     <>
       <section className="about-check-out">

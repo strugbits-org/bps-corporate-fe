@@ -77,7 +77,9 @@ const SocialSection = () => {
                     {postes?.slice(0, 3).map((data) => {
                       return (
                         <li key={data._id}>
-                          <DelayedLink to="/blog-post" className="link-blog">
+                          <DelayedLink 
+                          to={`/blog-post/${encodeURIComponent(data.slug)}`}
+                          className="link-blog">
                             <div
                               className="container-img"
                               data-cursor-style="view"
@@ -161,7 +163,7 @@ const SocialSection = () => {
                 <div className="content">
                   <div className="social-media-title">
                     <i className="icon-pinterest"></i>
-                    <h3>{socialData.title}</h3>
+                    <h3>{socialData.pinatitle}</h3>
                   </div>
                   <ul className="list-instagram">
                     <Link
