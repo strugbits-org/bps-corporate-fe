@@ -11,11 +11,11 @@ import { loadAppConfig } from "./redux/reducers/appConfig";
 
 function App() {
   const dispatch = useDispatch();
-  
+
   const location = useLocation();
   const pathname = location.pathname.trim() === "/" ? "home" : location.pathname.substring(1); // Remove leading slash
   const cleanPath = pathname.split("/")[0].trim();
-  
+
   const config = useSelector((state) => state.config.config);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ function App() {
 
   return (
     <div>
-      
+
       {/* helpers */}
       <span className="updateWatchedTrigger d-none"></span>
       <span className="triggerSplitWordAnimation d-none"></span>
@@ -39,7 +39,7 @@ function App() {
            chances to showcase ideas, products, and services intimately."
         />
 
-        {config?.noFollow && <meta name="robots" content="noindex,nofollow"/>}
+        {config?.noFollow && <meta name="robots" content="noindex,nofollow" />}
 
         <meta name="format-detection" content="telephone=no" />
         <meta property="og:title" content="Blueprint" />
@@ -59,13 +59,13 @@ function App() {
         <link rel="canonical" href="" />
         <link rel="icon" type="image/png" href={process.env.PUBLIC_URL + "favicon.png"} />
 
-        <script type="module" src={ process.env.PUBLIC_URL + "/js/app2.js"}></script>
-        <script type="module" src={ process.env.PUBLIC_URL + "/js/search.js"}></script>
-        <script type="module" src={ process.env.PUBLIC_URL + "/js/forms.js"}></script>
-        <script type="module" src={ process.env.PUBLIC_URL + "/js/chat.js"}></script>
-        <script type="module" src={ process.env.PUBLIC_URL + "/js/loader.js"}></script>      
-        <link rel="stylesheet" href={ process.env.PUBLIC_URL + "/js/utils.css"} />
-        <link rel="stylesheet" href={ process.env.PUBLIC_URL + "/js/app.css"} />
+        <script type="module" src={process.env.PUBLIC_URL + "/js/app2.js"}></script>
+        <script type="module" src={process.env.PUBLIC_URL + "/js/search.js"}></script>
+        <script type="module" src={process.env.PUBLIC_URL + "/js/forms.js"}></script>
+        <script type="module" src={process.env.PUBLIC_URL + "/js/chat.js"}></script>
+        <script type="module" src={process.env.PUBLIC_URL + "/js/loader.js"}></script>
+        <link rel="stylesheet" href={process.env.PUBLIC_URL + "/js/utils.css"} />
+        <link rel="stylesheet" href={process.env.PUBLIC_URL + "/js/app.css"} />
       </Helmet>
 
       <div id="main-transition">
