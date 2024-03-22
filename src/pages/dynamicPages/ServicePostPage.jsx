@@ -25,13 +25,13 @@ const ServicePostPage = () => {
   // const error = useSelector((state) => state.services.error);
 
   useEffect(() => {
-    dispatch(fetchServicesData(params.slug));
-  }, [dispatch, location, params.slug]);
+    if (servicesData?._id === undefined) {
+      dispatch(fetchServicesData(params.slug));
+    } else{
+      dispatch(getServicesSlider(servicesData?._id));
+    }
+  }, [dispatch, location, params.slug, servicesData?._id]);
 
-  useEffect(() => {
-    dispatch(getServicesSlider(servicesData?._id));
-  }, [dispatch, servicesData?._id]);
-  console.log(servicesSlider, "services slider here");
   return (
     <>
       <ServiceIntro data={servicesData} />

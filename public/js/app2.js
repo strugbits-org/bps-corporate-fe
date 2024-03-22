@@ -66,7 +66,7 @@ var require_app2 = __commonJS({
         obj.start();
       return obj;
     }
-    (function() {
+    (function () {
       const menuactive = "menu-active";
       const menuleave = "menu-leave";
       const bodycl = document.body.classList;
@@ -217,7 +217,7 @@ var require_app2 = __commonJS({
     }
     let watched = [];
     let screenSize = "";
-    const getsize = function() {
+    const getsize = function () {
       const iw = window.innerWidth;
       if (iw < 768)
         screenSize = "phone";
@@ -239,7 +239,7 @@ var require_app2 = __commonJS({
             return;
           }
           if (vis && !def.animated || vis && def.loop[screenSize]) {
-            let animate = function() {
+            let animate = function () {
               def.animated = true;
               def.el.classList.add("aos-animate");
               if (def[screenSize]) {
@@ -280,7 +280,7 @@ var require_app2 = __commonJS({
     const obsAttrbutes = new MutationObserver(() => {
       updateWatched();
     });
-    const updateWatched = function() {
+    const updateWatched = function () {
       watched = [];
       obs.disconnect();
       obsAttrbutes.disconnect();
@@ -358,7 +358,7 @@ var require_app2 = __commonJS({
           let image = new Image();
           image.src = src;
           a.append(image);
-          image.onload = function() {
+          image.onload = function () {
             markAsLoaded(a);
           };
         }
@@ -386,12 +386,12 @@ var require_app2 = __commonJS({
       element.setAttribute("data-loaded", true);
       element.parentElement.setAttribute("data-loaded", true);
     }
-    const isLoaded = function(element) {
+    const isLoaded = function (element) {
       return element.getAttribute("data-loaded") === "true";
     };
     const onIntersection = function onIntersection2(load, loaded) {
-      return function(entries, observer2) {
-        entries.forEach(function(entry) {
+      return function (entries, observer2) {
+        entries.forEach(function (entry) {
           if (entry.intersectionRatio > 0 || entry.isIntersecting) {
             observer2.unobserve(entry.target);
             if (!isLoaded(entry.target)) {
@@ -458,8 +458,8 @@ var require_app2 = __commonJS({
       });
       pictureObserver.observe();
       let video = document.querySelectorAll("video[data-play-pause]");
-      let videoObserver = new IntersectionObserver(function(entries, videoObserver2) {
-        entries.forEach(function(entry, key2) {
+      let videoObserver = new IntersectionObserver(function (entries, videoObserver2) {
+        entries.forEach(function (entry, key2) {
           if (entry.intersectionRatio == 0 && !entry.target.paused) {
             entry.target.pause();
             this["isPaused" + key2] = true;
@@ -471,31 +471,31 @@ var require_app2 = __commonJS({
       }, {
         threshold: 0
       });
-      video.forEach(function(video2) {
+      video.forEach(function (video2) {
         videoObserver.observe(video2);
       });
       let play = document.querySelectorAll("[data-play-toggle]");
-      let playObserver = new IntersectionObserver(function(entries, playObserver2) {
-        entries.forEach(function(entry) {
+      let playObserver = new IntersectionObserver(function (entries, playObserver2) {
+        entries.forEach(function (entry) {
           setTimeout(() => {
             var slide2 = entry.target.swiper;
-              if (entry.intersectionRatio > 0) {
-                slide2.autoplay.start();
-              } else {
-                slide2.autoplay.stop();
-              }
-              if (entry.intersectionRatio > 0) {
-                slide2.autoplay.start();
-              } else {
-                slide2.autoplay.stop();
-              }
+            if (entry.intersectionRatio > 0) {
+              slide2.autoplay.start();
+            } else {
+              slide2.autoplay.stop();
+            }
+            if (entry.intersectionRatio > 0) {
+              slide2.autoplay.start();
+            } else {
+              slide2.autoplay.stop();
+            }
           }, 1500);
         });
       }, {
         threshold: 0,
         rootMargin: "0px"
       });
-      play.forEach(function(play2) {
+      play.forEach(function (play2) {
         playObserver.observe(play2);
       });
     }
@@ -504,13 +504,13 @@ var require_app2 = __commonJS({
       return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, "default") ? x["default"] : x;
     }
     var pjax = { exports: {} };
-    var foreachEls = function(els, fn, context) {
+    var foreachEls = function (els, fn, context) {
       if (els instanceof HTMLCollection || els instanceof NodeList || els instanceof Array) {
         return Array.prototype.forEach.call(els, fn, context);
       }
       return fn.call(context, els);
     };
-    var evalScript$1 = function(el) {
+    var evalScript$1 = function (el) {
       var code = el.text || el.textContent || el.innerHTML || "";
       var src = el.src || "";
       var parent = el.parentNode || document.querySelector("head") || document.documentElement;
@@ -545,11 +545,11 @@ var require_app2 = __commonJS({
     };
     var forEachEls$3 = foreachEls;
     var evalScript = evalScript$1;
-    var executeScripts$1 = function(el) {
+    var executeScripts$1 = function (el) {
       if (el.tagName.toLowerCase() === "script") {
         evalScript(el);
       }
-      forEachEls$3(el.querySelectorAll("script"), function(script) {
+      forEachEls$3(el.querySelectorAll("script"), function (script) {
         if (!script.type || script.type.toLowerCase() === "text/javascript") {
           if (script.parentNode) {
             script.parentNode.removeChild(script);
@@ -559,21 +559,21 @@ var require_app2 = __commonJS({
       });
     };
     var forEachEls$2 = foreachEls;
-    var on$3 = function(els, events2, listener, useCapture) {
+    var on$3 = function (els, events2, listener, useCapture) {
       events2 = typeof events2 === "string" ? events2.split(" ") : events2;
-      events2.forEach(function(e) {
-        forEachEls$2(els, function(el) {
+      events2.forEach(function (e) {
+        forEachEls$2(els, function (el) {
           el.addEventListener(e, listener, useCapture);
         });
       });
     };
     var on$2 = on$3;
     var switches$1 = {
-      outerHTML: function(oldEl, newEl) {
+      outerHTML: function (oldEl, newEl) {
         oldEl.outerHTML = newEl.outerHTML;
         this.onSwitch();
       },
-      innerHTML: function(oldEl, newEl) {
+      innerHTML: function (oldEl, newEl) {
         oldEl.innerHTML = newEl.innerHTML;
         if (newEl.className === "") {
           oldEl.removeAttribute("class");
@@ -582,7 +582,7 @@ var require_app2 = __commonJS({
         }
         this.onSwitch();
       },
-      switchElementsAlt: function(oldEl, newEl) {
+      switchElementsAlt: function (oldEl, newEl) {
         oldEl.innerHTML = newEl.innerHTML;
         if (newEl.hasAttributes()) {
           var attrs = newEl.attributes;
@@ -593,29 +593,29 @@ var require_app2 = __commonJS({
         this.onSwitch();
       },
       // Equivalent to outerHTML(), but doesn't require switchElementsAlt() for <head> and <body>
-      replaceNode: function(oldEl, newEl) {
+      replaceNode: function (oldEl, newEl) {
         oldEl.parentNode.replaceChild(newEl, oldEl);
         this.onSwitch();
       },
-      sideBySide: function(oldEl, newEl, options, switchOptions) {
+      sideBySide: function (oldEl, newEl, options, switchOptions) {
         var forEach = Array.prototype.forEach;
         var elsToRemove = [];
         var elsToAdd = [];
         var fragToAppend = document.createDocumentFragment();
         var animationEventNames = "animationend webkitAnimationEnd MSAnimationEnd oanimationend";
         var animatedElsNumber = 0;
-        var sexyAnimationEnd = (function(e) {
+        var sexyAnimationEnd = (function (e) {
           if (e.target !== e.currentTarget) {
             return;
           }
           animatedElsNumber--;
           if (animatedElsNumber <= 0 && elsToRemove) {
-            elsToRemove.forEach(function(el) {
+            elsToRemove.forEach(function (el) {
               if (el.parentNode) {
                 el.parentNode.removeChild(el);
               }
             });
-            elsToAdd.forEach(function(el) {
+            elsToAdd.forEach(function (el) {
               el.className = el.className.replace(
                 el.getAttribute("data-pjax-classes"),
                 ""
@@ -628,7 +628,7 @@ var require_app2 = __commonJS({
           }
         }).bind(this);
         switchOptions = switchOptions || {};
-        forEach.call(oldEl.childNodes, function(el) {
+        forEach.call(oldEl.childNodes, function (el) {
           elsToRemove.push(el);
           if (el.classList && !el.classList.contains("js-Pjax-remove")) {
             if (el.hasAttribute("data-pjax-classes")) {
@@ -649,7 +649,7 @@ var require_app2 = __commonJS({
             on$2(el, animationEventNames, sexyAnimationEnd, true);
           }
         });
-        forEach.call(newEl.childNodes, function(el) {
+        forEach.call(newEl.childNodes, function (el) {
           if (el.classList) {
             var addClasses2 = "";
             if (switchOptions.classNames) {
@@ -671,7 +671,7 @@ var require_app2 = __commonJS({
       }
     };
     var defaultSwitches = switches$1;
-    var parseOptions$1 = function(options) {
+    var parseOptions$1 = function (options) {
       options = options || {};
       options.elements = options.elements || "a[href], form[action]";
       options.selectors = options.selectors || ["title", ".js-Pjax"];
@@ -701,28 +701,28 @@ var require_app2 = __commonJS({
         ga("send", "pageview", { page: location.pathname, title: document.title });
       }
     }
-    var uniqueid = function() {
+    var uniqueid = function () {
       var counter = 0;
-      return function() {
+      return function () {
         var id = "pjax" + (/* @__PURE__ */ new Date()).getTime() + "_" + counter;
         counter++;
         return id;
       };
     }();
     var forEachEls$1 = foreachEls;
-    var trigger$2 = function(els, events2, opts) {
+    var trigger$2 = function (els, events2, opts) {
       events2 = typeof events2 === "string" ? events2.split(" ") : events2;
-      events2.forEach(function(e) {
+      events2.forEach(function (e) {
         var event;
         event = document.createEvent("HTMLEvents");
         event.initEvent(e, true, true);
         event.eventName = e;
         if (opts) {
-          Object.keys(opts).forEach(function(key2) {
+          Object.keys(opts).forEach(function (key2) {
             event[key2] = opts[key2];
           });
         }
-        forEachEls$1(els, function(el) {
+        forEachEls$1(els, function (el) {
           var domFix = false;
           if (!el.parentNode && el !== document && el !== window) {
             domFix = true;
@@ -735,7 +735,7 @@ var require_app2 = __commonJS({
         });
       });
     };
-    var clone$3 = function(obj) {
+    var clone$3 = function (obj) {
       if (null === obj || "object" !== typeof obj) {
         return obj;
       }
@@ -758,7 +758,7 @@ var require_app2 = __commonJS({
       }
       return false;
     };
-    var extend$5 = function(target) {
+    var extend$5 = function (target) {
       if (target == null) {
         return null;
       }
@@ -775,7 +775,7 @@ var require_app2 = __commonJS({
       }
       return to2;
     };
-    var noop$2 = function() {
+    var noop$2 = function () {
     };
     var log;
     var hasRequiredLog;
@@ -783,7 +783,7 @@ var require_app2 = __commonJS({
       if (hasRequiredLog)
         return log;
       hasRequiredLog = 1;
-      log = function() {
+      log = function () {
         if (this.options.debug && console) {
           if (typeof console.log === "function") {
             console.log.apply(console, arguments);
@@ -796,13 +796,13 @@ var require_app2 = __commonJS({
     }
     var parseElement;
     var hasRequiredParseElement;
-    
+
     function requireParseElement() {
       if (hasRequiredParseElement)
         return parseElement;
       hasRequiredParseElement = 1;
       var attrState = "data-pjax-state";
-      parseElement = function(el) {
+      parseElement = function (el) {
         switch (el.tagName.toLowerCase()) {
           case "a":
             if (!el.hasAttribute(attrState)) {
@@ -829,7 +829,7 @@ var require_app2 = __commonJS({
       var on2 = on$3;
       var clone2 = clone$3;
       var attrState = "data-pjax-state";
-      var linkAction = function(el, event) {
+      var linkAction = function (el, event) {
         if (isDefaultPrevented(event)) {
           return;
         }
@@ -863,19 +863,19 @@ var require_app2 = __commonJS({
           return "anchor-empty";
         }
       }
-      var isDefaultPrevented = function(event) {
+      var isDefaultPrevented = function (event) {
         return event.defaultPrevented || event.returnValue === false;
       };
-      attachLink = function(el) {
+      attachLink = function (el) {
         var that = this;
         el.setAttribute(attrState, "");
-        on2(el, "click", function(event) {
+        on2(el, "click", function (event) {
           linkAction.call(that, el, event);
         });
         on2(
           el,
           "keyup",
-          (function(event) {
+          (function (event) {
             if (event.keyCode === 13) {
               linkAction.call(that, el, event);
             }
@@ -893,7 +893,7 @@ var require_app2 = __commonJS({
       var on2 = on$3;
       var clone2 = clone$3;
       var attrState = "data-pjax-state";
-      var formAction = function(el, event) {
+      var formAction = function (el, event) {
         if (isDefaultPrevented(event)) {
           return;
         }
@@ -965,13 +965,13 @@ var require_app2 = __commonJS({
           return "reload";
         }
       }
-      var isDefaultPrevented = function(event) {
+      var isDefaultPrevented = function (event) {
         return event.defaultPrevented || event.returnValue === false;
       };
-      attachForm = function(el) {
+      attachForm = function (el) {
         var that = this;
         el.setAttribute(attrState, "");
-        on2(el, "submit", function(event) {
+        on2(el, "submit", function (event) {
           formAction.call(that, el, event);
         });
       };
@@ -984,9 +984,9 @@ var require_app2 = __commonJS({
         return foreachSelectors;
       hasRequiredForeachSelectors = 1;
       var forEachEls2 = foreachEls;
-      foreachSelectors = function(selectors, cb, context, DOMcontext) {
+      foreachSelectors = function (selectors, cb, context, DOMcontext) {
         DOMcontext = DOMcontext || document;
-        selectors.forEach(function(selector) {
+        selectors.forEach(function (selector) {
           forEachEls2(DOMcontext.querySelectorAll(selector), cb, context);
         });
       };
@@ -1000,9 +1000,9 @@ var require_app2 = __commonJS({
       hasRequiredSwitchesSelectors = 1;
       var forEachEls2 = foreachEls;
       var defaultSwitches2 = switches$1;
-      switchesSelectors = function(switches2, switchesOptions, selectors, fromEl, toEl, options) {
+      switchesSelectors = function (switches2, switchesOptions, selectors, fromEl, toEl, options) {
         var switchesQueue = [];
-        selectors.forEach(function(selector) {
+        selectors.forEach(function (selector) {
           var newEls = fromEl.querySelectorAll(selector);
           var oldEls = toEl.querySelectorAll(selector);
           if (this.log) {
@@ -1013,7 +1013,7 @@ var require_app2 = __commonJS({
           }
           forEachEls2(
             newEls,
-            function(newEl, i) {
+            function (newEl, i) {
               var oldEl = oldEls[i];
               if (this.log) {
                 this.log("newEl", newEl, "oldEl", oldEl);
@@ -1031,7 +1031,7 @@ var require_app2 = __commonJS({
           );
         }, this);
         this.state.numPendingSwitches = switchesQueue.length;
-        switchesQueue.forEach(function(queuedSwitch) {
+        switchesQueue.forEach(function (queuedSwitch) {
           queuedSwitch();
         });
       };
@@ -1044,7 +1044,7 @@ var require_app2 = __commonJS({
         return abortRequest;
       hasRequiredAbortRequest = 1;
       var noop2 = noop$2;
-      abortRequest = function(request) {
+      abortRequest = function (request) {
         if (request && request.readyState < 4) {
           request.onreadystatechange = noop2;
           request.abort();
@@ -1058,7 +1058,7 @@ var require_app2 = __commonJS({
       if (hasRequiredUpdateQueryString)
         return updateQueryString;
       hasRequiredUpdateQueryString = 1;
-      updateQueryString = function(uri, key2, value) {
+      updateQueryString = function (uri, key2, value) {
         var re = new RegExp("([?&])" + key2 + "=.*?(&|$)", "i");
         var separator = uri.indexOf("?") !== -1 ? "&" : "?";
         if (uri.match(re)) {
@@ -1076,7 +1076,7 @@ var require_app2 = __commonJS({
         return sendRequest;
       hasRequiredSendRequest = 1;
       var updateQueryString2 = requireUpdateQueryString();
-      sendRequest = function(location2, options, callback) {
+      sendRequest = function (location2, options, callback) {
         options = options || {};
         var queryString;
         var requestOptions = options.requestOptions || {};
@@ -1086,7 +1086,7 @@ var require_app2 = __commonJS({
         var requestPayload = null;
         var request = new XMLHttpRequest();
         var timeout = options.timeout || 0;
-        request.onreadystatechange = function() {
+        request.onreadystatechange = function () {
           if (request.readyState === 4) {
             if (request.status === 200) {
               callback(request.responseText, request, location2, options);
@@ -1095,15 +1095,15 @@ var require_app2 = __commonJS({
             }
           }
         };
-        request.onerror = function(e) {
+        request.onerror = function (e) {
           console.log(e);
           callback(null, request, location2, options);
         };
-        request.ontimeout = function() {
+        request.ontimeout = function () {
           callback(null, request, location2, options);
         };
         if (requestParams && requestParams.length) {
-          queryString = requestParams.map(function(param) {
+          queryString = requestParams.map(function (param) {
             return param.name + "=" + param.value;
           }).join("&");
           switch (requestMethod) {
@@ -1149,7 +1149,7 @@ var require_app2 = __commonJS({
       var clone2 = clone$3;
       var newUid2 = uniqueid;
       var trigger2 = trigger$2;
-      handleResponse = function(responseText, request, href, options) {
+      handleResponse = function (responseText, request, href, options) {
         options = clone2(options || this.options);
         options.request = request;
         if (responseText === false) {
@@ -1212,7 +1212,7 @@ var require_app2 = __commonJS({
       if (hasRequiredIsSupported)
         return isSupported;
       hasRequiredIsSupported = 1;
-      isSupported = function() {
+      isSupported = function () {
         return false
         // return window.history && window.history.pushState && window.history.replaceState && // pushState isn’t reliable on iOS until 5.
         // !navigator.userAgent.match(
@@ -1232,7 +1232,7 @@ var require_app2 = __commonJS({
     var contains = contains$1;
     var extend$4 = extend$5;
     var noop$1 = noop$2;
-    var Pjax = function(options) {
+    var Pjax = function (options) {
       this.state = {
         numPendingSwitches: 0,
         href: null,
@@ -1248,7 +1248,7 @@ var require_app2 = __commonJS({
       on$1(
         window,
         "popstate",
-        (function(st) {
+        (function (st) {
           if (st.state) {
             var opt = clone$2(this.options);
             opt.url = st.state.url;
@@ -1269,22 +1269,22 @@ var require_app2 = __commonJS({
     Pjax.switches = switches;
     Pjax.prototype = {
       log: requireLog(),
-      getElements: function(el) {
+      getElements: function (el) {
         return el.querySelectorAll(this.options.elements);
       },
-      parseDOM: function(el) {
+      parseDOM: function (el) {
         var parseElement2 = requireParseElement();
         forEachEls(this.getElements(el), parseElement2, this);
       },
-      refresh: function(el) {
+      refresh: function (el) {
         this.parseDOM(el || document);
       },
-      reload: function() {
+      reload: function () {
         // window.location.reload();
       },
       attachLink: requireAttachLink(),
       attachForm: requireAttachForm(),
-      forEachSelectors: function(cb, context, DOMcontext) {
+      forEachSelectors: function (cb, context, DOMcontext) {
         return requireForeachSelectors().bind(this)(
           this.options.selectors,
           cb,
@@ -1292,7 +1292,7 @@ var require_app2 = __commonJS({
           DOMcontext
         );
       },
-      switchSelectors: function(selectors, fromEl, toEl, options) {
+      switchSelectors: function (selectors, fromEl, toEl, options) {
         return requireSwitchesSelectors().bind(this)(
           this.options.switches,
           this.options.switchesOptions,
@@ -1302,17 +1302,17 @@ var require_app2 = __commonJS({
           options
         );
       },
-      latestChance: function(href) {
+      latestChance: function (href) {
         window.location = href;
       },
-      onSwitch: function() {
+      onSwitch: function () {
         trigger$1(window, "resize scroll");
         this.state.numPendingSwitches--;
         if (this.state.numPendingSwitches === 0) {
           this.afterAllSwitches();
         }
       },
-      loadContent: function(html, options) {
+      loadContent: function (html, options) {
         if (typeof html !== "string") {
           trigger$1(document, "pjax:complete pjax:error", options);
           return;
@@ -1325,7 +1325,7 @@ var require_app2 = __commonJS({
           matches2 = matches2[0].match(htmlAttribsRegex);
           if (matches2.length) {
             matches2.shift();
-            matches2.forEach(function(htmlAttrib) {
+            matches2.forEach(function (htmlAttrib) {
               var attr = htmlAttrib.trim().split("=");
               if (attr.length === 1) {
                 tmpEl.documentElement.setAttribute(attr[0], true);
@@ -1352,7 +1352,7 @@ var require_app2 = __commonJS({
       abortRequest: requireAbortRequest(),
       doRequest: requireSendRequest(),
       handleResponse: requireHandleResponse(),
-      loadUrl: function(href, options) {
+      loadUrl: function (href, options) {
         options = typeof options === "object" ? extend$4({}, this.options, options) : clone$2(this.options);
         this.log("load href", href, options);
         this.abortRequest(this.request);
@@ -1363,13 +1363,13 @@ var require_app2 = __commonJS({
           this.handleResponse.bind(this)
         );
       },
-      afterAllSwitches: function() {
+      afterAllSwitches: function () {
         var autofocusEl = Array.prototype.slice.call(document.querySelectorAll("[autofocus]")).pop();
         if (autofocusEl && document.activeElement !== autofocusEl) {
           autofocusEl.focus();
         }
-        this.options.selectors.forEach(function(selector) {
-          forEachEls(document.querySelectorAll(selector), function(el) {
+        this.options.selectors.forEach(function (selector) {
+          forEachEls(document.querySelectorAll(selector), function (el) {
             executeScripts(el);
           });
         });
@@ -1399,7 +1399,7 @@ var require_app2 = __commonJS({
             state.href
           );
         }
-        this.forEachSelectors(function(el) {
+        this.forEachSelectors(function (el) {
           this.parseDOM(el);
         }, this);
         trigger$1(document, "pjax:complete pjax:success", state.options);
@@ -1504,11 +1504,11 @@ var require_app2 = __commonJS({
         }, 800);
       });
     }
-    Pjax$1.prototype.getElements = function() {
+    Pjax$1.prototype.getElements = function () {
       let links = Array.from(document.querySelectorAll("a:not(.no-pjax):not([data-fancybox])"));
       links = links.filter((el) => el.href.includes(location.hostname));
       links.forEach((element) => {
-        element.addEventListener("click", function() {
+        element.addEventListener("click", function () {
           manualModalClose();
           document.body.dataset.pgPrev = document.body.dataset.pg;
           if (element.dataset.pgActive)
@@ -1544,7 +1544,7 @@ var require_app2 = __commonJS({
         selects.forEach((select) => {
           select.addEventListener("change", handleSelectChange);
         });
-        form.addEventListener("submit", function(event) {
+        form.addEventListener("submit", function (event) {
           event.preventDefault();
           document.body.dataset.pgPrev = document.body.dataset.pg;
           if (form.dataset.pgActive)
@@ -1575,19 +1575,19 @@ var require_app2 = __commonJS({
       timeout: 0,
       scrollTo: 0,
       switches: {
-        "title": function(oldEl, newEl, options) {
+        "title": function (oldEl, newEl, options) {
           setTimeout(() => {
             document.title = newEl.textContent;
             this.onSwitch();
           }, delay);
         },
-        "#scripts": function(oldEl, newEl, options) {
+        "#scripts": function (oldEl, newEl, options) {
           setTimeout(() => {
             oldEl.innerHTML = newEl.innerHTML;
             this.onSwitch();
           }, delay);
         },
-        ".wrapper": function(oldEl, newEl, options) {
+        ".wrapper": function (oldEl, newEl, options) {
           geral$1.nextPageId = newEl.id;
           setTimeout(() => {
             document.dispatchEvent(new CustomEvent("pjax:switch"));
@@ -1606,16 +1606,16 @@ var require_app2 = __commonJS({
         // },
       }
     });
-    (function() {
-      const AddActive = function(options) {
+    (function () {
+      const AddActive = function (options) {
         const addactive = active.bind(this);
         addactive(true, options);
       };
-      const RemoveActive = function(options) {
+      const RemoveActive = function (options) {
         const removeactive = active.bind(this);
         removeactive(false, options);
       };
-      const active = function(active2 = true, options) {
+      const active = function (active2 = true, options) {
         const {
           delay: delay2 = -1,
           leave = true,
@@ -1719,7 +1719,7 @@ var require_app2 = __commonJS({
           setTimeout(recalcStack, 100);
         }
         if (performance.now() - lastFrame > 10) {
-          window.requestAnimationFrame(function(animationStart) {
+          window.requestAnimationFrame(function (animationStart) {
             cursorElement.style.transform = `translate3d(${x}px, ${y}px, 0px)`;
             lastFrame = animationStart;
           });
@@ -4869,24 +4869,24 @@ var require_app2 = __commonJS({
       const suffixes = prepareClasses(["initialized", params.direction, {
         "free-mode": swiper.params.freeMode && params.freeMode.enabled
       }, {
-        "autoheight": params.autoHeight
-      }, {
-        "rtl": rtl
-      }, {
-        "grid": params.grid && params.grid.rows > 1
-      }, {
-        "grid-column": params.grid && params.grid.rows > 1 && params.grid.fill === "column"
-      }, {
-        "android": device.android
-      }, {
-        "ios": device.ios
-      }, {
-        "css-mode": params.cssMode
-      }, {
-        "centered": params.cssMode && params.centeredSlides
-      }, {
-        "watch-progress": params.watchSlidesProgress
-      }], params.containerModifierClass);
+          "autoheight": params.autoHeight
+        }, {
+          "rtl": rtl
+        }, {
+          "grid": params.grid && params.grid.rows > 1
+        }, {
+          "grid-column": params.grid && params.grid.rows > 1 && params.grid.fill === "column"
+        }, {
+          "android": device.android
+        }, {
+          "ios": device.ios
+        }, {
+          "css-mode": params.cssMode
+        }, {
+          "centered": params.cssMode && params.centeredSlides
+        }, {
+          "watch-progress": params.watchSlidesProgress
+        }], params.containerModifierClass);
       classNames.push(...suffixes);
       el.classList.add(...classNames);
       swiper.emitContainerClasses();
@@ -6822,25 +6822,25 @@ var require_app2 = __commonJS({
                 clickable: true
               },
               on: {
-                autoplayStart: function() {
+                autoplayStart: function () {
                   updatePaginationBullet(this);
                 },
-                slideChangeTransitionStart: function() {
+                slideChangeTransitionStart: function () {
                   cancelAnimationFrame(this.autoplayAnimationFrame);
                   updatePaginationBullet(this);
                 },
-                autoplayStop: function() {
+                autoplayStop: function () {
                   cancelAnimationFrame(this.autoplayAnimationFrame);
                   resetPaginationBulletProgress();
                 },
-                slideChange: function() {
+                slideChange: function () {
                   let activeIndex = this.realIndex;
                   let bullets = slider.querySelectorAll(".swiper-pagination-bullet");
                   for (let i = 0; i <= activeIndex; i++) {
                     bullets[i].classList.add("active");
                   }
                 },
-                reachBeginning: function() {
+                reachBeginning: function () {
                   let bullets = slider.querySelectorAll(".swiper-pagination-bullet");
                   bullets.forEach((bullet) => {
                     bullet.classList.remove("active");
@@ -6924,7 +6924,7 @@ var require_app2 = __commonJS({
           e = _docEl[p] != null ? _docEl : _body;
         }
       }
-      return function() {
+      return function () {
         return e[p];
       };
     }, _clean = function _clean2(value, index, target, targets) {
@@ -7368,7 +7368,7 @@ var require_app2 = __commonJS({
       </modal-group>
       `;
       const modal = template.content;
-      modal.firstElementChild.addEventListener("modal:close", function() {
+      modal.firstElementChild.addEventListener("modal:close", function () {
         this.remove();
       }, {
         once: true
@@ -7403,7 +7403,7 @@ var require_app2 = __commonJS({
       </modal-container>
       </modal-group>`;
       const modal = template.content;
-      modal.firstElementChild.addEventListener("modal:close", function() {
+      modal.firstElementChild.addEventListener("modal:close", function () {
         this.remove();
       }, { once: true });
       document.body.appendChild(modal);
@@ -7424,7 +7424,7 @@ var require_app2 = __commonJS({
       </modal-container>
       </modal-group>`;
       const modal = template.content;
-      modal.firstElementChild.addEventListener("modal:close", function() {
+      modal.firstElementChild.addEventListener("modal:close", function () {
         this.remove();
       }, { once: true });
       document.body.appendChild(modal);
@@ -7680,7 +7680,7 @@ var require_app2 = __commonJS({
     if (Array.prototype.some) {
       some = Array.prototype.some;
     } else {
-      some = function(fun) {
+      some = function (fun) {
         var t = Object(this), len = t.length >>> 0, i;
         for (i = 0; i < len; i++) {
           if (i in t && fun.call(this, t[i], i, t)) {
@@ -7694,7 +7694,7 @@ var require_app2 = __commonJS({
       var flags = null, parsedParts = false, isNowValid = m._d && !isNaN(m._d.getTime());
       if (isNowValid) {
         flags = getParsingFlags(m);
-        parsedParts = some.call(flags.parsedDateParts, function(i) {
+        parsedParts = some.call(flags.parsedDateParts, function (i) {
           return i != null;
         });
         isNowValid = flags.overflow < 0 && !flags.empty && !flags.invalidEra && !flags.invalidMonth && !flags.invalidWeekday && !flags.weekdayMismatch && !flags.nullInput && !flags.invalidFormat && !flags.userInvalidated && (!flags.meridiem || flags.meridiem && parsedParts);
@@ -7784,7 +7784,7 @@ var require_app2 = __commonJS({
     }
     function deprecate(msg, fn) {
       var firstTime = true;
-      return extend$1(function() {
+      return extend$1(function () {
         if (hooks.deprecationHandler != null) {
           hooks.deprecationHandler(null, msg);
         }
@@ -7876,7 +7876,7 @@ var require_app2 = __commonJS({
     if (Object.keys) {
       keys = Object.keys;
     } else {
-      keys = function(obj) {
+      keys = function (obj) {
         var i, res = [];
         for (i in obj) {
           if (hasOwnProp(obj, i)) {
@@ -7906,7 +7906,7 @@ var require_app2 = __commonJS({
     function addFormatToken(token2, padded, ordinal2, callback) {
       var func = callback;
       if (typeof callback === "string") {
-        func = function() {
+        func = function () {
           return this[callback]();
         };
       }
@@ -7914,12 +7914,12 @@ var require_app2 = __commonJS({
         formatTokenFunctions[token2] = func;
       }
       if (padded) {
-        formatTokenFunctions[padded[0]] = function() {
+        formatTokenFunctions[padded[0]] = function () {
           return zeroFill(func.apply(this, arguments), padded[1], padded[2]);
         };
       }
       if (ordinal2) {
-        formatTokenFunctions[ordinal2] = function() {
+        formatTokenFunctions[ordinal2] = function () {
           return this.localeData().ordinal(
             func.apply(this, arguments),
             token2
@@ -7942,7 +7942,7 @@ var require_app2 = __commonJS({
           array[i] = removeFormattingTokens(array[i]);
         }
       }
-      return function(mom) {
+      return function (mom) {
         var output = "", i2;
         for (i2 = 0; i2 < length; i2++) {
           output += isFunction$2(array[i2]) ? array[i2].call(mom, format2) : array[i2];
@@ -7987,7 +7987,7 @@ var require_app2 = __commonJS({
       if (format2 || !formatUpper) {
         return format2;
       }
-      this._longDateFormat[key2] = formatUpper.match(formattingTokens).map(function(tok) {
+      this._longDateFormat[key2] = formatUpper.match(formattingTokens).map(function (tok) {
         if (tok === "MMMM" || tok === "MM" || tok === "DD" || tok === "dddd") {
           return tok.slice(1);
         }
@@ -8119,7 +8119,7 @@ var require_app2 = __commonJS({
           units.push({ unit: u, priority: priorities[u] });
         }
       }
-      units.sort(function(a, b2) {
+      units.sort(function (a, b2) {
         return a.priority - b2.priority;
       });
       return units;
@@ -8127,7 +8127,7 @@ var require_app2 = __commonJS({
     var match1 = /\d/, match2 = /\d\d/, match3 = /\d{3}/, match4 = /\d{4}/, match6 = /[+-]?\d{6}/, match1to2 = /\d\d?/, match3to4 = /\d\d\d\d?/, match5to6 = /\d\d\d\d\d\d?/, match1to3 = /\d{1,3}/, match1to4 = /\d{1,4}/, match1to6 = /[+-]?\d{1,6}/, matchUnsigned = /\d+/, matchSigned = /[+-]?\d+/, matchOffset = /Z|[+-]\d\d:?\d\d/gi, matchShortOffset = /Z|[+-]\d\d(?::?\d\d)?/gi, matchTimestamp = /[+-]?\d+(\.\d{1,3})?/, matchWord = /[0-9]{0,256}['a-z\u00A0-\u05FF\u0700-\uD7FF\uF900-\uFDCF\uFDF0-\uFF07\uFF10-\uFFEF]{1,256}|[\u0600-\u06FF\/]{1,256}(\s*?[\u0600-\u06FF]{1,256}){1,2}/i, match1to2NoLeadingZero = /^[1-9]\d?/, match1to2HasZero = /^([1-9]\d|\d)/, regexes;
     regexes = {};
     function addRegexToken(token2, regex, strictRegex) {
-      regexes[token2] = isFunction$2(regex) ? regex : function(isStrict, localeData2) {
+      regexes[token2] = isFunction$2(regex) ? regex : function (isStrict, localeData2) {
         return isStrict && strictRegex ? strictRegex : regex;
       };
     }
@@ -8141,7 +8141,7 @@ var require_app2 = __commonJS({
       return regexEscape(
         s.replace("\\", "").replace(
           /\\(\[)|\\(\])|\[([^\]\[]*)\]|\\(.)/g,
-          function(matched, p1, p2, p3, p4) {
+          function (matched, p1, p2, p3, p4) {
             return p1 || p2 || p3 || p4;
           }
         )
@@ -8171,7 +8171,7 @@ var require_app2 = __commonJS({
         token2 = [token2];
       }
       if (isNumber$2(callback)) {
-        func = function(input, array) {
+        func = function (input, array) {
           array[callback] = toInt(input);
         };
       }
@@ -8181,7 +8181,7 @@ var require_app2 = __commonJS({
       }
     }
     function addWeekParseToken(token2, callback) {
-      addParseToken(token2, function(input, array, config, token3) {
+      addParseToken(token2, function (input, array, config, token3) {
         config._w = config._w || {};
         callback(input, config._w, config, token3);
       });
@@ -8195,11 +8195,11 @@ var require_app2 = __commonJS({
       return year % 4 === 0 && year % 100 !== 0 || year % 400 === 0;
     }
     var YEAR = 0, MONTH = 1, DATE = 2, HOUR = 3, MINUTE = 4, SECOND = 5, MILLISECOND = 6, WEEK = 7, WEEKDAY = 8;
-    addFormatToken("Y", 0, 0, function() {
+    addFormatToken("Y", 0, 0, function () {
       var y = this.year();
       return y <= 9999 ? zeroFill(y, 4) : "+" + y;
     });
-    addFormatToken(0, ["YY", 2], 0, function() {
+    addFormatToken(0, ["YY", 2], 0, function () {
       return this.year() % 100;
     });
     addFormatToken(0, ["YYYY", 4], 0, "year");
@@ -8211,19 +8211,19 @@ var require_app2 = __commonJS({
     addRegexToken("YYYYY", match1to6, match6);
     addRegexToken("YYYYYY", match1to6, match6);
     addParseToken(["YYYYY", "YYYYYY"], YEAR);
-    addParseToken("YYYY", function(input, array) {
+    addParseToken("YYYY", function (input, array) {
       array[YEAR] = input.length === 2 ? hooks.parseTwoDigitYear(input) : toInt(input);
     });
-    addParseToken("YY", function(input, array) {
+    addParseToken("YY", function (input, array) {
       array[YEAR] = hooks.parseTwoDigitYear(input);
     });
-    addParseToken("Y", function(input, array) {
+    addParseToken("Y", function (input, array) {
       array[YEAR] = parseInt(input, 10);
     });
     function daysInYear(year) {
       return isLeapYear(year) ? 366 : 365;
     }
-    hooks.parseTwoDigitYear = function(input) {
+    hooks.parseTwoDigitYear = function (input) {
       return toInt(input) + (toInt(input) > 68 ? 1900 : 2e3);
     };
     var getSetYear = makeGetSet("FullYear", true);
@@ -8231,7 +8231,7 @@ var require_app2 = __commonJS({
       return isLeapYear(this.year());
     }
     function makeGetSet(unit, keepTime) {
-      return function(value) {
+      return function (value) {
         if (value != null) {
           set$1(this, unit, value);
           hooks.updateOffset(this, keepTime);
@@ -8325,7 +8325,7 @@ var require_app2 = __commonJS({
     if (Array.prototype.indexOf) {
       indexOf = Array.prototype.indexOf;
     } else {
-      indexOf = function(o) {
+      indexOf = function (o) {
         var i;
         for (i = 0; i < this.length; ++i) {
           if (this[i] === o) {
@@ -8343,27 +8343,27 @@ var require_app2 = __commonJS({
       year += (month - modMonth) / 12;
       return modMonth === 1 ? isLeapYear(year) ? 29 : 28 : 31 - modMonth % 7 % 2;
     }
-    addFormatToken("M", ["MM", 2], "Mo", function() {
+    addFormatToken("M", ["MM", 2], "Mo", function () {
       return this.month() + 1;
     });
-    addFormatToken("MMM", 0, 0, function(format2) {
+    addFormatToken("MMM", 0, 0, function (format2) {
       return this.localeData().monthsShort(this, format2);
     });
-    addFormatToken("MMMM", 0, 0, function(format2) {
+    addFormatToken("MMMM", 0, 0, function (format2) {
       return this.localeData().months(this, format2);
     });
     addRegexToken("M", match1to2, match1to2NoLeadingZero);
     addRegexToken("MM", match1to2, match2);
-    addRegexToken("MMM", function(isStrict, locale2) {
+    addRegexToken("MMM", function (isStrict, locale2) {
       return locale2.monthsShortRegex(isStrict);
     });
-    addRegexToken("MMMM", function(isStrict, locale2) {
+    addRegexToken("MMMM", function (isStrict, locale2) {
       return locale2.monthsRegex(isStrict);
     });
-    addParseToken(["M", "MM"], function(input, array) {
+    addParseToken(["M", "MM"], function (input, array) {
       array[MONTH] = toInt(input) - 1;
     });
-    addParseToken(["MMM", "MMMM"], function(input, array, config, token2) {
+    addParseToken(["MMM", "MMMM"], function (input, array, config, token2) {
       var month = config._locale.monthsParse(input, token2, config._strict);
       if (month != null) {
         array[MONTH] = month;
@@ -8631,7 +8631,7 @@ var require_app2 = __commonJS({
     addRegexToken("WW", match1to2, match2);
     addWeekParseToken(
       ["w", "ww", "W", "WW"],
-      function(input, week, config, token2) {
+      function (input, week, config, token2) {
         week[token2.substr(0, 1)] = toInt(input);
       }
     );
@@ -8659,13 +8659,13 @@ var require_app2 = __commonJS({
       return input == null ? week : this.add((input - week) * 7, "d");
     }
     addFormatToken("d", 0, "do", "day");
-    addFormatToken("dd", 0, 0, function(format2) {
+    addFormatToken("dd", 0, 0, function (format2) {
       return this.localeData().weekdaysMin(this, format2);
     });
-    addFormatToken("ddd", 0, 0, function(format2) {
+    addFormatToken("ddd", 0, 0, function (format2) {
       return this.localeData().weekdaysShort(this, format2);
     });
-    addFormatToken("dddd", 0, 0, function(format2) {
+    addFormatToken("dddd", 0, 0, function (format2) {
       return this.localeData().weekdays(this, format2);
     });
     addFormatToken("e", 0, 0, "weekday");
@@ -8673,16 +8673,16 @@ var require_app2 = __commonJS({
     addRegexToken("d", match1to2);
     addRegexToken("e", match1to2);
     addRegexToken("E", match1to2);
-    addRegexToken("dd", function(isStrict, locale2) {
+    addRegexToken("dd", function (isStrict, locale2) {
       return locale2.weekdaysMinRegex(isStrict);
     });
-    addRegexToken("ddd", function(isStrict, locale2) {
+    addRegexToken("ddd", function (isStrict, locale2) {
       return locale2.weekdaysShortRegex(isStrict);
     });
-    addRegexToken("dddd", function(isStrict, locale2) {
+    addRegexToken("dddd", function (isStrict, locale2) {
       return locale2.weekdaysRegex(isStrict);
     });
-    addWeekParseToken(["dd", "ddd", "dddd"], function(input, week, config, token2) {
+    addWeekParseToken(["dd", "ddd", "dddd"], function (input, week, config, token2) {
       var weekday = config._locale.weekdaysParse(input, token2, config._strict);
       if (weekday != null) {
         week.d = weekday;
@@ -8690,7 +8690,7 @@ var require_app2 = __commonJS({
         getParsingFlags(config).invalidWeekday = input;
       }
     });
-    addWeekParseToken(["d", "e", "E"], function(input, week, config, token2) {
+    addWeekParseToken(["d", "e", "E"], function (input, week, config, token2) {
       week[token2] = toInt(input);
     });
     function parseWeekday(input, locale2) {
@@ -8962,20 +8962,20 @@ var require_app2 = __commonJS({
     addFormatToken("H", ["HH", 2], 0, "hour");
     addFormatToken("h", ["hh", 2], 0, hFormat);
     addFormatToken("k", ["kk", 2], 0, kFormat);
-    addFormatToken("hmm", 0, 0, function() {
+    addFormatToken("hmm", 0, 0, function () {
       return "" + hFormat.apply(this) + zeroFill(this.minutes(), 2);
     });
-    addFormatToken("hmmss", 0, 0, function() {
+    addFormatToken("hmmss", 0, 0, function () {
       return "" + hFormat.apply(this) + zeroFill(this.minutes(), 2) + zeroFill(this.seconds(), 2);
     });
-    addFormatToken("Hmm", 0, 0, function() {
+    addFormatToken("Hmm", 0, 0, function () {
       return "" + this.hours() + zeroFill(this.minutes(), 2);
     });
-    addFormatToken("Hmmss", 0, 0, function() {
+    addFormatToken("Hmmss", 0, 0, function () {
       return "" + this.hours() + zeroFill(this.minutes(), 2) + zeroFill(this.seconds(), 2);
     });
     function meridiem(token2, lowercase) {
-      addFormatToken(token2, 0, 0, function() {
+      addFormatToken(token2, 0, 0, function () {
         return this.localeData().meridiem(
           this.hours(),
           this.minutes(),
@@ -9001,37 +9001,37 @@ var require_app2 = __commonJS({
     addRegexToken("Hmm", match3to4);
     addRegexToken("Hmmss", match5to6);
     addParseToken(["H", "HH"], HOUR);
-    addParseToken(["k", "kk"], function(input, array, config) {
+    addParseToken(["k", "kk"], function (input, array, config) {
       var kInput = toInt(input);
       array[HOUR] = kInput === 24 ? 0 : kInput;
     });
-    addParseToken(["a", "A"], function(input, array, config) {
+    addParseToken(["a", "A"], function (input, array, config) {
       config._isPm = config._locale.isPM(input);
       config._meridiem = input;
     });
-    addParseToken(["h", "hh"], function(input, array, config) {
+    addParseToken(["h", "hh"], function (input, array, config) {
       array[HOUR] = toInt(input);
       getParsingFlags(config).bigHour = true;
     });
-    addParseToken("hmm", function(input, array, config) {
+    addParseToken("hmm", function (input, array, config) {
       var pos = input.length - 2;
       array[HOUR] = toInt(input.substr(0, pos));
       array[MINUTE] = toInt(input.substr(pos));
       getParsingFlags(config).bigHour = true;
     });
-    addParseToken("hmmss", function(input, array, config) {
+    addParseToken("hmmss", function (input, array, config) {
       var pos1 = input.length - 4, pos2 = input.length - 2;
       array[HOUR] = toInt(input.substr(0, pos1));
       array[MINUTE] = toInt(input.substr(pos1, 2));
       array[SECOND] = toInt(input.substr(pos2));
       getParsingFlags(config).bigHour = true;
     });
-    addParseToken("Hmm", function(input, array, config) {
+    addParseToken("Hmm", function (input, array, config) {
       var pos = input.length - 2;
       array[HOUR] = toInt(input.substr(0, pos));
       array[MINUTE] = toInt(input.substr(pos));
     });
-    addParseToken("Hmmss", function(input, array, config) {
+    addParseToken("Hmmss", function (input, array, config) {
       var pos1 = input.length - 4, pos2 = input.length - 2;
       array[HOUR] = toInt(input.substr(0, pos1));
       array[MINUTE] = toInt(input.substr(pos1, 2));
@@ -9165,7 +9165,7 @@ var require_app2 = __commonJS({
         }
         locales[name] = new Locale(mergeConfigs(parentConfig, config));
         if (localeFamilies[name]) {
-          localeFamilies[name].forEach(function(x) {
+          localeFamilies[name].forEach(function (x) {
             defineLocale(x.name, x.config);
           });
         }
@@ -9426,7 +9426,7 @@ var require_app2 = __commonJS({
     }
     hooks.createFromInputFallback = deprecate(
       "value provided is not in a recognized RFC2822 or ISO format. moment construction falls back to js Date(), which is not reliable across all browsers and versions. Non RFC2822/ISO date formats are discouraged. Please refer to http://momentjs.com/guides/#/warnings/js-date/ for more info.",
-      function(config) {
+      function (config) {
         config._d = /* @__PURE__ */ new Date(config._i + (config._useUTC ? " UTC" : ""));
       }
     );
@@ -9539,9 +9539,9 @@ var require_app2 = __commonJS({
         config._dayOfYear = temp.dayOfYear;
       }
     }
-    hooks.ISO_8601 = function() {
+    hooks.ISO_8601 = function () {
     };
-    hooks.RFC_2822 = function() {
+    hooks.RFC_2822 = function () {
     };
     function configFromStringAndFormat(config) {
       if (config._f === hooks.ISO_8601) {
@@ -9668,7 +9668,7 @@ var require_app2 = __commonJS({
       var i = normalizeObjectUnits(config._i), dayOrDate = i.day === void 0 ? i.date : i.day;
       config._a = map(
         [i.year, i.month, dayOrDate, i.hour, i.minute, i.second, i.millisecond],
-        function(obj) {
+        function (obj) {
           return obj && parseInt(obj, 10);
         }
       );
@@ -9716,7 +9716,7 @@ var require_app2 = __commonJS({
       } else if (typeof input === "string") {
         configFromString(config);
       } else if (isArray$2(input)) {
-        config._a = map(input.slice(0), function(obj) {
+        config._a = map(input.slice(0), function (obj) {
           return parseInt(obj, 10);
         });
         configFromArray(config);
@@ -9754,7 +9754,7 @@ var require_app2 = __commonJS({
     }
     var prototypeMin = deprecate(
       "moment().min is deprecated, use moment.max instead. http://momentjs.com/guides/#/warnings/min-max/",
-      function() {
+      function () {
         var other = createLocal.apply(null, arguments);
         if (this.isValid() && other.isValid()) {
           return other < this ? this : other;
@@ -9764,7 +9764,7 @@ var require_app2 = __commonJS({
       }
     ), prototypeMax = deprecate(
       "moment().max is deprecated, use moment.min instead. http://momentjs.com/guides/#/warnings/min-max/",
-      function() {
+      function () {
         var other = createLocal.apply(null, arguments);
         if (this.isValid() && other.isValid()) {
           return other > this ? this : other;
@@ -9797,7 +9797,7 @@ var require_app2 = __commonJS({
       var args = [].slice.call(arguments, 0);
       return pickBy("isAfter", args);
     }
-    var now = function() {
+    var now = function () {
       return Date.now ? Date.now() : +/* @__PURE__ */ new Date();
     };
     var ordering = [
@@ -9840,8 +9840,8 @@ var require_app2 = __commonJS({
       var normalizedInput = normalizeObjectUnits(duration), years2 = normalizedInput.year || 0, quarters = normalizedInput.quarter || 0, months2 = normalizedInput.month || 0, weeks2 = normalizedInput.week || normalizedInput.isoWeek || 0, days2 = normalizedInput.day || 0, hours2 = normalizedInput.hour || 0, minutes2 = normalizedInput.minute || 0, seconds2 = normalizedInput.second || 0, milliseconds2 = normalizedInput.millisecond || 0;
       this._isValid = isDurationValid(normalizedInput);
       this._milliseconds = +milliseconds2 + seconds2 * 1e3 + // 1000
-      minutes2 * 6e4 + // 1000 * 60
-      hours2 * 1e3 * 60 * 60;
+        minutes2 * 6e4 + // 1000 * 60
+        hours2 * 1e3 * 60 * 60;
       this._days = +days2 + weeks2 * 7;
       this._months = +months2 + quarters * 3 + years2 * 12;
       this._data = {};
@@ -9868,7 +9868,7 @@ var require_app2 = __commonJS({
       return diffs + lengthDiff;
     }
     function offset(token2, separator) {
-      addFormatToken(token2, 0, 0, function() {
+      addFormatToken(token2, 0, 0, function () {
         var offset2 = this.utcOffset(), sign2 = "+";
         if (offset2 < 0) {
           offset2 = -offset2;
@@ -9881,7 +9881,7 @@ var require_app2 = __commonJS({
     offset("ZZ", "");
     addRegexToken("Z", matchShortOffset);
     addRegexToken("ZZ", matchShortOffset);
-    addParseToken(["Z", "ZZ"], function(input, array, config) {
+    addParseToken(["Z", "ZZ"], function (input, array, config) {
       config._useUTC = true;
       config._tzm = offsetFromString(matchShortOffset, input);
     });
@@ -9911,7 +9911,7 @@ var require_app2 = __commonJS({
     function getDateOffset(m) {
       return -Math.round(m._d.getTimezoneOffset());
     }
-    hooks.updateOffset = function() {
+    hooks.updateOffset = function () {
     };
     function getSetOffset(input, keepLocalTime, keepMinutes) {
       var offset2 = this._offset || 0, localAdjust;
@@ -10114,7 +10114,7 @@ var require_app2 = __commonJS({
       return res;
     }
     function createAdder(direction, name) {
-      return function(val, period) {
+      return function (val, period) {
         var dur, tmp;
         if (period !== null && !isNaN(+period)) {
           deprecateSimple(
@@ -10192,7 +10192,7 @@ var require_app2 = __commonJS({
     function isNumberOrStringArray(input) {
       var arrayTest = isArray$2(input), dataTypeTest = false;
       if (arrayTest) {
-        dataTypeTest = input.filter(function(item) {
+        dataTypeTest = input.filter(function (item) {
           return !isNumber$2(item) && isString$2(input);
         }).length === 0;
       }
@@ -10428,7 +10428,7 @@ var require_app2 = __commonJS({
     }
     var lang = deprecate(
       "moment().lang() is deprecated. Instead, use moment().localeData() to get the language configuration. Use moment().locale() to change languages.",
-      function(key2) {
+      function (key2) {
         if (key2 === void 0) {
           return this.localeData();
         } else {
@@ -10645,7 +10645,7 @@ var require_app2 = __commonJS({
     addRegexToken("NNNNN", matchEraNarrow);
     addParseToken(
       ["N", "NN", "NNN", "NNNN", "NNNNN"],
-      function(input, array, config, token2) {
+      function (input, array, config, token2) {
         var era = config._locale.erasParse(input, token2, config._strict);
         if (era) {
           getParsingFlags(config).era = era;
@@ -10660,7 +10660,7 @@ var require_app2 = __commonJS({
     addRegexToken("yyyy", matchUnsigned);
     addRegexToken("yo", matchEraYearOrdinal);
     addParseToken(["y", "yy", "yyy", "yyyy"], YEAR);
-    addParseToken(["yo"], function(input, array, config, token2) {
+    addParseToken(["yo"], function (input, array, config, token2) {
       var match;
       if (config._locale._eraYearOrdinalRegex) {
         match = input.match(config._locale._eraYearOrdinalRegex);
@@ -10833,10 +10833,10 @@ var require_app2 = __commonJS({
         "i"
       );
     }
-    addFormatToken(0, ["gg", 2], 0, function() {
+    addFormatToken(0, ["gg", 2], 0, function () {
       return this.weekYear() % 100;
     });
-    addFormatToken(0, ["GG", 2], 0, function() {
+    addFormatToken(0, ["GG", 2], 0, function () {
       return this.isoWeekYear() % 100;
     });
     function addWeekYearFormatToken(token2, getter) {
@@ -10856,11 +10856,11 @@ var require_app2 = __commonJS({
     addRegexToken("ggggg", match1to6, match6);
     addWeekParseToken(
       ["gggg", "ggggg", "GGGG", "GGGGG"],
-      function(input, week, config, token2) {
+      function (input, week, config, token2) {
         week[token2.substr(0, 2)] = toInt(input);
       }
     );
-    addWeekParseToken(["gg", "GG"], function(input, week, config, token2) {
+    addWeekParseToken(["gg", "GG"], function (input, week, config, token2) {
       week[token2] = hooks.parseTwoDigitYear(input);
     });
     function getSetWeekYear(input) {
@@ -10918,7 +10918,7 @@ var require_app2 = __commonJS({
     }
     addFormatToken("Q", 0, "Qo", "quarter");
     addRegexToken("Q", match1);
-    addParseToken("Q", function(input, array) {
+    addParseToken("Q", function (input, array) {
       array[MONTH] = (toInt(input) - 1) * 3;
     });
     function getSetQuarter(input) {
@@ -10927,18 +10927,18 @@ var require_app2 = __commonJS({
     addFormatToken("D", ["DD", 2], "Do", "date");
     addRegexToken("D", match1to2, match1to2NoLeadingZero);
     addRegexToken("DD", match1to2, match2);
-    addRegexToken("Do", function(isStrict, locale2) {
+    addRegexToken("Do", function (isStrict, locale2) {
       return isStrict ? locale2._dayOfMonthOrdinalParse || locale2._ordinalParse : locale2._dayOfMonthOrdinalParseLenient;
     });
     addParseToken(["D", "DD"], DATE);
-    addParseToken("Do", function(input, array) {
+    addParseToken("Do", function (input, array) {
       array[DATE] = toInt(input.match(match1to2)[0]);
     });
     var getSetDayOfMonth = makeGetSet("Date", true);
     addFormatToken("DDD", ["DDDD", 3], "DDDo", "dayOfYear");
     addRegexToken("DDD", match1to3);
     addRegexToken("DDDD", match3);
-    addParseToken(["DDD", "DDDD"], function(input, array, config) {
+    addParseToken(["DDD", "DDDD"], function (input, array, config) {
       config._dayOfYear = toInt(input);
     });
     function getSetDayOfYear(input) {
@@ -10957,29 +10957,29 @@ var require_app2 = __commonJS({
     addRegexToken("ss", match1to2, match2);
     addParseToken(["s", "ss"], SECOND);
     var getSetSecond = makeGetSet("Seconds", false);
-    addFormatToken("S", 0, 0, function() {
+    addFormatToken("S", 0, 0, function () {
       return ~~(this.millisecond() / 100);
     });
-    addFormatToken(0, ["SS", 2], 0, function() {
+    addFormatToken(0, ["SS", 2], 0, function () {
       return ~~(this.millisecond() / 10);
     });
     addFormatToken(0, ["SSS", 3], 0, "millisecond");
-    addFormatToken(0, ["SSSS", 4], 0, function() {
+    addFormatToken(0, ["SSSS", 4], 0, function () {
       return this.millisecond() * 10;
     });
-    addFormatToken(0, ["SSSSS", 5], 0, function() {
+    addFormatToken(0, ["SSSSS", 5], 0, function () {
       return this.millisecond() * 100;
     });
-    addFormatToken(0, ["SSSSSS", 6], 0, function() {
+    addFormatToken(0, ["SSSSSS", 6], 0, function () {
       return this.millisecond() * 1e3;
     });
-    addFormatToken(0, ["SSSSSSS", 7], 0, function() {
+    addFormatToken(0, ["SSSSSSS", 7], 0, function () {
       return this.millisecond() * 1e4;
     });
-    addFormatToken(0, ["SSSSSSSS", 8], 0, function() {
+    addFormatToken(0, ["SSSSSSSS", 8], 0, function () {
       return this.millisecond() * 1e5;
     });
-    addFormatToken(0, ["SSSSSSSSS", 9], 0, function() {
+    addFormatToken(0, ["SSSSSSSSS", 9], 0, function () {
       return this.millisecond() * 1e6;
     });
     addRegexToken("S", match1to3, match1);
@@ -11039,7 +11039,7 @@ var require_app2 = __commonJS({
     proto.toISOString = toISOString;
     proto.inspect = inspect;
     if (typeof Symbol !== "undefined" && Symbol.for != null) {
-      proto[Symbol.for("nodejs.util.inspect.custom")] = function() {
+      proto[Symbol.for("nodejs.util.inspect.custom")] = function () {
         return "Moment<" + this.format() + ">";
       };
     }
@@ -11228,7 +11228,7 @@ var require_app2 = __commonJS({
         }
       ],
       dayOfMonthOrdinalParse: /\d{1,2}(th|st|nd|rd)/,
-      ordinal: function(number) {
+      ordinal: function (number) {
         var b2 = number % 10, output = toInt(number % 100 / 10) === 1 ? "th" : b2 === 1 ? "st" : b2 === 2 ? "nd" : b2 === 3 ? "rd" : "th";
         return number + output;
       }
@@ -11344,7 +11344,7 @@ var require_app2 = __commonJS({
       }
     }
     function makeAs(alias) {
-      return function() {
+      return function () {
         return this.as(alias);
       };
     }
@@ -11357,7 +11357,7 @@ var require_app2 = __commonJS({
       return this.isValid() ? this[units + "s"]() : NaN;
     }
     function makeGetter(name) {
-      return function() {
+      return function () {
         return this.isValid() ? this._data[name] : NaN;
       };
     }
@@ -11510,10 +11510,10 @@ var require_app2 = __commonJS({
     addFormatToken("x", 0, 0, "valueOf");
     addRegexToken("x", matchSigned);
     addRegexToken("X", matchTimestamp);
-    addParseToken("X", function(input, array, config) {
+    addParseToken("X", function (input, array, config) {
       config._d = new Date(parseFloat(input) * 1e3);
     });
-    addParseToken("x", function(input, array, config) {
+    addParseToken("x", function (input, array, config) {
       config._d = new Date(toInt(input));
     });
     //! moment.js
@@ -11690,7 +11690,7 @@ var require_app2 = __commonJS({
         validaCep(el);
       });
       document.querySelectorAll("input.cpf:not(.js-running)").forEach((el) => {
-        el.addEventListener("input", function() {
+        el.addEventListener("input", function () {
           el.value = maskCPF(el.value);
         });
       });
@@ -11698,10 +11698,10 @@ var require_app2 = __commonJS({
         inputMoney(el);
       });
       document.querySelectorAll(".tel:not(.js-running)").forEach((el) => {
-        el.addEventListener("input", function() {
+        el.addEventListener("input", function () {
           validaTelefone(el);
         });
-        el.addEventListener("focusout", function() {
+        el.addEventListener("focusout", function () {
           validaTelefone(el);
           let type = validaTelefone(el);
           if (type === "fixo" && el.value.length !== 14 || type === "celular" && el.value.length !== 16 || !type) {
@@ -11714,15 +11714,15 @@ var require_app2 = __commonJS({
         formatDateInput(el);
       });
       document.querySelectorAll("input,textarea").forEach((element) => {
-        element.addEventListener("focus", function() {
+        element.addEventListener("focus", function () {
           this.closest("div").classList.add("preenchido");
         });
-        element.addEventListener("input", function() {
+        element.addEventListener("input", function () {
           this.closest("div").classList.remove("error");
           if (this.dataset.error)
             this.setCustomValidity("");
         });
-        element.addEventListener("focusout", function() {
+        element.addEventListener("focusout", function () {
           if (this.value.length === 0) {
             this.closest("div").classList.remove("preenchido");
           }
@@ -11758,7 +11758,7 @@ var require_app2 = __commonJS({
     function CookiesConsent() {
       const cookieContainer = document.querySelector(".container-cookies");
       const acceptBtn = cookieContainer.querySelector(".btn-cookies.accept");
-      acceptBtn.addEventListener("click", function() {
+      acceptBtn.addEventListener("click", function () {
         cookieDismiss();
       });
       function setCookie(name, value, days2) {
@@ -11794,21 +11794,21 @@ var require_app2 = __commonJS({
           cookieContainer.classList.add("d-none");
         }, 400);
       }
-      window.onload = function() {
+      window.onload = function () {
         cookieConsent();
       };
     }
     var smoothScroll_polyfills_min = { exports: {} };
     /*! smooth-scroll v16.1.3 | (c) 2020 Chris Ferdinandi | MIT License | http://github.com/cferdinandi/smooth-scroll */
-    (function(module2, exports2) {
-      window.Element && !Element.prototype.closest && (Element.prototype.closest = function(e) {
+    (function (module2, exports2) {
+      window.Element && !Element.prototype.closest && (Element.prototype.closest = function (e) {
         var t, n = (this.document || this.ownerDocument).querySelectorAll(e), o = this;
         do {
-          for (t = n.length; 0 <= --t && n.item(t) !== o; )
+          for (t = n.length; 0 <= --t && n.item(t) !== o;)
             ;
         } while (t < 0 && (o = o.parentElement));
         return o;
-      }), function() {
+      }), function () {
         if ("function" == typeof window.CustomEvent)
           return;
         function e(e2, t) {
@@ -11817,69 +11817,69 @@ var require_app2 = __commonJS({
           return n.initCustomEvent(e2, t.bubbles, t.cancelable, t.detail), n;
         }
         e.prototype = window.Event.prototype, window.CustomEvent = e;
-      }(), function() {
+      }(), function () {
         for (var r = 0, e = ["ms", "moz", "webkit", "o"], t = 0; t < e.length && !window.requestAnimationFrame; ++t)
           window.requestAnimationFrame = window[e[t] + "RequestAnimationFrame"], window.cancelAnimationFrame = window[e[t] + "CancelAnimationFrame"] || window[e[t] + "CancelRequestAnimationFrame"];
-        window.requestAnimationFrame || (window.requestAnimationFrame = function(e2, t2) {
-          var n = (/* @__PURE__ */ new Date()).getTime(), o = Math.max(0, 16 - (n - r)), a = window.setTimeout(function() {
+        window.requestAnimationFrame || (window.requestAnimationFrame = function (e2, t2) {
+          var n = (/* @__PURE__ */ new Date()).getTime(), o = Math.max(0, 16 - (n - r)), a = window.setTimeout(function () {
             e2(n + o);
           }, o);
           return r = n + o, a;
-        }), window.cancelAnimationFrame || (window.cancelAnimationFrame = function(e2) {
+        }), window.cancelAnimationFrame || (window.cancelAnimationFrame = function (e2) {
           clearTimeout(e2);
         });
-      }(), function(e, t) {
+      }(), function (e, t) {
         module2.exports = t(e);
-      }("undefined" != typeof commonjsGlobal ? commonjsGlobal : "undefined" != typeof window ? window : commonjsGlobal, function(M) {
-        var q = { ignore: "[data-scroll-ignore]", header: null, topOnEmptyHash: true, speed: 500, speedAsDuration: false, durationMax: null, durationMin: null, clip: true, offset: 0, easing: "easeInOutCubic", customEasing: null, updateURL: true, popstate: true, emitEvents: true }, I = function() {
+      }("undefined" != typeof commonjsGlobal ? commonjsGlobal : "undefined" != typeof window ? window : commonjsGlobal, function (M) {
+        var q = { ignore: "[data-scroll-ignore]", header: null, topOnEmptyHash: true, speed: 500, speedAsDuration: false, durationMax: null, durationMin: null, clip: true, offset: 0, easing: "easeInOutCubic", customEasing: null, updateURL: true, popstate: true, emitEvents: true }, I = function () {
           var n = {};
-          return Array.prototype.forEach.call(arguments, function(e) {
+          return Array.prototype.forEach.call(arguments, function (e) {
             for (var t in e) {
               if (!e.hasOwnProperty(t))
                 return;
               n[t] = e[t];
             }
           }), n;
-        }, r = function(e) {
+        }, r = function (e) {
           "#" === e.charAt(0) && (e = e.substr(1));
-          for (var t, n = String(e), o = n.length, a = -1, r2 = "", i = n.charCodeAt(0); ++a < o; ) {
+          for (var t, n = String(e), o = n.length, a = -1, r2 = "", i = n.charCodeAt(0); ++a < o;) {
             if (0 === (t = n.charCodeAt(a)))
               throw new InvalidCharacterError("Invalid character: the input contains U+0000.");
             1 <= t && t <= 31 || 127 == t || 0 === a && 48 <= t && t <= 57 || 1 === a && 48 <= t && t <= 57 && 45 === i ? r2 += "\\" + t.toString(16) + " " : r2 += 128 <= t || 45 === t || 95 === t || 48 <= t && t <= 57 || 65 <= t && t <= 90 || 97 <= t && t <= 122 ? n.charAt(a) : "\\" + n.charAt(a);
           }
           return "#" + r2;
-        }, F = function() {
+        }, F = function () {
           return Math.max(document.body.scrollHeight, document.documentElement.scrollHeight, document.body.offsetHeight, document.documentElement.offsetHeight, document.body.clientHeight, document.documentElement.clientHeight);
-        }, L = function(e) {
+        }, L = function (e) {
           return e ? (t = e, parseInt(M.getComputedStyle(t).height, 10) + e.offsetTop) : 0;
           var t;
-        }, x = function(e, t, n) {
+        }, x = function (e, t, n) {
           0 === e && document.body.focus(), n || (e.focus(), document.activeElement !== e && (e.setAttribute("tabindex", "-1"), e.focus(), e.style.outline = "none"), M.scrollTo(0, t));
-        }, H = function(e, t, n, o) {
+        }, H = function (e, t, n, o) {
           if (t.emitEvents && "function" == typeof M.CustomEvent) {
             var a = new CustomEvent(e, { bubbles: true, detail: { anchor: n, toggle: o } });
             document.dispatchEvent(a);
           }
         };
-        return function(o, e) {
+        return function (o, e) {
           var b2, a, A, O, C = {};
-          C.cancelScroll = function(e2) {
+          C.cancelScroll = function (e2) {
             cancelAnimationFrame(O), O = null, e2 || H("scrollCancel", b2);
-          }, C.animateScroll = function(a2, r2, e2) {
+          }, C.animateScroll = function (a2, r2, e2) {
             C.cancelScroll();
             var i = I(b2 || q, e2 || {}), c = "[object Number]" === Object.prototype.toString.call(a2), t2 = c || !a2.tagName ? null : a2;
             if (c || t2) {
               var s = M.pageYOffset;
               i.header && !A && (A = document.querySelector(i.header));
-              var n2, o2, u, l, m, d, f, h, p = L(A), g = c ? a2 : function(e3, t3, n3, o3) {
+              var n2, o2, u, l, m, d, f, h, p = L(A), g = c ? a2 : function (e3, t3, n3, o3) {
                 var a3 = 0;
                 if (e3.offsetParent)
-                  for (; a3 += e3.offsetTop, e3 = e3.offsetParent; )
+                  for (; a3 += e3.offsetTop, e3 = e3.offsetParent;)
                     ;
                 return a3 = Math.max(a3 - t3 - n3, 0), o3 && (a3 = Math.min(a3, F() - M.innerHeight)), a3;
-              }(t2, p, parseInt("function" == typeof i.offset ? i.offset(a2, r2) : i.offset, 10), i.clip), y = g - s, v = F(), w = 0, S = (n2 = y, u = (o2 = i).speedAsDuration ? o2.speed : Math.abs(n2 / 1e3 * o2.speed), o2.durationMax && u > o2.durationMax ? o2.durationMax : o2.durationMin && u < o2.durationMin ? o2.durationMin : parseInt(u, 10)), E = function(e3) {
+              }(t2, p, parseInt("function" == typeof i.offset ? i.offset(a2, r2) : i.offset, 10), i.clip), y = g - s, v = F(), w = 0, S = (n2 = y, u = (o2 = i).speedAsDuration ? o2.speed : Math.abs(n2 / 1e3 * o2.speed), o2.durationMax && u > o2.durationMax ? o2.durationMax : o2.durationMin && u < o2.durationMin ? o2.durationMin : parseInt(u, 10)), E = function (e3) {
                 var t3, n3, o3;
-                l || (l = e3), w += e3 - l, d = s + y * (n3 = m = 1 < (m = 0 === S ? 0 : w / S) ? 1 : m, "easeInQuad" === (t3 = i).easing && (o3 = n3 * n3), "easeOutQuad" === t3.easing && (o3 = n3 * (2 - n3)), "easeInOutQuad" === t3.easing && (o3 = n3 < 0.5 ? 2 * n3 * n3 : (4 - 2 * n3) * n3 - 1), "easeInCubic" === t3.easing && (o3 = n3 * n3 * n3), "easeOutCubic" === t3.easing && (o3 = --n3 * n3 * n3 + 1), "easeInOutCubic" === t3.easing && (o3 = n3 < 0.5 ? 4 * n3 * n3 * n3 : (n3 - 1) * (2 * n3 - 2) * (2 * n3 - 2) + 1), "easeInQuart" === t3.easing && (o3 = n3 * n3 * n3 * n3), "easeOutQuart" === t3.easing && (o3 = 1 - --n3 * n3 * n3 * n3), "easeInOutQuart" === t3.easing && (o3 = n3 < 0.5 ? 8 * n3 * n3 * n3 * n3 : 1 - 8 * --n3 * n3 * n3 * n3), "easeInQuint" === t3.easing && (o3 = n3 * n3 * n3 * n3 * n3), "easeOutQuint" === t3.easing && (o3 = 1 + --n3 * n3 * n3 * n3 * n3), "easeInOutQuint" === t3.easing && (o3 = n3 < 0.5 ? 16 * n3 * n3 * n3 * n3 * n3 : 1 + 16 * --n3 * n3 * n3 * n3 * n3), t3.customEasing && (o3 = t3.customEasing(n3)), o3 || n3), M.scrollTo(0, Math.floor(d)), function(e4, t4) {
+                l || (l = e3), w += e3 - l, d = s + y * (n3 = m = 1 < (m = 0 === S ? 0 : w / S) ? 1 : m, "easeInQuad" === (t3 = i).easing && (o3 = n3 * n3), "easeOutQuad" === t3.easing && (o3 = n3 * (2 - n3)), "easeInOutQuad" === t3.easing && (o3 = n3 < 0.5 ? 2 * n3 * n3 : (4 - 2 * n3) * n3 - 1), "easeInCubic" === t3.easing && (o3 = n3 * n3 * n3), "easeOutCubic" === t3.easing && (o3 = --n3 * n3 * n3 + 1), "easeInOutCubic" === t3.easing && (o3 = n3 < 0.5 ? 4 * n3 * n3 * n3 : (n3 - 1) * (2 * n3 - 2) * (2 * n3 - 2) + 1), "easeInQuart" === t3.easing && (o3 = n3 * n3 * n3 * n3), "easeOutQuart" === t3.easing && (o3 = 1 - --n3 * n3 * n3 * n3), "easeInOutQuart" === t3.easing && (o3 = n3 < 0.5 ? 8 * n3 * n3 * n3 * n3 : 1 - 8 * --n3 * n3 * n3 * n3), "easeInQuint" === t3.easing && (o3 = n3 * n3 * n3 * n3 * n3), "easeOutQuint" === t3.easing && (o3 = 1 + --n3 * n3 * n3 * n3 * n3), "easeInOutQuint" === t3.easing && (o3 = n3 < 0.5 ? 16 * n3 * n3 * n3 * n3 * n3 : 1 + 16 * --n3 * n3 * n3 * n3 * n3), t3.customEasing && (o3 = t3.customEasing(n3)), o3 || n3), M.scrollTo(0, Math.floor(d)), function (e4, t4) {
                   var n4 = M.pageYOffset;
                   if (e4 == t4 || n4 == t4 || (s < t4 && M.innerHeight + n4) >= v)
                     return C.cancelScroll(true), x(a2, t4, c), H("scrollStop", i, a2, r2), !(O = l = null);
@@ -11888,7 +11888,7 @@ var require_app2 = __commonJS({
               0 === M.pageYOffset && M.scrollTo(0, 0), f = a2, h = i, c || history.pushState && h.updateURL && history.pushState({ smoothScroll: JSON.stringify(h), anchor: f.id }, document.title, f === document.documentElement ? "#top" : "#" + f.id), "matchMedia" in M && M.matchMedia("(prefers-reduced-motion)").matches ? x(a2, Math.floor(g), false) : (H("scrollStart", i, a2, r2), C.cancelScroll(true), M.requestAnimationFrame(E));
             }
           };
-          var t = function(e2) {
+          var t = function (e2) {
             if (!e2.defaultPrevented && !(0 !== e2.button || e2.metaKey || e2.ctrlKey || e2.shiftKey) && "closest" in e2.target && (a = e2.target.closest(o)) && "a" === a.tagName.toLowerCase() && !e2.target.closest(b2.ignore) && a.hostname === M.location.hostname && a.pathname === M.location.pathname && /#/.test(a.href)) {
               var t2, n2;
               try {
@@ -11902,23 +11902,23 @@ var require_app2 = __commonJS({
                 n2 = document.documentElement;
               } else
                 n2 = document.querySelector(t2);
-              (n2 = n2 || "#top" !== t2 ? n2 : document.documentElement) && (e2.preventDefault(), function(e3) {
+              (n2 = n2 || "#top" !== t2 ? n2 : document.documentElement) && (e2.preventDefault(), function (e3) {
                 if (history.replaceState && e3.updateURL && !history.state) {
                   var t3 = M.location.hash;
                   t3 = t3 || "", history.replaceState({ smoothScroll: JSON.stringify(e3), anchor: t3 || M.pageYOffset }, document.title, t3 || M.location.href);
                 }
               }(b2), C.animateScroll(n2, a));
             }
-          }, n = function(e2) {
+          }, n = function (e2) {
             if (null !== history.state && history.state.smoothScroll && history.state.smoothScroll === JSON.stringify(b2)) {
               var t2 = history.state.anchor;
               "string" == typeof t2 && t2 && !(t2 = document.querySelector(r(history.state.anchor))) || C.animateScroll(t2, null, { updateURL: false });
             }
           };
-          C.destroy = function() {
+          C.destroy = function () {
             b2 && (document.removeEventListener("click", t, false), M.removeEventListener("popstate", n, false), C.cancelScroll(), O = A = a = b2 = null);
           };
-          return function() {
+          return function () {
             if (!("querySelector" in document && "addEventListener" in M && "requestAnimationFrame" in M && "closest" in M.Element.prototype))
               throw "Smooth Scroll: This browser does not support the required JavaScript methods and browser APIs.";
             C.destroy(), b2 = I(q, e || {}), A = b2.header ? document.querySelector(b2.header) : null, document.addEventListener("click", t, false), b2.updateURL && b2.popstate && M.addEventListener("popstate", n, false);
@@ -11932,7 +11932,7 @@ var require_app2 = __commonJS({
       let scrollToArray = Array.from(document.querySelectorAll("[data-scrollto]:not(.js-running):not(btn-modal-open)"));
       scrollToArray.forEach((element) => {
         element.classList.add("js-running");
-        element.addEventListener("click", function(ev) {
+        element.addEventListener("click", function (ev) {
           ev.preventDefault();
           var name = element.dataset.scrollto;
           if (element.dataset.scrollto == "0") {
@@ -11966,7 +11966,7 @@ var require_app2 = __commonJS({
               }
             } else {
               singlePjaxInstance.loadUrl(element.dataset.href);
-              document.addEventListener("pjax:complete", function() {
+              document.addEventListener("pjax:complete", function () {
                 let id2 = document.querySelector(`#${name}`);
                 if (parseInt(id2.offsetTop) > parseInt(window.scrollY)) {
                   header = "";
@@ -12045,7 +12045,7 @@ var require_app2 = __commonJS({
               promise.then((_) => {
               }).catch((error) => {
                 if (screen.isIphone) {
-                  document.body.addEventListener("touchstart", function() {
+                  document.body.addEventListener("touchstart", function () {
                     const videosOnScreen = document.querySelectorAll("video[data-autoplay],video[data-autopause],video[autoplay]");
                     videosOnScreen.forEach((element) => {
                       if (element.playing)
@@ -12089,7 +12089,7 @@ var require_app2 = __commonJS({
         setTimeout(() => {
           calcVh();
         }, 1e3);
-        window.addEventListener("orientationchange", function() {
+        window.addEventListener("orientationchange", function () {
           setTimeout(() => {
             calcVh();
           }, 300);
@@ -12101,7 +12101,7 @@ var require_app2 = __commonJS({
       update2();
       let menuLinks = document.querySelectorAll("[data-menu-close]");
       menuLinks.forEach((element) => {
-        element.addEventListener("click", function() {
+        element.addEventListener("click", function () {
           menuLinks.forEach((el) => {
             el.classList.remove("active");
           });
@@ -12123,10 +12123,10 @@ var require_app2 = __commonJS({
       }
     }
     var splitting = { exports: {} };
-    (function(module2, exports2) {
-      (function(global2, factory) {
+    (function (module2, exports2) {
+      (function (global2, factory) {
         module2.exports = factory();
-      })(commonjsGlobal, function() {
+      })(commonjsGlobal, function () {
         var root = document;
         var createText = root.createTextNode.bind(root);
         function setProperty(el, varName, value) {
@@ -12161,7 +12161,7 @@ var require_app2 = __commonJS({
         }
         function Array2D(len) {
           var a = [];
-          for (; len--; ) {
+          for (; len--;) {
             a[len] = [];
           }
           return a;
@@ -12170,16 +12170,16 @@ var require_app2 = __commonJS({
           items && items.some(fn);
         }
         function selectFrom(obj) {
-          return function(key2) {
+          return function (key2) {
             return obj[key2];
           };
         }
         function index(element, key2, items) {
           var prefix = "--" + key2;
           var cssVar = prefix + "-index";
-          each(items, function(items2, i) {
+          each(items, function (items2, i) {
             if (Array.isArray(items2)) {
-              each(items2, function(item) {
+              each(items2, function (item) {
                 setProperty(item, cssVar, i);
               });
             } else {
@@ -12193,7 +12193,7 @@ var require_app2 = __commonJS({
           var index2 = deps.indexOf(by);
           if (index2 == -1) {
             deps.unshift(by);
-            each(plugins[by].depends, function(p) {
+            each(plugins[by].depends, function (p) {
               resolvePlugins(p, by, deps);
             });
           } else {
@@ -12225,7 +12225,7 @@ var require_app2 = __commonJS({
             elements.push(el.previousSibling);
           }
           var allElements = [];
-          $(el.childNodes).some(function(next) {
+          $(el.childNodes).some(function (next) {
             if (next.tagName && !next.hasChildNodes()) {
               allElements.push(next);
               return;
@@ -12241,7 +12241,7 @@ var require_app2 = __commonJS({
               if (wholeText[0] === " ") {
                 allElements.push(createText(" "));
               }
-              each(contents.split(splitOn), function(splitText2, i) {
+              each(contents.split(splitOn), function (splitText2, i) {
                 if (i && preserveWhitespace) {
                   allElements.push(createElement2(F, "whitespace", " ", preserveWhitespace));
                 }
@@ -12254,7 +12254,7 @@ var require_app2 = __commonJS({
               }
             }
           });
-          each(allElements, function(el2) {
+          each(allElements, function (el2) {
             appendChild(F, el2);
           });
           el.innerHTML = "";
@@ -12277,7 +12277,7 @@ var require_app2 = __commonJS({
           /*key: */
           "word",
           /*split: */
-          function(el) {
+          function (el) {
             return splitText(el, "word", /\s+/, 0, 1);
           }
         );
@@ -12290,9 +12290,9 @@ var require_app2 = __commonJS({
           /*key: */
           "char",
           /*split: */
-          function(el, options, ctx) {
+          function (el, options, ctx) {
             var results = [];
-            each(ctx[WORDS], function(word, i) {
+            each(ctx[WORDS], function (word, i) {
               results.push.apply(results, splitText(word, "char", "", options.whitespace && i));
             });
             return results;
@@ -12301,7 +12301,7 @@ var require_app2 = __commonJS({
         function Splitting2(opts) {
           opts = opts || {};
           var key2 = opts.key;
-          return $(opts.target || "[data-splitting]").map(function(el) {
+          return $(opts.target || "[data-splitting]").map(function (el) {
             var ctx = el["🍌"];
             if (!opts.force && ctx) {
               return ctx;
@@ -12309,7 +12309,7 @@ var require_app2 = __commonJS({
             ctx = el["🍌"] = { el };
             var items = resolve(opts.by || getData(el, "splitting") || CHARS);
             var opts2 = copy({}, opts);
-            each(items, function(plugin) {
+            each(items, function (plugin) {
               if (plugin.split) {
                 var pluginBy = plugin.by;
                 var key22 = (key2 ? "-" + key2 : "") + plugin.key;
@@ -12335,7 +12335,7 @@ var require_app2 = __commonJS({
         function detectGrid(el, options, side) {
           var items = $(options.matching || el.children, el);
           var c = {};
-          each(items, function(w) {
+          each(items, function (w) {
             var val = Math.round(w[side]);
             (c[val] || (c[val] = [])).push(w);
           });
@@ -12352,7 +12352,7 @@ var require_app2 = __commonJS({
           /*key: */
           "line",
           /*split: */
-          function(el, options, ctx) {
+          function (el, options, ctx) {
             return detectGrid(el, { matching: ctx[WORDS] }, "offsetTop");
           }
         );
@@ -12364,7 +12364,7 @@ var require_app2 = __commonJS({
           /*key: */
           "item",
           /*split: */
-          function(el, options) {
+          function (el, options) {
             return $(options.matching || el.children, el);
           }
         );
@@ -12376,7 +12376,7 @@ var require_app2 = __commonJS({
           /*key: */
           "row",
           /*split: */
-          function(el, options) {
+          function (el, options) {
             return detectGrid(el, options, "offsetTop");
           }
         );
@@ -12388,7 +12388,7 @@ var require_app2 = __commonJS({
           /*key: */
           "col",
           /*split: */
-          function(el, options) {
+          function (el, options) {
             return detectGrid(el, options, "offsetLeft");
           }
         );
@@ -12407,7 +12407,7 @@ var require_app2 = __commonJS({
           /*key: */
           _,
           /*split: */
-          function(el, opts) {
+          function (el, opts) {
             var rows = opts.rows = +(opts.rows || getData(el, "rows") || 1);
             var columns = opts.columns = +(opts.columns || getData(el, "columns") || 1);
             opts.image = opts.image || getData(el, "image") || el.currentSrc || el.src;
@@ -12438,10 +12438,10 @@ var require_app2 = __commonJS({
           /*key: */
           "row",
           /*split: */
-          function(el, opts, ctx) {
+          function (el, opts, ctx) {
             var rowCount = opts.rows;
             var result = Array2D(rowCount);
-            each(ctx[LAYOUT], function(cell, i, src) {
+            each(ctx[LAYOUT], function (cell, i, src) {
               result[Math.floor(i / (src.length / rowCount))].push(cell);
             });
             return result;
@@ -12455,10 +12455,10 @@ var require_app2 = __commonJS({
           /*key: */
           "col",
           /*split: */
-          function(el, opts, ctx) {
+          function (el, opts, ctx) {
             var columnCount = opts.columns;
             var result = Array2D(columnCount);
-            each(ctx[LAYOUT], function(cell, i) {
+            each(ctx[LAYOUT], function (cell, i) {
               result[i % columnCount].push(cell);
             });
             return result;
@@ -12472,7 +12472,7 @@ var require_app2 = __commonJS({
           /*key: */
           "cell",
           /*split: */
-          function(el, opt, ctx) {
+          function (el, opt, ctx) {
             return ctx[LAYOUT];
           }
         );
@@ -12548,7 +12548,7 @@ var require_app2 = __commonJS({
     function Parallax() {
       let parallaxes = document.querySelectorAll('[data-parallax]:not(.js-running), [data-parallax-top]:not(.js-running)');
       let mm = gsapWithCSS$1.matchMedia();
-      window.addEventListener("orientationchange", function() {
+      window.addEventListener("orientationchange", function () {
         ScrollTrigger$1.refresh();
       });
       window.ScrollTrigger = ScrollTrigger$1;
@@ -12646,7 +12646,7 @@ var require_app2 = __commonJS({
               anticipatePin: true,
               invalidateOnRefresh: true,
               toggleActions: "play pause play pause",
-              onUpdate: function(ev) {
+              onUpdate: function (ev) {
               }
             }
           });
@@ -12715,7 +12715,7 @@ var require_app2 = __commonJS({
               anticipatePin: true,
               invalidateOnRefresh: true,
               toggleActions: "play pause play pause",
-              onUpdate: function(ev) {
+              onUpdate: function (ev) {
               }
             }
           });
@@ -12742,7 +12742,7 @@ var require_app2 = __commonJS({
               anticipatePin: true,
               invalidateOnRefresh: true,
               toggleActions: "play pause play pause",
-              onUpdate: function(ev) {
+              onUpdate: function (ev) {
               }
             }
           });
@@ -12858,7 +12858,7 @@ var require_app2 = __commonJS({
     }
     function copyLink() {
       var copyTextareaBtn = document.querySelector(".copy-link");
-      copyTextareaBtn.addEventListener("click", function(event) {
+      copyTextareaBtn.addEventListener("click", function (event) {
         this.querySelector("span").innerText = "Copied!";
         this.classList.add("copied");
         document.querySelector(".copy-link-url").select();
@@ -12875,7 +12875,7 @@ var require_app2 = __commonJS({
           let textHeight = element.querySelector(".text").clientHeight;
           let btnReadMore = element.querySelector(".btn-read-more");
           element.style.setProperty("--h", textHeight + "px");
-          btnReadMore.addEventListener("click", function() {
+          btnReadMore.addEventListener("click", function () {
             if (element.classList.contains("active")) {
               element.removeActive();
             } else {
@@ -12912,7 +12912,7 @@ var require_app2 = __commonJS({
       var i = Object.keys(e);
       if (Object.getOwnPropertySymbols) {
         var s = Object.getOwnPropertySymbols(e);
-        t && (s = s.filter(function(t2) {
+        t && (s = s.filter(function (t2) {
           return Object.getOwnPropertyDescriptor(e, t2).enumerable;
         })), i.push.apply(i, s);
       }
@@ -12921,9 +12921,9 @@ var require_app2 = __commonJS({
     function _objectSpread2(e) {
       for (var t = 1; t < arguments.length; t++) {
         var i = null != arguments[t] ? arguments[t] : {};
-        t % 2 ? ownKeys(Object(i), true).forEach(function(t2) {
+        t % 2 ? ownKeys(Object(i), true).forEach(function (t2) {
           _defineProperty(e, t2, i[t2]);
-        }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(i)) : ownKeys(Object(i)).forEach(function(t2) {
+        }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(i)) : ownKeys(Object(i)).forEach(function (t2) {
           Object.defineProperty(e, t2, Object.getOwnPropertyDescriptor(i, t2));
         });
       }
@@ -12931,7 +12931,7 @@ var require_app2 = __commonJS({
     }
     var defaults$1 = { addCSS: true, thumbWidth: 15, watch: true };
     function matches$1(e, t) {
-      return (function() {
+      return (function () {
         return Array.from(document.querySelectorAll(t)).includes(this);
       }).call(e, t);
     }
@@ -12941,31 +12941,31 @@ var require_app2 = __commonJS({
         e.dispatchEvent(i);
       }
     }
-    var getConstructor$1 = function(e) {
+    var getConstructor$1 = function (e) {
       return null != e ? e.constructor : null;
-    }, instanceOf$1 = function(e, t) {
+    }, instanceOf$1 = function (e, t) {
       return !!(e && t && e instanceof t);
-    }, isNullOrUndefined$1 = function(e) {
+    }, isNullOrUndefined$1 = function (e) {
       return null == e;
-    }, isObject$1 = function(e) {
+    }, isObject$1 = function (e) {
       return getConstructor$1(e) === Object;
-    }, isNumber$1 = function(e) {
+    }, isNumber$1 = function (e) {
       return getConstructor$1(e) === Number && !Number.isNaN(e);
-    }, isString$1 = function(e) {
+    }, isString$1 = function (e) {
       return getConstructor$1(e) === String;
-    }, isBoolean$1 = function(e) {
+    }, isBoolean$1 = function (e) {
       return getConstructor$1(e) === Boolean;
-    }, isFunction$1 = function(e) {
+    }, isFunction$1 = function (e) {
       return getConstructor$1(e) === Function;
-    }, isArray$1 = function(e) {
+    }, isArray$1 = function (e) {
       return Array.isArray(e);
-    }, isNodeList$1 = function(e) {
+    }, isNodeList$1 = function (e) {
       return instanceOf$1(e, NodeList);
-    }, isElement$1 = function(e) {
+    }, isElement$1 = function (e) {
       return instanceOf$1(e, Element);
-    }, isEvent$1 = function(e) {
+    }, isEvent$1 = function (e) {
       return instanceOf$1(e, Event);
-    }, isEmpty$1 = function(e) {
+    }, isEmpty$1 = function (e) {
       return isNullOrUndefined$1(e) || (isString$1(e) || isArray$1(e) || isNodeList$1(e)) && !e.length || isObject$1(e) && !Object.keys(e).length;
     }, is$1 = { nullOrUndefined: isNullOrUndefined$1, object: isObject$1, number: isNumber$1, string: isString$1, boolean: isBoolean$1, function: isFunction$1, array: isArray$1, nodeList: isNodeList$1, element: isElement$1, event: isEvent$1, empty: isEmpty$1 };
     function getDecimalPlaces(e) {
@@ -12979,49 +12979,63 @@ var require_app2 = __commonJS({
       }
       return Math.round(e / t) * t;
     }
-    var RangeTouch = function() {
+    var RangeTouch = function () {
       function e(t, i) {
         _classCallCheck(this, e), is$1.element(t) ? this.element = t : is$1.string(t) && (this.element = document.querySelector(t)), is$1.element(this.element) && is$1.empty(this.element.rangeTouch) && (this.config = _objectSpread2({}, defaults$1, {}, i), this.init());
       }
-      return _createClass(e, [{ key: "init", value: function() {
-        e.enabled && (this.config.addCSS && (this.element.style.userSelect = "none", this.element.style.webKitUserSelect = "none", this.element.style.touchAction = "manipulation"), this.listeners(true), this.element.rangeTouch = this);
-      } }, { key: "destroy", value: function() {
-        e.enabled && (this.config.addCSS && (this.element.style.userSelect = "", this.element.style.webKitUserSelect = "", this.element.style.touchAction = ""), this.listeners(false), this.element.rangeTouch = null);
-      } }, { key: "listeners", value: function(e2) {
-        var t = this, i = e2 ? "addEventListener" : "removeEventListener";
-        ["touchstart", "touchmove", "touchend"].forEach(function(e3) {
-          t.element[i](e3, function(e4) {
-            return t.set(e4);
-          }, false);
-        });
-      } }, { key: "get", value: function(t) {
-        if (!e.enabled || !is$1.event(t))
-          return null;
-        var i, s = t.target, n = t.changedTouches[0], r = parseFloat(s.getAttribute("min")) || 0, a = parseFloat(s.getAttribute("max")) || 100, o = parseFloat(s.getAttribute("step")) || 1, l = s.getBoundingClientRect(), c = 100 / l.width * (this.config.thumbWidth / 2) / 100;
-        return 0 > (i = 100 / l.width * (n.clientX - l.left)) ? i = 0 : 100 < i && (i = 100), 50 > i ? i -= (100 - 2 * i) * c : 50 < i && (i += 2 * (i - 50) * c), r + round(i / 100 * (a - r), o);
-      } }, { key: "set", value: function(t) {
-        e.enabled && is$1.event(t) && !t.target.disabled && (t.preventDefault(), t.target.value = this.get(t), trigger(t.target, "touchend" === t.type ? "change" : "input"));
-      } }], [{ key: "setup", value: function(t) {
-        var i = 1 < arguments.length && void 0 !== arguments[1] ? arguments[1] : {}, s = null;
-        if (is$1.empty(t) || is$1.string(t) ? s = Array.from(document.querySelectorAll(is$1.string(t) ? t : 'input[type="range"]')) : is$1.element(t) ? s = [t] : is$1.nodeList(t) ? s = Array.from(t) : is$1.array(t) && (s = t.filter(is$1.element)), is$1.empty(s))
-          return null;
-        var n = _objectSpread2({}, defaults$1, {}, i);
-        if (is$1.string(t) && n.watch) {
-          var r = new MutationObserver(function(i2) {
-            Array.from(i2).forEach(function(i3) {
-              Array.from(i3.addedNodes).forEach(function(i4) {
-                is$1.element(i4) && matches$1(i4, t) && new e(i4, n);
+      return _createClass(e, [{
+        key: "init", value: function () {
+          e.enabled && (this.config.addCSS && (this.element.style.userSelect = "none", this.element.style.webKitUserSelect = "none", this.element.style.touchAction = "manipulation"), this.listeners(true), this.element.rangeTouch = this);
+        }
+      }, {
+        key: "destroy", value: function () {
+          e.enabled && (this.config.addCSS && (this.element.style.userSelect = "", this.element.style.webKitUserSelect = "", this.element.style.touchAction = ""), this.listeners(false), this.element.rangeTouch = null);
+        }
+      }, {
+        key: "listeners", value: function (e2) {
+          var t = this, i = e2 ? "addEventListener" : "removeEventListener";
+          ["touchstart", "touchmove", "touchend"].forEach(function (e3) {
+            t.element[i](e3, function (e4) {
+              return t.set(e4);
+            }, false);
+          });
+        }
+      }, {
+        key: "get", value: function (t) {
+          if (!e.enabled || !is$1.event(t))
+            return null;
+          var i, s = t.target, n = t.changedTouches[0], r = parseFloat(s.getAttribute("min")) || 0, a = parseFloat(s.getAttribute("max")) || 100, o = parseFloat(s.getAttribute("step")) || 1, l = s.getBoundingClientRect(), c = 100 / l.width * (this.config.thumbWidth / 2) / 100;
+          return 0 > (i = 100 / l.width * (n.clientX - l.left)) ? i = 0 : 100 < i && (i = 100), 50 > i ? i -= (100 - 2 * i) * c : 50 < i && (i += 2 * (i - 50) * c), r + round(i / 100 * (a - r), o);
+        }
+      }, {
+        key: "set", value: function (t) {
+          e.enabled && is$1.event(t) && !t.target.disabled && (t.preventDefault(), t.target.value = this.get(t), trigger(t.target, "touchend" === t.type ? "change" : "input"));
+        }
+      }], [{
+        key: "setup", value: function (t) {
+          var i = 1 < arguments.length && void 0 !== arguments[1] ? arguments[1] : {}, s = null;
+          if (is$1.empty(t) || is$1.string(t) ? s = Array.from(document.querySelectorAll(is$1.string(t) ? t : 'input[type="range"]')) : is$1.element(t) ? s = [t] : is$1.nodeList(t) ? s = Array.from(t) : is$1.array(t) && (s = t.filter(is$1.element)), is$1.empty(s))
+            return null;
+          var n = _objectSpread2({}, defaults$1, {}, i);
+          if (is$1.string(t) && n.watch) {
+            var r = new MutationObserver(function (i2) {
+              Array.from(i2).forEach(function (i3) {
+                Array.from(i3.addedNodes).forEach(function (i4) {
+                  is$1.element(i4) && matches$1(i4, t) && new e(i4, n);
+                });
               });
             });
+            r.observe(document.body, { childList: true, subtree: true });
+          }
+          return s.map(function (t2) {
+            return new e(t2, i);
           });
-          r.observe(document.body, { childList: true, subtree: true });
         }
-        return s.map(function(t2) {
-          return new e(t2, i);
-        });
-      } }, { key: "enabled", get: function() {
-        return "ontouchstart" in document.documentElement;
-      } }]), e;
+      }, {
+        key: "enabled", get: function () {
+          return "ontouchstart" in document.documentElement;
+        }
+      }]), e;
     }();
     const getConstructor = (e) => null != e ? e.constructor : null, instanceOf = (e, t) => Boolean(e && t && e instanceof t), isNullOrUndefined = (e) => null == e, isObject = (e) => getConstructor(e) === Object, isNumber = (e) => getConstructor(e) === Number && !Number.isNaN(e), isString = (e) => getConstructor(e) === String, isBoolean = (e) => getConstructor(e) === Boolean, isFunction = (e) => "function" == typeof e, isArray = (e) => Array.isArray(e), isWeakMap = (e) => instanceOf(e, WeakMap), isNodeList = (e) => instanceOf(e, NodeList), isTextNode = (e) => getConstructor(e) === Text, isEvent = (e) => instanceOf(e, Event), isKeyboardEvent = (e) => instanceOf(e, KeyboardEvent), isCue = (e) => instanceOf(e, window.TextTrackCue) || instanceOf(e, window.VTTCue), isTrack = (e) => instanceOf(e, TextTrack) || !isNullOrUndefined(e) && isString(e.kind), isPromise = (e) => instanceOf(e, Promise) && isFunction(e.then), isElement = (e) => null !== e && "object" == typeof e && 1 === e.nodeType && "object" == typeof e.style && "object" == typeof e.ownerDocument, isEmpty = (e) => isNullOrUndefined(e) || (isString(e) || isArray(e) || isNodeList(e)) && !e.length || isObject(e) && !Object.keys(e).length, isUrl = (e) => {
       if (instanceOf(e, window.URL))
@@ -13091,7 +13105,7 @@ var require_app2 = __commonJS({
       if (!is.element(e))
         return;
       let { length: t } = e.childNodes;
-      for (; t > 0; )
+      for (; t > 0;)
         e.removeChild(e.lastChild), t -= 1;
     }
     function replaceElement(e, t) {
@@ -13135,13 +13149,13 @@ var require_app2 = __commonJS({
     }
     function matches(e, t) {
       const { prototype: i } = Element;
-      return (i.matches || i.webkitMatchesSelector || i.mozMatchesSelector || i.msMatchesSelector || function() {
+      return (i.matches || i.webkitMatchesSelector || i.mozMatchesSelector || i.msMatchesSelector || function () {
         return Array.from(document.querySelectorAll(t)).includes(this);
       }).call(e, t);
     }
     function closest$1(e, t) {
       const { prototype: i } = Element;
-      return (i.closest || function() {
+      return (i.closest || function () {
         let e2 = this;
         do {
           if (matches.matches(e2, t))
@@ -13160,26 +13174,28 @@ var require_app2 = __commonJS({
     function setFocus(e = null, t = false) {
       is.element(e) && (e.focus({ preventScroll: true }), t && toggleClass(e, this.config.classNames.tabFocus));
     }
-    const defaultCodecs = { "audio/ogg": "vorbis", "audio/wav": "1", "video/webm": "vp8, vorbis", "video/mp4": "avc1.42E01E, mp4a.40.2", "video/ogg": "theora" }, support = { audio: "canPlayType" in document.createElement("audio"), video: "canPlayType" in document.createElement("video"), check(e, t, i) {
-      const s = browser.isIPhone && i && support.playsinline, n = support[e] || "html5" !== t;
-      return { api: n, ui: n && support.rangeInput && ("video" !== e || !browser.isIPhone || s) };
-    }, pip: !(browser.isIPhone || !is.function(createElement("video").webkitSetPresentationMode) && (!document.pictureInPictureEnabled || createElement("video").disablePictureInPicture)), airplay: is.function(window.WebKitPlaybackTargetAvailabilityEvent), playsinline: "playsInline" in document.createElement("video"), mime(e) {
-      if (is.empty(e))
-        return false;
-      const [t] = e.split("/");
-      let i = e;
-      if (!this.isHTML5 || t !== this.type)
-        return false;
-      Object.keys(defaultCodecs).includes(i) && (i += `; codecs="${defaultCodecs[e]}"`);
-      try {
-        return Boolean(i && this.media.canPlayType(i).replace(/no/, ""));
-      } catch (e2) {
-        return false;
-      }
-    }, textTracks: "textTracks" in document.createElement("video"), rangeInput: (() => {
-      const e = document.createElement("input");
-      return e.type = "range", "range" === e.type;
-    })(), touch: "ontouchstart" in document.documentElement, transitions: false !== transitionEndEvent, reducedMotion: "matchMedia" in window && window.matchMedia("(prefers-reduced-motion)").matches }, supportsPassiveListeners = (() => {
+    const defaultCodecs = { "audio/ogg": "vorbis", "audio/wav": "1", "video/webm": "vp8, vorbis", "video/mp4": "avc1.42E01E, mp4a.40.2", "video/ogg": "theora" }, support = {
+      audio: "canPlayType" in document.createElement("audio"), video: "canPlayType" in document.createElement("video"), check(e, t, i) {
+        const s = browser.isIPhone && i && support.playsinline, n = support[e] || "html5" !== t;
+        return { api: n, ui: n && support.rangeInput && ("video" !== e || !browser.isIPhone || s) };
+      }, pip: !(browser.isIPhone || !is.function(createElement("video").webkitSetPresentationMode) && (!document.pictureInPictureEnabled || createElement("video").disablePictureInPicture)), airplay: is.function(window.WebKitPlaybackTargetAvailabilityEvent), playsinline: "playsInline" in document.createElement("video"), mime(e) {
+        if (is.empty(e))
+          return false;
+        const [t] = e.split("/");
+        let i = e;
+        if (!this.isHTML5 || t !== this.type)
+          return false;
+        Object.keys(defaultCodecs).includes(i) && (i += `; codecs="${defaultCodecs[e]}"`);
+        try {
+          return Boolean(i && this.media.canPlayType(i).replace(/no/, ""));
+        } catch (e2) {
+          return false;
+        }
+      }, textTracks: "textTracks" in document.createElement("video"), rangeInput: (() => {
+        const e = document.createElement("input");
+        return e.type = "range", "range" === e.type;
+      })(), touch: "ontouchstart" in document.documentElement, transitions: false !== transitionEndEvent, reducedMotion: "matchMedia" in window && window.matchMedia("(prefers-reduced-motion)").matches
+    }, supportsPassiveListeners = (() => {
       let e = false;
       try {
         const t = Object.defineProperty({}, "passive", { get: () => (e = true, null) });
@@ -13280,41 +13296,45 @@ var require_app2 = __commonJS({
     function getViewportSize() {
       return [Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0), Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)];
     }
-    const html5 = { getSources() {
-      if (!this.isHTML5)
-        return [];
-      return Array.from(this.media.querySelectorAll("source")).filter((e) => {
-        const t = e.getAttribute("type");
-        return !!is.empty(t) || support.mime.call(this, t);
-      });
-    }, getQualityOptions() {
-      return this.config.quality.forced ? this.config.quality.options : html5.getSources.call(this).map((e) => Number(e.getAttribute("size"))).filter(Boolean);
-    }, setup() {
-      if (!this.isHTML5)
-        return;
-      const e = this;
-      e.options.speed = e.config.speed.options, is.empty(this.config.ratio) || setAspectRatio.call(e), Object.defineProperty(e.media, "quality", { get() {
-        const t = html5.getSources.call(e).find((t2) => t2.getAttribute("src") === e.source);
-        return t && Number(t.getAttribute("size"));
-      }, set(t) {
-        if (e.quality !== t) {
-          if (e.config.quality.forced && is.function(e.config.quality.onChange))
-            e.config.quality.onChange(t);
-          else {
-            const i = html5.getSources.call(e).find((e2) => Number(e2.getAttribute("size")) === t);
-            if (!i)
-              return;
-            const { currentTime: s, paused: n, preload: r, readyState: a, playbackRate: o } = e.media;
-            e.media.src = i.getAttribute("src"), ("none" !== r || a) && (e.once("loadedmetadata", () => {
-              e.speed = o, e.currentTime = s, n || silencePromise(e.play());
-            }), e.media.load());
+    const html5 = {
+      getSources() {
+        if (!this.isHTML5)
+          return [];
+        return Array.from(this.media.querySelectorAll("source")).filter((e) => {
+          const t = e.getAttribute("type");
+          return !!is.empty(t) || support.mime.call(this, t);
+        });
+      }, getQualityOptions() {
+        return this.config.quality.forced ? this.config.quality.options : html5.getSources.call(this).map((e) => Number(e.getAttribute("size"))).filter(Boolean);
+      }, setup() {
+        if (!this.isHTML5)
+          return;
+        const e = this;
+        e.options.speed = e.config.speed.options, is.empty(this.config.ratio) || setAspectRatio.call(e), Object.defineProperty(e.media, "quality", {
+          get() {
+            const t = html5.getSources.call(e).find((t2) => t2.getAttribute("src") === e.source);
+            return t && Number(t.getAttribute("size"));
+          }, set(t) {
+            if (e.quality !== t) {
+              if (e.config.quality.forced && is.function(e.config.quality.onChange))
+                e.config.quality.onChange(t);
+              else {
+                const i = html5.getSources.call(e).find((e2) => Number(e2.getAttribute("size")) === t);
+                if (!i)
+                  return;
+                const { currentTime: s, paused: n, preload: r, readyState: a, playbackRate: o } = e.media;
+                e.media.src = i.getAttribute("src"), ("none" !== r || a) && (e.once("loadedmetadata", () => {
+                  e.speed = o, e.currentTime = s, n || silencePromise(e.play());
+                }), e.media.load());
+              }
+              triggerEvent.call(e, e.media, "qualitychange", false, { quality: t });
+            }
           }
-          triggerEvent.call(e, e.media, "qualitychange", false, { quality: t });
-        }
-      } });
-    }, cancelRequests() {
-      this.isHTML5 && (removeElement(html5.getSources.call(this)), this.media.setAttribute("src", this.config.blankVideo), this.media.load(), this.debug.log("Cancelled network requests"));
-    } };
+        });
+      }, cancelRequests() {
+        this.isHTML5 && (removeElement(html5.getSources.call(this)), this.media.setAttribute("src", this.config.blankVideo), this.media.load(), this.debug.log("Cancelled network requests"));
+      }
+    };
     function generateId(e) {
       return `${e}-${Math.floor(1e4 * Math.random())}`;
     }
@@ -13341,17 +13361,19 @@ var require_app2 = __commonJS({
       const t = document.createElement("div");
       return t.appendChild(e), t.innerHTML;
     }
-    const resources = { pip: "PIP", airplay: "AirPlay", html5: "HTML5", vimeo: "Vimeo", youtube: "YouTube" }, i18n = { get(e = "", t = {}) {
-      if (is.empty(e) || is.empty(t))
-        return "";
-      let i = getDeep(t.i18n, e);
-      if (is.empty(i))
-        return Object.keys(resources).includes(e) ? resources[e] : "";
-      const s = { "{seektime}": t.seekTime, "{title}": t.title };
-      return Object.entries(s).forEach(([e2, t2]) => {
-        i = replaceAll(i, e2, t2);
-      }), i;
-    } };
+    const resources = { pip: "PIP", airplay: "AirPlay", html5: "HTML5", vimeo: "Vimeo", youtube: "YouTube" }, i18n = {
+      get(e = "", t = {}) {
+        if (is.empty(e) || is.empty(t))
+          return "";
+        let i = getDeep(t.i18n, e);
+        if (is.empty(i))
+          return Object.keys(resources).includes(e) ? resources[e] : "";
+        const s = { "{seektime}": t.seekTime, "{title}": t.title };
+        return Object.entries(s).forEach(([e2, t2]) => {
+          i = replaceAll(i, e2, t2);
+        }), i;
+      }
+    };
     class Storage {
       constructor(e) {
         _defineProperty$1(this, "get", (e2) => {
@@ -13450,408 +13472,414 @@ var require_app2 = __commonJS({
       const o = getSeconds(e);
       return n = t || n > 0 ? `${n}:` : "", `${i && e > 0 ? "-" : ""}${n}${s(r)}:${s(o)}`;
     }
-    const controls = { getIconUrl() {
-      const e = new URL(this.config.iconUrl, window.location), t = window.location.host ? window.location.host : window.top.location.host, i = e.host !== t || browser.isIE && !window.svg4everybody;
-      return { url: this.config.iconUrl, cors: i };
-    }, findElements() {
-      try {
-        return this.elements.controls = getElement.call(this, this.config.selectors.controls.wrapper), this.elements.buttons = { play: getElements.call(this, this.config.selectors.buttons.play), pause: getElement.call(this, this.config.selectors.buttons.pause), restart: getElement.call(this, this.config.selectors.buttons.restart), rewind: getElement.call(this, this.config.selectors.buttons.rewind), fastForward: getElement.call(this, this.config.selectors.buttons.fastForward), mute: getElement.call(this, this.config.selectors.buttons.mute), pip: getElement.call(this, this.config.selectors.buttons.pip), airplay: getElement.call(this, this.config.selectors.buttons.airplay), settings: getElement.call(this, this.config.selectors.buttons.settings), captions: getElement.call(this, this.config.selectors.buttons.captions), fullscreen: getElement.call(this, this.config.selectors.buttons.fullscreen) }, this.elements.progress = getElement.call(this, this.config.selectors.progress), this.elements.inputs = { seek: getElement.call(this, this.config.selectors.inputs.seek), volume: getElement.call(this, this.config.selectors.inputs.volume) }, this.elements.display = { buffer: getElement.call(this, this.config.selectors.display.buffer), currentTime: getElement.call(this, this.config.selectors.display.currentTime), duration: getElement.call(this, this.config.selectors.display.duration) }, is.element(this.elements.progress) && (this.elements.display.seekTooltip = this.elements.progress.querySelector(`.${this.config.classNames.tooltip}`)), true;
-      } catch (e) {
-        return this.debug.warn("It looks like there is a problem with your custom controls HTML", e), this.toggleNativeControls(true), false;
-      }
-    }, createIcon(e, t) {
-      const i = "http://www.w3.org/2000/svg", s = controls.getIconUrl.call(this), n = `${s.cors ? "" : s.url}#${this.config.iconPrefix}`, r = document.createElementNS(i, "svg");
-      setAttributes(r, extend(t, { "aria-hidden": "true", focusable: "false" }));
-      const a = document.createElementNS(i, "use"), o = `${n}-${e}`;
-      return "href" in a && a.setAttributeNS("http://www.w3.org/1999/xlink", "href", o), a.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", o), r.appendChild(a), r;
-    }, createLabel(e, t = {}) {
-      const i = i18n.get(e, this.config);
-      return createElement("span", { ...t, class: [t.class, this.config.classNames.hidden].filter(Boolean).join(" ") }, i);
-    }, createBadge(e) {
-      if (is.empty(e))
-        return null;
-      const t = createElement("span", { class: this.config.classNames.menu.value });
-      return t.appendChild(createElement("span", { class: this.config.classNames.menu.badge }, e)), t;
-    }, createButton(e, t) {
-      const i = extend({}, t);
-      let s = toCamelCase(e);
-      const n = { element: "button", toggle: false, label: null, icon: null, labelPressed: null, iconPressed: null };
-      switch (["element", "icon", "label"].forEach((e2) => {
-        Object.keys(i).includes(e2) && (n[e2] = i[e2], delete i[e2]);
-      }), "button" !== n.element || Object.keys(i).includes("type") || (i.type = "button"), Object.keys(i).includes("class") ? i.class.split(" ").some((e2) => e2 === this.config.classNames.control) || extend(i, { class: `${i.class} ${this.config.classNames.control}` }) : i.class = this.config.classNames.control, e) {
-        case "play":
-          n.toggle = true, n.label = "play", n.labelPressed = "pause", n.icon = "play", n.iconPressed = "pause";
-          break;
-        case "mute":
-          n.toggle = true, n.label = "mute", n.labelPressed = "unmute", n.icon = "volume", n.iconPressed = "muted";
-          break;
-        case "captions":
-          n.toggle = true, n.label = "enableCaptions", n.labelPressed = "disableCaptions", n.icon = "captions-off", n.iconPressed = "captions-on";
-          break;
-        case "fullscreen":
-          n.toggle = true, n.label = "enterFullscreen", n.labelPressed = "exitFullscreen", n.icon = "enter-fullscreen", n.iconPressed = "exit-fullscreen";
-          break;
-        case "play-large":
-          i.class += ` ${this.config.classNames.control}--overlaid`, s = "play", n.label = "play", n.icon = "play";
-          break;
-        default:
-          is.empty(n.label) && (n.label = s), is.empty(n.icon) && (n.icon = e);
-      }
-      const r = createElement(n.element);
-      return n.toggle ? (r.appendChild(controls.createIcon.call(this, n.iconPressed, { class: "icon--pressed" })), r.appendChild(controls.createIcon.call(this, n.icon, { class: "icon--not-pressed" })), r.appendChild(controls.createLabel.call(this, n.labelPressed, { class: "label--pressed" })), r.appendChild(controls.createLabel.call(this, n.label, { class: "label--not-pressed" }))) : (r.appendChild(controls.createIcon.call(this, n.icon)), r.appendChild(controls.createLabel.call(this, n.label))), extend(i, getAttributesFromSelector(this.config.selectors.buttons[s], i)), setAttributes(r, i), "play" === s ? (is.array(this.elements.buttons[s]) || (this.elements.buttons[s] = []), this.elements.buttons[s].push(r)) : this.elements.buttons[s] = r, r;
-    }, createRange(e, t) {
-      const i = createElement("input", extend(getAttributesFromSelector(this.config.selectors.inputs[e]), { type: "range", min: 0, max: 100, step: 0.01, value: 0, autocomplete: "off", role: "slider", "aria-label": i18n.get(e, this.config), "aria-valuemin": 0, "aria-valuemax": 100, "aria-valuenow": 0 }, t));
-      return this.elements.inputs[e] = i, controls.updateRangeFill.call(this, i), RangeTouch.setup(i), i;
-    }, createProgress(e, t) {
-      const i = createElement("progress", extend(getAttributesFromSelector(this.config.selectors.display[e]), { min: 0, max: 100, value: 0, role: "progressbar", "aria-hidden": true }, t));
-      if ("volume" !== e) {
-        i.appendChild(createElement("span", null, "0"));
-        const t2 = { played: "played", buffer: "buffered" }[e], s = t2 ? i18n.get(t2, this.config) : "";
-        i.innerText = `% ${s.toLowerCase()}`;
-      }
-      return this.elements.display[e] = i, i;
-    }, createTime(e, t) {
-      const i = getAttributesFromSelector(this.config.selectors.display[e], t), s = createElement("div", extend(i, { class: `${i.class ? i.class : ""} ${this.config.classNames.display.time} `.trim(), "aria-label": i18n.get(e, this.config) }), "00:00");
-      return this.elements.display[e] = s, s;
-    }, bindMenuItemShortcuts(e, t) {
-      on.call(this, e, "keydown keyup", (i) => {
-        if (!["Space", "ArrowUp", "ArrowDown", "ArrowRight"].includes(i.key))
-          return;
-        if (i.preventDefault(), i.stopPropagation(), "keydown" === i.type)
-          return;
-        const s = matches(e, '[role="menuitemradio"]');
-        if (!s && ["Space", "ArrowRight"].includes(i.key))
-          controls.showMenuPanel.call(this, t, true);
-        else {
-          let t2;
-          "Space" !== i.key && ("ArrowDown" === i.key || s && "ArrowRight" === i.key ? (t2 = e.nextElementSibling, is.element(t2) || (t2 = e.parentNode.firstElementChild)) : (t2 = e.previousElementSibling, is.element(t2) || (t2 = e.parentNode.lastElementChild)), setFocus.call(this, t2, true));
+    const controls = {
+      getIconUrl() {
+        const e = new URL(this.config.iconUrl, window.location), t = window.location.host ? window.location.host : window.top.location.host, i = e.host !== t || browser.isIE && !window.svg4everybody;
+        return { url: this.config.iconUrl, cors: i };
+      }, findElements() {
+        try {
+          return this.elements.controls = getElement.call(this, this.config.selectors.controls.wrapper), this.elements.buttons = { play: getElements.call(this, this.config.selectors.buttons.play), pause: getElement.call(this, this.config.selectors.buttons.pause), restart: getElement.call(this, this.config.selectors.buttons.restart), rewind: getElement.call(this, this.config.selectors.buttons.rewind), fastForward: getElement.call(this, this.config.selectors.buttons.fastForward), mute: getElement.call(this, this.config.selectors.buttons.mute), pip: getElement.call(this, this.config.selectors.buttons.pip), airplay: getElement.call(this, this.config.selectors.buttons.airplay), settings: getElement.call(this, this.config.selectors.buttons.settings), captions: getElement.call(this, this.config.selectors.buttons.captions), fullscreen: getElement.call(this, this.config.selectors.buttons.fullscreen) }, this.elements.progress = getElement.call(this, this.config.selectors.progress), this.elements.inputs = { seek: getElement.call(this, this.config.selectors.inputs.seek), volume: getElement.call(this, this.config.selectors.inputs.volume) }, this.elements.display = { buffer: getElement.call(this, this.config.selectors.display.buffer), currentTime: getElement.call(this, this.config.selectors.display.currentTime), duration: getElement.call(this, this.config.selectors.display.duration) }, is.element(this.elements.progress) && (this.elements.display.seekTooltip = this.elements.progress.querySelector(`.${this.config.classNames.tooltip}`)), true;
+        } catch (e) {
+          return this.debug.warn("It looks like there is a problem with your custom controls HTML", e), this.toggleNativeControls(true), false;
         }
-      }, false), on.call(this, e, "keyup", (e2) => {
-        "Return" === e2.key && controls.focusFirstMenuItem.call(this, null, true);
-      });
-    }, createMenuItem({ value: e, list: t, type: i, title: s, badge: n = null, checked: r = false }) {
-      const a = getAttributesFromSelector(this.config.selectors.inputs[i]), o = createElement("button", extend(a, { type: "button", role: "menuitemradio", class: `${this.config.classNames.control} ${a.class ? a.class : ""}`.trim(), "aria-checked": r, value: e })), l = createElement("span");
-      l.innerHTML = s, is.element(n) && l.appendChild(n), o.appendChild(l), Object.defineProperty(o, "checked", { enumerable: true, get: () => "true" === o.getAttribute("aria-checked"), set(e2) {
-        e2 && Array.from(o.parentNode.children).filter((e3) => matches(e3, '[role="menuitemradio"]')).forEach((e3) => e3.setAttribute("aria-checked", "false")), o.setAttribute("aria-checked", e2 ? "true" : "false");
-      } }), this.listeners.bind(o, "click keyup", (t2) => {
-        if (!is.keyboardEvent(t2) || "Space" === t2.key) {
-          switch (t2.preventDefault(), t2.stopPropagation(), o.checked = true, i) {
-            case "language":
-              this.currentTrack = Number(e);
-              break;
-            case "quality":
-              this.quality = e;
-              break;
-            case "speed":
-              this.speed = parseFloat(e);
-          }
-          controls.showMenuPanel.call(this, "home", is.keyboardEvent(t2));
-        }
-      }, i, false), controls.bindMenuItemShortcuts.call(this, o, i), t.appendChild(o);
-    }, formatTime(e = 0, t = false) {
-      if (!is.number(e))
-        return e;
-      return formatTime(e, getHours(this.duration) > 0, t);
-    }, updateTimeDisplay(e = null, t = 0, i = false) {
-      is.element(e) && is.number(t) && (e.innerText = controls.formatTime(t, i));
-    }, updateVolume() {
-      this.supported.ui && (is.element(this.elements.inputs.volume) && controls.setRange.call(this, this.elements.inputs.volume, this.muted ? 0 : this.volume), is.element(this.elements.buttons.mute) && (this.elements.buttons.mute.pressed = this.muted || 0 === this.volume));
-    }, setRange(e, t = 0) {
-      is.element(e) && (e.value = t, controls.updateRangeFill.call(this, e));
-    }, updateProgress(e) {
-      if (!this.supported.ui || !is.event(e))
-        return;
-      let t = 0;
-      const i = (e2, t2) => {
-        const i2 = is.number(t2) ? t2 : 0, s = is.element(e2) ? e2 : this.elements.display.buffer;
-        if (is.element(s)) {
-          s.value = i2;
-          const e3 = s.getElementsByTagName("span")[0];
-          is.element(e3) && (e3.childNodes[0].nodeValue = i2);
-        }
-      };
-      if (e)
-        switch (e.type) {
-          case "timeupdate":
-          case "seeking":
-          case "seeked":
-            t = getPercentage(this.currentTime, this.duration), "timeupdate" === e.type && controls.setRange.call(this, this.elements.inputs.seek, t);
-            break;
-          case "playing":
-          case "progress":
-            i(this.elements.display.buffer, 100 * this.buffered);
-        }
-    }, updateRangeFill(e) {
-      const t = is.event(e) ? e.target : e;
-      if (is.element(t) && "range" === t.getAttribute("type")) {
-        if (matches(t, this.config.selectors.inputs.seek)) {
-          t.setAttribute("aria-valuenow", this.currentTime);
-          const e2 = controls.formatTime(this.currentTime), i = controls.formatTime(this.duration), s = i18n.get("seekLabel", this.config);
-          t.setAttribute("aria-valuetext", s.replace("{currentTime}", e2).replace("{duration}", i));
-        } else if (matches(t, this.config.selectors.inputs.volume)) {
-          const e2 = 100 * t.value;
-          t.setAttribute("aria-valuenow", e2), t.setAttribute("aria-valuetext", `${e2.toFixed(1)}%`);
-        } else
-          t.setAttribute("aria-valuenow", t.value);
-        browser.isWebkit && t.style.setProperty("--value", t.value / t.max * 100 + "%");
-      }
-    }, updateSeekTooltip(e) {
-      var t, i;
-      if (!this.config.tooltips.seek || !is.element(this.elements.inputs.seek) || !is.element(this.elements.display.seekTooltip) || 0 === this.duration)
-        return;
-      const s = this.elements.display.seekTooltip, n = `${this.config.classNames.tooltip}--visible`, r = (e2) => toggleClass(s, n, e2);
-      if (this.touch)
-        return void r(false);
-      let a = 0;
-      const o = this.elements.progress.getBoundingClientRect();
-      if (is.event(e))
-        a = 100 / o.width * (e.pageX - o.left);
-      else {
-        if (!hasClass(s, n))
-          return;
-        a = parseFloat(s.style.left, 10);
-      }
-      a < 0 ? a = 0 : a > 100 && (a = 100);
-      const l = this.duration / 100 * a;
-      s.innerText = controls.formatTime(l);
-      const c = null === (t = this.config.markers) || void 0 === t || null === (i = t.points) || void 0 === i ? void 0 : i.find(({ time: e2 }) => e2 === Math.round(l));
-      c && s.insertAdjacentHTML("afterbegin", `${c.label}<br>`), s.style.left = `${a}%`, is.event(e) && ["mouseenter", "mouseleave"].includes(e.type) && r("mouseenter" === e.type);
-    }, timeUpdate(e) {
-      const t = !is.element(this.elements.display.duration) && this.config.invertTime;
-      controls.updateTimeDisplay.call(this, this.elements.display.currentTime, t ? this.duration - this.currentTime : this.currentTime, t), e && "timeupdate" === e.type && this.media.seeking || controls.updateProgress.call(this, e);
-    }, durationUpdate() {
-      if (!this.supported.ui || !this.config.invertTime && this.currentTime)
-        return;
-      if (this.duration >= 2 ** 32)
-        return toggleHidden(this.elements.display.currentTime, true), void toggleHidden(this.elements.progress, true);
-      is.element(this.elements.inputs.seek) && this.elements.inputs.seek.setAttribute("aria-valuemax", this.duration);
-      const e = is.element(this.elements.display.duration);
-      !e && this.config.displayDuration && this.paused && controls.updateTimeDisplay.call(this, this.elements.display.currentTime, this.duration), e && controls.updateTimeDisplay.call(this, this.elements.display.duration, this.duration), this.config.markers.enabled && controls.setMarkers.call(this), controls.updateSeekTooltip.call(this);
-    }, toggleMenuButton(e, t) {
-      toggleHidden(this.elements.settings.buttons[e], !t);
-    }, updateSetting(e, t, i) {
-      const s = this.elements.settings.panels[e];
-      let n = null, r = t;
-      if ("captions" === e)
-        n = this.currentTrack;
-      else {
-        if (n = is.empty(i) ? this[e] : i, is.empty(n) && (n = this.config[e].default), !is.empty(this.options[e]) && !this.options[e].includes(n))
-          return void this.debug.warn(`Unsupported value of '${n}' for ${e}`);
-        if (!this.config[e].options.includes(n))
-          return void this.debug.warn(`Disabled value of '${n}' for ${e}`);
-      }
-      if (is.element(r) || (r = s && s.querySelector('[role="menu"]')), !is.element(r))
-        return;
-      this.elements.settings.buttons[e].querySelector(`.${this.config.classNames.menu.value}`).innerHTML = controls.getLabel.call(this, e, n);
-      const a = r && r.querySelector(`[value="${n}"]`);
-      is.element(a) && (a.checked = true);
-    }, getLabel(e, t) {
-      switch (e) {
-        case "speed":
-          return 1 === t ? i18n.get("normal", this.config) : `${t}&times;`;
-        case "quality":
-          if (is.number(t)) {
-            const e2 = i18n.get(`qualityLabel.${t}`, this.config);
-            return e2.length ? e2 : `${t}p`;
-          }
-          return toTitleCase(t);
-        case "captions":
-          return captions.getLabel.call(this);
-        default:
+      }, createIcon(e, t) {
+        const i = "http://www.w3.org/2000/svg", s = controls.getIconUrl.call(this), n = `${s.cors ? "" : s.url}#${this.config.iconPrefix}`, r = document.createElementNS(i, "svg");
+        setAttributes(r, extend(t, { "aria-hidden": "true", focusable: "false" }));
+        const a = document.createElementNS(i, "use"), o = `${n}-${e}`;
+        return "href" in a && a.setAttributeNS("http://www.w3.org/1999/xlink", "href", o), a.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", o), r.appendChild(a), r;
+      }, createLabel(e, t = {}) {
+        const i = i18n.get(e, this.config);
+        return createElement("span", { ...t, class: [t.class, this.config.classNames.hidden].filter(Boolean).join(" ") }, i);
+      }, createBadge(e) {
+        if (is.empty(e))
           return null;
-      }
-    }, setQualityMenu(e) {
-      if (!is.element(this.elements.settings.panels.quality))
-        return;
-      const t = "quality", i = this.elements.settings.panels.quality.querySelector('[role="menu"]');
-      is.array(e) && (this.options.quality = dedupe(e).filter((e2) => this.config.quality.options.includes(e2)));
-      const s = !is.empty(this.options.quality) && this.options.quality.length > 1;
-      if (controls.toggleMenuButton.call(this, t, s), emptyElement(i), controls.checkMenu.call(this), !s)
-        return;
-      const n = (e2) => {
-        const t2 = i18n.get(`qualityBadge.${e2}`, this.config);
-        return t2.length ? controls.createBadge.call(this, t2) : null;
-      };
-      this.options.quality.sort((e2, t2) => {
-        const i2 = this.config.quality.options;
-        return i2.indexOf(e2) > i2.indexOf(t2) ? 1 : -1;
-      }).forEach((e2) => {
-        controls.createMenuItem.call(this, { value: e2, list: i, type: t, title: controls.getLabel.call(this, "quality", e2), badge: n(e2) });
-      }), controls.updateSetting.call(this, t, i);
-    }, setCaptionsMenu() {
-      if (!is.element(this.elements.settings.panels.captions))
-        return;
-      const e = "captions", t = this.elements.settings.panels.captions.querySelector('[role="menu"]'), i = captions.getTracks.call(this), s = Boolean(i.length);
-      if (controls.toggleMenuButton.call(this, e, s), emptyElement(t), controls.checkMenu.call(this), !s)
-        return;
-      const n = i.map((e2, i2) => ({ value: i2, checked: this.captions.toggled && this.currentTrack === i2, title: captions.getLabel.call(this, e2), badge: e2.language && controls.createBadge.call(this, e2.language.toUpperCase()), list: t, type: "language" }));
-      n.unshift({ value: -1, checked: !this.captions.toggled, title: i18n.get("disabled", this.config), list: t, type: "language" }), n.forEach(controls.createMenuItem.bind(this)), controls.updateSetting.call(this, e, t);
-    }, setSpeedMenu() {
-      if (!is.element(this.elements.settings.panels.speed))
-        return;
-      const e = "speed", t = this.elements.settings.panels.speed.querySelector('[role="menu"]');
-      this.options.speed = this.options.speed.filter((e2) => e2 >= this.minimumSpeed && e2 <= this.maximumSpeed);
-      const i = !is.empty(this.options.speed) && this.options.speed.length > 1;
-      controls.toggleMenuButton.call(this, e, i), emptyElement(t), controls.checkMenu.call(this), i && (this.options.speed.forEach((i2) => {
-        controls.createMenuItem.call(this, { value: i2, list: t, type: e, title: controls.getLabel.call(this, "speed", i2) });
-      }), controls.updateSetting.call(this, e, t));
-    }, checkMenu() {
-      const { buttons: e } = this.elements.settings, t = !is.empty(e) && Object.values(e).some((e2) => !e2.hidden);
-      toggleHidden(this.elements.settings.menu, !t);
-    }, focusFirstMenuItem(e, t = false) {
-      if (this.elements.settings.popup.hidden)
-        return;
-      let i = e;
-      is.element(i) || (i = Object.values(this.elements.settings.panels).find((e2) => !e2.hidden));
-      const s = i.querySelector('[role^="menuitem"]');
-      setFocus.call(this, s, t);
-    }, toggleMenu(e) {
-      const { popup: t } = this.elements.settings, i = this.elements.buttons.settings;
-      if (!is.element(t) || !is.element(i))
-        return;
-      const { hidden: s } = t;
-      let n = s;
-      if (is.boolean(e))
-        n = e;
-      else if (is.keyboardEvent(e) && "Escape" === e.key)
-        n = false;
-      else if (is.event(e)) {
-        const s2 = is.function(e.composedPath) ? e.composedPath()[0] : e.target, r = t.contains(s2);
-        if (r || !r && e.target !== i && n)
+        const t = createElement("span", { class: this.config.classNames.menu.value });
+        return t.appendChild(createElement("span", { class: this.config.classNames.menu.badge }, e)), t;
+      }, createButton(e, t) {
+        const i = extend({}, t);
+        let s = toCamelCase(e);
+        const n = { element: "button", toggle: false, label: null, icon: null, labelPressed: null, iconPressed: null };
+        switch (["element", "icon", "label"].forEach((e2) => {
+          Object.keys(i).includes(e2) && (n[e2] = i[e2], delete i[e2]);
+        }), "button" !== n.element || Object.keys(i).includes("type") || (i.type = "button"), Object.keys(i).includes("class") ? i.class.split(" ").some((e2) => e2 === this.config.classNames.control) || extend(i, { class: `${i.class} ${this.config.classNames.control}` }) : i.class = this.config.classNames.control, e) {
+          case "play":
+            n.toggle = true, n.label = "play", n.labelPressed = "pause", n.icon = "play", n.iconPressed = "pause";
+            break;
+          case "mute":
+            n.toggle = true, n.label = "mute", n.labelPressed = "unmute", n.icon = "volume", n.iconPressed = "muted";
+            break;
+          case "captions":
+            n.toggle = true, n.label = "enableCaptions", n.labelPressed = "disableCaptions", n.icon = "captions-off", n.iconPressed = "captions-on";
+            break;
+          case "fullscreen":
+            n.toggle = true, n.label = "enterFullscreen", n.labelPressed = "exitFullscreen", n.icon = "enter-fullscreen", n.iconPressed = "exit-fullscreen";
+            break;
+          case "play-large":
+            i.class += ` ${this.config.classNames.control}--overlaid`, s = "play", n.label = "play", n.icon = "play";
+            break;
+          default:
+            is.empty(n.label) && (n.label = s), is.empty(n.icon) && (n.icon = e);
+        }
+        const r = createElement(n.element);
+        return n.toggle ? (r.appendChild(controls.createIcon.call(this, n.iconPressed, { class: "icon--pressed" })), r.appendChild(controls.createIcon.call(this, n.icon, { class: "icon--not-pressed" })), r.appendChild(controls.createLabel.call(this, n.labelPressed, { class: "label--pressed" })), r.appendChild(controls.createLabel.call(this, n.label, { class: "label--not-pressed" }))) : (r.appendChild(controls.createIcon.call(this, n.icon)), r.appendChild(controls.createLabel.call(this, n.label))), extend(i, getAttributesFromSelector(this.config.selectors.buttons[s], i)), setAttributes(r, i), "play" === s ? (is.array(this.elements.buttons[s]) || (this.elements.buttons[s] = []), this.elements.buttons[s].push(r)) : this.elements.buttons[s] = r, r;
+      }, createRange(e, t) {
+        const i = createElement("input", extend(getAttributesFromSelector(this.config.selectors.inputs[e]), { type: "range", min: 0, max: 100, step: 0.01, value: 0, autocomplete: "off", role: "slider", "aria-label": i18n.get(e, this.config), "aria-valuemin": 0, "aria-valuemax": 100, "aria-valuenow": 0 }, t));
+        return this.elements.inputs[e] = i, controls.updateRangeFill.call(this, i), RangeTouch.setup(i), i;
+      }, createProgress(e, t) {
+        const i = createElement("progress", extend(getAttributesFromSelector(this.config.selectors.display[e]), { min: 0, max: 100, value: 0, role: "progressbar", "aria-hidden": true }, t));
+        if ("volume" !== e) {
+          i.appendChild(createElement("span", null, "0"));
+          const t2 = { played: "played", buffer: "buffered" }[e], s = t2 ? i18n.get(t2, this.config) : "";
+          i.innerText = `% ${s.toLowerCase()}`;
+        }
+        return this.elements.display[e] = i, i;
+      }, createTime(e, t) {
+        const i = getAttributesFromSelector(this.config.selectors.display[e], t), s = createElement("div", extend(i, { class: `${i.class ? i.class : ""} ${this.config.classNames.display.time} `.trim(), "aria-label": i18n.get(e, this.config) }), "00:00");
+        return this.elements.display[e] = s, s;
+      }, bindMenuItemShortcuts(e, t) {
+        on.call(this, e, "keydown keyup", (i) => {
+          if (!["Space", "ArrowUp", "ArrowDown", "ArrowRight"].includes(i.key))
+            return;
+          if (i.preventDefault(), i.stopPropagation(), "keydown" === i.type)
+            return;
+          const s = matches(e, '[role="menuitemradio"]');
+          if (!s && ["Space", "ArrowRight"].includes(i.key))
+            controls.showMenuPanel.call(this, t, true);
+          else {
+            let t2;
+            "Space" !== i.key && ("ArrowDown" === i.key || s && "ArrowRight" === i.key ? (t2 = e.nextElementSibling, is.element(t2) || (t2 = e.parentNode.firstElementChild)) : (t2 = e.previousElementSibling, is.element(t2) || (t2 = e.parentNode.lastElementChild)), setFocus.call(this, t2, true));
+          }
+        }, false), on.call(this, e, "keyup", (e2) => {
+          "Return" === e2.key && controls.focusFirstMenuItem.call(this, null, true);
+        });
+      }, createMenuItem({ value: e, list: t, type: i, title: s, badge: n = null, checked: r = false }) {
+        const a = getAttributesFromSelector(this.config.selectors.inputs[i]), o = createElement("button", extend(a, { type: "button", role: "menuitemradio", class: `${this.config.classNames.control} ${a.class ? a.class : ""}`.trim(), "aria-checked": r, value: e })), l = createElement("span");
+        l.innerHTML = s, is.element(n) && l.appendChild(n), o.appendChild(l), Object.defineProperty(o, "checked", {
+          enumerable: true, get: () => "true" === o.getAttribute("aria-checked"), set(e2) {
+            e2 && Array.from(o.parentNode.children).filter((e3) => matches(e3, '[role="menuitemradio"]')).forEach((e3) => e3.setAttribute("aria-checked", "false")), o.setAttribute("aria-checked", e2 ? "true" : "false");
+          }
+        }), this.listeners.bind(o, "click keyup", (t2) => {
+          if (!is.keyboardEvent(t2) || "Space" === t2.key) {
+            switch (t2.preventDefault(), t2.stopPropagation(), o.checked = true, i) {
+              case "language":
+                this.currentTrack = Number(e);
+                break;
+              case "quality":
+                this.quality = e;
+                break;
+              case "speed":
+                this.speed = parseFloat(e);
+            }
+            controls.showMenuPanel.call(this, "home", is.keyboardEvent(t2));
+          }
+        }, i, false), controls.bindMenuItemShortcuts.call(this, o, i), t.appendChild(o);
+      }, formatTime(e = 0, t = false) {
+        if (!is.number(e))
+          return e;
+        return formatTime(e, getHours(this.duration) > 0, t);
+      }, updateTimeDisplay(e = null, t = 0, i = false) {
+        is.element(e) && is.number(t) && (e.innerText = controls.formatTime(t, i));
+      }, updateVolume() {
+        this.supported.ui && (is.element(this.elements.inputs.volume) && controls.setRange.call(this, this.elements.inputs.volume, this.muted ? 0 : this.volume), is.element(this.elements.buttons.mute) && (this.elements.buttons.mute.pressed = this.muted || 0 === this.volume));
+      }, setRange(e, t = 0) {
+        is.element(e) && (e.value = t, controls.updateRangeFill.call(this, e));
+      }, updateProgress(e) {
+        if (!this.supported.ui || !is.event(e))
           return;
-      }
-      i.setAttribute("aria-expanded", n), toggleHidden(t, !n), toggleClass(this.elements.container, this.config.classNames.menu.open, n), n && is.keyboardEvent(e) ? controls.focusFirstMenuItem.call(this, null, true) : n || s || setFocus.call(this, i, is.keyboardEvent(e));
-    }, getMenuSize(e) {
-      const t = e.cloneNode(true);
-      t.style.position = "absolute", t.style.opacity = 0, t.removeAttribute("hidden"), e.parentNode.appendChild(t);
-      const i = t.scrollWidth, s = t.scrollHeight;
-      return removeElement(t), { width: i, height: s };
-    }, showMenuPanel(e = "", t = false) {
-      const i = this.elements.container.querySelector(`#plyr-settings-${this.id}-${e}`);
-      if (!is.element(i))
-        return;
-      const s = i.parentNode, n = Array.from(s.children).find((e2) => !e2.hidden);
-      if (support.transitions && !support.reducedMotion) {
-        s.style.width = `${n.scrollWidth}px`, s.style.height = `${n.scrollHeight}px`;
-        const e2 = controls.getMenuSize.call(this, i), t2 = (e3) => {
-          e3.target === s && ["width", "height"].includes(e3.propertyName) && (s.style.width = "", s.style.height = "", off.call(this, s, transitionEndEvent, t2));
+        let t = 0;
+        const i = (e2, t2) => {
+          const i2 = is.number(t2) ? t2 : 0, s = is.element(e2) ? e2 : this.elements.display.buffer;
+          if (is.element(s)) {
+            s.value = i2;
+            const e3 = s.getElementsByTagName("span")[0];
+            is.element(e3) && (e3.childNodes[0].nodeValue = i2);
+          }
         };
-        on.call(this, s, transitionEndEvent, t2), s.style.width = `${e2.width}px`, s.style.height = `${e2.height}px`;
-      }
-      toggleHidden(n, true), toggleHidden(i, false), controls.focusFirstMenuItem.call(this, i, t);
-    }, setDownloadUrl() {
-      const e = this.elements.buttons.download;
-      is.element(e) && e.setAttribute("href", this.download);
-    }, create(e) {
-      const { bindMenuItemShortcuts: t, createButton: i, createProgress: s, createRange: n, createTime: r, setQualityMenu: a, setSpeedMenu: o, showMenuPanel: l } = controls;
-      this.elements.controls = null, is.array(this.config.controls) && this.config.controls.includes("play-large") && this.elements.container.appendChild(i.call(this, "play-large"));
-      const c = createElement("div", getAttributesFromSelector(this.config.selectors.controls.wrapper));
-      this.elements.controls = c;
-      const u = { class: "plyr__controls__item" };
-      return dedupe(is.array(this.config.controls) ? this.config.controls : []).forEach((a2) => {
-        if ("restart" === a2 && c.appendChild(i.call(this, "restart", u)), "rewind" === a2 && c.appendChild(i.call(this, "rewind", u)), "play" === a2 && c.appendChild(i.call(this, "play", u)), "fast-forward" === a2 && c.appendChild(i.call(this, "fast-forward", u)), "progress" === a2) {
-          const t2 = createElement("div", { class: `${u.class} plyr__progress__container` }), i2 = createElement("div", getAttributesFromSelector(this.config.selectors.progress));
-          if (i2.appendChild(n.call(this, "seek", { id: `plyr-seek-${e.id}` })), i2.appendChild(s.call(this, "buffer")), this.config.tooltips.seek) {
-            const e2 = createElement("span", { class: this.config.classNames.tooltip }, "00:00");
-            i2.appendChild(e2), this.elements.display.seekTooltip = e2;
+        if (e)
+          switch (e.type) {
+            case "timeupdate":
+            case "seeking":
+            case "seeked":
+              t = getPercentage(this.currentTime, this.duration), "timeupdate" === e.type && controls.setRange.call(this, this.elements.inputs.seek, t);
+              break;
+            case "playing":
+            case "progress":
+              i(this.elements.display.buffer, 100 * this.buffered);
           }
-          this.elements.progress = i2, t2.appendChild(this.elements.progress), c.appendChild(t2);
+      }, updateRangeFill(e) {
+        const t = is.event(e) ? e.target : e;
+        if (is.element(t) && "range" === t.getAttribute("type")) {
+          if (matches(t, this.config.selectors.inputs.seek)) {
+            t.setAttribute("aria-valuenow", this.currentTime);
+            const e2 = controls.formatTime(this.currentTime), i = controls.formatTime(this.duration), s = i18n.get("seekLabel", this.config);
+            t.setAttribute("aria-valuetext", s.replace("{currentTime}", e2).replace("{duration}", i));
+          } else if (matches(t, this.config.selectors.inputs.volume)) {
+            const e2 = 100 * t.value;
+            t.setAttribute("aria-valuenow", e2), t.setAttribute("aria-valuetext", `${e2.toFixed(1)}%`);
+          } else
+            t.setAttribute("aria-valuenow", t.value);
+          browser.isWebkit && t.style.setProperty("--value", t.value / t.max * 100 + "%");
         }
-        if ("current-time" === a2 && c.appendChild(r.call(this, "currentTime", u)), "duration" === a2 && c.appendChild(r.call(this, "duration", u)), "mute" === a2 || "volume" === a2) {
-          let { volume: t2 } = this.elements;
-          if (is.element(t2) && c.contains(t2) || (t2 = createElement("div", extend({}, u, { class: `${u.class} plyr__volume`.trim() })), this.elements.volume = t2, c.appendChild(t2)), "mute" === a2 && t2.appendChild(i.call(this, "mute")), "volume" === a2 && !browser.isIos) {
-            const i2 = { max: 1, step: 0.05, value: this.config.volume };
-            t2.appendChild(n.call(this, "volume", extend(i2, { id: `plyr-volume-${e.id}` })));
+      }, updateSeekTooltip(e) {
+        var t, i;
+        if (!this.config.tooltips.seek || !is.element(this.elements.inputs.seek) || !is.element(this.elements.display.seekTooltip) || 0 === this.duration)
+          return;
+        const s = this.elements.display.seekTooltip, n = `${this.config.classNames.tooltip}--visible`, r = (e2) => toggleClass(s, n, e2);
+        if (this.touch)
+          return void r(false);
+        let a = 0;
+        const o = this.elements.progress.getBoundingClientRect();
+        if (is.event(e))
+          a = 100 / o.width * (e.pageX - o.left);
+        else {
+          if (!hasClass(s, n))
+            return;
+          a = parseFloat(s.style.left, 10);
+        }
+        a < 0 ? a = 0 : a > 100 && (a = 100);
+        const l = this.duration / 100 * a;
+        s.innerText = controls.formatTime(l);
+        const c = null === (t = this.config.markers) || void 0 === t || null === (i = t.points) || void 0 === i ? void 0 : i.find(({ time: e2 }) => e2 === Math.round(l));
+        c && s.insertAdjacentHTML("afterbegin", `${c.label}<br>`), s.style.left = `${a}%`, is.event(e) && ["mouseenter", "mouseleave"].includes(e.type) && r("mouseenter" === e.type);
+      }, timeUpdate(e) {
+        const t = !is.element(this.elements.display.duration) && this.config.invertTime;
+        controls.updateTimeDisplay.call(this, this.elements.display.currentTime, t ? this.duration - this.currentTime : this.currentTime, t), e && "timeupdate" === e.type && this.media.seeking || controls.updateProgress.call(this, e);
+      }, durationUpdate() {
+        if (!this.supported.ui || !this.config.invertTime && this.currentTime)
+          return;
+        if (this.duration >= 2 ** 32)
+          return toggleHidden(this.elements.display.currentTime, true), void toggleHidden(this.elements.progress, true);
+        is.element(this.elements.inputs.seek) && this.elements.inputs.seek.setAttribute("aria-valuemax", this.duration);
+        const e = is.element(this.elements.display.duration);
+        !e && this.config.displayDuration && this.paused && controls.updateTimeDisplay.call(this, this.elements.display.currentTime, this.duration), e && controls.updateTimeDisplay.call(this, this.elements.display.duration, this.duration), this.config.markers.enabled && controls.setMarkers.call(this), controls.updateSeekTooltip.call(this);
+      }, toggleMenuButton(e, t) {
+        toggleHidden(this.elements.settings.buttons[e], !t);
+      }, updateSetting(e, t, i) {
+        const s = this.elements.settings.panels[e];
+        let n = null, r = t;
+        if ("captions" === e)
+          n = this.currentTrack;
+        else {
+          if (n = is.empty(i) ? this[e] : i, is.empty(n) && (n = this.config[e].default), !is.empty(this.options[e]) && !this.options[e].includes(n))
+            return void this.debug.warn(`Unsupported value of '${n}' for ${e}`);
+          if (!this.config[e].options.includes(n))
+            return void this.debug.warn(`Disabled value of '${n}' for ${e}`);
+        }
+        if (is.element(r) || (r = s && s.querySelector('[role="menu"]')), !is.element(r))
+          return;
+        this.elements.settings.buttons[e].querySelector(`.${this.config.classNames.menu.value}`).innerHTML = controls.getLabel.call(this, e, n);
+        const a = r && r.querySelector(`[value="${n}"]`);
+        is.element(a) && (a.checked = true);
+      }, getLabel(e, t) {
+        switch (e) {
+          case "speed":
+            return 1 === t ? i18n.get("normal", this.config) : `${t}&times;`;
+          case "quality":
+            if (is.number(t)) {
+              const e2 = i18n.get(`qualityLabel.${t}`, this.config);
+              return e2.length ? e2 : `${t}p`;
+            }
+            return toTitleCase(t);
+          case "captions":
+            return captions.getLabel.call(this);
+          default:
+            return null;
+        }
+      }, setQualityMenu(e) {
+        if (!is.element(this.elements.settings.panels.quality))
+          return;
+        const t = "quality", i = this.elements.settings.panels.quality.querySelector('[role="menu"]');
+        is.array(e) && (this.options.quality = dedupe(e).filter((e2) => this.config.quality.options.includes(e2)));
+        const s = !is.empty(this.options.quality) && this.options.quality.length > 1;
+        if (controls.toggleMenuButton.call(this, t, s), emptyElement(i), controls.checkMenu.call(this), !s)
+          return;
+        const n = (e2) => {
+          const t2 = i18n.get(`qualityBadge.${e2}`, this.config);
+          return t2.length ? controls.createBadge.call(this, t2) : null;
+        };
+        this.options.quality.sort((e2, t2) => {
+          const i2 = this.config.quality.options;
+          return i2.indexOf(e2) > i2.indexOf(t2) ? 1 : -1;
+        }).forEach((e2) => {
+          controls.createMenuItem.call(this, { value: e2, list: i, type: t, title: controls.getLabel.call(this, "quality", e2), badge: n(e2) });
+        }), controls.updateSetting.call(this, t, i);
+      }, setCaptionsMenu() {
+        if (!is.element(this.elements.settings.panels.captions))
+          return;
+        const e = "captions", t = this.elements.settings.panels.captions.querySelector('[role="menu"]'), i = captions.getTracks.call(this), s = Boolean(i.length);
+        if (controls.toggleMenuButton.call(this, e, s), emptyElement(t), controls.checkMenu.call(this), !s)
+          return;
+        const n = i.map((e2, i2) => ({ value: i2, checked: this.captions.toggled && this.currentTrack === i2, title: captions.getLabel.call(this, e2), badge: e2.language && controls.createBadge.call(this, e2.language.toUpperCase()), list: t, type: "language" }));
+        n.unshift({ value: -1, checked: !this.captions.toggled, title: i18n.get("disabled", this.config), list: t, type: "language" }), n.forEach(controls.createMenuItem.bind(this)), controls.updateSetting.call(this, e, t);
+      }, setSpeedMenu() {
+        if (!is.element(this.elements.settings.panels.speed))
+          return;
+        const e = "speed", t = this.elements.settings.panels.speed.querySelector('[role="menu"]');
+        this.options.speed = this.options.speed.filter((e2) => e2 >= this.minimumSpeed && e2 <= this.maximumSpeed);
+        const i = !is.empty(this.options.speed) && this.options.speed.length > 1;
+        controls.toggleMenuButton.call(this, e, i), emptyElement(t), controls.checkMenu.call(this), i && (this.options.speed.forEach((i2) => {
+          controls.createMenuItem.call(this, { value: i2, list: t, type: e, title: controls.getLabel.call(this, "speed", i2) });
+        }), controls.updateSetting.call(this, e, t));
+      }, checkMenu() {
+        const { buttons: e } = this.elements.settings, t = !is.empty(e) && Object.values(e).some((e2) => !e2.hidden);
+        toggleHidden(this.elements.settings.menu, !t);
+      }, focusFirstMenuItem(e, t = false) {
+        if (this.elements.settings.popup.hidden)
+          return;
+        let i = e;
+        is.element(i) || (i = Object.values(this.elements.settings.panels).find((e2) => !e2.hidden));
+        const s = i.querySelector('[role^="menuitem"]');
+        setFocus.call(this, s, t);
+      }, toggleMenu(e) {
+        const { popup: t } = this.elements.settings, i = this.elements.buttons.settings;
+        if (!is.element(t) || !is.element(i))
+          return;
+        const { hidden: s } = t;
+        let n = s;
+        if (is.boolean(e))
+          n = e;
+        else if (is.keyboardEvent(e) && "Escape" === e.key)
+          n = false;
+        else if (is.event(e)) {
+          const s2 = is.function(e.composedPath) ? e.composedPath()[0] : e.target, r = t.contains(s2);
+          if (r || !r && e.target !== i && n)
+            return;
+        }
+        i.setAttribute("aria-expanded", n), toggleHidden(t, !n), toggleClass(this.elements.container, this.config.classNames.menu.open, n), n && is.keyboardEvent(e) ? controls.focusFirstMenuItem.call(this, null, true) : n || s || setFocus.call(this, i, is.keyboardEvent(e));
+      }, getMenuSize(e) {
+        const t = e.cloneNode(true);
+        t.style.position = "absolute", t.style.opacity = 0, t.removeAttribute("hidden"), e.parentNode.appendChild(t);
+        const i = t.scrollWidth, s = t.scrollHeight;
+        return removeElement(t), { width: i, height: s };
+      }, showMenuPanel(e = "", t = false) {
+        const i = this.elements.container.querySelector(`#plyr-settings-${this.id}-${e}`);
+        if (!is.element(i))
+          return;
+        const s = i.parentNode, n = Array.from(s.children).find((e2) => !e2.hidden);
+        if (support.transitions && !support.reducedMotion) {
+          s.style.width = `${n.scrollWidth}px`, s.style.height = `${n.scrollHeight}px`;
+          const e2 = controls.getMenuSize.call(this, i), t2 = (e3) => {
+            e3.target === s && ["width", "height"].includes(e3.propertyName) && (s.style.width = "", s.style.height = "", off.call(this, s, transitionEndEvent, t2));
+          };
+          on.call(this, s, transitionEndEvent, t2), s.style.width = `${e2.width}px`, s.style.height = `${e2.height}px`;
+        }
+        toggleHidden(n, true), toggleHidden(i, false), controls.focusFirstMenuItem.call(this, i, t);
+      }, setDownloadUrl() {
+        const e = this.elements.buttons.download;
+        is.element(e) && e.setAttribute("href", this.download);
+      }, create(e) {
+        const { bindMenuItemShortcuts: t, createButton: i, createProgress: s, createRange: n, createTime: r, setQualityMenu: a, setSpeedMenu: o, showMenuPanel: l } = controls;
+        this.elements.controls = null, is.array(this.config.controls) && this.config.controls.includes("play-large") && this.elements.container.appendChild(i.call(this, "play-large"));
+        const c = createElement("div", getAttributesFromSelector(this.config.selectors.controls.wrapper));
+        this.elements.controls = c;
+        const u = { class: "plyr__controls__item" };
+        return dedupe(is.array(this.config.controls) ? this.config.controls : []).forEach((a2) => {
+          if ("restart" === a2 && c.appendChild(i.call(this, "restart", u)), "rewind" === a2 && c.appendChild(i.call(this, "rewind", u)), "play" === a2 && c.appendChild(i.call(this, "play", u)), "fast-forward" === a2 && c.appendChild(i.call(this, "fast-forward", u)), "progress" === a2) {
+            const t2 = createElement("div", { class: `${u.class} plyr__progress__container` }), i2 = createElement("div", getAttributesFromSelector(this.config.selectors.progress));
+            if (i2.appendChild(n.call(this, "seek", { id: `plyr-seek-${e.id}` })), i2.appendChild(s.call(this, "buffer")), this.config.tooltips.seek) {
+              const e2 = createElement("span", { class: this.config.classNames.tooltip }, "00:00");
+              i2.appendChild(e2), this.elements.display.seekTooltip = e2;
+            }
+            this.elements.progress = i2, t2.appendChild(this.elements.progress), c.appendChild(t2);
           }
+          if ("current-time" === a2 && c.appendChild(r.call(this, "currentTime", u)), "duration" === a2 && c.appendChild(r.call(this, "duration", u)), "mute" === a2 || "volume" === a2) {
+            let { volume: t2 } = this.elements;
+            if (is.element(t2) && c.contains(t2) || (t2 = createElement("div", extend({}, u, { class: `${u.class} plyr__volume`.trim() })), this.elements.volume = t2, c.appendChild(t2)), "mute" === a2 && t2.appendChild(i.call(this, "mute")), "volume" === a2 && !browser.isIos) {
+              const i2 = { max: 1, step: 0.05, value: this.config.volume };
+              t2.appendChild(n.call(this, "volume", extend(i2, { id: `plyr-volume-${e.id}` })));
+            }
+          }
+          if ("captions" === a2 && c.appendChild(i.call(this, "captions", u)), "settings" === a2 && !is.empty(this.config.settings)) {
+            const s2 = createElement("div", extend({}, u, { class: `${u.class} plyr__menu`.trim(), hidden: "" }));
+            s2.appendChild(i.call(this, "settings", { "aria-haspopup": true, "aria-controls": `plyr-settings-${e.id}`, "aria-expanded": false }));
+            const n2 = createElement("div", { class: "plyr__menu__container", id: `plyr-settings-${e.id}`, hidden: "" }), r2 = createElement("div"), a3 = createElement("div", { id: `plyr-settings-${e.id}-home` }), o2 = createElement("div", { role: "menu" });
+            a3.appendChild(o2), r2.appendChild(a3), this.elements.settings.panels.home = a3, this.config.settings.forEach((i2) => {
+              const s3 = createElement("button", extend(getAttributesFromSelector(this.config.selectors.buttons.settings), { type: "button", class: `${this.config.classNames.control} ${this.config.classNames.control}--forward`, role: "menuitem", "aria-haspopup": true, hidden: "" }));
+              t.call(this, s3, i2), on.call(this, s3, "click", () => {
+                l.call(this, i2, false);
+              });
+              const n3 = createElement("span", null, i18n.get(i2, this.config)), a4 = createElement("span", { class: this.config.classNames.menu.value });
+              a4.innerHTML = e[i2], n3.appendChild(a4), s3.appendChild(n3), o2.appendChild(s3);
+              const c2 = createElement("div", { id: `plyr-settings-${e.id}-${i2}`, hidden: "" }), u2 = createElement("button", { type: "button", class: `${this.config.classNames.control} ${this.config.classNames.control}--back` });
+              u2.appendChild(createElement("span", { "aria-hidden": true }, i18n.get(i2, this.config))), u2.appendChild(createElement("span", { class: this.config.classNames.hidden }, i18n.get("menuBack", this.config))), on.call(this, c2, "keydown", (e2) => {
+                "ArrowLeft" === e2.key && (e2.preventDefault(), e2.stopPropagation(), l.call(this, "home", true));
+              }, false), on.call(this, u2, "click", () => {
+                l.call(this, "home", false);
+              }), c2.appendChild(u2), c2.appendChild(createElement("div", { role: "menu" })), r2.appendChild(c2), this.elements.settings.buttons[i2] = s3, this.elements.settings.panels[i2] = c2;
+            }), n2.appendChild(r2), s2.appendChild(n2), c.appendChild(s2), this.elements.settings.popup = n2, this.elements.settings.menu = s2;
+          }
+          if ("pip" === a2 && support.pip && c.appendChild(i.call(this, "pip", u)), "airplay" === a2 && support.airplay && c.appendChild(i.call(this, "airplay", u)), "download" === a2) {
+            const e2 = extend({}, u, { element: "a", href: this.download, target: "_blank" });
+            this.isHTML5 && (e2.download = "");
+            const { download: t2 } = this.config.urls;
+            !is.url(t2) && this.isEmbed && extend(e2, { icon: `logo-${this.provider}`, label: this.provider }), c.appendChild(i.call(this, "download", e2));
+          }
+          "fullscreen" === a2 && c.appendChild(i.call(this, "fullscreen", u));
+        }), this.isHTML5 && a.call(this, html5.getQualityOptions.call(this)), o.call(this), c;
+      }, inject() {
+        if (this.config.loadSprite) {
+          const e2 = controls.getIconUrl.call(this);
+          e2.cors && loadSprite(e2.url, "sprite-plyr");
         }
-        if ("captions" === a2 && c.appendChild(i.call(this, "captions", u)), "settings" === a2 && !is.empty(this.config.settings)) {
-          const s2 = createElement("div", extend({}, u, { class: `${u.class} plyr__menu`.trim(), hidden: "" }));
-          s2.appendChild(i.call(this, "settings", { "aria-haspopup": true, "aria-controls": `plyr-settings-${e.id}`, "aria-expanded": false }));
-          const n2 = createElement("div", { class: "plyr__menu__container", id: `plyr-settings-${e.id}`, hidden: "" }), r2 = createElement("div"), a3 = createElement("div", { id: `plyr-settings-${e.id}-home` }), o2 = createElement("div", { role: "menu" });
-          a3.appendChild(o2), r2.appendChild(a3), this.elements.settings.panels.home = a3, this.config.settings.forEach((i2) => {
-            const s3 = createElement("button", extend(getAttributesFromSelector(this.config.selectors.buttons.settings), { type: "button", class: `${this.config.classNames.control} ${this.config.classNames.control}--forward`, role: "menuitem", "aria-haspopup": true, hidden: "" }));
-            t.call(this, s3, i2), on.call(this, s3, "click", () => {
-              l.call(this, i2, false);
+        this.id = Math.floor(1e4 * Math.random());
+        let e = null;
+        this.elements.controls = null;
+        const t = { id: this.id, seektime: this.config.seekTime, title: this.config.title };
+        let i = true;
+        is.function(this.config.controls) && (this.config.controls = this.config.controls.call(this, t)), this.config.controls || (this.config.controls = []), is.element(this.config.controls) || is.string(this.config.controls) ? e = this.config.controls : (e = controls.create.call(this, { id: this.id, seektime: this.config.seekTime, speed: this.speed, quality: this.quality, captions: captions.getLabel.call(this) }), i = false);
+        let s;
+        i && is.string(this.config.controls) && (e = ((e2) => {
+          let i2 = e2;
+          return Object.entries(t).forEach(([e3, t2]) => {
+            i2 = replaceAll(i2, `{${e3}}`, t2);
+          }), i2;
+        })(e)), is.string(this.config.selectors.controls.container) && (s = document.querySelector(this.config.selectors.controls.container)), is.element(s) || (s = this.elements.container);
+        if (s[is.element(e) ? "insertAdjacentElement" : "insertAdjacentHTML"]("afterbegin", e), is.element(this.elements.controls) || controls.findElements.call(this), !is.empty(this.elements.buttons)) {
+          const e2 = (e3) => {
+            const t2 = this.config.classNames.controlPressed;
+            e3.setAttribute("aria-pressed", "false"), Object.defineProperty(e3, "pressed", {
+              configurable: true, enumerable: true, get: () => hasClass(e3, t2), set(i2 = false) {
+                toggleClass(e3, t2, i2), e3.setAttribute("aria-pressed", i2 ? "true" : "false");
+              }
             });
-            const n3 = createElement("span", null, i18n.get(i2, this.config)), a4 = createElement("span", { class: this.config.classNames.menu.value });
-            a4.innerHTML = e[i2], n3.appendChild(a4), s3.appendChild(n3), o2.appendChild(s3);
-            const c2 = createElement("div", { id: `plyr-settings-${e.id}-${i2}`, hidden: "" }), u2 = createElement("button", { type: "button", class: `${this.config.classNames.control} ${this.config.classNames.control}--back` });
-            u2.appendChild(createElement("span", { "aria-hidden": true }, i18n.get(i2, this.config))), u2.appendChild(createElement("span", { class: this.config.classNames.hidden }, i18n.get("menuBack", this.config))), on.call(this, c2, "keydown", (e2) => {
-              "ArrowLeft" === e2.key && (e2.preventDefault(), e2.stopPropagation(), l.call(this, "home", true));
-            }, false), on.call(this, u2, "click", () => {
-              l.call(this, "home", false);
-            }), c2.appendChild(u2), c2.appendChild(createElement("div", { role: "menu" })), r2.appendChild(c2), this.elements.settings.buttons[i2] = s3, this.elements.settings.panels[i2] = c2;
-          }), n2.appendChild(r2), s2.appendChild(n2), c.appendChild(s2), this.elements.settings.popup = n2, this.elements.settings.menu = s2;
+          };
+          Object.values(this.elements.buttons).filter(Boolean).forEach((t2) => {
+            is.array(t2) || is.nodeList(t2) ? Array.from(t2).filter(Boolean).forEach(e2) : e2(t2);
+          });
         }
-        if ("pip" === a2 && support.pip && c.appendChild(i.call(this, "pip", u)), "airplay" === a2 && support.airplay && c.appendChild(i.call(this, "airplay", u)), "download" === a2) {
-          const e2 = extend({}, u, { element: "a", href: this.download, target: "_blank" });
-          this.isHTML5 && (e2.download = "");
-          const { download: t2 } = this.config.urls;
-          !is.url(t2) && this.isEmbed && extend(e2, { icon: `logo-${this.provider}`, label: this.provider }), c.appendChild(i.call(this, "download", e2));
+        if (browser.isEdge && repaint(s), this.config.tooltips.controls) {
+          const { classNames: e2, selectors: t2 } = this.config, i2 = `${t2.controls.wrapper} ${t2.labels} .${e2.hidden}`, s2 = getElements.call(this, i2);
+          Array.from(s2).forEach((e3) => {
+            toggleClass(e3, this.config.classNames.hidden, false), toggleClass(e3, this.config.classNames.tooltip, true);
+          });
         }
-        "fullscreen" === a2 && c.appendChild(i.call(this, "fullscreen", u));
-      }), this.isHTML5 && a.call(this, html5.getQualityOptions.call(this)), o.call(this), c;
-    }, inject() {
-      if (this.config.loadSprite) {
-        const e2 = controls.getIconUrl.call(this);
-        e2.cors && loadSprite(e2.url, "sprite-plyr");
+      }, setMediaMetadata() {
+        try {
+          "mediaSession" in navigator && (navigator.mediaSession.metadata = new window.MediaMetadata({ title: this.config.mediaMetadata.title, artist: this.config.mediaMetadata.artist, album: this.config.mediaMetadata.album, artwork: this.config.mediaMetadata.artwork }));
+        } catch (e) {
+        }
+      }, setMarkers() {
+        var e, t;
+        if (!this.duration || this.elements.markers)
+          return;
+        const i = null === (e = this.config.markers) || void 0 === e || null === (t = e.points) || void 0 === t ? void 0 : t.filter(({ time: e2 }) => e2 > 0 && e2 < this.duration);
+        if (null == i || !i.length)
+          return;
+        const s = document.createDocumentFragment(), n = document.createDocumentFragment();
+        let r = null;
+        const a = `${this.config.classNames.tooltip}--visible`, o = (e2) => toggleClass(r, a, e2);
+        i.forEach((e2) => {
+          const t2 = createElement("span", { class: this.config.classNames.marker }, ""), i2 = e2.time / this.duration * 100 + "%";
+          r && (t2.addEventListener("mouseenter", () => {
+            e2.label || (r.style.left = i2, r.innerHTML = e2.label, o(true));
+          }), t2.addEventListener("mouseleave", () => {
+            o(false);
+          })), t2.addEventListener("click", () => {
+            this.currentTime = e2.time;
+          }), t2.style.left = i2, n.appendChild(t2);
+        }), s.appendChild(n), this.config.tooltips.seek || (r = createElement("span", { class: this.config.classNames.tooltip }, ""), s.appendChild(r)), this.elements.markers = { points: n, tip: r }, this.elements.progress.appendChild(s);
       }
-      this.id = Math.floor(1e4 * Math.random());
-      let e = null;
-      this.elements.controls = null;
-      const t = { id: this.id, seektime: this.config.seekTime, title: this.config.title };
-      let i = true;
-      is.function(this.config.controls) && (this.config.controls = this.config.controls.call(this, t)), this.config.controls || (this.config.controls = []), is.element(this.config.controls) || is.string(this.config.controls) ? e = this.config.controls : (e = controls.create.call(this, { id: this.id, seektime: this.config.seekTime, speed: this.speed, quality: this.quality, captions: captions.getLabel.call(this) }), i = false);
-      let s;
-      i && is.string(this.config.controls) && (e = ((e2) => {
-        let i2 = e2;
-        return Object.entries(t).forEach(([e3, t2]) => {
-          i2 = replaceAll(i2, `{${e3}}`, t2);
-        }), i2;
-      })(e)), is.string(this.config.selectors.controls.container) && (s = document.querySelector(this.config.selectors.controls.container)), is.element(s) || (s = this.elements.container);
-      if (s[is.element(e) ? "insertAdjacentElement" : "insertAdjacentHTML"]("afterbegin", e), is.element(this.elements.controls) || controls.findElements.call(this), !is.empty(this.elements.buttons)) {
-        const e2 = (e3) => {
-          const t2 = this.config.classNames.controlPressed;
-          e3.setAttribute("aria-pressed", "false"), Object.defineProperty(e3, "pressed", { configurable: true, enumerable: true, get: () => hasClass(e3, t2), set(i2 = false) {
-            toggleClass(e3, t2, i2), e3.setAttribute("aria-pressed", i2 ? "true" : "false");
-          } });
-        };
-        Object.values(this.elements.buttons).filter(Boolean).forEach((t2) => {
-          is.array(t2) || is.nodeList(t2) ? Array.from(t2).filter(Boolean).forEach(e2) : e2(t2);
-        });
-      }
-      if (browser.isEdge && repaint(s), this.config.tooltips.controls) {
-        const { classNames: e2, selectors: t2 } = this.config, i2 = `${t2.controls.wrapper} ${t2.labels} .${e2.hidden}`, s2 = getElements.call(this, i2);
-        Array.from(s2).forEach((e3) => {
-          toggleClass(e3, this.config.classNames.hidden, false), toggleClass(e3, this.config.classNames.tooltip, true);
-        });
-      }
-    }, setMediaMetadata() {
-      try {
-        "mediaSession" in navigator && (navigator.mediaSession.metadata = new window.MediaMetadata({ title: this.config.mediaMetadata.title, artist: this.config.mediaMetadata.artist, album: this.config.mediaMetadata.album, artwork: this.config.mediaMetadata.artwork }));
-      } catch (e) {
-      }
-    }, setMarkers() {
-      var e, t;
-      if (!this.duration || this.elements.markers)
-        return;
-      const i = null === (e = this.config.markers) || void 0 === e || null === (t = e.points) || void 0 === t ? void 0 : t.filter(({ time: e2 }) => e2 > 0 && e2 < this.duration);
-      if (null == i || !i.length)
-        return;
-      const s = document.createDocumentFragment(), n = document.createDocumentFragment();
-      let r = null;
-      const a = `${this.config.classNames.tooltip}--visible`, o = (e2) => toggleClass(r, a, e2);
-      i.forEach((e2) => {
-        const t2 = createElement("span", { class: this.config.classNames.marker }, ""), i2 = e2.time / this.duration * 100 + "%";
-        r && (t2.addEventListener("mouseenter", () => {
-          e2.label || (r.style.left = i2, r.innerHTML = e2.label, o(true));
-        }), t2.addEventListener("mouseleave", () => {
-          o(false);
-        })), t2.addEventListener("click", () => {
-          this.currentTime = e2.time;
-        }), t2.style.left = i2, n.appendChild(t2);
-      }), s.appendChild(n), this.config.tooltips.seek || (r = createElement("span", { class: this.config.classNames.tooltip }, ""), s.appendChild(r)), this.elements.markers = { points: n, tip: r }, this.elements.progress.appendChild(s);
-    } };
+    };
     function parseUrl(e, t = true) {
       let i = e;
       if (t) {
@@ -13870,104 +13898,106 @@ var require_app2 = __commonJS({
         t.set(e2, i);
       }), t;
     }
-    const captions = { setup() {
-      if (!this.supported.ui)
-        return;
-      if (!this.isVideo || this.isYouTube || this.isHTML5 && !support.textTracks)
-        return void (is.array(this.config.controls) && this.config.controls.includes("settings") && this.config.settings.includes("captions") && controls.setCaptionsMenu.call(this));
-      if (is.element(this.elements.captions) || (this.elements.captions = createElement("div", getAttributesFromSelector(this.config.selectors.captions)), this.elements.captions.setAttribute("dir", "auto"), insertAfter(this.elements.captions, this.elements.wrapper)), browser.isIE && window.URL) {
-        const e2 = this.media.querySelectorAll("track");
-        Array.from(e2).forEach((e3) => {
-          const t2 = e3.getAttribute("src"), i2 = parseUrl(t2);
-          null !== i2 && i2.hostname !== window.location.href.hostname && ["http:", "https:"].includes(i2.protocol) && fetch$1(t2, "blob").then((t3) => {
-            e3.setAttribute("src", window.URL.createObjectURL(t3));
-          }).catch(() => {
-            removeElement(e3);
+    const captions = {
+      setup() {
+        if (!this.supported.ui)
+          return;
+        if (!this.isVideo || this.isYouTube || this.isHTML5 && !support.textTracks)
+          return void (is.array(this.config.controls) && this.config.controls.includes("settings") && this.config.settings.includes("captions") && controls.setCaptionsMenu.call(this));
+        if (is.element(this.elements.captions) || (this.elements.captions = createElement("div", getAttributesFromSelector(this.config.selectors.captions)), this.elements.captions.setAttribute("dir", "auto"), insertAfter(this.elements.captions, this.elements.wrapper)), browser.isIE && window.URL) {
+          const e2 = this.media.querySelectorAll("track");
+          Array.from(e2).forEach((e3) => {
+            const t2 = e3.getAttribute("src"), i2 = parseUrl(t2);
+            null !== i2 && i2.hostname !== window.location.href.hostname && ["http:", "https:"].includes(i2.protocol) && fetch$1(t2, "blob").then((t3) => {
+              e3.setAttribute("src", window.URL.createObjectURL(t3));
+            }).catch(() => {
+              removeElement(e3);
+            });
           });
-        });
-      }
-      const e = dedupe((navigator.languages || [navigator.language || navigator.userLanguage || "en"]).map((e2) => e2.split("-")[0]));
-      let t = (this.storage.get("language") || this.config.captions.language || "auto").toLowerCase();
-      "auto" === t && ([t] = e);
-      let i = this.storage.get("captions");
-      if (is.boolean(i) || ({ active: i } = this.config.captions), Object.assign(this.captions, { toggled: false, active: i, language: t, languages: e }), this.isHTML5) {
-        const e2 = this.config.captions.update ? "addtrack removetrack" : "removetrack";
-        on.call(this, this.media.textTracks, e2, captions.update.bind(this));
-      }
-      setTimeout(captions.update.bind(this), 0);
-    }, update() {
-      const e = captions.getTracks.call(this, true), { active: t, language: i, meta: s, currentTrackNode: n } = this.captions, r = Boolean(e.find((e2) => e2.language === i));
-      this.isHTML5 && this.isVideo && e.filter((e2) => !s.get(e2)).forEach((e2) => {
-        this.debug.log("Track added", e2), s.set(e2, { default: "showing" === e2.mode }), "showing" === e2.mode && (e2.mode = "hidden"), on.call(this, e2, "cuechange", () => captions.updateCues.call(this));
-      }), (r && this.language !== i || !e.includes(n)) && (captions.setLanguage.call(this, i), captions.toggle.call(this, t && r)), this.elements && toggleClass(this.elements.container, this.config.classNames.captions.enabled, !is.empty(e)), is.array(this.config.controls) && this.config.controls.includes("settings") && this.config.settings.includes("captions") && controls.setCaptionsMenu.call(this);
-    }, toggle(e, t = true) {
-      if (!this.supported.ui)
-        return;
-      const { toggled: i } = this.captions, s = this.config.classNames.captions.active, n = is.nullOrUndefined(e) ? !i : e;
-      if (n !== i) {
-        if (t || (this.captions.active = n, this.storage.set({ captions: n })), !this.language && n && !t) {
-          const e2 = captions.getTracks.call(this), t2 = captions.findTrack.call(this, [this.captions.language, ...this.captions.languages], true);
-          return this.captions.language = t2.language, void captions.set.call(this, e2.indexOf(t2));
         }
-        this.elements.buttons.captions && (this.elements.buttons.captions.pressed = n), toggleClass(this.elements.container, s, n), this.captions.toggled = n, controls.updateSetting.call(this, "captions"), triggerEvent.call(this, this.media, n ? "captionsenabled" : "captionsdisabled");
-      }
-      setTimeout(() => {
-        n && this.captions.toggled && (this.captions.currentTrackNode.mode = "hidden");
-      });
-    }, set(e, t = true) {
-      const i = captions.getTracks.call(this);
-      if (-1 !== e)
-        if (is.number(e))
-          if (e in i) {
-            if (this.captions.currentTrack !== e) {
-              this.captions.currentTrack = e;
-              const s = i[e], { language: n } = s || {};
-              this.captions.currentTrackNode = s, controls.updateSetting.call(this, "captions"), t || (this.captions.language = n, this.storage.set({ language: n })), this.isVimeo && this.embed.enableTextTrack(n), triggerEvent.call(this, this.media, "languagechange");
-            }
-            captions.toggle.call(this, true, t), this.isHTML5 && this.isVideo && captions.updateCues.call(this);
-          } else
-            this.debug.warn("Track not found", e);
+        const e = dedupe((navigator.languages || [navigator.language || navigator.userLanguage || "en"]).map((e2) => e2.split("-")[0]));
+        let t = (this.storage.get("language") || this.config.captions.language || "auto").toLowerCase();
+        "auto" === t && ([t] = e);
+        let i = this.storage.get("captions");
+        if (is.boolean(i) || ({ active: i } = this.config.captions), Object.assign(this.captions, { toggled: false, active: i, language: t, languages: e }), this.isHTML5) {
+          const e2 = this.config.captions.update ? "addtrack removetrack" : "removetrack";
+          on.call(this, this.media.textTracks, e2, captions.update.bind(this));
+        }
+        setTimeout(captions.update.bind(this), 0);
+      }, update() {
+        const e = captions.getTracks.call(this, true), { active: t, language: i, meta: s, currentTrackNode: n } = this.captions, r = Boolean(e.find((e2) => e2.language === i));
+        this.isHTML5 && this.isVideo && e.filter((e2) => !s.get(e2)).forEach((e2) => {
+          this.debug.log("Track added", e2), s.set(e2, { default: "showing" === e2.mode }), "showing" === e2.mode && (e2.mode = "hidden"), on.call(this, e2, "cuechange", () => captions.updateCues.call(this));
+        }), (r && this.language !== i || !e.includes(n)) && (captions.setLanguage.call(this, i), captions.toggle.call(this, t && r)), this.elements && toggleClass(this.elements.container, this.config.classNames.captions.enabled, !is.empty(e)), is.array(this.config.controls) && this.config.controls.includes("settings") && this.config.settings.includes("captions") && controls.setCaptionsMenu.call(this);
+      }, toggle(e, t = true) {
+        if (!this.supported.ui)
+          return;
+        const { toggled: i } = this.captions, s = this.config.classNames.captions.active, n = is.nullOrUndefined(e) ? !i : e;
+        if (n !== i) {
+          if (t || (this.captions.active = n, this.storage.set({ captions: n })), !this.language && n && !t) {
+            const e2 = captions.getTracks.call(this), t2 = captions.findTrack.call(this, [this.captions.language, ...this.captions.languages], true);
+            return this.captions.language = t2.language, void captions.set.call(this, e2.indexOf(t2));
+          }
+          this.elements.buttons.captions && (this.elements.buttons.captions.pressed = n), toggleClass(this.elements.container, s, n), this.captions.toggled = n, controls.updateSetting.call(this, "captions"), triggerEvent.call(this, this.media, n ? "captionsenabled" : "captionsdisabled");
+        }
+        setTimeout(() => {
+          n && this.captions.toggled && (this.captions.currentTrackNode.mode = "hidden");
+        });
+      }, set(e, t = true) {
+        const i = captions.getTracks.call(this);
+        if (-1 !== e)
+          if (is.number(e))
+            if (e in i) {
+              if (this.captions.currentTrack !== e) {
+                this.captions.currentTrack = e;
+                const s = i[e], { language: n } = s || {};
+                this.captions.currentTrackNode = s, controls.updateSetting.call(this, "captions"), t || (this.captions.language = n, this.storage.set({ language: n })), this.isVimeo && this.embed.enableTextTrack(n), triggerEvent.call(this, this.media, "languagechange");
+              }
+              captions.toggle.call(this, true, t), this.isHTML5 && this.isVideo && captions.updateCues.call(this);
+            } else
+              this.debug.warn("Track not found", e);
+          else
+            this.debug.warn("Invalid caption argument", e);
         else
-          this.debug.warn("Invalid caption argument", e);
-      else
-        captions.toggle.call(this, false, t);
-    }, setLanguage(e, t = true) {
-      if (!is.string(e))
-        return void this.debug.warn("Invalid language argument", e);
-      const i = e.toLowerCase();
-      this.captions.language = i;
-      const s = captions.getTracks.call(this), n = captions.findTrack.call(this, [i]);
-      captions.set.call(this, s.indexOf(n), t);
-    }, getTracks(e = false) {
-      return Array.from((this.media || {}).textTracks || []).filter((t) => !this.isHTML5 || e || this.captions.meta.has(t)).filter((e2) => ["captions", "subtitles"].includes(e2.kind));
-    }, findTrack(e, t = false) {
-      const i = captions.getTracks.call(this), s = (e2) => Number((this.captions.meta.get(e2) || {}).default), n = Array.from(i).sort((e2, t2) => s(t2) - s(e2));
-      let r;
-      return e.every((e2) => (r = n.find((t2) => t2.language === e2), !r)), r || (t ? n[0] : void 0);
-    }, getCurrentTrack() {
-      return captions.getTracks.call(this)[this.currentTrack];
-    }, getLabel(e) {
-      let t = e;
-      return !is.track(t) && support.textTracks && this.captions.toggled && (t = captions.getCurrentTrack.call(this)), is.track(t) ? is.empty(t.label) ? is.empty(t.language) ? i18n.get("enabled", this.config) : e.language.toUpperCase() : t.label : i18n.get("disabled", this.config);
-    }, updateCues(e) {
-      if (!this.supported.ui)
-        return;
-      if (!is.element(this.elements.captions))
-        return void this.debug.warn("No captions element to render to");
-      if (!is.nullOrUndefined(e) && !Array.isArray(e))
-        return void this.debug.warn("updateCues: Invalid input", e);
-      let t = e;
-      if (!t) {
-        const e2 = captions.getCurrentTrack.call(this);
-        t = Array.from((e2 || {}).activeCues || []).map((e3) => e3.getCueAsHTML()).map(getHTML);
+          captions.toggle.call(this, false, t);
+      }, setLanguage(e, t = true) {
+        if (!is.string(e))
+          return void this.debug.warn("Invalid language argument", e);
+        const i = e.toLowerCase();
+        this.captions.language = i;
+        const s = captions.getTracks.call(this), n = captions.findTrack.call(this, [i]);
+        captions.set.call(this, s.indexOf(n), t);
+      }, getTracks(e = false) {
+        return Array.from((this.media || {}).textTracks || []).filter((t) => !this.isHTML5 || e || this.captions.meta.has(t)).filter((e2) => ["captions", "subtitles"].includes(e2.kind));
+      }, findTrack(e, t = false) {
+        const i = captions.getTracks.call(this), s = (e2) => Number((this.captions.meta.get(e2) || {}).default), n = Array.from(i).sort((e2, t2) => s(t2) - s(e2));
+        let r;
+        return e.every((e2) => (r = n.find((t2) => t2.language === e2), !r)), r || (t ? n[0] : void 0);
+      }, getCurrentTrack() {
+        return captions.getTracks.call(this)[this.currentTrack];
+      }, getLabel(e) {
+        let t = e;
+        return !is.track(t) && support.textTracks && this.captions.toggled && (t = captions.getCurrentTrack.call(this)), is.track(t) ? is.empty(t.label) ? is.empty(t.language) ? i18n.get("enabled", this.config) : e.language.toUpperCase() : t.label : i18n.get("disabled", this.config);
+      }, updateCues(e) {
+        if (!this.supported.ui)
+          return;
+        if (!is.element(this.elements.captions))
+          return void this.debug.warn("No captions element to render to");
+        if (!is.nullOrUndefined(e) && !Array.isArray(e))
+          return void this.debug.warn("updateCues: Invalid input", e);
+        let t = e;
+        if (!t) {
+          const e2 = captions.getCurrentTrack.call(this);
+          t = Array.from((e2 || {}).activeCues || []).map((e3) => e3.getCueAsHTML()).map(getHTML);
+        }
+        const i = t.map((e2) => e2.trim()).join("\n");
+        if (i !== this.elements.captions.innerHTML) {
+          emptyElement(this.elements.captions);
+          const e2 = createElement("span", getAttributesFromSelector(this.config.selectors.caption));
+          e2.innerHTML = i, this.elements.captions.appendChild(e2), triggerEvent.call(this, this.media, "cuechange");
+        }
       }
-      const i = t.map((e2) => e2.trim()).join("\n");
-      if (i !== this.elements.captions.innerHTML) {
-        emptyElement(this.elements.captions);
-        const e2 = createElement("span", getAttributesFromSelector(this.config.selectors.caption));
-        e2.innerHTML = i, this.elements.captions.appendChild(e2), triggerEvent.call(this, this.media, "cuechange");
-      }
-    } }, defaults = { enabled: true, title: "", debug: false, autoplay: false, autopause: true, playsinline: true, seekTime: 10, volume: 1, muted: false, duration: null, displayDuration: true, invertTime: true, toggleInvert: true, ratio: null, clickToPlay: true, hideControls: true, resetOnEnd: false, disableContextMenu: true, loadSprite: true, iconPrefix: "plyr", iconUrl: "https://cdn.plyr.io/3.7.3/plyr.svg", blankVideo: "https://cdn.plyr.io/static/blank.mp4", quality: { default: 576, options: [4320, 2880, 2160, 1440, 1080, 720, 576, 480, 360, 240], forced: false, onChange: null }, loop: { active: false }, speed: { selected: 1, options: [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 4] }, keyboard: { focused: true, global: false }, tooltips: { controls: false, seek: true }, captions: { active: false, language: "auto", update: false }, fullscreen: { enabled: true, fallback: true, iosNative: false }, storage: { enabled: true, key: "plyr" }, controls: ["play-large", "play", "progress", "current-time", "mute", "volume", "captions", "settings", "pip", "airplay", "fullscreen"], settings: ["captions", "quality", "speed"], i18n: { restart: "Restart", rewind: "Rewind {seektime}s", play: "Play", pause: "Pause", fastForward: "Forward {seektime}s", seek: "Seek", seekLabel: "{currentTime} of {duration}", played: "Played", buffered: "Buffered", currentTime: "Current time", duration: "Duration", volume: "Volume", mute: "Mute", unmute: "Unmute", enableCaptions: "Enable captions", disableCaptions: "Disable captions", download: "Download", enterFullscreen: "Enter fullscreen", exitFullscreen: "Exit fullscreen", frameTitle: "Player for {title}", captions: "Captions", settings: "Settings", pip: "PIP", menuBack: "Go back to previous menu", speed: "Speed", normal: "Normal", quality: "Quality", loop: "Loop", start: "Start", end: "End", all: "All", reset: "Reset", disabled: "Disabled", enabled: "Enabled", advertisement: "Ad", qualityBadge: { 2160: "4K", 1440: "HD", 1080: "HD", 720: "HD", 576: "SD", 480: "SD" } }, urls: { download: null, vimeo: { sdk: "https://player.vimeo.com/api/player.js", iframe: "https://player.vimeo.com/video/{0}?{1}", api: "https://vimeo.com/api/oembed.json?url={0}" }, youtube: { sdk: "https://www.youtube.com/iframe_api", api: "https://noembed.com/embed?url=https://www.youtube.com/watch?v={0}" }, googleIMA: { sdk: "https://imasdk.googleapis.com/js/sdkloader/ima3.js" } }, listeners: { seek: null, play: null, pause: null, restart: null, rewind: null, fastForward: null, mute: null, volume: null, captions: null, download: null, fullscreen: null, pip: null, airplay: null, speed: null, quality: null, loop: null, language: null }, events: ["ended", "progress", "stalled", "playing", "waiting", "canplay", "canplaythrough", "loadstart", "loadeddata", "loadedmetadata", "timeupdate", "volumechange", "play", "pause", "error", "seeking", "seeked", "emptied", "ratechange", "cuechange", "download", "enterfullscreen", "exitfullscreen", "captionsenabled", "captionsdisabled", "languagechange", "controlshidden", "controlsshown", "ready", "statechange", "qualitychange", "adsloaded", "adscontentpause", "adscontentresume", "adstarted", "adsmidpoint", "adscomplete", "adsallcomplete", "adsimpression", "adsclick"], selectors: { editable: "input, textarea, select, [contenteditable]", container: ".plyr", controls: { container: null, wrapper: ".plyr__controls" }, labels: "[data-plyr]", buttons: { play: '[data-plyr="play"]', pause: '[data-plyr="pause"]', restart: '[data-plyr="restart"]', rewind: '[data-plyr="rewind"]', fastForward: '[data-plyr="fast-forward"]', mute: '[data-plyr="mute"]', captions: '[data-plyr="captions"]', download: '[data-plyr="download"]', fullscreen: '[data-plyr="fullscreen"]', pip: '[data-plyr="pip"]', airplay: '[data-plyr="airplay"]', settings: '[data-plyr="settings"]', loop: '[data-plyr="loop"]' }, inputs: { seek: '[data-plyr="seek"]', volume: '[data-plyr="volume"]', speed: '[data-plyr="speed"]', language: '[data-plyr="language"]', quality: '[data-plyr="quality"]' }, display: { currentTime: ".plyr__time--current", duration: ".plyr__time--duration", buffer: ".plyr__progress__buffer", loop: ".plyr__progress__loop", volume: ".plyr__volume--display" }, progress: ".plyr__progress", captions: ".plyr__captions", caption: ".plyr__caption" }, classNames: { type: "plyr--{0}", provider: "plyr--{0}", video: "plyr__video-wrapper", embed: "plyr__video-embed", videoFixedRatio: "plyr__video-wrapper--fixed-ratio", embedContainer: "plyr__video-embed__container", poster: "plyr__poster", posterEnabled: "plyr__poster-enabled", ads: "plyr__ads", control: "plyr__control", controlPressed: "plyr__control--pressed", playing: "plyr--playing", paused: "plyr--paused", stopped: "plyr--stopped", loading: "plyr--loading", hover: "plyr--hover", tooltip: "plyr__tooltip", cues: "plyr__cues", marker: "plyr__progress__marker", hidden: "plyr__sr-only", hideControls: "plyr--hide-controls", isIos: "plyr--is-ios", isTouch: "plyr--is-touch", uiSupported: "plyr--full-ui", noTransition: "plyr--no-transition", display: { time: "plyr__time" }, menu: { value: "plyr__menu__value", badge: "plyr__badge", open: "plyr--menu-open" }, captions: { enabled: "plyr--captions-enabled", active: "plyr--captions-active" }, fullscreen: { enabled: "plyr--fullscreen-enabled", fallback: "plyr--fullscreen-fallback" }, pip: { supported: "plyr--pip-supported", active: "plyr--pip-active" }, airplay: { supported: "plyr--airplay-supported", active: "plyr--airplay-active" }, tabFocus: "plyr__tab-focus", previewThumbnails: { thumbContainer: "plyr__preview-thumb", thumbContainerShown: "plyr__preview-thumb--is-shown", imageContainer: "plyr__preview-thumb__image-container", timeContainer: "plyr__preview-thumb__time-container", scrubbingContainer: "plyr__preview-scrubbing", scrubbingContainerShown: "plyr__preview-scrubbing--is-shown" } }, attributes: { embed: { provider: "data-plyr-provider", id: "data-plyr-embed-id", hash: "data-plyr-embed-hash" } }, ads: { enabled: false, publisherId: "", tagUrl: "" }, previewThumbnails: { enabled: false, src: "" }, vimeo: { byline: false, portrait: false, title: false, speed: true, transparent: false, customControls: true, referrerPolicy: null, premium: false }, youtube: { rel: 0, showinfo: 0, iv_load_policy: 3, modestbranding: 1, customControls: true, noCookie: false }, mediaMetadata: { title: "", artist: "", album: "", artwork: [] }, markers: { enabled: false, points: [] } }, pip = { active: "picture-in-picture", inactive: "inline" }, providers = { html5: "html5", youtube: "youtube", vimeo: "vimeo" }, types = { audio: "audio", video: "video" };
+    }, defaults = { enabled: true, title: "", debug: false, autoplay: false, autopause: true, playsinline: true, seekTime: 10, volume: 1, muted: false, duration: null, displayDuration: true, invertTime: true, toggleInvert: true, ratio: null, clickToPlay: true, hideControls: true, resetOnEnd: false, disableContextMenu: true, loadSprite: true, iconPrefix: "plyr", iconUrl: "https://cdn.plyr.io/3.7.3/plyr.svg", blankVideo: "https://cdn.plyr.io/static/blank.mp4", quality: { default: 576, options: [4320, 2880, 2160, 1440, 1080, 720, 576, 480, 360, 240], forced: false, onChange: null }, loop: { active: false }, speed: { selected: 1, options: [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 4] }, keyboard: { focused: true, global: false }, tooltips: { controls: false, seek: true }, captions: { active: false, language: "auto", update: false }, fullscreen: { enabled: true, fallback: true, iosNative: false }, storage: { enabled: true, key: "plyr" }, controls: ["play-large", "play", "progress", "current-time", "mute", "volume", "captions", "settings", "pip", "airplay", "fullscreen"], settings: ["captions", "quality", "speed"], i18n: { restart: "Restart", rewind: "Rewind {seektime}s", play: "Play", pause: "Pause", fastForward: "Forward {seektime}s", seek: "Seek", seekLabel: "{currentTime} of {duration}", played: "Played", buffered: "Buffered", currentTime: "Current time", duration: "Duration", volume: "Volume", mute: "Mute", unmute: "Unmute", enableCaptions: "Enable captions", disableCaptions: "Disable captions", download: "Download", enterFullscreen: "Enter fullscreen", exitFullscreen: "Exit fullscreen", frameTitle: "Player for {title}", captions: "Captions", settings: "Settings", pip: "PIP", menuBack: "Go back to previous menu", speed: "Speed", normal: "Normal", quality: "Quality", loop: "Loop", start: "Start", end: "End", all: "All", reset: "Reset", disabled: "Disabled", enabled: "Enabled", advertisement: "Ad", qualityBadge: { 2160: "4K", 1440: "HD", 1080: "HD", 720: "HD", 576: "SD", 480: "SD" } }, urls: { download: null, vimeo: { sdk: "https://player.vimeo.com/api/player.js", iframe: "https://player.vimeo.com/video/{0}?{1}", api: "https://vimeo.com/api/oembed.json?url={0}" }, youtube: { sdk: "https://www.youtube.com/iframe_api", api: "https://noembed.com/embed?url=https://www.youtube.com/watch?v={0}" }, googleIMA: { sdk: "https://imasdk.googleapis.com/js/sdkloader/ima3.js" } }, listeners: { seek: null, play: null, pause: null, restart: null, rewind: null, fastForward: null, mute: null, volume: null, captions: null, download: null, fullscreen: null, pip: null, airplay: null, speed: null, quality: null, loop: null, language: null }, events: ["ended", "progress", "stalled", "playing", "waiting", "canplay", "canplaythrough", "loadstart", "loadeddata", "loadedmetadata", "timeupdate", "volumechange", "play", "pause", "error", "seeking", "seeked", "emptied", "ratechange", "cuechange", "download", "enterfullscreen", "exitfullscreen", "captionsenabled", "captionsdisabled", "languagechange", "controlshidden", "controlsshown", "ready", "statechange", "qualitychange", "adsloaded", "adscontentpause", "adscontentresume", "adstarted", "adsmidpoint", "adscomplete", "adsallcomplete", "adsimpression", "adsclick"], selectors: { editable: "input, textarea, select, [contenteditable]", container: ".plyr", controls: { container: null, wrapper: ".plyr__controls" }, labels: "[data-plyr]", buttons: { play: '[data-plyr="play"]', pause: '[data-plyr="pause"]', restart: '[data-plyr="restart"]', rewind: '[data-plyr="rewind"]', fastForward: '[data-plyr="fast-forward"]', mute: '[data-plyr="mute"]', captions: '[data-plyr="captions"]', download: '[data-plyr="download"]', fullscreen: '[data-plyr="fullscreen"]', pip: '[data-plyr="pip"]', airplay: '[data-plyr="airplay"]', settings: '[data-plyr="settings"]', loop: '[data-plyr="loop"]' }, inputs: { seek: '[data-plyr="seek"]', volume: '[data-plyr="volume"]', speed: '[data-plyr="speed"]', language: '[data-plyr="language"]', quality: '[data-plyr="quality"]' }, display: { currentTime: ".plyr__time--current", duration: ".plyr__time--duration", buffer: ".plyr__progress__buffer", loop: ".plyr__progress__loop", volume: ".plyr__volume--display" }, progress: ".plyr__progress", captions: ".plyr__captions", caption: ".plyr__caption" }, classNames: { type: "plyr--{0}", provider: "plyr--{0}", video: "plyr__video-wrapper", embed: "plyr__video-embed", videoFixedRatio: "plyr__video-wrapper--fixed-ratio", embedContainer: "plyr__video-embed__container", poster: "plyr__poster", posterEnabled: "plyr__poster-enabled", ads: "plyr__ads", control: "plyr__control", controlPressed: "plyr__control--pressed", playing: "plyr--playing", paused: "plyr--paused", stopped: "plyr--stopped", loading: "plyr--loading", hover: "plyr--hover", tooltip: "plyr__tooltip", cues: "plyr__cues", marker: "plyr__progress__marker", hidden: "plyr__sr-only", hideControls: "plyr--hide-controls", isIos: "plyr--is-ios", isTouch: "plyr--is-touch", uiSupported: "plyr--full-ui", noTransition: "plyr--no-transition", display: { time: "plyr__time" }, menu: { value: "plyr__menu__value", badge: "plyr__badge", open: "plyr--menu-open" }, captions: { enabled: "plyr--captions-enabled", active: "plyr--captions-active" }, fullscreen: { enabled: "plyr--fullscreen-enabled", fallback: "plyr--fullscreen-fallback" }, pip: { supported: "plyr--pip-supported", active: "plyr--pip-active" }, airplay: { supported: "plyr--airplay-supported", active: "plyr--airplay-active" }, tabFocus: "plyr__tab-focus", previewThumbnails: { thumbContainer: "plyr__preview-thumb", thumbContainerShown: "plyr__preview-thumb--is-shown", imageContainer: "plyr__preview-thumb__image-container", timeContainer: "plyr__preview-thumb__time-container", scrubbingContainer: "plyr__preview-scrubbing", scrubbingContainerShown: "plyr__preview-scrubbing--is-shown" } }, attributes: { embed: { provider: "data-plyr-provider", id: "data-plyr-embed-id", hash: "data-plyr-embed-hash" } }, ads: { enabled: false, publisherId: "", tagUrl: "" }, previewThumbnails: { enabled: false, src: "" }, vimeo: { byline: false, portrait: false, title: false, speed: true, transparent: false, customControls: true, referrerPolicy: null, premium: false }, youtube: { rel: 0, showinfo: 0, iv_load_policy: 3, modestbranding: 1, customControls: true, noCookie: false }, mediaMetadata: { title: "", artist: "", album: "", artwork: [] }, markers: { enabled: false, points: [] } }, pip = { active: "picture-in-picture", inactive: "inline" }, providers = { html5: "html5", youtube: "youtube", vimeo: "vimeo" }, types = { audio: "audio", video: "video" };
     function getProviderByUrl(e) {
       return /^(https?:\/\/)?(www\.)?(youtube\.com|youtube-nocookie\.com|youtu\.?be)\/.+$/.test(e) ? providers.youtube : /^https?:\/\/player.vimeo.com\/video\/\d{0,9}(?=\b|\/)/.test(e) ? providers.vimeo : null;
     }
@@ -14078,56 +14108,58 @@ var require_app2 = __commonJS({
         Object.assign(n, { onload: r, onerror: r, src: e });
       });
     }
-    const ui = { addStyleHook() {
-      toggleClass(this.elements.container, this.config.selectors.container.replace(".", ""), true), toggleClass(this.elements.container, this.config.classNames.uiSupported, this.supported.ui);
-    }, toggleNativeControls(e = false) {
-      e && this.isHTML5 ? this.media.setAttribute("controls", "") : this.media.removeAttribute("controls");
-    }, build() {
-      if (this.listeners.media(), !this.supported.ui)
-        return this.debug.warn(`Basic support only for ${this.provider} ${this.type}`), void ui.toggleNativeControls.call(this, true);
-      is.element(this.elements.controls) || (controls.inject.call(this), this.listeners.controls()), ui.toggleNativeControls.call(this), this.isHTML5 && captions.setup.call(this), this.volume = null, this.muted = null, this.loop = null, this.quality = null, this.speed = null, controls.updateVolume.call(this), controls.timeUpdate.call(this), controls.durationUpdate.call(this), ui.checkPlaying.call(this), toggleClass(this.elements.container, this.config.classNames.pip.supported, support.pip && this.isHTML5 && this.isVideo), toggleClass(this.elements.container, this.config.classNames.airplay.supported, support.airplay && this.isHTML5), toggleClass(this.elements.container, this.config.classNames.isIos, browser.isIos), toggleClass(this.elements.container, this.config.classNames.isTouch, this.touch), this.ready = true, setTimeout(() => {
-        triggerEvent.call(this, this.media, "ready");
-      }, 0), ui.setTitle.call(this), this.poster && ui.setPoster.call(this, this.poster, false).catch(() => {
-      }), this.config.duration && controls.durationUpdate.call(this), this.config.mediaMetadata && controls.setMediaMetadata.call(this);
-    }, setTitle() {
-      let e = i18n.get("play", this.config);
-      if (is.string(this.config.title) && !is.empty(this.config.title) && (e += `, ${this.config.title}`), Array.from(this.elements.buttons.play || []).forEach((t) => {
-        t.setAttribute("aria-label", e);
-      }), this.isEmbed) {
-        const e2 = getElement.call(this, "iframe");
-        if (!is.element(e2))
-          return;
-        const t = is.empty(this.config.title) ? "video" : this.config.title, i = i18n.get("frameTitle", this.config);
-        e2.setAttribute("title", i.replace("{title}", t));
+    const ui = {
+      addStyleHook() {
+        toggleClass(this.elements.container, this.config.selectors.container.replace(".", ""), true), toggleClass(this.elements.container, this.config.classNames.uiSupported, this.supported.ui);
+      }, toggleNativeControls(e = false) {
+        e && this.isHTML5 ? this.media.setAttribute("controls", "") : this.media.removeAttribute("controls");
+      }, build() {
+        if (this.listeners.media(), !this.supported.ui)
+          return this.debug.warn(`Basic support only for ${this.provider} ${this.type}`), void ui.toggleNativeControls.call(this, true);
+        is.element(this.elements.controls) || (controls.inject.call(this), this.listeners.controls()), ui.toggleNativeControls.call(this), this.isHTML5 && captions.setup.call(this), this.volume = null, this.muted = null, this.loop = null, this.quality = null, this.speed = null, controls.updateVolume.call(this), controls.timeUpdate.call(this), controls.durationUpdate.call(this), ui.checkPlaying.call(this), toggleClass(this.elements.container, this.config.classNames.pip.supported, support.pip && this.isHTML5 && this.isVideo), toggleClass(this.elements.container, this.config.classNames.airplay.supported, support.airplay && this.isHTML5), toggleClass(this.elements.container, this.config.classNames.isIos, browser.isIos), toggleClass(this.elements.container, this.config.classNames.isTouch, this.touch), this.ready = true, setTimeout(() => {
+          triggerEvent.call(this, this.media, "ready");
+        }, 0), ui.setTitle.call(this), this.poster && ui.setPoster.call(this, this.poster, false).catch(() => {
+        }), this.config.duration && controls.durationUpdate.call(this), this.config.mediaMetadata && controls.setMediaMetadata.call(this);
+      }, setTitle() {
+        let e = i18n.get("play", this.config);
+        if (is.string(this.config.title) && !is.empty(this.config.title) && (e += `, ${this.config.title}`), Array.from(this.elements.buttons.play || []).forEach((t) => {
+          t.setAttribute("aria-label", e);
+        }), this.isEmbed) {
+          const e2 = getElement.call(this, "iframe");
+          if (!is.element(e2))
+            return;
+          const t = is.empty(this.config.title) ? "video" : this.config.title, i = i18n.get("frameTitle", this.config);
+          e2.setAttribute("title", i.replace("{title}", t));
+        }
+      }, togglePoster(e) {
+        toggleClass(this.elements.container, this.config.classNames.posterEnabled, e);
+      }, setPoster(e, t = true) {
+        return t && this.poster ? Promise.reject(new Error("Poster already set")) : (this.media.setAttribute("data-poster", e), this.elements.poster.removeAttribute("hidden"), ready.call(this).then(() => loadImage(e)).catch((t2) => {
+          throw e === this.poster && ui.togglePoster.call(this, false), t2;
+        }).then(() => {
+          if (e !== this.poster)
+            throw new Error("setPoster cancelled by later call to setPoster");
+        }).then(() => (Object.assign(this.elements.poster.style, { backgroundImage: `url('${e}')`, backgroundSize: "" }), ui.togglePoster.call(this, true), e)));
+      }, checkPlaying(e) {
+        toggleClass(this.elements.container, this.config.classNames.playing, this.playing), toggleClass(this.elements.container, this.config.classNames.paused, this.paused), toggleClass(this.elements.container, this.config.classNames.stopped, this.stopped), Array.from(this.elements.buttons.play || []).forEach((e2) => {
+          Object.assign(e2, { pressed: this.playing }), e2.setAttribute("aria-label", i18n.get(this.playing ? "pause" : "play", this.config));
+        }), is.event(e) && "timeupdate" === e.type || ui.toggleControls.call(this);
+      }, checkLoading(e) {
+        this.loading = ["stalled", "waiting"].includes(e.type), clearTimeout(this.timers.loading), this.timers.loading = setTimeout(() => {
+          toggleClass(this.elements.container, this.config.classNames.loading, this.loading), ui.toggleControls.call(this);
+        }, this.loading ? 250 : 0);
+      }, toggleControls(e) {
+        const { controls: t } = this.elements;
+        if (t && this.config.hideControls) {
+          const i = this.touch && this.lastSeekTime + 2e3 > Date.now();
+          this.toggleControls(Boolean(e || this.loading || this.paused || t.pressed || t.hover || i));
+        }
+      }, migrateStyles() {
+        Object.values({ ...this.media.style }).filter((e) => !is.empty(e) && is.string(e) && e.startsWith("--plyr")).forEach((e) => {
+          this.elements.container.style.setProperty(e, this.media.style.getPropertyValue(e)), this.media.style.removeProperty(e);
+        }), is.empty(this.media.style) && this.media.removeAttribute("style");
       }
-    }, togglePoster(e) {
-      toggleClass(this.elements.container, this.config.classNames.posterEnabled, e);
-    }, setPoster(e, t = true) {
-      return t && this.poster ? Promise.reject(new Error("Poster already set")) : (this.media.setAttribute("data-poster", e), this.elements.poster.removeAttribute("hidden"), ready.call(this).then(() => loadImage(e)).catch((t2) => {
-        throw e === this.poster && ui.togglePoster.call(this, false), t2;
-      }).then(() => {
-        if (e !== this.poster)
-          throw new Error("setPoster cancelled by later call to setPoster");
-      }).then(() => (Object.assign(this.elements.poster.style, { backgroundImage: `url('${e}')`, backgroundSize: "" }), ui.togglePoster.call(this, true), e)));
-    }, checkPlaying(e) {
-      toggleClass(this.elements.container, this.config.classNames.playing, this.playing), toggleClass(this.elements.container, this.config.classNames.paused, this.paused), toggleClass(this.elements.container, this.config.classNames.stopped, this.stopped), Array.from(this.elements.buttons.play || []).forEach((e2) => {
-        Object.assign(e2, { pressed: this.playing }), e2.setAttribute("aria-label", i18n.get(this.playing ? "pause" : "play", this.config));
-      }), is.event(e) && "timeupdate" === e.type || ui.toggleControls.call(this);
-    }, checkLoading(e) {
-      this.loading = ["stalled", "waiting"].includes(e.type), clearTimeout(this.timers.loading), this.timers.loading = setTimeout(() => {
-        toggleClass(this.elements.container, this.config.classNames.loading, this.loading), ui.toggleControls.call(this);
-      }, this.loading ? 250 : 0);
-    }, toggleControls(e) {
-      const { controls: t } = this.elements;
-      if (t && this.config.hideControls) {
-        const i = this.touch && this.lastSeekTime + 2e3 > Date.now();
-        this.toggleControls(Boolean(e || this.loading || this.paused || t.pressed || t.hover || i));
-      }
-    }, migrateStyles() {
-      Object.values({ ...this.media.style }).filter((e) => !is.empty(e) && is.string(e) && e.startsWith("--plyr")).forEach((e) => {
-        this.elements.container.style.setProperty(e, this.media.style.getPropertyValue(e)), this.media.style.removeProperty(e);
-      }), is.empty(this.media.style) && this.media.removeAttribute("style");
-    } };
+    };
     class Listeners {
       constructor(e) {
         _defineProperty$1(this, "firstTouch", () => {
@@ -14367,23 +14399,23 @@ var require_app2 = __commonJS({
     function createCommonjsModule(e, t) {
       return e(t = { exports: {} }, t.exports), t.exports;
     }
-    var loadjs_umd = createCommonjsModule(function(e, t) {
-      e.exports = function() {
-        var e2 = function() {
+    var loadjs_umd = createCommonjsModule(function (e, t) {
+      e.exports = function () {
+        var e2 = function () {
         }, t2 = {}, i = {}, s = {};
         function n(e3, t3) {
           e3 = e3.push ? e3 : [e3];
           var n2, r2, a2, o2 = [], l2 = e3.length, c2 = l2;
-          for (n2 = function(e4, i2) {
+          for (n2 = function (e4, i2) {
             i2.length && o2.push(e4), --c2 || t3(o2);
-          }; l2--; )
+          }; l2--;)
             r2 = e3[l2], (a2 = i[r2]) ? n2(r2, a2) : (s[r2] = s[r2] || []).push(n2);
         }
         function r(e3, t3) {
           if (e3) {
             var n2 = s[e3];
             if (i[e3] = t3, n2)
-              for (; n2.length; )
+              for (; n2.length;)
                 n2[0](e3, t3), n2.splice(0, 1);
           }
         }
@@ -14392,7 +14424,7 @@ var require_app2 = __commonJS({
         }
         function o(t3, i2, s2, n2) {
           var r2, a2, l2 = document, c2 = s2.async, u = (s2.numRetries || 0) + 1, d = s2.before || e2, h = t3.replace(/[\?|#].*$/, ""), m = t3.replace(/^(css|img)!/, "");
-          n2 = n2 || 0, /(^css!|\.css$)/.test(h) ? ((a2 = l2.createElement("link")).rel = "stylesheet", a2.href = m, (r2 = "hideFocus" in a2) && a2.relList && (r2 = 0, a2.rel = "preload", a2.as = "style")) : /(^img!|\.(png|gif|jpg|svg|webp)$)/.test(h) ? (a2 = l2.createElement("img")).src = m : ((a2 = l2.createElement("script")).src = t3, a2.async = void 0 === c2 || c2), a2.onload = a2.onerror = a2.onbeforeload = function(e3) {
+          n2 = n2 || 0, /(^css!|\.css$)/.test(h) ? ((a2 = l2.createElement("link")).rel = "stylesheet", a2.href = m, (r2 = "hideFocus" in a2) && a2.relList && (r2 = 0, a2.rel = "preload", a2.as = "style")) : /(^img!|\.(png|gif|jpg|svg|webp)$)/.test(h) ? (a2 = l2.createElement("img")).src = m : ((a2 = l2.createElement("script")).src = t3, a2.async = void 0 === c2 || c2), a2.onload = a2.onerror = a2.onbeforeload = function (e3) {
             var l3 = e3.type[0];
             if (r2)
               try {
@@ -14410,7 +14442,7 @@ var require_app2 = __commonJS({
         }
         function l(e3, t3, i2) {
           var s2, n2, r2 = (e3 = e3.push ? e3 : [e3]).length, a2 = r2, l2 = [];
-          for (s2 = function(e4, i3, s3) {
+          for (s2 = function (e4, i3, s3) {
             if ("e" == i3 && l2.push(e4), "b" == i3) {
               if (!s3)
                 return;
@@ -14428,7 +14460,7 @@ var require_app2 = __commonJS({
             t2[n2] = true;
           }
           function c2(t3, i3) {
-            l(e3, function(e4) {
+            l(e3, function (e4) {
               a(o2, e4), t3 && a({ success: t3, error: i3 }, e4), r(n2, e4);
             }, o2);
           }
@@ -14436,15 +14468,15 @@ var require_app2 = __commonJS({
             return new Promise(c2);
           c2();
         }
-        return c.ready = function(e3, t3) {
-          return n(e3, function(e4) {
+        return c.ready = function (e3, t3) {
+          return n(e3, function (e4) {
             a(t3, e4);
           }), c;
-        }, c.done = function(e3) {
+        }, c.done = function (e3) {
           r(e3, []);
-        }, c.reset = function() {
+        }, c.reset = function () {
           t2 = {}, i = {}, s = {};
-        }, c.isDefined = function(e3) {
+        }, c.isDefined = function (e3) {
           return e3 in t2;
         }, c;
       }();
@@ -14468,113 +14500,125 @@ var require_app2 = __commonJS({
     function assurePlaybackState$1(e) {
       e && !this.embed.hasPlayed && (this.embed.hasPlayed = true), this.media.paused === e && (this.media.paused = !e, triggerEvent.call(this, this.media, e ? "play" : "pause"));
     }
-    const vimeo = { setup() {
-      const e = this;
-      toggleClass(e.elements.wrapper, e.config.classNames.embed, true), e.options.speed = e.config.speed.options, setAspectRatio.call(e), is.object(window.Vimeo) ? vimeo.ready.call(e) : loadScript(e.config.urls.vimeo.sdk).then(() => {
-        vimeo.ready.call(e);
-      }).catch((t) => {
-        e.debug.warn("Vimeo SDK (player.js) failed to load", t);
-      });
-    }, ready() {
-      const e = this, t = e.config.vimeo, { premium: i, referrerPolicy: s, ...n } = t;
-      let r = e.media.getAttribute("src"), a = "";
-      is.empty(r) ? (r = e.media.getAttribute(e.config.attributes.embed.id), a = e.media.getAttribute(e.config.attributes.embed.hash)) : a = parseHash(r);
-      const o = a ? { h: a } : {};
-      i && Object.assign(n, { controls: false, sidedock: false });
-      const l = buildUrlParams({ loop: e.config.loop.active, autoplay: e.autoplay, muted: e.muted, gesture: "media", playsinline: !this.config.fullscreen.iosNative, ...o, ...n }), c = parseId$1(r), u = createElement("iframe"), d = format(e.config.urls.vimeo.iframe, c, l);
-      if (u.setAttribute("src", d), u.setAttribute("allowfullscreen", ""), u.setAttribute("allow", ["autoplay", "fullscreen", "picture-in-picture", "encrypted-media", "accelerometer", "gyroscope"].join("; ")), is.empty(s) || u.setAttribute("referrerPolicy", s), i || !t.customControls)
-        u.setAttribute("data-poster", e.poster), e.media = replaceElement(u, e.media);
-      else {
-        const t2 = createElement("div", { class: e.config.classNames.embedContainer, "data-poster": e.poster });
-        t2.appendChild(u), e.media = replaceElement(t2, e.media);
-      }
-      t.customControls || fetch$1(format(e.config.urls.vimeo.api, d)).then((t2) => {
-        !is.empty(t2) && t2.thumbnail_url && ui.setPoster.call(e, t2.thumbnail_url).catch(() => {
+    const vimeo = {
+      setup() {
+        const e = this;
+        toggleClass(e.elements.wrapper, e.config.classNames.embed, true), e.options.speed = e.config.speed.options, setAspectRatio.call(e), is.object(window.Vimeo) ? vimeo.ready.call(e) : loadScript(e.config.urls.vimeo.sdk).then(() => {
+          vimeo.ready.call(e);
+        }).catch((t) => {
+          e.debug.warn("Vimeo SDK (player.js) failed to load", t);
         });
-      }), e.embed = new window.Vimeo.Player(u, { autopause: e.config.autopause, muted: e.muted }), e.media.paused = true, e.media.currentTime = 0, e.supported.ui && e.embed.disableTextTrack(), e.media.play = () => (assurePlaybackState$1.call(e, true), e.embed.play()), e.media.pause = () => (assurePlaybackState$1.call(e, false), e.embed.pause()), e.media.stop = () => {
-        e.pause(), e.currentTime = 0;
-      };
-      let { currentTime: h } = e.media;
-      Object.defineProperty(e.media, "currentTime", { get: () => h, set(t2) {
-        const { embed: i2, media: s2, paused: n2, volume: r2 } = e, a2 = n2 && !i2.hasPlayed;
-        s2.seeking = true, triggerEvent.call(e, s2, "seeking"), Promise.resolve(a2 && i2.setVolume(0)).then(() => i2.setCurrentTime(t2)).then(() => a2 && i2.pause()).then(() => a2 && i2.setVolume(r2)).catch(() => {
-        });
-      } });
-      let m = e.config.speed.selected;
-      Object.defineProperty(e.media, "playbackRate", { get: () => m, set(t2) {
-        e.embed.setPlaybackRate(t2).then(() => {
-          m = t2, triggerEvent.call(e, e.media, "ratechange");
-        }).catch(() => {
-          e.options.speed = [1];
-        });
-      } });
-      let { volume: p } = e.config;
-      Object.defineProperty(e.media, "volume", { get: () => p, set(t2) {
-        e.embed.setVolume(t2).then(() => {
-          p = t2, triggerEvent.call(e, e.media, "volumechange");
-        });
-      } });
-      let { muted: g } = e.config;
-      Object.defineProperty(e.media, "muted", { get: () => g, set(t2) {
-        const i2 = !!is.boolean(t2) && t2;
-        e.embed.setVolume(i2 ? 0 : e.config.volume).then(() => {
-          g = i2, triggerEvent.call(e, e.media, "volumechange");
-        });
-      } });
-      let f, { loop: y } = e.config;
-      Object.defineProperty(e.media, "loop", { get: () => y, set(t2) {
-        const i2 = is.boolean(t2) ? t2 : e.config.loop.active;
-        e.embed.setLoop(i2).then(() => {
-          y = i2;
-        });
-      } }), e.embed.getVideoUrl().then((t2) => {
-        f = t2, controls.setDownloadUrl.call(e);
-      }).catch((e2) => {
-        this.debug.warn(e2);
-      }), Object.defineProperty(e.media, "currentSrc", { get: () => f }), Object.defineProperty(e.media, "ended", { get: () => e.currentTime === e.duration }), Promise.all([e.embed.getVideoWidth(), e.embed.getVideoHeight()]).then((t2) => {
-        const [i2, s2] = t2;
-        e.embed.ratio = roundAspectRatio(i2, s2), setAspectRatio.call(this);
-      }), e.embed.setAutopause(e.config.autopause).then((t2) => {
-        e.config.autopause = t2;
-      }), e.embed.getVideoTitle().then((t2) => {
-        e.config.title = t2, ui.setTitle.call(this);
-      }), e.embed.getCurrentTime().then((t2) => {
-        h = t2, triggerEvent.call(e, e.media, "timeupdate");
-      }), e.embed.getDuration().then((t2) => {
-        e.media.duration = t2, triggerEvent.call(e, e.media, "durationchange");
-      }), e.embed.getTextTracks().then((t2) => {
-        e.media.textTracks = t2, captions.setup.call(e);
-      }), e.embed.on("cuechange", ({ cues: t2 = [] }) => {
-        const i2 = t2.map((e2) => stripHTML(e2.text));
-        captions.updateCues.call(e, i2);
-      }), e.embed.on("loaded", () => {
-        if (e.embed.getPaused().then((t2) => {
-          assurePlaybackState$1.call(e, !t2), t2 || triggerEvent.call(e, e.media, "playing");
-        }), is.element(e.embed.element) && e.supported.ui) {
-          e.embed.element.setAttribute("tabindex", -1);
+      }, ready() {
+        const e = this, t = e.config.vimeo, { premium: i, referrerPolicy: s, ...n } = t;
+        let r = e.media.getAttribute("src"), a = "";
+        is.empty(r) ? (r = e.media.getAttribute(e.config.attributes.embed.id), a = e.media.getAttribute(e.config.attributes.embed.hash)) : a = parseHash(r);
+        const o = a ? { h: a } : {};
+        i && Object.assign(n, { controls: false, sidedock: false });
+        const l = buildUrlParams({ loop: e.config.loop.active, autoplay: e.autoplay, muted: e.muted, gesture: "media", playsinline: !this.config.fullscreen.iosNative, ...o, ...n }), c = parseId$1(r), u = createElement("iframe"), d = format(e.config.urls.vimeo.iframe, c, l);
+        if (u.setAttribute("src", d), u.setAttribute("allowfullscreen", ""), u.setAttribute("allow", ["autoplay", "fullscreen", "picture-in-picture", "encrypted-media", "accelerometer", "gyroscope"].join("; ")), is.empty(s) || u.setAttribute("referrerPolicy", s), i || !t.customControls)
+          u.setAttribute("data-poster", e.poster), e.media = replaceElement(u, e.media);
+        else {
+          const t2 = createElement("div", { class: e.config.classNames.embedContainer, "data-poster": e.poster });
+          t2.appendChild(u), e.media = replaceElement(t2, e.media);
         }
-      }), e.embed.on("bufferstart", () => {
-        triggerEvent.call(e, e.media, "waiting");
-      }), e.embed.on("bufferend", () => {
-        triggerEvent.call(e, e.media, "playing");
-      }), e.embed.on("play", () => {
-        assurePlaybackState$1.call(e, true), triggerEvent.call(e, e.media, "playing");
-      }), e.embed.on("pause", () => {
-        assurePlaybackState$1.call(e, false);
-      }), e.embed.on("timeupdate", (t2) => {
-        e.media.seeking = false, h = t2.seconds, triggerEvent.call(e, e.media, "timeupdate");
-      }), e.embed.on("progress", (t2) => {
-        e.media.buffered = t2.percent, triggerEvent.call(e, e.media, "progress"), 1 === parseInt(t2.percent, 10) && triggerEvent.call(e, e.media, "canplaythrough"), e.embed.getDuration().then((t3) => {
-          t3 !== e.media.duration && (e.media.duration = t3, triggerEvent.call(e, e.media, "durationchange"));
+        t.customControls || fetch$1(format(e.config.urls.vimeo.api, d)).then((t2) => {
+          !is.empty(t2) && t2.thumbnail_url && ui.setPoster.call(e, t2.thumbnail_url).catch(() => {
+          });
+        }), e.embed = new window.Vimeo.Player(u, { autopause: e.config.autopause, muted: e.muted }), e.media.paused = true, e.media.currentTime = 0, e.supported.ui && e.embed.disableTextTrack(), e.media.play = () => (assurePlaybackState$1.call(e, true), e.embed.play()), e.media.pause = () => (assurePlaybackState$1.call(e, false), e.embed.pause()), e.media.stop = () => {
+          e.pause(), e.currentTime = 0;
+        };
+        let { currentTime: h } = e.media;
+        Object.defineProperty(e.media, "currentTime", {
+          get: () => h, set(t2) {
+            const { embed: i2, media: s2, paused: n2, volume: r2 } = e, a2 = n2 && !i2.hasPlayed;
+            s2.seeking = true, triggerEvent.call(e, s2, "seeking"), Promise.resolve(a2 && i2.setVolume(0)).then(() => i2.setCurrentTime(t2)).then(() => a2 && i2.pause()).then(() => a2 && i2.setVolume(r2)).catch(() => {
+            });
+          }
         });
-      }), e.embed.on("seeked", () => {
-        e.media.seeking = false, triggerEvent.call(e, e.media, "seeked");
-      }), e.embed.on("ended", () => {
-        e.media.paused = true, triggerEvent.call(e, e.media, "ended");
-      }), e.embed.on("error", (t2) => {
-        e.media.error = t2, triggerEvent.call(e, e.media, "error");
-      }), t.customControls && setTimeout(() => ui.build.call(e), 0);
-    } };
+        let m = e.config.speed.selected;
+        Object.defineProperty(e.media, "playbackRate", {
+          get: () => m, set(t2) {
+            e.embed.setPlaybackRate(t2).then(() => {
+              m = t2, triggerEvent.call(e, e.media, "ratechange");
+            }).catch(() => {
+              e.options.speed = [1];
+            });
+          }
+        });
+        let { volume: p } = e.config;
+        Object.defineProperty(e.media, "volume", {
+          get: () => p, set(t2) {
+            e.embed.setVolume(t2).then(() => {
+              p = t2, triggerEvent.call(e, e.media, "volumechange");
+            });
+          }
+        });
+        let { muted: g } = e.config;
+        Object.defineProperty(e.media, "muted", {
+          get: () => g, set(t2) {
+            const i2 = !!is.boolean(t2) && t2;
+            e.embed.setVolume(i2 ? 0 : e.config.volume).then(() => {
+              g = i2, triggerEvent.call(e, e.media, "volumechange");
+            });
+          }
+        });
+        let f, { loop: y } = e.config;
+        Object.defineProperty(e.media, "loop", {
+          get: () => y, set(t2) {
+            const i2 = is.boolean(t2) ? t2 : e.config.loop.active;
+            e.embed.setLoop(i2).then(() => {
+              y = i2;
+            });
+          }
+        }), e.embed.getVideoUrl().then((t2) => {
+          f = t2, controls.setDownloadUrl.call(e);
+        }).catch((e2) => {
+          this.debug.warn(e2);
+        }), Object.defineProperty(e.media, "currentSrc", { get: () => f }), Object.defineProperty(e.media, "ended", { get: () => e.currentTime === e.duration }), Promise.all([e.embed.getVideoWidth(), e.embed.getVideoHeight()]).then((t2) => {
+          const [i2, s2] = t2;
+          e.embed.ratio = roundAspectRatio(i2, s2), setAspectRatio.call(this);
+        }), e.embed.setAutopause(e.config.autopause).then((t2) => {
+          e.config.autopause = t2;
+        }), e.embed.getVideoTitle().then((t2) => {
+          e.config.title = t2, ui.setTitle.call(this);
+        }), e.embed.getCurrentTime().then((t2) => {
+          h = t2, triggerEvent.call(e, e.media, "timeupdate");
+        }), e.embed.getDuration().then((t2) => {
+          e.media.duration = t2, triggerEvent.call(e, e.media, "durationchange");
+        }), e.embed.getTextTracks().then((t2) => {
+          e.media.textTracks = t2, captions.setup.call(e);
+        }), e.embed.on("cuechange", ({ cues: t2 = [] }) => {
+          const i2 = t2.map((e2) => stripHTML(e2.text));
+          captions.updateCues.call(e, i2);
+        }), e.embed.on("loaded", () => {
+          if (e.embed.getPaused().then((t2) => {
+            assurePlaybackState$1.call(e, !t2), t2 || triggerEvent.call(e, e.media, "playing");
+          }), is.element(e.embed.element) && e.supported.ui) {
+            e.embed.element.setAttribute("tabindex", -1);
+          }
+        }), e.embed.on("bufferstart", () => {
+          triggerEvent.call(e, e.media, "waiting");
+        }), e.embed.on("bufferend", () => {
+          triggerEvent.call(e, e.media, "playing");
+        }), e.embed.on("play", () => {
+          assurePlaybackState$1.call(e, true), triggerEvent.call(e, e.media, "playing");
+        }), e.embed.on("pause", () => {
+          assurePlaybackState$1.call(e, false);
+        }), e.embed.on("timeupdate", (t2) => {
+          e.media.seeking = false, h = t2.seconds, triggerEvent.call(e, e.media, "timeupdate");
+        }), e.embed.on("progress", (t2) => {
+          e.media.buffered = t2.percent, triggerEvent.call(e, e.media, "progress"), 1 === parseInt(t2.percent, 10) && triggerEvent.call(e, e.media, "canplaythrough"), e.embed.getDuration().then((t3) => {
+            t3 !== e.media.duration && (e.media.duration = t3, triggerEvent.call(e, e.media, "durationchange"));
+          });
+        }), e.embed.on("seeked", () => {
+          e.media.seeking = false, triggerEvent.call(e, e.media, "seeked");
+        }), e.embed.on("ended", () => {
+          e.media.paused = true, triggerEvent.call(e, e.media, "ended");
+        }), e.embed.on("error", (t2) => {
+          e.media.error = t2, triggerEvent.call(e, e.media, "error");
+        }), t.customControls && setTimeout(() => ui.build.call(e), 0);
+      }
+    };
     function parseId(e) {
       if (is.empty(e))
         return null;
@@ -14586,103 +14630,119 @@ var require_app2 = __commonJS({
     function getHost(e) {
       return e.noCookie ? "https://www.youtube-nocookie.com" : "http:" === window.location.protocol ? "http://www.youtube.com" : void 0;
     }
-    const youtube = { setup() {
-      if (toggleClass(this.elements.wrapper, this.config.classNames.embed, true), is.object(window.YT) && is.function(window.YT.Player))
-        youtube.ready.call(this);
-      else {
-        const e = window.onYouTubeIframeAPIReady;
-        window.onYouTubeIframeAPIReady = () => {
-          is.function(e) && e(), youtube.ready.call(this);
-        }, loadScript(this.config.urls.youtube.sdk).catch((e2) => {
-          this.debug.warn("YouTube API failed to load", e2);
-        });
-      }
-    }, getTitle(e) {
-      fetch$1(format(this.config.urls.youtube.api, e)).then((e2) => {
-        if (is.object(e2)) {
-          const { title: t, height: i, width: s } = e2;
-          this.config.title = t, ui.setTitle.call(this), this.embed.ratio = roundAspectRatio(s, i);
+    const youtube = {
+      setup() {
+        if (toggleClass(this.elements.wrapper, this.config.classNames.embed, true), is.object(window.YT) && is.function(window.YT.Player))
+          youtube.ready.call(this);
+        else {
+          const e = window.onYouTubeIframeAPIReady;
+          window.onYouTubeIframeAPIReady = () => {
+            is.function(e) && e(), youtube.ready.call(this);
+          }, loadScript(this.config.urls.youtube.sdk).catch((e2) => {
+            this.debug.warn("YouTube API failed to load", e2);
+          });
         }
-        setAspectRatio.call(this);
-      }).catch(() => {
-        setAspectRatio.call(this);
-      });
-    }, ready() {
-      const e = this, t = e.config.youtube, i = e.media && e.media.getAttribute("id");
-      if (!is.empty(i) && i.startsWith("youtube-"))
-        return;
-      let s = e.media.getAttribute("src");
-      is.empty(s) && (s = e.media.getAttribute(this.config.attributes.embed.id));
-      const n = parseId(s), r = createElement("div", { id: generateId(e.provider), "data-poster": t.customControls ? e.poster : void 0 });
-      if (e.media = replaceElement(r, e.media), t.customControls) {
-        const t2 = (e2) => `https://i.ytimg.com/vi/${n}/${e2}default.jpg`;
-        loadImage(t2("maxres"), 121).catch(() => loadImage(t2("sd"), 121)).catch(() => loadImage(t2("hq"))).then((t3) => ui.setPoster.call(e, t3.src)).then((t3) => {
-          t3.includes("maxres") || (e.elements.poster.style.backgroundSize = "cover");
+      }, getTitle(e) {
+        fetch$1(format(this.config.urls.youtube.api, e)).then((e2) => {
+          if (is.object(e2)) {
+            const { title: t, height: i, width: s } = e2;
+            this.config.title = t, ui.setTitle.call(this), this.embed.ratio = roundAspectRatio(s, i);
+          }
+          setAspectRatio.call(this);
         }).catch(() => {
+          setAspectRatio.call(this);
+        });
+      }, ready() {
+        const e = this, t = e.config.youtube, i = e.media && e.media.getAttribute("id");
+        if (!is.empty(i) && i.startsWith("youtube-"))
+          return;
+        let s = e.media.getAttribute("src");
+        is.empty(s) && (s = e.media.getAttribute(this.config.attributes.embed.id));
+        const n = parseId(s), r = createElement("div", { id: generateId(e.provider), "data-poster": t.customControls ? e.poster : void 0 });
+        if (e.media = replaceElement(r, e.media), t.customControls) {
+          const t2 = (e2) => `https://i.ytimg.com/vi/${n}/${e2}default.jpg`;
+          loadImage(t2("maxres"), 121).catch(() => loadImage(t2("sd"), 121)).catch(() => loadImage(t2("hq"))).then((t3) => ui.setPoster.call(e, t3.src)).then((t3) => {
+            t3.includes("maxres") || (e.elements.poster.style.backgroundSize = "cover");
+          }).catch(() => {
+          });
+        }
+        e.embed = new window.YT.Player(e.media, {
+          videoId: n, host: getHost(t), playerVars: extend({}, { autoplay: e.config.autoplay ? 1 : 0, hl: e.config.hl, controls: e.supported.ui && t.customControls ? 0 : 1, disablekb: 1, playsinline: e.config.fullscreen.iosNative ? 0 : 1, cc_load_policy: e.captions.active ? 1 : 0, cc_lang_pref: e.config.captions.language, widget_referrer: window ? window.location.href : null }, t), events: {
+            onError(t2) {
+              if (!e.media.error) {
+                const i2 = t2.data, s2 = { 2: "The request contains an invalid parameter value. For example, this error occurs if you specify a video ID that does not have 11 characters, or if the video ID contains invalid characters, such as exclamation points or asterisks.", 5: "The requested content cannot be played in an HTML5 player or another error related to the HTML5 player has occurred.", 100: "The video requested was not found. This error occurs when a video has been removed (for any reason) or has been marked as private.", 101: "The owner of the requested video does not allow it to be played in embedded players.", 150: "The owner of the requested video does not allow it to be played in embedded players." }[i2] || "An unknown error occured";
+                e.media.error = { code: i2, message: s2 }, triggerEvent.call(e, e.media, "error");
+              }
+            }, onPlaybackRateChange(t2) {
+              const i2 = t2.target;
+              e.media.playbackRate = i2.getPlaybackRate(), triggerEvent.call(e, e.media, "ratechange");
+            }, onReady(i2) {
+              if (is.function(e.media.play))
+                return;
+              const s2 = i2.target;
+              youtube.getTitle.call(e, n), e.media.play = () => {
+                assurePlaybackState.call(e, true), s2.playVideo();
+              }, e.media.pause = () => {
+                assurePlaybackState.call(e, false), s2.pauseVideo();
+              }, e.media.stop = () => {
+                s2.stopVideo();
+              }, e.media.duration = s2.getDuration(), e.media.paused = true, e.media.currentTime = 0, Object.defineProperty(e.media, "currentTime", {
+                get: () => Number(s2.getCurrentTime()), set(t2) {
+                  e.paused && !e.embed.hasPlayed && e.embed.mute(), e.media.seeking = true, triggerEvent.call(e, e.media, "seeking"), s2.seekTo(t2);
+                }
+              }), Object.defineProperty(e.media, "playbackRate", {
+                get: () => s2.getPlaybackRate(), set(e2) {
+                  s2.setPlaybackRate(e2);
+                }
+              });
+              let { volume: r2 } = e.config;
+              Object.defineProperty(e.media, "volume", {
+                get: () => r2, set(t2) {
+                  r2 = t2, s2.setVolume(100 * r2), triggerEvent.call(e, e.media, "volumechange");
+                }
+              });
+              let { muted: a } = e.config;
+              Object.defineProperty(e.media, "muted", {
+                get: () => a, set(t2) {
+                  const i3 = is.boolean(t2) ? t2 : a;
+                  a = i3, s2[i3 ? "mute" : "unMute"](), s2.setVolume(100 * r2), triggerEvent.call(e, e.media, "volumechange");
+                }
+              }), Object.defineProperty(e.media, "currentSrc", { get: () => s2.getVideoUrl() }), Object.defineProperty(e.media, "ended", { get: () => e.currentTime === e.duration });
+              const o = s2.getAvailablePlaybackRates();
+              e.options.speed = o.filter((t2) => e.config.speed.options.includes(t2)), e.supported.ui && t.customControls && e.media.setAttribute("tabindex", -1), triggerEvent.call(e, e.media, "timeupdate"), triggerEvent.call(e, e.media, "durationchange"), clearInterval(e.timers.buffering), e.timers.buffering = setInterval(() => {
+                e.media.buffered = s2.getVideoLoadedFraction(), (null === e.media.lastBuffered || e.media.lastBuffered < e.media.buffered) && triggerEvent.call(e, e.media, "progress"), e.media.lastBuffered = e.media.buffered, 1 === e.media.buffered && (clearInterval(e.timers.buffering), triggerEvent.call(e, e.media, "canplaythrough"));
+              }, 200), t.customControls && setTimeout(() => ui.build.call(e), 50);
+            }, onStateChange(i2) {
+              const s2 = i2.target;
+              clearInterval(e.timers.playing);
+              switch (e.media.seeking && [1, 2].includes(i2.data) && (e.media.seeking = false, triggerEvent.call(e, e.media, "seeked")), i2.data) {
+                case -1:
+                  triggerEvent.call(e, e.media, "timeupdate"), e.media.buffered = s2.getVideoLoadedFraction(), triggerEvent.call(e, e.media, "progress");
+                  break;
+                case 0:
+                  assurePlaybackState.call(e, false), e.media.loop ? (s2.stopVideo(), s2.playVideo()) : triggerEvent.call(e, e.media, "ended");
+                  break;
+                case 1:
+                  t.customControls && !e.config.autoplay && e.media.paused && !e.embed.hasPlayed ? e.media.pause() : (assurePlaybackState.call(e, true), triggerEvent.call(e, e.media, "playing"), e.timers.playing = setInterval(() => {
+                    triggerEvent.call(e, e.media, "timeupdate");
+                  }, 50), e.media.duration !== s2.getDuration() && (e.media.duration = s2.getDuration(), triggerEvent.call(e, e.media, "durationchange")));
+                  break;
+                case 2:
+                  e.muted || e.embed.unMute(), assurePlaybackState.call(e, false);
+                  break;
+                case 3:
+                  triggerEvent.call(e, e.media, "waiting");
+              }
+              triggerEvent.call(e, e.elements.container, "statechange", false, { code: i2.data });
+            }
+          }
         });
       }
-      e.embed = new window.YT.Player(e.media, { videoId: n, host: getHost(t), playerVars: extend({}, { autoplay: e.config.autoplay ? 1 : 0, hl: e.config.hl, controls: e.supported.ui && t.customControls ? 0 : 1, disablekb: 1, playsinline: e.config.fullscreen.iosNative ? 0 : 1, cc_load_policy: e.captions.active ? 1 : 0, cc_lang_pref: e.config.captions.language, widget_referrer: window ? window.location.href : null }, t), events: { onError(t2) {
-        if (!e.media.error) {
-          const i2 = t2.data, s2 = { 2: "The request contains an invalid parameter value. For example, this error occurs if you specify a video ID that does not have 11 characters, or if the video ID contains invalid characters, such as exclamation points or asterisks.", 5: "The requested content cannot be played in an HTML5 player or another error related to the HTML5 player has occurred.", 100: "The video requested was not found. This error occurs when a video has been removed (for any reason) or has been marked as private.", 101: "The owner of the requested video does not allow it to be played in embedded players.", 150: "The owner of the requested video does not allow it to be played in embedded players." }[i2] || "An unknown error occured";
-          e.media.error = { code: i2, message: s2 }, triggerEvent.call(e, e.media, "error");
-        }
-      }, onPlaybackRateChange(t2) {
-        const i2 = t2.target;
-        e.media.playbackRate = i2.getPlaybackRate(), triggerEvent.call(e, e.media, "ratechange");
-      }, onReady(i2) {
-        if (is.function(e.media.play))
-          return;
-        const s2 = i2.target;
-        youtube.getTitle.call(e, n), e.media.play = () => {
-          assurePlaybackState.call(e, true), s2.playVideo();
-        }, e.media.pause = () => {
-          assurePlaybackState.call(e, false), s2.pauseVideo();
-        }, e.media.stop = () => {
-          s2.stopVideo();
-        }, e.media.duration = s2.getDuration(), e.media.paused = true, e.media.currentTime = 0, Object.defineProperty(e.media, "currentTime", { get: () => Number(s2.getCurrentTime()), set(t2) {
-          e.paused && !e.embed.hasPlayed && e.embed.mute(), e.media.seeking = true, triggerEvent.call(e, e.media, "seeking"), s2.seekTo(t2);
-        } }), Object.defineProperty(e.media, "playbackRate", { get: () => s2.getPlaybackRate(), set(e2) {
-          s2.setPlaybackRate(e2);
-        } });
-        let { volume: r2 } = e.config;
-        Object.defineProperty(e.media, "volume", { get: () => r2, set(t2) {
-          r2 = t2, s2.setVolume(100 * r2), triggerEvent.call(e, e.media, "volumechange");
-        } });
-        let { muted: a } = e.config;
-        Object.defineProperty(e.media, "muted", { get: () => a, set(t2) {
-          const i3 = is.boolean(t2) ? t2 : a;
-          a = i3, s2[i3 ? "mute" : "unMute"](), s2.setVolume(100 * r2), triggerEvent.call(e, e.media, "volumechange");
-        } }), Object.defineProperty(e.media, "currentSrc", { get: () => s2.getVideoUrl() }), Object.defineProperty(e.media, "ended", { get: () => e.currentTime === e.duration });
-        const o = s2.getAvailablePlaybackRates();
-        e.options.speed = o.filter((t2) => e.config.speed.options.includes(t2)), e.supported.ui && t.customControls && e.media.setAttribute("tabindex", -1), triggerEvent.call(e, e.media, "timeupdate"), triggerEvent.call(e, e.media, "durationchange"), clearInterval(e.timers.buffering), e.timers.buffering = setInterval(() => {
-          e.media.buffered = s2.getVideoLoadedFraction(), (null === e.media.lastBuffered || e.media.lastBuffered < e.media.buffered) && triggerEvent.call(e, e.media, "progress"), e.media.lastBuffered = e.media.buffered, 1 === e.media.buffered && (clearInterval(e.timers.buffering), triggerEvent.call(e, e.media, "canplaythrough"));
-        }, 200), t.customControls && setTimeout(() => ui.build.call(e), 50);
-      }, onStateChange(i2) {
-        const s2 = i2.target;
-        clearInterval(e.timers.playing);
-        switch (e.media.seeking && [1, 2].includes(i2.data) && (e.media.seeking = false, triggerEvent.call(e, e.media, "seeked")), i2.data) {
-          case -1:
-            triggerEvent.call(e, e.media, "timeupdate"), e.media.buffered = s2.getVideoLoadedFraction(), triggerEvent.call(e, e.media, "progress");
-            break;
-          case 0:
-            assurePlaybackState.call(e, false), e.media.loop ? (s2.stopVideo(), s2.playVideo()) : triggerEvent.call(e, e.media, "ended");
-            break;
-          case 1:
-            t.customControls && !e.config.autoplay && e.media.paused && !e.embed.hasPlayed ? e.media.pause() : (assurePlaybackState.call(e, true), triggerEvent.call(e, e.media, "playing"), e.timers.playing = setInterval(() => {
-              triggerEvent.call(e, e.media, "timeupdate");
-            }, 50), e.media.duration !== s2.getDuration() && (e.media.duration = s2.getDuration(), triggerEvent.call(e, e.media, "durationchange")));
-            break;
-          case 2:
-            e.muted || e.embed.unMute(), assurePlaybackState.call(e, false);
-            break;
-          case 3:
-            triggerEvent.call(e, e.media, "waiting");
-        }
-        triggerEvent.call(e, e.elements.container, "statechange", false, { code: i2.data });
-      } } });
-    } }, media = { setup() {
-      this.media ? (toggleClass(this.elements.container, this.config.classNames.type.replace("{0}", this.type), true), toggleClass(this.elements.container, this.config.classNames.provider.replace("{0}", this.provider), true), this.isEmbed && toggleClass(this.elements.container, this.config.classNames.type.replace("{0}", "video"), true), this.isVideo && (this.elements.wrapper = createElement("div", { class: this.config.classNames.video }), wrap(this.media, this.elements.wrapper), this.elements.poster = createElement("div", { class: this.config.classNames.poster }), this.elements.wrapper.appendChild(this.elements.poster)), this.isHTML5 ? html5.setup.call(this) : this.isYouTube ? youtube.setup.call(this) : this.isVimeo && vimeo.setup.call(this)) : this.debug.warn("No media element found!");
-    } };
+    }, media = {
+      setup() {
+        this.media ? (toggleClass(this.elements.container, this.config.classNames.type.replace("{0}", this.type), true), toggleClass(this.elements.container, this.config.classNames.provider.replace("{0}", this.provider), true), this.isEmbed && toggleClass(this.elements.container, this.config.classNames.type.replace("{0}", "video"), true), this.isVideo && (this.elements.wrapper = createElement("div", { class: this.config.classNames.video }), wrap(this.media, this.elements.wrapper), this.elements.poster = createElement("div", { class: this.config.classNames.poster }), this.elements.wrapper.appendChild(this.elements.poster)), this.isHTML5 ? html5.setup.call(this) : this.isYouTube ? youtube.setup.call(this) : this.isVimeo && vimeo.setup.call(this)) : this.debug.warn("No media element found!");
+      }
+    };
     class Ads {
       constructor(e) {
         _defineProperty$1(this, "load", () => {
@@ -15029,17 +15089,19 @@ var require_app2 = __commonJS({
         this.mouseDown ? this.currentScrubbingImageElement = e : this.currentThumbnailImageElement = e;
       }
     }
-    const source = { insertElements(e, t) {
-      is.string(t) ? insertElement(e, this.media, { src: t }) : is.array(t) && t.forEach((t2) => {
-        insertElement(e, this.media, t2);
-      });
-    }, change(e) {
-      getDeep(e, "sources.length") ? (html5.cancelRequests.call(this), this.destroy.call(this, () => {
-        this.options.quality = [], removeElement(this.media), this.media = null, is.element(this.elements.container) && this.elements.container.removeAttribute("class");
-        const { sources: t, type: i } = e, [{ provider: s = providers.html5, src: n }] = t, r = "html5" === s ? i : "div", a = "html5" === s ? {} : { src: n };
-        Object.assign(this, { provider: s, type: i, supported: support.check(i, s, this.config.playsinline), media: createElement(r, a) }), this.elements.container.appendChild(this.media), is.boolean(e.autoplay) && (this.config.autoplay = e.autoplay), this.isHTML5 && (this.config.crossorigin && this.media.setAttribute("crossorigin", ""), this.config.autoplay && this.media.setAttribute("autoplay", ""), is.empty(e.poster) || (this.poster = e.poster), this.config.loop.active && this.media.setAttribute("loop", ""), this.config.muted && this.media.setAttribute("muted", ""), this.config.playsinline && this.media.setAttribute("playsinline", "")), ui.addStyleHook.call(this), this.isHTML5 && source.insertElements.call(this, "source", t), this.config.title = e.title, media.setup.call(this), this.isHTML5 && Object.keys(e).includes("tracks") && source.insertElements.call(this, "track", e.tracks), (this.isHTML5 || this.isEmbed && !this.supported.ui) && ui.build.call(this), this.isHTML5 && this.media.load(), is.empty(e.previewThumbnails) || (Object.assign(this.config.previewThumbnails, e.previewThumbnails), this.previewThumbnails && this.previewThumbnails.loaded && (this.previewThumbnails.destroy(), this.previewThumbnails = null), this.config.previewThumbnails.enabled && (this.previewThumbnails = new PreviewThumbnails(this))), this.fullscreen.update();
-      }, true)) : this.debug.warn("Invalid source format");
-    } };
+    const source = {
+      insertElements(e, t) {
+        is.string(t) ? insertElement(e, this.media, { src: t }) : is.array(t) && t.forEach((t2) => {
+          insertElement(e, this.media, t2);
+        });
+      }, change(e) {
+        getDeep(e, "sources.length") ? (html5.cancelRequests.call(this), this.destroy.call(this, () => {
+          this.options.quality = [], removeElement(this.media), this.media = null, is.element(this.elements.container) && this.elements.container.removeAttribute("class");
+          const { sources: t, type: i } = e, [{ provider: s = providers.html5, src: n }] = t, r = "html5" === s ? i : "div", a = "html5" === s ? {} : { src: n };
+          Object.assign(this, { provider: s, type: i, supported: support.check(i, s, this.config.playsinline), media: createElement(r, a) }), this.elements.container.appendChild(this.media), is.boolean(e.autoplay) && (this.config.autoplay = e.autoplay), this.isHTML5 && (this.config.crossorigin && this.media.setAttribute("crossorigin", ""), this.config.autoplay && this.media.setAttribute("autoplay", ""), is.empty(e.poster) || (this.poster = e.poster), this.config.loop.active && this.media.setAttribute("loop", ""), this.config.muted && this.media.setAttribute("muted", ""), this.config.playsinline && this.media.setAttribute("playsinline", "")), ui.addStyleHook.call(this), this.isHTML5 && source.insertElements.call(this, "source", t), this.config.title = e.title, media.setup.call(this), this.isHTML5 && Object.keys(e).includes("tracks") && source.insertElements.call(this, "track", e.tracks), (this.isHTML5 || this.isEmbed && !this.supported.ui) && ui.build.call(this), this.isHTML5 && this.media.load(), is.empty(e.previewThumbnails) || (Object.assign(this.config.previewThumbnails, e.previewThumbnails), this.previewThumbnails && this.previewThumbnails.loaded && (this.previewThumbnails.destroy(), this.previewThumbnails = null), this.config.previewThumbnails.enabled && (this.previewThumbnails = new PreviewThumbnails(this))), this.fullscreen.update();
+        }, true)) : this.debug.warn("Invalid source format");
+      }
+    };
     class Plyr {
       constructor(e, t) {
         if (_defineProperty$1(this, "play", () => is.function(this.media.play) ? (this.ads && this.ads.enabled && this.ads.managerPromise.then(() => this.ads.play()).catch(() => silencePromise(this.media.play())), this.media.play()) : null), _defineProperty$1(this, "pause", () => this.playing && is.function(this.media.pause) ? this.media.pause() : null), _defineProperty$1(this, "togglePlay", (e2) => (is.boolean(e2) ? e2 : !this.playing) ? this.play() : this.pause()), _defineProperty$1(this, "stop", () => {
@@ -15588,7 +15650,7 @@ var require_app2 = __commonJS({
           });
         }
       };
-      toggleItems.forEach(function(element) {
+      toggleItems.forEach(function (element) {
         let header = element.querySelector(":scope > .accordion-header");
         if (header) {
           if (element.classList.contains("active")) {
@@ -15600,7 +15662,7 @@ var require_app2 = __commonJS({
               ease: Power1.easeOut
             });
           }
-          header.addEventListener("click", function() {
+          header.addEventListener("click", function () {
             let content = element.querySelector(":scope > .accordion-content");
             if (element.classList.contains("active")) {
               element.removeActive();
@@ -15628,7 +15690,7 @@ var require_app2 = __commonJS({
                 height: 0,
                 immediateRender: false,
                 ease: Power1.easeInOut,
-                onComplete: function() {
+                onComplete: function () {
                   let parentAccordion = header.parentNode.parentNode.closest(".accordion-item");
                   if (parentAccordion) {
                     let parentContent = parentAccordion.querySelector(":scope > .accordion-content");
@@ -15760,7 +15822,7 @@ var require_app2 = __commonJS({
           scrub: true,
           anticipatePin: true,
           invalidateOnRefresh: true,
-          onUpdate: function(ev) {
+          onUpdate: function (ev) {
           }
         }
       });
@@ -15902,7 +15964,7 @@ var require_app2 = __commonJS({
       onDeactivate: (item) => {
       }
     });
-    document.addEventListener("pjax:send", function() {
+    document.addEventListener("pjax:send", function () {
       submenu.deactivateItems();
     });
     let btnSubClose = document.querySelectorAll("[data-submenu-close]");
@@ -15916,7 +15978,7 @@ var require_app2 = __commonJS({
         });
       });
     });
-    
+
     var firstLoad = true;
 
     function whenContainerReady() {
@@ -15935,7 +15997,7 @@ var require_app2 = __commonJS({
           effects: true,
           preventDefault: true
         });
-       }
+      }
       if (firstLoad) {
         firstLoad = false;
       }
@@ -15953,7 +16015,7 @@ var require_app2 = __commonJS({
         case 'home':
           main$8();
           break;
-          case 'about':
+        case 'about':
           main$7();
           break;
         case 'portfolio-post':
@@ -16001,7 +16063,7 @@ var require_app2 = __commonJS({
             anticipatePin: true,
             invalidateOnRefresh: true,
             toggleActions: "play reverse play reverse",
-            onUpdate: function(ev) {
+            onUpdate: function (ev) {
             }
           }
         });
@@ -16012,7 +16074,7 @@ var require_app2 = __commonJS({
           backgroundColor: "#87C3E7",
           duration: 0.3
         });
-        document.addEventListener("pjax:switch", function() {
+        document.addEventListener("pjax:switch", function () {
           document.body.style.backgroundColor = "";
         }, { once: true });
       }
@@ -16030,19 +16092,19 @@ var require_app2 = __commonJS({
       }
     }
 
-    document.querySelector(".initScript").addEventListener("click", ()=>{
+    document.querySelector(".initScript").addEventListener("click", () => {
       whenContainerReady();
-      if(!firstLoad){
+      if (!firstLoad) {
         closeSearch();
       }
     });
-  
+
     document.querySelector(".stickyAnimationTrigger").addEventListener("click", () => {
       sticky();
     });
-    
-    
-    document.querySelector(".updateWatchedTrigger").addEventListener("click", ()=>{
+
+
+    document.querySelector(".updateWatchedTrigger").addEventListener("click", () => {
       initVideo();
       dropdownTags();
       updateWatched();
@@ -16052,8 +16114,11 @@ var require_app2 = __commonJS({
       splitChars();
       splitWords();
       sliderContentMobile();
-    } );
-    
+    });
+
+    setTimeout(() => {
+      window.scrollTo({ top: 0 });
+    }, 200);
     // document.addEventListener("pjax:complete", whenContainerReady);
     document.addEventListener("pjax:send", whenContainerLeave);
     function whenContainerLeave() {
@@ -16073,7 +16138,7 @@ var require_app2 = __commonJS({
     if (pages.updateCurrent()) {
       pages.runCurrent();
     }
-    document.addEventListener("pjax:switch", function() {
+    document.addEventListener("pjax:switch", function () {
       let previouslyCreatedSmoother = ScrollSmoother.get();
       if (previouslyCreatedSmoother)
         previouslyCreatedSmoother.kill();

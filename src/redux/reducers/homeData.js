@@ -44,6 +44,7 @@ export const fetchHomeTopData = createAsyncThunk(
       }, 1000);
       return fetchHomeTopData;
     } catch (error) {
+      handleCollectionLoaded();
       throw new Error(error.message);
     }
   }
@@ -64,6 +65,7 @@ export const fetchGetTouchSection = createAsyncThunk(
         handleCollectionLoaded();
       return fetchGetTouchSection;
     } catch (error) {
+      handleCollectionLoaded();
       throw new Error(error.message);
     }
   }
@@ -89,6 +91,7 @@ export const fetchStudioSection = createAsyncThunk(
         }, 1000);
       return fetchedStudioItems;
     } catch (error) {
+      handleCollectionLoaded();
       throw new Error(error.message);
     }
   }
@@ -109,6 +112,7 @@ export const fetchPeopleReviewSlider = createAsyncThunk(
         handleCollectionLoaded();
       return fetchedPeopleReview;
     } catch (error) {
+      handleCollectionLoaded();
       throw new Error(error.message);
     }
   }
@@ -130,6 +134,7 @@ export const fetchMarketSection = createAsyncThunk(
       handleCollectionLoaded();
       return fetchedMarketSection;
     } catch (error) {
+      handleCollectionLoaded();
       throw new Error(error.message);
     }
   }
@@ -151,6 +156,7 @@ export const fetchRentalStoreSection = createAsyncThunk(
         const response = fetchedRentalSection.sort((a, b) => (a.data.newImageTag === b.data.newImageTag) ? 0 : a.data.newImageTag ? -1 : 1);
       return response;
     } catch (error) {
+      handleCollectionLoaded();
       throw new Error(error.message);
     }
   }
@@ -171,6 +177,7 @@ export const fetchDreamBigSection = createAsyncThunk(
         handleCollectionLoaded();
       return fetchedDreamBIgSection;
     } catch (error) {
+      handleCollectionLoaded();
       throw new Error(error.message);
     }
   }

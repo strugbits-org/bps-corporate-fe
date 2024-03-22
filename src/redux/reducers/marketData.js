@@ -36,6 +36,7 @@ export const fetchMarketTopsections = createAsyncThunk(
         handleCollectionLoaded();
       return marketsArray[0];
     } catch (error) {
+      handleCollectionLoaded();
       throw new Error(error.message);
     }
   }
@@ -62,6 +63,7 @@ export const getMarketCollection = createAsyncThunk(
       }
       return marketsArray;
     } catch (error) {
+      handleCollectionLoaded();
       throw new Error(error.message);
     }
   }
