@@ -5,12 +5,23 @@ import Navbar from "./layout/header/Navbar";
 import Loading from "./common/Loading";
 import Chat from "./common/Chat";
 import Cookies from "./common/Cookies";
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { loadAppConfig } from "./redux/reducers/appConfig";
 
 function App() {
+  const dispatch = useDispatch();
+  
   const location = useLocation();
   const pathname = location.pathname.trim() === "/" ? "home" : location.pathname.substring(1); // Remove leading slash
   const cleanPath = pathname.split("/")[0].trim();
+  
+  const config = useSelector((state) => state.config.config);
+
+  useEffect(() => {
+    dispatch(loadAppConfig());
+  }, [dispatch]);
+
   return (
     <div>
       
@@ -27,6 +38,8 @@ function App() {
           content="Events are crucial for enhancing brand awareness, offering exclusive
            chances to showcase ideas, products, and services intimately."
         />
+
+        {config?.noFollow && <meta name="robots" content="noindex,nofollow"/>}
 
         <meta name="format-detection" content="telephone=no" />
         <meta property="og:title" content="Blueprint" />
