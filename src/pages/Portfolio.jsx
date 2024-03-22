@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { listPortfolios } from "../utilis/queryCollections";
 import { fetchStudioSection } from "../redux/reducers/homeData";
 import { getMarketCollection } from "../redux/reducers/marketData";
-import { updatedWatched } from "../utilis/animtationsTriggers";
+import { updatedWatched } from "../utilis/animationsTriggers";
 
 const Portfolio = () => {
   const dispatch = useDispatch();
@@ -15,7 +15,7 @@ const Portfolio = () => {
 
   const studios = useSelector((state) => state.home.studioData);
   const markets = useSelector((state) => state.market.marketModel);
-
+  const pageSize = 8;
   useEffect(() => {
     dispatch(fetchStudioSection());
     dispatch(getMarketCollection());
@@ -30,14 +30,14 @@ const Portfolio = () => {
   }
 
   const applyFilters = async ({selectedStudios = [], selectedMarkets = []}) => {
-    const response = await listPortfolios({ pageSize : 8, studios: selectedStudios, markets: selectedMarkets });
+    const response = await listPortfolios({ pageSize, studios: selectedStudios, markets: selectedMarkets });
     setPortfolioCollection(response.items.map(item => item.data));
     setPortfolioResponse(response);
   }
 
   return (
     <>
-      <PortfolioListing data={{ items: portfolioCollection, studios, markets, totalCount: portfolioResponse?.totalCount }} applyFilters={applyFilters} seeMore={handleSeeMore} />
+      <PortfolioListing data={{ items: portfolioCollection, pageSize, studios, markets, totalCount: portfolioResponse?.totalCount }} applyFilters={applyFilters} seeMore={handleSeeMore} />
       <MarketSection />
       <SocialSection />
     </>

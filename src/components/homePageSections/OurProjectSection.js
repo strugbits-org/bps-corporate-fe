@@ -6,17 +6,22 @@ import { useDispatch, useSelector } from "react-redux";
 
 const OurProjectSection = () => {
   const dispatch = useDispatch();
-  const portfolioCollection = useSelector((state) => state.portfolio.portfolioData);
+  const portfolioCollection = useSelector(
+    (state) => state.portfolio.portfolioData
+  );
   // const loading = useSelector((state) => state.home.ourProjectLoading);
   // const error = useSelector((state) => state.home.error);
-  
-  
+
   useEffect(() => {
-    dispatch(fetchPortfolio({pageSize: 4 }));
+    dispatch(fetchPortfolio({ pageSize: 4 }));
   }, [dispatch]);
 
   return (
-    <section className="home-some-of-our-projects pt-lg-250 pt-mobile-130 pb-135">
+    <section
+      className={`home-some-of-our-projects pt-lg-250 pt-mobile-130 pb-135 ${
+        portfolioCollection.length === 0 ? "hidden" : ""
+      }`}
+    >
       <div className="container-fluid">
         <div className="row">
           <div className="col-12">
@@ -34,8 +39,8 @@ const OurProjectSection = () => {
                     return (
                       <div key={index} className="swiper-slide list-item">
                         <DelayedLink
-                        to={`/portfolio-post/${item.slug}`}
-                        className="project-link animation-project-link"
+                          to={`/portfolio-post/${item.slug}`}
+                          className="project-link animation-project-link"
                           attributes={{
                             "data-cursor-style": "view",
                             "data-aos": "d:loop",
@@ -44,8 +49,10 @@ const OurProjectSection = () => {
                           <div className="container-img bg-blue">
                             <div className="wrapper-img">
                               <img
-                            src={getFullImagePost(item.portfolioRef.coverImage.imageInfo)}
-                            data-preload
+                                src={getFullImagePost(
+                                  item.portfolioRef.coverImage.imageInfo
+                                )}
+                                data-preload
                                 className="media"
                                 alt=""
                               />
@@ -57,10 +64,10 @@ const OurProjectSection = () => {
                             </h3>
                             <ul className="list-tags">
                               {item.studios.map((tag, index) => (
-                                  <li key={index}>
-                                    <span>{tag.cardName}</span>
-                                  </li>
-                                ))}
+                                <li key={index}>
+                                  <span>{tag.cardName}</span>
+                                </li>
+                              ))}
                             </ul>
                           </div>
                         </DelayedLink>
@@ -77,7 +84,7 @@ const OurProjectSection = () => {
               class="btn-blue"
               data-cursor-style="off"
             >
-              <span>Let’s Craft Magic Together</span>
+              <span>Let's Craft Magic Together</span>
               <i className="icon-arrow-right-2"></i>
             </btn-modal-open>
           </div>
