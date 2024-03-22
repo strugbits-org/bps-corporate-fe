@@ -8,7 +8,7 @@ const PortfolioListing = ({ data, seeMore, applyFilters }) => {
   const [selectedMarkets, setSelectedMarkets] = useState([]);
 
   const [studiosDropdownActive, setSudiosDropdownActive] = useState(false);
-  const [marketsDropdownActive, setMarketsDropdownActive] = useState([]);
+  const [marketsDropdownActive, setMarketsDropdownActive] = useState(false);
 
   const handleStudioFilter = (tag) => {
     setSudiosDropdownActive(false);
