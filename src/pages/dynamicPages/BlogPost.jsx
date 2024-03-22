@@ -16,6 +16,8 @@ const BlogPost = () => {
   // const loading = useSelector((state) => state.blog.singleBlogLoading);
   // const error = useSelector((state) => state.services.error);
 
+  // console.log("singleBlogData", singleBlogData);
+
   useEffect(() => {
     dispatch(fetchSingleBlog(params.slug));
   }, [dispatch, location, params.slug]);
