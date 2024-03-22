@@ -108,7 +108,6 @@ const PortfolioIntoSection = ({ data }) => {
                         <div className="wrapper-text">
                           <div className="text">
                             <p>{solutionObject?.text}</p>
-                            {/* <p>{data?.subheading4Description2}</p> */}
                           </div>
                         </div>
                     

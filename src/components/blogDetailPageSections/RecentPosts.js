@@ -7,14 +7,18 @@ import formatDate from "../../common/common_functions/dateFormat";
 
 const RecentPosts = () => {
   const dispatch = useDispatch();
-  const posts = useSelector((state) => state.blog.blogPostData);
+  const posts = useSelector((state) => state?.blog?.blogPostData);
 
   useEffect(() => {
     dispatch(getblogPostData());
   }, [dispatch]);
 
   return (
-    <section className="blog-post-recent-posts pt-lg-245 pt-tablet-105 pt-phone-150 pb-lg-150 pb-mobile-100">
+    <section
+      className={`blog-post-recent-posts pt-lg-245 pt-tablet-105 pt-phone-150 pb-lg-150 pb-mobile-100 ${
+        posts.length === 0 ? "hidden" : ""
+      }`}
+    >
       <div className="container-fluid">
         <div className="row">
           <div className="col-12 column-1">
