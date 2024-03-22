@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { getFullImagePost } from "../../common/common_functions/imageURL";
+import DelayedLink from "../../common/DelayedLink";
 
 const SliderBanner = ({ data, type }) => {
   return (
@@ -12,7 +13,7 @@ const SliderBanner = ({ data, type }) => {
             {data?.map((data, index) => {
               return (
                 <div key={index} className="swiper-slide">
-                  <Link to="/">
+                  <DelayedLink to="">
                     <div className="container-img">
                       <img
                         src={getFullImagePost(
@@ -38,7 +39,8 @@ const SliderBanner = ({ data, type }) => {
                           );
                         })}
                       </ul>
-                      {type ?  <div class="container-btn-top">
+                      {type ? <div class="container-btn-top">
+                        <DelayedLink className={"default-css"} to="/contact">
                           <div
                             class="btn-border-white btn-top mt-30"
                             data-cursor-style="off"
@@ -46,7 +48,8 @@ const SliderBanner = ({ data, type }) => {
                             {/* <span>{data?.data?.subtitleButtion}</span> */}
                             <span>Get in touch with us</span>
                           </div>
-                        </div> : ""}
+                        </DelayedLink>
+                      </div> : ""}
                       {/* {data?.data?.subtitleButtion && (
                         <div class="container-btn-top">
                           <div
@@ -65,29 +68,32 @@ const SliderBanner = ({ data, type }) => {
                         Every project is unique, <br />
                         each event its own.
                       </h3>
-                      {/* {data?.data?.buttonText && ( */}
-                      <div className="container-btn-bottom">
-                        <div
-                          className="btn-border-white btn-bottom btn-about"
-                          data-cursor-style="off"
-                        >
-                          <span>Check out our portfolio</span>
-                        </div>
-                      </div>
-                      {/* )} */}
-                      {/* {data?.data?.subtitle1Button && (
+                      {type ? (
                         <div class="container-btn-bottom">
-                          <div
-                            class="btn-blue btn-bottom"
-                            data-cursor-style="off"
-                          >
-                            <span>{data?.data?.subtitle1Button}</span>
-                            <i class="icon-arrow-right"></i>
-                          </div>
+                          <DelayedLink className={"default-css"} to="/portfolio">
+                            <div
+                              class="btn-blue btn-bottom"
+                              data-cursor-style="off"
+                            >
+                              <span>We create dreams</span>
+                              <i class="icon-arrow-right"></i>
+                            </div>
+                          </DelayedLink>
                         </div>
-                      )} */}
+                      ) : (
+                        <div className="container-btn-bottom">
+                          <DelayedLink className={"default-css"} to="/portfolio">
+                            <div
+                              className="btn-border-white btn-bottom btn-about"
+                              data-cursor-style="off"
+                            >
+                              <span>Check out our portfolio</span>
+                            </div>
+                          </DelayedLink>
+                        </div>
+                      )}
                     </div>
-                  </Link>
+                  </DelayedLink>
                 </div>
               );
             })}

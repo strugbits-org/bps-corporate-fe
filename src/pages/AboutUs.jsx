@@ -11,7 +11,6 @@ import { fetchSliderSection, getAboutSlider } from '../redux/reducers/aboutusDat
 
 const AboutUs = () => {
   const disptach = useDispatch();
-  const data = useSelector((state) => state.aboutus.SliderData);
   const sliderData = useSelector((state) => state.aboutus.AboutSlider);
   // const loading = useSelector((state) => state.aboutus.SliderLoading);
   // const error = useSelector((state) => state.aboutus.error);
@@ -23,7 +22,6 @@ const AboutUs = () => {
   useEffect(() => {
     disptach(getAboutSlider())
       },[disptach])
-console.log("about slider data....",sliderData)
 
   return (
     <>
