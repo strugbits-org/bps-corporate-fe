@@ -4,7 +4,6 @@ let collectionLoaded = 0;
 
 export const handleCollectionLoaded = () => {
     collectionLoaded++;
-    console.log("collectionLoaded", collectionLoaded);
     const page = window.location.pathname.trim() === "/" ? "home" : window.location.pathname.substring(1);
     const cleanPage = page.split("/")[0].trim();
     
@@ -20,7 +19,7 @@ export const handleCollectionLoaded = () => {
         'contact': 1,
     }[cleanPage] || 0;
 
-    if (collectionLoaded >= collectionsCount) {
+    const markPageLoaded = ()=>{
         collectionLoaded = 0;
         document.body.classList.add(cleanPage+"-loaded");
         initAnimations();
@@ -30,10 +29,13 @@ export const handleCollectionLoaded = () => {
         } else{
             document.body.classList.add("first-load-done");
         }
-        
-    } else if (cleanPage === "services-post" && document.body.classList.contains(cleanPage + "-loaded")) {
-        initAnimations();
-    } else if (cleanPage === "market-post" && document.body.classList.contains(cleanPage + "-loaded")) {
-        initAnimations();
+    }
+
+    if (collectionLoaded >= collectionsCount) {
+        markPageLoaded();
+    } else if (cleanPage === "services-post" && document.body.classList.contains(cleanPage + "-loaded") && collectionLoaded >= 1) {
+        markPageLoaded();
+    } else if (cleanPage === "market-post" && document.body.classList.contains(cleanPage + "-loaded") && collectionLoaded >= 2) {
+        markPageLoaded();
     }
 };

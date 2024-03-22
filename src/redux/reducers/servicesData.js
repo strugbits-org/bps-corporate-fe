@@ -38,6 +38,7 @@ export const fetchServicesData = createAsyncThunk(
       handleCollectionLoaded();
       return servicesArray[0];
     } catch (error) {
+      handleCollectionLoaded();
       throw new Error(error.message);
     }
   }
@@ -86,8 +87,10 @@ export const getServicesSlider = createAsyncThunk(
       };
 
       const portfolio = await listPortfolios(options);
+      handleCollectionLoaded();
       return portfolio.items.map(item => item.data)
     } catch (error) {
+      handleCollectionLoaded();
       throw new Error(error.message);
     }
   }

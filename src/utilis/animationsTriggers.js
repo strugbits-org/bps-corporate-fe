@@ -11,12 +11,10 @@ export const updatedWatched = () => {
 }
 
 export const pageLoadStart = () => {
-    console.log("hello start");
     document.body.classList.add("page-leave-active");
 }
 
 export const pageLoadFinished = () => {
-    console.log("hello end");
     window.scrollTo({ top: 0 });
     document.body.classList.add("page-enter-active");
     document.body.classList.remove("page-leave-active");
