@@ -236,7 +236,7 @@ const PostDetails = ({ data }) => {
                         />
                       );
                     } else if (item.type === "heading") {
-                      return <h2>{item.text}</h2>;
+                      return <h2 key={index}>{item.text}</h2>;
                     } else if (item.type === "video") {
                       return (
                         <div
@@ -317,20 +317,14 @@ const PostDetails = ({ data }) => {
 
             {/* Product Cart Slider start */}
 
-            <div
-              className={`container-slider-produtcts mt-lg-padding-fluid mt-tablet-100 mt-phone-105 ${
-                data?.storeProducts?.length === 0 ? "hidden" : ""
-              }`}
-            >
-              {data?.storeProducts.length !== 0 && (
-                <>
-                  <h2 className="slider-title">
-                    Products featured in this blog entry:
-                  </h2>
-                  <ProductCartSlider data={data} />
-                </>
-              )}
-            </div>
+            {data?.storeProducts && data?.storeProducts.length !== 0 && (
+              <div className={`container-slider-produtcts mt-lg-padding-fluid mt-tablet-100 mt-phone-105 ${data?.storeProducts?.length === 0 ? "hidden" : ""}`} >
+                <h2 className="slider-title">
+                  Products featured in this blog entry:
+                </h2>
+                <ProductCartSlider data={data} />
+              </div>
+            )}
             {/* Product Cart Slider end */}
           </div>
           {/* social vertical bar start */}

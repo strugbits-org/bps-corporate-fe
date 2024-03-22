@@ -12,7 +12,7 @@ const SliderBanner = ({ data, type }) => {
             {data?.map((data, index) => {
               return (
                 <div key={index} className="swiper-slide">
-                  <DelayedLink to="">
+                  <DelayedLink>
                     <div className="container-img">
                       <img
                         src={getFullImagePost(
