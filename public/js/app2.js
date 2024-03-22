@@ -15938,16 +15938,8 @@ var require_app2 = __commonJS({
        }
       if (firstLoad) {
         firstLoad = false;
-      } else {
-        document.body.classList.add("page-enter-active");
-        document.body.classList.remove("page-leave-active");
-        setTimeout(() => {
-          updateWatched();
-        }, 300);
-        setTimeout(() => {
-          document.body.classList.remove("page-enter-active");
-        }, 900);
       }
+
       setTimeout(() => {
         ScrollTrigger$1.refresh();
       }, 1e3);
@@ -16039,14 +16031,12 @@ var require_app2 = __commonJS({
     }
 
     document.querySelector(".initScript").addEventListener("click", ()=>{
-      window.scrollTo({ top:0,behavior:'instant' });
       whenContainerReady();
       if(!firstLoad){
         closeSearch();
       }
-    } );
+    });
   
-    
     document.querySelector(".stickyAnimationTrigger").addEventListener("click", () => {
       sticky();
     });

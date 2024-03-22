@@ -9,7 +9,7 @@ const BlogListing = ({ data, seeMore, applyFilters }) => {
     const [selectedMarkets, setSelectedMarkets] = useState([]);
 
     const [studiosDropdownActive, setSudiosDropdownActive] = useState(false);
-    const [marketsDropdownActive, setMarketsDropdownActive] = useState([]);
+    const [marketsDropdownActive, setMarketsDropdownActive] = useState(false);
 
     const handleStudioFilter = (tag) => {
         setSudiosDropdownActive(false);
@@ -206,7 +206,7 @@ const BlogListing = ({ data, seeMore, applyFilters }) => {
                         </ul>
                         {data.items.length === 0 && <h6 style={{ width: "100%" }} className="fs--40 text-center split-words" data-aos="d:loop">No Data found</h6>}
                     </div>
-                    {data.items.length > 0 && data.items.length !== data.totalCount && (
+                    {data.totalCount > data.pageSize && data.items.length !== data.totalCount && (
                         <div className="col-lg-2 offset-lg-5 flex-center mt-lg-70 mt-tablet-60 mt-phone-85">
                             <button
                                 onClick={seeMore}

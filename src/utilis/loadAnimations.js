@@ -1,4 +1,4 @@
-import { initAnimations, updatedWatched } from "./animtationsTriggers";
+import { initAnimations, pageLoadFinished, updatedWatched } from "./animationsTriggers";
 
 let collectionLoaded = 0;
 
@@ -8,14 +8,14 @@ export const handleCollectionLoaded = () => {
     const cleanPage = page.split("/")[0].trim();
     
     const collectionsCount = {
-        'home': 8,
-        'about': 6,
+        'home': 9,
+        'about': 7,
         'portfolio': 3,
         'blog': 3,
-        'market-post': 5,
-        'services-post': 5,
-        'portfolio-post': 2,
-        'blog-post': 0,
+        'market-post': 7,
+        'services-post': 6,
+        'portfolio-post': 3,
+        'blog-post': 3,
         'contact': 1,
     }[cleanPage] || 0;
 
@@ -24,6 +24,12 @@ export const handleCollectionLoaded = () => {
         document.body.classList.add(cleanPage+"-loaded");
         initAnimations();
         updatedWatched();
+        if (document.body.classList.contains("first-load-done")) {
+            pageLoadFinished();
+        } else{
+            document.body.classList.add("first-load-done");
+        }
+        
     } else if (cleanPage === "services-post" && document.body.classList.contains(cleanPage + "-loaded")) {
         initAnimations();
     } else if (cleanPage === "market-post" && document.body.classList.contains(cleanPage + "-loaded")) {

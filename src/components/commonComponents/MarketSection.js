@@ -5,7 +5,6 @@ import { fetchMarketSection } from "../../redux/reducers/homeData";
 import { useDispatch, useSelector } from "react-redux";
 
 const MarketSection = () => {
-  
   let data_delay = 0;
 
   const dispatch = useDispatch();
@@ -20,9 +19,8 @@ const MarketSection = () => {
     dispatch(fetchMarketSection());
   }, [dispatch]);
 
-
   return (
-    <section className="section-markets">
+    <section className={`section-markets ${data.length === 0 ? "hidden" : ""}`}>
       <div className="container-fluid">
         <div className="row">
           <div className="col-lg-2 offset-lg-5">
