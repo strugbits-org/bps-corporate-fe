@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { getFullImagePost } from "../../common/common_functions/imageURL";
 import DelayedLink from "../../common/DelayedLink";
 
@@ -39,10 +38,10 @@ const SliderBanner = ({ data, type }) => {
                           );
                         })}
                       </ul>
-                      {type ? <div class="container-btn-top">
+                      {type ? <div className="container-btn-top">
                         <DelayedLink className={"default-css"} to="/contact">
                           <div
-                            class="btn-border-white btn-top mt-30"
+                            className="btn-border-white btn-top mt-30"
                             data-cursor-style="off"
                           >
                             {/* <span>{data?.data?.subtitleButtion}</span> */}
@@ -51,9 +50,9 @@ const SliderBanner = ({ data, type }) => {
                         </DelayedLink>
                       </div> : ""}
                       {/* {data?.data?.subtitleButtion && (
-                        <div class="container-btn-top">
+                        <div className="container-btn-top">
                           <div
-                            class="btn-border-white btn-top mt-30"
+                            className="btn-border-white btn-top mt-30"
                             data-cursor-style="off"
                           >
                             <span>{data?.data?.subtitleButtion}</span>
@@ -69,14 +68,14 @@ const SliderBanner = ({ data, type }) => {
                         each event its own.
                       </h3>
                       {type ? (
-                        <div class="container-btn-bottom">
+                        <div className="container-btn-bottom">
                           <DelayedLink className={"default-css"} to="/portfolio">
                             <div
-                              class="btn-blue btn-bottom"
+                              className="btn-blue btn-bottom"
                               data-cursor-style="off"
                             >
                               <span>We create dreams</span>
-                              <i class="icon-arrow-right"></i>
+                              <i className="icon-arrow-right"></i>
                             </div>
                           </DelayedLink>
                         </div>

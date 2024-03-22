@@ -36,6 +36,7 @@ export const fetchPortfolio = createAsyncThunk(
       const data = response.items.map((item)=> item.data);
       return data;
     } catch (error) {
+      handleCollectionLoaded();
       throw new Error(error.message);
     }
   }
@@ -61,6 +62,7 @@ export const fetchSinglePortfolio = createAsyncThunk(
       const data = fetchedItems.map((item)=> item.data);
       return data[0];
     } catch (error) {
+      handleCollectionLoaded();
       throw new Error(error.message);
     }
   }
@@ -108,6 +110,7 @@ export const __fetchPortfolio = createAsyncThunk(
         studioTags: uniqueStudioTags,
       };
     } catch (error) {
+      handleCollectionLoaded();
       throw new Error(error.message);
     }
   }
@@ -136,6 +139,7 @@ export const __fetchSinglePortfolio = createAsyncThunk(
       });
       return portfolioArray[0];
     } catch (error) {
+      handleCollectionLoaded();
       throw new Error(error.message);
     }
   }

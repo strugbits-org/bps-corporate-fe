@@ -33,10 +33,11 @@ export const fetchIntroSection = createAsyncThunk(
         .queryDataItems(options)
         .eq("title", "aboutustop")
         .find();
-        handleCollectionLoaded();
+      handleCollectionLoaded();
 
       return fetchIntroSection;
     } catch (error) {
+      handleCollectionLoaded();
       throw new Error(error.message);
     }
   }
@@ -54,15 +55,16 @@ export const fetchOurDreamSection = createAsyncThunk(
         .queryDataItems(options)
         .eq("title", "The Dream Team")
         .find();
-        handleCollectionLoaded();
-        //trigger animation on data load
-        setTimeout(() => {
-          document.querySelector(".updateWatchedTrigger").click();
-          document.querySelector(".triggerSplitWordAnimation").click();
-        }, 1000);
+      handleCollectionLoaded();
+      //trigger animation on data load
+      setTimeout(() => {
+        document.querySelector(".updateWatchedTrigger").click();
+        document.querySelector(".triggerSplitWordAnimation").click();
+      }, 1000);
 
       return fetchedOurDream;
     } catch (error) {
+      handleCollectionLoaded();
       throw new Error(error.message);
     }
   }
@@ -80,53 +82,57 @@ export const fetchOurFamilySection = createAsyncThunk(
         .queryDataItems(options)
         .eq("title", "Meet the rest of the family")
         .find();
-        handleCollectionLoaded();
-        setTimeout(() => {
-          document.querySelector(".updateWatchedTrigger").click();
-          document.querySelector(".triggerSplitWordAnimation").click();
-        }, 1000);
+      handleCollectionLoaded();
+      setTimeout(() => {
+        document.querySelector(".updateWatchedTrigger").click();
+        document.querySelector(".triggerSplitWordAnimation").click();
+      }, 1000);
       return fetchedOurFamily;
     } catch (error) {
+      handleCollectionLoaded();
       throw new Error(error.message);
     }
   }
 );
 export const fetchSliderSection = createAsyncThunk(
-    "data/fetchSliderSection",
-    async () => {
-      try {
-        let options = {
-            dataCollectionId: "AboutBottomSlider",
-          };
-          const { items: fetchedSliderBanner } = await wixClient.items
-            .queryDataItems(options)
-            .eq("title", "aboutbottom")
-            .find();
-            handleCollectionLoaded();
-  
-        return fetchedSliderBanner;
-      } catch (error) {
-        throw new Error(error.message);
-      }
-    }
-  );
+  "data/fetchSliderSection",
+  async () => {
+    try {
+      let options = {
+        dataCollectionId: "AboutBottomSlider",
+      };
+      const { items: fetchedSliderBanner } = await wixClient.items
+        .queryDataItems(options)
+        .eq("title", "aboutbottom")
+        .find();
+      handleCollectionLoaded();
 
-  export const getAboutSlider = createAsyncThunk(
-    "data/getServicesSlider",
-    async () => {
-      try {
-        const options = {
-          pageSize: 3,
-          disableLoader: true,
-        };
-  
-        const portfolio = await listPortfolios(options);
-       return portfolio.items.map(item => item.data)
-      } catch (error) {
-        throw new Error(error.message);
-      }
+      return fetchedSliderBanner;
+    } catch (error) {
+      handleCollectionLoaded();
+      throw new Error(error.message);
     }
-  );
+  }
+);
+
+export const getAboutSlider = createAsyncThunk(
+  "data/getServicesSlider",
+  async () => {
+    try {
+      const options = {
+        pageSize: 3,
+        disableLoader: true,
+      };
+
+      const portfolio = await listPortfolios(options);
+      handleCollectionLoaded();
+      return portfolio.items.map(item => item.data);
+    } catch (error) {
+      handleCollectionLoaded();
+      throw new Error(error.message);
+    }
+  }
+);
 const aboutUsSlice = createSlice({
   name: "aboutus",
   initialState,
@@ -172,8 +178,8 @@ const aboutUsSlice = createSlice({
         state.OurFamilyLoading = false;
         state.error = action.error.message;
       })
-       /// Slider Banner Section ////
-       .addCase(fetchSliderSection.pending, (state) => {
+      /// Slider Banner Section ////
+      .addCase(fetchSliderSection.pending, (state) => {
         state.SliderLoading = true;
         state.error = null;
       })
@@ -185,19 +191,19 @@ const aboutUsSlice = createSlice({
         state.SliderLoading = false;
         state.error = action.error.message;
       })
-         /// Slider Section ////
-         .addCase(getAboutSlider.pending, (state) => {
-          state.AboutSliderLoading = true;
-          state.error = null;
-        })
-        .addCase(getAboutSlider.fulfilled, (state, action) => {
-          state.AboutSliderLoading = false;
-          state.AboutSlider = action.payload;
-        })
-        .addCase(getAboutSlider.rejected, (state, action) => {
-          state.AboutSliderLoading = false;
-          state.error = action.error.message;
-        });
+      /// Slider Section ////
+      .addCase(getAboutSlider.pending, (state) => {
+        state.AboutSliderLoading = true;
+        state.error = null;
+      })
+      .addCase(getAboutSlider.fulfilled, (state, action) => {
+        state.AboutSliderLoading = false;
+        state.AboutSlider = action.payload;
+      })
+      .addCase(getAboutSlider.rejected, (state, action) => {
+        state.AboutSliderLoading = false;
+        state.error = action.error.message;
+      });
   },
 });
 

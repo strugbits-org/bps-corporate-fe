@@ -30,6 +30,7 @@ export const fetchContactUs = createAsyncThunk(
 
       return fetchContactUs;
     } catch (error) {
+      handleCollectionLoaded();
       throw new Error(error.message);
     }
   }

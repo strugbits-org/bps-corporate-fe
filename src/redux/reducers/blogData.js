@@ -37,6 +37,7 @@ export const getblogPostData = createAsyncThunk(
       const data = fetchedItems.map((item) => item.data);
       return data;
     } catch (error) {
+      handleCollectionLoaded();
       throw new Error(error.message);
     }
   }
@@ -73,6 +74,7 @@ export const fetchSingleBlog = createAsyncThunk(
       const data = fetchedItems.map((item) => item.data);
       return data[0];
     } catch (error) {
+      handleCollectionLoaded();
       throw new Error(error.message);
     }
   }
