@@ -8,28 +8,39 @@ import SocialSection from "../../components/commonComponents/SocialSection";
 import React, { useEffect } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchServicesData } from "../../redux/reducers/servicesData";
+import {
+  fetchServicesData,
+  getServicesSlider,
+} from "../../redux/reducers/servicesData";
 
 const ServicePostPage = () => {
-
+  const service = true;
   const location = useLocation();
   const params = useParams();
 
   const dispatch = useDispatch();
   const servicesData = useSelector((state) => state.services.servicesData);
+  const servicesSlider = useSelector((state) => state.services.servicesSlider);
   // const loading = useSelector((state) => state.services.servicesLoading);
   // const error = useSelector((state) => state.services.error);
 
   useEffect(() => {
     dispatch(fetchServicesData(params.slug));
   }, [dispatch, location, params.slug]);
-  
+
+  useEffect(() => {
+    dispatch(getServicesSlider(servicesData?._id));
+  }, [dispatch, servicesData?._id]);
+  console.log(servicesSlider, "services slider here");
   return (
     <>
       <ServiceIntro data={servicesData} />
-      <ServiceDescription data={servicesData} />
+      {servicesData?.subServices.length !== 0 && (
+        <ServiceDescription data={servicesData} />
+      )}
+
       {/* commonComponents */}
-      <SliderBanner />
+      <SliderBanner  data={servicesSlider} type={service}/>
       <PeopleReviewSlider />
       <StudioSection />
       <DreamBigSection />

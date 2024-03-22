@@ -9,7 +9,7 @@ const StudioSection = () => {
   // const loading = useSelector((state) => state.home.studioLoading);
   // const error = useSelector((state) => state.home.error);
 
-    useEffect(() => {
+  useEffect(() => {
     dispatch(fetchStudioSection());
   }, [dispatch]);
 
@@ -24,18 +24,21 @@ const StudioSection = () => {
   const desc = firstItem ? firstItem.data.description : "";
 
   return (
-    <section className="section-studios">
+  
+    <section
+      className={`section-studios ${studioData.length === 0 ? "hidden" : ""}`}
+    >
       <div className="container-fluid">
         <div className="row row-1">
           <div className="col-lg-2 col-md-6">
-            { title && 
-            <h2
-              className="fs--90 fs-tablet-40 blue-1 split-chars"
-              data-aos="d:loop"
-            >
-              {title}
-            </h2>
-            }
+            {title && (
+              <h2
+                className="fs--90 fs-tablet-40 blue-1 split-chars"
+                data-aos="d:loop"
+              >
+                {title}
+              </h2>
+            )}
           </div>
           <div className="col-lg-5 col-md-6 offset-lg-5 column-2">
             <p
@@ -51,11 +54,14 @@ const StudioSection = () => {
           <div className="col-lg-12">
             <ul className="accordion-list-studios" data-aos="d:loop">
               {studioData.map((data, index) => {
-              
                 return (
-                  <li key={index} 
-                  className={`accordion-item ${activeIndex === index ? 'active' : ''}`}
-                  onClick={() => handleClick(index)}>
+                  <li
+                    key={index}
+                    className={`accordion-item ${
+                      activeIndex === index ? "active" : ""
+                    }`}
+                    onClick={() => handleClick(index)}
+                  >
                     <div className="accordion-header">
                       <h3
                         className="accordion-title split-words"
@@ -89,4 +95,3 @@ const StudioSection = () => {
 };
 
 export default StudioSection;
-

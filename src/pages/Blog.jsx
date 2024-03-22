@@ -9,7 +9,7 @@ import { handleCollectionLoaded } from "../utilis/loadAnimations";
 import { updatedWatched } from "../utilis/animationsTriggers";
 
 const Blog = () => {
-
+  const pageSize = 8;
   const dispatch = useDispatch();
   const [blogResponse, setBlogResponse] = useState(null);
   const [blogCollection, setBlogCollection] = useState([]);
@@ -22,24 +22,44 @@ const Blog = () => {
     dispatch(getMarketCollection());
     applyFilters({});
   }, [dispatch]);
-  
+
   const handleSeeMore = async () => {
     const response = await blogResponse.next();
-    setBlogCollection(prev => [...prev, ...response.items.map(item => item.data)]);
+    setBlogCollection((prev) => [
+      ...prev,
+      ...response.items.map((item) => item.data),
+    ]);
     setBlogResponse(response);
     updatedWatched();
-  }
+  };
 
-  const applyFilters = async ({selectedStudios = [], selectedMarkets = []}) => {
-    const response = await listBlogs({ pageSize : 8, studios: selectedStudios, markets: selectedMarkets });
-    setBlogCollection(response.items.map(item => item.data));
+  const applyFilters = async ({
+    selectedStudios = [],
+    selectedMarkets = [],
+  }) => {
+    const response = await listBlogs({
+      pageSize,
+      studios: selectedStudios,
+      markets: selectedMarkets,
+    });
+    setBlogCollection(response.items.map((item) => item.data));
     setBlogResponse(response);
     handleCollectionLoaded();
-  }
+  };
 
   return (
     <>
-      <BlogListing data={{ items: blogCollection, studios, markets, totalCount: blogResponse?.totalCount }} applyFilters={applyFilters} seeMore={handleSeeMore} />
+      <BlogListing
+        data={{
+          items: blogCollection,
+          pageSize,
+          studios,
+          markets,
+          totalCount: blogResponse?.totalCount,
+        }}
+        applyFilters={applyFilters}
+        seeMore={handleSeeMore}
+      />
       <SocialSection />
     </>
   );

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import DelayedLink from "../../common/DelayedLink";
 import formatDate from "../../common/common_functions/dateFormat";
 import getFullImageURL from "../../common/common_functions/imageURL";
 import ProductCartSlider from "../commonComponents/ProductCartSlider";
@@ -293,37 +292,44 @@ const PostDetails = ({ data }) => {
                   })}
                 </div>
               </div>
-              <div className="blog-post-tags mt-lg-140 mt-tablet-40 mt-phone-115">
-                <h3
-                  className="fs--22 mb-lg-25 mb-tablet-40 mb-phone-25 split-words"
-                  data-aos="d:loop"
-                >
-                  Tags
-                </h3>
-                <ul className="list-post-tags" data-aos="d:loop">
-                  {tags?.map((items, index) => {
-                    return (
-                      <li key={index}>
-                        <DelayedLink to="/" className="btn-tag">
-                          <span>{items.label}</span>
-                        </DelayedLink>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
+              {tags.length !== 0 && (
+                <div className="blog-post-tags mt-lg-140 mt-tablet-40 mt-phone-115">
+                  <h3
+                    className="fs--22 mb-lg-25 mb-tablet-40 mb-phone-25 split-words"
+                    data-aos="d:loop"
+                  >
+                    Tags
+                  </h3>
+                  <ul className="list-post-tags" data-aos="d:loop">
+                    {tags?.map((items, index) => {
+                      return (
+                        <li key={index}>
+                          <div className="btn-tag">
+                            <span>{items.label}</span>
+                          </div>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              )}
             </div>
 
             {/* Product Cart Slider start */}
+
             <div
               className={`container-slider-produtcts mt-lg-padding-fluid mt-tablet-100 mt-phone-105 ${
                 data?.storeProducts?.length === 0 ? "hidden" : ""
               }`}
             >
-              <h2 className="slider-title">
-                Products featured in this blog entry:
-              </h2>
-              <ProductCartSlider data={data} />
+              {data?.storeProducts.length !== 0 && (
+                <>
+                  <h2 className="slider-title">
+                    Products featured in this blog entry:
+                  </h2>
+                  <ProductCartSlider data={data} />
+                </>
+              )}
             </div>
             {/* Product Cart Slider end */}
           </div>

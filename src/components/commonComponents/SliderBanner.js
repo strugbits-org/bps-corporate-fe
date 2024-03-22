@@ -1,19 +1,7 @@
 import { Link } from "react-router-dom";
-import React, { useEffect } from "react";
-import getFullImageURL from "../../common/common_functions/imageURL";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchSliderSection } from "../../redux/reducers/aboutusData";
+import { getFullImagePost } from "../../common/common_functions/imageURL";
 
-const SliderBanner = () => {
-  const disptach = useDispatch();
-  const data = useSelector((state) => state.aboutus.SliderData);
-  // const loading = useSelector((state) => state.aboutus.SliderLoading);
-  // const error = useSelector((state) => state.aboutus.error);
-
-  useEffect(() => {
-   disptach(fetchSliderSection());
-  }, [disptach]);
-
+const SliderBanner = ({ data, type }) => {
   return (
     <section className="section-slider-banner">
       <div className="slider-banner banner-about" data-aos="d:loop">
@@ -21,13 +9,15 @@ const SliderBanner = () => {
           {/* <!-- Additional required wrapper --> */}
           <div className="swiper-wrapper">
             {/* <!-- Slides --> */}
-            {data.map((data, index) => {
+            {data?.map((data, index) => {
               return (
                 <div key={index} className="swiper-slide">
                   <Link to="/">
                     <div className="container-img">
                       <img
-                        src={getFullImageURL(data.data.image)}
+                        src={getFullImagePost(
+                          data?.portfolioRef?.coverImage?.imageInfo
+                        )}
                         data-preload
                         className="media"
                         data-parallax
@@ -36,28 +26,66 @@ const SliderBanner = () => {
                       />
                     </div>
                     <div className="container-project">
-                      <h4 className="project split-words">{data.data.sliderTitle}</h4>
+                      <h4 className="project split-words">
+                        {data?.portfolioRef?.title}
+                      </h4>
                       <ul className="list-tags">
-                         {data.data.arraystring.map((data, index) => {
-                              return  <li key={index}>
-                              <span>{data}</span>
+                        {data?.markets.map((data, index) => {
+                          return (
+                            <li key={index}>
+                              <span>{data?.cardname}</span>
                             </li>
+                          );
                         })}
                       </ul>
+                      {type ?  <div class="container-btn-top">
+                          <div
+                            class="btn-border-white btn-top mt-30"
+                            data-cursor-style="off"
+                          >
+                            {/* <span>{data?.data?.subtitleButtion}</span> */}
+                            <span>Get in touch with us</span>
+                          </div>
+                        </div> : ""}
+                      {/* {data?.data?.subtitleButtion && (
+                        <div class="container-btn-top">
+                          <div
+                            class="btn-border-white btn-top mt-30"
+                            data-cursor-style="off"
+                          >
+                            <span>{data?.data?.subtitleButtion}</span>
+                          </div>
+                        </div>
+                      )} */}
                     </div>
                     <div className="container-title">
                       <h3 className="title split-words">
-                        {data.data.subtitle} <br />
-                        {data.data.subtitle1}
+                        {/* {data?.data?.subtitle} <br />
+                        {data?.data?.subtitle1} */}
+                        Every project is unique, <br />
+                        each event its own.
                       </h3>
+                      {/* {data?.data?.buttonText && ( */}
                       <div className="container-btn-bottom">
                         <div
                           className="btn-border-white btn-bottom btn-about"
                           data-cursor-style="off"
                         >
-                          <span>{data.data.buttonText}</span>
+                          <span>Check out our portfolio</span>
                         </div>
                       </div>
+                      {/* )} */}
+                      {/* {data?.data?.subtitle1Button && (
+                        <div class="container-btn-bottom">
+                          <div
+                            class="btn-blue btn-bottom"
+                            data-cursor-style="off"
+                          >
+                            <span>{data?.data?.subtitle1Button}</span>
+                            <i class="icon-arrow-right"></i>
+                          </div>
+                        </div>
+                      )} */}
                     </div>
                   </Link>
                 </div>
