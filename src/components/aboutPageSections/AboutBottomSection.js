@@ -17,7 +17,6 @@ const AboutBottomSection = () => {
   useEffect(() => {
     disptach(fetchSliderSection());
    }, [disptach]);
-console.log(firstItem,"about us data here")
   return (
     <>
       <section className="about-check-out">
