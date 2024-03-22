@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+import configReducer from "./reducers/appConfig";
 import userReducer from "./reducers/user";
 import contactReducer from "./reducers/contactus";
 import homeReducer from "./reducers/homeData";
@@ -11,6 +12,7 @@ import blogReducer from "./reducers/blogData";
 import footerReducer from "./reducers/footerData";
 export default configureStore({
   reducer: {
+    config: configReducer,
     user: userReducer,
     contact: contactReducer,
     home: homeReducer,
