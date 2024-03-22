@@ -9,7 +9,7 @@ export const startLoading = (disableLoader) => {
     }
 }
 
-export function endLoading(disableLoader) {
+export const endLoading = (disableLoader) => {
     if (disableLoader) { return };
 
     const isDataLoaded = document.body.getAttribute("data-load") === "first-done";
