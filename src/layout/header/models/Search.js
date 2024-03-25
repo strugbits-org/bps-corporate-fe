@@ -473,7 +473,7 @@ const Search = () => {
                   <div className="result-order-pages">
                     <div className="container-title-results">
                       <h2 className="title-results split-chars" data-aos>
-                        Order pages <span>{`"${searchTerm}"`}</span>
+                      Other Pages <span>{`"${searchTerm}"`}</span>
                       </h2>
                     </div>
                     <ul

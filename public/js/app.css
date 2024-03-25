@@ -19294,3 +19294,14 @@ body.page-leave-active[data-load="first-done"] .overlay {
     max-height: 45vh!important;
   }
 }
+
+/* .hide-paragraphs {
+  max-height: 100px; 
+  overflow: hidden;
+  transition: max-height 0.3s ease; 
+}
+
+.show-all-paragraphs {
+  max-height: none; 
+  transition: max-height 0.3s ease; 
+} */

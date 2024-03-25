@@ -34,10 +34,12 @@ const ContentComponent = ({ content, title, maxWords }) => {
       <div className="wrapper-text">
         <div className="text">
           <p>{paragraphs[0]}</p>
-          {showAll &&
-            paragraphs
-              .slice(1)
-              .map((paragraph, index) => <p key={index}>{paragraph}</p>)}
+          <div className={showAll ? "show-all-paragraphs" : "hide-paragraphs"}>
+            {showAll &&
+              paragraphs
+                .slice(1)
+                .map((paragraph, index) => <p key={index}>{paragraph}</p>)}
+          </div>
         </div>
       </div>
       {!hideButton && (
