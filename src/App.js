@@ -3,7 +3,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import Navbar from "./layout/header/Navbar";
 import Loading from "./common/Loading";
-import Chat from "./common/Chat";
+// import Chat from "./common/Chat";
 import Cookies from "./common/Cookies";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -77,7 +77,7 @@ function App() {
         </div>
       </div>
 
-      <Chat />
+      {/* <Chat /> */}
     </div>
   );
 }
