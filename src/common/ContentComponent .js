@@ -11,7 +11,7 @@ const ContentComponent = ({ content, title, maxWords }) => {
   words.forEach((word, index) => {
     currentParagraph += (currentParagraph ? " " : "") + word;
 
-    if ((index + 1) % 60 === 0 || index === words.length - 1) {
+    if ((index + 1) % maxWords === 0 || index === words.length - 1) {
       paragraphs.push(currentParagraph);
       currentParagraph = "";
     }
@@ -32,14 +32,9 @@ const ContentComponent = ({ content, title, maxWords }) => {
     >
       <h2 className="title">{title}</h2>
       <div className="wrapper-text">
-        <div className="text">
-          <p>{paragraphs[0]}</p>
-          <div className={showAll ? "show-all-paragraphs" : "hide-paragraphs"}>
-            {showAll &&
-              paragraphs
-                .slice(1)
-                .map((paragraph, index) => <p key={index}>{paragraph}</p>)}
-          </div>
+        <p>{paragraphs[0]}</p>
+        <div className={"readmore-paragraphs text"}>
+          {paragraphs.slice(1).map((paragraph, index) => <> <br/><p key={index}>{paragraph}</p></> )}
         </div>
       </div>
       {!hideButton && (

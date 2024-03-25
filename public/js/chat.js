@@ -26,4 +26,5 @@ function chat() {
     chat2.classList.add("is-safari");
   }
 }
-chat();
+// chat();
+
