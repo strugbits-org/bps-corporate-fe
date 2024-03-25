@@ -86,3 +86,25 @@ export const listProducts = async ({ pageSize = 10, searchTerm = "", disableLoad
         throw new Error(error.message);
     }
 }
+
+export const searchAllPages = async ({ pageSize = 10, searchTerm = "", disableLoader = false }) => {
+    try {
+        startLoading(disableLoader);
+        let options = {
+            dataCollectionId: "TextCollectionPages",
+            returnTotalCount: true,
+        };
+
+        let query = wixClient.items.queryDataItems(options);
+        const response = await query.contains('content', searchTerm)
+            .eq("searchActive", true)
+            .limit(pageSize)
+            .find();
+
+        endLoading(disableLoader);
+        return response;
+    } catch (error) {
+        endLoading(disableLoader);
+        throw new Error(error.message);
+    }
+}
