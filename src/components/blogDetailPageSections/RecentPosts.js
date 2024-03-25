@@ -37,7 +37,7 @@ const RecentPosts = () => {
                     return (
                       <div key={data._id} className="swiper-slide grid-item">
                         <DelayedLink
-                          to={`/blog`}
+                           to={`/blog-post/${encodeURIComponent(data.slug)}`}
                           className="link-blog link-blog-animation"
                           attributes={{
                             "data-aos": "d:loop",
