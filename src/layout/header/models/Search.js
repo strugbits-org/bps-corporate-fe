@@ -4,7 +4,7 @@ import { fetchStudioSection } from "../../../redux/reducers/homeData";
 import { useDispatch, useSelector } from "react-redux";
 import { getMarketCollection } from "../../../redux/reducers/marketData";
 import getFullImageURL, { getFullImagePost } from "../../../common/common_functions/imageURL";
-import { listBlogs, listPortfolios, listProducts } from "../../../utilis/queryCollections";
+import { listBlogs, listPortfolios, listProducts, searchAllPages } from "../../../utilis/queryCollections";
 import formatDate from "../../../common/common_functions/dateFormat";
 import debounce from "lodash/debounce";
 
@@ -22,6 +22,7 @@ const Search = () => {
   const [blogCollection, setBlogCollection] = useState([]);
   const [portfolioCollection, setPortfolioCollection] = useState([]);
   const [productCollection, setProductCollection] = useState([]);
+  const [otherPagesResults, setOtherPagesResults] = useState([]);
 
   const [resultStudios, setResultStudios] = useState([]);
   const [resultMarkets, setResultMarkets] = useState([]);
@@ -61,7 +62,7 @@ const Search = () => {
     }
     return data;
   }
-  
+
   const filteredPortfolioCollection = useMemo(() => filterColection(portfolioCollection, selectedStudios, selectedMarkets), [selectedStudios, selectedMarkets, portfolioCollection]);
   const filteredBlogCollection = useMemo(() => filterColection(blogCollection, selectedStudios, selectedMarkets), [selectedStudios, selectedMarkets, blogCollection]);
 
@@ -93,10 +94,14 @@ const Search = () => {
       setPortfolioCollection(portfolio.items.map((item) => item.data));
 
       const products = await listProducts(options);
-      setProductCollection(products.items.map((item) => item.data));
+      setProductCollection(products.items.filter(item => !item.data.hidden).map(item => item.data));
 
       const blog = await listBlogs(options);
       setBlogCollection(blog.items.map((item) => item.data));
+
+      const otherPages = await searchAllPages(options);
+      setOtherPagesResults(otherPages.items.map((item) => item.data));
+
     } catch (error) {
       console.log("error", error);
     }
@@ -104,7 +109,7 @@ const Search = () => {
 
   useEffect(() => {
     if (searchActive) {
-      const delayedSearch = debounce(()=>{searchCollections(searchTerm)}, 1000);
+      const delayedSearch = debounce(() => { searchCollections(searchTerm) }, 1000);
       delayedSearch();
       return () => delayedSearch.cancel();
     }
@@ -224,7 +229,7 @@ const Search = () => {
                             data-cursor-style="default"
                           >
                             {productCollection.slice(0, 3).map((item, index) => {
-                              return ( item.product._id && 
+                              return (item.product._id &&
                                 <div
                                   key={index}
                                   className="swiper-slide grid-item"
@@ -253,7 +258,7 @@ const Search = () => {
                                           <i className="icon-arrow-diagonal-right"></i>
                                         </div>
                                         <ul className="list-thumb">
-                                          {item.product.productOptions.Color.choices.map((option, index) => (
+                                          {item.product?.productOptions?.Color?.choices.map((option, index) => (
                                             <React.Fragment key={index}>
                                               {index < 4 && (
                                                 <li key={index}>
@@ -270,7 +275,7 @@ const Search = () => {
                                             </React.Fragment>
                                           ))}
                                         </ul>
-                                        {item.product.productOptions.Color.choices.length > 4 ? (
+                                        {item.product?.productOptions?.Color?.choices?.length > 4 ? (
                                           <div className="colors-number">
                                             <span>+{item.product.productOptions.Color.choices.length - 4}</span>
                                           </div>
@@ -475,72 +480,18 @@ const Search = () => {
                       className="list-order-pages grid-lg-25 grid-md-50"
                       data-aos
                     >
-                      <li className="grid-item">
-                        <DelayedLink to="/" className="link-order-pages">
-                          <h3 className="title-order-pages">About</h3>
-                          <p className="text-order-pages">
-                            In the heart of the great outdoors, with nature as our
-                            backdrop, Blueprint Studios embarked on a creative
-                            journey - a photoshoot
-                          </p>
-                        </DelayedLink>
-                      </li>
-                      <li className="grid-item">
-                        <DelayedLink to="/" className="link-order-pages">
-                          <h3 className="title-order-pages">Lorem ipsum dolor</h3>
-                          <p className="text-order-pages">
-                            Etiam mi felis, commodo eu augue in, sagittis faucibus
-                            nibh. Lorem ipsum dolor sit amet, consectetur
-                            adipiscing elit. Vestibulum facilisis molestie
-                            consequat. Lorem ipsum dolor sit amet, consectetur
-                            adipiscing elit. Nunc a ligula fermentum, posuere
-                            turpis in, luctus dui. Vestibulum ante ipsum primis in
-                            faucibus orci luctus et ultrices posuere cubilia
-                            curae; Nullam efficitur ac urna at vehicula.
-                          </p>
-                        </DelayedLink>
-                      </li>
-                      <li className="grid-item">
-                        <DelayedLink to="/" className="link-order-pages">
-                          <h3 className="title-order-pages">
-                            Donec vel sem at enim
-                          </h3>
-                          <p className="text-order-pages">
-                            Curabitur vitae urna rhoncus nunc dictum ornare.
-                            Vestibulum accumsan, arcu tempus pretium gravida, elit
-                            risus elementum nunc, et mattis nibh justo ac felis.
-                            Nam sit amet odio justo. Pellentesque vitae dolor at
-                            ipsum mollis malesuada. Aliquam non dolor augue.
-                          </p>
-                        </DelayedLink>
-                      </li>
-                      <li className="grid-item">
-                        <DelayedLink to="/" className="link-order-pages">
-                          <h3 className="title-order-pages">
-                            Etiam ultricies nulla
-                          </h3>
-                          <p className="text-order-pages">
-                            Vivamus at ornare nunc. Pellentesque a sapien libero.
-                            Donec vel sem at enim faucibus rhoncus. Fusce non
-                            efficitur turpis. Orci varius natoque penatibus et
-                            magnis dis parturient montes, nascetur ridiculus mus.
-                            Etiam ultricies nulla volutpat lorem lobortis, sed
-                            sollicitudin arcu pretium.
-                          </p>
-                        </DelayedLink>
-                      </li>
-                      <li className="grid-item">
-                        <DelayedLink to="/" className="link-order-pages">
-                          <h3 className="title-order-pages">
-                            Quisque lacinia nisi
-                          </h3>
-                          <p className="text-order-pages">
-                            Nulla urna turpis, tempus eget molestie non, vulputate
-                            quis nunc. Morbi posuere nibh purus, eget molestie
-                            erat scelerisque a. Phasellus ut mauris mi.
-                          </p>
-                        </DelayedLink>
-                      </li>
+                      {otherPagesResults?.slice(0, 5).map((page,index) => {
+                        return (
+                          <li key={index} className="grid-item">
+                            <DelayedLink to={page.path} className="link-order-pages">
+                              <h3 className="title-order-pages">{page.title}</h3>
+                              <p className="text-order-pages">
+                                {page.description}
+                              </p>
+                            </DelayedLink>
+                          </li>
+                        )
+                      })}
                     </ul>
                   </div>
                 </div>
