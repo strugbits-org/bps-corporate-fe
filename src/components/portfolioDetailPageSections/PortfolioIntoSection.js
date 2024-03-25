@@ -68,27 +68,12 @@ const PortfolioIntoSection = ({ data }) => {
                     </ul>
                   </div>
 
-                  {/* <div className="container-text">
-                    <h2 className="title">{componentObject?.label}</h2>
-                    <div className="wrapper-text">
-                      <div className="text">
-                        <p>{componentObject?.text}</p>
-                      </div>
-                    </div>
-                  </div> */}
                   <ContentComponent
                     content={componentObject?.text}
                     title={componentObject?.label}
                     maxWords={maxWords}
                   />
-                  {/* <div className="container-text">
-                    <h2 className="title">{challengeObject?.label}</h2>
-                    <div className="wrapper-text">
-                      <div className="text">
-                        <p>{challengeObject?.text}</p>
-                      </div>
-                    </div>
-                  </div> */}
+
                   <ContentComponent
                     content={challengeObject?.text}
                     title={challengeObject?.label}

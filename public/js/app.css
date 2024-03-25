@@ -15597,7 +15597,7 @@ modal-item .shopify-buy-frame iframe {
   transform: translateY(100%);
 }
 #pg-portfolio-post .portfolio-post-intro .wrapper-portfolio .column-portfolio .container-text.container-read-more .wrapper-text {
-  height: 20rem;
+  height: auto;
   overflow: hidden;
   -webkit-transition: all 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
   -moz-transition: all 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
