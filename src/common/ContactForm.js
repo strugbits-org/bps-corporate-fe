@@ -28,8 +28,8 @@ const ContactForm = () => {
       const timeoutId = setTimeout(() => {
         setShowSuccess(false);
         reset();
-        Array.from(document.querySelectorAll('.preenchido')).forEach(
-          (el) => el.classList.remove('preenchido')
+        Array.from(document.querySelectorAll(".preenchido")).forEach((el) =>
+          el.classList.remove("preenchido")
         );
       }, 3000);
       // Clean up the timeout
@@ -40,8 +40,8 @@ const ContactForm = () => {
       const timeoutId = setTimeout(() => {
         setShowError(false);
         reset();
-        Array.from(document.querySelectorAll('.preenchido')).forEach(
-          (el) => el.classList.remove('preenchido')
+        Array.from(document.querySelectorAll(".preenchido")).forEach((el) =>
+          el.classList.remove("preenchido")
         );
       }, 3000);
       // Clean up the timeout
@@ -124,7 +124,7 @@ const ContactForm = () => {
           <div className="container-submit col-12">
             <button type="submit" className="bt-submit btn-medium">
               <span className="submit-text">
-                {loadingForm ? "sending.." : "Send"}
+                {loadingForm ? "Sending..." : "Send"}
               </span>
             </button>
           </div>

@@ -1,7 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import { getFullImagePost } from "../../common/common_functions/imageURL";
 import DelayedLink from "../../common/DelayedLink";
 
 const SliderBanner = ({ data, type }) => {
+  const navigate = useNavigate();
   return (
     <section className="section-slider-banner">
       <div className="slider-banner banner-about" data-aos="d:loop">
@@ -13,7 +15,12 @@ const SliderBanner = ({ data, type }) => {
               return (
                 <div key={index} className="swiper-slide">
                   <DelayedLink>
-                    <div className="container-img">
+                    <div
+                      onClick={() =>
+                        navigate(`/portfolio-post/${data?.portfolioRef?.slug}`)
+                      }
+                      className="container-img"
+                    >
                       <img
                         src={getFullImagePost(
                           data?.portfolioRef?.coverImage?.imageInfo
@@ -30,67 +37,50 @@ const SliderBanner = ({ data, type }) => {
                         {data?.portfolioRef?.title}
                       </h4>
                       <ul className="list-tags">
-                        {data?.markets.map((data, index) => {
-                          return (
-                            <li key={index}>
-                              <span>{data?.cardname}</span>
-                            </li>
-                          );
-                        })}
+                        {data?.markets.map((data, index) => (
+                          <li key={index}>
+                            <span>{data?.cardname}</span>
+                          </li>
+                        ))}
                       </ul>
-                      {type ? <div className="container-btn-top">
-                        <DelayedLink className={"default-css"} to="/contact">
-                          <div
-                            className="btn-border-white btn-top mt-30"
-                            data-cursor-style="off"
-                          >
-                            {/* <span>{data?.data?.subtitleButtion}</span> */}
-                            <span>Get in touch with us</span>
-                          </div>
-                        </DelayedLink>
-                      </div> : ""}
-                      {/* {data?.data?.subtitleButtion && (
+                      {type && (
                         <div className="container-btn-top">
                           <div
                             className="btn-border-white btn-top mt-30"
                             data-cursor-style="off"
+                            onClick={(e) => navigate("/contact")}
                           >
-                            <span>{data?.data?.subtitleButtion}</span>
+                            <span>Get in touch with us</span>
                           </div>
                         </div>
-                      )} */}
+                      )}
                     </div>
                     <div className="container-title">
                       <h3 className="title split-words">
-                        {/* {data?.data?.subtitle} <br />
-                        {data?.data?.subtitle1} */}
                         Every project is unique, <br />
                         each event its own.
                       </h3>
-                      {type ? (
-                        <div className="container-btn-bottom">
-                          <DelayedLink className={"default-css"} to="/portfolio">
-                            <div
-                              className="btn-blue btn-bottom"
-                              data-cursor-style="off"
-                            >
-                              <span>We create dreams</span>
-                              <i className="icon-arrow-right"></i>
-                            </div>
-                          </DelayedLink>
-                        </div>
-                      ) : (
-                        <div className="container-btn-bottom">
-                          <DelayedLink className={"default-css"} to="/portfolio">
-                            <div
-                              className="btn-border-white btn-bottom btn-about"
-                              data-cursor-style="off"
-                            >
-                              <span>Check out our portfolio</span>
-                            </div>
-                          </DelayedLink>
-                        </div>
-                      )}
+
+                      <div className="container-btn-bottom">
+                        {type ? (
+                          <div
+                            className="btn-blue btn-bottom"
+                            data-cursor-style="off"
+                            onClick={() => navigate("/portfolio")}
+                          >
+                            <span>We create dreams</span>
+                            <i className="icon-arrow-right"></i>
+                          </div>
+                        ) : (
+                          <div
+                            className="btn-border-white btn-bottom btn-about"
+                            data-cursor-style="off"
+                            onClick={() => navigate("/portfolio")}
+                          >
+                            <span>Check out our portfolio</span>
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </DelayedLink>
                 </div>

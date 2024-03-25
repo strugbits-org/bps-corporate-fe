@@ -2000,26 +2000,26 @@ html {
     font-size: 1.5rem;
   }
 }
-.fs--16, .section-slider-banner .slider-banner .swiper-slide a:not(.default-css) .container-project .list-tags li span, #pg-market-post .market-post-how-we-do-it .list-how-we-do-it .list-column-text .column-paragraph, #pg-portfolio-post .portfolio-post-intro .wrapper-portfolio .column-portfolio .container-text .wrapper-text, #pg-portfolio-post .portfolio-post-intro .wrapper-portfolio .column-portfolio .container-text .title, #pg-services-post .services-post-description .list-services li .content .container-text .service-description, #pg-about .about-meet-the-rest-of-the-family .list-family .list-item .content .container-text, #pg-about .about-dream-team .list-dream-team .line-wrapper .grid-item .container-text .occupation, .chat .container-chat .container-messages .message, .menu-search .wrapper-search .container-results .result-order-pages .list-order-pages .link-order-pages .text-order-pages, .menu-search .wrapper-search .container-results .column-results .result-portfolio .list-result-portfolio .grid-item .link-portfolio .title-portfolio, .editor, #footer .column-2 .container-footer-menu .list-footer-menu .list-item .link-footer-menu, .rental-product-link .product-link .product-name, .list-blog .grid-item .link-blog .text-blog, .list-address li .phones a, .list-address li address, .list-projects.font-submenu .list-item .project-link .container-text .list-tags li span, .list-projects.font-80 .list-item .project-link .container-text .list-tags li span, .list-projects.font-60 .project-link .container-text .list-tags li span, .form-search .container-submit a,
+.fs--16, .section-slider-banner .slider-banner .swiper-slide a .container-project .list-tags li span, #pg-market-post .market-post-how-we-do-it .list-how-we-do-it .list-column-text .column-paragraph, #pg-portfolio-post .portfolio-post-intro .wrapper-portfolio .column-portfolio .container-text .wrapper-text, #pg-portfolio-post .portfolio-post-intro .wrapper-portfolio .column-portfolio .container-text .title, #pg-services-post .services-post-description .list-services li .content .container-text .service-description, #pg-about .about-meet-the-rest-of-the-family .list-family .list-item .content .container-text, #pg-about .about-dream-team .list-dream-team .line-wrapper .grid-item .container-text .occupation, .chat .container-chat .container-messages .message, .menu-search .wrapper-search .container-results .result-order-pages .list-order-pages .link-order-pages .text-order-pages, .menu-search .wrapper-search .container-results .column-results .result-portfolio .list-result-portfolio .grid-item .link-portfolio .title-portfolio, .editor, #footer .column-2 .container-footer-menu .list-footer-menu .list-item .link-footer-menu, .rental-product-link .product-link .product-name, .list-blog .grid-item .link-blog .text-blog, .list-address li .phones a, .list-address li address, .list-projects.font-submenu .list-item .project-link .container-text .list-tags li span, .list-projects.font-80 .list-item .project-link .container-text .list-tags li span, .list-projects.font-60 .project-link .container-text .list-tags li span, .form-search .container-submit a,
 .form-search .container-submit button, .container-contact [data-form-error], .container-newsletter.letter-success .feedback-newsletter {
   line-height: 1.2em;
   letter-spacing: 0;
   font-weight: 400;
 }
 @media only screen and (min-width: 1025.1px) {
-  .fs--16, .section-slider-banner .slider-banner .swiper-slide a:not(.default-css) .container-project .list-tags li span, #pg-market-post .market-post-how-we-do-it .list-how-we-do-it .list-column-text .column-paragraph, #pg-portfolio-post .portfolio-post-intro .wrapper-portfolio .column-portfolio .container-text .wrapper-text, #pg-portfolio-post .portfolio-post-intro .wrapper-portfolio .column-portfolio .container-text .title, #pg-services-post .services-post-description .list-services li .content .container-text .service-description, #pg-about .about-meet-the-rest-of-the-family .list-family .list-item .content .container-text, #pg-about .about-dream-team .list-dream-team .line-wrapper .grid-item .container-text .occupation, .chat .container-chat .container-messages .message, .menu-search .wrapper-search .container-results .result-order-pages .list-order-pages .link-order-pages .text-order-pages, .menu-search .wrapper-search .container-results .column-results .result-portfolio .list-result-portfolio .grid-item .link-portfolio .title-portfolio, .editor, #footer .column-2 .container-footer-menu .list-footer-menu .list-item .link-footer-menu, .rental-product-link .product-link .product-name, .list-blog .grid-item .link-blog .text-blog, .list-address li .phones a, .list-address li address, .list-projects.font-submenu .list-item .project-link .container-text .list-tags li span, .list-projects.font-80 .list-item .project-link .container-text .list-tags li span, .list-projects.font-60 .project-link .container-text .list-tags li span, .form-search .container-submit a,
+  .fs--16, .section-slider-banner .slider-banner .swiper-slide a .container-project .list-tags li span, #pg-market-post .market-post-how-we-do-it .list-how-we-do-it .list-column-text .column-paragraph, #pg-portfolio-post .portfolio-post-intro .wrapper-portfolio .column-portfolio .container-text .wrapper-text, #pg-portfolio-post .portfolio-post-intro .wrapper-portfolio .column-portfolio .container-text .title, #pg-services-post .services-post-description .list-services li .content .container-text .service-description, #pg-about .about-meet-the-rest-of-the-family .list-family .list-item .content .container-text, #pg-about .about-dream-team .list-dream-team .line-wrapper .grid-item .container-text .occupation, .chat .container-chat .container-messages .message, .menu-search .wrapper-search .container-results .result-order-pages .list-order-pages .link-order-pages .text-order-pages, .menu-search .wrapper-search .container-results .column-results .result-portfolio .list-result-portfolio .grid-item .link-portfolio .title-portfolio, .editor, #footer .column-2 .container-footer-menu .list-footer-menu .list-item .link-footer-menu, .rental-product-link .product-link .product-name, .list-blog .grid-item .link-blog .text-blog, .list-address li .phones a, .list-address li address, .list-projects.font-submenu .list-item .project-link .container-text .list-tags li span, .list-projects.font-80 .list-item .project-link .container-text .list-tags li span, .list-projects.font-60 .project-link .container-text .list-tags li span, .form-search .container-submit a,
   .form-search .container-submit button, .container-contact [data-form-error], .container-newsletter.letter-success .feedback-newsletter {
     font-size: clamp(14px,1.6rem,1.6rem);
   }
 }
 @media only screen and (min-width: 767.98px) and (max-width: 1025px) {
-  .fs--16, .section-slider-banner .slider-banner .swiper-slide a:not(.default-css) .container-project .list-tags li span, #pg-market-post .market-post-how-we-do-it .list-how-we-do-it .list-column-text .column-paragraph, #pg-portfolio-post .portfolio-post-intro .wrapper-portfolio .column-portfolio .container-text .wrapper-text, #pg-portfolio-post .portfolio-post-intro .wrapper-portfolio .column-portfolio .container-text .title, #pg-services-post .services-post-description .list-services li .content .container-text .service-description, #pg-about .about-meet-the-rest-of-the-family .list-family .list-item .content .container-text, #pg-about .about-dream-team .list-dream-team .line-wrapper .grid-item .container-text .occupation, .chat .container-chat .container-messages .message, .menu-search .wrapper-search .container-results .result-order-pages .list-order-pages .link-order-pages .text-order-pages, .menu-search .wrapper-search .container-results .column-results .result-portfolio .list-result-portfolio .grid-item .link-portfolio .title-portfolio, .editor, #footer .column-2 .container-footer-menu .list-footer-menu .list-item .link-footer-menu, .rental-product-link .product-link .product-name, .list-blog .grid-item .link-blog .text-blog, .list-address li .phones a, .list-address li address, .list-projects.font-submenu .list-item .project-link .container-text .list-tags li span, .list-projects.font-80 .list-item .project-link .container-text .list-tags li span, .list-projects.font-60 .project-link .container-text .list-tags li span, .form-search .container-submit a,
+  .fs--16, .section-slider-banner .slider-banner .swiper-slide a .container-project .list-tags li span, #pg-market-post .market-post-how-we-do-it .list-how-we-do-it .list-column-text .column-paragraph, #pg-portfolio-post .portfolio-post-intro .wrapper-portfolio .column-portfolio .container-text .wrapper-text, #pg-portfolio-post .portfolio-post-intro .wrapper-portfolio .column-portfolio .container-text .title, #pg-services-post .services-post-description .list-services li .content .container-text .service-description, #pg-about .about-meet-the-rest-of-the-family .list-family .list-item .content .container-text, #pg-about .about-dream-team .list-dream-team .line-wrapper .grid-item .container-text .occupation, .chat .container-chat .container-messages .message, .menu-search .wrapper-search .container-results .result-order-pages .list-order-pages .link-order-pages .text-order-pages, .menu-search .wrapper-search .container-results .column-results .result-portfolio .list-result-portfolio .grid-item .link-portfolio .title-portfolio, .editor, #footer .column-2 .container-footer-menu .list-footer-menu .list-item .link-footer-menu, .rental-product-link .product-link .product-name, .list-blog .grid-item .link-blog .text-blog, .list-address li .phones a, .list-address li address, .list-projects.font-submenu .list-item .project-link .container-text .list-tags li span, .list-projects.font-80 .list-item .project-link .container-text .list-tags li span, .list-projects.font-60 .project-link .container-text .list-tags li span, .form-search .container-submit a,
   .form-search .container-submit button, .container-contact [data-form-error], .container-newsletter.letter-success .feedback-newsletter {
     font-size: clamp(14px,1.6rem,1.6rem);
   }
 }
 @media only screen and (max-width: 767.98px) {
-  .fs--16, .section-slider-banner .slider-banner .swiper-slide a:not(.default-css) .container-project .list-tags li span, #pg-market-post .market-post-how-we-do-it .list-how-we-do-it .list-column-text .column-paragraph, #pg-portfolio-post .portfolio-post-intro .wrapper-portfolio .column-portfolio .container-text .wrapper-text, #pg-portfolio-post .portfolio-post-intro .wrapper-portfolio .column-portfolio .container-text .title, #pg-services-post .services-post-description .list-services li .content .container-text .service-description, #pg-about .about-meet-the-rest-of-the-family .list-family .list-item .content .container-text, #pg-about .about-dream-team .list-dream-team .line-wrapper .grid-item .container-text .occupation, .chat .container-chat .container-messages .message, .menu-search .wrapper-search .container-results .result-order-pages .list-order-pages .link-order-pages .text-order-pages, .menu-search .wrapper-search .container-results .column-results .result-portfolio .list-result-portfolio .grid-item .link-portfolio .title-portfolio, .editor, #footer .column-2 .container-footer-menu .list-footer-menu .list-item .link-footer-menu, .rental-product-link .product-link .product-name, .list-blog .grid-item .link-blog .text-blog, .list-address li .phones a, .list-address li address, .list-projects.font-submenu .list-item .project-link .container-text .list-tags li span, .list-projects.font-80 .list-item .project-link .container-text .list-tags li span, .list-projects.font-60 .project-link .container-text .list-tags li span, .form-search .container-submit a,
+  .fs--16, .section-slider-banner .slider-banner .swiper-slide a .container-project .list-tags li span, #pg-market-post .market-post-how-we-do-it .list-how-we-do-it .list-column-text .column-paragraph, #pg-portfolio-post .portfolio-post-intro .wrapper-portfolio .column-portfolio .container-text .wrapper-text, #pg-portfolio-post .portfolio-post-intro .wrapper-portfolio .column-portfolio .container-text .title, #pg-services-post .services-post-description .list-services li .content .container-text .service-description, #pg-about .about-meet-the-rest-of-the-family .list-family .list-item .content .container-text, #pg-about .about-dream-team .list-dream-team .line-wrapper .grid-item .container-text .occupation, .chat .container-chat .container-messages .message, .menu-search .wrapper-search .container-results .result-order-pages .list-order-pages .link-order-pages .text-order-pages, .menu-search .wrapper-search .container-results .column-results .result-portfolio .list-result-portfolio .grid-item .link-portfolio .title-portfolio, .editor, #footer .column-2 .container-footer-menu .list-footer-menu .list-item .link-footer-menu, .rental-product-link .product-link .product-name, .list-blog .grid-item .link-blog .text-blog, .list-address li .phones a, .list-address li address, .list-projects.font-submenu .list-item .project-link .container-text .list-tags li span, .list-projects.font-80 .list-item .project-link .container-text .list-tags li span, .list-projects.font-60 .project-link .container-text .list-tags li span, .form-search .container-submit a,
   .form-search .container-submit button, .container-contact [data-form-error], .container-newsletter.letter-success .feedback-newsletter {
     font-size: 1.6rem;
   }
@@ -2248,23 +2248,23 @@ html {
     font-size: 3.5rem;
   }
 }
-.fs--40, .section-slider-banner .slider-banner .swiper-slide a:not(.default-css) .container-project .project, #pg-market-post .market-post-how-we-do-it .list-how-we-do-it .list-column-text .column-title, .contact-info .column-2 .list-address li .city, .container-contact [data-form-success] {
+.fs--40, .section-slider-banner .slider-banner .swiper-slide a .container-project .project, #pg-market-post .market-post-how-we-do-it .list-how-we-do-it .list-column-text .column-title, .contact-info .column-2 .list-address li .city, .container-contact [data-form-success] {
   line-height: 1.125em;
   letter-spacing: 0;
   font-weight: 600;
 }
 @media only screen and (min-width: 1025.1px) {
-  .fs--40, .section-slider-banner .slider-banner .swiper-slide a:not(.default-css) .container-project .project, #pg-market-post .market-post-how-we-do-it .list-how-we-do-it .list-column-text .column-title, .contact-info .column-2 .list-address li .city, .container-contact [data-form-success] {
+  .fs--40, .section-slider-banner .slider-banner .swiper-slide a .container-project .project, #pg-market-post .market-post-how-we-do-it .list-how-we-do-it .list-column-text .column-title, .contact-info .column-2 .list-address li .city, .container-contact [data-form-success] {
     font-size: 4rem;
   }
 }
 @media only screen and (min-width: 767.98px) and (max-width: 1025px) {
-  .fs--40, .section-slider-banner .slider-banner .swiper-slide a:not(.default-css) .container-project .project, #pg-market-post .market-post-how-we-do-it .list-how-we-do-it .list-column-text .column-title, .contact-info .column-2 .list-address li .city, .container-contact [data-form-success] {
+  .fs--40, .section-slider-banner .slider-banner .swiper-slide a .container-project .project, #pg-market-post .market-post-how-we-do-it .list-how-we-do-it .list-column-text .column-title, .contact-info .column-2 .list-address li .city, .container-contact [data-form-success] {
     font-size: 2.5rem;
   }
 }
 @media only screen and (max-width: 767.98px) {
-  .fs--40, .section-slider-banner .slider-banner .swiper-slide a:not(.default-css) .container-project .project, #pg-market-post .market-post-how-we-do-it .list-how-we-do-it .list-column-text .column-title, .contact-info .column-2 .list-address li .city, .container-contact [data-form-success] {
+  .fs--40, .section-slider-banner .slider-banner .swiper-slide a .container-project .project, #pg-market-post .market-post-how-we-do-it .list-how-we-do-it .list-column-text .column-title, .contact-info .column-2 .list-address li .city, .container-contact [data-form-success] {
     font-size: 2.5rem;
   }
 }
@@ -2308,23 +2308,23 @@ html {
     font-size: 4rem;
   }
 }
-.fs--80, .section-slider-banner .slider-banner .swiper-slide a:not(.default-css) .container-title .title, .section-studios .accordion-list-studios .accordion-item .accordion-header .accordion-title, .submenu-services .list-submenu-services > li .service-link .service-title, .list-projects.font-submenu .list-item .project-link .container-text .title-project, .list-projects.font-80 .list-item:first-child .project-link .container-text .title-project, .form-search input, .form-search label {
+.fs--80, .section-slider-banner .slider-banner .swiper-slide a .container-title .title, .section-studios .accordion-list-studios .accordion-item .accordion-header .accordion-title, .submenu-services .list-submenu-services > li .service-link .service-title, .list-projects.font-submenu .list-item .project-link .container-text .title-project, .list-projects.font-80 .list-item:first-child .project-link .container-text .title-project, .form-search input, .form-search label {
   line-height: 1em;
   letter-spacing: 0;
   font-weight: 600;
 }
 @media only screen and (min-width: 1025.1px) {
-  .fs--80, .section-slider-banner .slider-banner .swiper-slide a:not(.default-css) .container-title .title, .section-studios .accordion-list-studios .accordion-item .accordion-header .accordion-title, .submenu-services .list-submenu-services > li .service-link .service-title, .list-projects.font-submenu .list-item .project-link .container-text .title-project, .list-projects.font-80 .list-item:first-child .project-link .container-text .title-project, .form-search input, .form-search label {
+  .fs--80, .section-slider-banner .slider-banner .swiper-slide a .container-title .title, .section-studios .accordion-list-studios .accordion-item .accordion-header .accordion-title, .submenu-services .list-submenu-services > li .service-link .service-title, .list-projects.font-submenu .list-item .project-link .container-text .title-project, .list-projects.font-80 .list-item:first-child .project-link .container-text .title-project, .form-search input, .form-search label {
     font-size: 8rem;
   }
 }
 @media only screen and (min-width: 767.98px) and (max-width: 1025px) {
-  .fs--80, .section-slider-banner .slider-banner .swiper-slide a:not(.default-css) .container-title .title, .section-studios .accordion-list-studios .accordion-item .accordion-header .accordion-title, .submenu-services .list-submenu-services > li .service-link .service-title, .list-projects.font-submenu .list-item .project-link .container-text .title-project, .list-projects.font-80 .list-item:first-child .project-link .container-text .title-project, .form-search input, .form-search label {
+  .fs--80, .section-slider-banner .slider-banner .swiper-slide a .container-title .title, .section-studios .accordion-list-studios .accordion-item .accordion-header .accordion-title, .submenu-services .list-submenu-services > li .service-link .service-title, .list-projects.font-submenu .list-item .project-link .container-text .title-project, .list-projects.font-80 .list-item:first-child .project-link .container-text .title-project, .form-search input, .form-search label {
     font-size: 4rem;
   }
 }
 @media only screen and (max-width: 767.98px) {
-  .fs--80, .section-slider-banner .slider-banner .swiper-slide a:not(.default-css) .container-title .title, .section-studios .accordion-list-studios .accordion-item .accordion-header .accordion-title, .submenu-services .list-submenu-services > li .service-link .service-title, .list-projects.font-submenu .list-item .project-link .container-text .title-project, .list-projects.font-80 .list-item:first-child .project-link .container-text .title-project, .form-search input, .form-search label {
+  .fs--80, .section-slider-banner .slider-banner .swiper-slide a .container-title .title, .section-studios .accordion-list-studios .accordion-item .accordion-header .accordion-title, .submenu-services .list-submenu-services > li .service-link .service-title, .list-projects.font-submenu .list-item .project-link .container-text .title-project, .list-projects.font-80 .list-item:first-child .project-link .container-text .title-project, .form-search input, .form-search label {
     font-size: 4rem;
   }
 }
@@ -18818,7 +18818,7 @@ modal-item .shopify-buy-frame iframe {
     min-height: 98rem;
   }
 }
-.section-slider-banner .slider-banner .swiper-slide a:not(.default-css) {
+.section-slider-banner .slider-banner .swiper-slide a {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -18831,7 +18831,7 @@ modal-item .shopify-buy-frame iframe {
   background: var(--black-1);
 }
 @media only screen and (max-width: 1025px) {
-  .section-slider-banner .slider-banner .swiper-slide a:not(.default-css) {
+  .section-slider-banner .slider-banner .swiper-slide a {
     text-align: center;
     align-items: center;
     align-content: center;
@@ -18841,14 +18841,14 @@ modal-item .shopify-buy-frame iframe {
   }
 }
 @media only screen and (max-width: 767.98px) {
-  .section-slider-banner .slider-banner .swiper-slide a:not(.default-css) {
+  .section-slider-banner .slider-banner .swiper-slide a {
     padding: 19.5rem 3.6rem 12rem;
   }
 }
-.section-slider-banner .slider-banner .swiper-slide a:not(.default-css) .wrapper-mask > span {
+.section-slider-banner .slider-banner .swiper-slide a .wrapper-mask > span {
   transform: translateY(101%);
 }
-.section-slider-banner .slider-banner .swiper-slide a:not(.default-css) .container-img {
+.section-slider-banner .slider-banner .swiper-slide a .container-img {
   position: absolute;
   top: 0;
   right: auto;
@@ -18860,7 +18860,7 @@ modal-item .shopify-buy-frame iframe {
   transform: scale(1.2);
   opacity: 0;
 }
-.section-slider-banner .slider-banner .swiper-slide a:not(.default-css) .container-img:before {
+.section-slider-banner .slider-banner .swiper-slide a .container-img:before {
   content: "";
   display: block;
   width: 100%;
@@ -18873,54 +18873,54 @@ modal-item .shopify-buy-frame iframe {
   left: 0;
   background: linear-gradient(#000000, rgba(0, 0, 0, 0));
 }
-.section-slider-banner .slider-banner .swiper-slide a:not(.default-css) .container-project {
+.section-slider-banner .slider-banner .swiper-slide a .container-project {
   position: relative;
   z-index: 5;
 }
-.section-slider-banner .slider-banner .swiper-slide a:not(.default-css) .container-project .project {
+.section-slider-banner .slider-banner .swiper-slide a .container-project .project {
   color: var(--white-1);
 }
 @media only screen and (max-width: 1025px) {
-  .section-slider-banner .slider-banner .swiper-slide a:not(.default-css) .container-project .project {
+  .section-slider-banner .slider-banner .swiper-slide a .container-project .project {
     font-size: 4rem;
   }
 }
-.section-slider-banner .slider-banner .swiper-slide a:not(.default-css) .container-project .list-tags {
+.section-slider-banner .slider-banner .swiper-slide a .container-project .list-tags {
   overflow: hidden;
 }
-.section-slider-banner .slider-banner .swiper-slide a:not(.default-css) .container-project .list-tags li span {
+.section-slider-banner .slider-banner .swiper-slide a .container-project .list-tags li span {
   display: inline-block;
   transform: translateY(4rem) rotate(7deg);
   opacity: 0;
 }
 @media only screen and (max-width: 1025px) {
-  .section-slider-banner .slider-banner .swiper-slide a:not(.default-css) .container-project .list-tags li {
+  .section-slider-banner .slider-banner .swiper-slide a .container-project .list-tags li {
     margin-top: 0.5rem;
   }
 }
-.section-slider-banner .slider-banner .swiper-slide a:not(.default-css) .container-title {
+.section-slider-banner .slider-banner .swiper-slide a .container-title {
   position: relative;
   margin-top: 6rem;
 }
-.section-slider-banner .slider-banner .swiper-slide a:not(.default-css) .container-title .title {
+.section-slider-banner .slider-banner .swiper-slide a .container-title .title {
   color: var(--white-1);
   margin-bottom: 4rem;
 }
-.section-slider-banner .slider-banner .swiper-slide a:not(.default-css) .btn-top {
+.section-slider-banner .slider-banner .swiper-slide a .btn-top {
   --btn-p: 1.5rem 1.2rem;
 }
-.section-slider-banner .slider-banner .swiper-slide a:not(.default-css) .btn-bottom {
+.section-slider-banner .slider-banner .swiper-slide a .btn-bottom {
   --btn-p: 2rem 5rem 2.4rem 3.2rem;
 }
-.section-slider-banner .slider-banner .swiper-slide a:not(.default-css) .btn-about {
+.section-slider-banner .slider-banner .swiper-slide a .btn-about {
   --btn-p: 1.5rem 5.7rem;
 }
-.section-slider-banner .slider-banner .swiper-slide a:not(.default-css) .btn-bottom,
-.section-slider-banner .slider-banner .swiper-slide a:not(.default-css) .btn-top {
+.section-slider-banner .slider-banner .swiper-slide a .btn-bottom,
+.section-slider-banner .slider-banner .swiper-slide a .btn-top {
   --min-w: unset;
 }
-.section-slider-banner .slider-banner .swiper-slide a:not(.default-css) .container-btn-bottom,
-.section-slider-banner .slider-banner .swiper-slide a:not(.default-css) .container-btn-top {
+.section-slider-banner .slider-banner .swiper-slide a .container-btn-bottom,
+.section-slider-banner .slider-banner .swiper-slide a .container-btn-top {
   transform: translateY(4rem);
   opacity: 0;
 }
@@ -19177,7 +19177,7 @@ body.page-leave-active[data-load="first-done"] .overlay {
 } */
 
 .hidden{
-  display: none;
+  display: none !important;
 }
 .menu-search .wrapper-search .container-results .result-all-studios .list-result-all-studios .grid-item .link-studios:not(.active){
   background-color: white;
