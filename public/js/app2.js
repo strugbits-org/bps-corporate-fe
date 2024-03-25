@@ -12872,16 +12872,16 @@ var require_app2 = __commonJS({
       let readMore = document.querySelectorAll(".container-read-more");
       if (readMore) {
         readMore.forEach((element) => {
-          let textHeight = element.querySelector(".text").clientHeight;
-          let btnReadMore = element.querySelector(".btn-read-more");
-          element.style.setProperty("--h", textHeight + "px");
-          btnReadMore.addEventListener("click", function () {
-            if (element.classList.contains("active")) {
-              element.removeActive();
-            } else {
-              element.addActive();
-            }
-          });
+          // let textHeight = element.querySelector(".text").clientHeight;
+          // let btnReadMore = element.querySelector(".btn-read-more");
+          // element.style.setProperty("--h", textHeight + "px");
+          // btnReadMore.addEventListener("click", function () {
+          //   if (element.classList.contains("active")) {
+          //     element.removeActive();
+          //   } else {
+          //     element.addActive();
+          //   }
+          // });
         });
       }
     }

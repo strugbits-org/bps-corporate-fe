@@ -473,14 +473,14 @@ const Search = () => {
                   <div className="result-order-pages">
                     <div className="container-title-results">
                       <h2 className="title-results split-chars" data-aos>
-                        Order pages <span>{`"${searchTerm}"`}</span>
+                      Other Pages <span>{`"${searchTerm}"`}</span>
                       </h2>
                     </div>
                     <ul
                       className="list-order-pages grid-lg-25 grid-md-50"
                       data-aos
                     >
-                      {otherPagesResults?.slice(0, 5).map((page,index) => {
+                      {otherPagesResults?.map((page,index) => {
                         return (
                           <li key={index} className="grid-item">
                             <DelayedLink to={page.path} className="link-order-pages">
@@ -492,6 +492,7 @@ const Search = () => {
                           </li>
                         )
                       })}
+                      {otherPagesResults.length === 0 && <h6 style={{ width: "100%" }} className="ml-4 mt-3-cs fs--20">No matches found for "{searchTerm}"</h6>}
                     </ul>
                   </div>
                 </div>
