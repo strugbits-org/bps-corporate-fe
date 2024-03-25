@@ -318,7 +318,11 @@ const PostDetails = ({ data }) => {
             {/* Product Cart Slider start */}
 
             {data?.storeProducts && data?.storeProducts.length !== 0 && (
-              <div className={`container-slider-produtcts mt-lg-padding-fluid mt-tablet-100 mt-phone-105 ${data?.storeProducts?.length === 0 ? "hidden" : ""}`} >
+              <div
+                className={`container-slider-produtcts mt-lg-padding-fluid mt-tablet-100 mt-phone-105 ${
+                  data?.storeProducts?.length === 0 ? "hidden" : ""
+                }`}
+              >
                 <h2 className="slider-title">
                   Products featured in this blog entry:
                 </h2>
@@ -328,7 +332,16 @@ const PostDetails = ({ data }) => {
             {/* Product Cart Slider end */}
           </div>
           {/* social vertical bar start */}
-          <SocialVerticalBar />
+          <div
+            className="col-lg-1 column-2 no-mobile"
+            data-aos="fadeIn .8s ease-in-out .2s, d:loop"
+          >
+            <div className="wrapper-share">
+              <h3 className="fs--18 text-center d-inline-block mb-25">Share</h3>
+              <SocialVerticalBar />
+            </div>
+          </div>
+
           {/* social vertical bar end */}
         </div>
       </div>
