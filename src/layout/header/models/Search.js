@@ -258,7 +258,7 @@ const Search = () => {
                                           <i className="icon-arrow-diagonal-right"></i>
                                         </div>
                                         <ul className="list-thumb">
-                                          {item.product.productOptions.Color.choices.map((option, index) => (
+                                          {item.product?.productOptions?.Color?.choices.map((option, index) => (
                                             <React.Fragment key={index}>
                                               {index < 4 && (
                                                 <li key={index}>
@@ -275,7 +275,7 @@ const Search = () => {
                                             </React.Fragment>
                                           ))}
                                         </ul>
-                                        {item.product.productOptions.Color.choices.length > 4 ? (
+                                        {item.product?.productOptions?.Color?.choices?.length > 4 ? (
                                           <div className="colors-number">
                                             <span>+{item.product.productOptions.Color.choices.length - 4}</span>
                                           </div>
