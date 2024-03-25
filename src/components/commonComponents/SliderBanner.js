@@ -1,9 +1,17 @@
 import { useNavigate } from "react-router-dom";
 import { getFullImagePost } from "../../common/common_functions/imageURL";
 import DelayedLink from "../../common/DelayedLink";
+import { pageLoadStart } from "../../utilis/animationsTriggers";
 
 const SliderBanner = ({ data, type }) => {
   const navigate = useNavigate();
+
+  const handleNavigate = (path) => {
+    pageLoadStart();
+    setTimeout(() => {
+      navigate(path)
+    }, 900);
+  }
   return (
     <section className="section-slider-banner">
       <div className="slider-banner banner-about" data-aos="d:loop">
@@ -16,9 +24,7 @@ const SliderBanner = ({ data, type }) => {
                 <div key={index} className="swiper-slide">
                   <DelayedLink>
                     <div
-                      onClick={() =>
-                        navigate(`/portfolio-post/${data?.portfolioRef?.slug}`)
-                      }
+                      onClick={() => handleNavigate(`/portfolio-post/${data?.portfolioRef?.slug}`) }
                       className="container-img"
                     >
                       <img
@@ -48,7 +54,7 @@ const SliderBanner = ({ data, type }) => {
                           <div
                             className="btn-border-white btn-top mt-30"
                             data-cursor-style="off"
-                            onClick={(e) => navigate("/contact")}
+                            onClick={() => handleNavigate("/contact")}
                           >
                             <span>Get in touch with us</span>
                           </div>
@@ -66,7 +72,7 @@ const SliderBanner = ({ data, type }) => {
                           <div
                             className="btn-blue btn-bottom"
                             data-cursor-style="off"
-                            onClick={() => navigate("/portfolio")}
+                            onClick={() => handleNavigate("/portfolio")}
                           >
                             <span>We create dreams</span>
                             <i className="icon-arrow-right"></i>
@@ -75,7 +81,7 @@ const SliderBanner = ({ data, type }) => {
                           <div
                             className="btn-border-white btn-bottom btn-about"
                             data-cursor-style="off"
-                            onClick={() => navigate("/portfolio")}
+                            onClick={() => handleNavigate("/portfolio")}
                           >
                             <span>Check out our portfolio</span>
                           </div>
