@@ -25,16 +25,12 @@ const ContentComponent = ({ content, title, maxWords }) => {
   };
 
   return (
-    <div
-      className={`container-text container-read-more ${
-        showAll ? "active" : "leave"
-      }`}
-    >
+    <div className={"container-text container-read-more"}>
       <h2 className="title">{title}</h2>
-      <div className="wrapper-text">
+      <div className={`wrapper-text ${showAll ? "active" : ""}`} >
         <p>{paragraphs[0]}</p>
         <div className={"readmore-paragraphs text"}>
-          {paragraphs.slice(1).map((paragraph, index) => <> <br/><p key={index}>{paragraph}</p></> )}
+          {paragraphs.slice(1).map((paragraph, index) => <> <br /><p key={index}>{paragraph}</p></>)}
         </div>
       </div>
       {!hideButton && (

@@ -15619,13 +15619,13 @@ modal-item .shopify-buy-frame iframe {
 /* #pg-portfolio-post .portfolio-post-intro .wrapper-portfolio .column-portfolio .container-text.container-read-more.active .wrapper-text {
   height: var(--h);
 } */
-#pg-portfolio-post .portfolio-post-intro .wrapper-portfolio .column-portfolio .container-text.container-read-more.active .btn-read-more i {
+#pg-portfolio-post .portfolio-post-intro .wrapper-portfolio .column-portfolio .container-text.container-read-more:has(.active) .btn-read-more i {
   transform: rotate(-180deg);
 }
-#pg-portfolio-post .portfolio-post-intro .wrapper-portfolio .column-portfolio .container-text.container-read-more.active .btn-read-more .btn-text .read-more {
+#pg-portfolio-post .portfolio-post-intro .wrapper-portfolio .column-portfolio .container-text.container-read-more:has(.active) .btn-read-more .btn-text .read-more {
   transform: translateY(-100%);
 }
-#pg-portfolio-post .portfolio-post-intro .wrapper-portfolio .column-portfolio .container-text.container-read-more.active .btn-read-more .btn-text .to-go-back {
+#pg-portfolio-post .portfolio-post-intro .wrapper-portfolio .column-portfolio .container-text.container-read-more:has(.active) .btn-read-more .btn-text .to-go-back {
   transform: translateY(0);
 }
 @media only screen and (min-width: 1025.1px) {
@@ -19295,17 +19295,23 @@ body.page-leave-active[data-load="first-done"] .overlay {
   }
 }
 
-.container-read-more .readmore-paragraphs {
+.wrapper-text .readmore-paragraphs {
   max-height: 0;
   margin-top: 0!important;
-  -webkit-transition: max-height 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
-  -moz-transition: max-height 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
-  -ms-transition: max-height 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
-  -o-transition: max-height 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition: max-height 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition-delay: 0s;
+  -webkit-transition: max-height 2s cubic-bezier(0.645, 0.045, 0.355, 1);
+  -moz-transition: max-height 2s cubic-bezier(0.645, 0.045, 0.355, 1);
+  -ms-transition: max-height 2s cubic-bezier(0.645, 0.045, 0.355, 1);
+  -o-transition: max-height 2s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: max-height 2s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition-delay: 0s!important;
 }
 
-.container-read-more.active .readmore-paragraphs {
+.wrapper-text.active .readmore-paragraphs {
   max-height: 50vh;
+  transition-delay: 0s!important;
+}
+
+
+.wrapper-text:not(.active) .readmore-paragraphs {
+  transition: max-height 1s!important;
 }

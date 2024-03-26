@@ -19,7 +19,7 @@ export const postFormData = createAsyncThunk(
   async (formData) => {
     try {
       let submission = {
-        formId: "287dbc30-d7fb-4e4c-b9ce-7c11047f69cf",
+        formId: process.env.REACT_APP_WIX_CLIENT_FORM_ID,
         status: "CONFIRMED",
         submissions: formData,
       };
@@ -39,7 +39,7 @@ export const postNewsletter = createAsyncThunk(
   async (formData) => {
     try {
       let submission = {
-        formId: "cf9ecfbe-c453-4787-96d7-cea56975a924",
+        formId: process.env.REACT_APP_WIX_CLIENT_NEWSLETTER_ID,
         status: "CONFIRMED",
         submissions: formData,
       };
