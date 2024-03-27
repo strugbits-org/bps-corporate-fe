@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import DelayedLink from "../../common/DelayedLink";
 import { getFullImagePost } from "../../common/common_functions/imageURL";
+import { useDetectClickOutside } from 'react-detect-click-outside';
 
 const PortfolioListing = ({ data, seeMore, applyFilters }) => {
   const [selectedStudios, setSelectedStudios] = useState([]);
@@ -10,8 +11,6 @@ const PortfolioListing = ({ data, seeMore, applyFilters }) => {
   const [marketsDropdownActive, setMarketsDropdownActive] = useState(false);
 
   const handleStudioFilter = (tag) => {
-    setSudiosDropdownActive(false);
-    setMarketsDropdownActive(false);
     if (selectedStudios.includes(tag)) {
       const _selectedStudios = selectedStudios.filter((el) => el !== tag);
       setSelectedStudios(_selectedStudios);
@@ -23,8 +22,6 @@ const PortfolioListing = ({ data, seeMore, applyFilters }) => {
     }
   };
   const handleMarketFilter = (category) => {
-    setSudiosDropdownActive(false);
-    setMarketsDropdownActive(false);
     if (selectedMarkets.includes(category)) {
       const _selectedMarkets = selectedMarkets.filter((el) => el !== category);
       setSelectedMarkets(_selectedMarkets);
@@ -35,6 +32,18 @@ const PortfolioListing = ({ data, seeMore, applyFilters }) => {
       applyFilters({ selectedStudios, selectedMarkets: _selectedMarkets });
     }
   };
+
+  const resetFilter = (type) => {
+    if (type === "studios") {
+      setSelectedStudios([]);
+      applyFilters({ selectedStudios: [], selectedMarkets });
+    } else if (type === "markets") {
+      setSelectedMarkets([]);
+      applyFilters({ selectedStudios, selectedMarkets: [] });
+    }
+  }
+  const studiosDropdownref = useDetectClickOutside({ onTriggered: () => { if (studiosDropdownActive) setSudiosDropdownActive(false) } });
+  const marketsDropdownref = useDetectClickOutside({ onTriggered: () => { if (marketsDropdownActive) setMarketsDropdownActive(false) } });
 
   return (
     <section className="portfolio-intro pt-lg-145 pt-mobile-105">
@@ -49,7 +58,7 @@ const PortfolioListing = ({ data, seeMore, applyFilters }) => {
               className="container-list-tags mt-lg-55 mt-tablet-40 mt-phone-30"
               data-aos="fadeIn .8s ease-in-out .2s, d:loop"
             >
-              <div className="portfolio-tags">
+              <div ref={studiosDropdownref} className="portfolio-tags">
                 <button
                   onClick={() => { setSudiosDropdownActive(!studiosDropdownActive) }}
                   className={`btn-tag-mobile no-desktop ${studiosDropdownActive ? "active" : ""}`}
@@ -61,19 +70,13 @@ const PortfolioListing = ({ data, seeMore, applyFilters }) => {
                   <div className="container-wrapper-list">
                     <div className="wrapper-list">
                       <ul
-                        className={`list-portfolio-tags list-dropdown-tags ${
-                          data.studios.length === 0 ? "hidden" : ""
-                        }`}
+                        className={`list-portfolio-tags list-dropdown-tags ${data.studios.length === 0 ? "hidden" : ""
+                          }`}
                       >
                         <li>
                           <button
-                            onClick={() => {
-                              setSelectedStudios([]);
-                            }}
-                            className={`portfolio-btn-tag ${
-                              selectedStudios.length === 0 ? "active" : ""
-                            }`}
-                          >
+                            onClick={() => { resetFilter("studios") }}
+                            className={`portfolio-btn-tag ${selectedStudios.length === 0 ? "active" : ""}`}>
                             <span>All Studios</span>
                           </button>
                         </li>
@@ -83,11 +86,10 @@ const PortfolioListing = ({ data, seeMore, applyFilters }) => {
                               onClick={() => {
                                 handleStudioFilter(item.data._id);
                               }}
-                              className={`portfolio-btn-tag ${
-                                selectedStudios.includes(item.data._id)
-                                  ? "active"
-                                  : ""
-                              }`}
+                              className={`portfolio-btn-tag ${selectedStudios.includes(item.data._id)
+                                ? "active"
+                                : ""
+                                }`}
                             >
                               {item.data.cardName}
                             </button>
@@ -99,9 +101,8 @@ const PortfolioListing = ({ data, seeMore, applyFilters }) => {
                 </div>
               </div>
 
-              <div className={`market-tags ${
-                  data?.markets?.length === 0 ? "hidden" : ""
-                }`}>
+              <div ref={marketsDropdownref} className={`market-tags ${data?.markets?.length === 0 ? "hidden" : ""}`}
+              >
                 <button
                   onClick={() => { setMarketsDropdownActive(!marketsDropdownActive) }}
                   className={`btn-tag-mobile no-desktop ${marketsDropdownActive ? "active" : ""}`}
@@ -115,12 +116,9 @@ const PortfolioListing = ({ data, seeMore, applyFilters }) => {
                       <ul className="list-market-tags list-dropdown-tags">
                         <li>
                           <button
-                            onClick={() => {
-                              setSelectedMarkets([]);
-                            }}
-                            className={`portfolio-btn-tag ${
-                              selectedMarkets.length === 0 ? "active" : ""
-                            }`}
+                            onClick={() => { resetFilter("markets") }}
+                            className={`portfolio-btn-tag ${selectedMarkets.length === 0 ? "active" : ""
+                              }`}
                           >
                             <span>All Markets</span>
                           </button>
@@ -131,11 +129,10 @@ const PortfolioListing = ({ data, seeMore, applyFilters }) => {
                               onClick={() => {
                                 handleMarketFilter(market._id);
                               }}
-                              className={`portfolio-btn-tag ${
-                                selectedMarkets.includes(market._id)
-                                  ? "active"
-                                  : ""
-                              }`}
+                              className={`portfolio-btn-tag ${selectedMarkets.includes(market._id)
+                                ? "active"
+                                : ""
+                                }`}
                               key={`category-${index}`}
                             >
                               {market.cardname}
@@ -153,9 +150,8 @@ const PortfolioListing = ({ data, seeMore, applyFilters }) => {
         <div className="row row-2">
           <div className="col-lg-12 column-1">
             <ul
-              className={`list-portfolio grid-lg-25 grid-tablet-50 ${
-                data.items?.length === 0 ? "hidden" : ""
-              }`}
+              className={`list-portfolio grid-lg-25 grid-tablet-50 ${data.items?.length === 0 ? "hidden" : ""
+                }`}
             >
               {data.items?.map((item) => {
                 return (
@@ -192,11 +188,10 @@ const PortfolioListing = ({ data, seeMore, applyFilters }) => {
                               onClick={() => {
                                 handleMarketFilter(market._id);
                               }}
-                              className={`tag-small ${
-                                selectedMarkets.includes(market._id)
-                                  ? "active"
-                                  : ""
-                              }`}
+                              className={`tag-small ${selectedMarkets.includes(market._id)
+                                ? "active"
+                                : ""
+                                }`}
                             >
                               <span>{market.cardname}</span>
                             </li>
@@ -208,11 +203,10 @@ const PortfolioListing = ({ data, seeMore, applyFilters }) => {
                                   onClick={() => {
                                     handleStudioFilter(studio._id);
                                   }}
-                                  className={`tag-small ${
-                                    selectedStudios.includes(studio._id)
-                                      ? "active"
-                                      : ""
-                                  }`}
+                                  className={`tag-small ${selectedStudios.includes(studio._id)
+                                    ? "active"
+                                    : ""
+                                    }`}
                                 >
                                   <span>{studio.cardName}</span>
                                 </li>

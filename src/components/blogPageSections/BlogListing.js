@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import DelayedLink from "../../common/DelayedLink";
 import getFullImageURL from "../../common/common_functions/imageURL";
 import formatDate from "../../common/common_functions/dateFormat";
+import { useDetectClickOutside } from 'react-detect-click-outside';
 
 const BlogListing = ({ data, seeMore, applyFilters }) => {
 
@@ -15,29 +16,40 @@ const BlogListing = ({ data, seeMore, applyFilters }) => {
         setSudiosDropdownActive(false);
         setMarketsDropdownActive(false);
         if (selectedStudios.includes(tag)) {
-          const _selectedStudios = selectedStudios.filter((el) => el !== tag);
-          setSelectedStudios(_selectedStudios);
-          applyFilters({ selectedStudios: _selectedStudios, selectedMarkets });
+            const _selectedStudios = selectedStudios.filter((el) => el !== tag);
+            setSelectedStudios(_selectedStudios);
+            applyFilters({ selectedStudios: _selectedStudios, selectedMarkets });
         } else {
-          const _selectedStudios = [...selectedStudios, tag];
-          setSelectedStudios(_selectedStudios);
-          applyFilters({ selectedStudios: _selectedStudios, selectedMarkets });
+            const _selectedStudios = [...selectedStudios, tag];
+            setSelectedStudios(_selectedStudios);
+            applyFilters({ selectedStudios: _selectedStudios, selectedMarkets });
         }
-      };
-      const handleMarketFilter = (category) => {
+    };
+    const handleMarketFilter = (category) => {
         setSudiosDropdownActive(false);
         setMarketsDropdownActive(false);
         if (selectedMarkets.includes(category)) {
-          const _selectedMarkets = selectedMarkets.filter((el) => el !== category);
-          setSelectedMarkets(_selectedMarkets);
-          applyFilters({ selectedStudios, selectedMarkets: _selectedMarkets });
+            const _selectedMarkets = selectedMarkets.filter((el) => el !== category);
+            setSelectedMarkets(_selectedMarkets);
+            applyFilters({ selectedStudios, selectedMarkets: _selectedMarkets });
         } else {
-          const _selectedMarkets = [...selectedMarkets, category];
-          setSelectedMarkets(_selectedMarkets);
-          applyFilters({ selectedStudios, selectedMarkets: _selectedMarkets });
+            const _selectedMarkets = [...selectedMarkets, category];
+            setSelectedMarkets(_selectedMarkets);
+            applyFilters({ selectedStudios, selectedMarkets: _selectedMarkets });
         }
-      };
+    };
 
+    const resetFilter = (type) => {
+        if (type === "studios") {
+            setSelectedStudios([]);
+            applyFilters({ selectedStudios: [], selectedMarkets });
+        } else if (type === "markets") {
+            setSelectedMarkets([]);
+            applyFilters({ selectedStudios, selectedMarkets: [] });
+        }
+    }
+    const studiosDropdownref = useDetectClickOutside({ onTriggered: () => { if (studiosDropdownActive) setSudiosDropdownActive(false) } });
+    const marketsDropdownref = useDetectClickOutside({ onTriggered: () => { if (marketsDropdownActive) setMarketsDropdownActive(false) } });
     return (
         <section className="blog-intro pt-lg-145 pt-tablet-115 pt-phone-120 pb-lg-150 pb-tablet-100 pb-phone-155">
             <div className="container-fluid">
@@ -53,7 +65,7 @@ const BlogListing = ({ data, seeMore, applyFilters }) => {
                             className="container-list-tags mt-lg-55 mt-tablet-40 mt-phone-30"
                             data-aos="fadeIn .8s ease-in-out .2s, d:loop"
                         >
-                            <div className="portfolio-tags">
+                            <div ref={studiosDropdownref} className="portfolio-tags">
                                 <button
                                     onClick={() => { setSudiosDropdownActive(!studiosDropdownActive) }}
                                     className={`btn-tag-mobile no-desktop ${studiosDropdownActive ? "active" : ""}`}
@@ -67,7 +79,7 @@ const BlogListing = ({ data, seeMore, applyFilters }) => {
                                             <ul className="list-portfolio-tags list-dropdown-tags">
                                                 <li>
                                                     <button
-                                                        onClick={() => { setSelectedStudios([]) }}
+                                                        onClick={() => { resetFilter("studios") }}
                                                         className={`portfolio-btn-tag ${selectedStudios.length === 0 ? "active" : ""
                                                             }`}>
                                                         <span>All Studios</span>
@@ -91,7 +103,7 @@ const BlogListing = ({ data, seeMore, applyFilters }) => {
                                 </div>
                             </div>
 
-                            <div className="market-tags">
+                            <div ref={marketsDropdownref} className="market-tags">
                                 <button
                                     onClick={() => { setMarketsDropdownActive(!marketsDropdownActive) }}
                                     className={`btn-tag-mobile no-desktop ${marketsDropdownActive ? "active" : ""}`}
@@ -105,7 +117,7 @@ const BlogListing = ({ data, seeMore, applyFilters }) => {
                                             <ul className="list-market-tags list-dropdown-tags">
                                                 <li>
                                                     <button
-                                                        onClick={() => { setSelectedMarkets([]) }}
+                                                        onClick={() => { resetFilter("markets") }}
                                                         className={`portfolio-btn-tag ${selectedMarkets.length === 0 ? "active" : ""
                                                             }`}
                                                     >

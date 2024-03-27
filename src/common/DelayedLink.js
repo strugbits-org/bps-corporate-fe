@@ -9,6 +9,11 @@ const DelayedLink = ({ to, children, className, target, attributes }) => {
   const delayedRedirect = (e) => {
     e.preventDefault();
 
+    const parentPage = (path) => {
+      const page = path.trim() === "/" ? "/" : path.substring(1);
+      return page.split("/")[0].trim()
+    }
+
     const submenu = document.querySelector('.submenu');
     const wrapperCursor = document.querySelector('#wrapper-cursor');
 
@@ -19,11 +24,16 @@ const DelayedLink = ({ to, children, className, target, attributes }) => {
     if (location.pathname === to) {
       pageLoadStart();
       setTimeout(() => pageLoadFinished(), 900);
+      return;
     }
 
     if (target === undefined) {
       pageLoadStart();
-      setTimeout(() => navigate(to), 900);
+      if (parentPage(to) === parentPage(location.pathname)) {
+        setTimeout(() => navigate(to + "?noreload=true"), 900);
+      }else{
+        setTimeout(() => navigate(to), 900);
+      }
     } else {
       window.open(to, target);
     }

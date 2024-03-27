@@ -19,7 +19,7 @@ const Portfolio = () => {
   useEffect(() => {
     dispatch(fetchStudioSection());
     dispatch(getMarketCollection());
-    applyFilters({});
+    applyFilters({disableLoader : true});
   }, [dispatch]);
   
   const handleSeeMore = async () => {
@@ -29,15 +29,15 @@ const Portfolio = () => {
     updatedWatched();
   }
 
-  const applyFilters = async ({selectedStudios = [], selectedMarkets = []}) => {
-    const response = await listPortfolios({ pageSize, studios: selectedStudios, markets: selectedMarkets });
-    setPortfolioCollection(response.items.map(item => item.data));
+  const applyFilters = async ({selectedStudios = [], selectedMarkets = [], disableLoader = false}) => {
+    const response = await listPortfolios({ pageSize, studios: selectedStudios, markets: selectedMarkets, disableLoader });
+    setPortfolioCollection(response.items.filter(item => item.data.portfolioRef._id !== undefined).map(item => item.data));
     setPortfolioResponse(response);
   }
 
   return (
     <>
-      <PortfolioListing data={{ items: portfolioCollection, pageSize, studios, markets, totalCount: portfolioResponse?.totalCount }} applyFilters={applyFilters} seeMore={handleSeeMore} />
+      <PortfolioListing data={{ items: portfolioCollection, pageSize, studios, markets, totalCount: portfolioCollection.length }} applyFilters={applyFilters} seeMore={handleSeeMore} />
       <MarketSection />
       <SocialSection />
     </>
