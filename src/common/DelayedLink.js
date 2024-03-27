@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { pageLoadFinished, pageLoadStart } from '../utilis/animationsTriggers';
+// import { resetCount } from '../utilis/loadAnimations';
 
 const DelayedLink = ({ to, children, className, target, attributes }) => {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ const DelayedLink = ({ to, children, className, target, attributes }) => {
     if (submenu) submenu.classList.remove('active');
     if (wrapperCursor) wrapperCursor.click();
     if (to === undefined) return;
-    
+
     if (location.pathname === to) {
       pageLoadStart();
       setTimeout(() => pageLoadFinished(), 900);
@@ -30,9 +31,15 @@ const DelayedLink = ({ to, children, className, target, attributes }) => {
     if (target === undefined) {
       pageLoadStart();
       if (parentPage(to) === parentPage(location.pathname)) {
-        setTimeout(() => navigate(to + "?noreload=true"), 900);
-      }else{
-        setTimeout(() => navigate(to), 900);
+        setTimeout(() => {
+          // resetCount();
+          navigate(to + "?noreload=true");
+        }, 900);
+      } else {
+        setTimeout(() => {
+          // resetCount();
+          navigate(to);
+        }, 900);
       }
     } else {
       window.open(to, target);

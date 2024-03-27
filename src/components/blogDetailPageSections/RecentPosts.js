@@ -10,7 +10,7 @@ const RecentPosts = () => {
   const posts = useSelector((state) => state?.blog?.blogPostData);
 
   useEffect(() => {
-    dispatch(getblogPostData());
+    dispatch(getblogPostData({ pageSize: 4 }));
   }, [dispatch]);
 
   return (

@@ -2,6 +2,10 @@ import { initAnimations, pageLoadFinished, updatedWatched } from "./animationsTr
 
 let collectionLoaded = 0;
 
+export const resetCount = () => {
+    collectionLoaded = 0;
+}
+
 export const handleCollectionLoaded = () => {
     collectionLoaded++;
     // console.log("collectionLoaded", collectionLoaded);
@@ -20,7 +24,7 @@ export const handleCollectionLoaded = () => {
         'contact': 1,
     }[cleanPage] || 0;
 
-    const markPageLoaded = ()=>{
+    const markPageLoaded = () => {
         collectionLoaded = 0;
         document.body.classList.add(cleanPage+"-loaded");
         initAnimations();

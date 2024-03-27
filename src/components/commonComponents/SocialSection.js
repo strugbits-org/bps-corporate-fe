@@ -14,7 +14,7 @@ const SocialSection = () => {
   const postes = useSelector((state) => state.blog.blogPostData);
 
   useEffect(() => {
-    dispatch(getblogPostData());
+    dispatch(getblogPostData({ pageSize: 3 }));
   }, [dispatch]);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ const SocialSection = () => {
     document.body.appendChild(script);
     if (window.doBuild) window.doBuild();
   }, []); // only run once
-  
+
   return (
     <section className="section-lets-get-social z-5 pt-lg-195 pt-tablet-105 pt-phone-155 pb-lg-130 pb-tablet-105 pb-phone-140 mt-lg-240">
       <div
@@ -77,9 +77,9 @@ const SocialSection = () => {
                     {postes?.slice(0, 3).map((data) => {
                       return (
                         <li key={data._id}>
-                          <DelayedLink 
-                          to={`/blog-post/${encodeURIComponent(data.slug)}`}
-                          className="link-blog">
+                          <DelayedLink
+                            to={`/blog-post/${encodeURIComponent(data.slug)}`}
+                            className="link-blog">
                             <div
                               className="container-img"
                               data-cursor-style="view"
