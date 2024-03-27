@@ -20,7 +20,7 @@ const Blog = () => {
   useEffect(() => {
     dispatch(fetchStudioSection());
     dispatch(getMarketCollection());
-    applyFilters({});
+    applyFilters({ disableLoader: true });
   }, [dispatch]);
 
   const handleSeeMore = async () => {
@@ -36,13 +36,15 @@ const Blog = () => {
   const applyFilters = async ({
     selectedStudios = [],
     selectedMarkets = [],
+    disableLoader = false
   }) => {
     const response = await listBlogs({
       pageSize,
       studios: selectedStudios,
       markets: selectedMarkets,
+      disableLoader
     });
-    setBlogCollection(response.items.map((item) => item.data));
+    setBlogCollection(response.items.filter(item => item.data.blogRef._id !== undefined).map(item => item.data));
     setBlogResponse(response);
     handleCollectionLoaded();
   };
@@ -55,7 +57,7 @@ const Blog = () => {
           pageSize,
           studios,
           markets,
-          totalCount: blogResponse?.totalCount,
+          totalCount: blogCollection.length,
         }}
         applyFilters={applyFilters}
         seeMore={handleSeeMore}

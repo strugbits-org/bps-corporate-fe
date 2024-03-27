@@ -90,17 +90,19 @@ const Search = () => {
         disableLoader: true
       };
 
-      const portfolio = await listPortfolios(options);
-      setPortfolioCollection(portfolio.items.map((item) => item.data));
+      var portfolio = await listPortfolios(options);
+      setPortfolioCollection(portfolio.items.filter(item => item.data.portfolioRef._id !== undefined).map(item => item.data));
+      
+      var products = await listProducts(options);
+      setProductCollection(products.items.filter(item => item.data.product._id !== undefined && !item.data.hidden).map(item => item.data));
+      
+      var blog = await listBlogs(options);
+      setBlogCollection(blog.items.filter(item => item.data.blogRef._id !== undefined).map(item => item.data));
 
-      const products = await listProducts(options);
-      setProductCollection(products.items.filter(item => !item.data.hidden).map(item => item.data));
-
-      const blog = await listBlogs(options);
-      setBlogCollection(blog.items.map((item) => item.data));
-
-      const otherPages = await searchAllPages(options);
-      setOtherPagesResults(otherPages.items.map((item) => item.data));
+      var otherPages = await searchAllPages(options);
+      const result = otherPages.items.map((item) => item.data)
+      result.sort((a, b) => new Date(a._createdDate.$date) - new Date(b._createdDate.$date));
+      setOtherPagesResults(result);
 
     } catch (error) {
       console.log("error", error);
@@ -229,8 +231,8 @@ const Search = () => {
                             data-cursor-style="default"
                           >
                             {productCollection.slice(0, 3).map((item, index) => {
-                              return (item.product._id &&
-                                <div
+                              return (
+                              <div
                                   key={index}
                                   className="swiper-slide grid-item"
                                 >

@@ -15,28 +15,28 @@ const BlogListing = ({ data, seeMore, applyFilters }) => {
         setSudiosDropdownActive(false);
         setMarketsDropdownActive(false);
         if (selectedStudios.includes(tag)) {
-          const _selectedStudios = selectedStudios.filter((el) => el !== tag);
-          setSelectedStudios(_selectedStudios);
-          applyFilters({ selectedStudios: _selectedStudios, selectedMarkets });
+            const _selectedStudios = selectedStudios.filter((el) => el !== tag);
+            setSelectedStudios(_selectedStudios);
+            applyFilters({ selectedStudios: _selectedStudios, selectedMarkets });
         } else {
-          const _selectedStudios = [...selectedStudios, tag];
-          setSelectedStudios(_selectedStudios);
-          applyFilters({ selectedStudios: _selectedStudios, selectedMarkets });
+            const _selectedStudios = [...selectedStudios, tag];
+            setSelectedStudios(_selectedStudios);
+            applyFilters({ selectedStudios: _selectedStudios, selectedMarkets });
         }
-      };
-      const handleMarketFilter = (category) => {
+    };
+    const handleMarketFilter = (category) => {
         setSudiosDropdownActive(false);
         setMarketsDropdownActive(false);
         if (selectedMarkets.includes(category)) {
-          const _selectedMarkets = selectedMarkets.filter((el) => el !== category);
-          setSelectedMarkets(_selectedMarkets);
-          applyFilters({ selectedStudios, selectedMarkets: _selectedMarkets });
+            const _selectedMarkets = selectedMarkets.filter((el) => el !== category);
+            setSelectedMarkets(_selectedMarkets);
+            applyFilters({ selectedStudios, selectedMarkets: _selectedMarkets });
         } else {
-          const _selectedMarkets = [...selectedMarkets, category];
-          setSelectedMarkets(_selectedMarkets);
-          applyFilters({ selectedStudios, selectedMarkets: _selectedMarkets });
+            const _selectedMarkets = [...selectedMarkets, category];
+            setSelectedMarkets(_selectedMarkets);
+            applyFilters({ selectedStudios, selectedMarkets: _selectedMarkets });
         }
-      };
+    };
 
     return (
         <section className="blog-intro pt-lg-145 pt-tablet-115 pt-phone-120 pb-lg-150 pb-tablet-100 pb-phone-155">

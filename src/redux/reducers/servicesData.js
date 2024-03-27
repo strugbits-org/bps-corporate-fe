@@ -35,10 +35,8 @@ export const fetchServicesData = createAsyncThunk(
         service.data.image = getFullImageURL(service.data.image);
         return service.data;
       });
-      handleCollectionLoaded();
       return servicesArray[0];
     } catch (error) {
-      handleCollectionLoaded();
       throw new Error(error.message);
     }
   }

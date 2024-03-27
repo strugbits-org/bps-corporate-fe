@@ -1,8 +1,7 @@
 import { useState } from "react";
 
 const ContentComponent = ({ content, title, maxWords }) => {
-  content = String(content);
-
+  
   const words = content.split(" ");
 
   const paragraphs = [];

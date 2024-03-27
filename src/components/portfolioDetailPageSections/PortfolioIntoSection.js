@@ -68,17 +68,20 @@ const PortfolioIntoSection = ({ data }) => {
                     </ul>
                   </div>
 
-                  <ContentComponent
-                    content={componentObject?.text}
-                    title={componentObject?.label}
-                    maxWords={maxWords}
-                  />
+                  {componentObject?.text &&
+                    <ContentComponent content={componentObject?.text} title={componentObject?.label} maxWords={maxWords}
+                    />
+                  }
 
-                  <ContentComponent
-                    content={challengeObject?.text}
-                    title={challengeObject?.label}
-                    maxWords={maxWords}
-                  />
+
+                  {challengeObject?.text && (
+                    <ContentComponent
+                      content={challengeObject?.text}
+                      title={challengeObject?.label}
+                      maxWords={maxWords}
+                    />
+                  )}
+
                 </div>
 
                 <div className="column-2 column-portfolio">
@@ -86,17 +89,21 @@ const PortfolioIntoSection = ({ data }) => {
                     {description}
                   </h3>
 
-                  <ContentComponent
-                    content={highlightObject?.text}
-                    title={highlightObject?.label}
-                    maxWords={maxWords}
-                  />
+                  {highlightObject?.text && (
+                    <ContentComponent
+                      content={highlightObject?.text}
+                      title={highlightObject?.label}
+                      maxWords={maxWords}
+                    />
+                  )}
 
-                  <ContentComponent
-                    content={solutionObject?.text}
-                    title={solutionObject?.label}
-                    maxWords={maxWords}
-                  />
+                  {solutionObject?.text && (
+                    <ContentComponent
+                      content={solutionObject?.text}
+                      title={solutionObject?.label}
+                      maxWords={maxWords}
+                    />
+                  )}
                 </div>
 
                 <div className="column-3 column-portfolio no-mobile">
