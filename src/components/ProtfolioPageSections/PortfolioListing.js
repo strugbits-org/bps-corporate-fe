@@ -32,6 +32,16 @@ const PortfolioListing = ({ data, seeMore, applyFilters }) => {
       applyFilters({ selectedStudios, selectedMarkets: _selectedMarkets });
     }
   };
+
+  const resetFilter = (type) => {
+    if (type === "studios") {
+      setSelectedStudios([]);
+      applyFilters({ selectedStudios: [], selectedMarkets });
+    } else if (type === "markets") {
+      setSelectedMarkets([]);
+      applyFilters({ selectedStudios, selectedMarkets: [] });
+    }
+  }
   const studiosDropdownref = useDetectClickOutside({ onTriggered: () => { if (studiosDropdownActive) setSudiosDropdownActive(false) } });
   const marketsDropdownref = useDetectClickOutside({ onTriggered: () => { if (marketsDropdownActive) setMarketsDropdownActive(false) } });
 
@@ -65,12 +75,8 @@ const PortfolioListing = ({ data, seeMore, applyFilters }) => {
                       >
                         <li>
                           <button
-                            onClick={() => {
-                              setSelectedStudios([]);
-                            }}
-                            className={`portfolio-btn-tag ${selectedStudios.length === 0 ? "active" : ""
-                              }`}
-                          >
+                            onClick={() => { resetFilter("studios") }}
+                            className={`portfolio-btn-tag ${selectedStudios.length === 0 ? "active" : ""}`}>
                             <span>All Studios</span>
                           </button>
                         </li>
@@ -81,8 +87,8 @@ const PortfolioListing = ({ data, seeMore, applyFilters }) => {
                                 handleStudioFilter(item.data._id);
                               }}
                               className={`portfolio-btn-tag ${selectedStudios.includes(item.data._id)
-                                  ? "active"
-                                  : ""
+                                ? "active"
+                                : ""
                                 }`}
                             >
                               {item.data.cardName}
@@ -110,9 +116,7 @@ const PortfolioListing = ({ data, seeMore, applyFilters }) => {
                       <ul className="list-market-tags list-dropdown-tags">
                         <li>
                           <button
-                            onClick={() => {
-                              setSelectedMarkets([]);
-                            }}
+                            onClick={() => { resetFilter("markets") }}
                             className={`portfolio-btn-tag ${selectedMarkets.length === 0 ? "active" : ""
                               }`}
                           >
@@ -126,8 +130,8 @@ const PortfolioListing = ({ data, seeMore, applyFilters }) => {
                                 handleMarketFilter(market._id);
                               }}
                               className={`portfolio-btn-tag ${selectedMarkets.includes(market._id)
-                                  ? "active"
-                                  : ""
+                                ? "active"
+                                : ""
                                 }`}
                               key={`category-${index}`}
                             >
@@ -185,8 +189,8 @@ const PortfolioListing = ({ data, seeMore, applyFilters }) => {
                                 handleMarketFilter(market._id);
                               }}
                               className={`tag-small ${selectedMarkets.includes(market._id)
-                                  ? "active"
-                                  : ""
+                                ? "active"
+                                : ""
                                 }`}
                             >
                               <span>{market.cardname}</span>
@@ -200,8 +204,8 @@ const PortfolioListing = ({ data, seeMore, applyFilters }) => {
                                     handleStudioFilter(studio._id);
                                   }}
                                   className={`tag-small ${selectedStudios.includes(studio._id)
-                                      ? "active"
-                                      : ""
+                                    ? "active"
+                                    : ""
                                     }`}
                                 >
                                   <span>{studio.cardName}</span>
