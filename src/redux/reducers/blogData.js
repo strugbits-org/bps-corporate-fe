@@ -1,7 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import createWixClient from "../wixClient";
-import { handleCollectionLoaded } from "../../utilis/loadAnimations";
+import { handleCollectionLoaded } from "../../utilis/pageLoadingAnimation";
 import SingleBlogWixClient from "../wixClientSingleBlog";
+import { listBlogs } from "../../utilis/queryCollections";
 
 const wixClient = createWixClient();
 
@@ -18,23 +19,11 @@ const initialState = {
 
 export const getblogPostData = createAsyncThunk(
   "data/getblogPostData",
-  async (triggerAnimations = true) => {
+  async ({pageSize = 10, disableLoader = false}) => {
     try {
-      let options = {
-        dataCollectionId: "BlogProductData",
-            includeReferencedItems: ["blogRef", "locationFilteredVariant", "storeProducts", "studios", "markets", "author"],
-      };
-
-      const { items: fetchedItems } = await wixClient.items
-        .queryDataItems(options)
-        .find();
-      if (triggerAnimations) {
-        handleCollectionLoaded();
-        setTimeout(() => {
-          document.querySelector(".updateWatchedTrigger").click();
-        }, 1000);
-      }
-      const data = fetchedItems.map((item) => item.data);
+      const response = await listBlogs({ pageSize, disableLoader });
+      const data = response.items.filter(item => item.data.blogRef._id !== undefined).map(item => item.data)
+      handleCollectionLoaded();
       return data;
     } catch (error) {
       handleCollectionLoaded();

@@ -37,9 +37,6 @@ let htmlParsed = false;
 const loader = {
   ...loaderDefault,
   state: {
-    startedAt: 0,
-    leavingAt: 0,
-    isAnimating: false,
     scriptReady: false,
     isFirstLoad: true,
     img: new counter(),

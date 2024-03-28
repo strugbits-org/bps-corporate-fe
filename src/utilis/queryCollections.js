@@ -1,5 +1,5 @@
 import createWixClient from "../redux/wixClient";
-import { endLoading, startLoading } from "./loadingUtils";
+import { endLoading, startLoading } from "./animationsTriggers";
 
 const wixClient = createWixClient();
 
