@@ -1,3 +1,6 @@
+const page = window.location.pathname.trim() === "/" ? "home" : window.location.pathname.substring(1);
+const cleanPage = page.split("/")[0].trim();
+
 export const initAnimations = () => {
     setTimeout(() => {
         document.querySelector(".initScript").click();
@@ -28,14 +31,14 @@ export const pageLoadFinished = () => {
 export const startLoading = (disableLoader) => {
     if (disableLoader) return;
 
-    const isDataLoaded = document.body.getAttribute("data-load") === "first-done";
+    const isDataLoaded = document.body.classList.contains(cleanPage + "-loaded");
     if (isDataLoaded) pageLoadStart();
 };
 
 export const endLoading = (disableLoader) => {
     if (disableLoader) return;
 
-    const isDataLoaded = document.body.getAttribute("data-load") === "first-done";
+    const isDataLoaded = document.body.classList.contains(cleanPage + "-loaded");
     if (isDataLoaded) {
         pageLoadFinished();
         updatedWatched();

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { pageLoadFinished, pageLoadStart } from '../utilis/animationsTriggers';
-// import { resetCount } from '../utilis/loadAnimations';
+import { resetCount } from '../utilis/pageLoadingAnimation';
 
 const DelayedLink = ({ to, children, className, target, attributes }) => {
   const navigate = useNavigate();
@@ -32,12 +32,12 @@ const DelayedLink = ({ to, children, className, target, attributes }) => {
       pageLoadStart();
       if (parentPage(to) === parentPage(location.pathname)) {
         setTimeout(() => {
-          // resetCount();
+          resetCount();
           navigate(to + "?noreload=true");
         }, 900);
       } else {
         setTimeout(() => {
-          // resetCount();
+          resetCount();
           navigate(to);
         }, 900);
       }

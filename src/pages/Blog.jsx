@@ -5,7 +5,7 @@ import { listBlogs } from "../utilis/queryCollections";
 import BlogListing from "../components/blogPageSections/BlogListing";
 import { fetchStudioSection } from "../redux/reducers/homeData";
 import { getMarketCollection } from "../redux/reducers/marketData";
-import { handleCollectionLoaded } from "../utilis/loadAnimations";
+import { handleCollectionLoaded } from "../utilis/pageLoadingAnimation";
 import { updatedWatched } from "../utilis/animationsTriggers";
 
 const Blog = () => {

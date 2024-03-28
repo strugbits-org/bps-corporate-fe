@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import getFullImageURL from "../../common/common_functions/imageURL";
 import createWixClient from "../wixClient";
-import { handleCollectionLoaded } from "../../utilis/loadAnimations";
+import { handleCollectionLoaded } from "../../utilis/pageLoadingAnimation";
 import { listPortfolios } from "../../utilis/queryCollections";
 const wixClient = createWixClient();
 

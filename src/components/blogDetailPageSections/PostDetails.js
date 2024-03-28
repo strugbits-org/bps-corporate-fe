@@ -187,7 +187,7 @@ const PostDetails = ({ data }) => {
                       />
                     )}
                   </div>
-                  <h2 className="author-name">{authorName}</h2>
+                  <h2 className="author-name">{authorName} sasdas</h2>
                 </div>
                 <div className="date">
                   <span>{date}</span>
@@ -338,7 +338,7 @@ const PostDetails = ({ data }) => {
           >
             <div className="wrapper-share">
               <h3 className="fs--18 text-center d-inline-block mb-25">Share</h3>
-              <SocialVerticalBar />
+              <SocialVerticalBar title={title} />
             </div>
           </div>
 

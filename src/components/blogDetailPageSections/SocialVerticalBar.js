@@ -1,23 +1,25 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-const SocialVerticalBar = () => {
+const SocialVerticalBar = ({ title }) => {
 
   const [copied, setCopied] = useState(false);
-  const copyURLToClipboard = () => {
-    const url = window.location.href;
+  const url = window.location.href;
+  const copyURLToClipboard = (e) => {
     navigator.clipboard
       .writeText(url)
       .then(() => {
         setCopied(true);
         setTimeout(() => {
           setCopied(false);
-        }, 2000); 
+        }, 2000);
       })
       .catch((error) => {
         console.error("Failed to copy URL to clipboard:", error);
       });
+    e.preventDefault();
   };
+
   return (
     <ul className="list-share">
       <li>
@@ -25,7 +27,7 @@ const SocialVerticalBar = () => {
           data-cursor-style="off"
           onClick={(e) => {
             window.open(
-              "https://www.facebook.com/sharer/sharer.php?u=blog-post",
+              `https://www.facebook.com/sharer/sharer.php?u=${url}`,
               "compartilhar",
               "toolbar=0, status=0, width=650, height=450"
             );
@@ -41,7 +43,7 @@ const SocialVerticalBar = () => {
           data-cursor-style="off"
           onClick={(e) => {
             window.open(
-              "https://twitter.com/intent/tweet?text=Blog",
+              `http://twitter.com/share?text=${title}&url=${url}`,
               "compartilhar",
               "toolbar=0, status=0, width=650, height=450"
             );
@@ -54,7 +56,7 @@ const SocialVerticalBar = () => {
       </li>
       <li>
         <Link
-          to="mailto:?subject=Blog Post&body=blog-post"
+          to={`mailto:?subject=${title}&body=Hey check out this post at ${url}`}
           data-cursor-style="off"
         >
           <span>email</span>
@@ -66,12 +68,6 @@ const SocialVerticalBar = () => {
           <span>{copied}</span>
           <i className="icon-link"></i>
         </Link>
-        <input
-          type="text"
-          className="copy-link-url"
-          value="blog-post"
-          style={{ position: "absolute", opacity: 0 }}
-        />
       </li>
     </ul>
   );

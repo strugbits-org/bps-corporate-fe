@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import createWixClient from "../wixClient";
-import { handleCollectionLoaded } from "../../utilis/loadAnimations";
+import { handleCollectionLoaded } from "../../utilis/pageLoadingAnimation";
 import SingleBlogWixClient from "../wixClientSingleBlog";
 import { listBlogs } from "../../utilis/queryCollections";
 

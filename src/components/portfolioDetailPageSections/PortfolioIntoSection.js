@@ -108,7 +108,7 @@ const PortfolioIntoSection = ({ data }) => {
 
                 <div className="column-3 column-portfolio no-mobile">
                   <h4 className="fs--16">Share</h4>
-                  <SocialVerticalBar />
+                  <SocialVerticalBar title={title} />
                 </div>
               </div>
             </div>

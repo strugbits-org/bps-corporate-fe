@@ -7138,7 +7138,6 @@ var require_app2 = __commonJS({
           },
           markers: false
         });
-        loader.state.scriptReady = true;
       }
       fetch(videoUrl).then((response) => response.blob()).then((blob) => {
         const blobUrl = URL.createObjectURL(blob);
@@ -16120,48 +16119,6 @@ var require_app2 = __commonJS({
       window.scrollTo({ top: 0 });
     }, 200);
     // document.addEventListener("pjax:complete", whenContainerReady);
-    document.addEventListener("pjax:send", whenContainerLeave);
-    function whenContainerLeave() {
-      document.body.classList.add("page-leave-active");
-      closeSearch();
-    }
-    const pages = new PageController();
-    pages.add(pgHome);
-    pages.add(pgAbout);
-    pages.add(pgPortfolio);
-    pages.add(pgPortfolioPost);
-    pages.add(pgMarketPost);
-    pages.add(pgBlog);
-    pages.add(pgBlogPost);
-    pages.add(pgServicesPost);
-    pages.add(pgContact);
-    if (pages.updateCurrent()) {
-      pages.runCurrent();
-    }
-    document.addEventListener("pjax:switch", function () {
-      let previouslyCreatedSmoother = ScrollSmoother.get();
-      if (previouslyCreatedSmoother)
-        previouslyCreatedSmoother.kill();
-      gsapWithCSS$1.globalTimeline.getChildren().forEach((t) => t.kill());
-      ScrollTrigger$1.getAll().forEach((trigger2) => {
-        trigger2.kill();
-      });
-    });
-    loader.onFirstLeaving = () => {
-      observers();
-      setTimeout(() => {
-        updateWatched();
-      }, 600);
-      document.dispatchEvent(new CustomEvent("loaded"));
-    };
-    loader.onFirstDone = () => {
-      document.body.classList.remove("overflow-hidden");
-    };
-    setTimeout(() => {
-      if (document.body.dataset.pg != "pg-home") {
-        loader.state.scriptReady = true;
-      }
-    }, 10);
   }
 });
 export default require_app2();
