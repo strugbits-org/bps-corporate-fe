@@ -187,7 +187,7 @@ const PostDetails = ({ data }) => {
                       />
                     )}
                   </div>
-                  <h2 className="author-name">{authorName} sasdas</h2>
+                  <h2 className="author-name">{authorName}</h2>
                 </div>
                 <div className="date">
                   <span>{date}</span>
