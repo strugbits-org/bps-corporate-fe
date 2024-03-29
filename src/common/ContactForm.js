@@ -39,10 +39,10 @@ const ContactForm = () => {
       setShowError(true);
       const timeoutId = setTimeout(() => {
         setShowError(false);
-        reset();
-        Array.from(document.querySelectorAll(".preenchido")).forEach((el) =>
-          el.classList.remove("preenchido")
-        );
+        // reset();
+        // Array.from(document.querySelectorAll(".preenchido")).forEach((el) =>
+        //   el.classList.remove("preenchido")
+        // );
       }, 3000);
       // Clean up the timeout
       return () => clearTimeout(timeoutId);
