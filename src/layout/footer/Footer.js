@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchFooterData } from "../../redux/reducers/footerData";
 
 const Footer = () => {
+  const EXTERNAL_SITE_URL = "https://www.rentals.blueprintstudios.com";
+
   const dispatch = useDispatch();
   const footerData = useSelector((state) => state.footer.data.footerData);
   const contactData = useSelector((state) => state.footer.data.contactData);
@@ -13,13 +15,13 @@ const Footer = () => {
   useEffect(() => {
     dispatch(fetchFooterData());
   }, [dispatch]);
-  
+
   const firstItem = footerData[0]?.data; // Assuming you want values from the first item
-  const logo1 = firstItem ? firstItem.logo1  : "";
-  const logo2 = firstItem ? firstItem.logo2  : "";
-  const logo3 = firstItem ? firstItem.logo3  : "";
-  const heading = firstItem ? firstItem.heading  : "";
-  const copyright = firstItem ? firstItem.copyright  : "";
+  const logo1 = firstItem ? firstItem.logo1 : "";
+  const logo2 = firstItem ? firstItem.logo2 : "";
+  const logo3 = firstItem ? firstItem.logo3 : "";
+  const heading = firstItem ? firstItem.heading : "";
+  const copyright = firstItem ? firstItem.copyright : "";
 
   return (
     <footer id="footer" data-cursor-style="off">
@@ -29,7 +31,7 @@ const Footer = () => {
             <div className="container-logo">
               <div data-parallax data-end="bottom bottom" className="z-3">
                 <img
-                src={getFullImageURL(logo1)}            
+                  src={getFullImageURL(logo1)}
                   data-preload
                   className="img-b z-3 media"
                   alt=""
@@ -72,7 +74,7 @@ const Footer = () => {
           </div>
           <div className="col-lg-5 column-2 pt-lg-65 pt-mobile-50">
             <div className="wrapper-newsletter-menu">
-              
+
               <Newsletter />
 
               <div className="container-footer-menu mt-lg-165 mt-tablet-55 mt-phone-125">
@@ -86,7 +88,7 @@ const Footer = () => {
                     </button>
                   </li>
                   <li className="list-item">
-                    <DelayedLink to="/" className="link-footer-menu">
+                    <DelayedLink to={EXTERNAL_SITE_URL} target={"blank"} className="link-footer-menu">
                       <span>Rental Store</span>
                     </DelayedLink>
                   </li>
@@ -136,33 +138,33 @@ const Footer = () => {
                   <li className="list-item item-social-media">
                     <ul className="list-social-media">
                       <li>
-                        <DelayedLink to="/" target="_blank"
-                        attributes={{
-                          "rel":"noopener noreferrer"
+                        <DelayedLink to="https://www.facebook.com/blueprintstudiosevents/" target="_blank"
+                          attributes={{
+                            "rel": "noopener noreferrer"
                           }}>
                           <i className="icon-facebook"></i>
                         </DelayedLink>
                       </li>
                       <li>
-                        <DelayedLink to="/" target="_blank"
-                        attributes={{
-                          "rel":"noopener noreferrer"
+                        <DelayedLink to="https://www.instagram.com/blueprintstudiosevents/?hl=en" target="_blank"
+                          attributes={{
+                            "rel": "noopener noreferrer"
                           }}>
                           <i className="icon-instagram"></i>
                         </DelayedLink>
                       </li>
                       <li>
-                        <DelayedLink to="/" target="_blank"
-                        attributes={{
-                          "rel":"noopener noreferrer"
+                        <DelayedLink to="https://twitter.com/bpseventdesign?lang=en" target="_blank"
+                          attributes={{
+                            "rel": "noopener noreferrer"
                           }}>
                           <i className="icon-x"></i>
                         </DelayedLink>
                       </li>
                       <li>
-                        <DelayedLink to="/" target="_blank"
-                        attributes={{
-                          "rel":"noopener noreferrer"
+                        <DelayedLink to="https://www.linkedin.com/company/blueprint-studios/" target="_blank"
+                          attributes={{
+                            "rel": "noopener noreferrer"
                           }}>
                           <i className="icon-linkedin"></i>
                         </DelayedLink>
@@ -176,9 +178,9 @@ const Footer = () => {
             <div className="container-address mt-lg-145 mt-phone-115">
               <ul className="list-address">
                 {contactData.map((data, index) => {
-                
+
                   return (
-                  
+
                     <li key={index}>
                       <h3 className="city">{data.data.city}</h3>
                       <address>
@@ -187,11 +189,12 @@ const Footer = () => {
                         {data.data.address3}
                       </address>
                       <div className="phones">
-                        {Object.values(data.data.phone).map((phone, index) => (
-                          <DelayedLink key={index} to="tel:">
-                            <span>{phone}</span>
-                          </DelayedLink>
-                        ))}
+                        <DelayedLink to={`tel:${data.data.phone1}`}>
+                          <span>{data.data.phone1}</span>
+                        </DelayedLink>
+                        <DelayedLink to={`tel:${data.data.phone2}`}>
+                          <span>{data.data.phone2}</span>
+                        </DelayedLink>
                       </div>
                     </li>
                   );
