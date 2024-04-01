@@ -37,8 +37,8 @@ export const fetchFooterData = createAsyncThunk(
         .find();
 
         return {
-            footerData:fetchedItems,
-            contactData:fetchedContact,
+          footerData:fetchedItems,
+          contactData:fetchedContact,
         };
     } catch (error) {
       throw new Error(error.message);
