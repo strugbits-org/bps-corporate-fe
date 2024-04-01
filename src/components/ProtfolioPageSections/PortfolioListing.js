@@ -238,7 +238,7 @@ const PortfolioListing = ({ data, seeMore, applyFilters }) => {
               )}
             </ul>
           </div>
-          {data.totalCount > data.pageSize && data.items.length !== data.totalCount && (
+          {data?.totalCount > data.pageSize && data.items.length !== data?.totalCount && (
             <div
               className="col-lg-2 offset-lg-5 flex-center mt-lg-60 mt-mobile-40"
               data-aos="fadeIn .8s ease-in-out .2s, d:loop"

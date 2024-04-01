@@ -61,7 +61,7 @@ const GallerySection = ({ data }) => {
           <div className={`col-lg-10 offset-lg-1 column-2 ${data?.storeProducts.length === 0 ? "hidden" : ""}`} >
             <div className="container-slider-produtcts">
               <h2 className="slider-title split-words" data-aos="d:loop">
-                Products featured in this blog entry:
+                Products featured in this project entry:
               </h2>
 
               <ProductCartSlider data={data} />

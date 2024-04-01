@@ -57,7 +57,7 @@ const Blog = () => {
           pageSize,
           studios,
           markets,
-          totalCount: blogCollection.length,
+          totalCount: blogResponse?.totalCount,
         }}
         applyFilters={applyFilters}
         seeMore={handleSeeMore}

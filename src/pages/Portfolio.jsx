@@ -37,7 +37,7 @@ const Portfolio = () => {
 
   return (
     <>
-      <PortfolioListing data={{ items: portfolioCollection, pageSize, studios, markets, totalCount: portfolioCollection.length }} applyFilters={applyFilters} seeMore={handleSeeMore} />
+      <PortfolioListing data={{ items: portfolioCollection, pageSize, studios, markets, totalCount: portfolioResponse?.totalCount }} applyFilters={applyFilters} seeMore={handleSeeMore} />
       <MarketSection />
       <SocialSection />
     </>
