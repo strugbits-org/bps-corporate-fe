@@ -201,7 +201,7 @@ const BlogListing = ({ data, seeMore, applyFilters }) => {
                                                             ? "active"
                                                             : ""
                                                             }`} >
-                                                            <span>{studio.cardName}</span>a
+                                                            <span>{studio.cardName}</span>
                                                         </li>
                                                     )}
                                                 </React.Fragment>

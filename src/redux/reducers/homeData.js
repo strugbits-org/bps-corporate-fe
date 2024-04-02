@@ -36,7 +36,6 @@ export const fetchHomeTopData = createAsyncThunk(
 
       const { items: fetchHomeTopData } = await wixClient.items
         .queryDataItems(options)
-        .eq("title", "TopSection")
         .find();
       handleCollectionLoaded();
       setTimeout(() => {
@@ -55,12 +54,11 @@ export const fetchGetTouchSection = createAsyncThunk(
   async () => {
     try {
       let options = {
-        dataCollectionId: "GetTouchSection",
+        dataCollectionId: "GetInTouchSection",
       };
 
       const { items: fetchGetTouchSection } = await wixClient.items
         .queryDataItems(options)
-        .eq("title", "gettouch")
         .find();
         handleCollectionLoaded();
       return fetchGetTouchSection;
@@ -150,10 +148,9 @@ export const fetchRentalStoreSection = createAsyncThunk(
 
       const { items: fetchedRentalSection } = await wixClient.items
         .queryDataItems(options)
-        .eq("title", "Rental Store")
         .find();
         handleCollectionLoaded();
-        const response = fetchedRentalSection.sort((a, b) => (a.data.newImageTag === b.data.newImageTag) ? 0 : a.data.newImageTag ? -1 : 1);
+        const response = fetchedRentalSection.sort((a, b) => (a.data.newimagetag === b.data.newimagetag) ? 0 : a.data.newimagetag ? -1 : 1);
       return response;
     } catch (error) {
       handleCollectionLoaded();
@@ -172,7 +169,6 @@ export const fetchDreamBigSection = createAsyncThunk(
 
       const { items: fetchedDreamBIgSection } = await wixClient.items
         .queryDataItems(options)
-        .eq("title", "dreambig")
         .find();
         handleCollectionLoaded();
       return fetchedDreamBIgSection;

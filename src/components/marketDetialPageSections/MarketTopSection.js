@@ -1,6 +1,7 @@
 import getFullVideoURL from "../../common/common_functions/videoURL"
 
 const MarketTopSection = ({data}) => {
+  console.log("data", data);
   return (
     <>
      <section className="market-post-intro">
@@ -57,6 +58,7 @@ const MarketTopSection = ({data}) => {
         <div className="container-fluid">
           <div className="row">
             <div className="col-lg-4 offset-lg-4 column-1">
+                {/* {data.video} */}
               <div className="container-img" data-aos="d:loop">
                 <video
                   data-src={getFullVideoURL(data?.video)}

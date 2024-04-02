@@ -13,7 +13,7 @@ const GetTouchSection = () => {
     p1: item.data.paragraph1,
     p2: item.data.paragraph2,
     p3: item.data.paragraph3,
-    btntext: item.data.buttontext,
+    btntext: item.data.buttonText,
   }));
 
   useEffect(() => {

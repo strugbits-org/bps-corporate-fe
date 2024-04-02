@@ -135,13 +135,13 @@ const RentalStoreSection = () => {
                     >
                       <div className="container-img">
                         <img
-                          src={getFullImageURL(data.data.image1)}
+                          src={getFullImageURL(data.data.image)}
                           data-preload
                           className="media"
                           alt=""
                         />
                       </div>
-                      {data.data.newImageTag && (
+                      {data.data.newimagetag && (
                         <div className="tag-new no-mobile">
                           <span>New</span>
                         </div>
