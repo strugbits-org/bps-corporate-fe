@@ -11,7 +11,6 @@ const IntroSection = () => {
   // const error = useSelector((state) => state.aboutus.error);
   
   const firstItem = data[0];
-  console.log("firstItem", firstItem);
   const title1 = firstItem ? firstItem.data.title1 : "";
   const title2 = firstItem ? firstItem.data.title2 : "";
   const buttonText = firstItem ? firstItem.data.buttontext : "";
