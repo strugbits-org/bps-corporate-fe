@@ -30,9 +30,7 @@ const SliderBanner = ({ data, type }) => {
                       className="container-img"
                     >
                       <img
-                        src={getFullImagePost(
-                          data?.portfolioRef?.coverImage?.imageInfo
-                        )}
+                        src={getFullImagePost(data?.portfolioRef?.coverImage?.imageInfo, true)}
                         data-preload
                         className="media"
                         data-parallax
