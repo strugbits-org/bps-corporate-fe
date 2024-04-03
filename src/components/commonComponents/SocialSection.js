@@ -11,7 +11,7 @@ import { getFullImagePost } from "../../common/common_functions/imageURL";
 
 const SocialSection = () => {
   const dispatch = useDispatch();
-  const postes = useSelector((state) => state.blog.blogPostData);
+  const posts = useSelector((state) => state.blog.blogPostData);
 
   useEffect(() => {
     dispatch(getblogPostData({ pageSize: 3 }));
@@ -74,7 +74,7 @@ const SocialSection = () => {
                   </div>
 
                   <ul className="list-blog-lets-get-social">
-                    {postes?.slice(0, 3).map((data) => {
+                    {posts?.slice(0, 3).map((data) => {
                       return (
                         <li key={data._id}>
                           <DelayedLink

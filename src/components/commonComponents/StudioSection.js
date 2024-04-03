@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import getFullImageURL from "../../common/common_functions/imageURL";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchStudioSection } from "../../redux/reducers/homeData";
+import debounce from "lodash/debounce";
 
 const StudioSection = () => {
   const dispatch = useDispatch();
@@ -15,9 +16,14 @@ const StudioSection = () => {
 
   const [activeIndex, setActiveIndex] = useState(null);
 
-  const handleClick = (index) => {
-    setActiveIndex(index === activeIndex ? null : index);
-  };
+  // const handleClick = (index) => {
+    
+  // };
+
+  // const handleClick = debounce((index) => { 
+  //   setActiveIndex(index === activeIndex ? null : index)
+  //   console.log("hello",index);
+  //  }, 1000);
 
   const firstItem = studioData[0]; // Assuming you want values from the first item
   const title = firstItem ? firstItem.data.title : "";
@@ -57,12 +63,10 @@ const StudioSection = () => {
                 return (
                   <li
                     key={index}
-                    className={`accordion-item ${
-                      activeIndex === index ? "active" : ""
-                    }`}
+                    className={`accordion-item `}
                   >
                     <div className="accordion-header" 
-                    onClick={() => handleClick(index)}
+                    // onClick={() => handleClick(index)}
                     >
                       <h3
                         className="accordion-title split-words"

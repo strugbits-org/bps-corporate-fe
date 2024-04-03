@@ -49,9 +49,7 @@ const OurProjectSection = () => {
                           <div className="container-img bg-blue">
                             <div className="wrapper-img">
                               <img
-                                src={getFullImagePost(
-                                  item.portfolioRef.coverImage.imageInfo
-                                )}
+                                src={getFullImagePost(item.portfolioRef.coverImage.imageInfo, true)}
                                 data-preload
                                 className="media"
                                 alt=""
