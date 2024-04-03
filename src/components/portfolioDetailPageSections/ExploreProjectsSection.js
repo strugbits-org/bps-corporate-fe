@@ -46,9 +46,7 @@ const ExploreProjectsSection = ({ data }) => {
                         >
                           <div className="wrapper-img">
                             <img
-                              src={getFullImagePost(
-                                data?.portfolioRef.coverImage.imageInfo
-                              )}
+                              src={getFullImagePost(data?.portfolioRef.coverImage.imageInfo, true)}
                               data-preload
                               className="media"
                               alt=""
