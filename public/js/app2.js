@@ -15678,6 +15678,7 @@ var require_app2 = __commonJS({
                 onComplete: function () {
                   isAnimating = false;
                   element.style.pointerEvents = "auto";
+                }
               });
             } else {
               if (toggle) {
