@@ -163,7 +163,7 @@ const BlogListing = ({ data, seeMore, applyFilters }) => {
                                             <div className="container-img bg-blue" data-cursor-style="view" >
                                                 <div className="wrapper-img">
                                                     {item.blogRef.coverImage && <img
-                                                        src={getFullImageURL(item.blogRef.coverImage) + "/v1/fit/w_1000,h_1000,al_c,q_75,usm_0.66_1.00_0.01,enc_auto/compress.webp"}
+                                                        src={getFullImageURL(item.blogRef.coverImage, true)}
                                                         data-preload
                                                         className="media"
                                                         alt=""

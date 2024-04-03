@@ -6,6 +6,8 @@ import { pageLoadStart } from "../../utilis/animationsTriggers";
 const SliderBanner = ({ data, type }) => {
   const navigate = useNavigate();
 
+  if (data.length === 0 ) return;
+
   const handleNavigate = (path) => {
     pageLoadStart();
     setTimeout(() => {

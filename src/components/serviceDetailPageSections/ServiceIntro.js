@@ -43,7 +43,7 @@ const ServiceIntro = ({data}) => {
           data-scale="1.2"
         >
           <img
-            src={data?.modalImage}
+            src={data?.image}
             data-preload
             className="media"
             alt=""

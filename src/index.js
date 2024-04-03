@@ -20,12 +20,12 @@ import Blogs from "./pages/Blog";
 
 const router = createBrowserRouter([
   {
-    path: "*",
+    path: "",
     element: <App />,
     errorElement: <PageNotFound />,
     children: [
       {
-        path: "*",
+        path: "",
         element: <Home />,
       },
       {
@@ -84,6 +84,10 @@ const router = createBrowserRouter([
       // },
       ///////////// private route end   //////////////////////////////
     ],
+  },
+  {
+    path: "*",
+    element: <PageNotFound />,
   },
 ]);
 

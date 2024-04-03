@@ -42,6 +42,7 @@ export const handleCollectionLoaded = () => {
         if (isFirstLoadDone) {
             pageLoadFinished();
         } else {
+            window.scrollTo({ top: 0 });
             document.body.dataset.load = "first-leaving";
             setTimeout(() => {
                 document.body.dataset.load = "first-done";
