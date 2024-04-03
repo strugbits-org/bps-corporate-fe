@@ -60,9 +60,10 @@ const StudioSection = () => {
                     className={`accordion-item ${
                       activeIndex === index ? "active" : ""
                     }`}
-                    onClick={() => handleClick(index)}
                   >
-                    <div className="accordion-header">
+                    <div className="accordion-header" 
+                    onClick={() => handleClick(index)}
+                    >
                       <h3
                         className="accordion-title split-words"
                         data-aos="d:loop"

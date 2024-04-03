@@ -440,7 +440,7 @@ const Search = () => {
                                     <div className="wrapper-img">
                                       {blog.blogRef.coverImage &&
                                         <img
-                                          src={getFullImageURL(blog.blogRef.coverImage) + "/v1/fit/w_1000,h_1000,al_c,q_75,usm_0.66_1.00_0.01,enc_auto/compress.webp"}
+                                          src={getFullImageURL(blog.blogRef.coverImage, true)}
                                           data-preload
                                           className="media"
                                           alt=""

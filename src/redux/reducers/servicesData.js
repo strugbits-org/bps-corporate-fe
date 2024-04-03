@@ -31,7 +31,6 @@ export const fetchServicesData = createAsyncThunk(
         .find();
 
       const servicesArray = fetchedItems.map((service) => {
-        service.data.modalImage = getFullImageURL(service.data.modalImage);
         service.data.image = getFullImageURL(service.data.image);
         return service.data;
       });
@@ -52,10 +51,9 @@ export const getServicesModel = createAsyncThunk(
 
       const { items: fetchedItems } = await wixClient.items
         .queryDataItems(options)
-        .eq("title", "Studios")
         .find();
       const servicesArray = fetchedItems.map((service) => {
-        service.data.image = getFullImageURL(service.data.modalImage);
+        service.data.image = getFullImageURL(service.data.image);
         return service.data;
       });
 
