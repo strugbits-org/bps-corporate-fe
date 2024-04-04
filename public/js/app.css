@@ -5264,7 +5264,7 @@ body:after {
 /* ------------------------------ list dropdown ----------------------------- */
 @media only screen and (max-width: 1025px) {
   .list-dropdown {
-    max-height: calc(100vh - (var(--header-height) + 23rem));
+    /* max-height: calc(100vh - (var(--header-height) + 23rem)); */
     padding-top: 1.3rem;
     padding-bottom: 1.3rem;
     overflow: hidden;
@@ -19314,4 +19314,11 @@ body.page-leave-active[data-load="first-done"] .overlay {
 
 .wrapper-text:not(.active) .readmore-paragraphs {
   transition: max-height 1s!important;
+}
+
+.not_found_text{
+  min-height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
