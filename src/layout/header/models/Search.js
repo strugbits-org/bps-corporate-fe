@@ -245,7 +245,7 @@ const Search = () => {
                                       <div className="wrapper-img">
                                         <div className="container-img">
                                           <img
-                                            src={getFullImageURL(item.product.mainMedia)}
+                                            src={getFullImageURL(item.product.mainMedia, true)}
                                             data-preload
                                             className="media"
                                             alt=""
@@ -266,7 +266,7 @@ const Search = () => {
                                                 <li key={index}>
                                                   <div className="container-img">
                                                     <img
-                                                      src={getFullImageURL(option.mainMedia ? option.mainMedia : item.product.mainMedia)}
+                                                      src={getFullImageURL(option.mainMedia ? option.mainMedia : item.product.mainMedia, true)}
                                                       data-preload
                                                       className="media"
                                                       alt=""
@@ -333,7 +333,7 @@ const Search = () => {
                                     >
                                       <div className="wrapper-img">
                                         <img
-                                          src={getFullImagePost(data.portfolioRef.coverImage.imageInfo)}
+                                          src={getFullImagePost(data.portfolioRef.coverImage.imageInfo, true)}
                                           data-preload
                                           className="media"
                                           alt=""

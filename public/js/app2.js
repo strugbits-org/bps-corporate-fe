@@ -16122,6 +16122,7 @@ var require_app2 = __commonJS({
       initVideo();
       dropdownTags();
       updateWatched();
+      ScrollTrigger$1.refresh();
     });
 
     document.querySelector(".triggerSplitWordAnimation").addEventListener("click", () => {

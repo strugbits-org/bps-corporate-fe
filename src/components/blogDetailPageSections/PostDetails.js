@@ -257,7 +257,7 @@ const PostDetails = ({ data }) => {
                       );
                     } else if (item?.type === "gallery") {
                       return (
-                        <div className="slider-blog-post">
+                        <div key={index} className="slider-blog-post">
                           <div className="swiper-container">
                             <div className="swiper-wrapper">
                               {item?.images?.map((item, index) => {
@@ -285,7 +285,7 @@ const PostDetails = ({ data }) => {
                         </div>
                       );
                     } else if (item?.type === "image") {
-                      return <img src={item.image} alt="" />;
+                      return <img key={index} src={item.image} alt="" />;
                     } else {
                       return null;
                     }
