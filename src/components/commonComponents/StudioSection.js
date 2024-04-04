@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import getFullImageURL from "../../common/common_functions/imageURL";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchStudioSection } from "../../redux/reducers/homeData";
-import debounce from "lodash/debounce";
 
 const StudioSection = () => {
   const dispatch = useDispatch();
@@ -14,7 +13,7 @@ const StudioSection = () => {
     dispatch(fetchStudioSection());
   }, [dispatch]);
 
-  const [activeIndex, setActiveIndex] = useState(null);
+  // const [activeIndex, setActiveIndex] = useState(null);
 
   // const handleClick = (index) => {
     
