@@ -1,15 +1,22 @@
 import DelayedLink from "../../../common/DelayedLink";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getServicesModel } from "../../../redux/reducers/servicesData";
+import { fetchStudioSection } from "../../../redux/reducers/homeData";
+import getFullImageURL from "../../../common/common_functions/imageURL";
+
 const Services = () => {
   const dispatch = useDispatch();
-  const data = useSelector((state) => state.services.servicesModelData);
+  const data = useSelector((state) => state.home.studioData);
+
   // const loading = useSelector((state) => state.services.servicesModelLoading);
   // const error = useSelector((state) => state.services.error);
 
+  const servicesItems = data ? data.map(item => item.data).filter(service => service.menuItem) : [];
+  
+  
+
   useEffect(() => {
-    dispatch(getServicesModel());
+    dispatch(fetchStudioSection(false));
   }, [dispatch]);
 
   return (
@@ -22,8 +29,7 @@ const Services = () => {
         </button>
       </div>
       <ul className="list-submenu-services list-submenu">
-        {data.map((service, index) =>
-          index < 5 ? (
+        {servicesItems.map((service, index) => (
             <li key={index}>
               <DelayedLink
                 to={`/services-post/${service.slug}`}
@@ -32,7 +38,7 @@ const Services = () => {
               >
                 <div className="container-img bg-blue">
                   <img
-                    src={service.image}
+                    src={getFullImageURL(service.image)}
                     data-preload
                     className="media"
                     alt=""
@@ -45,8 +51,7 @@ const Services = () => {
                   {index > 10 ? index + 1 : "0" + (index + 1)}
                 </span>
               </DelayedLink>
-            </li>
-          ) : null
+            </li>)
         )}
       </ul>
     </div>

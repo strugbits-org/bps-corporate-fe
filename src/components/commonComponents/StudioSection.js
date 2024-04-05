@@ -77,7 +77,7 @@ const StudioSection = () => {
                     <div className="accordion-content">
                       <div className="container-img bg-blue">
                         <img
-                          src={getFullImageURL(data.data.image)}
+                          src={getFullImageURL(data.data.mainImage)}
                           data-preload
                           className="media"
                           alt=""

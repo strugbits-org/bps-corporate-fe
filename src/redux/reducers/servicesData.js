@@ -41,29 +41,6 @@ export const fetchServicesData = createAsyncThunk(
   }
 );
 
-export const getServicesModel = createAsyncThunk(
-  "data/getServicesModel",
-  async () => {
-    try {
-      let options = {
-        dataCollectionId: "StudiosSection",
-      };
-
-      const { items: fetchedItems } = await wixClient.items
-        .queryDataItems(options)
-        .find();
-      const servicesArray = fetchedItems.map((service) => {
-        service.data.image = getFullImageURL(service.data.image);
-        return service.data;
-      });
-
-      return servicesArray;
-    } catch (error) {
-      throw new Error(error.message);
-    }
-  }
-);
-
 // const options = {
 //   pageSize: 3,
 //   disableLoader: true,
@@ -108,19 +85,6 @@ const servicesSlice = createSlice({
         state.servicesData = action.payload;
       })
       .addCase(fetchServicesData.rejected, (state, action) => {
-        state.servicesLoading = false;
-        state.error = action.error.message;
-      })
-      //model reducers//
-      .addCase(getServicesModel.pending, (state) => {
-        state.servicesLoading = true;
-        state.error = null;
-      })
-      .addCase(getServicesModel.fulfilled, (state, action) => {
-        state.servicesLoading = false;
-        state.servicesModelData = action.payload;
-      })
-      .addCase(getServicesModel.rejected, (state, action) => {
         state.servicesLoading = false;
         state.error = action.error.message;
       })

@@ -1,4 +1,3 @@
-import DelayedLink from "../../common/DelayedLink";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchGetTouchSection } from "../../redux/reducers/homeData";
@@ -6,9 +5,9 @@ import { fetchGetTouchSection } from "../../redux/reducers/homeData";
 const GetTouchSection = () => {
   const dispatch = useDispatch();
   const getTouchData = useSelector((state) => state.home.getTouchData);
-// const loading = useSelector((state) => state.home.ourProjectLoading);
+  // const loading = useSelector((state) => state.home.ourProjectLoading);
   // const error = useSelector((state) => state.home.error);
-  
+
   const gettouch = getTouchData.map((item) => ({
     p1: item.data.paragraph1,
     p2: item.data.paragraph2,
@@ -38,17 +37,14 @@ const GetTouchSection = () => {
                 </div>
               </div>
               <div className="col-lg-4 offset-lg-4 flex-center mt-lg-60 mt-mobile-50">
-                <DelayedLink
-                  to={"/portfolio"}
-                  className="btn-blue btn-medium"
-                  attributes={{
-                    "data-aos": "fadeIn - .3s, d:loop",
-                    "data-cursor-style": "off",
-                  }}
+                <btn-modal-open
+                  group="modal-contact"
+                  class="btn-blue btn-medium"
+                  data-cursor-style="off"
                 >
-                  <span>{data.btntext} </span>
+                  <span>{data.btntext}</span>
                   <i className="icon-arrow-right-2"></i>
-                </DelayedLink>
+                </btn-modal-open>
               </div>
             </div>
           );
