@@ -1,22 +1,19 @@
 import DelayedLink from "../../common/DelayedLink";
 import React, { useEffect } from "react";
-import getFullImageURL from "../../common/common_functions/imageURL";
-import { fetchMarketSection } from "../../redux/reducers/homeData";
 import { useDispatch, useSelector } from "react-redux";
+import { getMarketCollection } from "../../redux/reducers/marketData";
 
 const MarketSection = () => {
   let data_delay = 0;
 
   const dispatch = useDispatch();
-  const data = useSelector((state) => state.home.marketData);
+  const data = useSelector((state) => state.market.marketModel);
+  const { homeSectionDetails} = useSelector((state) => state.home);
   // const loading = useSelector((state) => state.home.marketLoading);
   // const error = useSelector((state) => state.home.error);
 
-  const firstItem = data[0];
-  const title = firstItem ? firstItem.data.title : "";
-
   useEffect(() => {
-    dispatch(fetchMarketSection());
+    dispatch(getMarketCollection(true));
   }, [dispatch]);
 
   return (
@@ -28,7 +25,7 @@ const MarketSection = () => {
               className="fs--60 fs-phone-40 blue-1 text-center split-chars"
               data-aos="d:loop"
             >
-              {title}
+              {homeSectionDetails.marketTitle}
             </h2>
           </div>
           <div className="col-12 mt-lg-50 mt-tablet-40 mt-phone-35">
@@ -44,7 +41,7 @@ const MarketSection = () => {
                     data-delay-desktop={data_delay.toString()}
                   >
                     <DelayedLink
-                      to={`/market-post/${data.data.slug}`}
+                      to={`/market-post/${data.slug}`}
                       className="market-link project-link"
                       attributes={{
                         "data-cursor-style": "view",
@@ -56,7 +53,7 @@ const MarketSection = () => {
                         data-cursor-style="view"
                       >
                         <img
-                          src={getFullImageURL(data.data.image, true)}
+                          src={data.image}
                           data-preload
                           className="media"
                           alt=""
@@ -64,10 +61,10 @@ const MarketSection = () => {
                       </div>
                       <div className="container-text">
                         <h3 className="title-project split-words">
-                          {data.data.cardname}
+                          {data.cardname}
                         </h3>
                         <ul className="list-tags">
-                          {data.data.marketTags.map((tag, index) => (
+                          {data.marketTags.map((tag, index) => (
                             <li key={index}>
                               <span>{tag}</span>
                             </li>

@@ -1,11 +1,10 @@
 import * as Yup from "yup";
-import { newsletter } from "../common/constats/constats";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { postNewsletter } from "../redux/reducers/contactus";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-const Newsletter = () => {
+const Newsletter = ({title, description}) => {
   const dispatch = useDispatch();
 
   const [isLabelHidden, setIsLabelHidden] = useState(false);
@@ -73,9 +72,9 @@ const Newsletter = () => {
       // data-form-container
     >
       <div className="container-text">
-        <h3 className="fs-25 white-1">{newsletter.title}</h3>
+        <h3 className="fs-25 white-1">{title}</h3>
         <p className="fs--16 fs-phone-15 font-2 white-1 mt-5">
-          {newsletter.desc}
+          {description}
         </p>
       </div>
 

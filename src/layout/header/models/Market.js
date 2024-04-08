@@ -7,6 +7,7 @@ const Market = () => {
   const dispatch = useDispatch();
 
   const data = useSelector((state) => state.market.marketModel);
+  const marketItems = data ? data.filter(market => market.menuItem) : [];
   // const loading = useSelector((state) => state.market.marketModelLoading);
   // const error = useSelector((state) => state.market.error);
 
@@ -24,7 +25,7 @@ const Market = () => {
         </button>
       </div>
       <ul className="list-submenu-market list-submenu list-projects font-submenu">
-        {data.map((item) => {
+        {marketItems.map((item) => {
           return (
             <li key={item._id} className="list-item">
               <DelayedLink

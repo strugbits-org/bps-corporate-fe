@@ -2,18 +2,15 @@ import React, { useEffect } from "react";
 import getFullImageURL from "../../common/common_functions/imageURL";
 import { fetchPeopleReviewSlider } from "../../redux/reducers/homeData";
 import { useDispatch, useSelector } from "react-redux";
+import { DefaultButton } from "./DefaultButton";
 
 const PeopleReviewSLider = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.home.peopleReviewData);
+  const {homeSectionDetails} = useSelector((state) => state.home);
+
   // const loading = useSelector((state) => state.home.peopleReviewLoading);
   // const error = useSelector((state) => state.home.error);
-
-  const firstItem = data[0];
-  const backbutton = firstItem ? firstItem.data.backbutton : "";
-  const buttontext = firstItem ? firstItem.data.buttonText : "";
-  const frontbutton = firstItem ? firstItem.data.frontbutton : "";
-  const title = firstItem ? firstItem.data.title : "";
 
   useEffect(() => {
     dispatch(fetchPeopleReviewSlider());
@@ -29,7 +26,7 @@ const PeopleReviewSLider = () => {
               className="fs--80 white-1 title text-center split-words"
               data-aos="d:loop"
             >
-              {title}
+              {homeSectionDetails.reviewsTitle}
             </h2>
           </div>
           <div className="col-lg-10 offset-lg-1 mt-lg-120 mt-tablet-100 mt-phone-45">
@@ -66,24 +63,21 @@ const PeopleReviewSLider = () => {
                 </div>
               </div>
               <div className="swiper-button-prev no-mobile">
-                <span>{backbutton}</span>
+                <span>Back</span>
               </div>
               <div className="swiper-button-next no-mobile">
-                <span>{frontbutton}</span>
+                <span>Next</span>
               </div>
               <div className="swiper-pagination no-mobile"></div>
             </div>
           </div>
           <div className="col-lg-4 offset-lg-4 mt-lg-45 mt-tablet-90 mt-phone-25 flex-center column-btn">
-            <btn-modal-open
-              group="modal-contact"
-              class="btn-blue"
-              data-aos="fadeInUp .8s ease-out-cubic 0s, d:loop, trigger:.column-btn"
-              data-cursor-style="off"
-            >
-              <span>{buttontext}</span>
-              <i className="icon-arrow-right-2"></i>
-            </btn-modal-open>
+            <DefaultButton
+              data={{
+                label: homeSectionDetails.reviewsButtonLabel,
+                action: homeSectionDetails.reviewsButtonAction
+              }}
+            ></DefaultButton>
           </div>
         </div>
       </div>

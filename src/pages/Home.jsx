@@ -18,6 +18,7 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(fetchHomeTopData());
+    // dispatch(fetchHomeSectionDetails());
   }, [dispatch]);
 
   return (

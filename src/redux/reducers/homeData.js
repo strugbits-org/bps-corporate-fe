@@ -5,6 +5,7 @@ import { handleCollectionLoaded } from "../../utilis/pageLoadingAnimation";
 const wixClient = createWixClient();
 
 const initialState = {
+  homeSectionDetails: [],
   homeTopData: [],
   getTouchData: [],
   studioData: [],
@@ -14,6 +15,7 @@ const initialState = {
   rentalStoreData: [],
   dreamBigData: [],
 
+  homeSectionDetailsLoading: false,
   getTouchLoading: false,
   homeTopLoading: false,
   studioLoading: false,
@@ -25,6 +27,19 @@ const initialState = {
   error: null,
 };
 
+
+export const fetchHomeSectionDetails = createAsyncThunk(
+  "data/fetchHomeSectionDetails",
+  async () => {
+    try {
+      let options = { dataCollectionId: "HomeSectionDetails" };
+      const { items } = await wixClient.items.queryDataItems(options).find();
+      return items.map((item) => item.data)[0];
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
+);
 
 export const fetchHomeTopData = createAsyncThunk(
   "data/fetchDataItems",
@@ -60,7 +75,7 @@ export const fetchGetTouchSection = createAsyncThunk(
       const { items } = await wixClient.items
         .queryDataItems(options)
         .find();
-        handleCollectionLoaded();
+      handleCollectionLoaded();
       return items;
     } catch (error) {
       handleCollectionLoaded();
@@ -80,13 +95,13 @@ export const fetchStudioSection = createAsyncThunk(
       const { items } = await wixClient.items
         .queryDataItems(options)
         .find();
-        if (triggerAnimations) {
-          handleCollectionLoaded();
-        }
-        setTimeout(() => {
-          document.querySelector(".updateWatchedTrigger").click();
-        }, 1000);
-        const sortedList = items.sort((a, b) => a.data.orderNumber - b.data.orderNumber);
+      if (triggerAnimations) {
+        handleCollectionLoaded();
+      }
+      setTimeout(() => {
+        document.querySelector(".updateWatchedTrigger").click();
+      }, 1000);
+      const sortedList = items.sort((a, b) => a.data.orderNumber - b.data.orderNumber);
       return sortedList;
     } catch (error) {
       handleCollectionLoaded();
@@ -106,29 +121,8 @@ export const fetchPeopleReviewSlider = createAsyncThunk(
       const { items: fetchedPeopleReview } = await wixClient.items
         .queryDataItems(options)
         .find();
-        handleCollectionLoaded();
+      handleCollectionLoaded();
       return fetchedPeopleReview;
-    } catch (error) {
-      handleCollectionLoaded();
-      throw new Error(error.message);
-    }
-  }
-);
-
-export const fetchMarketSection = createAsyncThunk(
-  "data/fetchMarketSection",
-  async () => {
-    try {
-      let options = {
-        dataCollectionId: "MarketSection",
-      };
-
-      const { items: fetchedMarketSection } = await wixClient.items
-        .queryDataItems(options)
-        .find();
-
-      handleCollectionLoaded();
-      return fetchedMarketSection;
     } catch (error) {
       handleCollectionLoaded();
       throw new Error(error.message);
@@ -147,8 +141,8 @@ export const fetchRentalStoreSection = createAsyncThunk(
       const { items: fetchedRentalSection } = await wixClient.items
         .queryDataItems(options)
         .find();
-        handleCollectionLoaded();
-        const response = fetchedRentalSection.sort((a, b) => (a.data.newimagetag === b.data.newimagetag) ? 0 : a.data.newimagetag ? -1 : 1);
+      handleCollectionLoaded();
+      const response = fetchedRentalSection.sort((a, b) => (a.data.newimagetag === b.data.newimagetag) ? 0 : a.data.newimagetag ? -1 : 1);
       return response;
     } catch (error) {
       handleCollectionLoaded();
@@ -168,7 +162,7 @@ export const fetchDreamBigSection = createAsyncThunk(
       const { items: fetchedDreamBIgSection } = await wixClient.items
         .queryDataItems(options)
         .find();
-        handleCollectionLoaded();
+      handleCollectionLoaded();
       return fetchedDreamBIgSection;
     } catch (error) {
       handleCollectionLoaded();
@@ -183,6 +177,19 @@ const homeSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+      /// HomeTop Section ////
+      .addCase(fetchHomeSectionDetails.pending, (state) => {
+        state.homeSectionDetailsLoading = true;
+        state.error = null;
+      })
+      .addCase(fetchHomeSectionDetails.fulfilled, (state, action) => {
+        state.homeSectionDetailsLoading = false;
+        state.homeSectionDetails = action.payload;
+      })
+      .addCase(fetchHomeSectionDetails.rejected, (state, action) => {
+        state.homeSectionDetailsLoading = false;
+        state.error = action.error.message;
+      })
       /// HomeTop Section ////
       .addCase(fetchHomeTopData.pending, (state) => {
         state.homeTopLoading = true;
@@ -235,21 +242,8 @@ const homeSlice = createSlice({
         state.peopleReviewLoading = false;
         state.error = action.error.message;
       })
-      /// Market Section ////
-      .addCase(fetchMarketSection.pending, (state) => {
-        state.marketLoading = true;
-        state.error = null;
-      })
-      .addCase(fetchMarketSection.fulfilled, (state, action) => {
-        state.marketLoading = false;
-        state.marketData = action.payload;
-      })
-      .addCase(fetchMarketSection.rejected, (state, action) => {
-        state.marketLoading = false;
-        state.error = action.error.message;
-      })
-       /// Rental Store Section ////
-       .addCase(fetchRentalStoreSection.pending, (state) => {
+      /// Rental Store Section ////
+      .addCase(fetchRentalStoreSection.pending, (state) => {
         state.rentalLoading = true;
         state.error = null;
       })
@@ -261,8 +255,8 @@ const homeSlice = createSlice({
         state.rentalLoading = false;
         state.error = action.error.message;
       })
-       /// Dream Big Section ////
-       .addCase(fetchDreamBigSection.pending, (state) => {
+      /// Dream Big Section ////
+      .addCase(fetchDreamBigSection.pending, (state) => {
         state.dreamBigLoading = true;
         state.error = null;
       })

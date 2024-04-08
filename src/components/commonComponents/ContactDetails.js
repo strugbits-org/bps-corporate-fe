@@ -1,15 +1,17 @@
 import React, { useEffect } from "react";
 import DelayedLink from "../../common/DelayedLink";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchFooterData } from "../../redux/reducers/footerData";
+import { fetchFooterData, getSocialLinks } from "../../redux/reducers/footerData";
 
 const ContactDetails = () => {
 
   const dispatch = useDispatch();
   const contactData = useSelector((state) => state.footer.data.contactData);
+  const socialLinks = useSelector((state) => state.footer.socialLinks);
 
   useEffect(() => {
     dispatch(fetchFooterData());
+    dispatch(getSocialLinks());
   }, [dispatch]);
 
   return (
@@ -28,50 +30,16 @@ const ContactDetails = () => {
         </DelayedLink>
       </div>
       <ul className="list-social-media">
-        <li>
-          <DelayedLink
-            to="https://www.facebook.com/blueprintstudiosevents/"
-            target="_blank"
-            attributes={{
-              rel: "noopener noreferrer",
-            }}
-          >
-            <i className="icon-facebook"></i>
-          </DelayedLink>
-        </li>
-        <li>
-          <DelayedLink
-            to="https://www.instagram.com/blueprintstudiosevents/?hl=en"
-            target="_blank"
-            attributes={{
-              rel: "noopener noreferrer",
-            }}
-          >
-            <i className="icon-instagram"></i>
-          </DelayedLink>
-        </li>
-        <li>
-          <DelayedLink
-            to="https://twitter.com/bpseventdesign?lang=en"
-            target="_blank"
-            attributes={{
-              rel: "noopener noreferrer",
-            }}
-          >
-            <i className="icon-x"></i>
-          </DelayedLink>
-        </li>
-        <li>
-          <DelayedLink
-            to="https://www.linkedin.com/company/blueprint-studios/"
-            target="_blank"
-            attributes={{
-              rel: "noopener noreferrer",
-            }}
-          >
-            <i className="icon-linkedin"></i>
-          </DelayedLink>
-        </li>
+        {socialLinks.map((item, index) => (
+          <li key={index}>
+            <DelayedLink to={item.link} target="_blank"
+              attributes={{
+                "rel": "noopener noreferrer"
+              }}>
+              <i className={item.icon}></i>
+            </DelayedLink>
+          </li>
+        ))}
       </ul>
       <ul className="list-address">
         {contactData.map((data, index) => {
@@ -86,10 +54,10 @@ const ContactDetails = () => {
                 {data.data.address3}
               </address>
               <div className="phones">
-                <DelayedLink to={`tel:${data.data.phone1}`}>
+                <DelayedLink to={`tel:${data.data.phone1}`} target={"_blank"}>
                   <span>{data.data.phone1}</span>
                 </DelayedLink>
-                <DelayedLink to={`tel:${data.data.phone2}`}>
+                <DelayedLink to={`tel:${data.data.phone2}`} target={"_blank"}>
                   <span>{data.data.phone2}</span>
                 </DelayedLink>
               </div>
