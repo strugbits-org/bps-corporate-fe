@@ -56,7 +56,7 @@ const MarketSection = () => {
                         data-cursor-style="view"
                       >
                         <img
-                          src={getFullImageURL(data.data.image)}
+                          src={getFullImageURL(data.data.image, true)}
                           data-preload
                           className="media"
                           alt=""

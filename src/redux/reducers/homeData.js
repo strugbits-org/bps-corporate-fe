@@ -57,11 +57,11 @@ export const fetchGetTouchSection = createAsyncThunk(
         dataCollectionId: "GetInTouchSection",
       };
 
-      const { items: fetchGetTouchSection } = await wixClient.items
+      const { items } = await wixClient.items
         .queryDataItems(options)
         .find();
         handleCollectionLoaded();
-      return fetchGetTouchSection;
+      return items;
     } catch (error) {
       handleCollectionLoaded();
       throw new Error(error.message);
@@ -77,9 +77,8 @@ export const fetchStudioSection = createAsyncThunk(
         dataCollectionId: "StudiosSection",
       };
 
-      const { items: fetchedStudioItems } = await wixClient.items
+      const { items } = await wixClient.items
         .queryDataItems(options)
-        .eq("title", "Studios")
         .find();
         if (triggerAnimations) {
           handleCollectionLoaded();
@@ -87,7 +86,8 @@ export const fetchStudioSection = createAsyncThunk(
         setTimeout(() => {
           document.querySelector(".updateWatchedTrigger").click();
         }, 1000);
-      return fetchedStudioItems;
+        const sortedList = items.sort((a, b) => a.data.orderNumber - b.data.orderNumber);
+      return sortedList;
     } catch (error) {
       handleCollectionLoaded();
       throw new Error(error.message);
@@ -105,7 +105,6 @@ export const fetchPeopleReviewSlider = createAsyncThunk(
 
       const { items: fetchedPeopleReview } = await wixClient.items
         .queryDataItems(options)
-        .eq("title", "Here's what people are saying.")
         .find();
         handleCollectionLoaded();
       return fetchedPeopleReview;
@@ -126,7 +125,6 @@ export const fetchMarketSection = createAsyncThunk(
 
       const { items: fetchedMarketSection } = await wixClient.items
         .queryDataItems(options)
-        .eq("title", "Markets")
         .find();
 
       handleCollectionLoaded();
