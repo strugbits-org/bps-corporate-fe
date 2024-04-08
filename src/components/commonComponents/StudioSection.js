@@ -5,28 +5,14 @@ import { fetchStudioSection } from "../../redux/reducers/homeData";
 
 const StudioSection = () => {
   const dispatch = useDispatch();
-  const studioData = useSelector((state) => state.home.studioData);
+  const {studioData, homeSectionDetails} = useSelector((state) => state.home);
+  // const sectiondetails = useSelector((state) => state.home.homeSectionDetails);
   // const loading = useSelector((state) => state.home.studioLoading);
   // const error = useSelector((state) => state.home.error);
 
   useEffect(() => {
     dispatch(fetchStudioSection());
   }, [dispatch]);
-
-  // const [activeIndex, setActiveIndex] = useState(null);
-
-  // const handleClick = (index) => {
-    
-  // };
-
-  // const handleClick = debounce((index) => { 
-  //   setActiveIndex(index === activeIndex ? null : index)
-  //   console.log("hello",index);
-  //  }, 1000);
-
-  const firstItem = studioData[0]; // Assuming you want values from the first item
-  const title = firstItem ? firstItem.data.title : "";
-  const desc = firstItem ? firstItem.data.description : "";
 
   return (
   
@@ -36,21 +22,16 @@ const StudioSection = () => {
       <div className="container-fluid">
         <div className="row row-1">
           <div className="col-lg-2 col-md-6">
-            {title && (
-              <h2
-                className="fs--90 fs-tablet-40 blue-1 split-chars"
-                data-aos="d:loop"
-              >
-                {title}
+              <h2 className="fs--90 fs-tablet-40 blue-1 split-chars" data-aos="d:loop">
+                {homeSectionDetails.studioTitle}
               </h2>
-            )}
           </div>
           <div className="col-lg-5 col-md-6 offset-lg-5 column-2">
             <p
               className="fs--40 fs-mobile-18 text"
               data-aos="fadeIn .6s ease-in-out .4s, d:loop"
             >
-              {desc}
+              {homeSectionDetails.studioDescription}
             </p>
           </div>
         </div>

@@ -5,6 +5,7 @@ import { handleCollectionLoaded } from "../../utilis/pageLoadingAnimation";
 const wixClient = createWixClient();
 
 const initialState = {
+  homeSectionDetails: [],
   homeTopData: [],
   getTouchData: [],
   studioData: [],
@@ -14,6 +15,7 @@ const initialState = {
   rentalStoreData: [],
   dreamBigData: [],
 
+  homeSectionDetailsLoading: false,
   getTouchLoading: false,
   homeTopLoading: false,
   studioLoading: false,
@@ -25,6 +27,21 @@ const initialState = {
   error: null,
 };
 
+
+export const fetchHomeSectionDetails = createAsyncThunk(
+  "data/fetchHomeSectionDetails",
+  async () => {
+    try {
+      let options = { dataCollectionId: "HomeSectionDetails", };
+      const { items } = await wixClient.items.queryDataItems(options).find();
+      handleCollectionLoaded();
+      return items.map((item) => item.data)[0];
+    } catch (error) {
+      handleCollectionLoaded();
+      throw new Error(error.message);
+    }
+  }
+);
 
 export const fetchHomeTopData = createAsyncThunk(
   "data/fetchDataItems",
@@ -183,6 +200,19 @@ const homeSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+      /// HomeTop Section ////
+      .addCase(fetchHomeSectionDetails.pending, (state) => {
+        state.homeSectionDetailsLoading = true;
+        state.error = null;
+      })
+      .addCase(fetchHomeSectionDetails.fulfilled, (state, action) => {
+        state.homeSectionDetailsLoading = false;
+        state.homeSectionDetails = action.payload;
+      })
+      .addCase(fetchHomeSectionDetails.rejected, (state, action) => {
+        state.homeSectionDetailsLoading = false;
+        state.error = action.error.message;
+      })
       /// HomeTop Section ////
       .addCase(fetchHomeTopData.pending, (state) => {
         state.homeTopLoading = true;

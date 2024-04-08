@@ -3,14 +3,14 @@ import React, { useEffect } from "react";
 import { getFullImagePost } from "../../common/common_functions/imageURL";
 import { fetchPortfolio } from "../../redux/reducers/portfolioData";
 import { useDispatch, useSelector } from "react-redux";
+import { DefaultButton } from "../commonComponents/DefaultButton";
 
 const OurProjectSection = () => {
   const dispatch = useDispatch();
-  const portfolioCollection = useSelector(
-    (state) => state.portfolio.portfolioData
-  );
+  const portfolioCollection = useSelector((state) => state.portfolio.portfolioData);
   // const loading = useSelector((state) => state.home.ourProjectLoading);
   // const error = useSelector((state) => state.home.error);
+  const { homeSectionDetails } = useSelector((state) => state.home);
 
   useEffect(() => {
     dispatch(fetchPortfolio({ pageSize: 4 }));
@@ -29,7 +29,7 @@ const OurProjectSection = () => {
               className="fs--80 text-center mb-35 split-words"
               data-aos="d:loop"
             >
-              Some of our projects
+              {homeSectionDetails.projectsTitle}
             </h2>
 
             <div className="slider-some-of-our-projects slider-content-mobile">
@@ -77,14 +77,7 @@ const OurProjectSection = () => {
             </div>
           </div>
           <div className="col-lg-4 offset-lg-4 mt-lg-60 mt-mobile-40 flex-center">
-            <btn-modal-open
-              group="modal-contact"
-              class="btn-blue"
-              data-cursor-style="off"
-            >
-              <span>Let's Craft Magic Together</span>
-              <i className="icon-arrow-right-2"></i>
-            </btn-modal-open>
+            <DefaultButton data={homeSectionDetails}></DefaultButton>
           </div>
         </div>
       </div>
