@@ -28,7 +28,6 @@ export const fetchFooterData = createAsyncThunk(
 
         const { items: fetchedItems } = await wixClient.items
         .queryDataItems(options)
-        .eq("title", "footer")
         .find();
     
         const { items: fetchedContact } = await wixClient.items

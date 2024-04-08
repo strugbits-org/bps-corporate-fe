@@ -10,8 +10,8 @@ const DreamBigSection = () => {
 
   const firstItem = data[0]; // Assuming you want values from the first item
   const btntext = firstItem ? firstItem.data.buttonText : "";
-  const pragraph1 = firstItem ? firstItem.data.pragraph1 : "";
-  const pragraph2 = firstItem ? firstItem.data.pragraph2 : "";
+  const paragraph1 = firstItem ? firstItem.data.paragraph1 : "";
+  const paragraph2 = firstItem ? firstItem.data.paragraph2 : "";
   const desktopImg = firstItem ? firstItem.data.desktopBackgroundImage : "";
   const mobileImg = firstItem ? firstItem.data.mobileBackgroundImage : "";
 
@@ -62,8 +62,8 @@ const DreamBigSection = () => {
                 data-translate-y-from="30vh"
                 data-end="center center"
               >
-                {pragraph1} <br />
-                {pragraph2}
+                {paragraph1} <br />
+                {paragraph2}
               </p>
             </div>
           </div>

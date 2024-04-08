@@ -31,35 +31,10 @@ export const fetchServicesData = createAsyncThunk(
         .find();
 
       const servicesArray = fetchedItems.map((service) => {
-        service.data.modalImage = getFullImageURL(service.data.modalImage);
         service.data.image = getFullImageURL(service.data.image);
         return service.data;
       });
       return servicesArray[0];
-    } catch (error) {
-      throw new Error(error.message);
-    }
-  }
-);
-
-export const getServicesModel = createAsyncThunk(
-  "data/getServicesModel",
-  async () => {
-    try {
-      let options = {
-        dataCollectionId: "StudiosSection",
-      };
-
-      const { items: fetchedItems } = await wixClient.items
-        .queryDataItems(options)
-        .eq("title", "Studios")
-        .find();
-      const servicesArray = fetchedItems.map((service) => {
-        service.data.image = getFullImageURL(service.data.modalImage);
-        return service.data;
-      });
-
-      return servicesArray;
     } catch (error) {
       throw new Error(error.message);
     }
@@ -110,19 +85,6 @@ const servicesSlice = createSlice({
         state.servicesData = action.payload;
       })
       .addCase(fetchServicesData.rejected, (state, action) => {
-        state.servicesLoading = false;
-        state.error = action.error.message;
-      })
-      //model reducers//
-      .addCase(getServicesModel.pending, (state) => {
-        state.servicesLoading = true;
-        state.error = null;
-      })
-      .addCase(getServicesModel.fulfilled, (state, action) => {
-        state.servicesLoading = false;
-        state.servicesModelData = action.payload;
-      })
-      .addCase(getServicesModel.rejected, (state, action) => {
         state.servicesLoading = false;
         state.error = action.error.message;
       })

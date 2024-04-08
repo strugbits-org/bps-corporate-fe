@@ -6,6 +6,8 @@ import { pageLoadStart } from "../../utilis/animationsTriggers";
 const SliderBanner = ({ data, type }) => {
   const navigate = useNavigate();
 
+  if (data.length === 0 ) return;
+
   const handleNavigate = (path) => {
     pageLoadStart();
     setTimeout(() => {
@@ -28,9 +30,7 @@ const SliderBanner = ({ data, type }) => {
                       className="container-img"
                     >
                       <img
-                        src={getFullImagePost(
-                          data?.portfolioRef?.coverImage?.imageInfo
-                        )}
+                        src={getFullImagePost(data?.portfolioRef?.coverImage?.imageInfo, true)}
                         data-preload
                         className="media"
                         data-parallax

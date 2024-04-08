@@ -6,7 +6,7 @@ import StudioSection from "../../components/commonComponents/StudioSection";
 import DreamBigSection from "../../components/commonComponents/DreamBigSection";
 import SocialSection from "../../components/commonComponents/SocialSection";
 import React, { useEffect } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchServicesData,
@@ -15,7 +15,6 @@ import {
 
 const ServicePostPage = () => {
   const service = true;
-  const location = useLocation();
   const params = useParams();
 
   const dispatch = useDispatch();
@@ -25,12 +24,12 @@ const ServicePostPage = () => {
   // const error = useSelector((state) => state.services.error);
 
   useEffect(() => {
-    if (servicesData?._id === undefined) {
-      dispatch(fetchServicesData(params.slug));
-    } else{
-      dispatch(getServicesSlider(servicesData?._id));
-    }
-  }, [dispatch, location, params.slug, servicesData?._id]);
+    dispatch(fetchServicesData(params.slug));
+  }, [dispatch, params.slug]);
+
+  useEffect(() => {
+    if (servicesData?._id !== undefined) dispatch(getServicesSlider(servicesData?._id));
+  }, [dispatch, servicesData?._id]);
 
   return (
     <>
@@ -40,7 +39,7 @@ const ServicePostPage = () => {
       )}
 
       {/* commonComponents */}
-      <SliderBanner  data={servicesSlider} type={service}/>
+      <SliderBanner data={servicesSlider} type={service}/>
       <PeopleReviewSlider />
       <StudioSection />
       <DreamBigSection />

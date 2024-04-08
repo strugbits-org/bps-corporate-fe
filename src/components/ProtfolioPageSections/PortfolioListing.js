@@ -169,9 +169,7 @@ const PortfolioListing = ({ data, seeMore, applyFilters }) => {
                       >
                         <div className="wrapper-img">
                           <img
-                            src={getFullImagePost(
-                              item.portfolioRef.coverImage.imageInfo
-                            )}
+                            src={getFullImagePost(item.portfolioRef.coverImage.imageInfo, true)}
                             data-preload
                             className="media"
                             alt=""
@@ -227,16 +225,15 @@ const PortfolioListing = ({ data, seeMore, applyFilters }) => {
                   </li>
                 );
               })}
+            </ul>
               {data.items.length === 0 && (
                 <h6
-                  style={{ width: "100%" }}
-                  className="fs--40 text-center split-words"
+                  className="fs--40 text-center split-words not_found_text"
                   data-aos="d:loop"
                 >
                   No Data found
                 </h6>
               )}
-            </ul>
           </div>
           {data?.totalCount > data.pageSize && data.items.length !== data?.totalCount && (
             <div

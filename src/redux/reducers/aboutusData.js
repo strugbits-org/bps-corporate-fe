@@ -48,12 +48,11 @@ export const fetchOurDreamSection = createAsyncThunk(
   async () => {
     try {
       let options = {
-        dataCollectionId: "AboutusDreamTeamSection",
+        dataCollectionId: "AboutUsDreamTeamSection",
       };
 
       const { items: fetchedOurDream } = await wixClient.items
         .queryDataItems(options)
-        .eq("title", "The Dream Team")
         .find();
       handleCollectionLoaded();
       //trigger animation on data load

@@ -11,7 +11,7 @@ import { getFullImagePost } from "../../common/common_functions/imageURL";
 
 const SocialSection = () => {
   const dispatch = useDispatch();
-  const postes = useSelector((state) => state.blog.blogPostData);
+  const posts = useSelector((state) => state.blog.blogPostData);
 
   useEffect(() => {
     dispatch(getblogPostData({ pageSize: 3 }));
@@ -74,7 +74,7 @@ const SocialSection = () => {
                   </div>
 
                   <ul className="list-blog-lets-get-social">
-                    {postes?.slice(0, 3).map((data) => {
+                    {posts?.slice(0, 3).map((data) => {
                       return (
                         <li key={data._id}>
                           <DelayedLink
@@ -86,9 +86,7 @@ const SocialSection = () => {
                             >
                               <img
                                 src={
-                                  getFullImagePost(data?.blogRef?.coverImage) +
-                                  "/v1/fit/w_1000,h_1000,al_c,q_75,usm_0.66_1.00_0.01,enc_auto/compress.webp"
-                                }
+                                  getFullImagePost(data?.blogRef?.coverImage, true)}
                                 data-preload
                                 className="media"
                                 alt=""

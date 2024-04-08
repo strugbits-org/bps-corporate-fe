@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import getFullImageURL from "../../common/common_functions/imageURL";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchStudioSection } from "../../redux/reducers/homeData";
@@ -13,11 +13,16 @@ const StudioSection = () => {
     dispatch(fetchStudioSection());
   }, [dispatch]);
 
-  const [activeIndex, setActiveIndex] = useState(null);
+  // const [activeIndex, setActiveIndex] = useState(null);
 
-  const handleClick = (index) => {
-    setActiveIndex(index === activeIndex ? null : index);
-  };
+  // const handleClick = (index) => {
+    
+  // };
+
+  // const handleClick = debounce((index) => { 
+  //   setActiveIndex(index === activeIndex ? null : index)
+  //   console.log("hello",index);
+  //  }, 1000);
 
   const firstItem = studioData[0]; // Assuming you want values from the first item
   const title = firstItem ? firstItem.data.title : "";
@@ -57,12 +62,11 @@ const StudioSection = () => {
                 return (
                   <li
                     key={index}
-                    className={`accordion-item ${
-                      activeIndex === index ? "active" : ""
-                    }`}
-                    onClick={() => handleClick(index)}
+                    className={`accordion-item `}
                   >
-                    <div className="accordion-header">
+                    <div className="accordion-header" 
+                    // onClick={() => handleClick(index)}
+                    >
                       <h3
                         className="accordion-title split-words"
                         data-aos="d:loop"
@@ -73,7 +77,7 @@ const StudioSection = () => {
                     <div className="accordion-content">
                       <div className="container-img bg-blue">
                         <img
-                          src={getFullImageURL(data.data.image)}
+                          src={getFullImageURL(data.data.image,true)}
                           data-preload
                           className="media"
                           alt=""

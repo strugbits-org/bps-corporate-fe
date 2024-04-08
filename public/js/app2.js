@@ -15633,6 +15633,8 @@ var require_app2 = __commonJS({
       }
     }
     function accordionGsap(list, toggle = true) {
+      let isAnimating = false;
+
       if (!list)
         list = document;
       let toggleItems = list.querySelectorAll(":scope > .accordion-item");
@@ -15662,13 +15664,21 @@ var require_app2 = __commonJS({
             });
           }
           header.addEventListener("click", function () {
+            if (isAnimating) return;
+
             let content = element.querySelector(":scope > .accordion-content");
             if (element.classList.contains("active")) {
               element.removeActive();
+              isAnimating = true;
+              element.style.pointerEvents = "none";
               gsapWithCSS.to(content, 0.6, {
                 height: 0,
                 immediateRender: false,
-                ease: Power1.easeOut
+                ease: Power1.easeOut,
+                onComplete: function () {
+                  isAnimating = false;
+                  element.style.pointerEvents = "auto";
+                }
               });
             } else {
               if (toggle) {
@@ -15684,12 +15694,16 @@ var require_app2 = __commonJS({
                 });
               }
               element.addActive();
+              isAnimating = true;
+              element.style.pointerEvents = "none";
               gsapWithCSS.set(content, { height: "auto" });
               gsapWithCSS.from(content, 0.6, {
                 height: 0,
                 immediateRender: false,
                 ease: Power1.easeInOut,
                 onComplete: function () {
+                  isAnimating = false;
+                  element.style.pointerEvents = "auto";
                   let parentAccordion = header.parentNode.parentNode.closest(".accordion-item");
                   if (parentAccordion) {
                     let parentContent = parentAccordion.querySelector(":scope > .accordion-content");
@@ -15707,6 +15721,7 @@ var require_app2 = __commonJS({
       });
       list.updateAccordionSize = updateAccordionSize;
     }
+
     const pageName$3 = "services-post";
     function main$3() {
       sliderTestimony();
@@ -16107,6 +16122,7 @@ var require_app2 = __commonJS({
       initVideo();
       dropdownTags();
       updateWatched();
+      ScrollTrigger$1.refresh();
     });
 
     document.querySelector(".triggerSplitWordAnimation").addEventListener("click", () => {

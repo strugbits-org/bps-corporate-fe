@@ -2,8 +2,8 @@ import React from "react";
 
 const FormConcept = ({ items }) => {
   const forConceptData = items.map((item) => ({
-    fromConcept1: item.data.fromConceptText1,
-    fromConcept2: item.data.fromConceptText2
+    fromConcept1: item.data.text1,
+    fromConcept2: item.data.text2
   }));
   return (
     <section className="home-from-concept-to-reality overflow-hidden">

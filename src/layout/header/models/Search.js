@@ -245,7 +245,7 @@ const Search = () => {
                                       <div className="wrapper-img">
                                         <div className="container-img">
                                           <img
-                                            src={getFullImageURL(item.product.mainMedia)}
+                                            src={getFullImageURL(item.product.mainMedia, true)}
                                             data-preload
                                             className="media"
                                             alt=""
@@ -266,7 +266,7 @@ const Search = () => {
                                                 <li key={index}>
                                                   <div className="container-img">
                                                     <img
-                                                      src={getFullImageURL(option.mainMedia ? option.mainMedia : item.product.mainMedia)}
+                                                      src={getFullImageURL(option.mainMedia ? option.mainMedia : item.product.mainMedia, true)}
                                                       data-preload
                                                       className="media"
                                                       alt=""
@@ -333,7 +333,7 @@ const Search = () => {
                                     >
                                       <div className="wrapper-img">
                                         <img
-                                          src={getFullImagePost(data.portfolioRef.coverImage.imageInfo)}
+                                          src={getFullImagePost(data.portfolioRef.coverImage.imageInfo, true)}
                                           data-preload
                                           className="media"
                                           alt=""
@@ -440,7 +440,7 @@ const Search = () => {
                                     <div className="wrapper-img">
                                       {blog.blogRef.coverImage &&
                                         <img
-                                          src={getFullImageURL(blog.blogRef.coverImage) + "/v1/fit/w_1000,h_1000,al_c,q_75,usm_0.66_1.00_0.01,enc_auto/compress.webp"}
+                                          src={getFullImageURL(blog.blogRef.coverImage, true)}
                                           data-preload
                                           className="media"
                                           alt=""

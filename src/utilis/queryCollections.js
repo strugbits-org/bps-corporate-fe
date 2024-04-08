@@ -97,7 +97,7 @@ export const searchAllPages = async ({ pageSize = 10, searchTerm = "", disableLo
 
         let query = wixClient.items.queryDataItems(options);
         const response = await query.contains('content', searchTerm)
-            .eq("searchActive", true)
+            .eq("showInSearch", true)
             .limit(pageSize)
             .find();
 

@@ -44,7 +44,7 @@ const Blog = () => {
       markets: selectedMarkets,
       disableLoader
     });
-    setBlogCollection(response.items.filter(item => item.data.blogRef._id !== undefined).map(item => item.data));
+    setBlogCollection(response.items.filter(item => item.data.blogRef && item.data.blogRef._id !== undefined).map(item => item.data));
     setBlogResponse(response);
     handleCollectionLoaded();
   };
