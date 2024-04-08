@@ -3,22 +3,19 @@ import React, { useEffect, useState } from "react";
 import getFullImageURL from "../../common/common_functions/imageURL";
 import { fetchRentalStoreSection } from "../../redux/reducers/homeData";
 import { useDispatch, useSelector } from "react-redux";
+import { DefaultButton } from "../commonComponents/DefaultButton";
 
 const RentalStoreSection = () => {
   let transition = -35;
 
   const dispatch = useDispatch();
   const data = useSelector((state) => state.home.rentalStoreData);
+  const { homeSectionDetails } = useSelector((state) => state.home);
+
   // const loading = useSelector((state) => state.home.rentalLoading);
   // const error = useSelector((state) => state.home.error);
 
   const [object, setObject] = useState({});
-
-  const firstItem = data[0]; // Assuming you want values from the first item
-  const btntext = firstItem ? firstItem.data.buttonText : "";
-  const title = firstItem ? firstItem.data.title : "";
-  const descriptionText = firstItem ? firstItem.data.descriptionText : "";
-  const descriptionImages = firstItem ? firstItem.data.descriptionImages : "";
 
   useEffect(() => {
     dispatch(fetchRentalStoreSection());
@@ -30,21 +27,19 @@ const RentalStoreSection = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    // Process descriptionImages and update object state
-    if (Array.isArray(descriptionImages)) {
+    if (homeSectionDetails && Array.isArray(homeSectionDetails.rentalStoreDescriptionIcons)) {
       const processedObject = {};
-      descriptionImages.forEach((value, index) => {
+      homeSectionDetails.rentalStoreDescriptionIcons.forEach((value, index) => {
         processedObject[`item${index + 1}`] = value;
       });
       setObject(processedObject);
     }
-  }, [descriptionImages]);
+  }, [homeSectionDetails]);
 
   return (
     <section
-      className={`home-rental-store pt-lg-145 pt-tablet-105 pt-phone-145 pb-lg-120 pb-tablet-100 pb-phone-145 ${
-        data.length === 0 ? "hidden" : ""
-      }`}
+      className={`home-rental-store pt-lg-145 pt-tablet-105 pt-phone-145 pb-lg-120 pb-tablet-100 pb-phone-145 ${data.length === 0 ? "hidden" : ""
+        }`}
     >
       <div
         className="bg"
@@ -69,9 +64,9 @@ const RentalStoreSection = () => {
             data-end="top 20%"
             data-trigger=".home-rental-store"
           >
-            <h2 className="fs--100 text-center white-1">{title}</h2>
+            <h2 className="fs--100 text-center white-1">{homeSectionDetails.rentalStoreTitle}</h2>
             <p className="fs--50 fs-phone-18 white-1 paragraph mt-lg-15 mt-tablet-30 mt-phone-10">
-              {descriptionText.p1}
+              {homeSectionDetails.rentalStoreDescription?.p1}
               <span>
                 <img
                   src={getFullImageURL(object.item4)}
@@ -80,7 +75,7 @@ const RentalStoreSection = () => {
                   className="img-1 media"
                 />
               </span>
-              {descriptionText.p2}
+              {homeSectionDetails.rentalStoreDescription?.p2}
               <span>
                 <img
                   src={getFullImageURL(object.item1)}
@@ -89,7 +84,7 @@ const RentalStoreSection = () => {
                   className="img-2 media"
                 />
               </span>
-              {descriptionText.p3}
+              {homeSectionDetails.rentalStoreDescription?.p3}
               <span>
                 <img
                   src={getFullImageURL(object.item2)}
@@ -98,7 +93,7 @@ const RentalStoreSection = () => {
                   className="img-3 media"
                 />
               </span>
-              {descriptionText.p4}
+              {homeSectionDetails.rentalStoreDescription?.p4}
               <span>
                 <img
                   src={getFullImageURL(object.item3)}
@@ -107,7 +102,7 @@ const RentalStoreSection = () => {
                   className="img-4 media"
                 />
               </span>
-              {descriptionText.p5}
+              {homeSectionDetails.rentalStoreDescription?.p5}
             </p>
           </div>
 
@@ -127,7 +122,8 @@ const RentalStoreSection = () => {
                     data-trigger=".home-rental-store"
                   >
                     <DelayedLink
-                      to="/"
+                    target={"_blank"}
+                      to={data.data.productUrl}
                       className="link"
                       attributes={{
                         "data-cursor-style": "view",
@@ -158,14 +154,12 @@ const RentalStoreSection = () => {
               className="container-btn"
               data-aos="fadeInUp .8s ease-out-cubic 0s, d:loop, trigger:.column-trigger"
             >
-              <btn-modal-open
-                group="modal-contact"
-                class="btn-blue"
-                data-cursor-style="off"
-              >
-                <span>{btntext}</span>
-                <i className="icon-arrow-right-2"></i>
-              </btn-modal-open>
+              <DefaultButton
+                data={{
+                  label: homeSectionDetails.rentalStoreButtonLabel,
+                  action: homeSectionDetails.rentalStoreButtonAction
+                }}
+              ></DefaultButton>
             </div>
           </div>
         </div>

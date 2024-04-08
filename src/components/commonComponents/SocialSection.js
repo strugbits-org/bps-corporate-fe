@@ -12,6 +12,7 @@ import { getFullImagePost } from "../../common/common_functions/imageURL";
 const SocialSection = () => {
   const dispatch = useDispatch();
   const posts = useSelector((state) => state.blog.blogPostData);
+  const { homeSectionDetails } = useSelector((state) => state.home);
 
   useEffect(() => {
     dispatch(getblogPostData({ pageSize: 3 }));
@@ -46,13 +47,13 @@ const SocialSection = () => {
               className="fs--60 blue-1 text-center split-words"
               data-aos="d:loop"
             >
-              {socialData.title}
+              {homeSectionDetails.socialSectionTitle}
             </h2>
             <h3
               className="fs--16 fs-tablet-20 fs-phone-18 blue-1 text-center mt-10"
               data-aos="fadeIn .8s ease-in-out .2s, d:loop"
             >
-              {socialData.subtitle}
+              {homeSectionDetails.socialSectionDescription}
             </h3>
           </div>
           <div className="col-lg-12 column-2">

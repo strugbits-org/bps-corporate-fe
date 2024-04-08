@@ -12,6 +12,7 @@ import {
   fetchServicesData,
   getServicesSlider,
 } from "../../redux/reducers/servicesData";
+// import { fetchHomeSectionDetails } from "../../redux/reducers/homeData";
 
 const ServicePostPage = () => {
   const service = true;
@@ -25,6 +26,7 @@ const ServicePostPage = () => {
 
   useEffect(() => {
     dispatch(fetchServicesData(params.slug));
+    // dispatch(fetchHomeSectionDetails());
   }, [dispatch, params.slug]);
 
   useEffect(() => {

@@ -10,7 +10,7 @@ import PeopleReviewSLider from "../components/commonComponents/PeopleReviewSlide
 import MarketSection from "../components/commonComponents/MarketSection";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchHomeSectionDetails, fetchHomeTopData } from "../redux/reducers/homeData";
+import { fetchHomeTopData } from "../redux/reducers/homeData";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -18,7 +18,7 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(fetchHomeTopData());
-    dispatch(fetchHomeSectionDetails());
+    // dispatch(fetchHomeSectionDetails());
   }, [dispatch]);
 
   return (

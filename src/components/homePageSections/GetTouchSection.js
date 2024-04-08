@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchGetTouchSection } from "../../redux/reducers/homeData";
+import { DefaultButton } from "../commonComponents/DefaultButton";
 
 const GetTouchSection = () => {
   const dispatch = useDispatch();
   const getTouchData = useSelector((state) => state.home.getTouchData);
+
   // const loading = useSelector((state) => state.home.ourProjectLoading);
   // const error = useSelector((state) => state.home.error);
 
@@ -12,7 +14,8 @@ const GetTouchSection = () => {
     p1: item.data.paragraph1,
     p2: item.data.paragraph2,
     p3: item.data.paragraph3,
-    btntext: item.data.buttonText,
+    button_label: item.data.buttonText,
+    button_action: item.data.buttonAction,
   }));
 
   useEffect(() => {
@@ -37,14 +40,21 @@ const GetTouchSection = () => {
                 </div>
               </div>
               <div className="col-lg-4 offset-lg-4 flex-center mt-lg-60 mt-mobile-50">
-                <btn-modal-open
+                <DefaultButton
+                  size={"btn-medium"}
+                  data={{
+                    label: data.button_label,
+                    action: data.button_action
+                  }}
+                ></DefaultButton>
+                {/* <btn-modal-open
                   group="modal-contact"
                   class="btn-blue btn-medium"
                   data-cursor-style="off"
                 >
-                  <span>{data.btntext}</span>
+                  <span>{data.button_label}</span>
                   <i className="icon-arrow-right-2"></i>
-                </btn-modal-open>
+                </btn-modal-open> */}
               </div>
             </div>
           );

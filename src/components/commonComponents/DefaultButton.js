@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import DelayedLink from '../../common/DelayedLink';
 
-export const DefaultButton = ({ data }) => {
+export const DefaultButton = ({ data, size = "" }) => {
 
     const [actionType, setActionType] = useState(null);
     function isValidUrl(string) {
@@ -13,8 +13,8 @@ export const DefaultButton = ({ data }) => {
         }
     }
     useEffect(() => {
-        if (data && data.projectsButtonAction) {
-            const urlString = data.projectsButtonAction;
+        if (data && data.action) {
+            const urlString = data.action;
             if (isValidUrl(urlString)) {
                 setActionType("external_link");
             } else if (urlString.startsWith("/")) {
@@ -27,17 +27,17 @@ export const DefaultButton = ({ data }) => {
 
     return actionType === "modal" ? (
         <btn-modal-open
-            group={data.projectsButtonAction}
-            class="btn-blue"
+            group={data.action}
+            class={`btn-blue ${size}`}
             data-cursor-style="off"
         >
-            <span>{data.projectsButtonLabel}</span>
+            <span>{data.label}</span>
             <i className="icon-arrow-right-2"></i>
         </btn-modal-open>
     ) : (
-        <DelayedLink to={data.projectsButtonAction} target={actionType === "external_link" ? "_blank" : undefined}>
-            <button className="btn-blue" data-cursor-style="off" >
-                <span>{data.projectsButtonLabel}</span>
+        <DelayedLink to={data.action} target={actionType === "external_link" ? "_blank" : undefined}>
+            <button className={`btn-blue ${size}`} data-cursor-style="off" >
+                <span>{data.label}</span>
                 <i className="icon-arrow-right-2"></i>
             </button>
         </DelayedLink>

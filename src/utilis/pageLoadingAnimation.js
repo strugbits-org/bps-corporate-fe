@@ -19,7 +19,7 @@ export const handleCollectionLoaded = () => {
     const cleanPage = page.split("/")[0].trim();
 
     const collectionsCount = {
-        'home': 10,
+        'home': 9,
         'about': 7,
         'portfolio': 3,
         'blog': 3,

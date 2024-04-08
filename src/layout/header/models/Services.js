@@ -7,13 +7,7 @@ import getFullImageURL from "../../../common/common_functions/imageURL";
 const Services = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.home.studioData);
-
-  // const loading = useSelector((state) => state.services.servicesModelLoading);
-  // const error = useSelector((state) => state.services.error);
-
   const servicesItems = data ? data.map(item => item.data).filter(service => service.menuItem) : [];
-  
-  
 
   useEffect(() => {
     dispatch(fetchStudioSection(false));

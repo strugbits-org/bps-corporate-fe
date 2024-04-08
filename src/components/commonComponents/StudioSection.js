@@ -22,9 +22,11 @@ const StudioSection = () => {
       <div className="container-fluid">
         <div className="row row-1">
           <div className="col-lg-2 col-md-6">
+            {homeSectionDetails.studioTitle && (
               <h2 className="fs--90 fs-tablet-40 blue-1 split-chars" data-aos="d:loop">
                 {homeSectionDetails.studioTitle}
               </h2>
+            )}
           </div>
           <div className="col-lg-5 col-md-6 offset-lg-5 column-2">
             <p

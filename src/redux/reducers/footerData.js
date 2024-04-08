@@ -7,10 +7,12 @@ const wixClient = createWixClient();
 
 const initialState = {
     data:{
-        footerData:[],
-        contactData:[],
+      footerData:[],
+      contactData:[],
     },
-    footerDataLaoding: false,
+    socialLinks:[],
+    socialLinksLoading: false,
+    footerDataLoading: false,
     error: null,
 };
 
@@ -45,23 +47,49 @@ export const fetchFooterData = createAsyncThunk(
   }
 );
 
+export const getSocialLinks = createAsyncThunk(
+  "data/getSocialLinks",
+  async () => {
+    try {
+        let options = {dataCollectionId: "SocialLinks"};
+        const { items } = await wixClient.items.queryDataItems(options).find();
+        return items.map((item)=>item.data).sort((a, b) => a.orderNumber - b.orderNumber);
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
+);
+
 const footerSlice = createSlice({
   name: "footer",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
+      /// socialLinks ////
+      .addCase(getSocialLinks.pending, (state) => {
+        state.socialLinksLoading = true;
+        state.error = null;
+      })
+      .addCase(getSocialLinks.fulfilled, (state, action) => {
+        state.socialLinksLoading = false;
+        state.socialLinks = action.payload;
+      })
+      .addCase(getSocialLinks.rejected, (state, action) => {
+        state.socialLinksLoading = false;
+        state.error = action.error.message;
+      })
       /// Footer ////
       .addCase(fetchFooterData.pending, (state) => {
-        state.footerDataLaoding = true;
+        state.footerDataLoading = true;
         state.error = null;
       })
       .addCase(fetchFooterData.fulfilled, (state, action) => {
-        state.footerDataLaoding = false;
+        state.footerDataLoading = false;
         state.data = action.payload;
       })
       .addCase(fetchFooterData.rejected, (state, action) => {
-        state.footerDataLaoding = false;
+        state.footerDataLoading = false;
         state.error = action.error.message;
       });
   },

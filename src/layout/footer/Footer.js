@@ -3,7 +3,7 @@ import Newsletter from "../../common/Newsletter";
 import React, { useEffect } from "react";
 import getFullImageURL from "../../common/common_functions/imageURL";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchFooterData } from "../../redux/reducers/footerData";
+import { fetchFooterData, getSocialLinks } from "../../redux/reducers/footerData";
 
 const Footer = () => {
   const EXTERNAL_SITE_URL = "https://www.rentals.blueprintstudios.com";
@@ -11,15 +11,20 @@ const Footer = () => {
   const dispatch = useDispatch();
   const footerData = useSelector((state) => state.footer.data.footerData);
   const contactData = useSelector((state) => state.footer.data.contactData);
-
+  const socialLinks = useSelector((state) => state.footer.socialLinks);
   useEffect(() => {
     dispatch(fetchFooterData());
+    dispatch(getSocialLinks());
   }, [dispatch]);
+
+  
 
   const firstItem = footerData[0]?.data; // Assuming you want values from the first item
   const logo1 = firstItem ? firstItem.logo1 : "";
   const logo2 = firstItem ? firstItem.logo2 : "";
   const logo3 = firstItem ? firstItem.logo3 : "";
+  const newsletterTitle = firstItem ? firstItem.newsletterTitle : "";
+  const newsletterDescription = firstItem ? firstItem.newsletterDescription : "";
   const heading = firstItem ? firstItem.heading : "";
   const copyright = firstItem ? firstItem.copyright : "";
 
@@ -75,7 +80,7 @@ const Footer = () => {
           <div className="col-lg-5 column-2 pt-lg-65 pt-mobile-50">
             <div className="wrapper-newsletter-menu">
 
-              <Newsletter />
+              <Newsletter title={newsletterTitle} description={newsletterDescription} />
 
               <div className="container-footer-menu mt-lg-165 mt-tablet-55 mt-phone-125">
                 <ul className="list-footer-menu">
@@ -137,38 +142,16 @@ const Footer = () => {
                   </li>
                   <li className="list-item item-social-media">
                     <ul className="list-social-media">
-                      <li>
-                        <DelayedLink to="https://www.facebook.com/blueprintstudiosevents/" target="_blank"
-                          attributes={{
-                            "rel": "noopener noreferrer"
-                          }}>
-                          <i className="icon-facebook"></i>
-                        </DelayedLink>
-                      </li>
-                      <li>
-                        <DelayedLink to="https://www.instagram.com/blueprintstudiosevents/?hl=en" target="_blank"
-                          attributes={{
-                            "rel": "noopener noreferrer"
-                          }}>
-                          <i className="icon-instagram"></i>
-                        </DelayedLink>
-                      </li>
-                      <li>
-                        <DelayedLink to="https://twitter.com/bpseventdesign?lang=en" target="_blank"
-                          attributes={{
-                            "rel": "noopener noreferrer"
-                          }}>
-                          <i className="icon-x"></i>
-                        </DelayedLink>
-                      </li>
-                      <li>
-                        <DelayedLink to="https://www.linkedin.com/company/blueprint-studios/" target="_blank"
-                          attributes={{
-                            "rel": "noopener noreferrer"
-                          }}>
-                          <i className="icon-linkedin"></i>
-                        </DelayedLink>
-                      </li>
+                      {socialLinks.map((item,index) => (
+                        <li key={index}>
+                          <DelayedLink to={item.link} target="_blank"
+                            attributes={{
+                              "rel": "noopener noreferrer"
+                            }}>
+                            <i className={item.icon}></i>
+                          </DelayedLink>
+                        </li>
+                      ))}
                     </ul>
                   </li>
                 </ul>
@@ -189,10 +172,10 @@ const Footer = () => {
                         {data.data.address3}
                       </address>
                       <div className="phones">
-                        <DelayedLink to={`tel:${data.data.phone1}`}>
+                        <DelayedLink to={`tel:${data.data.phone1}`} target={"_blank"}>
                           <span>{data.data.phone1}</span>
                         </DelayedLink>
-                        <DelayedLink to={`tel:${data.data.phone2}`}>
+                        <DelayedLink to={`tel:${data.data.phone2}`} target={"_blank"}>
                           <span>{data.data.phone2}</span>
                         </DelayedLink>
                       </div>

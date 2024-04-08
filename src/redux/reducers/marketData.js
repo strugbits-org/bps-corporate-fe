@@ -55,13 +55,13 @@ export const getMarketCollection = createAsyncThunk(
         .find();
 
       const marketsArray = fetchedItems.map((item) => {
-        item.data.image = getFullImageURL(item.data.image);
+        item.data.image = getFullImageURL(item.data.image,true);
         return item.data;
       });
       if (markLoaded) {
         handleCollectionLoaded();
       }
-      return marketsArray;
+      return marketsArray.sort((a, b) => a.orderNumber - b.orderNumber);
     } catch (error) {
       handleCollectionLoaded();
       throw new Error(error.message);

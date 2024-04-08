@@ -8,6 +8,7 @@ import Cookies from "./common/Cookies";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadAppConfig } from "./redux/reducers/appConfig";
+import { fetchHomeSectionDetails } from "./redux/reducers/homeData";
 
 function App() {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ function App() {
 
   useEffect(() => {
     dispatch(loadAppConfig());
+    dispatch(fetchHomeSectionDetails());
   }, [dispatch]);
 
   return (

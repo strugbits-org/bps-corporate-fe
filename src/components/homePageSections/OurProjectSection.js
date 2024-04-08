@@ -18,9 +18,8 @@ const OurProjectSection = () => {
 
   return (
     <section
-      className={`home-some-of-our-projects pt-lg-250 pt-mobile-130 pb-135 ${
-        portfolioCollection.length === 0 ? "hidden" : ""
-      }`}
+      className={`home-some-of-our-projects pt-lg-250 pt-mobile-130 pb-135 ${portfolioCollection.length === 0 ? "hidden" : ""
+        }`}
     >
       <div className="container-fluid">
         <div className="row">
@@ -77,7 +76,12 @@ const OurProjectSection = () => {
             </div>
           </div>
           <div className="col-lg-4 offset-lg-4 mt-lg-60 mt-mobile-40 flex-center">
-            <DefaultButton data={homeSectionDetails}></DefaultButton>
+            <DefaultButton
+              data={{
+                label: homeSectionDetails.projectsButtonLabel,
+                action: homeSectionDetails.projectsButtonAction
+              }}
+            ></DefaultButton>
           </div>
         </div>
       </div>

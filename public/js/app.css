@@ -1472,7 +1472,7 @@ html {
   --btn-color: var(--black-1);
 }
 .btn-underline-white, #pg-contact .contact-info .column-2 .container-info a, .contact-info .column-2 .list-address li a {
-  --btn-color: var(--white-1);
+  --btn-color: var(--white-1)!important;
 }
 .btn-underline-blue-1, modal-group[name=modal-contact] .section-modal-contact .column-contact .contact-info .column-2 .container-info a {
   --btn-color: var(--blue-1);
