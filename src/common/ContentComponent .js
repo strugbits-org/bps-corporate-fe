@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 const ContentComponent = ({ content, title, maxWords }) => {
   
@@ -29,7 +29,7 @@ const ContentComponent = ({ content, title, maxWords }) => {
       <div className={`wrapper-text ${showAll ? "active" : ""}`} >
         <p>{paragraphs[0]}</p>
         <div className={"readmore-paragraphs text"}>
-          {paragraphs.slice(1).map((paragraph, index) => <> <br /><p key={index}>{paragraph}</p></>)}
+          {paragraphs.slice(1).map((paragraph, index) => <React.Fragment key={index}> <br /><p>{paragraph}</p></React.Fragment>)}
         </div>
       </div>
       {!hideButton && (
