@@ -79,7 +79,7 @@ const ContactUs = () => {
             {/* contact form end.. */}
 
             {/* contactDetails here */}
-            <ContactDetails />
+            <ContactDetails contactusData={firstItem} />
           </div>
 
           <div className="row mt-135 no-mobile">

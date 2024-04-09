@@ -5,6 +5,8 @@ import { fetchFooterData, getSocialLinks } from "../../redux/reducers/footerData
 
 const ContactDetails = ({contactusData}) => {
 
+  // console.log("contactusData", contactusData);
+
   const dispatch = useDispatch();
   const contactData = useSelector((state) => state.footer.data.contactData);
   const socialLinks = useSelector((state) => state.footer.socialLinks);
