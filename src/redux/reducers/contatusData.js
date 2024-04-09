@@ -14,7 +14,7 @@ const initialState = {
 
 export const fetchContactUs = createAsyncThunk(
   "data/fetchContactUs",
-  async () => {
+  async (markAsLoaded = true) => {
     try {
         let options = {
             dataCollectionId: "ContactUsContent",
@@ -25,11 +25,10 @@ export const fetchContactUs = createAsyncThunk(
           
             .queryDataItems(options)
             .find();
-            handleCollectionLoaded();
-
-      return fetchContactUs;
-    } catch (error) {
-      handleCollectionLoaded();
+            if(markAsLoaded) handleCollectionLoaded();
+            return fetchContactUs;
+      } catch (error) {
+      if(markAsLoaded) handleCollectionLoaded();
       throw new Error(error.message);
     }
   }

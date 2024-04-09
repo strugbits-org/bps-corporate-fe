@@ -24,7 +24,7 @@ const PortfoliPost = () => {
     <>
       <PortfolioIntoSection data={portfolioData} />
       <GallerySection data={portfolioData} />
-      <ExploreProjectsSection data={portfolioData} />
+      <ExploreProjectsSection id={params.slug} />
       <SocialSection />
     </>
   );

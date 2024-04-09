@@ -7,19 +7,21 @@ import { fetchStudioSection } from "../redux/reducers/homeData";
 import { getMarketCollection } from "../redux/reducers/marketData";
 import { handleCollectionLoaded } from "../utilis/pageLoadingAnimation";
 import { updatedWatched } from "../utilis/animationsTriggers";
+import { getBlogSectionDetails } from "../redux/reducers/blogData";
 
 const Blog = () => {
-  const pageSize = 8;
   const dispatch = useDispatch();
   const [blogResponse, setBlogResponse] = useState(null);
   const [blogCollection, setBlogCollection] = useState([]);
 
   const studios = useSelector((state) => state.home.studioData);
   const markets = useSelector((state) => state.market.marketModel);
-
+  const { blogSectionDetails } = useSelector((state) => state.blog);
+  const pageSize = 8;
   useEffect(() => {
     dispatch(fetchStudioSection());
     dispatch(getMarketCollection());
+    dispatch(getBlogSectionDetails());
     applyFilters({ disableLoader: true });
   }, [dispatch]);
 
@@ -55,6 +57,7 @@ const Blog = () => {
         data={{
           items: blogCollection,
           pageSize,
+          blogSectionDetails,
           studios,
           markets,
           totalCount: blogResponse?.totalCount,

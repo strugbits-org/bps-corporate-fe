@@ -9,6 +9,8 @@ const initialState = {
   portfolioData: [],
   singlePortfolioData: null,
   totalPortfolios: null,
+  portfolioSectionDetails:[],
+  portfolioSectionDetailsLoading: false,
 
   portfolioDataLoading: false,
   singlePortfolioLoading: false,
@@ -17,7 +19,7 @@ const initialState = {
 
 export const fetchPortfolio = createAsyncThunk(
   "data/fetchPortfolio",
-  async ({pageSize = 4, triggerAnimations = true}) => {
+  async ({pageSize = 4, triggerAnimations = true, excludeItem = null}) => {
     try {
       let options = {
         dataCollectionId: "PortfolioCollection",
@@ -25,7 +27,7 @@ export const fetchPortfolio = createAsyncThunk(
         returnTotalCount: true,
       };
   
-      const response = await wixClient.items.queryDataItems(options).limit(pageSize).find();
+      const response = await wixClient.items.queryDataItems(options).ne("slug", excludeItem).limit(pageSize).find();
       if (triggerAnimations) {
         handleCollectionLoaded();
         setTimeout(() => {
@@ -37,6 +39,19 @@ export const fetchPortfolio = createAsyncThunk(
       return data;
     } catch (error) {
       handleCollectionLoaded();
+      throw new Error(error.message);
+    }
+  }
+);
+
+export const getPortfolioSectionDetails = createAsyncThunk(
+  "data/getPortfolioSectionDetails",
+  async () => {
+    try {
+      let options = {dataCollectionId: "PortfolioSectionDetails"};
+      const { items } = await wixClient.items.queryDataItems(options).find();
+      return items.map(item => item.data)[0];
+    } catch (error) {
       throw new Error(error.message);
     }
   }
@@ -151,6 +166,19 @@ const portfolioSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+      /// Portfolio ////
+      .addCase(getPortfolioSectionDetails.pending, (state) => {
+        state.portfolioSectionDetailsLoading = true;
+        state.error = null;
+      })
+      .addCase(getPortfolioSectionDetails.fulfilled, (state, action) => {
+        state.portfolioSectionDetailsLoading = false;
+        state.portfolioSectionDetails = action.payload;
+      })
+      .addCase(getPortfolioSectionDetails.rejected, (state, action) => {
+        state.portfolioSectionDetailsLoading = false;
+        state.error = action.error.message;
+      })
       /// Portfolio ////
       .addCase(fetchPortfolio.pending, (state) => {
         state.portfolioDataLoading = true;

@@ -4,7 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import contactusSchema from "../common/schema/contactusSchema";
 import { useDispatch, useSelector } from "react-redux";
 import { postFormData } from "../redux/reducers/contactus";
-const ContactForm = () => {
+const ContactForm = ({title}) => {
   const dispatch = useDispatch();
   const [showSuccess, setShowSuccess] = useState(false);
   const [showError, setShowError] = useState(false);
@@ -52,7 +52,7 @@ const ContactForm = () => {
   return (
     <div className="column-1">
       <h2 className="fs--60 title">
-        <span>Contact form</span>
+        <span>{title}</span>
         <i className="icon-arrow-down"></i>
       </h2>
       <div

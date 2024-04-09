@@ -6,16 +6,16 @@ import {
 } from "../../common/constats/constats";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getblogPostData } from "../../redux/reducers/blogData";
 import { getFullImagePost } from "../../common/common_functions/imageURL";
+import { getSocialSectionBlogs } from "../../redux/reducers/blogData";
 
 const SocialSection = () => {
   const dispatch = useDispatch();
-  const posts = useSelector((state) => state.blog.blogPostData);
+  const posts = useSelector((state) => state.blog.socialSectionBlogs);
   const { homeSectionDetails } = useSelector((state) => state.home);
 
   useEffect(() => {
-    dispatch(getblogPostData({ pageSize: 3 }));
+    dispatch(getSocialSectionBlogs({}));
   }, [dispatch]);
 
   useEffect(() => {

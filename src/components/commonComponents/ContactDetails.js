@@ -2,19 +2,16 @@ import React, { useEffect } from "react";
 import DelayedLink from "../../common/DelayedLink";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchFooterData, getSocialLinks } from "../../redux/reducers/footerData";
-import { fetchContactUs } from "../../redux/reducers/contatusData";
 
-const ContactDetails = () => {
+const ContactDetails = ({contactusData}) => {
 
   const dispatch = useDispatch();
   const contactData = useSelector((state) => state.footer.data.contactData);
   const socialLinks = useSelector((state) => state.footer.socialLinks);
-  const contactusData = useSelector((state) => state.contactus.contactusData)[0];
 
   useEffect(() => {
     dispatch(fetchFooterData());
     dispatch(getSocialLinks());
-    dispatch(fetchContactUs());
   }, [dispatch]);
 
   return (

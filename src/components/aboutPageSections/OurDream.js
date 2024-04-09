@@ -1,18 +1,16 @@
-import DelayedLink from "../../common/DelayedLink";
 import React, { useEffect } from "react";
 import getFullImageURL from "../../common/common_functions/imageURL";
 import { fetchOurDreamSection } from "../../redux/reducers/aboutusData";
 import { useDispatch, useSelector } from "react-redux";
+import { DefaultButton } from "../commonComponents/DefaultButton";
 
 const OurDream = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.aboutus.OurDreamData);
+  const { sectionDetails } = useSelector((state) => state.aboutus);
+
   // const loading = useSelector((state) => state.aboutus.OurDreamLoading);
   // const error = useSelector((state) => state.aboutus.error);
-
-  const firstItem = data[0];
-  const title = firstItem ? firstItem.data.title : "";
-  const buttontext = firstItem ? firstItem.data.buttontext : "";
 
   useEffect(() => {
     dispatch(fetchOurDreamSection());
@@ -24,13 +22,13 @@ const OurDream = () => {
         <div className="row">
           <div className="col-lg-4 offset-lg-4">
             <h2 className="fs--80 text-center split-words" data-aos="d:loop">
-              {title}
+              {sectionDetails.dreamTeamTitle}
             </h2>
           </div>
           <div className="col-lg-12 mt-lg-70 mt-mobile-40">
             <ul className="list-dream-team grid-lg-25 grid-tablet-50">
               <div className="line-wrapper" data-aos="d:loop">
-                {[...data].reverse().map((data, index) => {
+                {data.map((data, index) => {
                   return (
                     <li key={index} className="grid-item">
                       <div className="wrapper-profile">
@@ -56,17 +54,18 @@ const OurDream = () => {
             </ul>
           </div>
           <div className="col-lg-4 offset-lg-4 flex-center mt-lg-60 mt-mobile-40 btn-trigger">
-            <DelayedLink
-              to="/"
-              className="btn-blue btn-border-blue"
-              attributes={{
-                "data-aos":
+          <DefaultButton
+            customClasses={"btn-border-blue"}
+            data={{
+              label: sectionDetails.dreamTeamButtonText,
+              action: sectionDetails.dreamTeamButtonAction
+            }}
+            attributes={{
+              "data-aos":
                   "fadeInUp .8s ease-out-cubic 0s, d:loop, trigger:.btn-trigger",
                 "data-cursor-style": "off",
-              }}
-            >
-              <span>{buttontext}</span>
-            </DelayedLink>
+            }}
+          ></DefaultButton>
           </div>
         </div>
       </div>

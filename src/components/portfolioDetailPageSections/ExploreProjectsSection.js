@@ -4,15 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchPortfolio } from "../../redux/reducers/portfolioData";
 import { getFullImagePost } from "../../common/common_functions/imageURL";
 
-const ExploreProjectsSection = ({ data }) => {
+const ExploreProjectsSection = ({ id }) => {
   const dispatch = useDispatch();
   const portfolioCollection = useSelector((state) => state.portfolio.portfolioData);
 
-  const marketTags = data?.markets[0]?.marketTags;
-  const categories = data?.markets?.map((item) => item.cardname);
   useEffect(() => {
-    dispatch(fetchPortfolio({pageSize: 4 }));
-  }, [dispatch]);
+    dispatch(fetchPortfolio({pageSize: 4, excludeItem:id }));
+  }, [dispatch, id]);
 
   return (
     <section className="portfolio-post-explore-projects pt-lg-310 pt-tablet-100 pt-phone-160 pb-lg-190 pb-mobile-100">
@@ -53,22 +51,30 @@ const ExploreProjectsSection = ({ data }) => {
                         </div>
                         <div className="container-text">
                           <ul className="list-tags-small">
-                            {marketTags?.map((tag, index) => (
-                              <li
-                                key={index}
-                                className={
-                                  "tag-small" +
-                                  (tag === categories[0] ? " active" : "")
-                                }
-                              >
-                                <span>{tag}</span>
-                              </li>
-                            ))}
-                            {marketTags?.length > 3 ? (
-                              <li className="tag-small">
-                                <span>+{marketTags?.length - 3} studios</span>
-                              </li>
-                            ) : null}
+                          {data.markets.map((market, index) => (
+                            <li
+                              key={index}
+                              className={"tag-small"}
+                            >
+                              <span>{market.cardname}</span>
+                            </li>
+                          ))}
+                          {data.studios.map((studio, index) => (
+                            <React.Fragment key={index}>
+                              {index < 2 && (
+                                <li
+                                  className={"tag-small"}
+                                >
+                                  <span>{studio.cardName}</span>
+                                </li>
+                              )}
+                            </React.Fragment>
+                          ))}
+                          {data.studios.length > 2 ? (
+                            <li className="tag-small">
+                              <span>+{data.studios.length - 2} studios</span>
+                            </li>
+                          ) : null}
                           </ul>
                           <h2 className="title-portfolio">
                             {data?.portfolioRef.title}

@@ -16,9 +16,11 @@ const DelayedLink = ({ to, children, className, target, attributes }) => {
     }
 
     const submenu = document.querySelector('.submenu');
+    const btn_modal_close = document.querySelector('btn-modal-close');
     const wrapperCursor = document.querySelector('#wrapper-cursor');
 
     if (submenu) submenu.classList.remove('active');
+    if (btn_modal_close) btn_modal_close.click();
     if (wrapperCursor) wrapperCursor.click();
     if (to === undefined) return;
 

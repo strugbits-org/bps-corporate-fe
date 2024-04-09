@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ContactForm from "../../../common/ContactForm";
 import ContactDetails from "../../../components/commonComponents/ContactDetails";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchContactUs } from "../../../redux/reducers/contatusData";
 
 const ContactUs = () => {
+  const dispatch = useDispatch();
+  const contactusData = useSelector((state) => state.contactus.contactusData)[0];
+  useEffect(() => {
+    dispatch(fetchContactUs(false));
+  }, [dispatch]);
   return (
     <section className="section-modal-contact">
       <div className="container-fluid">
@@ -10,11 +17,11 @@ const ContactUs = () => {
           <div className="col-lg-10 offset-lg-1 column-contact">
             <div className="row contact-info">
               {/* // contact form start */}
-              <ContactForm />
+              <ContactForm title={contactusData?.data.formTitle} />
               {/* // contact form end */}
 
               {/* contactDetails here */}
-              <ContactDetails />
+              <ContactDetails contactusData={contactusData} />
             </div>
 
             <btn-modal-close data-cursor-style="default">
