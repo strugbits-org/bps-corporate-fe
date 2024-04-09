@@ -17,7 +17,7 @@ const ContactUs = () => {
           <div className="col-lg-10 offset-lg-1 column-contact">
             <div className="row contact-info">
               {/* // contact form start */}
-              <ContactForm title={contactusData?.data.formTitle} />
+              <ContactForm data={contactusData?.data} />
               {/* // contact form end */}
 
               {/* contactDetails here */}

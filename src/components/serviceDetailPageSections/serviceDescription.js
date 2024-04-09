@@ -7,7 +7,7 @@ const serviceDescription = ({data}) => {
         <div className="row">
           <div className="col-lg-4 offset-lg-4">
             <h2 className="fs--60 text-center split-words" data-aos="d:loop">
-              Floral Design Services
+              {data?.cardName} Services
             </h2>
           </div>
           <div className="col-12 mt-40">

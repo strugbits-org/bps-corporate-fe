@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchPortfolio } from "../../redux/reducers/portfolioData";
 import { getFullImagePost } from "../../common/common_functions/imageURL";
 
-const ExploreProjectsSection = ({ id }) => {
+const ExploreProjectsSection = ({ title, id }) => {
   const dispatch = useDispatch();
   const portfolioCollection = useSelector((state) => state.portfolio.portfolioData);
 
@@ -21,7 +21,7 @@ const ExploreProjectsSection = ({ id }) => {
               className="fs--60 text-center mb-lg-45 mb-tablet-35 mb-phone-40 split-words"
               data-aos="d:loop"
             >
-              Explore other projects
+              {title}
             </h2>
 
             <div className="slider-content-mobile">

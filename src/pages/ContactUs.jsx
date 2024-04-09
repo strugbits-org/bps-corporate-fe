@@ -12,7 +12,6 @@ const ContactUs = () => {
   // const error = useSelector((state) => state.contactusData.error);
 
   const firstItem = data[0];
-  const formTitle = firstItem ? firstItem.data.formTitle : "";
   const title = firstItem ? firstItem.data.title : "";
   const description1 = firstItem ? firstItem.data.description1 : "";
   const description2 = firstItem ? firstItem.data.description2 : "";
@@ -75,7 +74,7 @@ const ContactUs = () => {
         <div className="container-fluid">
           <div className="row contact-info">
             {/* contact form start.. */}
-            <ContactForm title={formTitle} />
+            <ContactForm data={firstItem?.data} />
             {/* contact form end.. */}
 
             {/* contactDetails here */}

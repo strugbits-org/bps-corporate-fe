@@ -4,7 +4,7 @@ import PostDetails from "../../components/blogDetailPageSections/PostDetails";
 import SocialSection from "../../components/commonComponents/SocialSection";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useParams } from "react-router-dom/dist";
-import { fetchSingleBlog } from "../../redux/reducers/blogData";
+import { fetchSingleBlog, getBlogSectionDetails } from "../../redux/reducers/blogData";
 
 const BlogPost = () => {
   const location = useLocation();
@@ -13,6 +13,7 @@ const BlogPost = () => {
   const dispatch = useDispatch();
  
   const singleBlogData = useSelector((state) => state.blog.singleBlogData);
+  const { blogSectionDetails } = useSelector((state) => state.blog);
   // const loading = useSelector((state) => state.blog.singleBlogLoading);
   // const error = useSelector((state) => state.services.error);
 
@@ -20,16 +21,17 @@ const BlogPost = () => {
 
   useEffect(() => {
     dispatch(fetchSingleBlog(params.slug));
+    dispatch(getBlogSectionDetails());
   }, [dispatch, location, params.slug]);
 
   return (
     <>
       {/*  Post details Section start */}
-      <PostDetails data={singleBlogData}/>
+      <PostDetails productsTitle={blogSectionDetails?.featuredProductsTitle} data={singleBlogData}/>
       {/*  Post details Section end */}
 
       {/* Recent Post Section start */}
-    <RecentPosts id={params.slug}/>
+      <RecentPosts title={blogSectionDetails?.productsSectionTitle} id={params.slug}/>
       {/* Recent Post Section end */}
       <SocialSection />
     </>
