@@ -14,7 +14,9 @@ const initialState = {
   marketData: [],
   rentalStoreData: [],
   dreamBigData: [],
+  rentalStoreSubtitle: [],
 
+  rentalStoreSubtitleLoading: false,
   homeSectionDetailsLoading: false,
   getTouchLoading: false,
   homeTopLoading: false,
@@ -151,6 +153,23 @@ export const fetchRentalStoreSection = createAsyncThunk(
   }
 );
 
+export const fetchRentalStoreSubtitle = createAsyncThunk(
+  "data/fetchRentalStoreSubtitle",
+  async () => {
+    try {
+      let options = {
+        dataCollectionId: "HomeRentalStoreSubtitleStyled",
+      };
+
+      const { items } = await wixClient.items.queryDataItems(options).find();
+      const response = items.sort((a, b) => a.data.orderNumber - b.data.orderNumber);
+      return response.map(item => item.data);
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
+);
+
 export const fetchDreamBigSection = createAsyncThunk(
   "data/fetchDreamBigSection",
   async () => {
@@ -177,6 +196,19 @@ const homeSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+      /// HomeTop Section ////
+      .addCase(fetchRentalStoreSubtitle.pending, (state) => {
+        state.rentalStoreSubtitleLoading = true;
+        state.error = null;
+      })
+      .addCase(fetchRentalStoreSubtitle.fulfilled, (state, action) => {
+        state.rentalStoreSubtitleLoading = false;
+        state.rentalStoreSubtitle = action.payload;
+      })
+      .addCase(fetchRentalStoreSubtitle.rejected, (state, action) => {
+        state.rentalStoreSubtitleLoading = false;
+        state.error = action.error.message;
+      })
       /// HomeTop Section ////
       .addCase(fetchHomeSectionDetails.pending, (state) => {
         state.homeSectionDetailsLoading = true;

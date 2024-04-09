@@ -34,8 +34,8 @@ const ExploreProjectsSection = ({ data }) => {
                   {portfolioCollection?.map((data, index) => (
                     <div key={index} className="swiper-slide grid-item">
                       <DelayedLink
-                        to="/portfolio-post"
-                        className="link-portfolio link-portfolio-animation"
+                      to={`/portfolio-post/${data.slug}`}
+                      className="link-portfolio link-portfolio-animation"
                         attributes={{
                           "data-aos": "d:loop",
                         }}

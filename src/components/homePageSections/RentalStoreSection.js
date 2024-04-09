@@ -1,7 +1,7 @@
 import DelayedLink from "../../common/DelayedLink";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import getFullImageURL from "../../common/common_functions/imageURL";
-import { fetchRentalStoreSection } from "../../redux/reducers/homeData";
+import { fetchRentalStoreSection, fetchRentalStoreSubtitle } from "../../redux/reducers/homeData";
 import { useDispatch, useSelector } from "react-redux";
 import { DefaultButton } from "../commonComponents/DefaultButton";
 
@@ -10,31 +10,15 @@ const RentalStoreSection = () => {
 
   const dispatch = useDispatch();
   const data = useSelector((state) => state.home.rentalStoreData);
-  const { homeSectionDetails } = useSelector((state) => state.home);
+  const { homeSectionDetails, rentalStoreSubtitle } = useSelector((state) => state.home);
 
   // const loading = useSelector((state) => state.home.rentalLoading);
   // const error = useSelector((state) => state.home.error);
 
-  const [object, setObject] = useState({});
-
   useEffect(() => {
     dispatch(fetchRentalStoreSection());
-    //trigger animation on data load
-    setTimeout(() => {
-      document.querySelector(".updateWatchedTrigger").click();
-      document.querySelector(".triggerSplitWordAnimation").click();
-    }, 1000);
+    dispatch(fetchRentalStoreSubtitle());
   }, [dispatch]);
-
-  useEffect(() => {
-    if (homeSectionDetails && Array.isArray(homeSectionDetails.rentalStoreDescriptionIcons)) {
-      const processedObject = {};
-      homeSectionDetails.rentalStoreDescriptionIcons.forEach((value, index) => {
-        processedObject[`item${index + 1}`] = value;
-      });
-      setObject(processedObject);
-    }
-  }, [homeSectionDetails]);
 
   return (
     <section
@@ -66,43 +50,21 @@ const RentalStoreSection = () => {
           >
             <h2 className="fs--100 text-center white-1">{homeSectionDetails.rentalStoreTitle}</h2>
             <p className="fs--50 fs-phone-18 white-1 paragraph mt-lg-15 mt-tablet-30 mt-phone-10">
-              {homeSectionDetails.rentalStoreDescription?.p1}
-              <span>
-                <img
-                  src={getFullImageURL(object.item4)}
-                  data-preload
-                  alt=""
-                  className="img-1 media"
-                />
-              </span>
-              {homeSectionDetails.rentalStoreDescription?.p2}
-              <span>
-                <img
-                  src={getFullImageURL(object.item1)}
-                  data-preload
-                  alt=""
-                  className="img-2 media"
-                />
-              </span>
-              {homeSectionDetails.rentalStoreDescription?.p3}
-              <span>
-                <img
-                  src={getFullImageURL(object.item2)}
-                  data-preload
-                  alt=""
-                  className="img-3 media"
-                />
-              </span>
-              {homeSectionDetails.rentalStoreDescription?.p4}
-              <span>
-                <img
-                  src={getFullImageURL(object.item3)}
-                  data-preload
-                  alt=""
-                  className="img-4 media"
-                />
-              </span>
-              {homeSectionDetails.rentalStoreDescription?.p5}
+              {rentalStoreSubtitle.map((item, index) => (
+                <React.Fragment key={index}>
+                  {item.text}
+                  {item.image &&
+                    <span>
+                      <img
+                        src={getFullImageURL(item.image)}
+                        data-preload
+                        alt=""
+                        className="img-1 media"
+                      />
+                    </span>
+                  }
+                </React.Fragment>
+              ))}
             </p>
           </div>
 
@@ -122,7 +84,7 @@ const RentalStoreSection = () => {
                     data-trigger=".home-rental-store"
                   >
                     <DelayedLink
-                    target={"_blank"}
+                      target={"_blank"}
                       to={data.data.productUrl}
                       className="link"
                       attributes={{
