@@ -24,7 +24,6 @@ export const fetchContactUs = createAsyncThunk(
           const { items: fetchContactUs } = await wixClient.items
           
             .queryDataItems(options)
-            .eq("title", "Tried + True")
             .find();
             handleCollectionLoaded();
 

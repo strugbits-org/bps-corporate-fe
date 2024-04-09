@@ -31,7 +31,6 @@ export const fetchIntroSection = createAsyncThunk(
 
       const { items: fetchIntroSection } = await wixClient.items
         .queryDataItems(options)
-        .eq("title", "aboutustop")
         .find();
       handleCollectionLoaded();
 
@@ -79,7 +78,6 @@ export const fetchOurFamilySection = createAsyncThunk(
 
       const { items: fetchedOurFamily } = await wixClient.items
         .queryDataItems(options)
-        .eq("title", "Meet the rest of the family")
         .find();
       handleCollectionLoaded();
       setTimeout(() => {
@@ -102,7 +100,6 @@ export const fetchSliderSection = createAsyncThunk(
       };
       const { items: fetchedSliderBanner } = await wixClient.items
         .queryDataItems(options)
-        .eq("title", "aboutbottom")
         .find();
       handleCollectionLoaded();
 
