@@ -3,7 +3,7 @@ import { getFullImagePost } from "../../common/common_functions/imageURL";
 import DelayedLink from "../../common/DelayedLink";
 import { pageLoadStart } from "../../utilis/animationsTriggers";
 
-const SliderBanner = ({ data, type }) => {
+const SliderBanner = ({ data, type,sectionDetails }) => {
   const navigate = useNavigate();
 
   if (data.length === 0 ) return;
@@ -63,8 +63,8 @@ const SliderBanner = ({ data, type }) => {
                     </div>
                     <div className="container-title">
                       <h3 className="title split-words">
-                        Every project is unique, <br />
-                        each event its own.
+                      {sectionDetails.portfolioSectionTitle} <br />
+                      {sectionDetails.portfolioSectionTitleLine2}
                       </h3>
 
                       <div className="container-btn-bottom">
@@ -74,7 +74,7 @@ const SliderBanner = ({ data, type }) => {
                             data-cursor-style="off"
                             onClick={() => handleNavigate("/portfolio")}
                           >
-                            <span>We create dreams</span>
+                            <span>{sectionDetails.portfolioSectionButtonText}</span>
                             <i className="icon-arrow-right"></i>
                           </div>
                         ) : (
@@ -83,7 +83,7 @@ const SliderBanner = ({ data, type }) => {
                             data-cursor-style="off"
                             onClick={() => handleNavigate("/portfolio")}
                           >
-                            <span>Check out our portfolio</span>
+                            <span>{sectionDetails.portfolioSectionButtonText}</span>
                           </div>
                         )}
                       </div>

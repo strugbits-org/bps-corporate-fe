@@ -5,7 +5,7 @@ import { getblogPostData } from "../../redux/reducers/blogData";
 import { getFullImagePost } from "../../common/common_functions/imageURL";
 import formatDate from "../../common/common_functions/dateFormat";
 
-const RecentPosts = ({id}) => {
+const RecentPosts = ({title, id}) => {
   const dispatch = useDispatch();
   const posts = useSelector((state) => state?.blog?.blogPostData);
 
@@ -28,7 +28,7 @@ const RecentPosts = ({id}) => {
                 "data-aos": "d:loop",
               }}
             >
-              Recent posts
+              {title}
             </h2>
             <div className="slider-content-mobile">
               <div className="swiper-container">

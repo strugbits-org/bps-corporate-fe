@@ -9,7 +9,9 @@ const initialState = {
   servicesData: null,
   servicesModelData: [],
   servicesSlider: [],
-
+  servicesSectionDetails: null,
+  
+  servicesSectionDetailsLoading: false,
   servicesSliderLoading: false,
   servicesModelLoading: false,
   servicesLoading: false,
@@ -48,6 +50,18 @@ export const fetchServicesData = createAsyncThunk(
 // };
 
 // const portfolio = await listPortfolios(options);
+
+export const getServicesSectionDetails = createAsyncThunk(
+  "data/getServicesSectionDetails",
+  async () => {
+    try {
+      const { items } = await wixClient.items.queryDataItems({ dataCollectionId: "ServicePostSectionDetails" }).find();
+      return items.map(x => x.data)[0];
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
+);
 
 export const getServicesSlider = createAsyncThunk(
   "data/getServicesSlider",
@@ -99,6 +113,19 @@ const servicesSlice = createSlice({
       })
       .addCase(getServicesSlider.rejected, (state, action) => {
         state.servicesSliderLoading = false;
+        state.error = action.error.message;
+      })
+      //slider reducers//
+      .addCase(getServicesSectionDetails.pending, (state) => {
+        state.servicesSectionDetailsLoading = true;
+        state.error = null;
+      })
+      .addCase(getServicesSectionDetails.fulfilled, (state, action) => {
+        state.servicesSectionDetailsLoading = false;
+        state.servicesSectionDetails = action.payload;
+      })
+      .addCase(getServicesSectionDetails.rejected, (state, action) => {
+        state.servicesSectionDetailsLoading = false;
         state.error = action.error.message;
       });
   },

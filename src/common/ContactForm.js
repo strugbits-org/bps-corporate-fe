@@ -4,7 +4,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import contactusSchema from "../common/schema/contactusSchema";
 import { useDispatch, useSelector } from "react-redux";
 import { postFormData } from "../redux/reducers/contactus";
-const ContactForm = ({title}) => {
+const ContactForm = ({data}) => {
+
   const dispatch = useDispatch();
   const [showSuccess, setShowSuccess] = useState(false);
   const [showError, setShowError] = useState(false);
@@ -52,7 +53,7 @@ const ContactForm = ({title}) => {
   return (
     <div className="column-1">
       <h2 className="fs--60 title">
-        <span>{title}</span>
+        <span>{data?.formTitle}</span>
         <i className="icon-arrow-down"></i>
       </h2>
       <div
@@ -64,7 +65,7 @@ const ContactForm = ({title}) => {
         <form className="form-contact" onSubmit={handleSubmit(onSubmit)}>
           {/* <input type="hidden" name="assunto" value="[contact]" /> */}
           <div className="container-input col-md-6">
-            <label htmlFor="contact-first-name">First name</label>
+            <label htmlFor="contact-first-name">{data?.firstNamePlaceholder}</label>
             <input
               id="first_name_584c"
               name="first_name_584c"
@@ -80,7 +81,7 @@ const ContactForm = ({title}) => {
             )}
           </div>
           <div className="container-input col-md-6">
-            <label htmlFor="contact-last-name">Last name</label>
+            <label htmlFor="contact-last-name">{data?.lastNamePlaceholder}</label>
             <input
               id="last_name_51ee"
               name="last_name_51ee"
@@ -94,7 +95,7 @@ const ContactForm = ({title}) => {
             )}
           </div>
           <div className="container-input col-12">
-            <label htmlFor="contact-email">E-mail</label>
+            <label htmlFor="contact-email">{data?.emailPlaceholder}</label>
             <input
               id="email_bd82"
               name="email_bd82"
@@ -108,7 +109,7 @@ const ContactForm = ({title}) => {
             )}
           </div>
           <div className="container-textarea col-12">
-            <label htmlFor="contact-message">Message</label>
+            <label htmlFor="contact-message">{data?.messageBoxPlaceholder}</label>
             <textarea
               id="long_answer_afda"
               name="long_answer_afda"
@@ -124,7 +125,7 @@ const ContactForm = ({title}) => {
           <div className="container-submit col-12">
             <button type="submit" className="bt-submit btn-medium">
               <span className="submit-text">
-                {loadingForm ? "Sending..." : "Send"}
+              {data?.formSubmitButton}
               </span>
             </button>
           </div>

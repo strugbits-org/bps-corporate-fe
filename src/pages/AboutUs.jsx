@@ -13,6 +13,7 @@ import AboutCardsSection from '../components/aboutPageSections/AboutCardsSection
 const AboutUs = () => {
   const dispatch = useDispatch();
   const { AboutSlider } = useSelector((state) => state.aboutus);
+  const { sectionDetails } = useSelector((state) => state.aboutus);
   // const loading = useSelector((state) => state.aboutus.SliderLoading);
   // const error = useSelector((state) => state.aboutus.error);
   useEffect(() => {
@@ -26,7 +27,7 @@ const AboutUs = () => {
       <AboutCardsSection/>
       <OurDream />
       <OurFamily />
-      <SliderBanner data={AboutSlider} />
+      <SliderBanner data={AboutSlider} type={false} sectionDetails={sectionDetails} />
       <AboutBottomSection />
       <DreamBigSection />
       <SocialSection />

@@ -10,6 +10,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchServicesData,
+  getServicesSectionDetails,
   getServicesSlider,
 } from "../../redux/reducers/servicesData";
 // import { fetchHomeSectionDetails } from "../../redux/reducers/homeData";
@@ -19,13 +20,14 @@ const ServicePostPage = () => {
   const params = useParams();
 
   const dispatch = useDispatch();
-  const servicesData = useSelector((state) => state.services.servicesData);
-  const servicesSlider = useSelector((state) => state.services.servicesSlider);
+  const {servicesData, servicesSlider, servicesSectionDetails} = useSelector((state) => state.services);
+
   // const loading = useSelector((state) => state.services.servicesLoading);
   // const error = useSelector((state) => state.services.error);
 
   useEffect(() => {
     dispatch(fetchServicesData(params.slug));
+    dispatch(getServicesSectionDetails());
     // dispatch(fetchHomeSectionDetails());
   }, [dispatch, params.slug]);
 
@@ -41,7 +43,7 @@ const ServicePostPage = () => {
       )}
 
       {/* commonComponents */}
-      <SliderBanner data={servicesSlider} type={service}/>
+      <SliderBanner data={servicesSlider} type={service} sectionDetails={servicesSectionDetails}/>
       <PeopleReviewSlider />
       <StudioSection />
       <DreamBigSection />
