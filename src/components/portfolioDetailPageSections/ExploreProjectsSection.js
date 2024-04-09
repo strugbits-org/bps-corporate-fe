@@ -6,9 +6,7 @@ import { getFullImagePost } from "../../common/common_functions/imageURL";
 
 const ExploreProjectsSection = ({ data }) => {
   const dispatch = useDispatch();
-  const portfolioCollection = useSelector(
-    (state) => state.portfolio.portfolioData
-  );
+  const portfolioCollection = useSelector((state) => state.portfolio.portfolioData);
 
   const marketTags = data?.markets[0]?.marketTags;
   const categories = data?.markets?.map((item) => item.cardname);
