@@ -11,7 +11,11 @@ const initialState = {
   OurFamilyData: [],
   SliderData: [],
   AboutSlider: [],
-
+  sectionDetails: [],
+  aboutCards:[],
+  
+  aboutCardsLoading:false,
+  sectionDetailsLoading: false,
   AboutSliderLoading: false,
   IntroLoading: false,
   OurDreamLoading: false,
@@ -21,20 +25,41 @@ const initialState = {
 };
 
 
+export const fetchCardsSection = createAsyncThunk(
+  "data/fetchCardsSection",
+  async () => {
+    try {
+      let options = {
+        dataCollectionId: "AboutUsCardsSection",
+      };
+
+      const { items } = await wixClient.items
+        .queryDataItems(options)
+        .find();
+      handleCollectionLoaded();
+
+      return items.map(item => item.data);
+    } catch (error) {
+      handleCollectionLoaded();
+      throw new Error(error.message);
+    }
+  }
+);
+
 export const fetchIntroSection = createAsyncThunk(
   "data/fetchIntroSection",
   async () => {
     try {
       let options = {
-        dataCollectionId: "AboutUsTopSection",
+        dataCollectionId: "AboutUsIntroSection",
       };
 
-      const { items: fetchIntroSection } = await wixClient.items
+      const { items } = await wixClient.items
         .queryDataItems(options)
         .find();
       handleCollectionLoaded();
 
-      return fetchIntroSection;
+      return items.map(item=>item.data)[0];
     } catch (error) {
       handleCollectionLoaded();
       throw new Error(error.message);
@@ -129,6 +154,20 @@ export const getAboutSlider = createAsyncThunk(
     }
   }
 );
+
+export const getAboutSectionDetails = createAsyncThunk(
+  "data/getAboutSectionDetails",
+  async () => {
+    try {
+      let options = {dataCollectionId: "AboutUsSectionDetails"};
+      const { items } = await wixClient.items.queryDataItems(options).find();
+      return items.map(item => item.data)[0];
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
+);
+
 const aboutUsSlice = createSlice({
   name: "aboutus",
   initialState,
@@ -146,6 +185,32 @@ const aboutUsSlice = createSlice({
       })
       .addCase(fetchIntroSection.rejected, (state, action) => {
         state.IntroLoading = false;
+        state.error = action.error.message;
+      })
+      /// cards section Details ////
+      .addCase(fetchCardsSection.pending, (state) => {
+        state.aboutCardsLoading = true;
+        state.error = null;
+      })
+      .addCase(fetchCardsSection.fulfilled, (state, action) => {
+        state.aboutCardsLoading = false;
+        state.aboutCards = action.payload;
+      })
+      .addCase(fetchCardsSection.rejected, (state, action) => {
+        state.aboutCardsLoading = false;
+        state.error = action.error.message;
+      })
+      /// Section Details ////
+      .addCase(getAboutSectionDetails.pending, (state) => {
+        state.sectionDetailsLoading = true;
+        state.error = null;
+      })
+      .addCase(getAboutSectionDetails.fulfilled, (state, action) => {
+        state.sectionDetailsLoading = false;
+        state.sectionDetails = action.payload;
+      })
+      .addCase(getAboutSectionDetails.rejected, (state, action) => {
+        state.sectionDetailsLoading = false;
         state.error = action.error.message;
       })
       /// Our Dream Section ////

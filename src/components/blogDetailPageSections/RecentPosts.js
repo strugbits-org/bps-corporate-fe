@@ -5,13 +5,13 @@ import { getblogPostData } from "../../redux/reducers/blogData";
 import { getFullImagePost } from "../../common/common_functions/imageURL";
 import formatDate from "../../common/common_functions/dateFormat";
 
-const RecentPosts = () => {
+const RecentPosts = ({id}) => {
   const dispatch = useDispatch();
   const posts = useSelector((state) => state?.blog?.blogPostData);
 
   useEffect(() => {
-    dispatch(getblogPostData({ pageSize: 4 }));
-  }, [dispatch]);
+    dispatch(getblogPostData({ pageSize: 4, excludeItem: id }));
+  }, [dispatch, id]);
 
   return (
     <section
@@ -67,7 +67,7 @@ const RecentPosts = () => {
                               </div>
                               <div className="date">
                                 <span>
-                                  {formatDate(data?._updatedDate.$date)}
+                                  {formatDate(data?.blogRef.lastPublishedDate.$date)}
                                 </span>
                               </div>
                             </div>

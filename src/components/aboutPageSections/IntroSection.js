@@ -1,55 +1,16 @@
-import DelayedLink from "../../common/DelayedLink";
 import React, { useEffect } from "react";
 import getFullImageURL from "../../common/common_functions/imageURL";
 import { fetchIntroSection } from "../../redux/reducers/aboutusData";
 import { useDispatch, useSelector } from "react-redux";
+import { DefaultButton } from "../commonComponents/DefaultButton";
 
 const IntroSection = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.aboutus.IntroData);
-// const loading = useSelector((state) => state.aboutus.IntroLoading);
-  // const error = useSelector((state) => state.aboutus.error);
-  
-  const firstItem = data[0];
-  const title1 = firstItem ? firstItem.data.title1 : "";
-  const title2 = firstItem ? firstItem.data.title2 : "";
-  const buttonText = firstItem ? firstItem.data.buttontext : "";
-  const image = firstItem ? firstItem.data.image : "";
-  const subtitle = firstItem ? firstItem.data.subtitle : "";
-  const paragraph1 = firstItem ? firstItem.data.paragraph1 : "";
-  const paragraph2 = firstItem ? firstItem.data.paragraph2 : "";
 
   useEffect(() => {
     dispatch(fetchIntroSection());
   }, [dispatch]);
-
-  const properties = [
-    {
-      translateY: "-2.5rem",
-      rotateTo: "-10deg",
-      translateYfrom: "30vh",
-      dataEnd: "center center",
-      dataTrigger: "parent",
-    },
-    {
-      translateY: "5rem",
-    },
-
-    {
-      translateY: "-15rem",
-      rotateFrom: "30deg",
-      translateYfrom: "20vh",
-      dataEnd: "center center",
-      dataTrigger: "parent",
-    },
-    {
-      translateY: "10rem",
-      translateX: "-5rem",
-      rotateTo: "10deg",
-      rotateFrom: "30deg",
-      dataEnd: "center center",
-    },
-  ];
 
   return (
     <>
@@ -65,7 +26,7 @@ const IntroSection = () => {
             data-translate-y="5vh"
           >
             <img
-              src={getFullImageURL(image)}
+              src={getFullImageURL(data.backgroundImage)}
               data-preload
               className="media"
               data-parallax-top
@@ -85,7 +46,7 @@ const IntroSection = () => {
             data-start="60% center"
             data-translate-y="20vh"
           >
-            {title1}
+            {data.title1}
           </h2>
         </div>
         <div className="wrapper-content z-4 content-2">
@@ -96,14 +57,17 @@ const IntroSection = () => {
             data-start="60% center"
             data-translate-y="20vh"
           >
-            {title2}
+            {data.title2}
           </h2>
         </div>
 
         <div className="wrapper-content z-4 content-3">
-          <DelayedLink
-            to="/"
-            className="btn-border-blue"
+          <DefaultButton
+            customClasses={"btn-border-blue"}
+            data={{
+              label: data.buttonText,
+              action: data.buttonAction
+            }}
             attributes={{
               "data-cursor-style": "off",
               "data-parallax": "",
@@ -113,12 +77,10 @@ const IntroSection = () => {
               "data-end": "95% center",
               "data-start": "60% center",
             }}
-          >
-            <span>{buttonText}</span>
-            <i className="icon-arrow-right-2"></i>
-          </DelayedLink>
+          ></DefaultButton>
         </div>
       </section>
+
       <section className="about-events pt-30">
         <div className="container-fluid">
           <div className="row">
@@ -131,7 +93,7 @@ const IntroSection = () => {
                   data-end="center center"
                   data-trigger="parent"
                 >
-                  {subtitle}
+                  {data.descriptionBold}
                 </h3>
                 <div
                   className="container-text font-2 fs--16 lh-1375 mt-15"
@@ -140,51 +102,10 @@ const IntroSection = () => {
                   data-end="center center"
                   data-trigger="parent"
                 >
-                  <p>{paragraph1}</p>
-                  <p className="mt-20">{paragraph2}</p>
+                  <p>{data.description2}</p>
+                  <p className="mt-20">{data.description3}</p>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="about-our-boards">
-        <div className="container-fluid">
-          <div className="row">
-            <div className="col-lg-8 offset-lg-2">
-              <ul className="list-boards">
-                {data.map((data, index) => {
-                  const {
-                    translateY,
-                    rotateTo,
-                    translateYfrom,
-                    dataEnd,
-                    dataTrigger,
-                    translateX,
-                    rotateFrom,
-                  } = properties[index] || {};
-
-                  return (
-                    <li
-                      key={index}
-                      data-parallax
-                      data-translate-y={translateY || ""}
-                      data-rotate-to={rotateTo || ""}
-                      data-translate-y-from={translateYfrom || ""}
-                      data-end={dataEnd || ""}
-                      data-trigger={dataTrigger || ""}
-                      data-translate-x={translateX || ""}
-                      data-rotate-from={rotateFrom || ""}
-                    >
-                      <div className="content">
-                        <h2 className="title">{data.data.cardtitle}</h2>
-                        <p className="text">{data.data.cardDescription}</p>
-                      </div>
-                    </li>
-                  );
-                })}
-              </ul>
             </div>
           </div>
         </div>

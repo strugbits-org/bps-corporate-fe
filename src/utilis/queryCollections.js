@@ -3,7 +3,7 @@ import { endLoading, startLoading } from "./animationsTriggers";
 
 const wixClient = createWixClient();
 
-export const listPortfolios = async ({ pageSize = 10, searchTerm = "", studios = [], markets = [], disableLoader = false }) => {
+export const listPortfolios = async ({ pageSize = 10, searchTerm = "", studios = [], markets = [], disableLoader = false, excludeItem = null }) => {
     try {
         startLoading(disableLoader);
         let options = {
@@ -22,7 +22,7 @@ export const listPortfolios = async ({ pageSize = 10, searchTerm = "", studios =
             query = query.hasSome('markets', markets);
         }
 
-        const response = await query.contains('titleAndDescription', searchTerm)
+        const response = await query.contains('titleAndDescription', searchTerm).ne("slug", excludeItem)
             .limit(pageSize)
             .find();
 
@@ -34,7 +34,7 @@ export const listPortfolios = async ({ pageSize = 10, searchTerm = "", studios =
     }
 }
 
-export const listBlogs = async ({ pageSize = 10, searchTerm = "", studios = [], markets = [], disableLoader = false }) => {
+export const listBlogs = async ({ pageSize = 10, searchTerm = "", studios = [], markets = [], disableLoader = false, excludeItem = null }) => {
     try {
         startLoading(disableLoader);
         let options = {
@@ -52,8 +52,7 @@ export const listBlogs = async ({ pageSize = 10, searchTerm = "", studios = [], 
         } else if (markets.length > 0) {
             query = query.hasSome('markets', markets);
         }
-
-        const response = await query.contains('titleAndDescription', searchTerm)
+        const response = await query.contains('titleAndDescription', searchTerm).ne("slug", excludeItem)
             .limit(pageSize)
             .find();
 

@@ -29,7 +29,7 @@ const BlogPost = () => {
       {/*  Post details Section end */}
 
       {/* Recent Post Section start */}
-    <RecentPosts/>
+    <RecentPosts id={params.slug}/>
       {/* Recent Post Section end */}
       <SocialSection />
     </>

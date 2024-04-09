@@ -1,15 +1,13 @@
-import DelayedLink from "../../common/DelayedLink";
 import React, { useEffect } from "react";
 import getFullImageURL from "../../common/common_functions/imageURL";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchOurFamilySection } from "../../redux/reducers/aboutusData";
+import { DefaultButton } from "../commonComponents/DefaultButton";
 
 const OurFamily = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.aboutus.OurFamilyData);
-
-  const firstItem = data[0];
-  const title = firstItem ? firstItem.data.title : "";
+  const { sectionDetails } = useSelector((state) => state.aboutus);
 
   useEffect(() => {
     dispatch(fetchOurFamilySection());
@@ -24,7 +22,7 @@ const OurFamily = () => {
               className="fs--80 blue-1 text-center split-words"
               data-aos="d:loop"
             >
-              {title}
+              {sectionDetails.restOfTheFamilyTitle}
             </h2>
           </div>
           <div className="col-lg-12 mt-lg-80 mt-mobile-40">
@@ -62,15 +60,16 @@ const OurFamily = () => {
                         <p>{data.data.paragraph3}</p>
                       </div>
                       <div className="container-btn">
-                        <DelayedLink
-                          to="/"
-                          className="btn-border-white"
+                        <DefaultButton
+                          customClasses={"btn-border-white"}
+                          data={{
+                            label: data.data.buttonText,
+                            action: data.data.buttonAction
+                          }}
                           attributes={{
                             "data-cursor-style": "off",
                           }}
-                        >
-                          <span>{data.data.buttonText}</span>
-                        </DelayedLink>
+                        ></DefaultButton>
                       </div>
                     </div>
                   </li>

@@ -7,6 +7,7 @@ import { listPortfolios } from "../utilis/queryCollections";
 import { fetchStudioSection } from "../redux/reducers/homeData";
 import { getMarketCollection } from "../redux/reducers/marketData";
 import { updatedWatched } from "../utilis/animationsTriggers";
+import { getPortfolioSectionDetails } from "../redux/reducers/portfolioData";
 
 const Portfolio = () => {
   const dispatch = useDispatch();
@@ -15,10 +16,13 @@ const Portfolio = () => {
 
   const studios = useSelector((state) => state.home.studioData);
   const markets = useSelector((state) => state.market.marketModel);
+  const { portfolioSectionDetails } = useSelector((state) => state.portfolio);
+
   const pageSize = 8;
   useEffect(() => {
     dispatch(fetchStudioSection());
     dispatch(getMarketCollection());
+    dispatch(getPortfolioSectionDetails());
     applyFilters({disableLoader : true});
   }, [dispatch]);
   
@@ -37,7 +41,7 @@ const Portfolio = () => {
 
   return (
     <>
-      <PortfolioListing data={{ items: portfolioCollection, pageSize, studios, markets, totalCount: portfolioResponse?.totalCount }} applyFilters={applyFilters} seeMore={handleSeeMore} />
+      <PortfolioListing data={{ items: portfolioCollection, pageSize, studios, markets,portfolioSectionDetails, totalCount: portfolioResponse?.totalCount }} applyFilters={applyFilters} seeMore={handleSeeMore} />
       <MarketSection />
       <SocialSection />
     </>

@@ -59,7 +59,7 @@ const BlogListing = ({ data, seeMore, applyFilters }) => {
                             className="fs--60 text-center mb-lg-45 mb-mobile-40 split-words"
                             data-aos="d:loop"
                         >
-                            Read our blog posts
+                            {data.blogSectionDetails.blogTitle}
                         </h1>
                         <div
                             className="container-list-tags mt-lg-55 mt-tablet-40 mt-phone-30"
@@ -227,7 +227,7 @@ const BlogListing = ({ data, seeMore, applyFilters }) => {
                                     "data-cursor-style": "off",
                                 }}
                             >
-                                <span>See more</span>
+                                <span>{data.blogSectionDetails.seeMoreButtonText}</span>
                             </button>
                         </div>
                     )}

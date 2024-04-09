@@ -41,7 +41,7 @@ const GetTouchSection = () => {
               </div>
               <div className="col-lg-4 offset-lg-4 flex-center mt-lg-60 mt-mobile-50">
                 <DefaultButton
-                  size={"btn-medium"}
+                  customClasses={"btn-medium"}
                   data={{
                     label: data.button_label,
                     action: data.button_action
