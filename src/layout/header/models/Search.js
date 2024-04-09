@@ -7,11 +7,13 @@ import getFullImageURL, { getFullImagePost } from "../../../common/common_functi
 import { listBlogs, listPortfolios, listProducts, searchAllPages } from "../../../utilis/queryCollections";
 import formatDate from "../../../common/common_functions/dateFormat";
 import debounce from "lodash/debounce";
+import { fetchSearchContent } from "../../../redux/reducers/searchData";
 
 const Search = () => {
   const dispatch = useDispatch();
   const studios = useSelector((state) => state.home.studioData);
   const markets = useSelector((state) => state.market.marketModel);
+  const searchContent = useSelector((state) => state.searchContent.data);
 
   const EXTERNAL_SITE_URL = "https://www.rentals.blueprintstudios.com";
 
@@ -32,6 +34,7 @@ const Search = () => {
   useEffect(() => {
     dispatch(fetchStudioSection(false));
     dispatch(getMarketCollection());
+    dispatch(fetchSearchContent());
   }, [dispatch]);
 
   useEffect(() => {
@@ -181,7 +184,7 @@ const Search = () => {
                   <div className="result-all-studios">
                     <div className="container-title-results">
                       <h2 className="title-results split-chars" data-aos>
-                        All Studios
+                        {searchContent?.studiosTitle}
                       </h2>
                     </div>
                     <ul
@@ -209,7 +212,7 @@ const Search = () => {
                     <div className="result-rental">
                       <div className="container-title-results">
                         <h2 className="title-results split-chars" data-aos>
-                          Rental <span>{`"${searchTerm}"`}</span>
+                        {searchContent?.rentalTitle} <span>{`"${searchTerm}"`}</span>
                         </h2>
                         <DelayedLink
                           to="https://www.rentals.blueprintstudios.com/"
@@ -297,7 +300,7 @@ const Search = () => {
                     <div className="result-portfolio mt-lg-60 mt-mobile-40">
                       <div className="container-title-results">
                         <h2 className="title-results split-chars" data-aos>
-                          Portfolio <span>{`"${searchTerm}"`}</span>
+                        {searchContent?.portfolioTitle} <span>{`"${searchTerm}"`}</span>
                         </h2>
                         <DelayedLink
                           to={`/portfolio`}
@@ -360,7 +363,7 @@ const Search = () => {
                   <div className="result-our-markets">
                     <div className="container-title-results">
                       <h2 className="title-results split-chars" data-aos>
-                        Our Markets
+                      {searchContent?.marketsTitle}
                       </h2>
                     </div>
                     <ul
@@ -403,7 +406,7 @@ const Search = () => {
                   <div className="result-blog">
                     <div className="container-title-results">
                       <h2 className="title-results split-chars" data-aos>
-                        Blog <span>{`"${searchTerm}"`}</span>
+                      {searchContent?.blogTitle} <span>{`"${searchTerm}"`}</span>
                       </h2>
                       <DelayedLink
                         to="/blog"
@@ -475,7 +478,7 @@ const Search = () => {
                   <div className="result-order-pages">
                     <div className="container-title-results">
                       <h2 className="title-results split-chars" data-aos>
-                      Other Pages <span>{`"${searchTerm}"`}</span>
+                      {searchContent?.otherPagesTitle} <span>{`"${searchTerm}"`}</span>
                       </h2>
                     </div>
                     <ul
