@@ -4,7 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { postNewsletter } from "../redux/reducers/contactus";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-const Newsletter = ({title, description}) => {
+const Newsletter = ({data}) => {
   const dispatch = useDispatch();
 
   const [isLabelHidden, setIsLabelHidden] = useState(false);
@@ -72,9 +72,9 @@ const Newsletter = ({title, description}) => {
       // data-form-container
     >
       <div className="container-text">
-        <h3 className="fs-25 white-1">{title}</h3>
+        <h3 className="fs-25 white-1">{data?.newsletterTitle}</h3>
         <p className="fs--16 fs-phone-15 font-2 white-1 mt-5">
-          {description}
+          {data?.newsletterDescription}
         </p>
       </div>
 
@@ -91,7 +91,7 @@ const Newsletter = ({title, description}) => {
               htmlFor="newsletter-email"
               className={isLabelHidden ? "hidden" : ""}
             >
-              Enter your email
+              {data?.newsletterPlaceholder}
             </label>
 
             <input
@@ -112,7 +112,7 @@ const Newsletter = ({title, description}) => {
           <div className="container-submit">
             <button type="submit" className="bt-submit">
               <span className="submit-text">
-                {loading ? "Sending..." : "Send"}
+              {data?.newsletterSubmitButtonText}
               </span>
             </button>
           </div>

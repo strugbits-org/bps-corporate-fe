@@ -27,7 +27,12 @@ const GallerySection = ({ data }) => {
     }
   }, [data])
 
-  return gallery.length !== 0 && data.storeProducts && data.storeProducts.length !== 0 && (
+  useEffect(() => {
+    console.log("data.galleryImages", gallery);
+  }, [gallery])
+  
+
+  return (
     <section className="portfolio-post-photo-gallery pt-lg-165 pt-tablet-105 pt-phone-145">
       <div className="container-fluid">
         <div className="row">
@@ -43,7 +48,7 @@ const GallerySection = ({ data }) => {
             <div className="wrapper-gallery">
               {
                 gallery.map((item, index) =>
-                  item.fullImage ? (
+                item.fullImage ? (
                     <div key={index} className="module-photo-gallery-img-100 module-gallery">
                       <div className="module-column" data-aos="d:loop">
                         <div className="container-img bg-blue">
@@ -62,7 +67,7 @@ const GallerySection = ({ data }) => {
                     <div key={index} className="module-photo-gallery-img-50 module-gallery">
                       {
                         item.multipleImages.map((imageUrl,_index) => {
-                          return <div key={_index} className="module-column" data-aos="d:loop">
+                          return imageUrl && <div key={_index} className="module-column" data-aos="d:loop">
                             <div className="container-img bg-blue">
                               <div className="wrapper-img">
                                 <img

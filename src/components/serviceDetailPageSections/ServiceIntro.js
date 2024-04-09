@@ -1,3 +1,5 @@
+import { DefaultButton } from "../commonComponents/DefaultButton";
+
 const ServiceIntro = ({data}) => {
   return (
     <>
@@ -23,15 +25,17 @@ const ServiceIntro = ({data}) => {
                   {data?.cardDescription}
                 </p>
 
-                <btn-modal-open
-                  group="modal-contact"
-                  class="btn-blue mt-lg-50 mt-tablet-60 mt-phone-55"
-                  data-aos="fadeInUp .8s ease-out-cubic .6s, d:loop"
-                  data-cursor-style="off"
-                >
-                  <span>{data?.buttonText}</span>
-                  <i className="icon-arrow-right-2"></i>
-                </btn-modal-open>
+                <DefaultButton
+                  customClasses={"mt-lg-50 mt-tablet-60 mt-phone-55"}
+                  data={{
+                    label: data?.buttonText,
+                    action: data?.buttonAction
+                  }}
+                  attributes={{
+                    "data-aos":"fadeInUp .8s ease-out-cubic .6s, d:loop",
+                    "data-cursor-style": "off",
+                  }}
+                ></DefaultButton>
               </div>
             </div>
           </div>

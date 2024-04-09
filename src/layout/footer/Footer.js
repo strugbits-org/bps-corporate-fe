@@ -23,8 +23,6 @@ const Footer = () => {
   const logo1 = firstItem ? firstItem.logo1 : "";
   const logo2 = firstItem ? firstItem.logo2 : "";
   const logo3 = firstItem ? firstItem.logo3 : "";
-  const newsletterTitle = firstItem ? firstItem.newsletterTitle : "";
-  const newsletterDescription = firstItem ? firstItem.newsletterDescription : "";
   const heading = firstItem ? firstItem.heading : "";
   const copyright = firstItem ? firstItem.copyright : "";
 
@@ -80,7 +78,7 @@ const Footer = () => {
           <div className="col-lg-5 column-2 pt-lg-65 pt-mobile-50">
             <div className="wrapper-newsletter-menu">
 
-              <Newsletter title={newsletterTitle} description={newsletterDescription} />
+              <Newsletter data={firstItem} />
 
               <div className="container-footer-menu mt-lg-165 mt-tablet-55 mt-phone-125">
                 <ul className="list-footer-menu">

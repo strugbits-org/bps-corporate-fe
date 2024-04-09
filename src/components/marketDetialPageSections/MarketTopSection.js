@@ -1,7 +1,6 @@
 import getFullVideoURL from "../../common/common_functions/videoURL"
 
 const MarketTopSection = ({data}) => {
-  console.log("data", data);
   return (
     <>
      <section className="market-post-intro">
