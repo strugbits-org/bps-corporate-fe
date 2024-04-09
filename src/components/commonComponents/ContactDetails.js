@@ -2,31 +2,34 @@ import React, { useEffect } from "react";
 import DelayedLink from "../../common/DelayedLink";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchFooterData, getSocialLinks } from "../../redux/reducers/footerData";
+import { fetchContactUs } from "../../redux/reducers/contatusData";
 
 const ContactDetails = () => {
 
   const dispatch = useDispatch();
   const contactData = useSelector((state) => state.footer.data.contactData);
   const socialLinks = useSelector((state) => state.footer.socialLinks);
+  const contactusData = useSelector((state) => state.contactus.contactusData)[0];
 
   useEffect(() => {
     dispatch(fetchFooterData());
     dispatch(getSocialLinks());
+    dispatch(fetchContactUs());
   }, [dispatch]);
 
   return (
     <div className="column-2">
       <div className="container-info">
         <div className="container-tel">
-          <DelayedLink to="tel:">
-            <span>SF (415) 922-9004</span>
+          <DelayedLink target={"_blank"} to={"tel:"+contactusData?.data?.sfPhone}>
+            <span>{contactusData?.data?.sfPhone}</span>
           </DelayedLink>
-          <DelayedLink to="tel:">
-            <span>LV (702) 757-7987</span>
+          <DelayedLink target={"_blank"} to={"tel:"+contactusData?.data?.lvPhone}>
+            <span>{contactusData?.data?.lvPhone}</span>
           </DelayedLink>
         </div>
-        <DelayedLink to="mailto:info@blueprintstudios.com">
-          <span>info@blueprintstudios.com</span>
+        <DelayedLink target={"_blank"} to={"mailto:"+contactusData?.data?.infoEmail}>
+          <span>{contactusData?.data?.infoEmail}</span>
         </DelayedLink>
       </div>
       <ul className="list-social-media">

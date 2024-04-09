@@ -33,7 +33,7 @@ const RecentPosts = () => {
             <div className="slider-content-mobile">
               <div className="swiper-container">
                 <div className="swiper-wrapper list-blog list-slider-mobile grid-lg-25">
-                  {posts?.slice(0, 4).map((data) => {
+                  {posts?.map((data) => {
                     return (
                       <div key={data._id} className="swiper-slide grid-item">
                         <DelayedLink
