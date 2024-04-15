@@ -51,14 +51,12 @@ export const fetchHomeTopData = createAsyncThunk(
         dataCollectionId: "HomeTopSectionData",
       };
 
-      const { items: fetchHomeTopData } = await wixClient.items
-        .queryDataItems(options)
-        .find();
+      const { items } = await wixClient.items.queryDataItems(options).find();
       handleCollectionLoaded();
       setTimeout(() => {
         document.querySelector(".stickyAnimationTrigger").click();
       }, 1000);
-      return fetchHomeTopData;
+      return items.map(x=>x.data)[0];
     } catch (error) {
       handleCollectionLoaded();
       throw new Error(error.message);
