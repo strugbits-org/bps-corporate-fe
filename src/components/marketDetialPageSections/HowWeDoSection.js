@@ -1,7 +1,9 @@
+import { useSelector } from "react-redux";
 import getFullImageURL from "../../common/common_functions/imageURL";
 import parse from 'html-react-parser';
 
 const HowWeDoSection = ({ data }) => {
+  const { marketSectionDetails } = useSelector((state) => state.market);
 
   function convertToHTML(description) {
     if (typeof description === 'string') return description;
@@ -29,7 +31,6 @@ const HowWeDoSection = ({ data }) => {
           });
         }else{
           finalText += `<br>`;
-          console.log("no");
         }
       }
     });
@@ -41,7 +42,7 @@ const HowWeDoSection = ({ data }) => {
         <div className="row">
           <div className="col-lg-10 offset-lg-1 column-1">
             <h2 className="fs--60 text-center split-chars" data-aos="d:loop">
-              How we do it
+              {marketSectionDetails?.cardsSectionTitle}
             </h2>
             <ul className="list-how-we-do-it mt-lg-50 mt-mobile-40">
               {data?.howWeDoItSections.map((item, index) => {

@@ -8,7 +8,9 @@ const wixClient = createWixClient();
 const initialState = {
   marketTopData: null,
   marketModel: [],
-
+  marketSectionDetails: [],
+  
+  marketSectionLoading: false,
   marketModelLoading: false,
   marketTopLoading: false,
   error: null,
@@ -37,6 +39,19 @@ export const fetchMarketTopsections = createAsyncThunk(
       return marketsArray[0];
     } catch (error) {
       handleCollectionLoaded();
+      throw new Error(error.message);
+    }
+  }
+);
+
+export const getMarketsPostSectionDetails = createAsyncThunk(
+  "data/getMarketsPostSectionDetails",
+  async () => {
+    try {
+      let options = {dataCollectionId: "MarketsPostPageSectionDetails"};
+      const { items } = await wixClient.items.queryDataItems(options).find();
+      return items.map(item => item.data)[0];
+    } catch (error) {
       throw new Error(error.message);
     }
   }
@@ -75,6 +90,19 @@ const marketSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+
+      .addCase(getMarketsPostSectionDetails.pending, (state) => {
+        state.marketSectionLoading = true;
+        state.error = null;
+      })
+      .addCase(getMarketsPostSectionDetails.fulfilled, (state, action) => {
+        state.marketSectionLoading = false;
+        state.marketSectionDetails = action.payload;
+      })
+      .addCase(getMarketsPostSectionDetails.rejected, (state, action) => {
+        state.marketSectionLoading = false;
+        state.error = action.error.message;
+      })
 
       .addCase(fetchMarketTopsections.pending, (state) => {
         state.marketTopLoading = true;
