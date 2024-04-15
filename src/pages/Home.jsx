@@ -24,9 +24,9 @@ const Home = () => {
   return (
     <>
       {/* hero section here */}
-      <HeroSection items={homeTopData} />
+      <HeroSection data={homeTopData} />
       {/* form concept section here */}
-      <FormConcept items={homeTopData}/>
+      <FormConcept data={homeTopData}/>
       {/* get touch section here */}
       <GetTouchSection />
       {/* studio section here */}
