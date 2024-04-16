@@ -1,9 +1,10 @@
 import getFullVideoURL from "../../common/common_functions/videoURL"
+import { DefaultButton } from "../commonComponents/DefaultButton"
 
-const MarketTopSection = ({data}) => {
+const MarketTopSection = ({ data }) => {
   return (
     <>
-     <section className="market-post-intro">
+      <section className="market-post-intro">
         <div
           className="container-fluid pos-relative z-5"
           data-parallax-top
@@ -24,15 +25,17 @@ const MarketTopSection = ({data}) => {
                 >
                   {data?.description}
                 </p>
-                <btn-modal-open
-                  group="modal-contact"
-                  class="btn-blue mt-lg-20 mt-tablet-65 mt-phone-40"
-                  data-aos="fadeInUp .8s ease-out-cubic .6s, d:loop"
-                  data-cursor-style="off"
-                >
-                  <span>{data?.buttonText}</span>
-                  <i className="icon-arrow-right-2"></i>
-                </btn-modal-open>
+                <DefaultButton
+                  customClasses={"btn-blue mt-lg-20 mt-tablet-65 mt-phone-40"}
+                  data={{
+                    label: data?.buttonText,
+                    action: data?.buttonAction
+                  }}
+                  attributes={{
+                    "data-aos": "fadeInUp .8s ease-out-cubic .6s, d:loop",
+                    "data-cursor-style": "off",
+                  }}
+                ></DefaultButton>
               </div>
             </div>
           </div>
@@ -57,7 +60,7 @@ const MarketTopSection = ({data}) => {
         <div className="container-fluid">
           <div className="row">
             <div className="col-lg-4 offset-lg-4 column-1">
-                {/* {data.video} */}
+              {/* {data.video} */}
               <div className="container-img" data-aos="d:loop">
                 <video
                   data-src={getFullVideoURL(data?.video)}
@@ -83,7 +86,7 @@ const MarketTopSection = ({data}) => {
                 className="container-text fs-16 font-2 text-center white-1 mt-lg-20 mt-mobile-40"
                 data-aos="fadeInUp .8s ease-out-cubic .3s, d:loop, trigger:.column-2"
               >
-                <p style={{whiteSpace:"preserve-breaks"}}>
+                <p style={{ whiteSpace: "preserve-breaks" }}>
                   {data?.heroSectionDescription}
                 </p>
               </div>

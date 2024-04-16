@@ -56,6 +56,7 @@ const OurDream = () => {
           <div className="col-lg-4 offset-lg-4 flex-center mt-lg-60 mt-mobile-40 btn-trigger">
           <DefaultButton
             customClasses={"btn-border-blue"}
+            showArrow={false}
             data={{
               label: sectionDetails.dreamTeamButtonText,
               action: sectionDetails.dreamTeamButtonAction

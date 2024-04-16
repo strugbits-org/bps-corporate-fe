@@ -1453,7 +1453,7 @@ html {
   --color:var(--white-1);
   --color-hover:var(--white-1);
 }
-.btn-underline span, .btn-underline-blue-1 span, modal-group[name=modal-contact] .section-modal-contact .column-contact .contact-info .column-2 .container-info a span, .btn-underline-white span, #pg-contact .contact-info .column-2 .container-info a span, .contact-info .column-2 .list-address li a span, .btn-underline-black span {
+.btn-underline span, .btn-underline-blue-1 span, modal-group .section-modal-contact .column-contact .contact-info .column-2 .container-info a span, .btn-underline-white span, #pg-contact .contact-info .column-2 .container-info a span, .contact-info .column-2 .list-address li a span, .btn-underline-black span {
   display: inline;
   color: var(--btn-color, var(--black-1));
   background-image: linear-gradient(to right, var(--btn-color, var(--black-1)) 100%, var(--btn-color, var(--black-1)) 0%);
@@ -1463,7 +1463,7 @@ html {
   transition: background-size 1s cubic-bezier(0.19, 1, 0.155, 1.01) 0s;
   pointer-events: none;
 }
-.btn-underline:hover span, .btn-underline-blue-1:hover span, modal-group[name=modal-contact] .section-modal-contact .column-contact .contact-info .column-2 .container-info a:hover span, .btn-underline-white:hover span, #pg-contact .contact-info .column-2 .container-info a:hover span, .contact-info .column-2 .list-address li a:hover span, .btn-underline-black:hover span, .btn-underline.active span, .active.btn-underline-blue-1 span, modal-group[name=modal-contact] .section-modal-contact .column-contact .contact-info .column-2 .container-info a.active span, .active.btn-underline-white span, #pg-contact .contact-info .column-2 .container-info a.active span, .contact-info .column-2 .list-address li a.active span, .active.btn-underline-black span {
+.btn-underline:hover span, .btn-underline-blue-1:hover span, modal-group .section-modal-contact .column-contact .contact-info .column-2 .container-info a:hover span, .btn-underline-white:hover span, #pg-contact .contact-info .column-2 .container-info a:hover span, .contact-info .column-2 .list-address li a:hover span, .btn-underline-black:hover span, .btn-underline.active span, .active.btn-underline-blue-1 span, modal-group .section-modal-contact .column-contact .contact-info .column-2 .container-info a.active span, .active.btn-underline-white span, #pg-contact .contact-info .column-2 .container-info a.active span, .contact-info .column-2 .list-address li a.active span, .active.btn-underline-black span {
   background-image: linear-gradient(to right, var(--btn-color, var(--black-1)) 0%, var(--btn-color, var(--black-1)) 100%);
   background-size: 100% 0.12ch;
   background-position: 0 100%;
@@ -1474,7 +1474,7 @@ html {
 .btn-underline-white, #pg-contact .contact-info .column-2 .container-info a, body:not([data-modal="modal-contact"]) .contact-info .column-2 .list-address li a {
   --btn-color: var(--white-1)!important;
 }
-.btn-underline-blue-1, modal-group[name=modal-contact] .section-modal-contact .column-contact .contact-info .column-2 .container-info a {
+.btn-underline-blue-1, modal-group .section-modal-contact .column-contact .contact-info .column-2 .container-info a {
   --btn-color: var(--blue-1);
 }
 .btn-underlined span, .btn-underlined-white span, #footer .column-2 .container-footer-menu .list-footer-menu .list-item .link-footer-menu span {
@@ -1496,7 +1496,7 @@ html {
   --btn-color: var(--white-1);
 }
 .btn-base, .btn-tag, .btn-border, .btn-border-white, .btn-border-blue, .btn-1, .btn-white, #pg-contact .contact-info .column-1 .bt-submit, .form-newsletter .container-submit a,
-.form-newsletter .container-submit button, .btn-blue, modal-group[name=modal-contact] .section-modal-contact .column-contact .contact-info .column-1 .bt-submit {
+.form-newsletter .container-submit button, .btn-blue, modal-group .section-modal-contact .column-contact .contact-info .column-1 .bt-submit {
   position: relative;
   display: inline-block;
   min-width: var(--min-w);
@@ -1507,7 +1507,7 @@ html {
   transition: background-color 0.4s ease-in-out;
 }
 .btn-base:before, .btn-tag:before, .btn-border:before, .btn-border-white:before, .btn-border-blue:before, .btn-1:before, .btn-white:before, #pg-contact .contact-info .column-1 .bt-submit:before, .form-newsletter .container-submit a:before,
-.form-newsletter .container-submit button:before, .btn-blue:before, modal-group[name=modal-contact] .section-modal-contact .column-contact .contact-info .column-1 .bt-submit:before {
+.form-newsletter .container-submit button:before, .btn-blue:before, modal-group .section-modal-contact .column-contact .contact-info .column-1 .bt-submit:before {
   content: "";
   position: absolute;
   top: 50%;
@@ -1524,7 +1524,7 @@ html {
   transition: background-color 0.1s cubic-bezier(0.645, 0.045, 0.355, 1), transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1), width 0.3s cubic-bezier(0.645, 0.045, 0.355, 1), height 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 .btn-base i, .btn-tag i, .btn-border i, .btn-border-white i, .btn-border-blue i, .btn-1 i, .btn-white i, #pg-contact .contact-info .column-1 .bt-submit i, .form-newsletter .container-submit a i,
-.form-newsletter .container-submit button i, .btn-blue i, modal-group[name=modal-contact] .section-modal-contact .column-contact .contact-info .column-1 .bt-submit i {
+.form-newsletter .container-submit button i, .btn-blue i, modal-group .section-modal-contact .column-contact .contact-info .column-1 .bt-submit i {
   display: inline-flex;
   justify-content: flex-end;
   align-items: center;
@@ -1549,24 +1549,24 @@ html {
 }
 @media only screen and (min-width: 1025.1px) {
   .btn-base i, .btn-tag i, .btn-border i, .btn-border-white i, .btn-border-blue i, .btn-1 i, .btn-white i, #pg-contact .contact-info .column-1 .bt-submit i, .form-newsletter .container-submit a i,
-  .form-newsletter .container-submit button i, .btn-blue i, modal-group[name=modal-contact] .section-modal-contact .column-contact .contact-info .column-1 .bt-submit i {
+  .form-newsletter .container-submit button i, .btn-blue i, modal-group .section-modal-contact .column-contact .contact-info .column-1 .bt-submit i {
     --i-pr: 3.2rem;
   }
 }
 @media only screen and (min-width: 767.98px) and (max-width: 1025px) {
   .btn-base i, .btn-tag i, .btn-border i, .btn-border-white i, .btn-border-blue i, .btn-1 i, .btn-white i, #pg-contact .contact-info .column-1 .bt-submit i, .form-newsletter .container-submit a i,
-  .form-newsletter .container-submit button i, .btn-blue i, modal-group[name=modal-contact] .section-modal-contact .column-contact .contact-info .column-1 .bt-submit i {
+  .form-newsletter .container-submit button i, .btn-blue i, modal-group .section-modal-contact .column-contact .contact-info .column-1 .bt-submit i {
     --i-pr: 2.6rem;
   }
 }
 @media only screen and (max-width: 767.98px) {
   .btn-base i, .btn-tag i, .btn-border i, .btn-border-white i, .btn-border-blue i, .btn-1 i, .btn-white i, #pg-contact .contact-info .column-1 .bt-submit i, .form-newsletter .container-submit a i,
-  .form-newsletter .container-submit button i, .btn-blue i, modal-group[name=modal-contact] .section-modal-contact .column-contact .contact-info .column-1 .bt-submit i {
+  .form-newsletter .container-submit button i, .btn-blue i, modal-group .section-modal-contact .column-contact .contact-info .column-1 .bt-submit i {
     --i-pr: 2.7rem;
   }
 }
 .btn-base i:before, .btn-tag i:before, .btn-border i:before, .btn-border-white i:before, .btn-border-blue i:before, .btn-1 i:before, .btn-white i:before, #pg-contact .contact-info .column-1 .bt-submit i:before, .form-newsletter .container-submit a i:before,
-.form-newsletter .container-submit button i:before, .btn-blue i:before, modal-group[name=modal-contact] .section-modal-contact .column-contact .contact-info .column-1 .bt-submit i:before {
+.form-newsletter .container-submit button i:before, .btn-blue i:before, modal-group .section-modal-contact .column-contact .contact-info .column-1 .bt-submit i:before {
   color: var(--btn-text-color);
   -webkit-transition: all 0.1s cubic-bezier(0.645, 0.045, 0.355, 1);
   -moz-transition: all 0.1s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -1576,7 +1576,7 @@ html {
   transition-delay: 0s;
 }
 .btn-base span, .btn-tag span, .btn-border span, .btn-border-white span, .btn-border-blue span, .btn-1 span, .btn-white span, #pg-contact .contact-info .column-1 .bt-submit span, .form-newsletter .container-submit a span,
-.form-newsletter .container-submit button span, .btn-blue span, modal-group[name=modal-contact] .section-modal-contact .column-contact .contact-info .column-1 .bt-submit span {
+.form-newsletter .container-submit button span, .btn-blue span, modal-group .section-modal-contact .column-contact .contact-info .column-1 .bt-submit span {
   display: block;
   transform: scale(1);
   -webkit-transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -1587,18 +1587,18 @@ html {
   transition-delay: 0s;
 }
 .btn-base:hover, .btn-tag:hover, .btn-border:hover, .btn-border-white:hover, .btn-border-blue:hover, .btn-1:hover, .btn-white:hover, #pg-contact .contact-info .column-1 .bt-submit:hover, .form-newsletter .container-submit a:hover,
-.form-newsletter .container-submit button:hover, .btn-blue:hover, modal-group[name=modal-contact] .section-modal-contact .column-contact .contact-info .column-1 .bt-submit:hover {
+.form-newsletter .container-submit button:hover, .btn-blue:hover, modal-group .section-modal-contact .column-contact .contact-info .column-1 .bt-submit:hover {
   --btn-text-color: var(--blue-1);
   --btn-bg-color: var(--white-1);
 }
 .btn-base:hover:before, .btn-tag:hover:before, .btn-border:hover:before, .btn-border-white:hover:before, .btn-border-blue:hover:before, .btn-1:hover:before, .btn-white:hover:before, #pg-contact .contact-info .column-1 .bt-submit:hover:before, .form-newsletter .container-submit a:hover:before,
-.form-newsletter .container-submit button:hover:before, .btn-blue:hover:before, modal-group[name=modal-contact] .section-modal-contact .column-contact .contact-info .column-1 .bt-submit:hover:before, .btn-base:hover:after, .btn-tag:hover:after, .btn-border:hover:after, .btn-border-white:hover:after, .btn-border-blue:hover:after, .btn-1:hover:after, .btn-white:hover:after, #pg-contact .contact-info .column-1 .bt-submit:hover:after, .form-newsletter .container-submit a:hover:after,
-.form-newsletter .container-submit button:hover:after, .btn-blue:hover:after, modal-group[name=modal-contact] .section-modal-contact .column-contact .contact-info .column-1 .bt-submit:hover:after {
+.form-newsletter .container-submit button:hover:before, .btn-blue:hover:before, modal-group .section-modal-contact .column-contact .contact-info .column-1 .bt-submit:hover:before, .btn-base:hover:after, .btn-tag:hover:after, .btn-border:hover:after, .btn-border-white:hover:after, .btn-border-blue:hover:after, .btn-1:hover:after, .btn-white:hover:after, #pg-contact .contact-info .column-1 .bt-submit:hover:after, .form-newsletter .container-submit a:hover:after,
+.form-newsletter .container-submit button:hover:after, .btn-blue:hover:after, modal-group .section-modal-contact .column-contact .contact-info .column-1 .bt-submit:hover:after {
   width: calc(100% - 1rem);
   height: calc(100% - 0.5rem);
 }
 .btn-base:hover i, .btn-tag:hover i, .btn-border:hover i, .btn-border-white:hover i, .btn-border-blue:hover i, .btn-1:hover i, .btn-white:hover i, #pg-contact .contact-info .column-1 .bt-submit:hover i, .form-newsletter .container-submit a:hover i,
-.form-newsletter .container-submit button:hover i, .btn-blue:hover i, modal-group[name=modal-contact] .section-modal-contact .column-contact .contact-info .column-1 .bt-submit:hover i {
+.form-newsletter .container-submit button:hover i, .btn-blue:hover i, modal-group .section-modal-contact .column-contact .contact-info .column-1 .bt-submit:hover i {
   -webkit-animation: arrow-right 0.6s cubic-bezier(0.645, 0.045, 0.355, 1) 0s both 1;
   -moz-animation: arrow-right 0.6s cubic-bezier(0.645, 0.045, 0.355, 1) 0s both 1;
   -ms-animation: arrow-right 0.6s cubic-bezier(0.645, 0.045, 0.355, 1) 0s both 1;
@@ -1608,30 +1608,30 @@ html {
   right: calc(var(--i-pr) - 0.9rem);
 }
 .btn-base:hover span, .btn-tag:hover span, .btn-border:hover span, .btn-border-white:hover span, .btn-border-blue:hover span, .btn-1:hover span, .btn-white:hover span, #pg-contact .contact-info .column-1 .bt-submit:hover span, .form-newsletter .container-submit a:hover span,
-.form-newsletter .container-submit button:hover span, .btn-blue:hover span, modal-group[name=modal-contact] .section-modal-contact .column-contact .contact-info .column-1 .bt-submit:hover span {
+.form-newsletter .container-submit button:hover span, .btn-blue:hover span, modal-group .section-modal-contact .column-contact .contact-info .column-1 .bt-submit:hover span {
   transform: scale(0.9);
 }
 .btn-1, .btn-white, #pg-contact .contact-info .column-1 .bt-submit, .form-newsletter .container-submit a,
-.form-newsletter .container-submit button, .btn-blue, modal-group[name=modal-contact] .section-modal-contact .column-contact .contact-info .column-1 .bt-submit {
+.form-newsletter .container-submit button, .btn-blue, modal-group .section-modal-contact .column-contact .contact-info .column-1 .bt-submit {
   --border-radius: 3.8rem;
 }
 @media only screen and (min-width: 1025.1px) {
   .btn-1, .btn-white, #pg-contact .contact-info .column-1 .bt-submit, .form-newsletter .container-submit a,
-  .form-newsletter .container-submit button, .btn-blue, modal-group[name=modal-contact] .section-modal-contact .column-contact .contact-info .column-1 .bt-submit {
+  .form-newsletter .container-submit button, .btn-blue, modal-group .section-modal-contact .column-contact .contact-info .column-1 .bt-submit {
     --min-w: 40rem;
     --btn-p: 2.302rem 5.6rem;
   }
 }
 @media only screen and (min-width: 767.98px) and (max-width: 1025px) {
   .btn-1, .btn-white, #pg-contact .contact-info .column-1 .bt-submit, .form-newsletter .container-submit a,
-  .form-newsletter .container-submit button, .btn-blue, modal-group[name=modal-contact] .section-modal-contact .column-contact .contact-info .column-1 .bt-submit {
+  .form-newsletter .container-submit button, .btn-blue, modal-group .section-modal-contact .column-contact .contact-info .column-1 .bt-submit {
     --min-w: 36.6rem;
     --btn-p: 1.8rem 2.4rem 2.057rem;
   }
 }
 @media only screen and (max-width: 767.98px) {
   .btn-1, .btn-white, #pg-contact .contact-info .column-1 .bt-submit, .form-newsletter .container-submit a,
-  .form-newsletter .container-submit button, .btn-blue, modal-group[name=modal-contact] .section-modal-contact .column-contact .contact-info .column-1 .bt-submit {
+  .form-newsletter .container-submit button, .btn-blue, modal-group .section-modal-contact .column-contact .contact-info .column-1 .bt-submit {
     --min-w: 27.6rem;
     --btn-p: 2.48rem 6rem 2.504rem 5rem;
     text-align: left;
@@ -1639,23 +1639,23 @@ html {
 }
 @media only screen and (min-width: 1025.1px) {
   .btn-1.btn-medium, .btn-medium.btn-white, #pg-contact .contact-info .column-1 .btn-medium.bt-submit, .form-newsletter .container-submit a.btn-medium,
-  .form-newsletter .container-submit button.btn-medium, .btn-medium.btn-blue, modal-group[name=modal-contact] .section-modal-contact .column-contact .contact-info .column-1 .btn-medium.bt-submit {
+  .form-newsletter .container-submit button.btn-medium, .btn-medium.btn-blue, modal-group .section-modal-contact .column-contact .contact-info .column-1 .btn-medium.bt-submit {
     --min-w: 27.6rem;
   }
 }
 @media only screen and (min-width: 767.98px) and (max-width: 1025px) {
   .btn-1.btn-medium, .btn-medium.btn-white, #pg-contact .contact-info .column-1 .btn-medium.bt-submit, .form-newsletter .container-submit a.btn-medium,
-  .form-newsletter .container-submit button.btn-medium, .btn-medium.btn-blue, modal-group[name=modal-contact] .section-modal-contact .column-contact .contact-info .column-1 .btn-medium.bt-submit {
+  .form-newsletter .container-submit button.btn-medium, .btn-medium.btn-blue, modal-group .section-modal-contact .column-contact .contact-info .column-1 .btn-medium.bt-submit {
     --min-w: 27.1rem;
   }
 }
 @media only screen and (max-width: 767.98px) {
   .btn-1.btn-medium, .btn-medium.btn-white, #pg-contact .contact-info .column-1 .btn-medium.bt-submit, .form-newsletter .container-submit a.btn-medium,
-  .form-newsletter .container-submit button.btn-medium, .btn-medium.btn-blue, modal-group[name=modal-contact] .section-modal-contact .column-contact .contact-info .column-1 .btn-medium.bt-submit {
+  .form-newsletter .container-submit button.btn-medium, .btn-medium.btn-blue, modal-group .section-modal-contact .column-contact .contact-info .column-1 .btn-medium.bt-submit {
     --min-w: 19.7rem;
   }
 }
-.btn-blue, modal-group[name=modal-contact] .section-modal-contact .column-contact .contact-info .column-1 .bt-submit {
+.btn-blue, modal-group .section-modal-contact .column-contact .contact-info .column-1 .bt-submit {
   --btn-bg-color: var(--blue-1);
   --btn-text-color: var(--white-1);
 }
@@ -1870,7 +1870,7 @@ html {
 .form-search .container-submit button, .form-search input, .form-contact input,
 .form-contact select,
 .form-contact textarea, .form-newsletter .container-submit a span,
-.form-newsletter .container-submit button span, .form-newsletter input, .btn-base, .btn-1, .btn-blue, modal-group[name=modal-contact] .section-modal-contact .column-contact .contact-info .column-1 .bt-submit, .btn-white, #pg-contact .contact-info .column-1 .bt-submit, .form-newsletter .container-submit a,
+.form-newsletter .container-submit button span, .form-newsletter input, .btn-base, .btn-1, .btn-blue, modal-group .section-modal-contact .column-contact .contact-info .column-1 .bt-submit, .btn-white, #pg-contact .contact-info .column-1 .bt-submit, .form-newsletter .container-submit a,
 .form-newsletter .container-submit button, .btn-border, .btn-border-blue, .btn-border-white, .btn-tag, .btn-tag-mobile, .blog-btn-tag,
 .portfolio-btn-tag {
   font-family: "MarrSans Cond", sans-serif;
@@ -2120,46 +2120,46 @@ html {
     font-size: 2.2rem;
   }
 }
-.fs--23, modal-group[name=modal-contact] .section-modal-contact .column-contact btn-modal-close .text-go-back, [data-cursor=default] > div .text-wrapper,
+.fs--23, modal-group .section-modal-contact .column-contact btn-modal-close .text-go-back, [data-cursor=default] > div .text-wrapper,
 [data-cursor=hovered] > div .text-wrapper,
 [data-cursor=hovered-white] > div .text-wrapper,
 [data-cursor=default-click] > div .text-wrapper,
 [data-cursor=view] > div .text-wrapper,
-[data-cursor=white] > div .text-wrapper, .btn-1, .btn-blue, modal-group[name=modal-contact] .section-modal-contact .column-contact .contact-info .column-1 .bt-submit, .btn-white, #pg-contact .contact-info .column-1 .bt-submit, .form-newsletter .container-submit a,
+[data-cursor=white] > div .text-wrapper, .btn-1, .btn-blue, modal-group .section-modal-contact .column-contact .contact-info .column-1 .bt-submit, .btn-white, #pg-contact .contact-info .column-1 .bt-submit, .form-newsletter .container-submit a,
 .form-newsletter .container-submit button {
   line-height: 1.260em;
   letter-spacing: 0;
   font-weight: 600;
 }
 @media only screen and (min-width: 1025.1px) {
-  .fs--23, modal-group[name=modal-contact] .section-modal-contact .column-contact btn-modal-close .text-go-back, [data-cursor=default] > div .text-wrapper,
+  .fs--23, modal-group .section-modal-contact .column-contact btn-modal-close .text-go-back, [data-cursor=default] > div .text-wrapper,
   [data-cursor=hovered] > div .text-wrapper,
   [data-cursor=hovered-white] > div .text-wrapper,
   [data-cursor=default-click] > div .text-wrapper,
   [data-cursor=view] > div .text-wrapper,
-  [data-cursor=white] > div .text-wrapper, .btn-1, .btn-blue, modal-group[name=modal-contact] .section-modal-contact .column-contact .contact-info .column-1 .bt-submit, .btn-white, #pg-contact .contact-info .column-1 .bt-submit, .form-newsletter .container-submit a,
+  [data-cursor=white] > div .text-wrapper, .btn-1, .btn-blue, modal-group .section-modal-contact .column-contact .contact-info .column-1 .bt-submit, .btn-white, #pg-contact .contact-info .column-1 .bt-submit, .form-newsletter .container-submit a,
   .form-newsletter .container-submit button {
     font-size: 2.3rem;
   }
 }
 @media only screen and (min-width: 767.98px) and (max-width: 1025px) {
-  .fs--23, modal-group[name=modal-contact] .section-modal-contact .column-contact btn-modal-close .text-go-back, [data-cursor=default] > div .text-wrapper,
+  .fs--23, modal-group .section-modal-contact .column-contact btn-modal-close .text-go-back, [data-cursor=default] > div .text-wrapper,
   [data-cursor=hovered] > div .text-wrapper,
   [data-cursor=hovered-white] > div .text-wrapper,
   [data-cursor=default-click] > div .text-wrapper,
   [data-cursor=view] > div .text-wrapper,
-  [data-cursor=white] > div .text-wrapper, .btn-1, .btn-blue, modal-group[name=modal-contact] .section-modal-contact .column-contact .contact-info .column-1 .bt-submit, .btn-white, #pg-contact .contact-info .column-1 .bt-submit, .form-newsletter .container-submit a,
+  [data-cursor=white] > div .text-wrapper, .btn-1, .btn-blue, modal-group .section-modal-contact .column-contact .contact-info .column-1 .bt-submit, .btn-white, #pg-contact .contact-info .column-1 .bt-submit, .form-newsletter .container-submit a,
   .form-newsletter .container-submit button {
     font-size: 2.1rem;
   }
 }
 @media only screen and (max-width: 767.98px) {
-  .fs--23, modal-group[name=modal-contact] .section-modal-contact .column-contact btn-modal-close .text-go-back, [data-cursor=default] > div .text-wrapper,
+  .fs--23, modal-group .section-modal-contact .column-contact btn-modal-close .text-go-back, [data-cursor=default] > div .text-wrapper,
   [data-cursor=hovered] > div .text-wrapper,
   [data-cursor=hovered-white] > div .text-wrapper,
   [data-cursor=default-click] > div .text-wrapper,
   [data-cursor=view] > div .text-wrapper,
-  [data-cursor=white] > div .text-wrapper, .btn-1, .btn-blue, modal-group[name=modal-contact] .section-modal-contact .column-contact .contact-info .column-1 .bt-submit, .btn-white, #pg-contact .contact-info .column-1 .bt-submit, .form-newsletter .container-submit a,
+  [data-cursor=white] > div .text-wrapper, .btn-1, .btn-blue, modal-group .section-modal-contact .column-contact .contact-info .column-1 .bt-submit, .btn-white, #pg-contact .contact-info .column-1 .bt-submit, .form-newsletter .container-submit a,
   .form-newsletter .container-submit button {
     font-size: 2rem;
   }
@@ -2268,23 +2268,23 @@ html {
     font-size: 2.5rem;
   }
 }
-.fs--50, modal-group[name=modal-contact] .section-modal-contact .column-contact .contact-info .column-2 .container-info a {
+.fs--50, modal-group .section-modal-contact .column-contact .contact-info .column-2 .container-info a {
   line-height: 1.1em;
   letter-spacing: 0;
   font-weight: 600;
 }
 @media only screen and (min-width: 1025.1px) {
-  .fs--50, modal-group[name=modal-contact] .section-modal-contact .column-contact .contact-info .column-2 .container-info a {
+  .fs--50, modal-group .section-modal-contact .column-contact .contact-info .column-2 .container-info a {
     font-size: 5rem;
   }
 }
 @media only screen and (min-width: 767.98px) and (max-width: 1025px) {
-  .fs--50, modal-group[name=modal-contact] .section-modal-contact .column-contact .contact-info .column-2 .container-info a {
+  .fs--50, modal-group .section-modal-contact .column-contact .contact-info .column-2 .container-info a {
     font-size: 2rem;
   }
 }
 @media only screen and (max-width: 767.98px) {
-  .fs--50, modal-group[name=modal-contact] .section-modal-contact .column-contact .contact-info .column-2 .container-info a {
+  .fs--50, modal-group .section-modal-contact .column-contact .contact-info .column-2 .container-info a {
     font-size: 5rem;
   }
 }
@@ -8702,46 +8702,46 @@ modal-group.leave {
   -o-animation: fadeOut 0.6s cubic-bezier(0.42, 0, 0.58, 1) 0s both 1;
   animation: fadeOut 0.6s cubic-bezier(0.42, 0, 0.58, 1) 0s both 1;
 }
-modal-group[name=modal-contact] {
+modal-group {
   padding-top: calc(var(--header-height) - 1.2rem);
 }
 @media only screen and (min-width: 1025.1px) {
-  modal-group[name=modal-contact] {
+  modal-group {
     -webkit-backdrop-filter: blur(3rem);
     backdrop-filter: blur(3rem);
   }
 }
 @media only screen and (max-width: 1025px) {
-  modal-group[name=modal-contact] {
+  modal-group {
     background: var(--white-2);
   }
 }
-modal-group[name=modal-contact].active .column-contact {
+modal-group.active .column-contact {
   -webkit-animation: slide-up 0.8s cubic-bezier(0.645, 0.045, 0.355, 1) 0s both 1;
   -moz-animation: slide-up 0.8s cubic-bezier(0.645, 0.045, 0.355, 1) 0s both 1;
   -ms-animation: slide-up 0.8s cubic-bezier(0.645, 0.045, 0.355, 1) 0s both 1;
   -o-animation: slide-up 0.8s cubic-bezier(0.645, 0.045, 0.355, 1) 0s both 1;
   animation: slide-up 0.8s cubic-bezier(0.645, 0.045, 0.355, 1) 0s both 1;
 }
-modal-group[name=modal-contact].leave .column-contact {
+modal-group.leave .column-contact {
   -webkit-animation: unslide-down 0.8s cubic-bezier(0.645, 0.045, 0.355, 1) 0s both 1;
   -moz-animation: unslide-down 0.8s cubic-bezier(0.645, 0.045, 0.355, 1) 0s both 1;
   -ms-animation: unslide-down 0.8s cubic-bezier(0.645, 0.045, 0.355, 1) 0s both 1;
   -o-animation: unslide-down 0.8s cubic-bezier(0.645, 0.045, 0.355, 1) 0s both 1;
   animation: unslide-down 0.8s cubic-bezier(0.645, 0.045, 0.355, 1) 0s both 1;
 }
-modal-group[name=modal-contact] .section-modal-contact {
+modal-group .section-modal-contact {
   width: 100vw;
 }
-modal-group[name=modal-contact] .section-modal-contact .column-contact {
+modal-group .section-modal-contact .column-contact {
   position: relative;
 }
 @media only screen and (min-width: 1025.1px) {
-  modal-group[name=modal-contact] .section-modal-contact .column-contact {
+  modal-group .section-modal-contact .column-contact {
     padding-top: 9.4rem;
     padding-bottom: 3.7rem;
   }
-  modal-group[name=modal-contact] .section-modal-contact .column-contact:before {
+  modal-group .section-modal-contact .column-contact:before {
     content: "";
     width: calc(100% - var(--padding) * 2);
     height: 100%;
@@ -8756,26 +8756,26 @@ modal-group[name=modal-contact] .section-modal-contact .column-contact {
   }
 }
 @media only screen and (min-width: 768px) {
-  modal-group[name=modal-contact] .section-modal-contact .column-contact {
+  modal-group .section-modal-contact .column-contact {
     padding-left: calc(var(--padding) + 3.6rem);
     padding-right: calc(var(--padding) + 3rem);
   }
 }
 @media only screen and (min-width: 767.98px) and (max-width: 1025px) {
-  modal-group[name=modal-contact] .section-modal-contact .column-contact {
+  modal-group .section-modal-contact .column-contact {
     padding-top: 5rem;
     padding-bottom: 10rem;
   }
 }
 @media only screen and (max-width: 767.98px) {
-  modal-group[name=modal-contact] .section-modal-contact .column-contact {
+  modal-group .section-modal-contact .column-contact {
     padding-left: var(--padding);
     padding-right: var(--padding);
     padding-top: 4.4rem;
     padding-bottom: 10rem;
   }
 }
-modal-group[name=modal-contact] .section-modal-contact .column-contact .contact-info {
+modal-group .section-modal-contact .column-contact .contact-info {
   --column-1-max-w: 50%;
   --column-2-max-w: 50%;
   --column-2-offset: 0;
@@ -8787,53 +8787,53 @@ modal-group[name=modal-contact] .section-modal-contact .column-contact .contact-
   z-index: 5;
 }
 @media only screen and (max-width: 1025px) {
-  modal-group[name=modal-contact] .section-modal-contact .column-contact .contact-info .column-1,
-  modal-group[name=modal-contact] .section-modal-contact .column-contact .contact-info .column-2 {
+  modal-group .section-modal-contact .column-contact .contact-info .column-1,
+  modal-group .section-modal-contact .column-contact .contact-info .column-2 {
     padding-left: var(--padding);
     padding-right: var(--padding);
   }
 }
 @media only screen and (min-width: 1025.1px) {
-  modal-group[name=modal-contact] .section-modal-contact .column-contact .contact-info .column-1 {
+  modal-group .section-modal-contact .column-contact .contact-info .column-1 {
     padding-right: calc(var(--padding) + 3rem);
   }
 }
 @media only screen and (max-width: 767.98px) {
-  modal-group[name=modal-contact] .section-modal-contact .column-contact .contact-info .column-1 .title {
+  modal-group .section-modal-contact .column-contact .contact-info .column-1 .title {
     font-size: 2.5rem;
   }
 }
 @media only screen and (max-width: 1025px) {
-  modal-group[name=modal-contact] .section-modal-contact .column-contact .contact-info .column-1 .title i {
+  modal-group .section-modal-contact .column-contact .contact-info .column-1 .title i {
     display: none;
   }
 }
-modal-group[name=modal-contact] .section-modal-contact .column-contact .contact-info .column-1 .form-contact {
+modal-group .section-modal-contact .column-contact .contact-info .column-1 .form-contact {
   --color: var(--blue-1);
   --label-color: var(--blue-1);
   --border-color: var(--blue-1);
 }
-modal-group[name=modal-contact] .section-modal-contact .column-contact .contact-info .column-1 .bt-submit {
+modal-group .section-modal-contact .column-contact .contact-info .column-1 .bt-submit {
   --btn-p: 1.404rem 5.6rem 1.2rem;
 }
 @media only screen and (min-width: 767.98px) and (max-width: 1025px) {
-  modal-group[name=modal-contact] .section-modal-contact .column-contact .contact-info .column-2 .container-info a {
+  modal-group .section-modal-contact .column-contact .contact-info .column-2 .container-info a {
     font-size: 5rem;
   }
 }
 @media only screen and (max-width: 767.98px) {
-  modal-group[name=modal-contact] .section-modal-contact .column-contact .contact-info .column-2 .container-info a {
+  modal-group .section-modal-contact .column-contact .contact-info .column-2 .container-info a {
     font-size: 3.7rem;
   }
 }
-modal-group[name=modal-contact] .section-modal-contact .column-contact btn-modal-close {
+modal-group .section-modal-contact .column-contact btn-modal-close {
   display: block;
   pointer-events: auto;
   cursor: pointer;
   z-index: 801;
 }
 @media only screen and (min-width: 1025.1px) {
-  modal-group[name=modal-contact] .section-modal-contact .column-contact btn-modal-close {
+  modal-group .section-modal-contact .column-contact btn-modal-close {
     position: absolute;
     top: 1.2rem;
     right: calc(1.2rem + var(--padding));
@@ -8846,7 +8846,7 @@ modal-group[name=modal-contact] .section-modal-contact .column-contact btn-modal
   }
 }
 @media only screen and (max-width: 1025px) {
-  modal-group[name=modal-contact] .section-modal-contact .column-contact btn-modal-close {
+  modal-group .section-modal-contact .column-contact btn-modal-close {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -8859,7 +8859,7 @@ modal-group[name=modal-contact] .section-modal-contact .column-contact btn-modal
   }
 }
 @media only screen and (min-width: 767.98px) and (max-width: 1025px) {
-  modal-group[name=modal-contact] .section-modal-contact .column-contact btn-modal-close {
+  modal-group .section-modal-contact .column-contact btn-modal-close {
     position: absolute;
     top: 3.7rem;
     right: calc(1.2rem + var(--padding));
@@ -8869,7 +8869,7 @@ modal-group[name=modal-contact] .section-modal-contact .column-contact btn-modal
   }
 }
 @media only screen and (max-width: 767.98px) {
-  modal-group[name=modal-contact] .section-modal-contact .column-contact btn-modal-close {
+  modal-group .section-modal-contact .column-contact btn-modal-close {
     position: absolute;
     top: 3.6rem;
     right: var(--padding);
@@ -8878,12 +8878,12 @@ modal-group[name=modal-contact] .section-modal-contact .column-contact btn-modal
     padding: 0.9rem 2.6rem 1.1rem;
   }
 }
-modal-group[name=modal-contact] .section-modal-contact .column-contact btn-modal-close i {
+modal-group .section-modal-contact .column-contact btn-modal-close i {
   display: inline-block;
   color: var(--white-1);
 }
 @media only screen and (min-width: 1025.1px) {
-  modal-group[name=modal-contact] .section-modal-contact .column-contact btn-modal-close i {
+  modal-group .section-modal-contact .column-contact btn-modal-close i {
     position: absolute;
     top: 50%;
     right: auto;
@@ -8894,25 +8894,25 @@ modal-group[name=modal-contact] .section-modal-contact .column-contact btn-modal
   }
 }
 @media only screen and (max-width: 1025px) {
-  modal-group[name=modal-contact] .section-modal-contact .column-contact btn-modal-close i {
+  modal-group .section-modal-contact .column-contact btn-modal-close i {
     margin-top: 0.3rem;
     font-size: 1.2rem;
   }
 }
 @media only screen and (max-width: 1025px) {
-  modal-group[name=modal-contact] .section-modal-contact .column-contact btn-modal-close i.icon-close {
+  modal-group .section-modal-contact .column-contact btn-modal-close i.icon-close {
     display: none;
   }
 }
 @media only screen and (min-width: 1025.1px) {
-  modal-group[name=modal-contact] .section-modal-contact .column-contact btn-modal-close i.icon-arrow-left {
+  modal-group .section-modal-contact .column-contact btn-modal-close i.icon-arrow-left {
     display: none;
   }
 }
-modal-group[name=modal-contact] .section-modal-contact .column-contact btn-modal-close .text-go-back {
+modal-group .section-modal-contact .column-contact btn-modal-close .text-go-back {
   color: var(--white-1);
 }
-modal-group[name=modal-contact] .section-modal-contact .column-contact btn-modal-close .text-hide {
+modal-group .section-modal-contact .column-contact btn-modal-close .text-hide {
   opacity: 0;
   position: absolute;
   pointer-events: none;
@@ -11329,7 +11329,7 @@ modal-item .shopify-buy-frame iframe {
   animation-delay: calc(var(--word-index) * 32ms + 0.6s);
 }
 @media only screen and (max-width: 1025px) {
-  #pg-about .about-dream-team .btn-blue, #pg-about .about-dream-team modal-group[name=modal-contact] .section-modal-contact .column-contact .contact-info .column-1 .bt-submit, modal-group[name=modal-contact] .section-modal-contact .column-contact .contact-info .column-1 #pg-about .about-dream-team .bt-submit {
+  #pg-about .about-dream-team .btn-blue, #pg-about .about-dream-team modal-group .section-modal-contact .column-contact .contact-info .column-1 .bt-submit, modal-group .section-modal-contact .column-contact .contact-info .column-1 #pg-about .about-dream-team .bt-submit {
     --min-w: auto;
   }
 }
@@ -19326,4 +19326,15 @@ body.page-leave-active[data-load="first-done"] .overlay {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.video-wrapper {
+  max-height: 60dvh;
+  display: flex;
+  justify-content: center;
+}
+@media only screen and (max-width: 767.98px) {
+  .video-wrapper {
+    padding-top: 5dvh;
+  }
 }
