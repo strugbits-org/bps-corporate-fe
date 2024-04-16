@@ -27,7 +27,7 @@ export const fetchPortfolio = createAsyncThunk(
         returnTotalCount: true,
       };
   
-      const response = await wixClient.items.queryDataItems(options).ne("slug", excludeItem).limit(pageSize).find();
+      const response = await wixClient.items.queryDataItems(options).ne("slug", excludeItem).descending("publishDate").limit(pageSize).find();
       if (triggerAnimations) {
         handleCollectionLoaded();
         setTimeout(() => {
