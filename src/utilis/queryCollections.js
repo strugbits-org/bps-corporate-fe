@@ -22,7 +22,7 @@ export const listPortfolios = async ({ pageSize = 10, searchTerm = "", studios =
             query = query.hasSome('markets', markets);
         }
 
-        const response = await query.contains('titleAndDescription', searchTerm).ne("slug", excludeItem)
+        const response = await query.contains('titleAndDescription', searchTerm).ne("slug", excludeItem).ne("isHidden", true)
             .limit(pageSize)
             .find();
 

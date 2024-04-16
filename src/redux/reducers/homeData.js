@@ -36,7 +36,7 @@ export const fetchHomeSectionDetails = createAsyncThunk(
     try {
       let options = { dataCollectionId: "HomeSectionDetails" };
       const { items } = await wixClient.items.queryDataItems(options).find();
-      return items.map((item) => item.data)[0];
+      return items.map(x => x.data)[0];
     } catch (error) {
       throw new Error(error.message);
     }
@@ -56,7 +56,7 @@ export const fetchHomeTopData = createAsyncThunk(
       setTimeout(() => {
         document.querySelector(".stickyAnimationTrigger").click();
       }, 1000);
-      return items.map(x=>x.data)[0];
+      return items.map(x => x.data)[0];
     } catch (error) {
       handleCollectionLoaded();
       throw new Error(error.message);
@@ -72,11 +72,9 @@ export const fetchGetTouchSection = createAsyncThunk(
         dataCollectionId: "GetInTouchSection",
       };
 
-      const { items } = await wixClient.items
-        .queryDataItems(options)
-        .find();
+      const { items } = await wixClient.items.queryDataItems(options).find();
       handleCollectionLoaded();
-      return items;
+      return items.map(x => x.data)[0];
     } catch (error) {
       handleCollectionLoaded();
       throw new Error(error.message);
@@ -118,11 +116,11 @@ export const fetchPeopleReviewSlider = createAsyncThunk(
         dataCollectionId: "PeopleReviewSlider",
       };
 
-      const { items: fetchedPeopleReview } = await wixClient.items
+      const { items } = await wixClient.items
         .queryDataItems(options)
         .find();
       handleCollectionLoaded();
-      return fetchedPeopleReview;
+      return items;
     } catch (error) {
       handleCollectionLoaded();
       throw new Error(error.message);

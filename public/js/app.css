@@ -15937,13 +15937,17 @@ modal-item .shopify-buy-frame iframe {
   border-radius: 2rem;
   overflow: hidden;
 }
-#pg-market-post .market-post-how-we-do-it .list-how-we-do-it li {
+#pg-market-post .market-post-how-we-do-it .list-how-we-do-it li:not(ul.bullet_points li) {
   display: flex;
   justify-content: initial;
   align-items: initial;
   align-content: initial;
   flex-wrap: wrap;
   flex-direction: row;
+}
+#pg-market-post .market-post-how-we-do-it .list-how-we-do-it ul.bullet_points {
+  list-style: disc;
+  padding-left: 2rem;
 }
 @media only screen and (min-width: 768px) {
   #pg-market-post .market-post-how-we-do-it .list-how-we-do-it li:nth-child(even) .list-column-text {
