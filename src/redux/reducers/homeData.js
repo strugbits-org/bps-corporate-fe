@@ -174,11 +174,10 @@ export const fetchDreamBigSection = createAsyncThunk(
         dataCollectionId: "DreamBigSection",
       };
 
-      const { items: fetchedDreamBIgSection } = await wixClient.items
-        .queryDataItems(options)
-        .find();
+      const { items } = await wixClient.items.queryDataItems(options).find();
+      
       handleCollectionLoaded();
-      return fetchedDreamBIgSection;
+      return items.map(x => x.data)[0];
     } catch (error) {
       handleCollectionLoaded();
       throw new Error(error.message);

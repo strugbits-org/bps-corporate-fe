@@ -1,8 +1,8 @@
 import Services from "./models/Services";
 import Market from "./models/Market";
-import ContactUs from "./models/ContactUs";
 import Search from "./models/Search";
 import DelayedLink from "../../common/DelayedLink";
+import { ModalsContainer } from "../../components/Lightbox/ModalsContainer";
 
 const Navbar = () => {
   const EXTERNAL_SITE_URL = "https://www.rentals.blueprintstudios.com";
@@ -208,22 +208,14 @@ const Navbar = () => {
               {/* market model component end */}
 
               {/* search model component start */}
-                <Search />
-               
+              <Search />
+
               {/* search model component end */}
             </div>
           </div>
         </div>
       </header>
-      {/* contactform model component start */}
-      <modal-group name="modal-contact" data-cursor-style="default">
-        <modal-container>
-          <modal-item>
-            <ContactUs />
-          </modal-item>
-        </modal-container>
-      </modal-group>
-      {/* contactform model component end */}
+      <ModalsContainer/>
     </>
   );
 };

@@ -12814,6 +12814,13 @@ var require_app2 = __commonJS({
     function main$7() {
       sliderBanner();
       checkOutTl();
+      Array.from(document.querySelectorAll(".player-video")).map((p) => new Plyr(p, {
+        controls: ["play-large", "play", "progress", "fullscreen", "mute", "volume"],
+        settings: ["quality", "speed"],
+        autoplay: false,
+        seekTime: 15,
+        fullscreen: { iosNative: true }
+      }));
     }
     const pgAbout = new Page({
       pageName: pageName$7,

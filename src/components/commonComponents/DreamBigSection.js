@@ -2,23 +2,17 @@ import React, { useEffect } from "react";
 import getFullImageURL from "../../common/common_functions/imageURL";
 import { fetchDreamBigSection } from "../../redux/reducers/homeData";
 import { useDispatch, useSelector } from "react-redux";
+import { DefaultButton } from "./DefaultButton";
 
 const DreamBigSection = () => {
 
   const dispatch = useDispatch();
   const data = useSelector((state) => state.home.dreamBigData);
 
-  const firstItem = data[0]; // Assuming you want values from the first item
-  const btntext = firstItem ? firstItem.data.buttonText : "";
-  const paragraph1 = firstItem ? firstItem.data.paragraph1 : "";
-  const paragraph2 = firstItem ? firstItem.data.paragraph2 : "";
-  const desktopImg = firstItem ? firstItem.data.desktopBackgroundImage : "";
-  const mobileImg = firstItem ? firstItem.data.mobileBackgroundImage : "";
-
   useEffect(() => {
     dispatch(fetchDreamBigSection());
   }, [dispatch]);
-  
+
   return (
     <section className="section-dream-big">
       <div className="container-fluid">
@@ -26,7 +20,7 @@ const DreamBigSection = () => {
           <div className="col-lg-4 offset-lg-4 column-1">
             <div className="container-img no-phone">
               <img
-                src={getFullImageURL(desktopImg)}
+                src={getFullImageURL(data.desktopBackgroundImage)}
                 data-preload
                 className="media"
                 alt=""
@@ -34,7 +28,7 @@ const DreamBigSection = () => {
             </div>
             <div className="container-img no-desktop no-tablet">
               <img
-                src={getFullImageURL(mobileImg)}
+                src={getFullImageURL(data.mobileBackgroundImage)}
                 data-preload
                 className="media"
                 alt=""
@@ -47,14 +41,15 @@ const DreamBigSection = () => {
               data-end="center center"
               className="content"
             >
-              <btn-modal-open
-                group="modal-contact"
-                class="btn-blue"
-                data-cursor-style="off"
-              >
-                <span>{btntext}</span>
-                <i className="icon-arrow-right-2"></i>
-              </btn-modal-open>
+              <DefaultButton
+                data={{
+                  label: data.buttonText,
+                  action: data.buttonAction
+                }}
+                attributes={{
+                  "data-cursor-style": "off",
+                }}
+              ></DefaultButton>
               <p
                 className="fs--20 flex-center fs-phone-16 fw-500 font-2 blue-1 text-center pos-relative z-5 mt-30 text"
                 data-parallax
@@ -62,8 +57,8 @@ const DreamBigSection = () => {
                 data-translate-y-from="30vh"
                 data-end="center center"
               >
-                {paragraph1} <br />
-                {paragraph2}
+                {data.paragraph1} <br />
+                {data.paragraph2}
               </p>
             </div>
           </div>

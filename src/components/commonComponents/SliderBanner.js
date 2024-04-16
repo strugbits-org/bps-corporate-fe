@@ -63,8 +63,8 @@ const SliderBanner = ({ data, type,sectionDetails }) => {
                     </div>
                     <div className="container-title">
                       <h3 className="title split-words">
-                      {sectionDetails.portfolioSectionTitle} <br />
-                      {sectionDetails.portfolioSectionTitleLine2}
+                      {sectionDetails?.portfolioSectionTitle} <br />
+                      {sectionDetails?.portfolioSectionTitleLine2}
                       </h3>
 
                       <div className="container-btn-bottom">
@@ -74,7 +74,7 @@ const SliderBanner = ({ data, type,sectionDetails }) => {
                             data-cursor-style="off"
                             onClick={() => handleNavigate("/portfolio")}
                           >
-                            <span>{sectionDetails.portfolioSectionButtonText}</span>
+                            <span>{sectionDetails?.portfolioSectionButtonText}</span>
                             <i className="icon-arrow-right"></i>
                           </div>
                         ) : (
@@ -83,7 +83,7 @@ const SliderBanner = ({ data, type,sectionDetails }) => {
                             data-cursor-style="off"
                             onClick={() => handleNavigate("/portfolio")}
                           >
-                            <span>{sectionDetails.portfolioSectionButtonText}</span>
+                            <span>{sectionDetails?.portfolioSectionButtonText}</span>
                           </div>
                         )}
                       </div>

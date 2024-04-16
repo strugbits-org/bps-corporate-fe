@@ -56,6 +56,7 @@ const ExplorePortfolio = ({data}) => {
           <div className="col-lg-2 offset-lg-5 flex-center mt-50 column-btn">
           <DefaultButton
             customClasses={"btn-border-blue"}
+            showArrow={false}
             data={{
               label: marketSectionDetails?.portfolioSectionButtonText,
               action: marketSectionDetails?.portfolioSectionButtonAction
