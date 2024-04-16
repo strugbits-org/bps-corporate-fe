@@ -5,7 +5,7 @@ const serviceDescription = ({data}) => {
     <section className="services-post-description pt-lg-210 pt-tablet-105 pt-phone-200">
       <div className="container-fluid">
         <div className="row">
-          <div className="col-lg-4 offset-lg-4">
+          <div className="col-12">
             <h2 className="fs--60 text-center split-words" data-aos="d:loop">
               {data?.subServicesTitle}
             </h2>

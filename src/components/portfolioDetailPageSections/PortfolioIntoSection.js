@@ -1,8 +1,6 @@
 import ContentComponent from "../../common/ContentComponent ";
 import { getFullImagePost } from "../../common/common_functions/imageURL";
-
 import SocialVerticalBar from "../blogDetailPageSections/SocialVerticalBar";
-
 const PortfolioIntoSection = ({ data }) => {
   const maxWords = 60;
   const coverImage = getFullImagePost(
@@ -12,21 +10,18 @@ const PortfolioIntoSection = ({ data }) => {
   const title = data?.portfolioRef?.title;
   const description = data?.portfolioRef?.description;
   const marketTags = data?.markets[0]?.marketTags;
-
   const componentObject = data?.portfolioRef?.details?.find(
-    (item) => item.label === "COMPONENTS"
+    (item) => item.label === "INSIGHTS"
   );
   const highlightObject = data?.portfolioRef?.details?.find(
-    (item) => item.label === "HIGHLIGHT"
+    (item) => item.label === "HIGHLIGHTS"
   );
-
   const challengeObject = data?.portfolioRef?.details?.find(
-    (item) => item.label === "THE CHALLENGE"
+    (item) => item.label === "CHALLENGES"
   );
   const solutionObject = data?.portfolioRef?.details?.find(
-    (item) => item.label === "THE SOLUTION"
+    (item) => item.label === "SOLUTIONS"
   );
-
   return (
     <section className="portfolio-post-intro pb-lg-250">
       <div className="wrapper-banner-img" data-aos>
@@ -67,13 +62,10 @@ const PortfolioIntoSection = ({ data }) => {
                       })}
                     </ul>
                   </div>
-
                   {componentObject?.text &&
                     <ContentComponent content={componentObject?.text} title={componentObject?.label} maxWords={maxWords}
                     />
                   }
-
-
                   {challengeObject?.text && (
                     <ContentComponent
                       content={challengeObject?.text}
@@ -81,14 +73,11 @@ const PortfolioIntoSection = ({ data }) => {
                       maxWords={maxWords}
                     />
                   )}
-
                 </div>
-
                 <div className="column-2 column-portfolio">
                   <h3 className="fs--25 fs-phone-25 lh-140 mb-lg-20 mb-tablet-30 mb-mobile-10">
                     {description}
                   </h3>
-
                   {highlightObject?.text && (
                     <ContentComponent
                       content={highlightObject?.text}
@@ -96,7 +85,6 @@ const PortfolioIntoSection = ({ data }) => {
                       maxWords={maxWords}
                     />
                   )}
-
                   {solutionObject?.text && (
                     <ContentComponent
                       content={solutionObject?.text}
@@ -105,7 +93,6 @@ const PortfolioIntoSection = ({ data }) => {
                     />
                   )}
                 </div>
-
                 <div className="column-3 column-portfolio no-mobile">
                   <h4 className="fs--16">Share</h4>
                   <SocialVerticalBar title={title} />
@@ -118,5 +105,4 @@ const PortfolioIntoSection = ({ data }) => {
     </section>
   );
 };
-
 export default PortfolioIntoSection;
