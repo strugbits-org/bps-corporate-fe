@@ -52,7 +52,7 @@ export const listBlogs = async ({ pageSize = 10, searchTerm = "", studios = [], 
         } else if (markets.length > 0) {
             query = query.hasSome('markets', markets);
         }
-        const response = await query.contains('titleAndDescription', searchTerm).ne("slug", excludeItem)
+        const response = await query.contains('titleAndDescription', searchTerm).ne("slug", excludeItem).descending("publishDate")
             .limit(pageSize)
             .find();
 

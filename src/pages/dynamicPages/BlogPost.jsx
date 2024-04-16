@@ -13,7 +13,6 @@ const BlogPost = () => {
   const dispatch = useDispatch();
  
   const singleBlogData = useSelector((state) => state.blog.singleBlogData);
-  const { blogSectionDetails } = useSelector((state) => state.blog);
   // const loading = useSelector((state) => state.blog.singleBlogLoading);
   // const error = useSelector((state) => state.services.error);
 
@@ -27,11 +26,11 @@ const BlogPost = () => {
   return (
     <>
       {/*  Post details Section start */}
-      <PostDetails productsTitle={blogSectionDetails?.featuredProductsTitle} data={singleBlogData}/>
+      <PostDetails data={singleBlogData}/>
       {/*  Post details Section end */}
 
       {/* Recent Post Section start */}
-      <RecentPosts title={blogSectionDetails?.productsSectionTitle} id={params.slug}/>
+      <RecentPosts id={params.slug}/>
       {/* Recent Post Section end */}
       <SocialSection />
     </>

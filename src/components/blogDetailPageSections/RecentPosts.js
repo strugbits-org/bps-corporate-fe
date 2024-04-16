@@ -4,10 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { getblogPostData } from "../../redux/reducers/blogData";
 import { getFullImagePost } from "../../common/common_functions/imageURL";
 import formatDate from "../../common/common_functions/dateFormat";
+import { DefaultButton } from "../commonComponents/DefaultButton";
 
-const RecentPosts = ({title, id}) => {
+const RecentPosts = ({ id }) => {
   const dispatch = useDispatch();
   const posts = useSelector((state) => state?.blog?.blogPostData);
+  const { blogSectionDetails } = useSelector((state) => state.blog);
 
   useEffect(() => {
     dispatch(getblogPostData({ pageSize: 4, excludeItem: id }));
@@ -15,9 +17,8 @@ const RecentPosts = ({title, id}) => {
 
   return (
     <section
-      className={`blog-post-recent-posts pt-lg-245 pt-tablet-105 pt-phone-150 pb-lg-150 pb-mobile-100 ${
-        posts.length === 0 ? "hidden" : ""
-      }`}
+      className={`blog-post-recent-posts pt-lg-245 pt-tablet-105 pt-phone-150 pb-lg-150 pb-mobile-100 ${posts.length === 0 ? "hidden" : ""
+        }`}
     >
       <div className="container-fluid">
         <div className="row">
@@ -28,7 +29,7 @@ const RecentPosts = ({title, id}) => {
                 "data-aos": "d:loop",
               }}
             >
-              {title}
+              {blogSectionDetails?.recentPostsSectionTitle}
             </h2>
             <div className="slider-content-mobile">
               <div className="swiper-container">
@@ -37,7 +38,7 @@ const RecentPosts = ({title, id}) => {
                     return (
                       <div key={data._id} className="swiper-slide grid-item">
                         <DelayedLink
-                           to={`/blog-post/${encodeURIComponent(data.slug)}`}
+                          to={`/blog-post/${encodeURIComponent(data.slug)}`}
                           className="link-blog link-blog-animation"
                           attributes={{
                             "data-aos": "d:loop",
@@ -97,9 +98,8 @@ const RecentPosts = ({title, id}) => {
                                   {index < 2 && (
                                     <li
                                       className={`tag-small 
-                                                            ? ${
-                                                              index === 0
-                                                            } "active"
+                                                            ? ${index === 0
+                                        } "active"
                                                             : ""
                                                             }`}
                                     >
@@ -126,15 +126,16 @@ const RecentPosts = ({title, id}) => {
             </div>
           </div>
           <div className="col-lg-2 offset-lg-5 flex-center mt-70">
-            <DelayedLink
-              to="/blog"
-              className="btn-border-blue"
+            <DefaultButton
+              customClasses={"btn-border-blue"}
+              data={{
+                label: blogSectionDetails?.recentPostsButtonText,
+                action: blogSectionDetails?.recentPostsButtonAction
+              }}
               attributes={{
                 "data-cursor-style": "off",
               }}
-            >
-              <span>See all</span>
-            </DelayedLink>
+            ></DefaultButton>
           </div>
         </div>
       </div>

@@ -9,7 +9,9 @@ import { useDispatch, useSelector } from "react-redux";
 import blogPostImageURL from "../../common/common_functions/blogPostImageURL";
 import TextTOClickableLink from "../../common/common_functions/textTOClickableLink";
 
-const PostDetails = ({ productsTitle, data }) => {
+const PostDetails = ({ data }) => {
+  const { blogSectionDetails } = useSelector((state) => state.blog);
+
   const dispatch = useDispatch();
 
   const tags = useSelector((state) => state.blog.blogTags);
@@ -324,7 +326,7 @@ const PostDetails = ({ productsTitle, data }) => {
                 }`}
               >
                 <h2 className="slider-title">
-                  {productsTitle}
+                  {blogSectionDetails?.featuredProductsTitle}
                 </h2>
                 <ProductCartSlider data={data} />
               </div>

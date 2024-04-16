@@ -10,7 +10,7 @@ import DreamBigSection from "../../components/commonComponents/DreamBigSection";
 import React, { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchMarketTopsections } from "../../redux/reducers/marketData";
+import { fetchMarketTopsections, getMarketsPostSectionDetails } from "../../redux/reducers/marketData";
 import { fetchPortfolio } from "../../redux/reducers/portfolioData";
 
 
@@ -24,10 +24,11 @@ const MarketPost = () => {
   const marketsData = useSelector((state) => state.market.marketTopData);
   const portfolioCollection = useSelector((state) => state.portfolio.portfolioData);
   const [filteredPortfolioCollection, setFilteredPortfolioCollection] = useState(portfolioCollection);
-  
+
   useEffect(() => {
     dispatch(fetchMarketTopsections(params.slug));
     dispatch(fetchPortfolio({pageSize: 4 }));
+    dispatch(getMarketsPostSectionDetails());
   }, [dispatch,location, params.slug]);
 
   useEffect(() => {
