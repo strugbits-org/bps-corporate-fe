@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import getFullImageURL from "../../common/common_functions/imageURL";
 import createWixClient from "../wixClient";
 import { handleCollectionLoaded } from "../../utilis/pageLoadingAnimation";
 
@@ -9,7 +8,7 @@ const initialState = {
   marketTopData: null,
   marketModel: [],
   marketSectionDetails: [],
-  
+
   marketSectionLoading: false,
   marketModelLoading: false,
   marketTopLoading: false,
@@ -27,16 +26,12 @@ export const fetchMarketTopsections = createAsyncThunk(
         includeReferencedItems: ["howWeDoItSections"],
       };
 
-      const { items: fetchedItems } = await wixClient.items
+      const { items } = await wixClient.items
         .queryDataItems(options)
         .eq("slug", slug)
         .find();
-        const marketsArray = fetchedItems.map((service) => {
-          service.data.image = getFullImageURL(service.data.image);
-          return service.data;
-        });
-        handleCollectionLoaded();
-      return marketsArray[0];
+      handleCollectionLoaded();
+      return items.map(x => x.data)[0];
     } catch (error) {
       handleCollectionLoaded();
       throw new Error(error.message);
@@ -48,7 +43,7 @@ export const getMarketsPostSectionDetails = createAsyncThunk(
   "data/getMarketsPostSectionDetails",
   async () => {
     try {
-      let options = {dataCollectionId: "MarketsPostPageSectionDetails"};
+      let options = { dataCollectionId: "MarketsPostPageSectionDetails" };
       const { items } = await wixClient.items.queryDataItems(options).find();
       return items.map(item => item.data)[0];
     } catch (error) {
@@ -65,18 +60,13 @@ export const getMarketCollection = createAsyncThunk(
         dataCollectionId: "MarketSection",
       };
 
-      const { items: fetchedItems } = await wixClient.items
+      const { items } = await wixClient.items
         .queryDataItems(options)
         .find();
-
-      const marketsArray = fetchedItems.map((item) => {
-        item.data.image = getFullImageURL(item.data.image,true);
-        return item.data;
-      });
       if (markLoaded) {
         handleCollectionLoaded();
       }
-      return marketsArray.sort((a, b) => a.orderNumber - b.orderNumber);
+      return items.map(x => x.data).sort((a, b) => a.orderNumber - b.orderNumber);
     } catch (error) {
       handleCollectionLoaded();
       throw new Error(error.message);

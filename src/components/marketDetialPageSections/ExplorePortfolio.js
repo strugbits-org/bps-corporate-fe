@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import DelayedLink from '../../common/DelayedLink'
-import { getFullImagePost } from '../../common/common_functions/imageURL';
+import { generateImageUrl2 } from '../../common/common_functions/imageURL';
 import { DefaultButton } from '../commonComponents/DefaultButton';
 
 const ExplorePortfolio = ({data}) => {
@@ -35,7 +35,7 @@ const ExplorePortfolio = ({data}) => {
                               data-cursor-style="view"
                             >
                               <img
-                                src={getFullImagePost(item.portfolioRef.coverImage.imageInfo)}
+                                src={generateImageUrl2({ wix_url: item?.portfolioRef?.coverImage?.imageInfo, q: "90" })}
                                 data-preload
                                 className="media"
                                 alt=""

@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import formatDate from "../../common/common_functions/dateFormat";
-import getFullImageURL from "../../common/common_functions/imageURL";
+import { blogGalleryImageURL, generateImageURL } from "../../common/common_functions/imageURL";
 import ProductCartSlider from "../commonComponents/ProductCartSlider";
 import SocialVerticalBar from "./SocialVerticalBar";
 import ReactPlayer from "react-player";
 import { getblogTags } from "../../redux/reducers/blogData";
 import { useDispatch, useSelector } from "react-redux";
-import blogPostImageURL from "../../common/common_functions/blogPostImageURL";
 import TextTOClickableLink from "../../common/common_functions/textTOClickableLink";
 
 const PostDetails = ({ data }) => {
@@ -19,14 +18,14 @@ const PostDetails = ({ data }) => {
 
   const title = data?.blogRef?.title;
   const date = formatDate(data?.blogRef?.lastPublishedDate?.$date);
-  const profileImage = getFullImageURL(data?.author?.profilePhoto);
+  const profileImage = generateImageURL({ wix_url: data?.author?.profilePhoto, q: "90" });
   const authorName = data?.author?.nickname;
 
   useEffect(() => {
     const singlePost = async () => {
       let blogData = [];
       if (data?.blogRef?.coverImage) {
-        const image = getFullImageURL(data?.blogRef?.coverImage);
+        const image = generateImageURL({ wix_url: data?.blogRef?.coverImage, q: "90" });
         blogData.push({
           type: "cover",
           image: image,
@@ -139,7 +138,7 @@ const PostDetails = ({ data }) => {
           const gallery = [];
           item?.galleryData?.items?.forEach((item) => {
             if (item.image?.media?.src) {
-              const image = blogPostImageURL(item.image?.media?.src.url);
+              const image = blogGalleryImageURL({ wix_url: item.image?.media?.src.url, q: "90" });
               gallery.push({
                 type: "cover",
                 image: image,
@@ -153,7 +152,7 @@ const PostDetails = ({ data }) => {
             sq: 0,
           });
         } else if (item.type === "IMAGE") {
-          const imageURL = getFullImageURL(item.imageData.image.src._id);
+          const imageURL = generateImageURL({ wix_url: item.imageData.image.src._id, q: "90" });
           blogData.push({ type: "image", image: imageURL });
         }
       });
@@ -321,9 +320,8 @@ const PostDetails = ({ data }) => {
 
             {data?.storeProducts && data?.storeProducts.length !== 0 && (
               <div
-                className={`container-slider-produtcts mt-lg-padding-fluid mt-tablet-100 mt-phone-105 ${
-                  data?.storeProducts?.length === 0 ? "hidden" : ""
-                }`}
+                className={`container-slider-produtcts mt-lg-padding-fluid mt-tablet-100 mt-phone-105 ${data?.storeProducts?.length === 0 ? "hidden" : ""
+                  }`}
               >
                 <h2 className="slider-title">
                   {blogSectionDetails?.featuredProductsTitle}

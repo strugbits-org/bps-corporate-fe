@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import DelayedLink from "../../common/DelayedLink";
-import { getFullImagePost } from "../../common/common_functions/imageURL";
+import { generateImageUrl2 } from "../../common/common_functions/imageURL";
 import { useDetectClickOutside } from 'react-detect-click-outside';
 
 const PortfolioListing = ({ data, seeMore, applyFilters }) => {
@@ -169,7 +169,7 @@ const PortfolioListing = ({ data, seeMore, applyFilters }) => {
                       >
                         <div className="wrapper-img">
                           <img
-                            src={getFullImagePost(item.portfolioRef.coverImage.imageInfo, true)}
+                            src={generateImageUrl2({ wix_url: item.portfolioRef.coverImage.imageInfo, q: "90" })}
                             data-preload
                             className="media"
                             alt=""

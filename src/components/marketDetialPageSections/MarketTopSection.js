@@ -1,3 +1,4 @@
+import { generateImageURL } from "../../common/common_functions/imageURL"
 import getFullVideoURL from "../../common/common_functions/videoURL"
 import { DefaultButton } from "../commonComponents/DefaultButton"
 
@@ -47,7 +48,7 @@ const MarketTopSection = ({ data }) => {
           data-scale="1.2"
         >
           <img
-            src={data?.image}
+            src={generateImageURL({ wix_url: data?.image, q: "90" })}
             data-preload
             className="media"
             alt=""

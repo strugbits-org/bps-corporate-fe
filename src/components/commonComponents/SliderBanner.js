@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { getFullImagePost } from "../../common/common_functions/imageURL";
+import { generateImageUrl2 } from "../../common/common_functions/imageURL";
 import DelayedLink from "../../common/DelayedLink";
 import { pageLoadStart } from "../../utilis/animationsTriggers";
 
@@ -30,7 +30,7 @@ const SliderBanner = ({ data, type,sectionDetails }) => {
                       className="container-img"
                     >
                       <img
-                        src={getFullImagePost(data?.portfolioRef?.coverImage?.imageInfo, true)}
+                        src={generateImageUrl2({ wix_url: data?.portfolioRef?.coverImage?.imageInfo, q: "95" })}
                         data-preload
                         className="media"
                         data-parallax

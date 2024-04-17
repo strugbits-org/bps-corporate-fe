@@ -1,6 +1,6 @@
 import DelayedLink from "../../common/DelayedLink";
 import React, { useEffect } from "react";
-import { getFullImagePost } from "../../common/common_functions/imageURL";
+import { generateImageUrl2 } from "../../common/common_functions/imageURL";
 import { fetchPortfolio } from "../../redux/reducers/portfolioData";
 import { useDispatch, useSelector } from "react-redux";
 import { DefaultButton } from "../commonComponents/DefaultButton";
@@ -48,7 +48,7 @@ const OurProjectSection = () => {
                           <div className="container-img bg-blue">
                             <div className="wrapper-img">
                               <img
-                                src={getFullImagePost(item.portfolioRef.coverImage.imageInfo, true)}
+                                src={generateImageUrl2({ wix_url: item?.portfolioRef?.coverImage?.imageInfo, q: "90" })}
                                 data-preload
                                 className="media"
                                 alt=""

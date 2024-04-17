@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import getFullImageURL from "../../common/common_functions/imageURL";
+import { generateImageURL } from "../../common/common_functions/imageURL";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchStudioSection } from "../../redux/reducers/homeData";
 
 const StudioSection = () => {
   const dispatch = useDispatch();
-  const {studioData, homeSectionDetails} = useSelector((state) => state.home);
+  const { studioData, homeSectionDetails } = useSelector((state) => state.home);
   // const sectiondetails = useSelector((state) => state.home.homeSectionDetails);
   // const loading = useSelector((state) => state.home.studioLoading);
   // const error = useSelector((state) => state.home.error);
@@ -15,7 +15,7 @@ const StudioSection = () => {
   }, [dispatch]);
 
   return (
-  
+
     <section
       className={`section-studios ${studioData.length === 0 ? "hidden" : ""}`}
     >
@@ -47,7 +47,7 @@ const StudioSection = () => {
                     key={index}
                     className={`accordion-item `}
                   >
-                    <div className="accordion-header" 
+                    <div className="accordion-header"
                     // onClick={() => handleClick(index)}
                     >
                       <h3
@@ -60,7 +60,7 @@ const StudioSection = () => {
                     <div className="accordion-content">
                       <div className="container-img bg-blue">
                         <img
-                          src={getFullImageURL(data.data.image,true)}
+                          src={generateImageURL({ wix_url: data?.data?.image, q: "95" })}
                           data-preload
                           className="media"
                           alt=""

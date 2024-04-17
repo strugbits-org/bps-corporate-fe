@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import DelayedLink from "../../common/DelayedLink";
 import { useDispatch, useSelector } from "react-redux";
 import { getblogPostData } from "../../redux/reducers/blogData";
-import { getFullImagePost } from "../../common/common_functions/imageURL";
+import { generateImageUrl2 } from "../../common/common_functions/imageURL";
 import formatDate from "../../common/common_functions/dateFormat";
 import { DefaultButton } from "../commonComponents/DefaultButton";
 
@@ -51,7 +51,7 @@ const RecentPosts = ({ id }) => {
                             <div className="wrapper-img">
                               <img
                                 src={
-                                  getFullImagePost(data?.blogRef?.coverImage, true)
+                                  generateImageUrl2({ wix_url: data?.blogRef?.coverImage, w:"500",h:"400",fit:"fit", q: "80" })
                                 }
                                 data-preload
                                 className="media"

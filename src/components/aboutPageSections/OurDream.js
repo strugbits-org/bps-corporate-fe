@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import getFullImageURL from "../../common/common_functions/imageURL";
+import { generateImageURL } from "../../common/common_functions/imageURL";
 import { fetchOurDreamSection } from "../../redux/reducers/aboutusData";
 import { useDispatch, useSelector } from "react-redux";
 import { DefaultButton } from "../commonComponents/DefaultButton";
@@ -34,7 +34,7 @@ const OurDream = () => {
                       <div className="wrapper-profile">
                         <div className="container-img">
                           <img
-                            src={getFullImageURL(data.data.image)}
+                            src={generateImageURL({ wix_url: data.data.image, q: "95" })}
                             data-preload
                             className="media"
                             alt=""

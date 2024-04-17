@@ -1,6 +1,6 @@
 import DelayedLink from "../../common/DelayedLink";
 import React, { useEffect } from "react";
-import getFullImageURL from "../../common/common_functions/imageURL";
+import { generateImageURL } from "../../common/common_functions/imageURL";
 import { fetchRentalStoreSection, fetchRentalStoreSubtitle } from "../../redux/reducers/homeData";
 import { useDispatch, useSelector } from "react-redux";
 import { DefaultButton } from "../commonComponents/DefaultButton";
@@ -21,10 +21,7 @@ const RentalStoreSection = () => {
   }, [dispatch]);
 
   return (
-    <section
-      className={`home-rental-store pt-lg-145 pt-tablet-105 pt-phone-145 pb-lg-120 pb-tablet-100 pb-phone-145 ${data.length === 0 ? "hidden" : ""
-        }`}
-    >
+    <section className={`home-rental-store pt-lg-145 pt-tablet-105 pt-phone-145 pb-lg-120 pb-tablet-100 pb-phone-145 ${data.length === 0 ? "hidden" : ""}`}>
       <div
         className="bg"
         data-parallax
@@ -56,7 +53,7 @@ const RentalStoreSection = () => {
                   {item.image &&
                     <span>
                       <img
-                        src={getFullImageURL(item.image)}
+                        src={generateImageURL({ wix_url: item?.image, h: "150", w: "150", q: "95" })}
                         data-preload
                         alt=""
                         className="img-1 media"
@@ -93,7 +90,7 @@ const RentalStoreSection = () => {
                     >
                       <div className="container-img">
                         <img
-                          src={getFullImageURL(data.data.image)}
+                        src={generateImageURL({ wix_url: data?.data?.image, q: "95" })}
                           data-preload
                           className="media"
                           alt=""

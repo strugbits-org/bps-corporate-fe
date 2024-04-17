@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import DelayedLink from "../../../common/DelayedLink";
 import { useDispatch, useSelector } from "react-redux";
 import { getMarketCollection } from "../../../redux/reducers/marketData";
+import { generateImageURL } from "../../../common/common_functions/imageURL";
 
 const Market = () => {
   const dispatch = useDispatch();
@@ -14,7 +15,7 @@ const Market = () => {
   useEffect(() => {
     dispatch(getMarketCollection());
   }, [dispatch]);
-  
+
   return (
     <div className="wrapper-submenu-market wrapper-submenu">
       <div className="container-title-mobile">
@@ -37,12 +38,17 @@ const Market = () => {
                 }}
               >
                 <div className="container-img bg-blue" data-cursor-style="view">
-                  <img src={item.image} data-preload className="media" alt={item.cardname} />
+                  <img
+                    src={generateImageURL({ wix_url: item?.image, q: "95" })}
+                    data-preload
+                    className="media"
+                    alt={item.cardname}
+                  />
                 </div>
                 <div className="container-text">
                   <h3 className="title-project split-words">{item.cardname}</h3>
                   <ul className="list-tags">
-                    {item.marketTags.map((tag,index) => (
+                    {item.marketTags.map((tag, index) => (
                       <li key={index}>
                         <span>{tag}</span>
                       </li>

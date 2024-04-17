@@ -1,9 +1,9 @@
 import React from "react";
 import ProductCartSlider from "../commonComponents/ProductCartSlider";
-import getFullImageURL from "../../common/common_functions/imageURL";
+import { generateImageURL } from "../../common/common_functions/imageURL";
 import { useState } from "react";
 import { useEffect } from "react";
-const GallerySection = ({ title,productsTitle, data }) => {
+const GallerySection = ({ title, productsTitle, data }) => {
 
   const [gallery, setGallery] = useState([]);
 
@@ -31,57 +31,57 @@ const GallerySection = ({ title,productsTitle, data }) => {
     <section className="portfolio-post-photo-gallery pt-lg-165 pt-tablet-105 pt-phone-145">
       <div className="container-fluid">
         <div className="row">
-          { gallery.length !== 0 && (
-          <div className="col-lg-10 offset-lg-1">
-            <h2
-              className="fs--60 text-center mb-md-40 mb-phone-30 split-words"
-              data-aos="d:loop"
-            >
-              {title}
-            </h2>
+          {gallery.length !== 0 && (
+            <div className="col-lg-10 offset-lg-1">
+              <h2
+                className="fs--60 text-center mb-md-40 mb-phone-30 split-words"
+                data-aos="d:loop"
+              >
+                {title}
+              </h2>
 
-            <div className="wrapper-gallery">
-              {
-                gallery.map((item, index) =>
-                item.fullImage ? (
-                    <div key={index} className="module-photo-gallery-img-100 module-gallery">
-                      <div className="module-column" data-aos="d:loop">
-                        <div className="container-img bg-blue">
-                          <div className="wrapper-img">
-                            <img
-                              src={getFullImageURL(item.fullImage, true)}
-                              data-preload
-                              className="media"
-                              alt=""
-                            />
+              <div className="wrapper-gallery">
+                {
+                  gallery.map((item, index) =>
+                    item.fullImage ? (
+                      <div key={index} className="module-photo-gallery-img-100 module-gallery">
+                        <div className="module-column" data-aos="d:loop">
+                          <div className="container-img bg-blue">
+                            <div className="wrapper-img">
+                              <img
+                                src={generateImageURL({ wix_url: item.fullImage, q: "85", fit:"fit" , original:false })}
+                                data-preload
+                                className="media"
+                                alt=""
+                              />
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  ) : item.multipleImages && item.multipleImages.length !== 0 && (
-                    <div key={index} className="module-photo-gallery-img-50 module-gallery">
-                      {
-                        item.multipleImages.map((imageUrl,_index) => {
-                          return imageUrl && <div key={_index} className="module-column" data-aos="d:loop">
-                            <div className="container-img bg-blue">
-                              <div className="wrapper-img">
-                                <img
-                                  src={getFullImageURL(imageUrl,true)}
-                                  data-preload
-                                  className="media"
-                                  alt=""
-                                />
+                    ) : item.multipleImages && item.multipleImages.length !== 0 && (
+                      <div key={index} className="module-photo-gallery-img-50 module-gallery">
+                        {
+                          item.multipleImages.map((imageUrl, _index) => {
+                            return imageUrl && <div key={_index} className="module-column" data-aos="d:loop">
+                              <div className="container-img bg-blue">
+                                <div className="wrapper-img">
+                                  <img
+                                    src={generateImageURL({ wix_url: imageUrl, q: "85", fit:"fit" , original:false })}
+                                    data-preload
+                                    className="media"
+                                    alt=""
+                                  />
+                                </div>
                               </div>
                             </div>
-                          </div>
-                        })
-                      }
-                    </div>
+                          })
+                        }
+                      </div>
+                    )
                   )
-                )
-              }
+                }
+              </div>
             </div>
-          </div>
           )}
           <div className={`col-lg-10 offset-lg-1 column-2 ${data?.storeProducts.length === 0 ? "hidden" : ""}`} >
             <div className="container-slider-produtcts">

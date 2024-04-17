@@ -1,11 +1,9 @@
 import ContentComponent from "../../common/ContentComponent ";
-import { getFullImagePost } from "../../common/common_functions/imageURL";
+import { generateImageUrl2 } from "../../common/common_functions/imageURL";
 import SocialVerticalBar from "../blogDetailPageSections/SocialVerticalBar";
 const PortfolioIntoSection = ({ data }) => {
   const maxWords = 60;
-  const coverImage = getFullImagePost(
-    data?.portfolioRef?.coverImage?.imageInfo
-  );
+  const coverImage = generateImageUrl2({ wix_url: data?.portfolioRef?.coverImage?.imageInfo, q: "95" });
   const categories = data?.markets?.map((item) => item.cardname);
   const title = data?.portfolioRef?.title;
   const description = data?.portfolioRef?.description;

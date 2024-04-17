@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import getFullImageURL from "../../common/common_functions/imageURL";
+import { generateImageURL } from "../../common/common_functions/imageURL";
 import { fetchPeopleReviewSlider } from "../../redux/reducers/homeData";
 import { useDispatch, useSelector } from "react-redux";
 import { DefaultButton } from "./DefaultButton";
@@ -41,7 +41,7 @@ const PeopleReviewSLider = () => {
                         <div className="wrapper-content">
                           <div className="container-img">
                             <img
-                              src={getFullImageURL(data.data.image)}
+                              src={generateImageURL({ wix_url: data?.data?.image, q: "95" })}
                               data-preload
                               className="media"
                               alt=""

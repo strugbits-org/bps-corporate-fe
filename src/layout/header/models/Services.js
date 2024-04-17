@@ -2,7 +2,7 @@ import DelayedLink from "../../../common/DelayedLink";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchStudioSection } from "../../../redux/reducers/homeData";
-import getFullImageURL from "../../../common/common_functions/imageURL";
+import { generateImageURL } from "../../../common/common_functions/imageURL";
 
 const Services = () => {
   const dispatch = useDispatch();
@@ -32,7 +32,7 @@ const Services = () => {
               >
                 <div className="container-img bg-blue">
                   <img
-                    src={getFullImageURL(service.image)}
+                    src={generateImageURL({ wix_url: service?.image, q: "95" })}
                     data-preload
                     className="media"
                     alt=""

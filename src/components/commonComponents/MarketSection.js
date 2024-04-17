@@ -2,13 +2,14 @@ import DelayedLink from "../../common/DelayedLink";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getMarketCollection } from "../../redux/reducers/marketData";
+import { generateImageURL } from "../../common/common_functions/imageURL";
 
 const MarketSection = () => {
   let data_delay = 0;
 
   const dispatch = useDispatch();
   const data = useSelector((state) => state.market.marketModel);
-  const { homeSectionDetails} = useSelector((state) => state.home);
+  const { homeSectionDetails } = useSelector((state) => state.home);
   // const loading = useSelector((state) => state.home.marketLoading);
   // const error = useSelector((state) => state.home.error);
 
@@ -53,7 +54,7 @@ const MarketSection = () => {
                         data-cursor-style="view"
                       >
                         <img
-                          src={data.image}
+                          src={generateImageURL({ wix_url: data?.image, h: "500", w: "500", q: "90" })}
                           data-preload
                           className="media"
                           alt=""
