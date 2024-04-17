@@ -1,5 +1,5 @@
 import React from "react";
-import getFullImageURL from "../../common/common_functions/imageURL";
+import { generateImageURL } from "../../common/common_functions/imageURL";
 import { useSelector } from "react-redux";
 
 const AboutBottomSection = () => {
@@ -20,7 +20,7 @@ const AboutBottomSection = () => {
                 </h2>
                 <div className="container-img">
                   <img
-                    src={getFullImageURL(sectionDetails.magazineCoverImage)}
+                    src={generateImageURL({ wix_url: sectionDetails?.magazineCoverImage, fit: "fit", q: "95" })}
                     data-preload
                     className="media"
                     alt=""

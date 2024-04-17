@@ -3,7 +3,7 @@ import DelayedLink from "../../../common/DelayedLink";
 import { fetchStudioSection } from "../../../redux/reducers/homeData";
 import { useDispatch, useSelector } from "react-redux";
 import { getMarketCollection } from "../../../redux/reducers/marketData";
-import getFullImageURL, { getFullImagePost } from "../../../common/common_functions/imageURL";
+import { generateImageURL, generateImageUrl2 } from "../../../common/common_functions/imageURL";
 import { listBlogs, listPortfolios, listProducts, searchAllPages } from "../../../utilis/queryCollections";
 import formatDate from "../../../common/common_functions/dateFormat";
 import debounce from "lodash/debounce";
@@ -248,7 +248,7 @@ const Search = () => {
                                       <div className="wrapper-img">
                                         <div className="container-img">
                                           <img
-                                            src={getFullImageURL(item.product.mainMedia, true)}
+                                            src={generateImageURL({ wix_url: item?.product?.mainMedia, fit:"fit", q: "95" })}
                                             data-preload
                                             className="media"
                                             alt=""
@@ -269,7 +269,7 @@ const Search = () => {
                                                 <li key={index}>
                                                   <div className="container-img">
                                                     <img
-                                                      src={getFullImageURL(option.mainMedia ? option.mainMedia : item.product.mainMedia, true)}
+                                                      src={generateImageURL({ wix_url: option.mainMedia ? option.mainMedia : item.product.mainMedia, fit:"fit", q: "95" })}
                                                       data-preload
                                                       className="media"
                                                       alt=""
@@ -336,7 +336,7 @@ const Search = () => {
                                     >
                                       <div className="wrapper-img">
                                         <img
-                                          src={getFullImagePost(data.portfolioRef.coverImage.imageInfo, true)}
+                                          src={generateImageUrl2({ wix_url: data?.portfolioRef?.coverImage.imageInfo, q: "95" })}
                                           data-preload
                                           className="media"
                                           alt=""
@@ -385,7 +385,7 @@ const Search = () => {
                                 data-cursor-style="default"
                               >
                                 <img
-                                  src={item.image}
+                                  src={generateImageURL({ wix_url: item?.image , q: "95" })}
                                   data-preload
                                   className="media"
                                   alt=""
@@ -443,7 +443,7 @@ const Search = () => {
                                     <div className="wrapper-img">
                                       {blog.blogRef.coverImage &&
                                         <img
-                                          src={getFullImageURL(blog.blogRef.coverImage, true)}
+                                          src={generateImageURL({ wix_url: blog?.blogRef?.coverImage, q: "95" })}
                                           data-preload
                                           className="media"
                                           alt=""

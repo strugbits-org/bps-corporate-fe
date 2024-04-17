@@ -19330,11 +19330,7 @@ body.page-leave-active[data-load="first-done"] .overlay {
 
 .video-wrapper {
   max-height: 60dvh;
+  max-width: 1200px;
   display: flex;
   justify-content: center;
-}
-@media only screen and (max-width: 767.98px) {
-  .video-wrapper {
-    padding-top: 5dvh;
-  }
 }

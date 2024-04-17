@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import DelayedLink from "../../common/DelayedLink";
-import getFullImageURL from "../../common/common_functions/imageURL";
+import { generateImageURL } from "../../common/common_functions/imageURL";
 import formatDate from "../../common/common_functions/dateFormat";
 import { useDetectClickOutside } from 'react-detect-click-outside';
 
@@ -163,7 +163,7 @@ const BlogListing = ({ data, seeMore, applyFilters }) => {
                                             <div className="container-img bg-blue" data-cursor-style="view" >
                                                 <div className="wrapper-img">
                                                     {item.blogRef.coverImage && <img
-                                                        src={getFullImageURL(item.blogRef.coverImage, true)}
+                                                        src={generateImageURL({ wix_url: item?.blogRef?.coverImage, w:"500", fit:"fit", q: "90" })}
                                                         data-preload
                                                         className="media"
                                                         alt=""

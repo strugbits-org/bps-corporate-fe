@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import getFullImageURL from "../../common/common_functions/imageURL";
+import { generateImageURL } from "../../common/common_functions/imageURL";
 import { convertToHTML } from "../../utilis/utilityFunctions";
 
 const HowWeDoSection = ({ data }) => {
@@ -31,7 +31,7 @@ const HowWeDoSection = ({ data }) => {
                     <div className="list-column-img">
                       <div className="container-img" data-aos="d:loop">
                         <img
-                          src={getFullImageURL(item.image)}
+                          src={generateImageURL({ wix_url: item?.image, q: "90" })}
                           data-preload
                           className="media"
                           alt=""

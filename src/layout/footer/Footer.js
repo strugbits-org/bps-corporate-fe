@@ -1,7 +1,7 @@
 import DelayedLink from "../../common/DelayedLink";
 import Newsletter from "../../common/Newsletter";
 import React, { useEffect } from "react";
-import getFullImageURL from "../../common/common_functions/imageURL";
+import { generateImageURL } from "../../common/common_functions/imageURL";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchFooterData, getSocialLinks } from "../../redux/reducers/footerData";
 
@@ -34,7 +34,7 @@ const Footer = () => {
             <div className="container-logo">
               <div data-parallax data-end="bottom bottom" className="z-3">
                 <img
-                  src={getFullImageURL(logo1)}
+                  src={generateImageURL({ wix_url: logo1, original:true })}
                   data-preload
                   className="img-b z-3 media"
                   alt=""
@@ -49,7 +49,7 @@ const Footer = () => {
                 className="z-2"
               >
                 <img
-                  src={getFullImageURL(logo2)}
+                  src={generateImageURL({ wix_url: logo2, original:true })}
                   data-preload
                   className="img-p z-2 media"
                   alt=""
@@ -64,7 +64,7 @@ const Footer = () => {
                 className="z-1"
               >
                 <img
-                  src={getFullImageURL(logo3)}
+                  src={generateImageURL({ wix_url: logo3, original:true })}
                   data-preload
                   className="img-s z-1 media"
                   alt=""

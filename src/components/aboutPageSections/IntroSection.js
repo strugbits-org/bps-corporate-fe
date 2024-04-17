@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import getFullImageURL from "../../common/common_functions/imageURL";
+import { generateImageURL } from "../../common/common_functions/imageURL";
 import { fetchIntroSection } from "../../redux/reducers/aboutusData";
 import { useDispatch, useSelector } from "react-redux";
 import { DefaultButton } from "../commonComponents/DefaultButton";
@@ -26,7 +26,7 @@ const IntroSection = () => {
             data-translate-y="5vh"
           >
             <img
-              src={getFullImageURL(data.backgroundImage)}
+              src={generateImageURL({ wix_url: data.backgroundImage, q: "95" })}
               data-preload
               className="media"
               data-parallax-top

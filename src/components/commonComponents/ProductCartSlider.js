@@ -1,6 +1,6 @@
 import React from "react";
 import DelayedLink from "../../common/DelayedLink";
-import getFullImageURL from "../../common/common_functions/imageURL";
+import { generateImageURL } from "../../common/common_functions/imageURL";
 
 const ProductCartSlider = ({ data }) => {
   const EXTERNAL_SITE_URL = "https://www.rentals.blueprintstudios.com";
@@ -24,7 +24,7 @@ const ProductCartSlider = ({ data }) => {
                     <div className="wrapper-img">
                       <div className="container-img">
                         <img
-                          src={getFullImageURL(item.mainMedia)}
+                          src={generateImageURL({ wix_url: item.mainMedia, fit:"fit", q: "95" })}
                           data-preload
                           className="media"
                           alt=""
@@ -45,7 +45,7 @@ const ProductCartSlider = ({ data }) => {
                               <li key={index}>
                                 <div className="container-img">
                                   <img
-                                    src={getFullImageURL(option.mainMedia ? option.mainMedia : item.mainMedia)}
+                                    src={generateImageURL({ wix_url: option.mainMedia ? option.mainMedia : item.mainMedia, fit:"fit", q: "95" })}
                                     data-preload
                                     className="media"
                                     alt=""

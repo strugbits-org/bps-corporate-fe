@@ -1,4 +1,4 @@
-import getFullImageURL from "../../common/common_functions/imageURL";
+import { generateImageURL } from "../../common/common_functions/imageURL";
 
 const serviceDescription = ({data}) => {
   return (
@@ -21,7 +21,7 @@ const serviceDescription = ({data}) => {
                     <div className="content">
                       <div className="container-img">
                         <img
-                          src={getFullImageURL(service.image)}
+                          src={generateImageURL({ wix_url: service?.image, q: "90" })}
                           data-preload
                           className="media"
                           alt=""

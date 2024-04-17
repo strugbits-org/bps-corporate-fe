@@ -1,6 +1,7 @@
+import { generateImageURL } from "../../common/common_functions/imageURL";
 import { DefaultButton } from "../commonComponents/DefaultButton";
 
-const ServiceIntro = ({data}) => {
+const ServiceIntro = ({ data }) => {
   return (
     <>
       <section className="services-post-intro">
@@ -26,13 +27,13 @@ const ServiceIntro = ({data}) => {
                 </p>
 
                 <DefaultButton
-                  customClasses={"mt-lg-50 mt-tablet-60 mt-phone-55"}
+                  customClasses={"btn-blue mt-lg-50 mt-tablet-60 mt-phone-55"}
                   data={{
                     label: data?.buttonText,
                     action: data?.buttonAction
                   }}
                   attributes={{
-                    "data-aos":"fadeInUp .8s ease-out-cubic .6s, d:loop",
+                    "data-aos": "fadeInUp .8s ease-out-cubic .6s, d:loop",
                     "data-cursor-style": "off",
                   }}
                 ></DefaultButton>
@@ -47,7 +48,7 @@ const ServiceIntro = ({data}) => {
           data-scale="1.2"
         >
           <img
-            src={data?.image}
+            src={generateImageURL({ wix_url: data?.image, q: "90" })}
             data-preload
             className="media"
             alt=""

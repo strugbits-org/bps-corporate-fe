@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import getFullImageURL from "../../common/common_functions/imageURL";
+import { generateImageURL } from "../../common/common_functions/imageURL";
 import { fetchDreamBigSection } from "../../redux/reducers/homeData";
 import { useDispatch, useSelector } from "react-redux";
 import { DefaultButton } from "./DefaultButton";
@@ -20,7 +20,7 @@ const DreamBigSection = () => {
           <div className="col-lg-4 offset-lg-4 column-1">
             <div className="container-img no-phone">
               <img
-                src={getFullImageURL(data.desktopBackgroundImage)}
+                src={generateImageURL({ wix_url: data?.desktopBackgroundImage, q: "95" })}
                 data-preload
                 className="media"
                 alt=""
@@ -28,7 +28,7 @@ const DreamBigSection = () => {
             </div>
             <div className="container-img no-desktop no-tablet">
               <img
-                src={getFullImageURL(data.mobileBackgroundImage)}
+                src={generateImageURL({ wix_url: data?.mobileBackgroundImage, q: "95" })}
                 data-preload
                 className="media"
                 alt=""

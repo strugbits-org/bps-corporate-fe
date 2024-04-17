@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import getFullImageURL from "../../common/common_functions/imageURL";
+import { generateImageURL } from "../../common/common_functions/imageURL";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchOurFamilySection } from "../../redux/reducers/aboutusData";
 import { DefaultButton } from "../commonComponents/DefaultButton";
@@ -33,7 +33,7 @@ const OurFamily = () => {
                     <div className="content">
                       <div className="container-img logo-img">
                         <img
-                          src={getFullImageURL(data.data.logo)}
+                          src={generateImageURL({ wix_url: data.data.logo, fit:"fit", q: "95" })}
                           data-preload
                           className="media"
                           data-aos="scaleOut
@@ -46,7 +46,7 @@ const OurFamily = () => {
                         data-aos="scaleOut .8s ease-out-cubic 0s, d:loop"
                       >
                         <img
-                          src={getFullImageURL(data.data.image)}
+                          src={generateImageURL({ wix_url: data.data.image, q: "95" })}
                           data-preload
                           className="media"
                           data-parallax

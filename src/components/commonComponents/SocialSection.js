@@ -6,7 +6,7 @@ import {
 } from "../../common/constats/constats";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getFullImagePost } from "../../common/common_functions/imageURL";
+import { generateImageUrl2 } from "../../common/common_functions/imageURL";
 import { getSocialSectionBlogs } from "../../redux/reducers/blogData";
 
 const SocialSection = () => {
@@ -86,8 +86,7 @@ const SocialSection = () => {
                               data-cursor-style="view"
                             >
                               <img
-                                src={
-                                  getFullImagePost(data?.blogRef?.coverImage, true)}
+                                src={generateImageUrl2({ wix_url: data?.blogRef?.coverImage, h: "150", w: "150", q: "95" })}
                                 data-preload
                                 className="media"
                                 alt=""

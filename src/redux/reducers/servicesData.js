@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import getFullImageURL from "../../common/common_functions/imageURL";
 import createWixClient from "../wixClient";
 import { handleCollectionLoaded } from "../../utilis/pageLoadingAnimation";
 import { listPortfolios } from "../../utilis/queryCollections";
@@ -10,7 +9,7 @@ const initialState = {
   servicesModelData: [],
   servicesSlider: [],
   servicesSectionDetails: null,
-  
+
   servicesSectionDetailsLoading: false,
   servicesSliderLoading: false,
   servicesModelLoading: false,
@@ -27,16 +26,12 @@ export const fetchServicesData = createAsyncThunk(
         includeReferencedItems: ["subServices"],
       };
 
-      const { items: fetchedItems } = await wixClient.items
+      const { items } = await wixClient.items
         .queryDataItems(options)
         .eq("slug", slug)
         .find();
 
-      const servicesArray = fetchedItems.map((service) => {
-        service.data.image = getFullImageURL(service.data.image);
-        return service.data;
-      });
-      return servicesArray[0];
+      return items.map(x => x.data)[0];
     } catch (error) {
       throw new Error(error.message);
     }

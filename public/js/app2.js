@@ -16124,6 +16124,14 @@ var require_app2 = __commonJS({
       sticky();
     });
 
+    const modal_group = document.querySelector('modal-group');
+    if (modal_group) {
+      modal_group.addEventListener("click", (e) => {
+        if (e.target !== e.currentTarget) return;
+        const btn_modal_close = document.querySelector('btn-modal-close');
+        if (btn_modal_close) btn_modal_close.click();
+      });
+    }
 
     document.querySelector(".updateWatchedTrigger").addEventListener("click", () => {
       initVideo();

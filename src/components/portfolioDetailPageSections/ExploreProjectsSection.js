@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import DelayedLink from "../../common/DelayedLink";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPortfolio } from "../../redux/reducers/portfolioData";
-import { getFullImagePost } from "../../common/common_functions/imageURL";
+import { generateImageUrl2 } from "../../common/common_functions/imageURL";
 
 const ExploreProjectsSection = ({ title, id }) => {
   const dispatch = useDispatch();
@@ -42,7 +42,7 @@ const ExploreProjectsSection = ({ title, id }) => {
                         >
                           <div className="wrapper-img">
                             <img
-                              src={getFullImagePost(data?.portfolioRef.coverImage.imageInfo, true)}
+                              src={generateImageUrl2({ wix_url: data?.portfolioRef.coverImage.imageInfo, q: "90" })}
                               data-preload
                               className="media"
                               alt=""
