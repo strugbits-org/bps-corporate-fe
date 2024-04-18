@@ -5,18 +5,12 @@ import {
   instafeeds,
 } from "../../common/constats/constats";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { generateImageUrl2 } from "../../common/common_functions/imageURL";
-import { getSocialSectionBlogs } from "../../redux/reducers/blogData";
 
 const SocialSection = () => {
-  const dispatch = useDispatch();
   const posts = useSelector((state) => state.blog.socialSectionBlogs);
   const { homeSectionDetails } = useSelector((state) => state.home);
-
-  useEffect(() => {
-    dispatch(getSocialSectionBlogs({}));
-  }, [dispatch]);
 
   useEffect(() => {
     const script = document.createElement("script");

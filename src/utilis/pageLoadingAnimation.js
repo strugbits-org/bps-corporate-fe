@@ -15,18 +15,19 @@ const changeProgress = (percent) => {
 
 export const handleCollectionLoaded = () => {
     collectionLoaded++;
+    console.log("collectionLoaded", collectionLoaded);
     const page = window.location.pathname.trim() === "/" ? "home" : window.location.pathname.substring(1);
     const cleanPage = page.split("/")[0].trim();
 
     const collectionsCount = {
-        'home': 9,
-        'about': 7,
-        'portfolio': 3,
-        'blog': 3,
-        'market-post': 7,
-        'services-post': 5,
-        'portfolio-post': 3,
-        'blog-post': 3,
+        'home': 4,
+        'about': 5,
+        'portfolio': 1,
+        'blog': 1,
+        'market-post': 2,
+        'services-post': 2,
+        'portfolio-post': 2,
+        'blog-post': 2,
         'contact': 1,
     }[cleanPage] || 0;
     
@@ -51,13 +52,7 @@ export const handleCollectionLoaded = () => {
         }
     }
 
-    const urlParams = new URLSearchParams(window.location.search);
-    const noreload = urlParams.get('noreload');
-    const subpageCollectionCount = cleanPage === "services-post" ? 1 : cleanPage === "market-post" ? 2 : 0;
-    const isReloadConditionMet = document.body.classList.contains(`${cleanPage}-loaded`) && noreload && collectionLoaded >= subpageCollectionCount;
-    
-    
-    if (collectionLoaded >= collectionsCount || isReloadConditionMet) {
+    if (collectionLoaded >= collectionsCount) {
         markPageLoaded();
     }
 };

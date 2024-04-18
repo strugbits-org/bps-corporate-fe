@@ -2,12 +2,23 @@ import { useSelector } from 'react-redux';
 import DelayedLink from '../../common/DelayedLink'
 import { generateImageUrl2 } from '../../common/common_functions/imageURL';
 import { DefaultButton } from '../commonComponents/DefaultButton';
+import { useEffect, useState } from 'react';
 
-const ExplorePortfolio = ({data}) => {
+const ExplorePortfolio = ({ slug }) => {
+
   const { marketSectionDetails } = useSelector((state) => state.market);
+  const portfolioCollection = useSelector((state) => state.portfolio.portfolioData);
+  const [filteredPortfolioCollection, setFilteredPortfolioCollection] = useState(portfolioCollection);
+  useEffect(() => {
+    const filteredProjects = portfolioCollection.filter(item => {
+      const marketLabels = item.markets.map((item) => item.cardname.toLowerCase())
+      return ([slug].some(r => marketLabels.includes(r)))
+    });
+    setFilteredPortfolioCollection(filteredProjects);
+  }, [portfolioCollection, slug]);
 
   return (
-    data && data.length > 0 &&
+    filteredPortfolioCollection && filteredPortfolioCollection.length > 0 &&
     <section className="market-post-explore-portfolio overflow-hidden pt-lg-270 pb-lg-220 py-tablet-100 pt-phone-145 pb-phone-190">
       <div className="container-fluid">
         <div className="row">
@@ -25,7 +36,7 @@ const ExplorePortfolio = ({data}) => {
                   data-aos="d:loop"
                 >
                   {/* <!-- Slides --> */}
-                  {data?.map((item, index) => {
+                  {filteredPortfolioCollection?.map((item, index) => {
                     return (
                       <div key={index} className="swiper-slide grid-item">
                         <DelayedLink to={`/portfolio-post/${item.slug}`} className="link">
@@ -54,18 +65,18 @@ const ExplorePortfolio = ({data}) => {
             </div>
           </div>
           <div className="col-lg-2 offset-lg-5 flex-center mt-50 column-btn">
-          <DefaultButton
-            customClasses={"btn-border-blue"}
-            showArrow={false}
-            data={{
-              label: marketSectionDetails?.portfolioSectionButtonText,
-              action: marketSectionDetails?.portfolioSectionButtonAction
-            }}
-            attributes={{
-              "data-aos":"fadeInUp .8s ease-out-cubic 0s, d:loop, trigger:.column-btn",
-              "data-cursor-style":"off",
-            }}
-          ></DefaultButton>
+            <DefaultButton
+              customClasses={"btn-border-blue"}
+              showArrow={false}
+              data={{
+                label: marketSectionDetails?.portfolioSectionButtonText,
+                action: marketSectionDetails?.portfolioSectionButtonAction
+              }}
+              attributes={{
+                "data-aos": "fadeInUp .8s ease-out-cubic 0s, d:loop, trigger:.column-btn",
+                "data-cursor-style": "off",
+              }}
+            ></DefaultButton>
           </div>
         </div>
       </div>

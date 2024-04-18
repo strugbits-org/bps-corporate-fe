@@ -88,12 +88,12 @@ const BlogListing = ({ data, seeMore, applyFilters }) => {
                                                 {data.studios?.map((item, index) => (
                                                     <li key={index}>
                                                         <button
-                                                            onClick={() => { handleStudioFilter(item.data._id) }}
-                                                            className={`portfolio-btn-tag ${selectedStudios.includes(item.data._id)
+                                                            onClick={() => { handleStudioFilter(item._id) }}
+                                                            className={`portfolio-btn-tag ${selectedStudios.includes(item._id)
                                                                 ? "active"
                                                                 : ""
                                                                 }`}>
-                                                            {item.data.cardName}
+                                                            {item.cardName}
                                                         </button>
                                                     </li>
                                                 ))}

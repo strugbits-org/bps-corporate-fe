@@ -1,14 +1,8 @@
-import React, { useEffect } from "react";
-import { fetchCardsSection } from "../../redux/reducers/aboutusData";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
 
 const AboutCardsSection = () => {
-  const dispatch = useDispatch();
   const data = useSelector((state) => state.aboutus.aboutCards);
-
-  useEffect(() => {
-    dispatch(fetchCardsSection());
-  }, [dispatch]);
 
   const properties = [
     {

@@ -1,8 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import createWixClient from "../wixClient";
 import { handleCollectionLoaded } from "../../utilis/pageLoadingAnimation";
-
-const wixClient = createWixClient();
+import { fetchCollection } from "../fetchCollection";
 
 const initialState = {
   marketTopData: null,
@@ -21,17 +19,18 @@ export const fetchMarketTopsections = createAsyncThunk(
   "data/fetchMarketTopsections",
   async (slug) => {
     try {
-      let options = {
-        dataCollectionId: "MarketSection",
-        includeReferencedItems: ["howWeDoItSections"],
-      };
-
-      const { items } = await wixClient.items
-        .queryDataItems(options)
-        .eq("slug", slug)
-        .find();
+      const data = {
+        "dataCollectionId": "MarketSection",
+        "includeReferencedItems": ["howWeDoItSections"],
+        "returnTotalCount": null,
+        "find": {},
+        "contains": null,
+        "eq": ["slug", slug],
+        "limit": null
+      }
+      const response = await fetchCollection(data);
       handleCollectionLoaded();
-      return items.map(x => x.data)[0];
+      return response._items.map((x) => x.data)[0];
     } catch (error) {
       handleCollectionLoaded();
       throw new Error(error.message);
@@ -43,9 +42,17 @@ export const getMarketsPostSectionDetails = createAsyncThunk(
   "data/getMarketsPostSectionDetails",
   async () => {
     try {
-      let options = { dataCollectionId: "MarketsPostPageSectionDetails" };
-      const { items } = await wixClient.items.queryDataItems(options).find();
-      return items.map(item => item.data)[0];
+      const data = {
+        "dataCollectionId": "MarketsPostPageSectionDetails",
+        "includeReferencedItems": null,
+        "returnTotalCount": null,
+        "find": {},
+        "contains": null,
+        "eq": null,
+        "limit": null
+      }
+      const response = await fetchCollection(data);
+      return response._items.map((x) => x.data)[0];
     } catch (error) {
       throw new Error(error.message);
     }
@@ -54,21 +61,23 @@ export const getMarketsPostSectionDetails = createAsyncThunk(
 
 export const getMarketCollection = createAsyncThunk(
   "data/getMarketCollection",
-  async (markLoaded = false) => {
+  async () => {
     try {
-      let options = {
-        dataCollectionId: "MarketSection",
-      };
-
-      const { items } = await wixClient.items
-        .queryDataItems(options)
-        .find();
-      if (markLoaded) {
-        handleCollectionLoaded();
+      const data = {
+        "dataCollectionId": "MarketSection",
+        "includeReferencedItems": null,
+        "returnTotalCount": null,
+        "find": {},
+        "contains": null,
+        "eq": null,
+        "limit": null
       }
-      return items.map(x => x.data).sort((a, b) => a.orderNumber - b.orderNumber);
+      const response = await fetchCollection(data);
+      setTimeout(() => {
+        document.querySelector(".updateWatchedTrigger").click();
+      }, 1000);
+      return response._items.map((x) => x.data).sort((a, b) => a.orderNumber - b.orderNumber);
     } catch (error) {
-      handleCollectionLoaded();
       throw new Error(error.message);
     }
   }

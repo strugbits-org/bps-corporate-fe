@@ -1,7 +1,10 @@
+import { useSelector } from "react-redux";
 import { generateImageURL } from "../../common/common_functions/imageURL";
 import { DefaultButton } from "../commonComponents/DefaultButton";
 
-const ServiceIntro = ({ data }) => {
+const ServiceIntro = () => {
+  const data = useSelector((state) => state.services.servicesData);
+
   return (
     <>
       <section className="services-post-intro">

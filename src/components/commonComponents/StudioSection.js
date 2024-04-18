@@ -1,18 +1,12 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { generateImageURL } from "../../common/common_functions/imageURL";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchStudioSection } from "../../redux/reducers/homeData";
+import { useSelector } from "react-redux";
 
 const StudioSection = () => {
-  const dispatch = useDispatch();
   const { studioData, homeSectionDetails } = useSelector((state) => state.home);
   // const sectiondetails = useSelector((state) => state.home.homeSectionDetails);
   // const loading = useSelector((state) => state.home.studioLoading);
   // const error = useSelector((state) => state.home.error);
-
-  useEffect(() => {
-    dispatch(fetchStudioSection());
-  }, [dispatch]);
 
   return (
 
@@ -47,27 +41,25 @@ const StudioSection = () => {
                     key={index}
                     className={`accordion-item `}
                   >
-                    <div className="accordion-header"
-                    // onClick={() => handleClick(index)}
-                    >
+                    <div className="accordion-header">
                       <h3
                         className="accordion-title split-words"
                         data-aos="d:loop"
                       >
-                        {data.data.cardName}
+                        {data?.cardName}
                       </h3>
                     </div>
                     <div className="accordion-content">
                       <div className="container-img bg-blue">
                         <img
-                          src={generateImageURL({ wix_url: data?.data?.image, q: "95" })}
+                          src={generateImageURL({ wix_url: data?.image, q: "95" })}
                           data-preload
                           className="media"
                           alt=""
                         />
                       </div>
                       <p className="accordion-text">
-                        {data.data.cardDescription}
+                        {data?.cardDescription}
                       </p>
                     </div>
                   </li>

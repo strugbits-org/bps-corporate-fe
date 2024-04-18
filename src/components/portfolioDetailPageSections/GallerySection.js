@@ -3,8 +3,10 @@ import ProductCartSlider from "../commonComponents/ProductCartSlider";
 import { generateImageURL } from "../../common/common_functions/imageURL";
 import { useState } from "react";
 import { useEffect } from "react";
-const GallerySection = ({ title, productsTitle, data }) => {
-
+import { useSelector } from "react-redux";
+const GallerySection = () => {
+  const data = useSelector((state) => state.portfolio.singlePortfolioData);
+  const { portfolioSectionDetails } = useSelector((state) => state.portfolio);
   const [gallery, setGallery] = useState([]);
 
   function convertGallery(images) {
@@ -37,7 +39,7 @@ const GallerySection = ({ title, productsTitle, data }) => {
                 className="fs--60 text-center mb-md-40 mb-phone-30 split-words"
                 data-aos="d:loop"
               >
-                {title}
+                {portfolioSectionDetails?.gallerySectionTitle}
               </h2>
 
               <div className="wrapper-gallery">
@@ -86,7 +88,7 @@ const GallerySection = ({ title, productsTitle, data }) => {
           <div className={`col-lg-10 offset-lg-1 column-2 ${data?.storeProducts.length === 0 ? "hidden" : ""}`} >
             <div className="container-slider-produtcts">
               <h2 className="slider-title split-words" data-aos="d:loop">
-                {productsTitle}
+                {portfolioSectionDetails?.productsSectionTitle}
               </h2>
 
               <ProductCartSlider data={data} />

@@ -1,17 +1,10 @@
 import DelayedLink from "../../../common/DelayedLink";
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchStudioSection } from "../../../redux/reducers/homeData";
+import React from "react";
+import { useSelector } from "react-redux";
 import { generateImageURL } from "../../../common/common_functions/imageURL";
 
 const Services = () => {
-  const dispatch = useDispatch();
-  const data = useSelector((state) => state.home.studioData);
-  const servicesItems = data ? data.map(item => item.data).filter(service => service.menuItem) : [];
-
-  useEffect(() => {
-    dispatch(fetchStudioSection(false));
-  }, [dispatch]);
+  const data = useSelector((state) => state.home.studioData).filter(service => service.menuItem);
 
   return (
     <div className="wrapper-submenu-services wrapper-submenu">
@@ -23,7 +16,7 @@ const Services = () => {
         </button>
       </div>
       <ul className="list-submenu-services list-submenu">
-        {servicesItems.map((service, index) => (
+        {data.map((service, index) => (
             <li key={index}>
               <DelayedLink
                 to={`/services-post/${service.slug}`}

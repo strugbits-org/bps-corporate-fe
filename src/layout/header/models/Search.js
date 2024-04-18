@@ -1,8 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import DelayedLink from "../../../common/DelayedLink";
-import { fetchStudioSection } from "../../../redux/reducers/homeData";
 import { useDispatch, useSelector } from "react-redux";
-import { getMarketCollection } from "../../../redux/reducers/marketData";
 import { generateImageURL, generateImageUrl2 } from "../../../common/common_functions/imageURL";
 import { listBlogs, listPortfolios, listProducts, searchAllPages } from "../../../utilis/queryCollections";
 import formatDate from "../../../common/common_functions/dateFormat";
@@ -32,8 +30,6 @@ const Search = () => {
   const [searchActive, setSearchActive] = useState(false);
 
   useEffect(() => {
-    dispatch(fetchStudioSection(false));
-    dispatch(getMarketCollection());
     dispatch(fetchSearchContent());
   }, [dispatch]);
 
@@ -103,9 +99,7 @@ const Search = () => {
       setBlogCollection(blog.items.filter(item => item.data.blogRef._id !== undefined).map(item => item.data));
 
       var otherPages = await searchAllPages(options);
-      const result = otherPages.items.map((item) => item.data)
-      result.sort((a, b) => new Date(a._createdDate.$date) - new Date(b._createdDate.$date));
-      setOtherPagesResults(result);
+      setOtherPagesResults(otherPages);
 
     } catch (error) {
       console.log("error", error);
@@ -195,10 +189,10 @@ const Search = () => {
                       {studios?.map((item, index) => {
                         return (
                           <li key={index} className="grid-item">
-                            <div onClick={() => { handleStudioFilter(item.data._id) }}
-                              className={`link-studios ${selectedStudios.includes(item.data._id) ? "active" : ""} ${resultStudios.includes(item.data._id) ? "" : "disabled"}`}>
+                            <div onClick={() => { handleStudioFilter(item._id) }}
+                              className={`link-studios ${selectedStudios.includes(item._id) ? "active" : ""} ${resultStudios.includes(item._id) ? "" : "disabled"}`}>
                               <h3 className="title-all-studios">
-                                <span>{item.data.cardName}</span>
+                                <span>{item.cardName}</span>
                               </h3>
                             </div>
                           </li>

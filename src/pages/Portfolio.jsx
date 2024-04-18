@@ -4,10 +4,9 @@ import SocialSection from "../components/commonComponents/SocialSection";
 import MarketSection from "../components/commonComponents/MarketSection";
 import { useDispatch, useSelector } from "react-redux";
 import { listPortfolios } from "../utilis/queryCollections";
-import { fetchStudioSection } from "../redux/reducers/homeData";
-import { getMarketCollection } from "../redux/reducers/marketData";
 import { updatedWatched } from "../utilis/animationsTriggers";
 import { getPortfolioSectionDetails } from "../redux/reducers/portfolioData";
+import { handleCollectionLoaded } from "../utilis/pageLoadingAnimation";
 
 const Portfolio = () => {
   const dispatch = useDispatch();
@@ -20,8 +19,6 @@ const Portfolio = () => {
 
   const pageSize = 8;
   useEffect(() => {
-    dispatch(fetchStudioSection());
-    dispatch(getMarketCollection());
     dispatch(getPortfolioSectionDetails());
     applyFilters({disableLoader : true});
   }, [dispatch]);
@@ -37,6 +34,7 @@ const Portfolio = () => {
     const response = await listPortfolios({ pageSize, studios: selectedStudios, markets: selectedMarkets, disableLoader });
     setPortfolioCollection(response.items.filter(item => item.data.portfolioRef._id !== undefined).map(item => item.data));
     setPortfolioResponse(response);
+    handleCollectionLoaded();
   }
 
   return (

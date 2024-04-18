@@ -1,3 +1,4 @@
+import { fetchCollection } from "../redux/fetchCollection";
 import createWixClient from "../redux/wixClient";
 import { endLoading, startLoading } from "./animationsTriggers";
 
@@ -89,19 +90,18 @@ export const listProducts = async ({ pageSize = 10, searchTerm = "", disableLoad
 export const searchAllPages = async ({ pageSize = 10, searchTerm = "", disableLoader = false }) => {
     try {
         startLoading(disableLoader);
-        let options = {
-            dataCollectionId: "TextCollectionPages",
-            returnTotalCount: true,
-        };
-
-        let query = wixClient.items.queryDataItems(options);
-        const response = await query.contains('content', searchTerm)
-            .eq("showInSearch", true)
-            .limit(pageSize)
-            .find();
-
+        const data = {
+            "dataCollectionId": "TextCollectionPages",
+            "includeReferencedItems": null,
+            "returnTotalCount": true,
+            "find": {},
+            "contains": ['content', searchTerm],
+            "eq": ["showInSearch", true],
+            "limit": pageSize
+        }
+        const response = await fetchCollection(data);
         endLoading(disableLoader);
-        return response;
+        return response._items.map((x) => x.data);
     } catch (error) {
         endLoading(disableLoader);
         throw new Error(error.message);

@@ -1,14 +1,13 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import createWixClient from "../wixClient";
 import { handleCollectionLoaded } from "../../utilis/pageLoadingAnimation";
-
-const wixClient = createWixClient();
+import { listPortfolios } from "../../utilis/queryCollections";
+import { fetchCollection } from "../fetchCollection";
 
 const initialState = {
   portfolioData: [],
   singlePortfolioData: null,
   totalPortfolios: null,
-  portfolioSectionDetails:[],
+  portfolioSectionDetails: [],
   portfolioSectionDetailsLoading: false,
 
   portfolioDataLoading: false,
@@ -16,26 +15,37 @@ const initialState = {
   error: null,
 };
 
+export const getAboutSlider = createAsyncThunk(
+  "data/getServicesSlider",
+  async () => {
+    try {
+      const options = {
+        pageSize: 3,
+        disableLoader: true,
+      };
+
+      const portfolio = await listPortfolios(options);
+      handleCollectionLoaded();
+      return portfolio.items.map(item => item.data);
+    } catch (error) {
+      handleCollectionLoaded();
+      throw new Error(error.message);
+    }
+  }
+);
+
 export const fetchPortfolio = createAsyncThunk(
   "data/fetchPortfolio",
-  async ({pageSize = 4, triggerAnimations = true, excludeItem = null}) => {
+  async ({ pageSize = 4, excludeItem = null }) => {
     try {
-      let options = {
-        dataCollectionId: "PortfolioCollection",
-        includeReferencedItems: ["portfolioRef", "locationFilteredVariant", "storeProducts", "studios", "markets","gallery","media"],
-        returnTotalCount: true,
+      const options = {
+        pageSize: pageSize,
+        disableLoader: true,
+        excludeItem
       };
-  
-      const response = await wixClient.items.queryDataItems(options).ne("slug", excludeItem).ne("isHidden", true).descending("publishDate").limit(pageSize).find();
-      if (triggerAnimations) {
-        handleCollectionLoaded();
-        setTimeout(() => {
-          document.querySelector(".updateWatchedTrigger").click();
-        }, 1000);
-      }
-
-      const data = response.items.map((item)=> item.data);
-      return data;
+      const portfolio = await listPortfolios(options);
+      handleCollectionLoaded();
+      return portfolio.items.map(item => item.data);
     } catch (error) {
       handleCollectionLoaded();
       throw new Error(error.message);
@@ -47,9 +57,17 @@ export const getPortfolioSectionDetails = createAsyncThunk(
   "data/getPortfolioSectionDetails",
   async () => {
     try {
-      let options = {dataCollectionId: "PortfolioSectionDetails"};
-      const { items } = await wixClient.items.queryDataItems(options).find();
-      return items.map(item => item.data)[0];
+      const data = {
+        "dataCollectionId": "PortfolioSectionDetails",
+        "includeReferencedItems": null,
+        "returnTotalCount": null,
+        "find": {},
+        "contains": null,
+        "eq": null,
+        "limit": null
+      }
+      const response = await fetchCollection(data);
+      return response._items.map((x) => x.data)[0];
     } catch (error) {
       throw new Error(error.message);
     }
@@ -60,27 +78,29 @@ export const fetchSinglePortfolio = createAsyncThunk(
   "data/fetchSinglePortfolio",
   async (slug) => {
     try {
-      let options = {
-        dataCollectionId: "PortfolioCollection",
-        includeReferencedItems: ["portfolioRef", "locationFilteredVariant", "storeProducts", "studios", "markets"],
-      };
-      const { items: fetchedItems } = await wixClient.items
-      .queryDataItems(options)
-      .eq("slug", slug).find();
-
+      const data = {
+        "dataCollectionId": "PortfolioCollection",
+        "includeReferencedItems": ["portfolioRef", "locationFilteredVariant", "storeProducts", "studios", "markets"],
+        "returnTotalCount": null,
+        "find": {},
+        "contains": null,
+        "eq": ["slug", slug],
+        "limit": null
+      }
+      const response = await fetchCollection(data);
       handleCollectionLoaded();
       setTimeout(() => {
         document.querySelector(".updateWatchedTrigger").click();
       }, 1000);
-
-      const data = fetchedItems.map((item)=> item.data);
-      return data[0];
+      return response._items.map((x) => x.data)[0];
     } catch (error) {
       handleCollectionLoaded();
       throw new Error(error.message);
     }
   }
 );
+
+
 
 const portfolioSlice = createSlice({
   name: "portfolio",

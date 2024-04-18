@@ -1,9 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import createWixClient from "../wixClient";
 import { handleCollectionLoaded } from "../../utilis/pageLoadingAnimation";
 import { listPortfolios } from "../../utilis/queryCollections";
-
-const wixClient = createWixClient();
+import { fetchCollection } from "../fetchCollection";
 
 const initialState = {
   IntroData: [],
@@ -29,16 +27,18 @@ export const fetchCardsSection = createAsyncThunk(
   "data/fetchCardsSection",
   async () => {
     try {
-      let options = {
-        dataCollectionId: "AboutUsCardsSection",
-      };
-
-      const { items } = await wixClient.items
-        .queryDataItems(options)
-        .find();
+      const data = {
+        "dataCollectionId": "AboutUsCardsSection",
+        "includeReferencedItems": null,
+        "returnTotalCount": null,
+        "find": {},
+        "contains": null,
+        "eq": null,
+        "limit": null
+      }
+      const response = await fetchCollection(data);
       handleCollectionLoaded();
-
-      return items.map(item => item.data);
+      return response._items.map((x) => x.data);
     } catch (error) {
       handleCollectionLoaded();
       throw new Error(error.message);
@@ -50,16 +50,18 @@ export const fetchIntroSection = createAsyncThunk(
   "data/fetchIntroSection",
   async () => {
     try {
-      let options = {
-        dataCollectionId: "AboutUsIntroSection",
-      };
-
-      const { items } = await wixClient.items
-        .queryDataItems(options)
-        .find();
+      const data = {
+        "dataCollectionId": "AboutUsIntroSection",
+        "includeReferencedItems": null,
+        "returnTotalCount": null,
+        "find": {},
+        "contains": null,
+        "eq": null,
+        "limit": null
+      }
+      const response = await fetchCollection(data);
       handleCollectionLoaded();
-
-      return items.map(item=>item.data)[0];
+      return response._items.map((x) => x.data)[0];
     } catch (error) {
       handleCollectionLoaded();
       throw new Error(error.message);
@@ -71,21 +73,18 @@ export const fetchOurDreamSection = createAsyncThunk(
   "data/fetchOurDreamSection",
   async () => {
     try {
-      let options = {
-        dataCollectionId: "AboutUsDreamTeamSection",
-      };
-
-      const { items: fetchedOurDream } = await wixClient.items
-        .queryDataItems(options)
-        .find();
+      const data = {
+        "dataCollectionId": "AboutUsDreamTeamSection",
+        "includeReferencedItems": null,
+        "returnTotalCount": null,
+        "find": {},
+        "contains": null,
+        "eq": null,
+        "limit": null
+      }
+      const response = await fetchCollection(data);
       handleCollectionLoaded();
-      //trigger animation on data load
-      setTimeout(() => {
-        document.querySelector(".updateWatchedTrigger").click();
-        document.querySelector(".triggerSplitWordAnimation").click();
-      }, 1000);
-
-      return fetchedOurDream;
+      return response._items.map((x) => x.data);
     } catch (error) {
       handleCollectionLoaded();
       throw new Error(error.message);
@@ -97,38 +96,18 @@ export const fetchOurFamilySection = createAsyncThunk(
   "data/fetchOurFamilySection",
   async () => {
     try {
-      let options = {
-        dataCollectionId: "AboutUsRestOfFamily",
-      };
-
-      const { items: fetchedOurFamily } = await wixClient.items
-        .queryDataItems(options)
-        .find();
+      const data = {
+        "dataCollectionId": "AboutUsRestOfFamily",
+        "includeReferencedItems": null,
+        "returnTotalCount": null,
+        "find": {},
+        "contains": null,
+        "eq": null,
+        "limit": null
+      }
+      const response = await fetchCollection(data);
       handleCollectionLoaded();
-      setTimeout(() => {
-        document.querySelector(".updateWatchedTrigger").click();
-        document.querySelector(".triggerSplitWordAnimation").click();
-      }, 1000);
-      return fetchedOurFamily;
-    } catch (error) {
-      handleCollectionLoaded();
-      throw new Error(error.message);
-    }
-  }
-);
-export const fetchSliderSection = createAsyncThunk(
-  "data/fetchSliderSection",
-  async () => {
-    try {
-      let options = {
-        dataCollectionId: "AboutBottomSlider",
-      };
-      const { items: fetchedSliderBanner } = await wixClient.items
-        .queryDataItems(options)
-        .find();
-      handleCollectionLoaded();
-
-      return fetchedSliderBanner;
+      return response._items.map((x) => x.data);
     } catch (error) {
       handleCollectionLoaded();
       throw new Error(error.message);
@@ -159,9 +138,17 @@ export const getAboutSectionDetails = createAsyncThunk(
   "data/getAboutSectionDetails",
   async () => {
     try {
-      let options = {dataCollectionId: "AboutUsSectionDetails"};
-      const { items } = await wixClient.items.queryDataItems(options).find();
-      return items.map(item => item.data)[0];
+      const data = {
+        "dataCollectionId": "AboutUsSectionDetails",
+        "includeReferencedItems": null,
+        "returnTotalCount": null,
+        "find": {},
+        "contains": null,
+        "eq": null,
+        "limit": null
+      }
+      const response = await fetchCollection(data);
+      return response._items.map((x) => x.data)[0];
     } catch (error) {
       throw new Error(error.message);
     }
@@ -237,19 +224,6 @@ const aboutUsSlice = createSlice({
       })
       .addCase(fetchOurFamilySection.rejected, (state, action) => {
         state.OurFamilyLoading = false;
-        state.error = action.error.message;
-      })
-      /// Slider Banner Section ////
-      .addCase(fetchSliderSection.pending, (state) => {
-        state.SliderLoading = true;
-        state.error = null;
-      })
-      .addCase(fetchSliderSection.fulfilled, (state, action) => {
-        state.SliderLoading = false;
-        state.SliderData = action.payload;
-      })
-      .addCase(fetchSliderSection.rejected, (state, action) => {
-        state.SliderLoading = false;
         state.error = action.error.message;
       })
       /// Slider Section ////

@@ -1,20 +1,14 @@
-import React, { useEffect } from "react";
+import React from "react";
 import DelayedLink from "../../../common/DelayedLink";
-import { useDispatch, useSelector } from "react-redux";
-import { getMarketCollection } from "../../../redux/reducers/marketData";
+import { useSelector } from "react-redux";
 import { generateImageURL } from "../../../common/common_functions/imageURL";
 
 const Market = () => {
-  const dispatch = useDispatch();
 
   const data = useSelector((state) => state.market.marketModel);
   const marketItems = data ? data.filter(market => market.menuItem) : [];
   // const loading = useSelector((state) => state.market.marketModelLoading);
   // const error = useSelector((state) => state.market.error);
-
-  useEffect(() => {
-    dispatch(getMarketCollection());
-  }, [dispatch]);
 
   return (
     <div className="wrapper-submenu-market wrapper-submenu">

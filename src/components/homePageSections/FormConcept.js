@@ -1,6 +1,9 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
-const FormConcept = ({ data }) => {
+const FormConcept = () => {
+  const data = useSelector((state) => state.home.homeTopData);
+
   return (
     <section className="home-from-concept-to-reality overflow-hidden">
       <div

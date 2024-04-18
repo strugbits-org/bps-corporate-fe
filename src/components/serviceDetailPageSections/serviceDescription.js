@@ -1,6 +1,9 @@
+import { useSelector } from "react-redux";
 import { generateImageURL } from "../../common/common_functions/imageURL";
 
-const serviceDescription = ({data}) => {
+const ServiceDescription = () => {
+  const data = useSelector((state) => state.services.servicesData);
+
   return (
     <section className="services-post-description pt-lg-210 pt-tablet-105 pt-phone-200">
       <div className="container-fluid">
@@ -45,4 +48,4 @@ const serviceDescription = ({data}) => {
   );
 };
 
-export default serviceDescription;
+export default ServiceDescription;

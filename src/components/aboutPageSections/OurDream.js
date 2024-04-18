@@ -1,20 +1,14 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { generateImageURL } from "../../common/common_functions/imageURL";
-import { fetchOurDreamSection } from "../../redux/reducers/aboutusData";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { DefaultButton } from "../commonComponents/DefaultButton";
 
 const OurDream = () => {
-  const dispatch = useDispatch();
   const data = useSelector((state) => state.aboutus.OurDreamData);
   const { sectionDetails } = useSelector((state) => state.aboutus);
 
   // const loading = useSelector((state) => state.aboutus.OurDreamLoading);
   // const error = useSelector((state) => state.aboutus.error);
-
-  useEffect(() => {
-    dispatch(fetchOurDreamSection());
-  }, [dispatch]);
 
   return (
     <section className="about-dream-team pt-lg-195">
@@ -34,16 +28,16 @@ const OurDream = () => {
                       <div className="wrapper-profile">
                         <div className="container-img">
                           <img
-                            src={generateImageURL({ wix_url: data.data.image, q: "95" })}
+                            src={generateImageURL({ wix_url: data.image, q: "95" })}
                             data-preload
                             className="media"
                             alt=""
                           />
                         </div>
                         <div className="container-text">
-                          <h3 className="name split-words">{data.data.name}</h3>
+                          <h3 className="name split-words">{data.name}</h3>
                           <p className="occupation split-words">
-                            {data.data.designation}
+                            {data.designation}
                           </p>
                         </div>
                       </div>

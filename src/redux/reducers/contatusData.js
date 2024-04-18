@@ -1,11 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import createWixClient from "../wixClient";
-import { handleCollectionLoaded } from "../../utilis/pageLoadingAnimation";
-
-const wixClient = createWixClient();
+import { fetchCollection } from "../fetchCollection";
 
 const initialState = {
-  contactusData: [],
+  contactusData: null,
 
   contactusLoading: false,
   error: null,
@@ -14,45 +11,45 @@ const initialState = {
 
 export const fetchContactUs = createAsyncThunk(
   "data/fetchContactUs",
-  async (markAsLoaded = true) => {
+  async () => {
     try {
-        let options = {
-            dataCollectionId: "ContactUsContent",
-            includeReferencedItems: ["blog"],
-          };
-    
-          const { items: fetchContactUs } = await wixClient.items
-          
-            .queryDataItems(options)
-            .find();
-            if(markAsLoaded) handleCollectionLoaded();
-            return fetchContactUs;
-      } catch (error) {
-      if(markAsLoaded) handleCollectionLoaded();
+      const data = {
+        "dataCollectionId": "ContactUsContent",
+        "includeReferencedItems": null,
+        "returnTotalCount": null,
+        "find": {},
+        "contains": null,
+        "eq": null,
+        "limit": null
+      }
+      const response = await fetchCollection(data);
+      return response._items.map((x) => x.data)[0];
+    } catch (error) {
       throw new Error(error.message);
     }
   }
 );
 
 const contactUsSlice = createSlice({
-    name: "contactus",
-    initialState,
-    reducers: {},
-    extraReducers: (builder) => {
-      builder
-        /// Intro Section ////
-        .addCase(fetchContactUs.pending, (state) => {
-          state.contactusLoading = true;
-          state.error = null;
-        })
-        .addCase(fetchContactUs.fulfilled, (state, action) => {
-          state.contactusLoading = false;
-          state.contactusData = action.payload;
-        })
-        .addCase(fetchContactUs.rejected, (state, action) => {
-            state.contactusLoading = false;
-            state.error = action.error.message;
-          });
-    }})
+  name: "contactus",
+  initialState,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      /// Intro Section ////
+      .addCase(fetchContactUs.pending, (state) => {
+        state.contactusLoading = true;
+        state.error = null;
+      })
+      .addCase(fetchContactUs.fulfilled, (state, action) => {
+        state.contactusLoading = false;
+        state.contactusData = action.payload;
+      })
+      .addCase(fetchContactUs.rejected, (state, action) => {
+        state.contactusLoading = false;
+        state.error = action.error.message;
+      });
+  }
+})
 
 export default contactUsSlice.reducer;

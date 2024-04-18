@@ -4,9 +4,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import contactusSchema from "../common/schema/contactusSchema";
 import { useDispatch, useSelector } from "react-redux";
 import { postFormData } from "../redux/reducers/contactus";
-const ContactForm = ({data}) => {
+const ContactForm = () => {
 
   const dispatch = useDispatch();
+
+  const data = useSelector((state) => state.contactus.contactusData);
+
   const [showSuccess, setShowSuccess] = useState(false);
   const [showError, setShowError] = useState(false);
   const { loadingForm, successForm, errorForm } = useSelector(

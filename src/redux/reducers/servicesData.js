@@ -1,8 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import createWixClient from "../wixClient";
 import { handleCollectionLoaded } from "../../utilis/pageLoadingAnimation";
 import { listPortfolios } from "../../utilis/queryCollections";
-const wixClient = createWixClient();
+import { fetchCollection } from "../fetchCollection";
 
 const initialState = {
   servicesData: null,
@@ -21,18 +20,20 @@ export const fetchServicesData = createAsyncThunk(
   "data/fetchServicesData",
   async (slug) => {
     try {
-      let options = {
-        dataCollectionId: "StudiosSection",
-        includeReferencedItems: ["subServices"],
-      };
-
-      const { items } = await wixClient.items
-        .queryDataItems(options)
-        .eq("slug", slug)
-        .find();
-
-      return items.map(x => x.data)[0];
+      const data = {
+        "dataCollectionId": "StudiosSection",
+        "includeReferencedItems": ["subServices"],
+        "returnTotalCount": null,
+        "find": {},
+        "contains": null,
+        "eq": ["slug", slug],
+        "limit": null
+      }
+      const response = await fetchCollection(data);
+      handleCollectionLoaded();
+      return response._items.map((x) => x.data)[0];
     } catch (error) {
+      handleCollectionLoaded();
       throw new Error(error.message);
     }
   }
@@ -50,8 +51,17 @@ export const getServicesSectionDetails = createAsyncThunk(
   "data/getServicesSectionDetails",
   async () => {
     try {
-      const { items } = await wixClient.items.queryDataItems({ dataCollectionId: "ServicePostSectionDetails" }).find();
-      return items.map(x => x.data)[0];
+      const data = {
+        "dataCollectionId": "ServicePostSectionDetails",
+        "includeReferencedItems": null,
+        "returnTotalCount": null,
+        "find": {},
+        "contains": null,
+        "eq": null,
+        "limit": null
+      }
+      const response = await fetchCollection(data);
+      return response._items.map((x) => x.data)[0];
     } catch (error) {
       throw new Error(error.message);
     }

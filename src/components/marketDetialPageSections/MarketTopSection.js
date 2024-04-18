@@ -1,8 +1,11 @@
+import { useSelector } from "react-redux";
 import { generateImageURL } from "../../common/common_functions/imageURL"
 import getFullVideoURL from "../../common/common_functions/videoURL"
 import { DefaultButton } from "../commonComponents/DefaultButton"
 
-const MarketTopSection = ({ data }) => {
+const MarketTopSection = () => {
+  const data = useSelector((state) => state.market.marketTopData);
+
   return (
     <>
       <section className="market-post-intro">

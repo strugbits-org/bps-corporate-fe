@@ -3,8 +3,6 @@ import SocialSection from "../components/commonComponents/SocialSection";
 import { useDispatch, useSelector } from "react-redux";
 import { listBlogs } from "../utilis/queryCollections";
 import BlogListing from "../components/blogPageSections/BlogListing";
-import { fetchStudioSection } from "../redux/reducers/homeData";
-import { getMarketCollection } from "../redux/reducers/marketData";
 import { handleCollectionLoaded } from "../utilis/pageLoadingAnimation";
 import { updatedWatched } from "../utilis/animationsTriggers";
 import { getBlogSectionDetails } from "../redux/reducers/blogData";
@@ -19,8 +17,6 @@ const Blog = () => {
   const { blogSectionDetails } = useSelector((state) => state.blog);
   const pageSize = 8;
   useEffect(() => {
-    dispatch(fetchStudioSection());
-    dispatch(getMarketCollection());
     dispatch(getBlogSectionDetails());
     applyFilters({ disableLoader: true });
   }, [dispatch]);

@@ -2,8 +2,9 @@ import { useSelector } from "react-redux";
 import { generateImageURL } from "../../common/common_functions/imageURL";
 import { convertToHTML } from "../../utilis/utilityFunctions";
 
-const HowWeDoSection = ({ data }) => {
+const HowWeDoSection = () => {
   const { marketSectionDetails } = useSelector((state) => state.market);
+  const data = useSelector((state) => state.market.marketTopData);
 
   const parseDescription = (description) => {
     const options = {

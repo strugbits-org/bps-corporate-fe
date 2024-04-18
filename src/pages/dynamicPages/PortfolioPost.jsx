@@ -13,7 +13,6 @@ const PortfoliPost = () => {
 
   const dispatch = useDispatch();
   const portfolioData = useSelector((state) => state.portfolio.singlePortfolioData);
-  const { portfolioSectionDetails } = useSelector((state) => state.portfolio);
   // const loading = useSelector((state) => state.portfolio.portfolioLoading);
   // const error = useSelector((state) => state.services.error);
 
@@ -25,8 +24,8 @@ const PortfoliPost = () => {
   return (
     <>
       <PortfolioIntoSection data={portfolioData} />
-      <GallerySection title={portfolioSectionDetails?.gallerySectionTitle} productsTitle={portfolioSectionDetails?.productsSectionTitle} data={portfolioData} />
-      <ExploreProjectsSection title={portfolioSectionDetails?.otherProjectsTitle} id={params.slug} />
+      <GallerySection />
+      <ExploreProjectsSection id={params.slug} />
       <SocialSection />
     </>
   );
