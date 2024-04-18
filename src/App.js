@@ -34,7 +34,7 @@ function App() {
       <Cookies />
       <Navbar />
       <Helmet>
-        <title>BluePrint Studio</title>
+        <title>BluePrint Studios</title>
         <meta
           name="description"
           content="Events are crucial for enhancing brand awareness, offering exclusive

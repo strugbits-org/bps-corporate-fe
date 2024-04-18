@@ -6,7 +6,6 @@ import SocialVerticalBar from "./SocialVerticalBar";
 import ReactPlayer from "react-player";
 import { getblogTags } from "../../redux/reducers/blogData";
 import { useDispatch, useSelector } from "react-redux";
-import TextTOClickableLink from "../../common/common_functions/textTOClickableLink";
 
 const PostDetails = ({ data }) => {
   const { blogSectionDetails } = useSelector((state) => state.blog);
@@ -232,7 +231,7 @@ const PostDetails = ({ data }) => {
                         <p
                           key={index}
                           dangerouslySetInnerHTML={{
-                            __html: TextTOClickableLink(item.text),
+                            __html: item.text,
                           }}
                         />
                       );
