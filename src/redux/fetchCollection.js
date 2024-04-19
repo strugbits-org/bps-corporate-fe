@@ -1,7 +1,6 @@
 import axios from "axios";
 
 const base_url = process.env.REACT_APP_API_ENDPOINT;
-// const base_url = process.env.REACT_APP_API_ENDPOINT_DEV;
 
 export const fetchCollection = async (payload) => {
     try {
