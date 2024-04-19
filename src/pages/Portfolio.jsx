@@ -25,14 +25,14 @@ const Portfolio = () => {
   
   const handleSeeMore = async () => {
     const response = await portfolioResponse.next();
-    setPortfolioCollection(prev => [...prev, ...response.items.map(item => item.data)]);
+    setPortfolioCollection(prev => [...prev, ...response._items.map(item => item.data)]);
     setPortfolioResponse(response);
     updatedWatched();
   }
 
   const applyFilters = async ({selectedStudios = [], selectedMarkets = [], disableLoader = false}) => {
     const response = await listPortfolios({ pageSize, studios: selectedStudios, markets: selectedMarkets, disableLoader });
-    setPortfolioCollection(response.items.filter(item => item.data.portfolioRef._id !== undefined).map(item => item.data));
+    setPortfolioCollection(response._items.filter(item => item.data.portfolioRef._id !== undefined).map(item => item.data));
     setPortfolioResponse(response);
     handleCollectionLoaded();
   }

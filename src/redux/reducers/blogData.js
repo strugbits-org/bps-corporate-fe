@@ -91,9 +91,10 @@ export const fetchSingleBlog = createAsyncThunk(
   }
 );
 
-export const getblogTags = createAsyncThunk("data/getblogTags", async (id) => {
+export const getblogTags = createAsyncThunk("data/getblogTags", async (ids) => {
   try {
-    const { items } = await SingleBlogWixClient.tags.queryTags().hasSome('_id', id).find();
+    
+    const { items } = await SingleBlogWixClient.tags.queryTags().hasSome('_id', ids).find();
 
     return items;
   } catch (error) {

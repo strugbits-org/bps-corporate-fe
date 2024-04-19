@@ -14,3 +14,16 @@ export const fetchCollection = async (payload) => {
         throw new Error(error.message);
     }
 }
+
+export const fetchBlogTags = async (payload) => {
+    try {
+        let data = JSON.stringify(payload);
+        const headers = {
+            'Content-Type': 'application/json',
+        };
+        const response = await axios.post(base_url + "/corporate/query-data-items", data, { headers });
+        return response.data.data.data;
+    } catch (error) {
+        throw new Error(error.message);
+    }
+}

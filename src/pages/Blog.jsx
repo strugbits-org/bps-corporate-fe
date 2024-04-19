@@ -25,7 +25,7 @@ const Blog = () => {
     const response = await blogResponse.next();
     setBlogCollection((prev) => [
       ...prev,
-      ...response.items.map((item) => item.data),
+      ...response._items.map((item) => item.data),
     ]);
     setBlogResponse(response);
     updatedWatched();
@@ -42,7 +42,7 @@ const Blog = () => {
       markets: selectedMarkets,
       disableLoader
     });
-    setBlogCollection(response.items.filter(item => item.data.blogRef && item.data.blogRef._id !== undefined).map(item => item.data));
+    setBlogCollection(response._items.filter(item => item.data.blogRef && item.data.blogRef._id !== undefined).map(item => item.data));
     setBlogResponse(response);
     handleCollectionLoaded();
   };

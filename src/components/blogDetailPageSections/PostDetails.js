@@ -163,7 +163,6 @@ const PostDetails = ({ data }) => {
   }, [data]);
 
   useEffect(() => {
-    console.log("data?.blogRef?.tags", data?.blogRef?.tags);
     dispatch(getblogTags(data?.blogRef?.tags));
   }, [dispatch, data?.blogRef?.tags]);
 

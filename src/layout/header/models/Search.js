@@ -88,23 +88,23 @@ const Search = () => {
         searchTerm: term,
         disableLoader: true
       };
-
-      var portfolio = await listPortfolios(options);
-      setPortfolioCollection(portfolio.items.filter(item => item.data.portfolioRef._id !== undefined).map(item => item.data));
-      
-      var products = await listProducts(options);
-      setProductCollection(products.items.filter(item => item.data.product._id !== undefined && !item.data.hidden).map(item => item.data));
-      
-      var blog = await listBlogs(options);
-      setBlogCollection(blog.items.filter(item => item.data.blogRef._id !== undefined).map(item => item.data));
-
-      var otherPages = await searchAllPages(options);
+  
+      const [portfolio, products, blog, otherPages] = await Promise.all([
+        listPortfolios(options),
+        listProducts(options),
+        listBlogs(options),
+        searchAllPages(options)
+      ]);
+  
+      setPortfolioCollection(portfolio._items.filter(item => item.data.portfolioRef._id !== undefined).map(item => item.data));
+      setProductCollection(products._items.filter(item => item.data.product._id !== undefined && !item.data.hidden).map(item => item.data));
+      setBlogCollection(blog._items.filter(item => item.data.blogRef._id !== undefined).map(item => item.data));
       setOtherPagesResults(otherPages);
-
     } catch (error) {
       console.log("error", error);
     }
   };
+  
 
   useEffect(() => {
     if (searchActive) {
