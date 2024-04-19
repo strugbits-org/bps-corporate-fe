@@ -23,9 +23,9 @@ const Portfolio = () => {
     dispatch(fetchStudioSection());
     dispatch(getMarketCollection());
     dispatch(getPortfolioSectionDetails());
-    applyFilters({disableLoader : true});
+    applyFilters({ disableLoader: true });
   }, [dispatch]);
-  
+
   const handleSeeMore = async () => {
     const response = await portfolioResponse.next();
     setPortfolioCollection(prev => [...prev, ...response.items.map(item => item.data)]);
@@ -33,7 +33,7 @@ const Portfolio = () => {
     updatedWatched();
   }
 
-  const applyFilters = async ({selectedStudios = [], selectedMarkets = [], disableLoader = false}) => {
+  const applyFilters = async ({ selectedStudios = [], selectedMarkets = [], disableLoader = false }) => {
     const response = await listPortfolios({ pageSize, studios: selectedStudios, markets: selectedMarkets, disableLoader });
     setPortfolioCollection(response.items.filter(item => item.data.portfolioRef._id !== undefined).map(item => item.data));
     setPortfolioResponse(response);
@@ -41,7 +41,16 @@ const Portfolio = () => {
 
   return (
     <>
-      <PortfolioListing data={{ items: portfolioCollection, pageSize, studios, markets,portfolioSectionDetails, totalCount: portfolioResponse?.totalCount }} applyFilters={applyFilters} seeMore={handleSeeMore} />
+      <PortfolioListing data={
+        {
+          items: portfolioCollection,
+          pageSize,
+          studios: studios.filter(x => x.data.filters),
+          markets,
+          portfolioSectionDetails,
+          totalCount: portfolioResponse?.totalCount
+        }
+      } applyFilters={applyFilters} seeMore={handleSeeMore} />
       <MarketSection />
       <SocialSection />
     </>
