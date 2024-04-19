@@ -1,30 +1,15 @@
 import DelayedLink from "../../common/DelayedLink";
 import Newsletter from "../../common/Newsletter";
-import React, { useEffect } from "react";
+import React from "react";
 import { generateImageURL } from "../../common/common_functions/imageURL";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchFooterData, getSocialLinks } from "../../redux/reducers/footerData";
+import { useSelector } from "react-redux";
 
 const Footer = () => {
   const EXTERNAL_SITE_URL = "https://www.rentals.blueprintstudios.com";
 
-  const dispatch = useDispatch();
   const footerData = useSelector((state) => state.footer.data.footerData);
   const contactData = useSelector((state) => state.footer.data.contactData);
   const socialLinks = useSelector((state) => state.footer.socialLinks);
-  useEffect(() => {
-    dispatch(fetchFooterData());
-    dispatch(getSocialLinks());
-  }, [dispatch]);
-
-  
-
-  const firstItem = footerData[0]?.data; // Assuming you want values from the first item
-  const logo1 = firstItem ? firstItem.logo1 : "";
-  const logo2 = firstItem ? firstItem.logo2 : "";
-  const logo3 = firstItem ? firstItem.logo3 : "";
-  const heading = firstItem ? firstItem.heading : "";
-  const copyright = firstItem ? firstItem.copyright : "";
 
   return (
     <footer id="footer" data-cursor-style="off">
@@ -34,7 +19,7 @@ const Footer = () => {
             <div className="container-logo">
               <div data-parallax data-end="bottom bottom" className="z-3">
                 <img
-                  src={generateImageURL({ wix_url: logo1, original:true })}
+                  src={generateImageURL({ wix_url: footerData?.logo1, original: true })}
                   data-preload
                   className="img-b z-3 media"
                   alt=""
@@ -49,7 +34,7 @@ const Footer = () => {
                 className="z-2"
               >
                 <img
-                  src={generateImageURL({ wix_url: logo2, original:true })}
+                  src={generateImageURL({ wix_url: footerData?.logo2, original: true })}
                   data-preload
                   className="img-p z-2 media"
                   alt=""
@@ -64,7 +49,7 @@ const Footer = () => {
                 className="z-1"
               >
                 <img
-                  src={generateImageURL({ wix_url: logo3, original:true })}
+                  src={generateImageURL({ wix_url: footerData?.logo3, original: true })}
                   data-preload
                   className="img-s z-1 media"
                   alt=""
@@ -72,13 +57,13 @@ const Footer = () => {
               </div>
             </div>
             <h2 className="fs--60 fs-mobile-50 title-footer white-1 mt-lg-170 mt-mobile-20">
-              {heading}
+              {footerData?.heading}
             </h2>
           </div>
           <div className="col-lg-5 column-2 pt-lg-65 pt-mobile-50">
             <div className="wrapper-newsletter-menu">
 
-              <Newsletter data={firstItem} />
+              <Newsletter />
 
               <div className="container-footer-menu mt-lg-165 mt-tablet-55 mt-phone-125">
                 <ul className="list-footer-menu">
@@ -140,7 +125,7 @@ const Footer = () => {
                   </li>
                   <li className="list-item item-social-media">
                     <ul className="list-social-media">
-                      {socialLinks.map((item,index) => (
+                      {socialLinks.map((item, index) => (
                         <li key={index}>
                           <DelayedLink to={item.link} target="_blank"
                             attributes={{
@@ -159,22 +144,21 @@ const Footer = () => {
             <div className="container-address mt-lg-145 mt-phone-115">
               <ul className="list-address">
                 {contactData.map((data, index) => {
-
                   return (
 
                     <li key={index}>
-                      <h3 className="city">{data.data.city}</h3>
+                      <h3 className="city">{data?.city}</h3>
                       <address>
-                        {data.data.address1} <br />
-                        {data.data.address2} <br />
-                        {data.data.address3}
+                        {data?.address1} <br />
+                        {data?.address2} <br />
+                        {data?.address3}
                       </address>
                       <div className="phones">
-                        <DelayedLink to={`tel:${data.data.phone1}`} target={"_blank"}>
-                          <span>{data.data.phone1}</span>
+                        <DelayedLink to={`tel:${data?.phone1}`} target={"_blank"}>
+                          <span>{data?.phone1}</span>
                         </DelayedLink>
-                        <DelayedLink to={`tel:${data.data.phone2}`} target={"_blank"}>
-                          <span>{data.data.phone2}</span>
+                        <DelayedLink to={`tel:${data?.phone2}`} target={"_blank"}>
+                          <span>{data?.phone2}</span>
                         </DelayedLink>
                       </div>
                     </li>
@@ -186,7 +170,7 @@ const Footer = () => {
         </div>
         <div className="row row-2 mt-lg-80 mt-mobile-45">
           <div className="col-lg-12 column-1">
-            <p className="fs--14 font-2 white-1">{copyright}</p>
+            <p className="fs--14 font-2 white-1">{footerData?.copyright}</p>
           </div>
         </div>
       </div>

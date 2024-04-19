@@ -4,13 +4,14 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { postNewsletter } from "../redux/reducers/contactus";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-const Newsletter = ({data}) => {
+const Newsletter = () => {
   const dispatch = useDispatch();
 
   const [isLabelHidden, setIsLabelHidden] = useState(false);
   const { loading, success, error } = useSelector((state) => state.contact);
   const [showSuccess, setShowSuccess] = useState(false);
   const [showError, setShowError] = useState(false);
+  const data = useSelector((state) => state.footer.data.footerData);
 
   const handleInputFocus = () => {
     setIsLabelHidden(true);

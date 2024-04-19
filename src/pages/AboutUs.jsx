@@ -7,7 +7,7 @@ import SocialSection from '../components/commonComponents/SocialSection';
 import DreamBigSection from '../components/commonComponents/DreamBigSection';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { getAboutSectionDetails, getAboutSlider } from '../redux/reducers/aboutusData';
+import { fetchCardsSection, fetchIntroSection, fetchOurDreamSection, fetchOurFamilySection, getAboutSectionDetails, getAboutSlider } from '../redux/reducers/aboutusData';
 import AboutCardsSection from '../components/aboutPageSections/AboutCardsSection';
 
 const AboutUs = () => {
@@ -17,8 +17,12 @@ const AboutUs = () => {
   // const loading = useSelector((state) => state.aboutus.SliderLoading);
   // const error = useSelector((state) => state.aboutus.error);
   useEffect(() => {
-    dispatch(getAboutSlider());
     dispatch(getAboutSectionDetails());
+    dispatch(fetchIntroSection());
+    dispatch(fetchCardsSection());
+    dispatch(fetchOurDreamSection());
+    dispatch(fetchOurFamilySection());
+    dispatch(getAboutSlider());
   }, [dispatch]);
 
   return (

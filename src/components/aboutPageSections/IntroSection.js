@@ -1,16 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { generateImageURL } from "../../common/common_functions/imageURL";
-import { fetchIntroSection } from "../../redux/reducers/aboutusData";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { DefaultButton } from "../commonComponents/DefaultButton";
 
 const IntroSection = () => {
-  const dispatch = useDispatch();
   const data = useSelector((state) => state.aboutus.IntroData);
-
-  useEffect(() => {
-    dispatch(fetchIntroSection());
-  }, [dispatch]);
 
   return (
     <>

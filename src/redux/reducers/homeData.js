@@ -1,8 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import createWixClient from "../wixClient";
 import { handleCollectionLoaded } from "../../utilis/pageLoadingAnimation";
-
-const wixClient = createWixClient();
+import { fetchCollection } from "../fetchCollection";
 
 const initialState = {
   homeSectionDetails: [],
@@ -34,9 +32,17 @@ export const fetchHomeSectionDetails = createAsyncThunk(
   "data/fetchHomeSectionDetails",
   async () => {
     try {
-      let options = { dataCollectionId: "HomeSectionDetails" };
-      const { items } = await wixClient.items.queryDataItems(options).find();
-      return items.map(x => x.data)[0];
+      const data = {
+        "dataCollectionId": "HomeSectionDetails",
+        "includeReferencedItems": null,
+        "returnTotalCount": null,
+        "find": {},
+        "contains": null,
+        "eq": null,
+        "limit": null
+      }
+      const response = await fetchCollection(data);
+      return response._items.map((x) => x.data)[0];
     } catch (error) {
       throw new Error(error.message);
     }
@@ -47,16 +53,23 @@ export const fetchHomeTopData = createAsyncThunk(
   "data/fetchDataItems",
   async () => {
     try {
-      let options = {
-        dataCollectionId: "HomeTopSectionData",
-      };
+      const data = {
+        "dataCollectionId": "HomeTopSectionData",
+        "includeReferencedItems": null,
+        "returnTotalCount": null,
+        "find": {},
+        "contains": null,
+        "eq": null,
+        "limit": null
+      }
+      const response = await fetchCollection(data);
 
-      const { items } = await wixClient.items.queryDataItems(options).find();
       handleCollectionLoaded();
       setTimeout(() => {
         document.querySelector(".stickyAnimationTrigger").click();
       }, 1000);
-      return items.map(x => x.data)[0];
+
+      return response._items.map((x) => x.data)[0];
     } catch (error) {
       handleCollectionLoaded();
       throw new Error(error.message);
@@ -68,13 +81,18 @@ export const fetchGetTouchSection = createAsyncThunk(
   "data/fetchGetTouchSection",
   async () => {
     try {
-      let options = {
-        dataCollectionId: "GetInTouchSection",
-      };
-
-      const { items } = await wixClient.items.queryDataItems(options).find();
+      const data = {
+        "dataCollectionId": "GetInTouchSection",
+        "includeReferencedItems": null,
+        "returnTotalCount": null,
+        "find": {},
+        "contains": null,
+        "eq": null,
+        "limit": null
+      }
+      const response = await fetchCollection(data);
       handleCollectionLoaded();
-      return items.map(x => x.data)[0];
+      return response._items.map((x) => x.data)[0];
     } catch (error) {
       handleCollectionLoaded();
       throw new Error(error.message);
@@ -84,25 +102,23 @@ export const fetchGetTouchSection = createAsyncThunk(
 
 export const fetchStudioSection = createAsyncThunk(
   "data/fetchStudioSection",
-  async (triggerAnimations = true) => {
+  async () => {
     try {
-      let options = {
-        dataCollectionId: "StudiosSection",
-      };
-
-      const { items } = await wixClient.items
-        .queryDataItems(options)
-        .find();
-      if (triggerAnimations) {
-        handleCollectionLoaded();
+      const data = {
+        "dataCollectionId": "StudiosSection",
+        "includeReferencedItems": null,
+        "returnTotalCount": null,
+        "find": {},
+        "contains": null,
+        "eq": null,
+        "limit": null
       }
+      const response = await fetchCollection(data);
       setTimeout(() => {
         document.querySelector(".updateWatchedTrigger").click();
       }, 1000);
-      const sortedList = items.sort((a, b) => a.data.orderNumber - b.data.orderNumber);
-      return sortedList;
+      return response._items.map((x) => x.data).sort((a, b) => a.orderNumber - b.orderNumber);
     } catch (error) {
-      handleCollectionLoaded();
       throw new Error(error.message);
     }
   }
@@ -112,17 +128,18 @@ export const fetchPeopleReviewSlider = createAsyncThunk(
   "data/fetchPeopleReviewSlider",
   async () => {
     try {
-      let options = {
-        dataCollectionId: "PeopleReviewSlider",
-      };
-
-      const { items } = await wixClient.items
-        .queryDataItems(options)
-        .find();
-      handleCollectionLoaded();
-      return items;
+      const data = {
+        "dataCollectionId": "PeopleReviewSlider",
+        "includeReferencedItems": null,
+        "returnTotalCount": null,
+        "find": {},
+        "contains": null,
+        "eq": null,
+        "limit": null
+      }
+      const response = await fetchCollection(data);
+      return response._items.map((x) => x.data);
     } catch (error) {
-      handleCollectionLoaded();
       throw new Error(error.message);
     }
   }
@@ -132,16 +149,18 @@ export const fetchRentalStoreSection = createAsyncThunk(
   "data/fetchRentalStoreSection",
   async () => {
     try {
-      let options = {
-        dataCollectionId: "RentalStore",
-      };
-
-      const { items: fetchedRentalSection } = await wixClient.items
-        .queryDataItems(options)
-        .find();
+      const data = {
+        "dataCollectionId": "RentalStore",
+        "includeReferencedItems": null,
+        "returnTotalCount": null,
+        "find": {},
+        "contains": null,
+        "eq": null,
+        "limit": null
+      }
+      const response = await fetchCollection(data);
       handleCollectionLoaded();
-      const response = fetchedRentalSection.sort((a, b) => (a.data.newimagetag === b.data.newimagetag) ? 0 : a.data.newimagetag ? -1 : 1);
-      return response;
+      return response._items.map(x => x.data).sort((a, b) => (a.newimagetag === b.newimagetag) ? 0 : a.newimagetag ? -1 : 1);
     } catch (error) {
       handleCollectionLoaded();
       throw new Error(error.message);
@@ -153,13 +172,17 @@ export const fetchRentalStoreSubtitle = createAsyncThunk(
   "data/fetchRentalStoreSubtitle",
   async () => {
     try {
-      let options = {
-        dataCollectionId: "HomeRentalStoreSubtitleStyled",
-      };
-
-      const { items } = await wixClient.items.queryDataItems(options).find();
-      const response = items.sort((a, b) => a.data.orderNumber - b.data.orderNumber);
-      return response.map(item => item.data);
+      const data = {
+        "dataCollectionId": "HomeRentalStoreSubtitleStyled",
+        "includeReferencedItems": null,
+        "returnTotalCount": null,
+        "find": {},
+        "contains": null,
+        "eq": null,
+        "limit": null
+      }
+      const response = await fetchCollection(data);
+      return response._items.map((x) => x.data).sort((a, b) => a.orderNumber - b.orderNumber);
     } catch (error) {
       throw new Error(error.message);
     }
@@ -170,14 +193,17 @@ export const fetchDreamBigSection = createAsyncThunk(
   "data/fetchDreamBigSection",
   async () => {
     try {
-      let options = {
-        dataCollectionId: "DreamBigSection",
-      };
-
-      const { items } = await wixClient.items.queryDataItems(options).find();
-      
-      handleCollectionLoaded();
-      return items.map(x => x.data)[0];
+      const data = {
+        "dataCollectionId": "DreamBigSection",
+        "includeReferencedItems": null,
+        "returnTotalCount": null,
+        "find": {},
+        "contains": null,
+        "eq": null,
+        "limit": null
+      }
+      const response = await fetchCollection(data);
+      return response._items.map(x => x.data)[0];
     } catch (error) {
       handleCollectionLoaded();
       throw new Error(error.message);

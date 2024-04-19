@@ -1,8 +1,10 @@
 import React from 'react';
 import { generateImageURL } from "../../common/common_functions/imageURL"
 import getFullVideoURL from '../../common/common_functions/videoURL';
+import { useSelector } from 'react-redux';
 
-const HeroSection = ({ data }) => {
+const HeroSection = () => {
+    const data = useSelector((state) => state.home.homeTopData);
     return (
         <section className="home-intro" data-aos="d:loop">
             <div className="container-img">

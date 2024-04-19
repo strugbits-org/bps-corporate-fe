@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import wixClientForm from "../wixClientForm";
+import { postForm } from "../fetchCollection";
 
 const initialState = {
   formData: null,
@@ -8,7 +8,7 @@ const initialState = {
   error: null,
   loading: false,
   success: false,
-  
+
   errorForm: null,
   loadingForm: false,
   successForm: false,
@@ -18,15 +18,8 @@ export const postFormData = createAsyncThunk(
   "contact/postFormData",
   async (formData) => {
     try {
-      let submission = {
-        formId: process.env.REACT_APP_WIX_CLIENT_FORM_ID,
-        status: "CONFIRMED",
-        submissions: formData,
-      };
-      const response = await wixClientForm.submissions.createSubmission(
-        submission
-      );
-
+      const response = await postForm("contact", formData);
+      console.log("response contact us", response);
       return response;
     } catch (error) {
       throw new Error(error.message);
@@ -38,14 +31,8 @@ export const postNewsletter = createAsyncThunk(
   "contact/postNewsletter",
   async (formData) => {
     try {
-      let submission = {
-        formId: process.env.REACT_APP_WIX_CLIENT_NEWSLETTER_ID,
-        status: "CONFIRMED",
-        submissions: formData,
-      };
-      const response = await wixClientForm.submissions.createSubmission(
-        submission
-      );
+      const response = await postForm("newsletter", formData);
+      console.log("response newsletter", response);
       return response;
     } catch (error) {
       throw new Error(error.message);

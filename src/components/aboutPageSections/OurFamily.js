@@ -1,17 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { generateImageURL } from "../../common/common_functions/imageURL";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchOurFamilySection } from "../../redux/reducers/aboutusData";
+import { useSelector } from "react-redux";
 import { DefaultButton } from "../commonComponents/DefaultButton";
 
 const OurFamily = () => {
-  const dispatch = useDispatch();
   const data = useSelector((state) => state.aboutus.OurFamilyData);
   const { sectionDetails } = useSelector((state) => state.aboutus);
-
-  useEffect(() => {
-    dispatch(fetchOurFamilySection());
-  }, [dispatch]);
 
   return (
     <section className="about-meet-the-rest-of-the-family pt-lg-245 pt-mobile-205">
@@ -33,7 +27,7 @@ const OurFamily = () => {
                     <div className="content">
                       <div className="container-img logo-img">
                         <img
-                          src={generateImageURL({ wix_url: data.data.logo, fit:"fit", q: "95" })}
+                          src={generateImageURL({ wix_url: data.logo, fit:"fit", q: "95" })}
                           data-preload
                           className="media"
                           data-aos="scaleOut
@@ -46,7 +40,7 @@ const OurFamily = () => {
                         data-aos="scaleOut .8s ease-out-cubic 0s, d:loop"
                       >
                         <img
-                          src={generateImageURL({ wix_url: data.data.image, q: "95" })}
+                          src={generateImageURL({ wix_url: data.image, q: "95" })}
                           data-preload
                           className="media"
                           data-parallax
@@ -55,16 +49,16 @@ const OurFamily = () => {
                         />
                       </div>
                       <div className="container-text">
-                        <p>{data.data.paragraph1}</p>
-                        <p>{data.data.paragraph2}</p>
-                        <p>{data.data.paragraph3}</p>
+                        <p>{data.paragraph1}</p>
+                        <p>{data.paragraph2}</p>
+                        <p>{data.paragraph3}</p>
                       </div>
                       <div className="container-btn">
                         <DefaultButton
                           customClasses={"btn-border-white"}
                           data={{
-                            label: data.data.buttonText,
-                            action: data.data.buttonAction
+                            label: data.buttonText,
+                            action: data.buttonAction
                           }}
                           attributes={{
                             "data-cursor-style": "off",

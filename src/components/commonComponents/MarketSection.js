@@ -1,21 +1,15 @@
 import DelayedLink from "../../common/DelayedLink";
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getMarketCollection } from "../../redux/reducers/marketData";
+import React from "react";
+import { useSelector } from "react-redux";
 import { generateImageURL } from "../../common/common_functions/imageURL";
 
 const MarketSection = () => {
   let data_delay = 0;
 
-  const dispatch = useDispatch();
   const data = useSelector((state) => state.market.marketModel);
   const { homeSectionDetails } = useSelector((state) => state.home);
   // const loading = useSelector((state) => state.home.marketLoading);
   // const error = useSelector((state) => state.home.error);
-
-  useEffect(() => {
-    dispatch(getMarketCollection(true));
-  }, [dispatch]);
 
   return (
     <section className={`section-markets ${data.length === 0 ? "hidden" : ""}`}>

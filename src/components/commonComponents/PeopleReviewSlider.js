@@ -1,24 +1,18 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { generateImageURL } from "../../common/common_functions/imageURL";
-import { fetchPeopleReviewSlider } from "../../redux/reducers/homeData";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { DefaultButton } from "./DefaultButton";
 
 const PeopleReviewSLider = () => {
-  const dispatch = useDispatch();
   const data = useSelector((state) => state.home.peopleReviewData);
-  const {homeSectionDetails} = useSelector((state) => state.home);
+  const { homeSectionDetails } = useSelector((state) => state.home);
 
   // const loading = useSelector((state) => state.home.peopleReviewLoading);
   // const error = useSelector((state) => state.home.error);
 
-  useEffect(() => {
-    dispatch(fetchPeopleReviewSlider());
-  }, [dispatch]);
-
   return (
-   
-    <section  className={`section-heres-what-people-are-saying pt-lg-300 pt-tablet-105 pt-phone-145 pb-lg-130 pb-tablet-100 pb-phone-145 pos-relative ${data.length === 0 ? "hidden" : ""}`}>
+
+    <section className={`section-heres-what-people-are-saying pt-lg-300 pt-tablet-105 pt-phone-145 pb-lg-130 pb-tablet-100 pb-phone-145 pos-relative ${data.length === 0 ? "hidden" : ""}`}>
       <div className="container-fluid pos-relative z-3">
         <div className="row">
           <div className="col-lg-6 offset-lg-3 column-1">
@@ -41,18 +35,18 @@ const PeopleReviewSLider = () => {
                         <div className="wrapper-content">
                           <div className="container-img">
                             <img
-                              src={generateImageURL({ wix_url: data?.data?.image, q: "95" })}
+                              src={generateImageURL({ wix_url: data?.image, q: "95" })}
                               data-preload
                               className="media"
                               alt=""
                             />
                           </div>
                           <div className="container-text">
-                            <p className="testimony">{data.data.description}</p>
+                            <p className="testimony">{data.description}</p>
                             <div className="container-profile">
-                              <div className="name">{data.data.name}</div>
+                              <div className="name">{data.name}</div>
                               <div className="occupation">
-                                {data.data.occupation}
+                                {data.occupation}
                               </div>
                             </div>
                           </div>

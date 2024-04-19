@@ -1,17 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { generateImageURL } from "../../common/common_functions/imageURL";
-import { fetchDreamBigSection } from "../../redux/reducers/homeData";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { DefaultButton } from "./DefaultButton";
 
 const DreamBigSection = () => {
 
-  const dispatch = useDispatch();
   const data = useSelector((state) => state.home.dreamBigData);
-
-  useEffect(() => {
-    dispatch(fetchDreamBigSection());
-  }, [dispatch]);
 
   return (
     <section className="section-dream-big">

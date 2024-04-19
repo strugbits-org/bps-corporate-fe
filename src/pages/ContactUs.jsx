@@ -1,31 +1,27 @@
 import ContactForm from "../common/ContactForm";
 import React, { useEffect } from "react";
 import getFullVideoURL from "../common/common_functions/videoURL";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchContactUs } from "../redux/reducers/contatusData";
+import { useSelector } from "react-redux";
 import ContactDetails from "../components/commonComponents/ContactDetails";
+import { handleCollectionLoaded } from "../utilis/pageLoadingAnimation";
 
 const ContactUs = () => {
-  const dispatch = useDispatch();
   const data = useSelector((state) => state.contactus.contactusData);
   // const loading = useSelector((state) => state.contactusData.contactusLoading);
   // const error = useSelector((state) => state.contactusData.error);
 
-  const firstItem = data[0];
-  const title = firstItem ? firstItem.data.title : "";
-  const description1 = firstItem ? firstItem.data.description1 : "";
-  const description2 = firstItem ? firstItem.data.description2 : "";
-  const copyrightText = firstItem ? firstItem.data.copyrightText : "";
-  const bottomDescription = firstItem ? firstItem.data.bottomDescription : "";
-  const backgroundVideo = firstItem
-    ? getFullVideoURL(firstItem.data.backgroundVideo)
-    : "";
-
   useEffect(() => {
-    dispatch(fetchContactUs());
-  }, [dispatch]);
+    const isFirstLoadDone = document.body.classList.contains("first-load-done");
+    if (isFirstLoadDone) {
+      handleCollectionLoaded();
+    } else {
+      setTimeout(() => {
+        handleCollectionLoaded();
+      }, 1500);
+    }
+  }, [])
 
-  return (
+  return data && (
     <>
       <section className="contact-intro" data-aos="d:loop">
         <div className="container-fluid pos-relative z-5">
@@ -35,17 +31,17 @@ const ContactUs = () => {
                 className="fs--165 title-contact white-1 split-chars"
                 data-aos="d:loop"
               >
-                {title}
+                {data?.title}
               </h1>
               <div className="container-text fs--25 lh-140 fs-tablet-18 white-1 mt-15">
                 <p data-aos="fadeInUp .8s ease-out-cubic .8s, d:loop">
-                  {description1}
+                  {data?.description1}
                 </p>
                 <p
                   className="mt-lg-35 mt-mobile-15"
                   data-aos="fadeInUp .8s ease-out-cubic .9s, d:loop"
                 >
-                  {description2}
+                  {data?.description2}
                 </p>
               </div>
             </div>
@@ -53,8 +49,8 @@ const ContactUs = () => {
         </div>
         <div className="container-img bg-img">
           <video
-            data-src={backgroundVideo}
-            src={backgroundVideo}
+            data-src={getFullVideoURL(data?.backgroundVideo)}
+            src={getFullVideoURL(data?.backgroundVideo)}
             data-preload
             autoPlay
             loop
@@ -74,19 +70,19 @@ const ContactUs = () => {
         <div className="container-fluid">
           <div className="row contact-info">
             {/* contact form start.. */}
-            <ContactForm data={firstItem?.data} />
+            <ContactForm />
             {/* contact form end.. */}
 
             {/* contactDetails here */}
-            <ContactDetails contactusData={firstItem} />
+            <ContactDetails />
           </div>
 
           <div className="row mt-135 no-mobile">
             <div className="col-lg-6">
-              <p className="fs--14 font-2 white-1">{copyrightText}</p>
+              <p className="fs--14 font-2 white-1">{data?.copyrightText}</p>
             </div>
             <div className="col-lg-6 flex-end">
-              <p className="fs--14 font-2 white-1">{bottomDescription}</p>
+              <p className="fs--14 font-2 white-1">{data?.bottomDescription}</p>
             </div>
           </div>
         </div>

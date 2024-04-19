@@ -1,20 +1,31 @@
 import DelayedLink from "../../common/DelayedLink";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { generateImageUrl2 } from "../../common/common_functions/imageURL";
-import { fetchPortfolio } from "../../redux/reducers/portfolioData";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { DefaultButton } from "../commonComponents/DefaultButton";
+import { listPortfolios } from "../../utilis/queryCollections";
+import { handleCollectionLoaded } from "../../utilis/pageLoadingAnimation";
 
 const OurProjectSection = () => {
-  const dispatch = useDispatch();
-  const portfolioCollection = useSelector((state) => state.portfolio.portfolioData);
+  const [portfolioCollection, setPortfolioCollection] = useState([]);
   // const loading = useSelector((state) => state.home.ourProjectLoading);
   // const error = useSelector((state) => state.home.error);
   const { homeSectionDetails } = useSelector((state) => state.home);
 
+  const getPortfolio = async () => {
+    try {
+      const response = await listPortfolios({ pageSize: 4, disableLoader: true });
+      handleCollectionLoaded();
+      setPortfolioCollection(response._items.map(x => x.data));
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
+
   useEffect(() => {
-    dispatch(fetchPortfolio({ pageSize: 4 }));
-  }, [dispatch]);
+    getPortfolio();
+  }, [])
+
 
   return (
     <section

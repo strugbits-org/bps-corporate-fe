@@ -8,7 +8,11 @@ import Cookies from "./common/Cookies";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadAppConfig } from "./redux/reducers/appConfig";
-import { fetchHomeSectionDetails } from "./redux/reducers/homeData";
+import { fetchDreamBigSection, fetchHomeSectionDetails, fetchPeopleReviewSlider, fetchStudioSection } from "./redux/reducers/homeData";
+import { getMarketCollection } from "./redux/reducers/marketData";
+import { fetchContactUs } from "./redux/reducers/contatusData";
+import { fetchFooterData, getSocialLinks } from "./redux/reducers/footerData";
+import { getSocialSectionBlogs } from "./redux/reducers/blogData";
 
 function App() {
   const dispatch = useDispatch();
@@ -22,6 +26,14 @@ function App() {
   useEffect(() => {
     dispatch(loadAppConfig());
     dispatch(fetchHomeSectionDetails());
+    dispatch(fetchStudioSection());
+    dispatch(getMarketCollection());
+    dispatch(fetchPeopleReviewSlider());
+    dispatch(fetchDreamBigSection());
+    dispatch(fetchContactUs());
+    dispatch(fetchFooterData());
+    dispatch(getSocialLinks());
+    dispatch(getSocialSectionBlogs());
   }, [dispatch]);
 
   return (

@@ -1,19 +1,16 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import createWixClient from "../wixClient";
 import { handleCollectionLoaded } from "../../utilis/pageLoadingAnimation";
-import SingleBlogWixClient from "../wixClientSingleBlog";
 import { listBlogs } from "../../utilis/queryCollections";
-
-const wixClient = createWixClient();
+import { fetchBlogTags, fetchCollection } from "../fetchCollection";
 
 const initialState = {
   blogPostData: [],
   singleBlogData: [],
   blogTags: [],
-  socialSectionBlogs:[],
-  blogSectionDetails:[],
-  
-  socialSectionBlogsLoading:false,
+  socialSectionBlogs: [],
+  blogSectionDetails: [],
+
+  socialSectionBlogsLoading: false,
   blogSectionDetailsLoading: false,
   singleBlogLoading: false,
   blogTagsLoading: false,
@@ -23,10 +20,10 @@ const initialState = {
 
 export const getblogPostData = createAsyncThunk(
   "data/getblogPostData",
-  async ({pageSize = 10, disableLoader = false, excludeItem = null}) => {
+  async ({ pageSize = 10, disableLoader = false, excludeItem = null }) => {
     try {
       const response = await listBlogs({ pageSize, disableLoader, excludeItem });
-      const data = response.items.filter(item => item.data.blogRef._id !== undefined).map(item => item.data)
+      const data = response._items.filter(item => item.data.blogRef._id !== undefined).map(item => item.data)
       handleCollectionLoaded();
       return data;
     } catch (error) {
@@ -38,14 +35,12 @@ export const getblogPostData = createAsyncThunk(
 
 export const getSocialSectionBlogs = createAsyncThunk(
   "data/getSocialSectionBlogs",
-  async ({pageSize = 3, disableLoader = false, excludeItem = null}) => {
+  async () => {
     try {
-      const response = await listBlogs({ pageSize, disableLoader, excludeItem });
-      const data = response.items.filter(item => item.data.blogRef._id !== undefined).map(item => item.data);
-      handleCollectionLoaded();
+      const response = await listBlogs({ pageSize: 3, disableLoader: true });
+      const data = response._items.filter(item => item.data.blogRef._id !== undefined).map(item => item.data);
       return data;
     } catch (error) {
-      handleCollectionLoaded();
       throw new Error(error.message);
     }
   }
@@ -55,9 +50,17 @@ export const getBlogSectionDetails = createAsyncThunk(
   "data/getBlogSectionDetails",
   async () => {
     try {
-      let options = {dataCollectionId: "BlogSectionDetails"};
-      const { items } = await wixClient.items.queryDataItems(options).find();
-      return items.map(item => item.data)[0];
+      const data = {
+        "dataCollectionId": "BlogSectionDetails",
+        "includeReferencedItems": null,
+        "returnTotalCount": null,
+        "find": {},
+        "contains": null,
+        "eq": null,
+        "limit": null
+      }
+      const response = await fetchCollection(data);
+      return response._items.map((x) => x.data)[0];
     } catch (error) {
       throw new Error(error.message);
     }
@@ -68,32 +71,18 @@ export const fetchSingleBlog = createAsyncThunk(
   "data/fetchSingleBlog",
   async (slug) => {
     try {
-      let options = {
-        dataCollectionId: "BlogProductData",
-        includeReferencedItems: [
-          "blogRef",
-          "author",
-          "tags",
-          "locationFilteredVariant",
-          "storeProducts",
-          "studios",
-          "gallery",
-          "media",
-          "markets",
-        ],
-      };
-      const { items: fetchedItems } = await wixClient.items
-        .queryDataItems(options)
-        .eq("slug", slug)
-        .find();
-
+      const data = {
+        "dataCollectionId": "BlogProductData",
+        "includeReferencedItems": ["blogRef", "author", "tags", "locationFilteredVariant", "storeProducts", "studios", "gallery", "media", "markets"],
+        "returnTotalCount": null,
+        "find": {},
+        "contains": null,
+        "eq": ["slug", slug],
+        "limit": null
+      }
+      const response = await fetchCollection(data);
       handleCollectionLoaded();
-      setTimeout(() => {
-        document.querySelector(".updateWatchedTrigger").click();
-      }, 1000);
-
-      const data = fetchedItems.map((item) => item.data);
-      return data[0];
+      return response._items.map((x) => x.data)[0];
     } catch (error) {
       handleCollectionLoaded();
       throw new Error(error.message);
@@ -101,11 +90,11 @@ export const fetchSingleBlog = createAsyncThunk(
   }
 );
 
-export const getblogTags = createAsyncThunk("data/getblogTags", async (id) => {
+export const getblogTags = createAsyncThunk("data/getblogTags", async (ids) => {
   try {
-    const { items } = await SingleBlogWixClient.tags.queryTags().hasSome('_id', id).find();
-
-    return items;
+    const data = { "ids": ids }
+    const response = await fetchBlogTags(data);
+    return response._items;
   } catch (error) {
     throw new Error(error.message);
   }

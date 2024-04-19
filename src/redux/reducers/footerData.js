@@ -1,44 +1,47 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import createWixClient from "../wixClient";
+import { fetchCollection } from "../fetchCollection";
 // import { handleCollectionLoaded } from "../../utilis/pageLoadingAnimation";
 
-const wixClient = createWixClient();
 
 const initialState = {
-    data:{
-      footerData:[],
-      contactData:[],
-    },
-    socialLinks:[],
-    socialLinksLoading: false,
-    footerDataLoading: false,
-    error: null,
+  data: {
+    footerData: [],
+    contactData: [],
+  },
+  socialLinks: [],
+  socialLinksLoading: false,
+  footerDataLoading: false,
+  error: null,
 };
 
 export const fetchFooterData = createAsyncThunk(
   "data/fetchFooterData",
   async () => {
     try {
-        let options = {
-            dataCollectionId: "Footer",
-        };
-    
-        let contactus = {
-            dataCollectionId: "ContactDetails",
-        }
-
-        const { items: fetchedItems } = await wixClient.items
-        .queryDataItems(options)
-        .find();
-    
-        const { items: fetchedContact } = await wixClient.items
-        .queryDataItems(contactus)
-        .find();
-
-        return {
-          footerData:fetchedItems,
-          contactData:fetchedContact,
-        };
+      const data = {
+        "dataCollectionId": "Footer",
+        "includeReferencedItems": null,
+        "returnTotalCount": null,
+        "find": {},
+        "contains": null,
+        "eq": null,
+        "limit": null
+      }
+      const contact_data = {
+        "dataCollectionId": "ContactDetails",
+        "includeReferencedItems": null,
+        "returnTotalCount": null,
+        "find": {},
+        "contains": null,
+        "eq": null,
+        "limit": null
+      }
+      const footer_response = await fetchCollection(data);
+      const contact_response = await fetchCollection(contact_data);
+      return {
+        footerData: footer_response._items.map((x) => x.data)[0],
+        contactData: contact_response._items.map((x) => x.data),
+      };
     } catch (error) {
       throw new Error(error.message);
     }
@@ -49,9 +52,17 @@ export const getSocialLinks = createAsyncThunk(
   "data/getSocialLinks",
   async () => {
     try {
-        let options = {dataCollectionId: "SocialLinks"};
-        const { items } = await wixClient.items.queryDataItems(options).find();
-        return items.map((item)=>item.data).sort((a, b) => a.orderNumber - b.orderNumber);
+      const data = {
+        "dataCollectionId": "SocialLinks",
+        "includeReferencedItems": null,
+        "returnTotalCount": null,
+        "find": {},
+        "contains": null,
+        "eq": null,
+        "limit": null
+      }
+      const response = await fetchCollection(data);
+      return response._items.map((x) => x.data).sort((a, b) => a.orderNumber - b.orderNumber);
     } catch (error) {
       throw new Error(error.message);
     }

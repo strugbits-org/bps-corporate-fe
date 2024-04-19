@@ -4,9 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchPortfolio } from "../../redux/reducers/portfolioData";
 import { generateImageUrl2 } from "../../common/common_functions/imageURL";
 
-const ExploreProjectsSection = ({ title, id }) => {
+const ExploreProjectsSection = ({ id }) => {
   const dispatch = useDispatch();
   const portfolioCollection = useSelector((state) => state.portfolio.portfolioData);
+  const { portfolioSectionDetails } = useSelector((state) => state.portfolio);
 
   useEffect(() => {
     dispatch(fetchPortfolio({pageSize: 4, excludeItem:id }));
@@ -21,7 +22,7 @@ const ExploreProjectsSection = ({ title, id }) => {
               className="fs--60 text-center mb-lg-45 mb-tablet-35 mb-phone-40 split-words"
               data-aos="d:loop"
             >
-              {title}
+              {portfolioSectionDetails?.otherProjectsTitle}
             </h2>
 
             <div className="slider-content-mobile">

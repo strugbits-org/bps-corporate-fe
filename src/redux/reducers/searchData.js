@@ -1,7 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import createWixClient from "../wixClient";
-
-const wixClient = createWixClient();
+import { fetchCollection } from "../fetchCollection";
 
 const initialState = {
   data: null,
@@ -13,8 +11,17 @@ export const fetchSearchContent = createAsyncThunk(
   "data/fetchSearchContent",
   async () => {
     try {
-      const { items } = await wixClient.items.queryDataItems({ dataCollectionId: "SearchSectionDetails" }).find();
-      return items.map(x => x.data)[0];
+      const data = {
+        "dataCollectionId": "SearchSectionDetails",
+        "includeReferencedItems": null,
+        "returnTotalCount": null,
+        "find": {},
+        "contains": null,
+        "eq": null,
+        "limit": null
+      }
+      const response = await fetchCollection(data);
+      return response._items.map((x) => x.data)[0];
     } catch (error) {
       throw new Error(error.message);
     }

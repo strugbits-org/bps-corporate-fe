@@ -1,5 +1,5 @@
 import ServiceIntro from "../../components/serviceDetailPageSections/ServiceIntro";
-import ServiceDescription from "../../components/serviceDetailPageSections/serviceDescription";
+import ServiceDescription from "../../components/serviceDetailPageSections/ServiceDescription";
 import SliderBanner from "../../components/commonComponents/SliderBanner";
 import PeopleReviewSlider from "../../components/commonComponents/PeopleReviewSlider";
 import StudioSection from "../../components/commonComponents/StudioSection";
@@ -20,7 +20,7 @@ const ServicePostPage = () => {
   const params = useParams();
 
   const dispatch = useDispatch();
-  const {servicesData, servicesSlider, servicesSectionDetails} = useSelector((state) => state.services);
+  const { servicesData, servicesSlider, servicesSectionDetails } = useSelector((state) => state.services);
 
   // const loading = useSelector((state) => state.services.servicesLoading);
   // const error = useSelector((state) => state.services.error);
@@ -37,13 +37,11 @@ const ServicePostPage = () => {
 
   return (
     <>
-      <ServiceIntro data={servicesData} />
-      {servicesData?.subServices.length !== 0 && (
-        <ServiceDescription data={servicesData} />
-      )}
+      <ServiceIntro />
+      <ServiceDescription />
 
       {/* commonComponents */}
-      <SliderBanner data={servicesSlider} type={service} sectionDetails={servicesSectionDetails}/>
+      <SliderBanner data={servicesSlider} type={service} sectionDetails={servicesSectionDetails} />
       <PeopleReviewSlider />
       <StudioSection />
       <DreamBigSection />

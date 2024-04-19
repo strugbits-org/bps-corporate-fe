@@ -163,7 +163,9 @@ const PostDetails = ({ data }) => {
   }, [data]);
 
   useEffect(() => {
-    dispatch(getblogTags(data?.blogRef?.tags));
+    if (data?.blogRef?.tags) {
+      dispatch(getblogTags(data?.blogRef?.tags));
+    }
   }, [dispatch, data?.blogRef?.tags]);
 
   return (

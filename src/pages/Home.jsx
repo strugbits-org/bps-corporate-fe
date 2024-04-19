@@ -9,24 +9,25 @@ import SocialSection from "../components/commonComponents/SocialSection";
 import PeopleReviewSLider from "../components/commonComponents/PeopleReviewSlider";
 import MarketSection from "../components/commonComponents/MarketSection";
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchHomeTopData } from "../redux/reducers/homeData";
+import { useDispatch } from "react-redux";
+import { fetchGetTouchSection, fetchHomeTopData, fetchRentalStoreSection, fetchRentalStoreSubtitle } from "../redux/reducers/homeData";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const homeTopData = useSelector((state) => state.home.homeTopData);
 
   useEffect(() => {
     dispatch(fetchHomeTopData());
-    // dispatch(fetchHomeSectionDetails());
+    dispatch(fetchGetTouchSection());
+    dispatch(fetchRentalStoreSection());
+    dispatch(fetchRentalStoreSubtitle());
   }, [dispatch]);
 
   return (
     <>
       {/* hero section here */}
-      <HeroSection data={homeTopData} />
+      <HeroSection />
       {/* form concept section here */}
-      <FormConcept data={homeTopData}/>
+      <FormConcept />
       {/* get touch section here */}
       <GetTouchSection />
       {/* studio section here */}
@@ -34,7 +35,7 @@ const Home = () => {
       {/* Some of our project section */}
       <OurProjectSection />
       {/* people revive section here */}
-      <PeopleReviewSLider/>
+      <PeopleReviewSLider />
       {/* market section here */}
       <MarketSection />
       {/* rental store section here */}

@@ -3,8 +3,6 @@ import SocialSection from "../components/commonComponents/SocialSection";
 import { useDispatch, useSelector } from "react-redux";
 import { listBlogs } from "../utilis/queryCollections";
 import BlogListing from "../components/blogPageSections/BlogListing";
-import { fetchStudioSection } from "../redux/reducers/homeData";
-import { getMarketCollection } from "../redux/reducers/marketData";
 import { handleCollectionLoaded } from "../utilis/pageLoadingAnimation";
 import { updatedWatched } from "../utilis/animationsTriggers";
 import { getBlogSectionDetails } from "../redux/reducers/blogData";
@@ -19,8 +17,6 @@ const Blog = () => {
   const { blogSectionDetails } = useSelector((state) => state.blog);
   const pageSize = 8;
   useEffect(() => {
-    dispatch(fetchStudioSection());
-    dispatch(getMarketCollection());
     dispatch(getBlogSectionDetails());
     applyFilters({ disableLoader: true });
   }, [dispatch]);
@@ -29,7 +25,7 @@ const Blog = () => {
     const response = await blogResponse.next();
     setBlogCollection((prev) => [
       ...prev,
-      ...response.items.map((item) => item.data),
+      ...response._items.map((item) => item.data),
     ]);
     setBlogResponse(response);
     updatedWatched();
@@ -46,7 +42,7 @@ const Blog = () => {
       markets: selectedMarkets,
       disableLoader
     });
-    setBlogCollection(response.items.filter(item => item.data.blogRef && item.data.blogRef._id !== undefined).map(item => item.data));
+    setBlogCollection(response._items.filter(item => item.data.blogRef && item.data.blogRef._id !== undefined).map(item => item.data));
     setBlogResponse(response);
     handleCollectionLoaded();
   };

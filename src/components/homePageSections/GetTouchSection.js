@@ -1,19 +1,12 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchGetTouchSection } from "../../redux/reducers/homeData";
+import React from "react";
+import { useSelector } from "react-redux";
 import { DefaultButton } from "../commonComponents/DefaultButton";
 
 const GetTouchSection = () => {
-  const dispatch = useDispatch();
   const data = useSelector((state) => state.home.getTouchData);
 
   // const loading = useSelector((state) => state.home.ourProjectLoading);
   // const error = useSelector((state) => state.home.error);
-
-  useEffect(() => {
-    dispatch(fetchGetTouchSection());
-  }, [dispatch]);
-
 
   return (
     <section className="home-solution pt-220 pb-110">

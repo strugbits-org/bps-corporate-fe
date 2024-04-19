@@ -1,24 +1,17 @@
 import DelayedLink from "../../common/DelayedLink";
-import React, { useEffect } from "react";
+import React from "react";
 import { generateImageURL } from "../../common/common_functions/imageURL";
-import { fetchRentalStoreSection, fetchRentalStoreSubtitle } from "../../redux/reducers/homeData";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { DefaultButton } from "../commonComponents/DefaultButton";
 
 const RentalStoreSection = () => {
   let transition = -35;
 
-  const dispatch = useDispatch();
   const data = useSelector((state) => state.home.rentalStoreData);
   const { homeSectionDetails, rentalStoreSubtitle } = useSelector((state) => state.home);
 
   // const loading = useSelector((state) => state.home.rentalLoading);
   // const error = useSelector((state) => state.home.error);
-
-  useEffect(() => {
-    dispatch(fetchRentalStoreSection());
-    dispatch(fetchRentalStoreSubtitle());
-  }, [dispatch]);
 
   return (
     <section className={`home-rental-store pt-lg-145 pt-tablet-105 pt-phone-145 pb-lg-120 pb-tablet-100 pb-phone-145 ${data.length === 0 ? "hidden" : ""}`}>
@@ -67,7 +60,7 @@ const RentalStoreSection = () => {
 
           <div className="col-lg-12 column-2 mt-lg-140 mt-mobile-40">
             <ul className="list-rental-store">
-              {data.map((data, index) => {
+              {data.map((item, index) => {
                 const translateYFrom = `${transition - 15 * index}rem`;
                 return (
                   <li
@@ -82,7 +75,7 @@ const RentalStoreSection = () => {
                   >
                     <DelayedLink
                       target={"_blank"}
-                      to={data.data.productUrl}
+                      to={item.productUrl}
                       className="link"
                       attributes={{
                         "data-cursor-style": "view",
@@ -90,13 +83,13 @@ const RentalStoreSection = () => {
                     >
                       <div className="container-img">
                         <img
-                        src={generateImageURL({ wix_url: data?.data?.image, q: "95" })}
+                        src={generateImageURL({ wix_url: item?.image, q: "95" })}
                           data-preload
                           className="media"
                           alt=""
                         />
                       </div>
-                      {data.data.newimagetag && (
+                      {item.newimagetag && (
                         <div className="tag-new no-mobile">
                           <span>New</span>
                         </div>

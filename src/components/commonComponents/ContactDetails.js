@@ -1,34 +1,26 @@
-import React, { useEffect } from "react";
+import React from "react";
 import DelayedLink from "../../common/DelayedLink";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchFooterData, getSocialLinks } from "../../redux/reducers/footerData";
+import { useSelector } from "react-redux";
 
-const ContactDetails = ({contactusData}) => {
+const ContactDetails = () => {
 
-  // console.log("contactusData", contactusData);
-
-  const dispatch = useDispatch();
   const contactData = useSelector((state) => state.footer.data.contactData);
+  const contactusData = useSelector((state) => state.contactus.contactusData);
   const socialLinks = useSelector((state) => state.footer.socialLinks);
-
-  useEffect(() => {
-    dispatch(fetchFooterData());
-    dispatch(getSocialLinks());
-  }, [dispatch]);
 
   return (
     <div className="column-2">
       <div className="container-info">
         <div className="container-tel">
-          <DelayedLink target={"_blank"} to={"tel:"+contactusData?.data?.sfPhone}>
-            <span>{contactusData?.data?.sfPhone}</span>
+          <DelayedLink target={"_blank"} to={"tel:" + contactusData?.sfPhone}>
+            <span>{contactusData?.sfPhone}</span>
           </DelayedLink>
-          <DelayedLink target={"_blank"} to={"tel:"+contactusData?.data?.lvPhone}>
-            <span>{contactusData?.data?.lvPhone}</span>
+          <DelayedLink target={"_blank"} to={"tel:" + contactusData?.lvPhone}>
+            <span>{contactusData?.lvPhone}</span>
           </DelayedLink>
         </div>
-        <DelayedLink target={"_blank"} to={"mailto:"+contactusData?.data?.infoEmail}>
-          <span>{contactusData?.data?.infoEmail}</span>
+        <DelayedLink target={"_blank"} to={"mailto:" + contactusData?.infoEmail}>
+          <span>{contactusData?.infoEmail}</span>
         </DelayedLink>
       </div>
       <ul className="list-social-media">
@@ -45,22 +37,20 @@ const ContactDetails = ({contactusData}) => {
       </ul>
       <ul className="list-address">
         {contactData.map((data, index) => {
-
           return (
-
             <li key={index}>
-              <h3 className="city">{data.data.city}</h3>
+              <h3 className="city">{data.city}</h3>
               <address>
-                {data.data.address1} <br />
-                {data.data.address2} <br />
-                {data.data.address3}
+                {data.address1} <br />
+                {data.address2} <br />
+                {data.address3}
               </address>
               <div className="phones">
-                <DelayedLink to={`tel:${data.data.phone1}`} target={"_blank"}>
-                  <span>{data.data.phone1}</span>
+                <DelayedLink to={`tel:${data.phone1}`} target={"_blank"}>
+                  <span>{data.phone1}</span>
                 </DelayedLink>
-                <DelayedLink to={`tel:${data.data.phone2}`} target={"_blank"}>
-                  <span>{data.data.phone2}</span>
+                <DelayedLink to={`tel:${data.phone2}`} target={"_blank"}>
+                  <span>{data.phone2}</span>
                 </DelayedLink>
               </div>
             </li>
