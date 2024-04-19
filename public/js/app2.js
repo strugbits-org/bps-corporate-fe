@@ -16111,6 +16111,23 @@ var require_app2 = __commonJS({
           });
         }
       }
+
+      document.querySelectorAll("btn-modal-open[group='modal-about-video']").forEach((x) => {
+        x.addEventListener("click", () => {
+          console.log("clicked");
+          document.querySelectorAll(".player-video").forEach((x) => x.play());
+        })
+      })
+  
+      const modal_group = document.querySelector('modal-group');
+      if (modal_group) {
+        modal_group.addEventListener("click", (e) => {
+          if (e.target !== e.currentTarget) return;
+          document.querySelectorAll(".player-video").forEach((x) => x.pause());
+          const btn_modal_close = document.querySelector('btn-modal-close');
+          if (btn_modal_close) btn_modal_close.click();
+        });
+      }
     }
 
     document.querySelector(".initScript").addEventListener("click", () => {
@@ -16123,15 +16140,6 @@ var require_app2 = __commonJS({
     document.querySelector(".stickyAnimationTrigger").addEventListener("click", () => {
       sticky();
     });
-
-    const modal_group = document.querySelector('modal-group');
-    if (modal_group) {
-      modal_group.addEventListener("click", (e) => {
-        if (e.target !== e.currentTarget) return;
-        const btn_modal_close = document.querySelector('btn-modal-close');
-        if (btn_modal_close) btn_modal_close.click();
-      });
-    }
 
     document.querySelector(".updateWatchedTrigger").addEventListener("click", () => {
       initVideo();

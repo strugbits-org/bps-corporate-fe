@@ -15,7 +15,6 @@ const AboutUsVideoModal = () => {
             data-preload
             className="player-video media"
             autoPlay
-            muted
             loop
             playsInline
           ></video>
