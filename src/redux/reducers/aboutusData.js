@@ -126,7 +126,7 @@ export const getAboutSlider = createAsyncThunk(
 
       const portfolio = await listPortfolios(options);
       handleCollectionLoaded();
-      return portfolio.items.map(item => item.data);
+      return portfolio._items.map(item => item.data);
     } catch (error) {
       handleCollectionLoaded();
       throw new Error(error.message);

@@ -14,7 +14,7 @@ const OurProjectSection = () => {
 
   const getPortfolio = async () => {
     try {
-      const response = await listPortfolios({ pageSize: 4 });
+      const response = await listPortfolios({ pageSize: 4, disableLoader: true });
       handleCollectionLoaded();
       setPortfolioCollection(response._items.map(x => x.data));
     } catch (error) {

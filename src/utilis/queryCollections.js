@@ -1,4 +1,4 @@
-import { fetchCollection } from "../redux/fetchCollection";
+import { fetchCollection, fetchCollectionSp } from "../redux/fetchCollection";
 import { endLoading, startLoading } from "./animationsTriggers";
 
 export const listPortfolios = async ({ pageSize = 10, searchTerm = "", studios = [], markets = [], disableLoader = false, excludeItem = null }) => {
@@ -15,9 +15,9 @@ export const listPortfolios = async ({ pageSize = 10, searchTerm = "", studios =
             "type": "portfolio",
             "studios": studios,
             "markets": markets,
-            "excludeItem": excludeItem,
+            "ne": ["slug", excludeItem],
         }
-        const response = await fetchCollection(data);
+        const response = await fetchCollectionSp(data);
         endLoading(disableLoader);
         return response;
     } catch (error) {
@@ -40,9 +40,9 @@ export const listBlogs = async ({ pageSize = 10, searchTerm = "", studios = [], 
             "type": "blog",
             "studios": studios,
             "markets": markets,
-            "excludeItem": excludeItem,
+            "ne": ["slug", excludeItem],
         }
-        const response = await fetchCollection(data);
+        const response = await fetchCollectionSp(data);
         endLoading(disableLoader);
         return response;
     } catch (error) {

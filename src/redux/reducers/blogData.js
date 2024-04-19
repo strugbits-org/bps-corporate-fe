@@ -1,8 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { handleCollectionLoaded } from "../../utilis/pageLoadingAnimation";
-import SingleBlogWixClient from "../wixClientSingleBlog";
 import { listBlogs } from "../../utilis/queryCollections";
-import { fetchCollection } from "../fetchCollection";
+import { fetchBlogTags, fetchCollection } from "../fetchCollection";
 
 const initialState = {
   blogPostData: [],
@@ -24,7 +23,7 @@ export const getblogPostData = createAsyncThunk(
   async ({ pageSize = 10, disableLoader = false, excludeItem = null }) => {
     try {
       const response = await listBlogs({ pageSize, disableLoader, excludeItem });
-      const data = response.items.filter(item => item.data.blogRef._id !== undefined).map(item => item.data)
+      const data = response._items.filter(item => item.data.blogRef._id !== undefined).map(item => item.data)
       handleCollectionLoaded();
       return data;
     } catch (error) {
@@ -38,8 +37,8 @@ export const getSocialSectionBlogs = createAsyncThunk(
   "data/getSocialSectionBlogs",
   async () => {
     try {
-      const response = await listBlogs({ pageSize: 3 });
-      const data = response.items.filter(item => item.data.blogRef._id !== undefined).map(item => item.data);
+      const response = await listBlogs({ pageSize: 3, disableLoader: true });
+      const data = response._items.filter(item => item.data.blogRef._id !== undefined).map(item => item.data);
       return data;
     } catch (error) {
       throw new Error(error.message);
@@ -93,10 +92,9 @@ export const fetchSingleBlog = createAsyncThunk(
 
 export const getblogTags = createAsyncThunk("data/getblogTags", async (ids) => {
   try {
-    
-    const { items } = await SingleBlogWixClient.tags.queryTags().hasSome('_id', ids).find();
-
-    return items;
+    const data = { "ids": ids }
+    const response = await fetchBlogTags(data);
+    return response._items;
   } catch (error) {
     throw new Error(error.message);
   }
