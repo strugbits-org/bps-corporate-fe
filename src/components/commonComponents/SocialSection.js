@@ -5,10 +5,12 @@ import {
   instafeeds,
 } from "../../common/constats/constats";
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { generateImageUrl2 } from "../../common/common_functions/imageURL";
+import { getSocialSectionBlogs } from "../../redux/reducers/blogData";
 
 const SocialSection = () => {
+  const dispatch = useDispatch();
   const posts = useSelector((state) => state.blog.socialSectionBlogs);
   const { homeSectionDetails } = useSelector((state) => state.home);
 
@@ -22,6 +24,9 @@ const SocialSection = () => {
     if (window.doBuild) window.doBuild();
   }, []); // only run once
 
+  useEffect(() => {
+    dispatch(getSocialSectionBlogs());
+  }, [dispatch]);
   return (
     <section className="section-lets-get-social z-5 pt-lg-195 pt-tablet-105 pt-phone-155 pb-lg-130 pb-tablet-105 pb-phone-140 mt-lg-240">
       <div

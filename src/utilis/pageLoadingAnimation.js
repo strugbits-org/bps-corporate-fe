@@ -19,18 +19,19 @@ export const handleCollectionLoaded = () => {
     const cleanPage = page.split("/")[0].trim();
 
     const collectionsCount = {
-        'home': 4,
-        'about': 5,
-        'portfolio': 1,
-        'blog': 1,
-        'market-post': 2,
-        'services-post': 2,
-        'portfolio-post': 2,
-        'blog-post': 2,
-        'contact': 1,
+        'home': 5,
+        'about': 6,
+        'portfolio': 2,
+        'blog': 2,
+        'market-post': 3,
+        'services-post': 3,
+        'portfolio-post': 3,
+        'blog-post': 3,
+        'contact': 2,
     }[cleanPage] || 0;
     
     const progressPercent = Math.ceil(collectionLoaded / collectionsCount * 100);
+    console.log("progressPercent", progressPercent);
     changeProgress(progressPercent);
 
     const markPageLoaded = () => {

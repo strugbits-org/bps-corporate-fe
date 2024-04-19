@@ -12,7 +12,6 @@ import { fetchDreamBigSection, fetchHomeSectionDetails, fetchPeopleReviewSlider,
 import { getMarketCollection } from "./redux/reducers/marketData";
 import { fetchContactUs } from "./redux/reducers/contatusData";
 import { fetchFooterData, getSocialLinks } from "./redux/reducers/footerData";
-import { getSocialSectionBlogs } from "./redux/reducers/blogData";
 import { closeModals } from "./utilis/utilityFunctions";
 
 function App() {
@@ -34,7 +33,6 @@ function App() {
     dispatch(fetchContactUs());
     dispatch(fetchFooterData());
     dispatch(getSocialLinks());
-    dispatch(getSocialSectionBlogs());
   }, [dispatch]);
 
   useEffect(() => {

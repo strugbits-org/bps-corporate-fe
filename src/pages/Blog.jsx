@@ -56,7 +56,7 @@ const Blog = () => {
           blogSectionDetails,
           studios: studios.filter(x => x.filters),
           markets,
-          totalCount: blogResponse?.totalCount,
+          totalCount: blogResponse?._totalCount,
         }}
         applyFilters={applyFilters}
         seeMore={handleSeeMore}

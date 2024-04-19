@@ -46,7 +46,7 @@ const Portfolio = () => {
           studios: studios.filter(x => x.filters),
           markets,
           portfolioSectionDetails,
-          totalCount: portfolioResponse?.totalCount
+          totalCount: portfolioResponse?._totalCount
         }
       } applyFilters={applyFilters} seeMore={handleSeeMore} />
       <MarketSection />
