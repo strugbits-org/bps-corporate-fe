@@ -27,11 +27,10 @@ export const handleCollectionLoaded = () => {
         'services-post': 3,
         'portfolio-post': 3,
         'blog-post': 3,
-        'contact': 2,
+        'contact': 1,
     }[cleanPage] || 0;
     
     const progressPercent = Math.ceil(collectionLoaded / collectionsCount * 100);
-    console.log("progressPercent", progressPercent);
     changeProgress(progressPercent);
 
     const markPageLoaded = () => {
