@@ -163,7 +163,7 @@ const BlogListing = ({ data, seeMore, applyFilters }) => {
                                             <div className="container-img bg-blue" data-cursor-style="view" >
                                                 <div className="wrapper-img">
                                                     {item.blogRef.coverImage && <img
-                                                        src={generateImageURL({ wix_url: item?.blogRef?.coverImage, w:"500", fit:"fit", q: "90" })}
+                                                        src={generateImageURL({ wix_url: item?.blogRef?.coverImage, w: "500", fit: "fit", q: "90" })}
                                                         data-preload
                                                         className="media"
                                                         alt=""
@@ -221,7 +221,7 @@ const BlogListing = ({ data, seeMore, applyFilters }) => {
                     {data?.totalCount > data.pageSize && data.items.length !== data?.totalCount && (
                         <div className="col-lg-2 offset-lg-5 flex-center mt-lg-70 mt-tablet-60 mt-phone-85">
                             <button
-                                onClick={seeMore}
+                                onClick={() => seeMore({ selectedStudios, selectedMarkets, disableLoader: true })}
                                 className="btn-border-blue"
                                 attributes={{
                                     "data-cursor-style": "off",

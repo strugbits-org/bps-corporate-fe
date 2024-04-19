@@ -51,7 +51,7 @@ const PortfolioListing = ({ data, seeMore, applyFilters }) => {
         <div className="row">
           <div className="col-12 mb-lg-60 mb-tablet-40 mb-phone-35">
             <h1 className="fs--60 text-center split-words" data-aos="d:loop">
-            {data.portfolioSectionDetails.portfolioTitle}
+              {data.portfolioSectionDetails.portfolioTitle}
             </h1>
 
             <div
@@ -226,14 +226,14 @@ const PortfolioListing = ({ data, seeMore, applyFilters }) => {
                 );
               })}
             </ul>
-              {data.items.length === 0 && (
-                <h6
-                  className="fs--40 text-center split-words not_found_text"
-                  data-aos="d:loop"
-                >
-                  No Data found
-                </h6>
-              )}
+            {data.items.length === 0 && (
+              <h6
+                className="fs--40 text-center split-words not_found_text"
+                data-aos="d:loop"
+              >
+                No Data found
+              </h6>
+            )}
           </div>
           {data?.totalCount > data.pageSize && data.items.length !== data?.totalCount && (
             <div
@@ -241,7 +241,7 @@ const PortfolioListing = ({ data, seeMore, applyFilters }) => {
               data-aos="fadeIn .8s ease-in-out .2s, d:loop"
             >
               <button
-                onClick={seeMore}
+                onClick={() => seeMore({ selectedStudios, selectedMarkets, disableLoader: true })}
                 className="btn-border-blue"
                 data-cursor-style="off"
               >

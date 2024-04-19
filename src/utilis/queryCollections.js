@@ -1,7 +1,7 @@
 import { fetchCollection, fetchCollectionSp } from "../redux/fetchCollection";
 import { endLoading, startLoading } from "./animationsTriggers";
 
-export const listPortfolios = async ({ pageSize = 10, searchTerm = "", studios = [], markets = [], disableLoader = false, excludeItem = null }) => {
+export const listPortfolios = async ({ pageSize = 10, skip = 0, searchTerm = "", studios = [], markets = [], disableLoader = false, excludeItem = null }) => {
     try {
         startLoading(disableLoader);
         const data = {
@@ -14,6 +14,7 @@ export const listPortfolios = async ({ pageSize = 10, searchTerm = "", studios =
             "limit": pageSize,
             "studios": studios,
             "markets": markets,
+            "skip": skip,
             "ne": ["slug", excludeItem],
         }
         const response = await fetchCollectionSp(data);
@@ -25,7 +26,7 @@ export const listPortfolios = async ({ pageSize = 10, searchTerm = "", studios =
     }
 }
 
-export const listBlogs = async ({ pageSize = 10, searchTerm = "", studios = [], markets = [], disableLoader = false, excludeItem = null }) => {
+export const listBlogs = async ({ pageSize = 10, skip = 0, searchTerm = "", studios = [], markets = [], disableLoader = false, excludeItem = null }) => {
     try {
         startLoading(disableLoader);
         const data = {
@@ -38,6 +39,7 @@ export const listBlogs = async ({ pageSize = 10, searchTerm = "", studios = [], 
             "limit": pageSize,
             "studios": studios,
             "markets": markets,
+            "skip": skip,
             "ne": ["slug", excludeItem],
         }
         const response = await fetchCollectionSp(data);

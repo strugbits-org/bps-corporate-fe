@@ -21,8 +21,8 @@ const Blog = () => {
     applyFilters({ disableLoader: true });
   }, [dispatch]);
 
-  const handleSeeMore = async () => {
-    const response = await blogResponse.next();
+  const handleSeeMore = async ({ selectedStudios = [], selectedMarkets = [], disableLoader = false }) => {
+    const response = await listBlogs({ pageSize, skip: blogCollection.length, studios: selectedStudios, markets: selectedMarkets, disableLoader });
     setBlogCollection((prev) => [
       ...prev,
       ...response._items.map((item) => item.data),

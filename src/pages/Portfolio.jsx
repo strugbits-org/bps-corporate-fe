@@ -23,8 +23,8 @@ const Portfolio = () => {
     applyFilters({ disableLoader: true });
   }, [dispatch]);
 
-  const handleSeeMore = async () => {
-    const response = await portfolioResponse.next();
+  const handleSeeMore = async ({ selectedStudios = [], selectedMarkets = [], disableLoader = false }) => {
+    const response = await listPortfolios({ pageSize, skip: portfolioCollection.length, studios: selectedStudios, markets: selectedMarkets, disableLoader });
     setPortfolioCollection(prev => [...prev, ...response._items.map(item => item.data)]);
     setPortfolioResponse(response);
     updatedWatched();
