@@ -40,25 +40,25 @@ const AboutCardsSection = () => {
 
   return (
     <section className="about-our-boards">
-    <div className="container-fluid">
+      <div className="container-fluid">
         <div className="row">
-        <div className="col-lg-8 offset-lg-2">
+          <div className="col-lg-8 offset-lg-2">
             <ul className="list-boards">
-            {data.map((item, index) => {
+              {data.map((item, index) => {
                 const {
-                translateY,
-                rotateTo,
-                translateYfrom,
-                dataEnd,
-                dataTrigger,
-                translateX,
-                rotateFrom,
+                  translateY,
+                  rotateTo,
+                  translateYfrom,
+                  dataEnd,
+                  dataTrigger,
+                  translateX,
+                  rotateFrom,
                 } = properties[index] || {};
 
                 return (
-                <li
+                  <li
                     key={index}
-                    data-parallax
+                    data-parallax data-parallax-no-phone data-parallax-no-tablet
                     data-translate-y={translateY || ""}
                     data-rotate-to={rotateTo || ""}
                     data-translate-y-from={translateYfrom || ""}
@@ -66,18 +66,18 @@ const AboutCardsSection = () => {
                     data-trigger={dataTrigger || ""}
                     data-translate-x={translateX || ""}
                     data-rotate-from={rotateFrom || ""}
-                >
+                  >
                     <div className="content">
-                    <h2 className="title">{item.title}</h2>
-                    <p className="text">{item.description}</p>
+                      <h2 className="title">{item.title}</h2>
+                      <p className="text">{item.description}</p>
                     </div>
-                </li>
+                  </li>
                 );
-            })}
+              })}
             </ul>
+          </div>
         </div>
-        </div>
-    </div>
+      </div>
     </section>
   );
 };

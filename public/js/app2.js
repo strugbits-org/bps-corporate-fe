@@ -16118,12 +16118,17 @@ var require_app2 = __commonJS({
           document.querySelectorAll(".player-video").forEach((x) => x.play());
         })
       })
-  
+
       const modal_group = document.querySelector('modal-group');
       if (modal_group) {
         modal_group.addEventListener("click", (e) => {
           if (e.target !== e.currentTarget) return;
-          document.querySelectorAll(".player-video").forEach((x) => x.pause());
+          document.querySelectorAll(".player-video").forEach((x) => {
+            x.pause();
+            setTimeout(() => {
+              x.currentTime = 0;
+            }, 500);
+          });
           const btn_modal_close = document.querySelector('btn-modal-close');
           if (btn_modal_close) btn_modal_close.click();
         });
