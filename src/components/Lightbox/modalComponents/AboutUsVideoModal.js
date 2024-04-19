@@ -5,6 +5,7 @@ import getFullVideoURL from '../../../common/common_functions/videoURL';
 
 const AboutUsVideoModal = () => {
   const data = useSelector((state) => state.aboutus.IntroData);
+
   return (
     <ModalWrapper name={"modal-about-video"} no_wrapper={true}>
       <div className="container-img video-wrapper" data-aos="d:loop">
@@ -12,10 +13,7 @@ const AboutUsVideoModal = () => {
           <video
             data-src={getFullVideoURL(data.lightboxVideo)}
             src={getFullVideoURL(data.lightboxVideo)}
-            data-preload
             className="player-video media"
-            autoPlay
-            loop
             playsInline
           ></video>
         ) : (

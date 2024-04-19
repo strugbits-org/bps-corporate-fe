@@ -4,11 +4,11 @@ import { pageLoadFinished, pageLoadStart } from '../utilis/animationsTriggers';
 import { resetCount } from '../utilis/pageLoadingAnimation';
 
 const DelayedLink = ({ to, children, className, target, attributes }) => {
-  document.querySelectorAll(".player-video").forEach((x) => x.pause());
   const navigate = useNavigate();
   const location = useLocation();
-
+  
   const delayedRedirect = (e) => {
+    document.querySelectorAll(".player-video").forEach((x) => x.pause());
     e.preventDefault();
 
     const parentPage = (path) => {
