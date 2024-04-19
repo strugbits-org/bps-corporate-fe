@@ -1,5 +1,4 @@
 import ServiceIntro from "../../components/serviceDetailPageSections/ServiceIntro";
-import ServiceDescription from "../../components/serviceDetailPageSections/ServiceDescription";
 import SliderBanner from "../../components/commonComponents/SliderBanner";
 import PeopleReviewSlider from "../../components/commonComponents/PeopleReviewSlider";
 import StudioSection from "../../components/commonComponents/StudioSection";
@@ -13,6 +12,7 @@ import {
   getServicesSectionDetails,
   getServicesSlider,
 } from "../../redux/reducers/servicesData";
+import { SubSectionServices } from "../../components/serviceDetailPageSections/SubSectionServices";
 // import { fetchHomeSectionDetails } from "../../redux/reducers/homeData";
 
 const ServicePostPage = () => {
@@ -38,7 +38,7 @@ const ServicePostPage = () => {
   return (
     <>
       <ServiceIntro />
-      <ServiceDescription />
+      <SubSectionServices />
 
       {/* commonComponents */}
       <SliderBanner data={servicesSlider} type={service} sectionDetails={servicesSectionDetails} />
