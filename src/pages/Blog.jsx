@@ -54,7 +54,7 @@ const Blog = () => {
           items: blogCollection,
           pageSize,
           blogSectionDetails,
-          studios: studios.filter(x => x.data.filters),
+          studios: studios.filter(x => x.filters),
           markets,
           totalCount: blogResponse?.totalCount,
         }}

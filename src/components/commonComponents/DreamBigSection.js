@@ -22,7 +22,7 @@ const DreamBigSection = () => {
             </div>
             <div className="container-img no-desktop no-tablet">
               <img
-                src={generateImageURL({ wix_url: data?.mobileBackgroundImage, q: "95" })}
+                src={generateImageURL({ wix_url: data?.mobileBackgroundImage,fit:"fit", q: "95" })}
                 data-preload
                 className="media"
                 alt=""

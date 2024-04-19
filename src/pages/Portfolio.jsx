@@ -43,7 +43,7 @@ const Portfolio = () => {
         {
           items: portfolioCollection,
           pageSize,
-          studios: studios.filter(x => x.data.filters),
+          studios: studios.filter(x => x.filters),
           markets,
           portfolioSectionDetails,
           totalCount: portfolioResponse?.totalCount

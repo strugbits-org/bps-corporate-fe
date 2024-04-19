@@ -7101,6 +7101,7 @@ var require_app2 = __commonJS({
       const video = document.createElement("video");
       video.muted = true;
       video.loop = false;
+      video.playsInline = true;
       video.style.width = "100%";
       video.style.height = "100%";
       videoContainer.appendChild(video);

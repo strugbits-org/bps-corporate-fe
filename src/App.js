@@ -13,6 +13,7 @@ import { getMarketCollection } from "./redux/reducers/marketData";
 import { fetchContactUs } from "./redux/reducers/contatusData";
 import { fetchFooterData, getSocialLinks } from "./redux/reducers/footerData";
 import { getSocialSectionBlogs } from "./redux/reducers/blogData";
+import { closeModals } from "./utilis/utilityFunctions";
 
 function App() {
   const dispatch = useDispatch();
@@ -35,6 +36,11 @@ function App() {
     dispatch(getSocialLinks());
     dispatch(getSocialSectionBlogs());
   }, [dispatch]);
+
+  useEffect(() => {
+    closeModals();
+  }, [location])
+  
 
   return (
     <div>
