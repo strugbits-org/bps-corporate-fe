@@ -1,3 +1,5 @@
+import { closeModals } from "./utilityFunctions";
+
 const page = window.location.pathname.trim() === "/" ? "home" : window.location.pathname.substring(1);
 const cleanPage = page.split("/")[0].trim();
 
@@ -14,6 +16,7 @@ export const updatedWatched = () => {
 };
 
 export const pageLoadStart = () => {
+    closeModals();
     document.body.classList.add("page-leave-active");
 };
 

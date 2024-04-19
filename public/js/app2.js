@@ -16114,7 +16114,6 @@ var require_app2 = __commonJS({
 
       document.querySelectorAll("btn-modal-open[group='modal-about-video']").forEach((x) => {
         x.addEventListener("click", () => {
-          console.log("clicked");
           document.querySelectorAll(".player-video").forEach((x) => x.play());
         })
       })
