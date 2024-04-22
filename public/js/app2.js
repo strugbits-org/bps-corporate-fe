@@ -7145,12 +7145,60 @@ var require_app2 = __commonJS({
         loadAndPlayVideo(blobUrl);
       }).catch((e) => console.error("Erro ao carregar o vídeo:", e));
     }
+    gsapWithCSS.registerPlugin(ScrollTrigger$1);
+    function scrollVideoToCanvas(containerSelector, containerVideoSelector, videoUrl) {
+      const container = document.querySelector(containerSelector);
+      const containerVideo = document.querySelector(containerVideoSelector);
+      const canvas = document.createElement("canvas");
+      const context = canvas.getContext("2d");
+      containerVideo.appendChild(canvas);
+      const video = document.createElement("video");
+      video.src = videoUrl;
+      video.muted = true;
+      video.playsInline = true;
+      video.loop = false;
+      video.load();
+      video.addEventListener("canplaythrough", () => {
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        drawFrame();
+        setupScrollAnimation();
+      });
+      function setupScrollAnimation() {
+        // loader.state.scriptReady = true;
+        ScrollTrigger$1.create({
+          trigger: container,
+          start: "top 70%",
+          end: "bottom bottom",
+          scrub: true,
+          onUpdate: (self2) => {
+            const newTime = self2.progress * video.duration;
+            if (Math.abs(newTime - video.currentTime) > 0.1) {
+              video.currentTime = newTime;
+              drawFrame();
+            }
+          },
+          markers: false
+        });
+      }
+      function drawFrame() {
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+      }
+      video.addEventListener("loadeddata", () => {
+        drawFrame();
+      });
+    }
     const pageName$8 = "home";
     function main$8() {
       sliderTestimony();
       sliderBanner();
       if (screen.isMobile) {
-        scrollVideo(".home-from-concept-to-reality", ".container-frame-by-frame", "js/home-animation-min-mobile.mp4");
+        if (screen.isIphone) {
+          console.log("yes");
+          scrollVideoToCanvas(".home-from-concept-to-reality", ".container-frame-by-frame", "js/home-animation-min-mobile.mp4");
+        } else {
+          scrollVideo(".home-from-concept-to-reality", ".container-frame-by-frame", "js/home-animation-min-mobile.mp4");
+        }
       } else {
         scrollVideo(".home-from-concept-to-reality", ".container-frame-by-frame", "js/home-animation-min.mp4");
       }
