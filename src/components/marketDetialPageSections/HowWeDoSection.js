@@ -32,7 +32,7 @@ const HowWeDoSection = () => {
                     <div className="list-column-img">
                       <div className="container-img" data-aos="d:loop">
                         <img
-                          src={generateImageURL({ wix_url: item?.image, q: "90" })}
+                          src={generateImageURL({ wix_url: item?.image,w: "790", h: "605", q: "90" })}
                           data-preload
                           className="media"
                           alt=""

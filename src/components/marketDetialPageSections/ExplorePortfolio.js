@@ -46,7 +46,7 @@ const ExplorePortfolio = ({ slug }) => {
                               data-cursor-style="view"
                             >
                               <img
-                                src={generateImageUrl2({ wix_url: item?.portfolioRef?.coverImage?.imageInfo, q: "90" })}
+                                src={generateImageUrl2({ wix_url: item?.portfolioRef?.coverImage?.imageInfo,w: "480", h: "620", q: "90" })}
                                 data-preload
                                 className="media"
                                 alt=""

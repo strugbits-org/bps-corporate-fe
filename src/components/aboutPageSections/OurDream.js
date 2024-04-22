@@ -28,7 +28,7 @@ const OurDream = () => {
                       <div className="wrapper-profile">
                         <div className="container-img">
                           <img
-                            src={generateImageURL({ wix_url: data.image, q: "95" })}
+                            src={generateImageURL({ wix_url: data.image, w: "580", h: "720", q: "95" })}
                             data-preload
                             className="media"
                             alt=""

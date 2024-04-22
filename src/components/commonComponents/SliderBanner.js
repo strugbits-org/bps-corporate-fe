@@ -3,10 +3,10 @@ import { generateImageUrl2 } from "../../common/common_functions/imageURL";
 import DelayedLink from "../../common/DelayedLink";
 import { pageLoadStart } from "../../utilis/animationsTriggers";
 
-const SliderBanner = ({ data, type,sectionDetails }) => {
+const SliderBanner = ({ data, type, sectionDetails }) => {
   const navigate = useNavigate();
 
-  if (data.length === 0 ) return;
+  if (data.length === 0) return;
 
   const handleNavigate = (path) => {
     pageLoadStart();
@@ -26,11 +26,11 @@ const SliderBanner = ({ data, type,sectionDetails }) => {
                 <div key={index} className="swiper-slide">
                   <DelayedLink>
                     <div
-                      onClick={() => handleNavigate(`/portfolio-post/${data?.portfolioRef?.slug}`) }
+                      onClick={() => handleNavigate(`/portfolio-post/${data?.portfolioRef?.slug}`)}
                       className="container-img"
                     >
                       <img
-                        src={generateImageUrl2({ wix_url: data?.portfolioRef?.coverImage?.imageInfo, q: "95" })}
+                        src={generateImageUrl2({ wix_url: data?.portfolioRef?.coverImage?.imageInfo, w: "1920", h: "1180", q: "95" })}
                         data-preload
                         className="media"
                         data-parallax
@@ -63,8 +63,8 @@ const SliderBanner = ({ data, type,sectionDetails }) => {
                     </div>
                     <div className="container-title">
                       <h3 className="title split-words">
-                      {sectionDetails?.portfolioSectionTitle} <br />
-                      {sectionDetails?.portfolioSectionTitleLine2}
+                        {sectionDetails?.portfolioSectionTitle} <br />
+                        {sectionDetails?.portfolioSectionTitleLine2}
                       </h3>
 
                       <div className="container-btn-bottom">

@@ -35,7 +35,7 @@ const PeopleReviewSLider = () => {
                         <div className="wrapper-content">
                           <div className="container-img">
                             <img
-                              src={generateImageURL({ wix_url: data?.image, q: "95" })}
+                              src={generateImageURL({ wix_url: data?.image,fit: "fit", w: "600",h: "600", q: "95" })}
                               data-preload
                               className="media"
                               alt=""

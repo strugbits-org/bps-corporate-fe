@@ -48,7 +48,7 @@ const MarketSection = () => {
                         data-cursor-style="view"
                       >
                         <img
-                          src={generateImageURL({ wix_url: data?.image, h: "500", w: "500", q: "90" })}
+                          src={generateImageURL({ wix_url: data?.image, h: "600", w: "600", q: "90" })}
                           data-preload
                           className="media"
                           alt=""
