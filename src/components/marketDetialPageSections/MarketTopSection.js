@@ -71,8 +71,8 @@ const MarketTopSection = () => {
                   src={getFullVideoURL(data?.video)}
                   data-preload
                   className="player-video media"
-                  autoPlay
-                  muted
+                  // autoPlay
+                  // muted
                   loop
                   playsInline
                 ></video>
