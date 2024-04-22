@@ -3,6 +3,7 @@ import DelayedLink from "../../common/DelayedLink";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPortfolio } from "../../redux/reducers/portfolioData";
 import { generateImageUrl2 } from "../../common/common_functions/imageURL";
+import { DefaultButton } from "../commonComponents/DefaultButton";
 
 const ExploreProjectsSection = ({ id }) => {
   const dispatch = useDispatch();
@@ -92,15 +93,16 @@ const ExploreProjectsSection = ({ id }) => {
             className="col-lg-2 offset-lg-5 flex-center mt-lg-60 mt-mobile-40"
             data-aos="fadeIn .8s ease-in-out .2s, d:loop"
           >
-            <DelayedLink
-              to="/"
-              className="btn-border-blue"
+            <DefaultButton
+              customClasses={"btn-border-blue"}
+              data={{
+                label: portfolioSectionDetails?.seeMoreButtonText,
+                action: portfolioSectionDetails?.seeMoreButtonAction
+              }}
               attributes={{
                 "data-cursor-style": "off",
               }}
-            >
-              <span>See more</span>
-            </DelayedLink>
+            ></DefaultButton>
           </div>
         </div>
       </div>
