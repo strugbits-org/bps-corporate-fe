@@ -8,11 +8,13 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { generateImageUrl2 } from "../../common/common_functions/imageURL";
 import { getSocialSectionBlogs } from "../../redux/reducers/blogData";
+// import { getSocialSectionDetails } from "../../redux/reducers/socialSectionData";
 
 const SocialSection = () => {
   const dispatch = useDispatch();
   const posts = useSelector((state) => state.blog.socialSectionBlogs);
   const { homeSectionDetails } = useSelector((state) => state.home);
+  // const data = useSelector((state) => state.socialSectionData.data);
   const location = useLocation();
 
   useEffect(() => {
@@ -27,6 +29,7 @@ const SocialSection = () => {
 
   useEffect(() => {
     dispatch(getSocialSectionBlogs());
+    // dispatch(getSocialSectionDetails());
   }, [dispatch, location]);
   return (
     <section className="section-lets-get-social z-5 pt-lg-195 pt-tablet-105 pt-phone-155 pb-lg-130 pb-tablet-105 pb-phone-140 mt-lg-240">
@@ -47,7 +50,7 @@ const SocialSection = () => {
               className="fs--60 blue-1 text-center split-words"
               data-aos="d:loop"
             >
-              {homeSectionDetails.socialSectionTitle}
+            {homeSectionDetails.socialSectionTitle} 
             </h2>
             <h3
               className="fs--16 fs-tablet-20 fs-phone-18 blue-1 text-center mt-10"
@@ -171,6 +174,7 @@ const SocialSection = () => {
                       data-pin-min-weight="100%"
                       data-pin-max-weight="100%"
                       to="https://ro.pinterest.com/blueprintst"
+                      // to={data?.pinterestUrl}
                     ></Link>
                   </ul>
                 </div>
