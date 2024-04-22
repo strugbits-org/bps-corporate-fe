@@ -51,7 +51,7 @@ const RecentPosts = ({ id }) => {
                             <div className="wrapper-img">
                               <img
                                 src={
-                                  generateImageUrl2({ wix_url: data?.blogRef?.coverImage, w:"500",h:"400",fit:"fit", q: "80" })
+                                  generateImageUrl2({ wix_url: data?.blogRef?.coverImage, w: "480", h: "320", fit: "fit", q: "80" })
                                 }
                                 data-preload
                                 className="media"

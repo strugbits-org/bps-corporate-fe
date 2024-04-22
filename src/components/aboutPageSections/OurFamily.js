@@ -27,7 +27,7 @@ const OurFamily = () => {
                     <div className="content">
                       <div className="container-img logo-img">
                         <img
-                          src={generateImageURL({ wix_url: data.logo, fit:"fit", q: "95" })}
+                          src={generateImageURL({ wix_url: data.logo, w: "320", h: "84", fit:"fit", q: "95" })}
                           data-preload
                           className="media"
                           data-aos="scaleOut
@@ -40,7 +40,7 @@ const OurFamily = () => {
                         data-aos="scaleOut .8s ease-out-cubic 0s, d:loop"
                       >
                         <img
-                          src={generateImageURL({ wix_url: data.image, q: "95" })}
+                          src={generateImageURL({ wix_url: data.image, w: "680", h: "1180", q: "95" })}
                           data-preload
                           className="media"
                           data-parallax

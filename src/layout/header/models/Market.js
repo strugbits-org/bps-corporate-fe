@@ -33,7 +33,7 @@ const Market = () => {
               >
                 <div className="container-img bg-blue" data-cursor-style="view">
                   <img
-                    src={generateImageURL({ wix_url: item?.image, q: "95" })}
+                    src={generateImageURL({ wix_url: item?.image, w: "600", h: "1280", q: "95" })}
                     data-preload
                     className="media"
                     alt={item.cardname}

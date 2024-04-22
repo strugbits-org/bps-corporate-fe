@@ -20,7 +20,7 @@ const AboutBottomSection = () => {
                 </h2>
                 <div className="container-img">
                   <img
-                    src={generateImageURL({ wix_url: sectionDetails?.magazineCoverImage, fit: "fit", q: "95" })}
+                    src={generateImageURL({ wix_url: sectionDetails?.magazineCoverImage, w: "310", h: "410", fit:"fit", q: "95" })}
                     data-preload
                     className="media"
                     alt=""

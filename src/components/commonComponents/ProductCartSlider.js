@@ -24,7 +24,7 @@ const ProductCartSlider = ({ data }) => {
                     <div className="wrapper-img">
                       <div className="container-img">
                         <img
-                          src={generateImageURL({ wix_url: item.mainMedia, fit: "fit", q: "95" })}
+                          src={generateImageURL({ wix_url: item.mainMedia,w: "200", h: "200", fit: "fit", q: "95" })}
                           data-preload
                           className="media"
                           alt=""
@@ -46,7 +46,7 @@ const ProductCartSlider = ({ data }) => {
                                 <li key={index}>
                                   <div className="container-img">
                                     <img
-                                      src={generateImageURL({ wix_url: option.mainMedia ? option.mainMedia : item.mainMedia, fit: "fit", q: "95" })}
+                                      src={generateImageURL({ wix_url: option.mainMedia ? option.mainMedia : item.mainMedia,w: "24", h: "24", fit: "fit", q: "95" })}
                                       data-preload
                                       className="media"
                                       alt=""
@@ -64,7 +64,7 @@ const ProductCartSlider = ({ data }) => {
                                   <li key={index}>
                                     <div className="container-img">
                                       <img
-                                        src={generateImageURL({ wix_url: option.mainMedia ? option.mainMedia : item.mainMedia, fit: "fit", q: "95" })}
+                                        src={generateImageURL({ wix_url: option.mainMedia ? option.mainMedia : item.mainMedia,w: "24", h: "24", fit: "fit", q: "95" })}
                                         data-preload
                                         className="media"
                                         alt=""

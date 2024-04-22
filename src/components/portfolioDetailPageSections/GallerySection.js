@@ -51,7 +51,7 @@ const GallerySection = () => {
                           <div className="container-img bg-blue">
                             <div className="wrapper-img">
                               <img
-                                src={generateImageURL({ wix_url: item.fullImage, q: "85", fit:"fit" , original:false })}
+                                src={generateImageURL({ wix_url: item.fullImage, q: "90", w: "1920", h: "1280", fit: "fit" })}
                                 data-preload
                                 className="media"
                                 alt=""
@@ -68,7 +68,7 @@ const GallerySection = () => {
                               <div className="container-img bg-blue">
                                 <div className="wrapper-img">
                                   <img
-                                    src={generateImageURL({ wix_url: imageUrl, q: "85", fit:"fit" , original:false })}
+                                    src={generateImageURL({ wix_url: imageUrl, q: "90",w: "780", h: "720" })}
                                     data-preload
                                     className="media"
                                     alt=""

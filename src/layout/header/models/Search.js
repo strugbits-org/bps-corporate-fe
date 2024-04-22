@@ -88,14 +88,14 @@ const Search = () => {
         searchTerm: term,
         disableLoader: true
       };
-  
+
       const [portfolio, products, blog, otherPages] = await Promise.all([
         listPortfolios(options),
         listProducts(options),
         listBlogs(options),
         searchAllPages(options)
       ]);
-  
+
       setPortfolioCollection(portfolio._items.filter(item => item.data.portfolioRef._id !== undefined).map(item => item.data));
       setProductCollection(products._items.filter(item => item.data.product._id !== undefined && !item.data.hidden).map(item => item.data));
       setBlogCollection(blog._items.filter(item => item.data.blogRef._id !== undefined).map(item => item.data));
@@ -104,7 +104,7 @@ const Search = () => {
       console.log("error", error);
     }
   };
-  
+
 
   useEffect(() => {
     if (searchActive) {
@@ -206,7 +206,7 @@ const Search = () => {
                     <div className="result-rental">
                       <div className="container-title-results">
                         <h2 className="title-results split-chars" data-aos>
-                        {searchContent?.rentalTitle} <span>{`"${searchTerm}"`}</span>
+                          {searchContent?.rentalTitle} <span>{`"${searchTerm}"`}</span>
                         </h2>
                         <DelayedLink
                           to="https://www.rentals.blueprintstudios.com/"
@@ -229,7 +229,7 @@ const Search = () => {
                           >
                             {productCollection.slice(0, 3).map((item, index) => {
                               return (
-                              <div
+                                <div
                                   key={index}
                                   className="swiper-slide grid-item"
                                 >
@@ -242,7 +242,7 @@ const Search = () => {
                                       <div className="wrapper-img">
                                         <div className="container-img">
                                           <img
-                                            src={generateImageURL({ wix_url: item?.product?.mainMedia, fit:"fit", q: "95" })}
+                                            src={generateImageURL({ wix_url: item?.product?.mainMedia, w: "220", h: "220", fit: "fit", q: "95" })}
                                             data-preload
                                             className="media"
                                             alt=""
@@ -263,7 +263,7 @@ const Search = () => {
                                                 <li key={index}>
                                                   <div className="container-img">
                                                     <img
-                                                      src={generateImageURL({ wix_url: option.mainMedia ? option.mainMedia : item.product.mainMedia, fit:"fit", q: "95" })}
+                                                      src={generateImageURL({ wix_url: option.mainMedia ? option.mainMedia : item.product.mainMedia, w: "30", h: "30", fit: "fit", q: "95" })}
                                                       data-preload
                                                       className="media"
                                                       alt=""
@@ -294,7 +294,7 @@ const Search = () => {
                     <div className="result-portfolio mt-lg-60 mt-mobile-40">
                       <div className="container-title-results">
                         <h2 className="title-results split-chars" data-aos>
-                        {searchContent?.portfolioTitle} <span>{`"${searchTerm}"`}</span>
+                          {searchContent?.portfolioTitle} <span>{`"${searchTerm}"`}</span>
                         </h2>
                         <DelayedLink
                           to={`/portfolio`}
@@ -330,7 +330,7 @@ const Search = () => {
                                     >
                                       <div className="wrapper-img">
                                         <img
-                                          src={generateImageUrl2({ wix_url: data?.portfolioRef?.coverImage.imageInfo, q: "95" })}
+                                          src={generateImageUrl2({ wix_url: data?.portfolioRef?.coverImage.imageInfo, fit: "fit", w: "220", h: "320", q: "95" })}
                                           data-preload
                                           className="media"
                                           alt=""
@@ -357,7 +357,7 @@ const Search = () => {
                   <div className="result-our-markets">
                     <div className="container-title-results">
                       <h2 className="title-results split-chars" data-aos>
-                      {searchContent?.marketsTitle}
+                        {searchContent?.marketsTitle}
                       </h2>
                     </div>
                     <ul
@@ -379,7 +379,7 @@ const Search = () => {
                                 data-cursor-style="default"
                               >
                                 <img
-                                  src={generateImageURL({ wix_url: item?.image , q: "95" })}
+                                  src={generateImageURL({ wix_url: item?.image, fit: "fit", w: "500", h: "500", q: "95" })}
                                   data-preload
                                   className="media"
                                   alt=""
@@ -400,7 +400,7 @@ const Search = () => {
                   <div className="result-blog">
                     <div className="container-title-results">
                       <h2 className="title-results split-chars" data-aos>
-                      {searchContent?.blogTitle} <span>{`"${searchTerm}"`}</span>
+                        {searchContent?.blogTitle} <span>{`"${searchTerm}"`}</span>
                       </h2>
                       <DelayedLink
                         to="/blog"
@@ -437,7 +437,7 @@ const Search = () => {
                                     <div className="wrapper-img">
                                       {blog.blogRef.coverImage &&
                                         <img
-                                          src={generateImageURL({ wix_url: blog?.blogRef?.coverImage, q: "95" })}
+                                          src={generateImageURL({ wix_url: blog?.blogRef?.coverImage, fit: "fit", w: "400", h: "180", q: "95" })}
                                           data-preload
                                           className="media"
                                           alt=""
@@ -472,14 +472,14 @@ const Search = () => {
                   <div className="result-order-pages">
                     <div className="container-title-results">
                       <h2 className="title-results split-chars" data-aos>
-                      {searchContent?.otherPagesTitle} <span>{`"${searchTerm}"`}</span>
+                        {searchContent?.otherPagesTitle} <span>{`"${searchTerm}"`}</span>
                       </h2>
                     </div>
                     <ul
                       className="list-order-pages grid-lg-25 grid-md-50"
                       data-aos
                     >
-                      {otherPagesResults?.map((page,index) => {
+                      {otherPagesResults?.map((page, index) => {
                         return (
                           <li key={index} className="grid-item">
                             <DelayedLink to={page.path} className="link-order-pages">

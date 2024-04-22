@@ -163,7 +163,7 @@ const BlogListing = ({ data, seeMore, applyFilters }) => {
                                             <div className="container-img bg-blue" data-cursor-style="view" >
                                                 <div className="wrapper-img">
                                                     {item.blogRef.coverImage && <img
-                                                        src={generateImageURL({ wix_url: item?.blogRef?.coverImage, w: "500", fit: "fit", q: "90" })}
+                                                        src={generateImageURL({ wix_url: item?.blogRef?.coverImage, w: "440",h:"302", fit: "fit", q: "90" })}
                                                         data-preload
                                                         className="media"
                                                         alt=""

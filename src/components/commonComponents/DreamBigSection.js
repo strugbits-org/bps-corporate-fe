@@ -14,7 +14,7 @@ const DreamBigSection = () => {
           <div className="col-lg-4 offset-lg-4 column-1">
             <div className="container-img no-phone">
               <img
-                src={generateImageURL({ wix_url: data?.desktopBackgroundImage, q: "95" })}
+                src={generateImageURL({ wix_url: data?.desktopBackgroundImage,fit:"fit", q: "90" })}
                 data-preload
                 className="media"
                 alt=""
@@ -22,7 +22,7 @@ const DreamBigSection = () => {
             </div>
             <div className="container-img no-desktop no-tablet">
               <img
-                src={generateImageURL({ wix_url: data?.mobileBackgroundImage,fit:"fit", q: "95" })}
+                src={generateImageURL({ wix_url: data?.mobileBackgroundImage,fit:"fit", q: "90" })}
                 data-preload
                 className="media"
                 alt=""

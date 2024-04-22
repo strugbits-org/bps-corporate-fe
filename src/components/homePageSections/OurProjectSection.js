@@ -59,7 +59,7 @@ const OurProjectSection = () => {
                           <div className="container-img bg-blue">
                             <div className="wrapper-img">
                               <img
-                                src={generateImageUrl2({ wix_url: item?.portfolioRef?.coverImage?.imageInfo, q: "90" })}
+                                src={generateImageUrl2({ wix_url: item?.portfolioRef?.coverImage?.imageInfo, w: index === 0 ? "1920" : "800", h: "800", fit: "fit", q: "90" })}
                                 data-preload
                                 className="media"
                                 alt=""

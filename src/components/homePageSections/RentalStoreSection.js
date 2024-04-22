@@ -46,7 +46,7 @@ const RentalStoreSection = () => {
                   {item.image &&
                     <span>
                       <img
-                        src={generateImageURL({ wix_url: item?.image, h: "150", w: "150", q: "95" })}
+                        src={generateImageURL({ wix_url: item?.image, h: "60", w: "60", fit: "fit", q: "95" })}
                         data-preload
                         alt=""
                         className="img-1 media"
@@ -83,7 +83,7 @@ const RentalStoreSection = () => {
                     >
                       <div className="container-img">
                         <img
-                        src={generateImageURL({ wix_url: item?.image, q: "95" })}
+                          src={generateImageURL({ wix_url: item?.image, w: index === 0 || index === (data?.length - 1) ? "1280" : "600", h: index === 0 ? "1080" : "540", fit: "fit", q: "95" })}
                           data-preload
                           className="media"
                           alt=""

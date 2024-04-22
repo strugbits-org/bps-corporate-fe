@@ -52,7 +52,7 @@ const StudioSection = () => {
                     <div className="accordion-content">
                       <div className="container-img bg-blue">
                         <img
-                          src={generateImageURL({ wix_url: data?.image, q: "95" })}
+                          src={generateImageURL({ wix_url: data?.image, h: "900", fit: "fit", q: "95" })}
                           data-preload
                           className="media"
                           alt=""

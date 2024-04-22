@@ -11,7 +11,7 @@ const ExploreProjectsSection = ({ id }) => {
   const { portfolioSectionDetails } = useSelector((state) => state.portfolio);
 
   useEffect(() => {
-    dispatch(fetchPortfolio({pageSize: 4, excludeItem:id }));
+    dispatch(fetchPortfolio({ pageSize: 4, excludeItem: id }));
   }, [dispatch, id]);
 
   return (
@@ -32,8 +32,8 @@ const ExploreProjectsSection = ({ id }) => {
                   {portfolioCollection?.map((data, index) => (
                     <div key={index} className="swiper-slide grid-item">
                       <DelayedLink
-                      to={`/portfolio-post/${data.slug}`}
-                      className="link-portfolio link-portfolio-animation"
+                        to={`/portfolio-post/${data.slug}`}
+                        className="link-portfolio link-portfolio-animation"
                         attributes={{
                           "data-aos": "d:loop",
                         }}
@@ -44,7 +44,7 @@ const ExploreProjectsSection = ({ id }) => {
                         >
                           <div className="wrapper-img">
                             <img
-                              src={generateImageUrl2({ wix_url: data?.portfolioRef.coverImage.imageInfo, q: "90" })}
+                              src={generateImageUrl2({ wix_url: data?.portfolioRef.coverImage.imageInfo, w: "470", h: "580", q: "90" })}
                               data-preload
                               className="media"
                               alt=""
@@ -53,30 +53,30 @@ const ExploreProjectsSection = ({ id }) => {
                         </div>
                         <div className="container-text">
                           <ul className="list-tags-small">
-                          {data.markets.map((market, index) => (
-                            <li
-                              key={index}
-                              className={"tag-small"}
-                            >
-                              <span>{market.cardname}</span>
-                            </li>
-                          ))}
-                          {data.studios.map((studio, index) => (
-                            <React.Fragment key={index}>
-                              {index < 2 && (
-                                <li
-                                  className={"tag-small"}
-                                >
-                                  <span>{studio.cardName}</span>
-                                </li>
-                              )}
-                            </React.Fragment>
-                          ))}
-                          {data.studios.length > 2 ? (
-                            <li className="tag-small">
-                              <span>+{data.studios.length - 2} studios</span>
-                            </li>
-                          ) : null}
+                            {data.markets.map((market, index) => (
+                              <li
+                                key={index}
+                                className={"tag-small"}
+                              >
+                                <span>{market.cardname}</span>
+                              </li>
+                            ))}
+                            {data.studios.map((studio, index) => (
+                              <React.Fragment key={index}>
+                                {index < 2 && (
+                                  <li
+                                    className={"tag-small"}
+                                  >
+                                    <span>{studio.cardName}</span>
+                                  </li>
+                                )}
+                              </React.Fragment>
+                            ))}
+                            {data.studios.length > 2 ? (
+                              <li className="tag-small">
+                                <span>+{data.studios.length - 2} studios</span>
+                              </li>
+                            ) : null}
                           </ul>
                           <h2 className="title-portfolio">
                             {data?.portfolioRef.title}

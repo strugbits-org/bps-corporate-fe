@@ -17,28 +17,28 @@ const Services = () => {
       </div>
       <ul className="list-submenu-services list-submenu">
         {data.map((service, index) => (
-            <li key={index}>
-              <DelayedLink
-                to={`/services-post/${service.slug}`}
-                className="service-link"
-                attributes={{ "data-menu-close": "" }}
-              >
-                <div className="container-img bg-blue">
-                  <img
-                    src={generateImageURL({ wix_url: service?.image, q: "95" })}
-                    data-preload
-                    className="media"
-                    alt=""
-                  />
-                </div>
-                <h2 className="service-title split-words">
-                  {service.cardName}
-                </h2>
-                <span className="number">
-                  {index > 10 ? index + 1 : "0" + (index + 1)}
-                </span>
-              </DelayedLink>
-            </li>)
+          <li key={index}>
+            <DelayedLink
+              to={`/services-post/${service.slug}`}
+              className="service-link"
+              attributes={{ "data-menu-close": "" }}
+            >
+              <div className="container-img bg-blue">
+                <img
+                  src={generateImageURL({ wix_url: service?.image, fit: "fit", w: index === 0 ? "1280" : "600", h: index === 0 ? "1280" : "600", q: "95" })}
+                  data-preload
+                  className="media"
+                  alt=""
+                />
+              </div>
+              <h2 className="service-title split-words">
+                {service.cardName}
+              </h2>
+              <span className="number">
+                {index > 10 ? index + 1 : "0" + (index + 1)}
+              </span>
+            </DelayedLink>
+          </li>)
         )}
       </ul>
     </div>
