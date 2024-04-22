@@ -108,7 +108,7 @@ const Footer = () => {
                       <span>Contact</span>
                     </DelayedLink>
                   </li>
-                  <li className="list-item">
+                  {/* <li className="list-item">
                     <DelayedLink to="/" className="link-footer-menu">
                       <span>FAQ</span>
                     </DelayedLink>
@@ -122,7 +122,7 @@ const Footer = () => {
                     <DelayedLink to="/" className="link-footer-menu">
                       <span>Privacy policy</span>
                     </DelayedLink>
-                  </li>
+                  </li> */}
                   <li className="list-item item-social-media">
                     <ul className="list-social-media">
                       {socialLinks.map((item, index) => (

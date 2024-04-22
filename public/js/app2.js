@@ -7194,7 +7194,6 @@ var require_app2 = __commonJS({
       sliderBanner();
       if (screen.isMobile) {
         if (screen.isIphone) {
-          console.log("yes");
           scrollVideoToCanvas(".home-from-concept-to-reality", ".container-frame-by-frame", "js/home-animation-min-mobile.mp4");
         } else {
           scrollVideo(".home-from-concept-to-reality", ".container-frame-by-frame", "js/home-animation-min-mobile.mp4");
