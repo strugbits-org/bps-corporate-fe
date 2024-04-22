@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import RecentPosts from "../../components/blogDetailPageSections/RecentPosts";
 import PostDetails from "../../components/blogDetailPageSections/PostDetails";
 import SocialSection from "../../components/commonComponents/SocialSection";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useLocation, useParams } from "react-router-dom/dist";
 import { fetchSingleBlog, getBlogSectionDetails } from "../../redux/reducers/blogData";
 
@@ -12,7 +12,6 @@ const BlogPost = () => {
   // const params = decodeURIComponent(param)
   const dispatch = useDispatch();
  
-  const singleBlogData = useSelector((state) => state.blog.singleBlogData);
   // const loading = useSelector((state) => state.blog.singleBlogLoading);
   // const error = useSelector((state) => state.services.error);
 
@@ -26,7 +25,7 @@ const BlogPost = () => {
   return (
     <>
       {/*  Post details Section start */}
-      <PostDetails data={singleBlogData}/>
+      <PostDetails/>
       {/*  Post details Section end */}
 
       {/* Recent Post Section start */}

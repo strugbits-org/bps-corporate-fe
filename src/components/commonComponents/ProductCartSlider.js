@@ -39,7 +39,7 @@ const ProductCartSlider = ({ data }) => {
                         <i className="icon-arrow-diagonal-right"></i>
                       </div>
                       <ul className="list-thumb">
-                        {item.productOptions.Color.choices.map((option, index) => (
+                        {item.productOptions.Color && item.productOptions.Color.choices.map((option, index) => (
                           <React.Fragment key={index}>
                             {index < 4 && (
                               <li key={index}>
@@ -56,7 +56,7 @@ const ProductCartSlider = ({ data }) => {
                           </React.Fragment>
                         ))}
                       </ul>
-                      {item.productOptions.Color.choices.length > 4 ? (
+                      {item.productOptions.Color && item.productOptions.Color.choices.length > 4 ? (
                         <div className="colors-number">
                           <span>+{item.productOptions.Color.choices.length - 4}</span>
                         </div>

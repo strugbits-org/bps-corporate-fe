@@ -7,10 +7,11 @@ import ReactPlayer from "react-player";
 import { getblogTags } from "../../redux/reducers/blogData";
 import { useDispatch, useSelector } from "react-redux";
 
-const PostDetails = ({ data }) => {
-  const { blogSectionDetails } = useSelector((state) => state.blog);
-
+const PostDetails = () => {
   const dispatch = useDispatch();
+
+  const { blogSectionDetails } = useSelector((state) => state.blog);
+  const data = useSelector((state) => state.blog.singleBlogData);
 
   const tags = useSelector((state) => state.blog.blogTags);
   const [singleData, setSingleData] = useState([]);
