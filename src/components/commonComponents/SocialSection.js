@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import DelayedLink from "../../common/DelayedLink";
 import {
   socialData,
@@ -13,6 +13,7 @@ const SocialSection = () => {
   const dispatch = useDispatch();
   const posts = useSelector((state) => state.blog.socialSectionBlogs);
   const { homeSectionDetails } = useSelector((state) => state.home);
+  const location = useLocation();
 
   useEffect(() => {
     const script = document.createElement("script");
@@ -26,7 +27,7 @@ const SocialSection = () => {
 
   useEffect(() => {
     dispatch(getSocialSectionBlogs());
-  }, [dispatch]);
+  }, [dispatch, location]);
   return (
     <section className="section-lets-get-social z-5 pt-lg-195 pt-tablet-105 pt-phone-155 pb-lg-130 pb-tablet-105 pb-phone-140 mt-lg-240">
       <div
