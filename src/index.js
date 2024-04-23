@@ -39,19 +39,10 @@ const router = createBrowserRouter([
       {
         path: "blog",
         element: <Blog />,
-      },
+      },     
       {
-        path: "blogs",
-        element: <Blogs />,
-      },       
-      {
-       
         path: "portfolio", 
         element: <Portfolio />,
-      },
-      {
-        path: "services",
-        element: <ServicePostPage />,
       },
       {
         path: "services/:slug",
@@ -62,12 +53,10 @@ const router = createBrowserRouter([
         element: <MarketPost />,
       },
       {
-       
         path: "project/:slug", 
         element: <PortfolioPost />,
       },
       {
-       
         path: "article/:slug", 
         element: <BlogPost/>,
       },
