@@ -53,3 +53,15 @@ export const postForm = async (name, payload) => {
         throw new Error(error.message);
     }
 }
+
+export const getInstaFeed = async () => {
+    try {
+        const headers = {
+            'Content-Type': 'application/json',
+        };
+        const response = await axios.get(base_url + "/corporate/instagram/feeds", { headers });
+        return response.data.data;
+    } catch (error) {
+        throw new Error(error.message);
+    }
+}

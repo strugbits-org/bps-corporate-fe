@@ -201,7 +201,7 @@ const Search = () => {
                     </ul>
                   </div>
 
-                  <div className={`column-results ${filteredPortfolioCollection.length === 0 || productCollection.length === 0 ? "custom-css" : ""}`}>
+                  <div className="column-results">
 
                     <div className={`result-rental ${productCollection.length === 0 ? "hidden" : ""}`}>
                       <div className="container-title-results">

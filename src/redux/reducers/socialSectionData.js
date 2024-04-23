@@ -1,10 +1,14 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { fetchCollection } from "../fetchCollection";
+import { fetchCollection, getInstaFeed } from "../fetchCollection";
 
 const initialState = {
   data: null,
   loading: false,
   error: null,
+
+  insta_feed:[],
+  insta_feed_loading:[],
+  insta_feed_error:[],
 };
 
 export const getSocialSectionDetails = createAsyncThunk(
@@ -34,6 +38,17 @@ export const getSocialSectionDetails = createAsyncThunk(
     }
   }
 );
+export const fetchInstaFeed = createAsyncThunk(
+  "data/fetchInstaFeed",
+  async () => {
+    try {
+      const response = await getInstaFeed();
+      return response.data;
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
+);
 
 const socialSectionSlice = createSlice({
   name: "socialSection",
@@ -41,6 +56,19 @@ const socialSectionSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+      .addCase(fetchInstaFeed.pending, (state) => {
+        state.insta_feed_loading = true;
+        state.insta_feed_error = null;
+      })
+      .addCase(fetchInstaFeed.fulfilled, (state, action) => {
+        state.insta_feed_loading = false;
+        state.insta_feed = action.payload;
+      })
+      .addCase(fetchInstaFeed.rejected, (state, action) => {
+        state.insta_feed_loading = false;
+        state.insta_feed_error = action.error.message;
+      })
+
       .addCase(getSocialSectionDetails.pending, (state) => {
         state.loading = true;
         state.error = null;
