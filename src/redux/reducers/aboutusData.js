@@ -84,7 +84,7 @@ export const fetchOurDreamSection = createAsyncThunk(
       }
       const response = await fetchCollection(data);
       handleCollectionLoaded();
-      return response._items.map((x) => x.data);
+      return response._items.map((x) => x.data).sort((a, b) => a.orderNumber - b.orderNumber);
     } catch (error) {
       handleCollectionLoaded();
       throw new Error(error.message);

@@ -1,25 +1,22 @@
 import { Link, useLocation } from "react-router-dom";
 import DelayedLink from "../../common/DelayedLink";
-import {
-  socialData,
-  instafeeds,
-} from "../../common/constats/constats";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { generateImageUrl2 } from "../../common/common_functions/imageURL";
 import { getSocialSectionBlogs } from "../../redux/reducers/blogData";
-import { getSocialSectionDetails } from "../../redux/reducers/socialSectionData";
+import { fetchInstaFeed, getSocialSectionDetails } from "../../redux/reducers/socialSectionData";
 
 const SocialSection = () => {
   const dispatch = useDispatch();
   const posts = useSelector((state) => state.blog.socialSectionBlogs);
-  const { homeSectionDetails } = useSelector((state) => state.home);
   const data = useSelector((state) => state.socialSectionData.data);
+  const insta_feed = useSelector((state) => state.socialSectionData.insta_feed);
   const location = useLocation();
 
   useEffect(() => {
     dispatch(getSocialSectionBlogs());
     dispatch(getSocialSectionDetails());
+    dispatch(fetchInstaFeed());
   }, [dispatch, location]);
   return (
     <section className="section-lets-get-social z-5 pt-lg-195 pt-tablet-105 pt-phone-155 pb-lg-130 pb-tablet-105 pb-phone-140 mt-lg-240">
@@ -40,13 +37,13 @@ const SocialSection = () => {
               className="fs--60 blue-1 text-center split-words"
               data-aos="d:loop"
             >
-            {homeSectionDetails.socialSectionTitle} 
+            {data?.title}
             </h2>
             <h3
               className="fs--16 fs-tablet-20 fs-phone-18 blue-1 text-center mt-10"
               data-aos="fadeIn .8s ease-in-out .2s, d:loop"
             >
-              {homeSectionDetails.socialSectionDescription}
+              {data?.description}
             </h3>
           </div>
           <div className="col-lg-12 column-2">
@@ -64,11 +61,11 @@ const SocialSection = () => {
                 <div className="content blog-content">
                   <div className="social-media-title">
                     <i className="icon-blog"></i>
-                    <h3>{socialData.blogtitle}</h3>
+                    <h3>{data?.blogsTitle}</h3>
                   </div>
 
                   <ul className="list-blog-lets-get-social">
-                    {posts?.slice(0, 3).map((data) => {
+                    {posts.map((data) => {
                       return (
                         <li key={data._id}>
                           <DelayedLink
@@ -111,14 +108,14 @@ const SocialSection = () => {
                 <div className="content">
                   <div className="social-media-title">
                     <i className="icon-instagram"></i>
-                    <h3>{socialData.instatitle}</h3>
+                    <h3>{data?.instaFeedTitle}</h3>
                   </div>
-                  <ul className="list-instagram">
-                    {instafeeds.map((data, index) => {
+                  <ul className="list-instagram insta-feed">
+                    {insta_feed.slice(0, 9).map((item, index) => {
                       return (
                         <li key={index}>
                           <DelayedLink
-                            to="/"
+                            to={item.permalink}
                             target="_blank"
                             attributes={{
                               rel: "noopener noreferrer",
@@ -126,7 +123,7 @@ const SocialSection = () => {
                           >
                             <div className="container-img">
                               <img
-                                src={data.image}
+                                src={item.image}
                                 data-preload
                                 className="media"
                                 alt=""
@@ -154,16 +151,15 @@ const SocialSection = () => {
                 <div className="content">
                   <div className="social-media-title">
                     <i className="icon-pinterest"></i>
-                    <h3>{socialData.pinatitle}</h3>
+                    <h3>{data?.pinterestFeedTitle}</h3>
                   </div>
-                  <ul className="list-instagram">
+                  <ul className="list-pinterest">
                     <Link
                       data-pin-do="embedUser"
                       data-pin-scale-height="400"
                       data-pin-scale-width="1200"
                       data-pin-min-weight="100%"
                       data-pin-max-weight="100%"
-                      // to="https://ro.pinterest.com/blueprintst"
                       to={data?.pinterestUrl}
                     ></Link>
                   </ul>
