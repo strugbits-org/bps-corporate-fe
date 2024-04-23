@@ -320,7 +320,7 @@ const Search = () => {
                                   className="swiper-slide grid-item"
                                 >
                                   <DelayedLink
-                                    to={`/portfolio-post/${data.slug}`}
+                                    to={`/project/${data.slug}`}
                                     className="link-portfolio"
                                   >
                                     <div
@@ -429,7 +429,7 @@ const Search = () => {
                                 className="swiper-slide grid-item"
                               >
                                 <DelayedLink
-                                  to={`/blog-post/${blog.slug}`}
+                                  to={`/article/${blog.slug}`}
                                   className="link-blog"
                                 >
                                   <div

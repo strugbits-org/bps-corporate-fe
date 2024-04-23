@@ -8,7 +8,7 @@ const MarketTopSection = () => {
 
   return (
     <>
-      <section className="market-post-intro">
+      <section className="market-intro">
         <div
           className="container-fluid pos-relative z-5"
           data-parallax-top
@@ -60,7 +60,7 @@ const MarketTopSection = () => {
         </div>
       </section>
 
-      <section className="market-post-video">
+      <section className="market-video">
         <div className="container-fluid">
           <div className="row">
             <div className="col-lg-4 offset-lg-4 column-1">

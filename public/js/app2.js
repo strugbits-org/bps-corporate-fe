@@ -12919,7 +12919,7 @@ var require_app2 = __commonJS({
         document.execCommand("copy");
       });
     }
-    const pageName$6 = "portfolio-post";
+    const pageName$6 = "project";
     function main$6() {
       sliderFeaturedProducts();
       // copyLink();
@@ -15420,7 +15420,7 @@ var require_app2 = __commonJS({
       }
     }
     Plyr.defaults = cloneDeep(defaults);
-    const pageName$5 = "market-post";
+    const pageName$5 = "market";
     function main$5() {
       sliderTestimony();
       Array.from(document.querySelectorAll(".player-video")).map((p) => new Plyr(p, {
@@ -15435,12 +15435,12 @@ var require_app2 = __commonJS({
       pageName: pageName$5,
       main: main$5
     });
-    const pageName$4 = "blog-post";
+    const pageName$4 = "article";
     function main$4() {
       sliderFeaturedProducts();
       // copyLink();
-      if (document.querySelectorAll(".slider-blog-post")) {
-        let sliderGallery = document.querySelectorAll(".slider-blog-post");
+      if (document.querySelectorAll(".slider-article")) {
+        let sliderGallery = document.querySelectorAll(".slider-article");
         sliderGallery.forEach((slider) => {
           slider = new Swiper(slider.querySelector(".swiper-container"), {
             modules: [Pagination, Navigation, EffectFade],
@@ -15777,7 +15777,7 @@ var require_app2 = __commonJS({
       list.updateAccordionSize = updateAccordionSize;
     }
 
-    const pageName$3 = "services-post";
+    const pageName$3 = "services";
     function main$3() {
       sliderTestimony();
       sliderBanner();
@@ -15790,7 +15790,7 @@ var require_app2 = __commonJS({
       let mm = gsapWithCSS.matchMedia();
       let sliderGallery = document.querySelectorAll(".slider-content-mobile");
       let media2 = mediaSize.phone;
-      if (document.body.dataset.pg == "pg-market-post")
+      if (document.body.dataset.pg == "pg-market")
         media2 = mediaSize.mobile;
       setTimeout(() => {
         mm.add(media2, () => {
@@ -16087,16 +16087,16 @@ var require_app2 = __commonJS({
         case 'about':
           main$7();
           break;
-        case 'portfolio-post':
+        case 'project':
           main$6();
           break;
-        case 'market-post':
+        case 'market':
           main$5();
           break;
-        case 'blog-post':
+        case 'article':
           main$4();
           break;
-        case 'services-post':
+        case 'services':
           main$3();
           break;
         case 'contact':

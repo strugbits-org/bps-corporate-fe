@@ -5,7 +5,7 @@ import { generateImageURL } from "../../common/common_functions/imageURL";
 export const SubSectionServices = () => {
   const data = useSelector((state) => state.services.servicesData);
   return (
-    <section className="services-post-description pt-lg-210 pt-tablet-105 pt-phone-200">
+    <section className="services-description pt-lg-210 pt-tablet-105 pt-phone-200">
       <div className="container-fluid">
         <div className="row">
           <div className="col-12">

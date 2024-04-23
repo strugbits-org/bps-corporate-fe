@@ -72,7 +72,7 @@ const SocialSection = () => {
                       return (
                         <li key={data._id}>
                           <DelayedLink
-                            to={`/blog-post/${encodeURIComponent(data.slug)}`}
+                            to={`/article/${encodeURIComponent(data.slug)}`}
                             className="link-blog">
                             <div
                               className="container-img"

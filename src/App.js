@@ -18,7 +18,7 @@ function App() {
   const dispatch = useDispatch();
 
   const location = useLocation();
-  const pathname = location.pathname.trim() === "/" ? "home" : location.pathname.substring(1); // Remove leading slash
+  const pathname = location.pathname.trim() === "/" ? "home" : location.pathname.substring(1);
   const cleanPath = pathname.split("/")[0].trim();
 
   const { config, seo_data } = useSelector((state) => state.config);
@@ -50,8 +50,8 @@ function App() {
       <Cookies />
       <Navbar />
       <Helmet>
-        <title>{`Blueprint Studios ${seo_data?.title ? " | " + seo_data?.title : ""}`}</title>
-        <meta property="og:title" content={`Blueprint Studios ${seo_data?.title ? " | " + seo_data?.title : ""}`} />
+        <title>{seo_data?.title ? seo_data?.title : "Blueprint Studios"}</title>
+        <meta property="og:title" content={seo_data?.title ? seo_data?.title : "Blueprint Studios"} />
         <meta name="description" content={seo_data?.description ? seo_data?.description : ""} />
         <meta property="og:description" content={seo_data?.description ? seo_data?.description : ""} />
 

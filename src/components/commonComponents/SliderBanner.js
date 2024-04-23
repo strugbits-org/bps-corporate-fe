@@ -26,7 +26,7 @@ const SliderBanner = ({ data, type, sectionDetails }) => {
                 <div key={index} className="swiper-slide">
                   <DelayedLink>
                     <div
-                      onClick={() => handleNavigate(`/portfolio-post/${data?.portfolioRef?.slug}`)}
+                      onClick={() => handleNavigate(`/project/${data?.portfolioRef?.slug}`)}
                       className="container-img"
                     >
                       <img

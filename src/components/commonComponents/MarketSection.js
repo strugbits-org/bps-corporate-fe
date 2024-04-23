@@ -36,7 +36,7 @@ const MarketSection = () => {
                     data-delay-desktop={data_delay.toString()}
                   >
                     <DelayedLink
-                      to={`/market-post/${data.slug}`}
+                      to={`/market/${data.slug}`}
                       className="market-link project-link"
                       attributes={{
                         "data-cursor-style": "view",

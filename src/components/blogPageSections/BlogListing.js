@@ -154,7 +154,7 @@ const BlogListing = ({ data, seeMore, applyFilters }) => {
                                 return item.blogRef && item.author && (
                                     <li key={item._id} className="grid-item" data-aos="d:loop">
                                         <DelayedLink
-                                            to={`/blog-post/${encodeURIComponent(item.slug)}`}
+                                            to={`/article/${encodeURIComponent(item.slug)}`}
                                             className="link-blog link-blog-animation"
                                             attributes={{
                                                 "data-aos": "d:loop",
