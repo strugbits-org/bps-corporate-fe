@@ -201,9 +201,9 @@ const Search = () => {
                     </ul>
                   </div>
 
-                  <div className={`column-results ${filteredPortfolioCollection.length === 0 && filteredBlogCollection.length === 0 ? "custom-css" : ""}`}>
+                  <div className={`column-results ${filteredPortfolioCollection.length === 0 || productCollection.length === 0 ? "custom-css" : ""}`}>
 
-                    <div className="result-rental">
+                    <div className={`result-rental ${productCollection.length === 0 ? "hidden" : ""}`}>
                       <div className="container-title-results">
                         <h2 className="title-results split-chars" data-aos>
                           {searchContent?.rentalTitle} <span>{`"${searchTerm}"`}</span>
@@ -285,13 +285,12 @@ const Search = () => {
                                 </div>
                               );
                             })}
-                            {productCollection.length === 0 && <h6 style={{ width: "100%" }} className="ml-4 mt-3-cs fs--20">No matches found for "{searchTerm}"</h6>}
                           </div>
                         </div>
                       </div>
                     </div>
 
-                    <div className="result-portfolio mt-lg-60 mt-mobile-40">
+                    <div className={`result-portfolio mt-lg-60 mt-mobile-40 ${filteredPortfolioCollection.length === 0 ? "hidden" : ""}`}>
                       <div className="container-title-results">
                         <h2 className="title-results split-chars" data-aos>
                           {searchContent?.portfolioTitle} <span>{`"${searchTerm}"`}</span>
@@ -346,11 +345,11 @@ const Search = () => {
                                 </div>
                               );
                             })}
-                            {filteredPortfolioCollection.length === 0 && <h6 style={{ width: "100%" }} className="ml-4 mt-3-cs fs--20">No matches found for "{searchTerm}"</h6>}
                           </div>
                         </div>
                       </div>
                     </div>
+                    {productCollection.length === 0 && filteredPortfolioCollection.length === 0 && <h6 style={{ width: "100%" }} className="ml-4 mt-3-cs fs--40">No products or projects were found for "{searchTerm}"</h6>}
                   </div>
 
 
@@ -378,12 +377,15 @@ const Search = () => {
                                 className="container-img bg-blue"
                                 data-cursor-style="default"
                               >
-                                <img
-                                  src={generateImageURL({ wix_url: item?.image, fit: "fit", w: "500", h: "500", q: "95" })}
-                                  data-preload
-                                  className="media"
-                                  alt=""
-                                />
+                                {resultMarkets.includes(item._id) && (
+                                    <img
+                                      src={generateImageURL({ wix_url: item?.image, fit: "fit", w: "500", h: "500", q: "95" })}
+                                      data-preload
+                                      className="media"
+                                      alt=""
+                                    />
+                                  )
+                                }
                               </div>
                               <div className="container-text">
                                 <h3 className="title-project split-words">
@@ -397,7 +399,7 @@ const Search = () => {
                     </ul>
                   </div>
 
-                  <div className="result-blog">
+                  <div className={`result-blog ${filteredBlogCollection.length === 0 ? "hidden" : ""}`}>
                     <div className="container-title-results">
                       <h2 className="title-results split-chars" data-aos>
                         {searchContent?.blogTitle} <span>{`"${searchTerm}"`}</span>
@@ -463,13 +465,12 @@ const Search = () => {
                               </div>
                             );
                           })}
-                          {filteredBlogCollection.length === 0 && <h6 style={{ width: "100%" }} className="ml-4 mt-3-cs fs--20">No matches found for "{searchTerm}"</h6>}
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  <div className="result-order-pages">
+                  <div className={`result-order-pages ${otherPagesResults.length === 0 ? "hidden" : ""}`}>
                     <div className="container-title-results">
                       <h2 className="title-results split-chars" data-aos>
                         {searchContent?.otherPagesTitle} <span>{`"${searchTerm}"`}</span>
@@ -491,7 +492,6 @@ const Search = () => {
                           </li>
                         )
                       })}
-                      {otherPagesResults.length === 0 && <h6 style={{ width: "100%" }} className="ml-4 mt-3-cs fs--20">No matches found for "{searchTerm}"</h6>}
                     </ul>
                   </div>
                 </div>

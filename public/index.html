@@ -1,22 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <link rel="modulepreload" href="%PUBLIC_URL%/js/app2.js" />
-    <link rel="modulepreload" href="%PUBLIC_URL%/js/all.js" />
-    <link rel="modulepreload" href="%PUBLIC_URL%/js/search.js" />
-    <link rel="modulepreload" href="%PUBLIC_URL%/js/forms.js" />
-    <link rel="modulepreload" href="%PUBLIC_URL%/js/chat.js" /> 
-    <!-- <link rel="modulepreload" href="%PUBLIC_URL%/js/loader.js" />   -->
-    <link rel="preload" as="style" href="%PUBLIC_URL%/js/utils.css" />
-    <link rel="preload" as="style" href="%PUBLIC_URL%/js/app.css" />
 
-  </head>
-  <body data-scroll-direction="initial" data-search-container>
-    <span class="initScript d-none"></span>
-    <span class="stickyAnimationTrigger d-none"></span>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-  </body>
+<head>
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-WBJ97DL');</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <link rel="modulepreload" href="%PUBLIC_URL%/js/app2.js" />
+  <link rel="modulepreload" href="%PUBLIC_URL%/js/all.js" />
+  <link rel="modulepreload" href="%PUBLIC_URL%/js/search.js" />
+  <link rel="modulepreload" href="%PUBLIC_URL%/js/forms.js" />
+  <link rel="modulepreload" href="%PUBLIC_URL%/js/chat.js" />
+  <!-- <link rel="modulepreload" href="%PUBLIC_URL%/js/loader.js" />   -->
+  <link rel="preload" as="style" href="%PUBLIC_URL%/js/utils.css" />
+  <link rel="preload" as="style" href="%PUBLIC_URL%/js/app.css" />
+
+</head>
+
+<body data-scroll-direction="initial" data-search-container>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WBJ97DL" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <span class="initScript d-none"></span>
+  <span class="stickyAnimationTrigger d-none"></span>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+</body>
+
 </html>

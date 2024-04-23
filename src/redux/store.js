@@ -11,6 +11,7 @@ import servicesReducer from "./reducers/servicesData";
 import blogReducer from "./reducers/blogData";
 import footerReducer from "./reducers/footerData";
 import searchContentReducer from "./reducers/searchData";
+import socialSectionReducer from "./reducers/socialSectionData";
 export default configureStore({
   reducer: {
     config: configReducer,
@@ -25,6 +26,7 @@ export default configureStore({
     footer: footerReducer,
     blog: blogReducer,
     searchContent: searchContentReducer,
+    socialSectionData: socialSectionReducer,
   },
  
 });
