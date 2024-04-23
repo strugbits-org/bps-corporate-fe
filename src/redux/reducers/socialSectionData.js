@@ -21,6 +21,13 @@ export const getSocialSectionDetails = createAsyncThunk(
         "limit": null
       }
       const response = await fetchCollection(data);
+      const script = document.createElement("script");
+      script.async = true;
+      script.type = "text/javascript";
+      script.dataset.pinBuild = "doBuild";
+      script.src = "//assets.pinterest.com/js/pinit.js";
+      document.body.appendChild(script);
+      if (window.doBuild) window.doBuild();
       return response._items.map((x) => x.data)[0];
     } catch (error) {
       throw new Error(error.message);

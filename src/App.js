@@ -7,7 +7,7 @@ import Loading from "./common/Loading";
 import Cookies from "./common/Cookies";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loadAppConfig } from "./redux/reducers/appConfig";
+import { fetchPageSeoData, loadAppConfig } from "./redux/reducers/appConfig";
 import { fetchDreamBigSection, fetchHomeSectionDetails, fetchPeopleReviewSlider, fetchStudioSection } from "./redux/reducers/homeData";
 import { getMarketCollection } from "./redux/reducers/marketData";
 import { fetchContactUs } from "./redux/reducers/contatusData";
@@ -21,7 +21,7 @@ function App() {
   const pathname = location.pathname.trim() === "/" ? "home" : location.pathname.substring(1); // Remove leading slash
   const cleanPath = pathname.split("/")[0].trim();
 
-  const config = useSelector((state) => state.config.config);
+  const { config, seo_data } = useSelector((state) => state.config);
 
   useEffect(() => {
     dispatch(loadAppConfig());
@@ -36,9 +36,9 @@ function App() {
   }, [dispatch]);
 
   useEffect(() => {
+    dispatch(fetchPageSeoData(cleanPath));
     closeModals();
-  }, [location])
-  
+  }, [dispatch, location, cleanPath]);
 
   return (
     <div>
@@ -50,19 +50,14 @@ function App() {
       <Cookies />
       <Navbar />
       <Helmet>
-        <title>Blueprint Studios</title>
-        <meta
-          name="description"
-          content="Events are crucial for enhancing brand awareness, offering exclusive
-           chances to showcase ideas, products, and services intimately."
-        />
+        <title>{`Blueprint Studios ${seo_data?.title ? " | " + seo_data?.title : ""}`}</title>
+        <meta property="og:title" content={`Blueprint Studios ${seo_data?.title ? " | " + seo_data?.title : ""}`} />
+        <meta name="description" content={seo_data?.description ? seo_data?.description : ""} />
+        <meta property="og:description" content={seo_data?.description ? seo_data?.description : ""} />
 
         {config?.noFollow && <meta name="robots" content="noindex,nofollow" />}
 
         <meta name="format-detection" content="telephone=no" />
-        <meta property="og:title" content="Blueprint" />
-        <meta name="description" content="" />
-        <meta property="og:description" content="" />
         <meta name="keywords" content="" />
         <meta property="og:image" content="" />
         <meta property="og:image:width" content="800" />
@@ -81,7 +76,6 @@ function App() {
         <script type="module" src={process.env.PUBLIC_URL + "/js/search.js"}></script>
         <script type="module" src={process.env.PUBLIC_URL + "/js/forms.js"}></script>
         <script type="module" src={process.env.PUBLIC_URL + "/js/chat.js"}></script>
-        {/* <script type="module" src={process.env.PUBLIC_URL + "/js/loader.js"}></script> */}
         <link rel="stylesheet" href={process.env.PUBLIC_URL + "/js/utils.css"} />
         <link rel="stylesheet" href={process.env.PUBLIC_URL + "/js/app.css"} />
       </Helmet>
