@@ -170,7 +170,7 @@ const PostDetails = () => {
   }, [dispatch, data?.blogRef?.tags]);
 
   return (
-    <section className="blog-post-intro pt-lg-150 pt-mobile-125">
+    <section className="article-intro pt-lg-150 pt-mobile-125">
       <div className="container-fluid">
         <div className="row row-1">
           <div className="col-lg-5 offset-lg-3 column-1">
@@ -197,7 +197,7 @@ const PostDetails = () => {
                 </div>
               </div>
               <h1
-                className="fs--40 fs-mobile-35 lh-140 blog-post-title split-words"
+                className="fs--40 fs-mobile-35 lh-140 article-title split-words"
                 data-aos="d:loop"
               >
                 {title}
@@ -207,9 +207,9 @@ const PostDetails = () => {
         </div>
         <div className="row row-2 mt-lg-15 mt-tablet-25 mt-phone-45">
           <div className="col-lg-10 offset-lg-1 column-1">
-            <div className="blog-post-content pb-lg-180 pb-tablet-60 pb-phone-40">
+            <div className="article-content pb-lg-180 pb-tablet-60 pb-phone-40">
               {singleData.length > 0 && singleData[0].type === "cover" && (
-                <div className="blog-post-thumb" data-aos="d:loop">
+                <div className="article-thumb" data-aos="d:loop">
                   <div className="container-img">
                     <img
                       src={singleData[0].image}
@@ -223,7 +223,7 @@ const PostDetails = () => {
                 </div>
               )}
 
-              <div className="blog-post-text mt-lg-60 mt-tablet-40 mt-phone-85">
+              <div className="article-text mt-lg-60 mt-tablet-40 mt-phone-85">
                 <div
                   className="editor"
                   data-aos="fadeIn .8s ease-in-out .2s, d:loop"
@@ -260,7 +260,7 @@ const PostDetails = () => {
                       );
                     } else if (item?.type === "gallery") {
                       return (
-                        <div key={index} className="slider-blog-post">
+                        <div key={index} className="slider-article">
                           <div className="swiper-container">
                             <div className="swiper-wrapper">
                               {item?.images?.map((item, index) => {
@@ -296,7 +296,7 @@ const PostDetails = () => {
                 </div>
               </div>
               {tags.length !== 0 && (
-                <div className="blog-post-tags mt-lg-140 mt-tablet-40 mt-phone-115">
+                <div className="article-tags mt-lg-140 mt-tablet-40 mt-phone-115">
                   <h3
                     className="fs--22 mb-lg-25 mb-tablet-40 mb-phone-25 split-words"
                     data-aos="d:loop"

@@ -24,7 +24,7 @@ const Market = () => {
           return (
             <li key={item._id} className="list-item">
               <DelayedLink
-                to={`/market-post/${item.slug}`}
+                to={`/market/${item.slug}`}
                 className="market-link project-link"
                 attributes={{
                   "data-menu-close": "",

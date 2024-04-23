@@ -7,7 +7,7 @@ const ServiceIntro = () => {
 
   return (
     <>
-      <section className="services-post-intro">
+      <section className="services-intro">
         <div
           className="container-fluid pos-relative z-5"
           data-parallax-top

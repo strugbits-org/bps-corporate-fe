@@ -19,7 +19,7 @@ const ExplorePortfolio = ({ slug }) => {
 
   return (
     filteredPortfolioCollection && filteredPortfolioCollection.length > 0 &&
-    <section className="market-post-explore-portfolio overflow-hidden pt-lg-270 pb-lg-220 py-tablet-100 pt-phone-145 pb-phone-190">
+    <section className="market-explore-portfolio overflow-hidden pt-lg-270 pb-lg-220 py-tablet-100 pt-phone-145 pb-phone-190">
       <div className="container-fluid">
         <div className="row">
           <div className="col-lg-4 offset-lg-4">
@@ -39,7 +39,7 @@ const ExplorePortfolio = ({ slug }) => {
                   {filteredPortfolioCollection?.map((item, index) => {
                     return (
                       <div key={index} className="swiper-slide grid-item">
-                        <DelayedLink to={`/portfolio-post/${item.slug}`} className="link">
+                        <DelayedLink to={`/project/${item.slug}`} className="link">
                           <div className="img-wrapper">
                             <div
                               className="container-img"

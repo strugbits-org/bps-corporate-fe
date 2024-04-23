@@ -19,7 +19,7 @@ const Services = () => {
         {data.map((service, index) => (
           <li key={index}>
             <DelayedLink
-              to={`/services-post/${service.slug}`}
+              to={`/services/${service.slug}`}
               className="service-link"
               attributes={{ "data-menu-close": "" }}
             >

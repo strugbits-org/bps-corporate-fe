@@ -18,7 +18,7 @@ const HowWeDoSection = () => {
   }
 
   return (
-    <section className="market-post-how-we-do-it pt-lg-270 pt-tablet-100 pt-phone-150">
+    <section className="market-how-we-do-it pt-lg-270 pt-tablet-100 pt-phone-150">
       <div className="container-fluid">
         <div className="row">
           <div className="col-lg-10 offset-lg-1 column-1">

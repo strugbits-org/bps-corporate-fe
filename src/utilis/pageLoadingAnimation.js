@@ -23,10 +23,10 @@ export const handleCollectionLoaded = () => {
         'about': 6,
         'portfolio': 2,
         'blog': 2,
-        'market-post': 3,
-        'services-post': 3,
-        'portfolio-post': 3,
-        'blog-post': 3,
+        'market': 3,
+        'services': 3,
+        'project': 3,
+        'article': 3,
         'contact': 1,
     }[cleanPage] || 0;
     

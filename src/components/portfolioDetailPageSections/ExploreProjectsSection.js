@@ -15,7 +15,7 @@ const ExploreProjectsSection = ({ id }) => {
   }, [dispatch, id]);
 
   return (
-    <section className="portfolio-post-explore-projects pt-lg-310 pt-tablet-100 pt-phone-160 pb-lg-190 pb-mobile-100">
+    <section className="project-explore-projects pt-lg-310 pt-tablet-100 pt-phone-160 pb-lg-190 pb-mobile-100">
       <div className="container-fluid">
         <div className="row">
           <div className="col-12">
@@ -32,7 +32,7 @@ const ExploreProjectsSection = ({ id }) => {
                   {portfolioCollection?.map((data, index) => (
                     <div key={index} className="swiper-slide grid-item">
                       <DelayedLink
-                        to={`/portfolio-post/${data.slug}`}
+                        to={`/project/${data.slug}`}
                         className="link-portfolio link-portfolio-animation"
                         attributes={{
                           "data-aos": "d:loop",

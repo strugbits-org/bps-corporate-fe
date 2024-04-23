@@ -157,7 +157,7 @@ const PortfolioListing = ({ data, seeMore, applyFilters }) => {
                 return (
                   <li key={item._id} className="grid-item">
                     <DelayedLink
-                      to={`/portfolio-post/${item.slug}`}
+                      to={`/project/${item.slug}`}
                       className="link-portfolio link-portfolio-animation"
                       attributes={{
                         "data-aos": "d:loop",

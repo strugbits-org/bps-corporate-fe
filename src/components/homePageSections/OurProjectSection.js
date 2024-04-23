@@ -49,7 +49,7 @@ const OurProjectSection = () => {
                     return (
                       <div key={index} className="swiper-slide list-item">
                         <DelayedLink
-                          to={`/portfolio-post/${item.slug}`}
+                          to={`/project/${item.slug}`}
                           className="project-link animation-project-link"
                           attributes={{
                             "data-cursor-style": "view",

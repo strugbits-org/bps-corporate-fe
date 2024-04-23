@@ -21,7 +21,7 @@ const PortfolioIntoSection = ({ data }) => {
     (item) => item.label === "SOLUTIONS"
   );
   return (
-    <section className="portfolio-post-intro pb-lg-250">
+    <section className="project-intro pb-lg-250">
       <div className="wrapper-banner-img" data-aos>
         <div className="container-img banner-img">
           {coverImage && (
@@ -41,7 +41,7 @@ const PortfolioIntoSection = ({ data }) => {
           <div className="col-lg-10 offset-lg-1">
             <div
               className="wrapper-portfolio"
-              data-aos="trigger: .portfolio-post-intro"
+              data-aos="trigger: .project-intro"
             >
               <div className="row-portfolio">
                 <div className="market-tag">

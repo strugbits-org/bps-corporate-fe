@@ -11,7 +11,7 @@ const OurWorkCard = () => {
             return (
               <li key={data.id} className="grid-item">
                 <Link
-                  to="/portfolio-post"
+                  to="/project"
                   className="link-portfolio link-portfolio-animation"
                   data-aos="d:loop"
                 >

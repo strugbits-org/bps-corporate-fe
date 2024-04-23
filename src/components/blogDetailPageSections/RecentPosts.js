@@ -17,7 +17,7 @@ const RecentPosts = ({ id }) => {
 
   return (
     <section
-      className={`blog-post-recent-posts pt-lg-245 pt-tablet-105 pt-phone-150 pb-lg-150 pb-mobile-100 ${posts.length === 0 ? "hidden" : ""
+      className={`article-recent-posts pt-lg-245 pt-tablet-105 pt-phone-150 pb-lg-150 pb-mobile-100 ${posts.length === 0 ? "hidden" : ""
         }`}
     >
       <div className="container-fluid">
@@ -38,7 +38,7 @@ const RecentPosts = ({ id }) => {
                     return (
                       <div key={data._id} className="swiper-slide grid-item">
                         <DelayedLink
-                          to={`/blog-post/${encodeURIComponent(data.slug)}`}
+                          to={`/article/${encodeURIComponent(data.slug)}`}
                           className="link-blog link-blog-animation"
                           attributes={{
                             "data-aos": "d:loop",
