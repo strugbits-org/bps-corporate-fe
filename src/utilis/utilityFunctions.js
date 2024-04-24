@@ -103,7 +103,7 @@ export const closeModals = () => {
   });
 }
 
-export const setSeo = ({ title = 'Blueprint Studios', description = 'Default description', noFollowTag = false, subpage = false, seo_title = "", seo_description = "", no_follow_subpage = false, }) => {
+export const setSeo = ({ title = 'Blueprint Studios', description = '', noFollowTag = false, subpage = false, seo_title = "", seo_description = "", no_follow_subpage = false, }) => {
   if (subpage) {
     document.title = title + seo_title;
     document.querySelector('meta[name="description"]').setAttribute('content', seo_description);

@@ -29,8 +29,8 @@ const PortfoliPost = () => {
       const options = {
         ...seo_data,
         subpage: true,
-        seo_title: data?.portfolioRef?.title,
-        seo_description: data?.portfolioRef?.description,
+        seo_title: data?.seoDesc?.title || data?.portfolioRef?.title,
+        seo_description: data?.seoDesc?.description,
         no_follow_subpage: seo_data?.noFollowTag,
       }
       setSeo(options)
