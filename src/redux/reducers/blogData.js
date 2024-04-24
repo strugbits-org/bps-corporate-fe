@@ -37,7 +37,7 @@ export const getSocialSectionBlogs = createAsyncThunk(
   "data/getSocialSectionBlogs",
   async () => {
     try {
-      const response = await listBlogs({ pageSize: 3, disableLoader: true });
+      const response = await listBlogs({ pageSize: 9, disableLoader: true });
       const data = response._items.filter(item => item.data.blogRef._id !== undefined).map(item => item.data);
       handleCollectionLoaded();
       return data;
