@@ -1,9 +1,19 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from "react-redux";
 import { generateImageURL } from "../../common/common_functions/imageURL";
 
 export const SubSectionServices = () => {
+  const [cards, setCards] = useState([]);
   const data = useSelector((state) => state.services.servicesData);
+
+  useEffect(() => {
+    if (data && data.subServices) {
+      let cards = data.subServices.slice();
+      cards.sort((a, b) => a.orderNumber - b.orderNumber);
+      setCards(cards);
+    }
+  }, [data])
+
   return (
     <section className="services-description pt-lg-210 pt-tablet-105 pt-phone-200">
       <div className="container-fluid">
@@ -18,7 +28,7 @@ export const SubSectionServices = () => {
               className="list-services grid-lg-25 grid-md-50"
               data-aos="d:loop"
             >
-              {data?.subServices.map((service, index) => {
+              {cards.map((service, index) => {
                 return (
                   <li key={index} className="grid-item">
                     <div className="content">

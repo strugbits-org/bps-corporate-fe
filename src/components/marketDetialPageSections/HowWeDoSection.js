@@ -1,10 +1,20 @@
 import { useSelector } from "react-redux";
 import { generateImageURL } from "../../common/common_functions/imageURL";
 import { convertToHTML } from "../../utilis/utilityFunctions";
+import { useEffect, useState } from "react";
 
 const HowWeDoSection = () => {
+  const [cards, setCards] = useState([]);
   const { marketSectionDetails } = useSelector((state) => state.market);
   const data = useSelector((state) => state.market.marketTopData);
+
+  useEffect(() => {
+    if (data && data.howWeDoItSections) {
+      let cards = data.howWeDoItSections.slice();
+      cards.sort((a, b) => a.orderNumber - b.orderNumber);
+      setCards(cards);
+    }
+  }, [data])
 
   const parseDescription = (description) => {
     const options = {
@@ -26,7 +36,7 @@ const HowWeDoSection = () => {
               {marketSectionDetails?.cardsSectionTitle}
             </h2>
             <ul className="list-how-we-do-it mt-lg-50 mt-mobile-40">
-              {data?.howWeDoItSections.map((item, index) => {
+              {cards.map((item, index) => {
                 return (
                   <li key={index}>
                     <div className="list-column-img">
