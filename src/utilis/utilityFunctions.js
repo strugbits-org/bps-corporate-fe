@@ -102,3 +102,19 @@ export const closeModals = () => {
     }, 500);
   });
 }
+
+export const setSeo = ({ title = 'Blueprint Studios', description = 'Default description', noFollowTag = false, subpage = false, seo_title = "", seo_description = "", no_follow_subpage = false, }) => {
+  if (subpage) {
+    document.title = title + seo_title;
+    document.querySelector('meta[name="description"]').setAttribute('content', seo_description);
+    document.querySelector('meta[property="og:title"]').setAttribute('content', title + seo_title);
+    document.querySelector('meta[property="og:description"]').setAttribute('content', seo_description);
+    document.querySelector('meta[name="robots"]').setAttribute('content', no_follow_subpage ? "noindex,nofollow" : "all");
+  } else {
+    document.title = title;
+    document.querySelector('meta[name="description"]').setAttribute('content', description);
+    document.querySelector('meta[property="og:title"]').setAttribute('content', title);
+    document.querySelector('meta[property="og:description"]').setAttribute('content', description);
+    document.querySelector('meta[name="robots"]').setAttribute('content', noFollowTag ? "noindex,nofollow" : "all");
+  }
+}

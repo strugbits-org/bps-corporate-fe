@@ -36,15 +36,20 @@ const Blog = () => {
     selectedMarkets = [],
     disableLoader = false
   }) => {
-    const response = await listBlogs({
-      pageSize,
-      studios: selectedStudios,
-      markets: selectedMarkets,
-      disableLoader
-    });
-    setBlogCollection(response._items.filter(item => item.data.blogRef && item.data.blogRef._id !== undefined).map(item => item.data));
-    setBlogResponse(response);
-    handleCollectionLoaded();
+    try {
+      const response = await listBlogs({
+        pageSize,
+        studios: selectedStudios,
+        markets: selectedMarkets,
+        disableLoader
+      });
+      setBlogCollection(response._items.filter(item => item.data.blogRef && item.data.blogRef._id !== undefined).map(item => item.data));
+      setBlogResponse(response);
+      handleCollectionLoaded();
+    } catch (error) {
+      console.error(error);
+      handleCollectionLoaded();
+    }
   };
 
   return (
