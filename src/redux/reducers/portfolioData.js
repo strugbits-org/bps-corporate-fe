@@ -100,6 +100,7 @@ export const fetchSinglePortfolio = createAsyncThunk(
   }
 );
 
+export const resetSinglePortfolio = createAsyncThunk("data/resetSinglePortfolio", async () => null);
 
 
 const portfolioSlice = createSlice({
@@ -109,6 +110,9 @@ const portfolioSlice = createSlice({
   extraReducers: (builder) => {
     builder
       /// Portfolio ////
+      .addCase(resetSinglePortfolio.fulfilled, (state, action) => {
+        state.singlePortfolioData = action.payload;
+      })
       .addCase(getPortfolioSectionDetails.pending, (state) => {
         state.portfolioSectionDetailsLoading = true;
         state.error = null;

@@ -5,7 +5,7 @@ import MarketSection from "../components/commonComponents/MarketSection";
 import { useDispatch, useSelector } from "react-redux";
 import { listPortfolios } from "../utilis/queryCollections";
 import { updatedWatched } from "../utilis/animationsTriggers";
-import { getPortfolioSectionDetails } from "../redux/reducers/portfolioData";
+import { getPortfolioSectionDetails, resetSinglePortfolio } from "../redux/reducers/portfolioData";
 import { handleCollectionLoaded } from "../utilis/pageLoadingAnimation";
 
 const Portfolio = () => {
@@ -21,6 +21,7 @@ const Portfolio = () => {
   useEffect(() => {
     dispatch(getPortfolioSectionDetails());
     applyFilters({ disableLoader: true });
+    dispatch(resetSinglePortfolio());
   }, [dispatch]);
 
   const handleSeeMore = async ({ selectedStudios = [], selectedMarkets = [], disableLoader = false }) => {

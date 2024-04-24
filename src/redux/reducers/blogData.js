@@ -102,13 +102,17 @@ export const getblogTags = createAsyncThunk("data/getblogTags", async (ids) => {
   }
 });
 
+export const resetSingleBlog = createAsyncThunk("data/resetSinglePortfolio", async () => null);
+
 const blogSlice = createSlice({
   name: "blog",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-
+      .addCase(resetSingleBlog.fulfilled, (state, action) => {
+        state.singleBlogData = action.payload;
+      })
       .addCase(getBlogSectionDetails.pending, (state) => {
         state.blogSectionDetailsLoading = true;
         state.error = null;

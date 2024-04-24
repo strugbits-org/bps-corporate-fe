@@ -24051,7 +24051,8 @@ body.page-leave-active[data-load="first-done"] .overlay {
   display: none;
 }
 
-.insta-feed, .list-blog-lets-get-social {
+.insta-feed,
+.list-blog-lets-get-social {
   height: 100% !important;
   max-height: 55vh !important;
   overflow-x: hidden;
@@ -24066,7 +24067,9 @@ body.page-leave-active[data-load="first-done"] .overlay {
   .list-pinterest>span>span:nth-child(2) {
     max-height: 40vh !important;
   }
-  .insta-feed, .list-blog-lets-get-social {
+
+  .insta-feed,
+  .list-blog-lets-get-social {
     max-height: 40vh !important;
   }
 }
@@ -24104,4 +24107,9 @@ body.page-leave-active[data-load="first-done"] .overlay {
   max-width: 1200px;
   display: flex;
   justify-content: center;
+}
+
+.insta-feed::-webkit-scrollbar-thumb,
+.list-blog-lets-get-social::-webkit-scrollbar-thumb {
+  cursor: pointer;
 }
