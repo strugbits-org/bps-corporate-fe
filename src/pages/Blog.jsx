@@ -5,7 +5,7 @@ import { listBlogs } from "../utilis/queryCollections";
 import BlogListing from "../components/blogPageSections/BlogListing";
 import { handleCollectionLoaded } from "../utilis/pageLoadingAnimation";
 import { updatedWatched } from "../utilis/animationsTriggers";
-import { getBlogSectionDetails } from "../redux/reducers/blogData";
+import { getBlogSectionDetails, resetSingleBlog } from "../redux/reducers/blogData";
 
 const Blog = () => {
   const dispatch = useDispatch();
@@ -19,6 +19,7 @@ const Blog = () => {
   useEffect(() => {
     dispatch(getBlogSectionDetails());
     applyFilters({ disableLoader: true });
+    dispatch(resetSingleBlog());
   }, [dispatch]);
 
   const handleSeeMore = async ({ selectedStudios = [], selectedMarkets = [], disableLoader = false }) => {
