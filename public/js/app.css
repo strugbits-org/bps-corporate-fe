@@ -24051,11 +24051,11 @@ body.page-leave-active[data-load="first-done"] .overlay {
   display: none;
 }
 
-/* .insta-feed, .list-blog-lets-get-social {
+.insta-feed, .list-blog-lets-get-social {
   height: 100% !important;
   max-height: 55vh !important;
-  overflow-x: scroll;
-} */
+  overflow-x: hidden;
+}
 
 .list-pinterest>span>span:nth-child(2) {
   height: 100% !important;
@@ -24064,11 +24064,11 @@ body.page-leave-active[data-load="first-done"] .overlay {
 
 @media only screen and (min-width: 1024px) and (max-width: 1600px) {
   .list-pinterest>span>span:nth-child(2) {
-    max-height: 45vh !important;
+    max-height: 40vh !important;
   }
-  /* .insta-feed, .list-blog-lets-get-social {
-    max-height: 45vh !important;
-  } */
+  .insta-feed, .list-blog-lets-get-social {
+    max-height: 40vh !important;
+  }
 }
 
 .wrapper-text .readmore-paragraphs {

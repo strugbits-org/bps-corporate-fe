@@ -31,10 +31,15 @@ const Portfolio = () => {
   }
 
   const applyFilters = async ({ selectedStudios = [], selectedMarkets = [], disableLoader = false }) => {
-    const response = await listPortfolios({ pageSize, studios: selectedStudios, markets: selectedMarkets, disableLoader });
-    setPortfolioCollection(response._items.filter(item => item.data.portfolioRef._id !== undefined).map(item => item.data));
-    setPortfolioResponse(response);
-    handleCollectionLoaded();
+    try {
+      const response = await listPortfolios({ pageSize, studios: selectedStudios, markets: selectedMarkets, disableLoader });
+      setPortfolioCollection(response._items.filter(item => item.data.portfolioRef._id !== undefined).map(item => item.data));
+      setPortfolioResponse(response);
+      handleCollectionLoaded();
+    } catch (error) {
+      console.error(error);
+      handleCollectionLoaded();
+    }
   }
 
   return (

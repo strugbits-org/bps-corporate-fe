@@ -7,12 +7,12 @@ import Loading from "./common/Loading";
 import Cookies from "./common/Cookies";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchPageSeoData, loadAppConfig } from "./redux/reducers/appConfig";
+import { fetchPageSeoData } from "./redux/reducers/appConfig";
 import { fetchDreamBigSection, fetchHomeSectionDetails, fetchPeopleReviewSlider, fetchStudioSection } from "./redux/reducers/homeData";
 import { getMarketCollection } from "./redux/reducers/marketData";
 import { fetchContactUs } from "./redux/reducers/contatusData";
 import { fetchFooterData, getSocialLinks } from "./redux/reducers/footerData";
-import { closeModals } from "./utilis/utilityFunctions";
+import { closeModals, setSeo } from "./utilis/utilityFunctions";
 
 function App() {
   const dispatch = useDispatch();
@@ -21,10 +21,9 @@ function App() {
   const pathname = location.pathname.trim() === "/" ? "home" : location.pathname.substring(1);
   const cleanPath = pathname.split("/")[0].trim();
 
-  const { config, seo_data } = useSelector((state) => state.config);
+  const { seo_data } = useSelector((state) => state.config);
 
   useEffect(() => {
-    dispatch(loadAppConfig());
     dispatch(fetchHomeSectionDetails());
     dispatch(fetchStudioSection());
     dispatch(getMarketCollection());
@@ -40,6 +39,11 @@ function App() {
     closeModals();
   }, [dispatch, location, cleanPath]);
 
+  useEffect(() => {
+    if (seo_data && !pathname.includes("/")) setSeo(seo_data);
+  }, [seo_data, pathname])
+
+
   return (
     <div>
 
@@ -50,12 +54,11 @@ function App() {
       <Cookies />
       <Navbar />
       <Helmet>
-        <title>{seo_data?.title ? seo_data?.title : "Blueprint Studios"}</title>
-        <meta property="og:title" content={seo_data?.title ? seo_data?.title : "Blueprint Studios"} />
-        <meta name="description" content={seo_data?.description ? seo_data?.description : ""} />
-        <meta property="og:description" content={seo_data?.description ? seo_data?.description : ""} />
-
-        {config?.noFollow && <meta name="robots" content="noindex,nofollow" />}
+        <title>Blueprint Studios</title>
+        <meta name="description" content="Events are crucial for enhancing brand awareness, offering exclusive chances to showcase ideas, products, and services intimately." />
+        <meta property="og:title" content="Blueprint Studios" />
+        <meta property="og:description" content="Events are crucial for enhancing brand awareness, offering exclusive chances to showcase ideas, products, and services intimately." />
+        <meta name="robots" content="all" />
 
         <meta name="format-detection" content="telephone=no" />
         <meta name="keywords" content="" />

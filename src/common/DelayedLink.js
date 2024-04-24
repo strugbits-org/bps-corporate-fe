@@ -10,11 +10,6 @@ const DelayedLink = ({ to, children, className, target, attributes }) => {
   const delayedRedirect = (e) => {
     e.preventDefault();
 
-    const parentPage = (path) => {
-      const page = path.trim() === "/" ? "/" : path.substring(1);
-      return page.split("/")[0].trim()
-    }
-
     if (to === undefined) return;
 
     if (location.pathname === to) {
@@ -25,17 +20,10 @@ const DelayedLink = ({ to, children, className, target, attributes }) => {
 
     if (target === undefined) {
       pageLoadStart();
-      if (parentPage(to) === parentPage(location.pathname)) {
-        setTimeout(() => {
-          resetCount();
-          navigate(to + "?noreload=true");
-        }, 900);
-      } else {
-        setTimeout(() => {
-          resetCount();
-          navigate(to);
-        }, 900);
-      }
+      setTimeout(() => {
+        resetCount();
+        navigate(to);
+      }, 900);
     } else {
       window.open(to, target);
     }

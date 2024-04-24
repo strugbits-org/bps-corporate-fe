@@ -111,7 +111,7 @@ const SocialSection = () => {
                     <h3>{data?.instaFeedTitle}</h3>
                   </div>
                   <ul className="list-instagram insta-feed">
-                    {insta_feed.slice(0, 9).map((item, index) => {
+                    {insta_feed.map((item, index) => {
                       return (
                         <li key={index}>
                           <DelayedLink

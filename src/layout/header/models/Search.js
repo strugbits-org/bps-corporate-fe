@@ -122,7 +122,7 @@ const Search = () => {
 
   const handleSubmit = async (e) => {
     if (searchActive) {
-      searchCollections(searchCollections);
+      searchCollections();
     } else {
       setSearchActive(true);
     }

@@ -1,7 +1,10 @@
+import { useSelector } from "react-redux";
 import ContentComponent from "../../common/ContentComponent ";
 import { generateImageUrl2 } from "../../common/common_functions/imageURL";
 import SocialVerticalBar from "../blogDetailPageSections/SocialVerticalBar";
-const PortfolioIntoSection = ({ data }) => {
+const PortfolioIntoSection = () => {
+  const data = useSelector((state) => state.portfolio.singlePortfolioData);
+
   const maxWords = 60;
   const coverImage = generateImageUrl2({ wix_url: data?.portfolioRef?.coverImage?.imageInfo, q: "95" });
   const categories = data?.markets?.map((item) => item.cardname);
